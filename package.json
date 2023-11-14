@@ -31,7 +31,7 @@
     "@bazel/buildifier": "^5.1.0",
     "@bazel/buildozer": "^5.1.0",
     "@bazel/ibazel": "^0.16.2",
-    "@bazel/typescript": "4.6.2",
+    "@bazel/typescript": "5.8.1",
     "@google/semantic-release-replace-plugin": "^1.2.0",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/npm": "^9.0.1",
