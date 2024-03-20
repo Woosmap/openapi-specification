@@ -56,7 +56,7 @@
     "mdast-builder": "^1.1.1",
     "mdast-util-from-markdown": "^0.8.5",
     "mdast-util-gfm": "^0.1.2",
-    "micromark-extension-gfm": "^0.3.3",
+    "micromark-extension-gfm": "^3.0.0",
     "openapi-examples-validator": "^4.7.1",
     "openapi-to-postmanv2": "^4.20.0",
     "openapi-types": "^11.0.1",
