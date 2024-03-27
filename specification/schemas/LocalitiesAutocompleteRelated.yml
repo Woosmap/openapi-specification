@@ -4,11 +4,6 @@ description: Contains a set of related elements to the locality suggestion.
 properties:
   postal_codes:
     description: Postal codes related to the locality suggestion.
-    type: object
-    properties:
-      public_id:
-        type: string
-        description: Public ID of a related Postal Code.
-      description:
-        type: string
-        description: Formated description for the related Postal Code.
+    type: array
+    items:
+      $ref: "./LocalitiesAutocompleteRelatedPostalCode.yml"
