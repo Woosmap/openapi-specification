@@ -1,0 +1,5 @@
+{
+  "lang": "nodejs",
+  "label": "NodeJS",
+  "source": "var axios = require('axios');\n\nvar config = {\n  method: 'delete',\n  url: 'https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { }\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n",
+}
