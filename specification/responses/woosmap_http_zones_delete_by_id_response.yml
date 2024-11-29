@@ -1,0 +1,3 @@
+# [START woosmap_http_zones_delete_by_id_request_response]
+{ "status": "ok", "message": "Zone ZoneA deleted." }
+# [END woosmap_http_zones_delete_by_id_request_response]

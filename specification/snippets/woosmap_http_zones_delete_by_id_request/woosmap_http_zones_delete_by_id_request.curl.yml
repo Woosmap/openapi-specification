@@ -1,0 +1,5 @@
+{
+  "lang": "curl",
+  "label": "cURL",
+  "source": "curl -L -X DELETE 'https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY'",
+}
