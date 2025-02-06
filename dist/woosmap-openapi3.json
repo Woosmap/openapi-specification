@@ -9433,7 +9433,9 @@
                       "ROOFTOP",
                       "ROUTE",
                       "DISTRICT",
-                      "POSTAL_CODE"
+                      "POSTAL_CODE",
+                      "RANGE_INTERPOLATED",
+                      "APPROXIMATE"
                     ]
                   }
                 },
@@ -9682,7 +9684,7 @@
             "$ref": "#/components/schemas/AdministrativeAreaLabel"
           },
           "public_id": {
-            "description": "Contains a unique ID for each suggestion. `public_id` will be empty for interpolated locations. Please use this ID to give feedbacks on results.",
+            "description": "Contains a unique ID for each suggestion. Please use this ID to give feedbacks on results.",
             "type": "string",
             "example": "MkvnYy6K6oVGqeqfWJGO/6eCgqo="
           },
