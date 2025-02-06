@@ -42,7 +42,7 @@
 
 -   <h3 class="parameter-name" id="types">types</h3>
 
-    The types of suggestion to return. Multiple types can be passed using the pipe character (`|`) as a separator.
+    Specify the types of geocoding responses to return by separating multiple types with a pipe character (|).  This parameter is ignored when used with the `latlng` parameter.  When executing a geocode request with the `address` parameter, use this to select the expected result type.
 
     -   `city`: includes city localities
     -   `town`: includes town localities

@@ -8784,7 +8784,7 @@
     "description": "The Woosmap API is a RESTful API built on HTTP. It has predictable resource URLs. It returns HTTP response codes to indicate errors. It also accepts and returns JSON in the HTTP body. You can use your favorite HTTP/REST library for your programming language to use Woosmap's API, or you can use one of our Javascript SDKs for supported APIs:\n  - [Map JS](https://developers.woosmap.com/products/map-api/get-started/) - support All APIs\n  - [Localities JS](https://developers.woosmap.com/products/localities/localities-jsapi/get-started/) - for Localities API\n  - [MultiSearch JS](https://developers.woosmap.com/products/multisearch-lib/js/get-started/) - for Localities API and Store Search API\n\nYou can use Postman to test the API (if you use the `PUBLIC_API_KEY` authentication, don't forget to set the `Referer` Header corresponding to one of your restricted domain name).\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9?action=collection%2Ffork\u0026source=rip_markdown\u0026collection-url=entityId%3D18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9%26entityType%3Dcollection%26workspaceId%3Dff0698d5-c4db-403e-b7c6-b622b68032d3)\n",
     "termsOfService": "https://www.woosmap.com/en/policies/terms/",
     "title": "Woosmap Platform API Reference",
-    "version": "1.28.0",
+    "version": "1.29.1",
     "x-document-meta-data": {
       "copyright": "© 2023 Woosmap"
     }
@@ -13062,7 +13062,7 @@
             "$ref": "#/components/parameters/localities_latlng"
           },
           {
-            "$ref": "#/components/parameters/localities_types"
+            "$ref": "#/components/parameters/localities_geocode_types"
           },
           {
             "$ref": "#/components/parameters/localities_excluded_types"

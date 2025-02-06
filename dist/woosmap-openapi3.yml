@@ -13,7 +13,7 @@ info:
   termsOfService: 'https://www.woosmap.com/en/policies/terms/'
   x-document-meta-data:
     copyright: © 2023 Woosmap
-  version: 1.28.0
+  version: 1.29.1
   contact:
     name: Woosmap API
 servers:
@@ -2644,7 +2644,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/localities_address'
         - $ref: '#/components/parameters/localities_latlng'
-        - $ref: '#/components/parameters/localities_types'
+        - $ref: '#/components/parameters/localities_geocode_types'
         - $ref: '#/components/parameters/localities_excluded_types'
         - $ref: '#/components/parameters/localities_list_sub_buildings'
         - $ref: '#/components/parameters/localities_components'
@@ -5918,6 +5918,14 @@ components:
           - advanced
       in: query
       example: advanced
+    localities_excluded_types:
+      name: excluded_types
+      description: |
+        The types of suggestion to exclude. Multiple types can be passed using the pipe character (`|`) as a separator.
+      schema:
+        type: string
+      in: query
+      example: suburb|quarter|neighbourhood
     localities_extended:
       name: extended
       description: |
@@ -5928,14 +5936,6 @@ components:
           - postal_code
       in: query
       example: postal_code
-    localities_excluded_types:
-      name: excluded_types
-      description: |
-        The types of suggestion to exclude. Multiple types can be passed using the pipe character (`|`) as a separator.
-      schema:
-        type: string
-      in: query
-      example: suburb|quarter|neighbourhood
     localities_fields:
       name: fields
       description: |

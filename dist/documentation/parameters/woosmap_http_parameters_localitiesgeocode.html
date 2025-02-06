@@ -108,8 +108,11 @@
   <li>
     <h3 class="parameter-name" id="types">types</h3>
     <p>
-      The types of suggestion to return. Multiple types can be passed using the
-      pipe character (<code>|</code>) as a separator.
+      Specify the types of geocoding responses to return by separating multiple
+      types with a pipe character (|). This parameter is ignored when used with
+      the <code>latlng</code> parameter. When executing a geocode request with
+      the <code>address</code> parameter, use this to select the expected result
+      type.
     </p>
     <ul>
       <li><code>city</code>: includes city localities</li>
