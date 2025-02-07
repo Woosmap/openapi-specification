@@ -7957,6 +7957,8 @@ components:
                     - ROUTE
                     - DISTRICT
                     - POSTAL_CODE
+                    - RANGE_INTERPOLATED
+                    - APPROXIMATE
               example:
                 location:
                   lat: 51.49984
@@ -8126,7 +8128,7 @@ components:
         administrative_area_label:
           $ref: '#/components/schemas/AdministrativeAreaLabel'
         public_id:
-          description: Contains a unique ID for each suggestion. `public_id` will be empty for interpolated locations. Please use this ID to give feedbacks on results.
+          description: Contains a unique ID for each suggestion. Please use this ID to give feedbacks on results.
           type: string
           example: MkvnYy6K6oVGqeqfWJGO/6eCgqo=
         geometry:
