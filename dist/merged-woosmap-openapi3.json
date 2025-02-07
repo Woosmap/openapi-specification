@@ -8784,7 +8784,7 @@
     "description": "The Woosmap API is a RESTful API built on HTTP. It has predictable resource URLs. It returns HTTP response codes to indicate errors. It also accepts and returns JSON in the HTTP body. You can use your favorite HTTP/REST library for your programming language to use Woosmap's API, or you can use one of our Javascript SDKs for supported APIs:\n  - [Map JS](https://developers.woosmap.com/products/map-api/get-started/) - support All APIs\n  - [Localities JS](https://developers.woosmap.com/products/localities/localities-jsapi/get-started/) - for Localities API\n  - [MultiSearch JS](https://developers.woosmap.com/products/multisearch-lib/js/get-started/) - for Localities API and Store Search API\n\nYou can use Postman to test the API (if you use the `PUBLIC_API_KEY` authentication, don't forget to set the `Referer` Header corresponding to one of your restricted domain name).\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9?action=collection%2Ffork\u0026source=rip_markdown\u0026collection-url=entityId%3D18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9%26entityType%3Dcollection%26workspaceId%3Dff0698d5-c4db-403e-b7c6-b622b68032d3)\n",
     "termsOfService": "https://www.woosmap.com/en/policies/terms/",
     "title": "Woosmap Platform API Reference",
-    "version": "1.29.1",
+    "version": "1.29.2",
     "x-document-meta-data": {
       "copyright": "© 2023 Woosmap"
     }
@@ -17092,19 +17092,8 @@
     },
     "/zones": {
       "delete": {
-        "description": "Used to delete one or more Zones. The `zone_id` is the id of the zone to delete. To delete several zones, use the comma as a separator.",
+        "description": "Used to delete one or more Zones.",
         "operationId": "deleteZones",
-        "parameters": [
-          {
-            "description": "The zone ID to delete",
-            "example": "ZoneA",
-            "in": "query",
-            "name": "zone_id",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "content": {
@@ -17648,6 +17637,110 @@
       }
     },
     "/zones/{zone_id}": {
+      "delete": {
+        "description": "Used to delete one Zone. The `zone_id` is the id of the zone to delete. To delete several zones, use the comma as a separator.",
+        "operationId": "deleteZone",
+        "parameters": [
+          {
+            "description": "ID of the zone to delete",
+            "example": "ZoneA",
+            "in": "path",
+            "name": "zone_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "summary": "Success response for Zones deleted",
+                    "value": {
+                      "message": "Zone ZoneA deleted.",
+                      "status": "ok"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessZones"
+                }
+              }
+            },
+            "description": "Zones successfully deleted"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Unauthorized": {
+                    "summary": "Error 401",
+                    "value": {
+                      "detail": "Incorrect authentication credentials. Please check or use a valid API Key"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error401"
+                }
+              }
+            },
+            "description": "Unauthorized. Incorrect authentication credentials."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Forbidden": {
+                    "summary": "Error 403",
+                    "value": {
+                      "detail": "This Woosmap API is not enabled for this project."
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error403"
+                }
+              }
+            },
+            "description": "Forbidden. This Woosmap API is not enabled for this project."
+          }
+        },
+        "security": [
+          {
+            "PrivateApiKeyAuth": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.woosmap.com"
+          }
+        ],
+        "summary": "Delete Zone from ID",
+        "tags": [
+          "Zones API"
+        ],
+        "x-codeSamples": [
+          {
+            "label": "cURL",
+            "lang": "curl",
+            "source": "curl -L -X DELETE 'https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY'"
+          },
+          {
+            "label": "Python",
+            "lang": "python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"DELETE\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          },
+          {
+            "label": "NodeJS",
+            "lang": "nodejs",
+            "source": "var axios = require('axios');\n\nvar config = {\n  method: 'delete',\n  url: 'https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { }\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n"
+          }
+        ]
+      },
       "get": {
         "description": "Used to retrieve a zone from his `zone_id`\n",
         "operationId": "getZone",
