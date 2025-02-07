@@ -1,0 +1,5 @@
+{
+  "lang": "python",
+  "label": "Python",
+  "source": "import requests\n\nurl = \"https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"DELETE\", url, headers=headers, data=payload)\n\nprint(response.text)\n",
+}
