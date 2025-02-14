@@ -13,7 +13,7 @@ info:
   termsOfService: 'https://www.woosmap.com/en/policies/terms/'
   x-document-meta-data:
     copyright: © 2023 Woosmap
-  version: 1.29.1
+  version: 1.29.2
   contact:
     name: Woosmap API
 servers:
@@ -4192,16 +4192,9 @@ paths:
         - url: 'https://api.woosmap.com'
       tags:
         - Zones API
-      description: 'Used to delete one or more Zones. The `zone_id` is the id of the zone to delete. To delete several zones, use the comma as a separator.'
+      description: Used to delete one or more Zones.
       security:
         - PrivateApiKeyAuth: []
-      parameters:
-        - name: zone_id
-          description: The zone ID to delete
-          in: query
-          example: ZoneA
-          schema:
-            type: string
       responses:
         '200':
           description: Zones successfully deleted
@@ -4363,6 +4356,94 @@ paths:
             response = requests.request("GET", url, headers=headers, data=payload)
 
             print(response.text)
+    delete:
+      summary: Delete Zone from ID
+      operationId: deleteZone
+      servers:
+        - url: 'https://api.woosmap.com'
+      tags:
+        - Zones API
+      description: 'Used to delete one Zone. The `zone_id` is the id of the zone to delete. To delete several zones, use the comma as a separator.'
+      security:
+        - PrivateApiKeyAuth: []
+      parameters:
+        - in: path
+          name: zone_id
+          schema:
+            type: string
+          required: true
+          example: ZoneA
+          description: ID of the zone to delete
+      responses:
+        '200':
+          description: Zones successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessZones'
+              examples:
+                default:
+                  summary: Success response for Zones deleted
+                  value:
+                    status: ok
+                    message: Zone ZoneA deleted.
+        '401':
+          description: Unauthorized. Incorrect authentication credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+              examples:
+                Unauthorized:
+                  summary: Error 401
+                  value:
+                    detail: Incorrect authentication credentials. Please check or use a valid API Key
+        '403':
+          description: Forbidden. This Woosmap API is not enabled for this project.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+              examples:
+                Forbidden:
+                  summary: Error 403
+                  value:
+                    detail: This Woosmap API is not enabled for this project.
+      x-codeSamples:
+        - lang: curl
+          label: cURL
+          source: 'curl -L -X DELETE ''https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY'''
+        - lang: python
+          label: Python
+          source: |
+            import requests
+
+            url = "https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY"
+
+            payload={}
+            headers = {}
+
+            response = requests.request("DELETE", url, headers=headers, data=payload)
+
+            print(response.text)
+        - lang: nodejs
+          label: NodeJS
+          source: |
+            var axios = require('axios');
+
+            var config = {
+              method: 'delete',
+              url: 'https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY',
+              headers: { }
+            };
+
+            axios(config)
+            .then(function (response) {
+              console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
   /distance/distancematrix/json:
     get:
       summary: Distance Matrix
