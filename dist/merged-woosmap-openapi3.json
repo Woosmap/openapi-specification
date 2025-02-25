@@ -10925,6 +10925,183 @@
         ]
       }
     },
+    "/geolocation/timezone": {
+      "get": {
+        "description": "Returns timezone information based on the location, and optionally a timestamp for daylight saving time.\n\u003e Note: rawOffset never contains the dst.\n",
+        "operationId": "getTimezone",
+        "parameters": [
+          {
+            "description": "The location {lat},{lng}",
+            "in": "query",
+            "name": "location",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The UTC timestamp",
+            "in": "query",
+            "name": "location",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "summary": "Timezone for the IP `173.79.254.254`",
+                    "value": {
+                      "accuracy": 5,
+                      "city": "Alexandria",
+                      "continent": "North America",
+                      "country_code": "US",
+                      "country_name": "United States",
+                      "latitude": 38.719,
+                      "longitude": -77.1067,
+                      "postal_code": "22309",
+                      "region_state": "Virginia",
+                      "timezone": "America/New_York",
+                      "viewport": {
+                        "northeast": {
+                          "lat": 38.763915764205976,
+                          "lng": -77.0491321464058
+                        },
+                        "southwest": {
+                          "lat": 38.674084235794034,
+                          "lng": -77.16426785359421
+                        }
+                      }
+                    }
+                  }
+                },
+                "schema": {
+                  "description": "Timezone information, name, raw offset to UTC and dst offset.",
+                  "examples": [
+                    {
+                      "dst_offset": 3600,
+                      "raw_offset": 3600,
+                      "timezone": "Europe/Paris",
+                      "timezone_name": "CEST"
+                    }
+                  ],
+                  "properties": {
+                    "dst_offset": {
+                      "description": "The daylight saving time offset in seconds.",
+                      "title": "Dst offset",
+                      "type": "integer"
+                    },
+                    "raw_offset": {
+                      "description": "offset from utc in seconds.",
+                      "title": "Raw offset",
+                      "type": "integer"
+                    },
+                    "timezone": {
+                      "description\"": "The time zone identifier eg. 'Europe/Paris'.",
+                      "title": "Timezone id",
+                      "type": "string"
+                    },
+                    "timezone_name": {
+                      "description": "The timezone name eg. `PDT`",
+                      "title": "Timezone name",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "timezone",
+                    "timezone_name",
+                    "raw_offset",
+                    "dst_offset"
+                  ],
+                  "title": "TimezoneResponse",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Timezone successfully retrieved"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Unauthorized": {
+                    "summary": "Error 401",
+                    "value": {
+                      "detail": "Incorrect authentication credentials. Please check or use a valid API Key"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error401"
+                }
+              }
+            },
+            "description": "Unauthorized. Incorrect authentication credentials."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Forbidden": {
+                    "summary": "Error 403",
+                    "value": {
+                      "detail": "This Woosmap API is not enabled for this project."
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error403"
+                }
+              }
+            },
+            "description": "Forbidden. This Woosmap API is not enabled for this project."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Forbidden": {
+                    "summary": "Error 429",
+                    "value": {
+                      "detail": "The rate limit for this endpoint has been exceeded"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error429"
+                }
+              }
+            },
+            "description": "Too Many Requests. The rate limit for this endpoint has been exceeded."
+          }
+        },
+        "security": [
+          {
+            "PublicApiKeyAuth": [],
+            "RefererHeader": []
+          },
+          {
+            "PrivateApiKeyAuth": []
+          },
+          {
+            "PrivateApiKeyHeaderAuth": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.woosmap.com"
+          }
+        ],
+        "summary": "Timezone",
+        "tags": [
+          "Geolocation API"
+        ]
+      }
+    },
     "/indoor/directions/{venue_id}": {
       "get": {
         "description": "Returns the directions to go from an Origin to a Destination.\nRouting Configuration must be done before this endpoint will work.",

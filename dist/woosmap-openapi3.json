@@ -456,6 +456,183 @@
         ]
       }
     },
+    "/geolocation/timezone": {
+      "get": {
+        "summary": "Timezone",
+        "operationId": "getTimezone",
+        "servers": [
+          {
+            "url": "https://api.woosmap.com"
+          }
+        ],
+        "tags": [
+          "Geolocation API"
+        ],
+        "description": "Returns timezone information based on the location, and optionally a timestamp for daylight saving time.\n> Note: rawOffset never contains the dst.\n",
+        "security": [
+          {
+            "PublicApiKeyAuth": [],
+            "RefererHeader": []
+          },
+          {
+            "PrivateApiKeyAuth": []
+          },
+          {
+            "PrivateApiKeyHeaderAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "description": "The location {lat},{lng}",
+            "name": "location",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "description": "The UTC timestamp",
+            "name": "location",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Timezone successfully retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "TimezoneResponse",
+                  "type": "object",
+                  "description": "Timezone information, name, raw offset to UTC and dst offset.",
+                  "properties": {
+                    "timezone": {
+                      "description\"": "The time zone identifier eg. 'Europe/Paris'.",
+                      "title": "Timezone id",
+                      "type": "string"
+                    },
+                    "timezone_name": {
+                      "description": "The timezone name eg. `PDT`",
+                      "title": "Timezone name",
+                      "type": "string"
+                    },
+                    "raw_offset": {
+                      "description": "offset from utc in seconds.",
+                      "title": "Raw offset",
+                      "type": "integer"
+                    },
+                    "dst_offset": {
+                      "description": "The daylight saving time offset in seconds.",
+                      "title": "Dst offset",
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "timezone",
+                    "timezone_name",
+                    "raw_offset",
+                    "dst_offset"
+                  ],
+                  "examples": [
+                    {
+                      "timezone": "Europe/Paris",
+                      "timezone_name": "CEST",
+                      "raw_offset": 3600,
+                      "dst_offset": 3600
+                    }
+                  ]
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Timezone for the IP `173.79.254.254`",
+                    "value": {
+                      "country_code": "US",
+                      "country_name": "United States",
+                      "continent": "North America",
+                      "latitude": 38.719,
+                      "longitude": -77.1067,
+                      "accuracy": 5,
+                      "viewport": {
+                        "northeast": {
+                          "lat": 38.763915764205976,
+                          "lng": -77.0491321464058
+                        },
+                        "southwest": {
+                          "lat": 38.674084235794034,
+                          "lng": -77.16426785359421
+                        }
+                      },
+                      "city": "Alexandria",
+                      "region_state": "Virginia",
+                      "postal_code": "22309",
+                      "timezone": "America/New_York"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Incorrect authentication credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error401"
+                },
+                "examples": {
+                  "Unauthorized": {
+                    "summary": "Error 401",
+                    "value": {
+                      "detail": "Incorrect authentication credentials. Please check or use a valid API Key"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden. This Woosmap API is not enabled for this project.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error403"
+                },
+                "examples": {
+                  "Forbidden": {
+                    "summary": "Error 403",
+                    "value": {
+                      "detail": "This Woosmap API is not enabled for this project."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests. The rate limit for this endpoint has been exceeded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error429"
+                },
+                "examples": {
+                  "Forbidden": {
+                    "summary": "Error 429",
+                    "value": {
+                      "detail": "The rate limit for this endpoint has been exceeded"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/stores": {
       "post": {
         "summary": "Create your Assets",
