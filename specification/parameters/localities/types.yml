@@ -9,7 +9,7 @@ description: >
     * `suburb`: includes suburb localities 
     * `quarter`: includes quarter localities 
     * `neighbourhood`: includes neighbourhood localities
-    * `locality`: includes all previous locality names
+    * `locality`: an alias that groups all localities (`city`, `town`, `village`, `hamlet`, `borough`, `suburb`, `quarter` and `neighbourhood`)
     * `postal_code`: publicly-used postal codes around the world
     * `address`: addresses
     * `admin_level`: most commonly used administrative areas
