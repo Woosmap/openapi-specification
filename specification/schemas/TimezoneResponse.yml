@@ -1,0 +1,36 @@
+title: TimezoneResponse
+type: object
+description: Timezone information, name, raw offset to UTC and dst offset.
+properties:
+  timezone:
+    description": "The time zone identifier eg. 'Europe/Paris'."
+    title: "Timezone id"
+    type: "string"
+
+  timezone_name:
+    description: "The timezone name eg. `PDT`"
+    title: "Timezone name"
+    type: "string"
+
+  raw_offset:
+    description: "offset from utc in seconds."
+    title: "Raw offset"
+    type: "integer"
+
+  dst_offset:
+    description: "The daylight saving time offset in seconds."
+    title: "Dst offset"
+    type: "integer"
+
+required:
+  - "timezone"
+  - "timezone_name"
+  - "raw_offset"
+  - "dst_offset"
+
+examples: [ {
+  "timezone": "Europe/Paris",
+  "timezone_name": "CEST",
+  "raw_offset": 3600,
+  "dst_offset": 3600
+} ]
