@@ -493,7 +493,7 @@
           },
           {
             "description": "The UTC timestamp",
-            "name": "timezone",
+            "name": "timestamp",
             "in": "query",
             "schema": {
               "type": "string"
