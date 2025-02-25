@@ -10981,7 +10981,7 @@
           {
             "description": "The UTC timestamp",
             "in": "query",
-            "name": "location",
+            "name": "timezone",
             "schema": {
               "type": "string"
             }

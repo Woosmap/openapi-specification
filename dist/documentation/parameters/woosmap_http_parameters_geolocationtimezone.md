@@ -8,7 +8,7 @@
 
 <h2 id="optional-parameters">Optional parameters</h2>
 
--   <h3 class="parameter-name" id="location">location</h3>
+-   <h3 class="parameter-name" id="timezone">timezone</h3>
 
     The UTC timestamp
 
