@@ -1,0 +1,8 @@
+# [START woosmap_http_geolocation_timezone_response]
+{
+  "timezone": "Europe/Paris",
+  "timezone_name": "CET",
+  "raw_offset": 3600,
+  "dst_offset": 0,
+}
+# [END woosmap_http_geolocation_timezone_response]

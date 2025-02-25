@@ -3,7 +3,7 @@ type: object
 description: Timezone information, name, raw offset to UTC and dst offset.
 properties:
   timezone:
-    description": "The time zone identifier eg. 'Europe/Paris'."
+    description: "The time zone identifier eg. 'Europe/Paris'. see <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>"
     title: "Timezone id"
     type: "string"
 
@@ -28,9 +28,5 @@ required:
   - "raw_offset"
   - "dst_offset"
 
-examples: [ {
-  "timezone": "Europe/Paris",
-  "timezone_name": "CEST",
-  "raw_offset": 3600,
-  "dst_offset": 3600
-} ]
+example:
+  $ref: "../responses/woosmap_http_geolocation_timezone_response.yml"

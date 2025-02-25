@@ -34,7 +34,7 @@ responses:
           default:
             summary: Timezone for the IP `173.79.254.254`
             value:
-              $ref: "../../responses/woosmap_http_geolocation_position_response.yml"
+              $ref: "../../responses/woosmap_http_geolocation_timezone_response.yml"
   "401":
     description: Unauthorized. Incorrect authentication credentials.
     content:
@@ -68,8 +68,8 @@ responses:
             summary: Error 429
             value:
               detail: "The rate limit for this endpoint has been exceeded"
-#x-codeSamples:
-#  - $ref:  "../../snippets/woosmap_http_geolocation_position/woosmap_http_geolocation_position.curl.yml"
-#  - $ref:  "../../snippets/woosmap_http_geolocation_position/woosmap_http_geolocation_position.javascript.yml"
-#  - $ref:  "../../snippets/woosmap_http_geolocation_position/woosmap_http_geolocation_position.python.yml"
-#
+x-codeSamples:
+  - $ref:  "../../snippets/woosmap_http_geolocation_timezone/woosmap_http_geolocation_timezone.curl.yml"
+  - $ref:  "../../snippets/woosmap_http_geolocation_timezone/woosmap_http_geolocation_timezone.javascript.yml"
+  - $ref:  "../../snippets/woosmap_http_geolocation_timezone/woosmap_http_geolocation_timezone.python.yml"
+

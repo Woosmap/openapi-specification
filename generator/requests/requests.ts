@@ -338,6 +338,26 @@ export const REQUESTS: SnippetRequest[] = [
         }),
     },
     {
+        regionTag: "woosmap_http_geolocation_timezone",
+        request: new Request({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/geolocation/timezone",
+                query: [
+                    {
+                        key: "private_key",
+                        value: "YOUR_PRIVATE_API_KEY",
+                    },
+                    {
+                        key: "location",
+                        value: "43.6114130,3.8735291",
+                    },
+                ],
+            })
+        }),
+    },
+    {
         regionTag: "woosmap_http_geolocation_stores",
         request: new Request({
             url: new Url({
