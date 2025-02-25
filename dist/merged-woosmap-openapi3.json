@@ -7709,6 +7709,45 @@
         "title": "Timezone",
         "type": "string"
       },
+      "TimezoneResponse": {
+        "description": "Timezone information, name, raw offset to UTC and dst offset.",
+        "example": {
+          "dst_offset": 0,
+          "raw_offset": 3600,
+          "timezone": "Europe/Paris",
+          "timezone_name": "CET"
+        },
+        "properties": {
+          "dst_offset": {
+            "description": "The daylight saving time offset in seconds.",
+            "title": "Dst offset",
+            "type": "integer"
+          },
+          "raw_offset": {
+            "description": "offset from utc in seconds.",
+            "title": "Raw offset",
+            "type": "integer"
+          },
+          "timezone": {
+            "description": "The time zone identifier eg. 'Europe/Paris'. see \u003chttps://en.wikipedia.org/wiki/List_of_tz_database_time_zones\u003e",
+            "title": "Timezone id",
+            "type": "string"
+          },
+          "timezone_name": {
+            "description": "The timezone name eg. `PDT`",
+            "title": "Timezone name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "timezone",
+          "timezone_name",
+          "raw_offset",
+          "dst_offset"
+        ],
+        "title": "TimezoneResponse",
+        "type": "object"
+      },
       "TrafficDistanceLeg": {
         "description": "Leg in a route",
         "example": {
@@ -10956,69 +10995,15 @@
                   "default": {
                     "summary": "Timezone for the IP `173.79.254.254`",
                     "value": {
-                      "accuracy": 5,
-                      "city": "Alexandria",
-                      "continent": "North America",
-                      "country_code": "US",
-                      "country_name": "United States",
-                      "latitude": 38.719,
-                      "longitude": -77.1067,
-                      "postal_code": "22309",
-                      "region_state": "Virginia",
-                      "timezone": "America/New_York",
-                      "viewport": {
-                        "northeast": {
-                          "lat": 38.763915764205976,
-                          "lng": -77.0491321464058
-                        },
-                        "southwest": {
-                          "lat": 38.674084235794034,
-                          "lng": -77.16426785359421
-                        }
-                      }
+                      "dst_offset": 0,
+                      "raw_offset": 3600,
+                      "timezone": "Europe/Paris",
+                      "timezone_name": "CET"
                     }
                   }
                 },
                 "schema": {
-                  "description": "Timezone information, name, raw offset to UTC and dst offset.",
-                  "examples": [
-                    {
-                      "dst_offset": 3600,
-                      "raw_offset": 3600,
-                      "timezone": "Europe/Paris",
-                      "timezone_name": "CEST"
-                    }
-                  ],
-                  "properties": {
-                    "dst_offset": {
-                      "description": "The daylight saving time offset in seconds.",
-                      "title": "Dst offset",
-                      "type": "integer"
-                    },
-                    "raw_offset": {
-                      "description": "offset from utc in seconds.",
-                      "title": "Raw offset",
-                      "type": "integer"
-                    },
-                    "timezone": {
-                      "description\"": "The time zone identifier eg. 'Europe/Paris'.",
-                      "title": "Timezone id",
-                      "type": "string"
-                    },
-                    "timezone_name": {
-                      "description": "The timezone name eg. `PDT`",
-                      "title": "Timezone name",
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "timezone",
-                    "timezone_name",
-                    "raw_offset",
-                    "dst_offset"
-                  ],
-                  "title": "TimezoneResponse",
-                  "type": "object"
+                  "$ref": "#/components/schemas/TimezoneResponse"
                 }
               }
             },
@@ -11099,6 +11084,23 @@
         "summary": "Timezone",
         "tags": [
           "Geolocation API"
+        ],
+        "x-codeSamples": [
+          {
+            "label": "cURL",
+            "lang": "curl",
+            "source": "curl -L -X GET 'https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY\u0026location=43.6114130%2C3.8735291'"
+          },
+          {
+            "label": "JavaScript",
+            "lang": "javascript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY\u0026location=43.6114130%2C3.8735291\", requestOptions)\n  .then(response =\u003e response.text())\n  .then(result =\u003e console.log(result))\n  .catch(error =\u003e console.log('error', error));"
+          },
+          {
+            "label": "Python",
+            "lang": "python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY\u0026location=43.6114130%2C3.8735291\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
         ]
       }
     },
