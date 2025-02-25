@@ -19,7 +19,7 @@ parameters:
       type: "string"
     required: true
   - description: "The UTC timestamp"
-    name: "location"
+    name: "timezone"
     in: "query"
     schema:
       type: "string"
