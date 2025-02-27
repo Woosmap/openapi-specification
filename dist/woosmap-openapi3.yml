@@ -7955,6 +7955,7 @@ components:
                   enum:
                     - ROOFTOP
                     - ROUTE
+                    - GEOMETRIC_CENTER
                     - DISTRICT
                     - POSTAL_CODE
                     - RANGE_INTERPOLATED
