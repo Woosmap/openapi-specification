@@ -1,0 +1,22 @@
+name: types
+description: >
+  The types of suggestion to return. Multiple types can be passed using the pipe character (`|`) as a separator.
+    * `city`: includes city localities
+    * `town`: includes town localities
+    * `village`: includes village localities
+    * `hamlet`: includes hamlet localities
+    * `borough`: includes borough localities
+    * `suburb`: includes suburb localities
+    * `quarter`: includes quarter localities
+    * `neighbourhood`: includes neighbourhood localities
+    * `locality`: includes locality names (from city to village) and suburbs
+    * `postal_code`: publicly-used postal codes around the world
+    * `address`: addresses
+    * `admin_level`: most commonly used administrative areas
+    * `country`: countries as whole point of interest
+    * `point_of_interest`: includes points of interest
+schema:
+  type: string
+required: true
+in: query
+example: point_of_interest|address|locality|postal_code

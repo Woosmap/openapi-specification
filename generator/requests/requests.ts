@@ -178,6 +178,34 @@ export const REQUESTS: SnippetRequest[] = [
         }),
     },
     {
+        regionTag: "woosmap_http_distance_tolls",
+        request: new Request({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/distance/tolls/json",
+                query: [
+                    {
+                        key: "origin",
+                        value: "43.70386, 4.12200",
+                    },
+                    {
+                        key: "destination",
+                        value: "45.71971, 4.84891",
+                    },
+                    {
+                        key: "mode",
+                        value: "driving",
+                    },
+                    {
+                        key: "private_key",
+                        value: "YOUR_PRIVATE_API_KEY",
+                    }
+                ],
+            }),
+        }),
+    },
+    {
         regionTag: "woosmap_http_distance_isochrone",
         request: new Request({
             url: new Url({

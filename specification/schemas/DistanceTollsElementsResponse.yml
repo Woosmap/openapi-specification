@@ -1,0 +1,14 @@
+title: DistanceTollsElementsResponse
+type: object
+description: Attributes describing routes from an origin to a destination returned in distance tolls response.
+required: [overview_polyline, bounds, legs]
+properties:
+  overview_polyline:
+    $ref: "./EncodedPolyline.yml"
+  bounds:
+    $ref: "./Bounds.yml"
+  legs:
+    type: array
+    description: Legs part of the route response
+    items:
+      $ref: "./DistanceTollsLeg.yml"

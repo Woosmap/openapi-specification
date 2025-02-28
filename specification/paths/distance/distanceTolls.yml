@@ -1,0 +1,72 @@
+servers:
+  - url: https://api.woosmap.com
+tags:
+  - Distance API
+description: >
+  Get Tolls
+security:
+  - PublicApiKeyAuth: []
+    RefererHeader: []
+  - PrivateApiKeyAuth: []
+  - PrivateApiKeyHeaderAuth: []
+parameters:
+  - $ref: "../../parameters/distance/origin.yml"
+  - $ref: "../../parameters/distance/destination.yml"
+  - $ref: "../../parameters/distance/mode.yml"
+  - $ref: "../../parameters/distance/language.yml"
+  - $ref: "../../parameters/distance/units.yml"
+  - $ref: "../../parameters/distance/alternatives.yml"
+  - $ref: "../../parameters/distance/waypoints.yml"
+  - $ref: "../../parameters/distance/method.yml"
+  - $ref: "../../parameters/distance/departure_time.yml"
+  - $ref: "../../parameters/distance/arrival_time.yml"
+
+responses:
+  "200":
+    description: Tolls successfully retrieved
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/DistanceTollsResponse.yml"
+        examples:
+          default:
+            summary: Distance Tolls Result for driving by car from origin `Lunel, France` to `Lyon, France`
+            value:
+              $ref: "../../responses/woosmap_http_distance_tolls_response.yml"
+  "401":
+    description: Unauthorized. Incorrect authentication credentials.
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/Error401.yml"
+        examples:
+          Unauthorized:
+            summary: Error 401
+            value:
+              detail: "Incorrect authentication credentials. Please check or use a valid API Key"
+  "403":
+    description: Forbidden. This Woosmap API is not enabled for this project.
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/Error403.yml"
+        examples:
+          Forbidden:
+            summary: Error 403
+            value:
+              detail: "This Woosmap API is not enabled for this project."
+  "429":
+    description: Too Many Requests. The rate limit for this endpoint has been exceeded.
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/Error429.yml"
+        examples:
+          Forbidden:
+            summary: Error 429
+            value:
+              detail: "The rate limit for this endpoint has been exceeded"
+x-codeSamples:
+  - $ref:  "../../snippets/woosmap_http_distance_tolls/woosmap_http_distance_tolls.curl.yml"
+  - $ref:  "../../snippets/woosmap_http_distance_tolls/woosmap_http_distance_tolls.javascript.yml"
+  - $ref:  "../../snippets/woosmap_http_distance_tolls/woosmap_http_distance_tolls.python.yml"

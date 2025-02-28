@@ -1,0 +1,10 @@
+title: DistanceTollsStep
+type: object
+properties:
+  countryCode:
+    type: string
+    description: "Country Code"
+additionalProperties: true
+description: Detail of tolls to be paid for traversing the specified section. Directly come from Here API
+example: { "tolls": "some_value" }
+
