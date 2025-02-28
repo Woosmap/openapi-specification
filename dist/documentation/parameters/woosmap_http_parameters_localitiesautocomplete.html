@@ -64,6 +64,13 @@
     </p>
   </li>
   <li>
+    <h3 class="parameter-name" id="excluded_types">excluded_types</h3>
+    <p>
+      The types of suggestion to exclude. Multiple types can be passed using the
+      pipe character (<code>|</code>) as a separator.
+    </p>
+  </li>
+  <li>
     <h3 class="parameter-name" id="extended">extended</h3>
     <p>
       If set, this parameter allows a refined search over locality names that
@@ -115,10 +122,15 @@
       pipe character (<code>|</code>) as a separator.
     </p>
     <ul>
-      <li>
-        <code>locality</code>: includes locality names (from city to village)
-        and suburbs
-      </li>
+      <li><code>city</code>: includes city localities</li>
+      <li><code>town</code>: includes town localities</li>
+      <li><code>village</code>: includes village localities</li>
+      <li><code>hamlet</code>: includes hamlet localities</li>
+      <li><code>borough</code>: includes borough localities</li>
+      <li><code>suburb</code>: includes suburb localities</li>
+      <li><code>quarter</code>: includes quarter localities</li>
+      <li><code>neighbourhood</code>: includes neighbourhood localities</li>
+      <li><code>locality</code>: includes all previous locality names</li>
       <li>
         <code>postal_code</code>: publicly-used postal codes around the world
       </li>

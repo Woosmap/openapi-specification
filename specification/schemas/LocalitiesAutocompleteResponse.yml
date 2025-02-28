@@ -8,6 +8,11 @@ properties:
     example: MkvnYy6K6oVGqeqfWJGO/6eCgqo=
   type:
     $ref: "./LocalitiesTypes.yml"
+  types:
+    description: An array containing the types of the result
+    type: array
+    items:
+      $ref: "./LocalitiesTypes.yml"
   description:
     description: Concatenation of `name`, `admin_1`, `admin_0` to be used as suggestion in drop down list if needed. The description can vary depending on the type requested.
     type: string

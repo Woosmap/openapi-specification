@@ -118,8 +118,6 @@ LocalitiesStatus:
   $ref: "./LocalitiesStatus.yml"
 LocalitiesTypes:
   $ref: "./LocalitiesTypes.yml"
-LocalitiesGeocodeTypes:
-  $ref: "./LocalitiesGeocodeTypes.yml"
 LocalitiesGeocodeCollectionResponse:
   $ref: "./LocalitiesGeocodeCollectionResponse.yml"
 LocalitiesGeocodeResponse:

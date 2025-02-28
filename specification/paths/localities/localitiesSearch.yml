@@ -13,6 +13,7 @@ security:
 parameters:
   - $ref: "../../parameters/localities/input.yml"
   - $ref: "../../parameters/localities/search_types.yml"
+  - $ref: "../../parameters/localities/excluded_types.yml"
   - name: components
     description: >
       A grouping of places to which you would like to restrict your results.

@@ -38,7 +38,7 @@ properties:
           accuracy:
             type: string
             description: This accuracy represents the type of address returned - `DISTRICT` and `POSTAL_CODE` are for UK only.
-            enum: [ ROOFTOP, ROUTE, DISTRICT, POSTAL_CODE ]
+            enum: [ ROOFTOP, ROUTE, GEOMETRIC_CENTER, DISTRICT, POSTAL_CODE, RANGE_INTERPOLATED, APPROXIMATE]
         example: { "location": { "lat": 51.49984, "lng": -0.124663 } }
       address_components:
         $ref: "./AddressComponents.yml"

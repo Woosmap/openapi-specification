@@ -16,6 +16,7 @@ security:
 parameters:
   - $ref: "../../parameters/localities/input.yml"
   - $ref: "../../parameters/localities/types.yml"
+  - $ref: "../../parameters/localities/excluded_types.yml"
   - $ref: "../../parameters/localities/components.yml"
   - $ref: "../../parameters/localities/language.yml"
   - $ref: "../../parameters/localities/location.yml"

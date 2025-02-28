@@ -20,6 +20,10 @@
 
     Two values for this parameter: `standard` or `advanced`. By default, if the parameter is not defined, value is set as `standard`. The `advanced` value opens suggestions to worldwide postal codes in addition to postal codes for Western Europe. ***A dedicated option subject to specific billing on your license is needed to use this parameter. Please contact us if you are interested in using this parameter and you do not have subscribed the proper option yet.***
 
+-   <h3 class="parameter-name" id="excluded_types">excluded_types</h3>
+
+    The types of suggestion to exclude. Multiple types can be passed using the pipe character (`|`) as a separator.
+
 -   <h3 class="parameter-name" id="extended">extended</h3>
 
     If set, this parameter allows a refined search over locality names that bears the same postal code. By triggering this parameter, integrators will benefit from a search spectrum on the `locality` type that ***includes postal codes***. To avoid confusion, it is recommended not to activate this parameter along with the `postal_code` type which could lead to duplicate locations. Also, the default description returned by the API changes to `name (postal code), admin_1, admin_0`. It is only available for France, Monaco, Italy, Spain, Belgium, Switzerland and Luxembourg.
@@ -40,7 +44,15 @@
 
     The types of suggestion to return. Multiple types can be passed using the pipe character (`|`) as a separator.
 
-    -   `locality`: includes locality names (from city to village) and suburbs
+    -   `city`: includes city localities
+    -   `town`: includes town localities
+    -   `village`: includes village localities
+    -   `hamlet`: includes hamlet localities
+    -   `borough`: includes borough localities
+    -   `suburb`: includes suburb localities
+    -   `quarter`: includes quarter localities
+    -   `neighbourhood`: includes neighbourhood localities
+    -   `locality`: includes all previous locality names
     -   `postal_code`: publicly-used postal codes around the world
     -   `address`: addresses
     -   `admin_level`: most commonly used administrative areas

@@ -18,6 +18,14 @@
 
     The types of suggestion to return. Multiple types can be passed using the pipe character (`|`) as a separator.
 
+    -   `city`: includes city localities
+    -   `town`: includes town localities
+    -   `village`: includes village localities
+    -   `hamlet`: includes hamlet localities
+    -   `borough`: includes borough localities
+    -   `suburb`: includes suburb localities
+    -   `quarter`: includes quarter localities
+    -   `neighbourhood`: includes neighbourhood localities
     -   `locality`: includes locality names (from city to village) and suburbs
     -   `postal_code`: publicly-used postal codes around the world
     -   `address`: addresses
@@ -26,6 +34,10 @@
     -   `point_of_interest`: includes points of interest
 
 <h2 id="optional-parameters">Optional parameters</h2>
+
+-   <h3 class="parameter-name" id="excluded_types">excluded_types</h3>
+
+    The types of suggestion to exclude. Multiple types can be passed using the pipe character (`|`) as a separator.
 
 -   <h3 class="parameter-name" id="language">language</h3>
 

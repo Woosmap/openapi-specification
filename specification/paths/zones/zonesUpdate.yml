@@ -65,7 +65,7 @@ responses:
             value:
               detail: "This Woosmap API is not enabled for this project."
 x-codeSamples:
-  - $ref:  "../../snippets/woosmap_http_zones_collection_request/woosmap_http_zones_collection_request.curl.yml"
-  - $ref:  "../../snippets/woosmap_http_zones_collection_request/woosmap_http_zones_collection_request.python.yml"
-  - $ref:  "../../snippets/woosmap_http_zones_collection_request/woosmap_http_zones_collection_request.nodejs.yml"
+  - $ref:  "../../snippets/woosmap_http_zones_update_request/woosmap_http_zones_update_request.curl.yml"
+  - $ref:  "../../snippets/woosmap_http_zones_update_request/woosmap_http_zones_update_request.python.yml"
+  - $ref:  "../../snippets/woosmap_http_zones_update_request/woosmap_http_zones_update_request.nodejs.yml"
 
