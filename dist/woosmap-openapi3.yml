@@ -354,7 +354,7 @@ paths:
           name: timestamp
           in: query
           schema:
-            type: int
+            type: integer
             minimum: 0
       responses:
         '200':

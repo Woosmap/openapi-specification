@@ -10984,7 +10984,7 @@
             "name": "timestamp",
             "schema": {
               "minimum": 0,
-              "type": "int"
+              "type": "integer"
             }
           }
         ],
