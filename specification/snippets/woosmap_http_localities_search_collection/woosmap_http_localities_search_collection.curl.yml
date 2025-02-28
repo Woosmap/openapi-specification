@@ -1,0 +1,5 @@
+{
+  "lang": "curl",
+  "label": "cURL",
+  "source": "curl -L -X GET 'https://api.woosmap.com/localities/search/?input=royal%20al&types=point_of_interest|locality|address|postal_code&components=country%3Agb&location=51.50924,-0.11915&radius=2000&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'",
+}

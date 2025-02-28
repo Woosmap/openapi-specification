@@ -1,0 +1,5 @@
+{
+  "lang": "curl",
+  "label": "cURL",
+  "source": "curl -L -X GET 'https://api.woosmap.com/distance/tolls/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'",
+}

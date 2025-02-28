@@ -1,0 +1,14 @@
+title: DistanceTollsResponse
+type: object
+description: Attributes describing a distance tolls response.
+properties:
+  status:
+    $ref: "./DistanceStatus.yml"
+  routes:
+    description: Contains an array of routes with tolls informations from origin to destination
+    type: array
+    items:
+      $ref: "./DistanceTollsElementsResponse.yml"
+
+example:
+  $ref: "../responses/woosmap_http_distance_tolls_response.yml"

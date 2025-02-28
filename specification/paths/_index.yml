@@ -66,6 +66,11 @@
     summary: Nearby points of interest
     operationId: localitiesNearby
     $ref: "./localities/localitiesNearby.yml"
+/localities/search:
+  get:
+    summary: Search for Localities
+    operationId: localitiesSearch
+    $ref: "./localities/localitiesSearch.yml"
 /address/autocomplete/json:
   get:
     deprecated: true
@@ -106,6 +111,10 @@
     summary: Get Zone from ID
     operationId: getZone
     $ref: "./zones/zoneGet.yml"
+  delete:
+    summary: Delete Zone from ID
+    operationId: deleteZone
+    $ref: "./zones/zoneDelete.yml"
 /distance/distancematrix/json:
   get:
     summary: Distance Matrix
@@ -120,6 +129,11 @@
     summary: Route
     operationId: getRoute
     $ref: "./distance/distanceRoute.yml"
+/distance/tolls/json:
+  get:
+    summary: Tolls
+    operationId: getTolls
+    $ref: "./distance/distanceTolls.yml"
 /distance/isochrone/json:
   get:
     summary: Isochrone (Early Access)

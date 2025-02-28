@@ -1,0 +1,13 @@
+# [START woosmap_http_localities_search_response]
+{
+    "public_id": "cB15hd5Hv/cKrh3MSyIg6eoAAN4=",
+    "types": [
+        "point_of_interest"
+    ],
+    "title": "Royal Albert",
+    "description": "New Cross Road, London, United Kingdom",
+    "categories": [
+        "business.food_and_drinks.pub"
+    ]
+}
+# [END woosmap_http_localities_search_response]

@@ -1,0 +1,5 @@
+{
+  "lang": "nodejs",
+  "label": "NodeJS",
+  "source": "var axios = require('axios');\n\nvar config = {\n  method: 'get',\n  url: 'https://api.woosmap.com/distance/tolls/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&key=YOUR_PUBLIC_API_KEY',\n  headers: { \n    'Referer': 'http://localhost'\n  }\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n",
+}

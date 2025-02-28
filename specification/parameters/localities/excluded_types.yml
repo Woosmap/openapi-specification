@@ -1,0 +1,7 @@
+name: excluded_types
+description: >
+  The types of suggestion to exclude. Multiple types can be passed using the pipe character (`|`) as a separator.
+schema:
+  type: string
+in: query
+example: suburb|quarter|neighbourhood

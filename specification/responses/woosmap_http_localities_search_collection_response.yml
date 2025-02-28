@@ -1,0 +1,55 @@
+# [START woosmap_http_localities_search_collection_response]
+{
+	"results": [
+		{
+			"public_id": "cB15hd5Hv/cKrh3MSyIg6eoAAN4=",
+			"types": [
+				"point_of_interest"
+			],
+			"title": "Royal Albert",
+			"description": "New Cross Road, London, United Kingdom",
+			"categories": [
+				"business.food_and_drinks.pub"
+			]
+		},
+		{
+			"public_id": "UJE0TA8sr5gily/0ivcsSs/oZbw=",
+			"types": [
+				"point_of_interest"
+			],
+			"title": "Royal Albert Hall",
+			"description": "Kensington Gore, London, United Kingdom",
+			"categories": [
+				"tourism.attraction"
+			]
+		},
+		{
+			"public_id": "79w9P8Be74OsyIOD7BsdfcVBSRk=",
+			"types": [
+				"point_of_interest"
+			],
+			"title": "The Royal Alfred",
+			"description": "Manor Road, Erith, United Kingdom",
+			"categories": [
+				"business.shop.grocery"
+			]
+		},
+		{
+			"public_id": "1XSvvFod2a+VRZjEVkIul11KTJs=",
+			"types": [
+				"route"
+			],
+			"title": "Royal Albert Quay",
+			"description": "London (E16 2YR), United Kingdom"
+		},
+		{
+			"public_id": "07iTmTX2T0u9NEoh4weNXESt/i4=",
+			"types": [
+				"route"
+			],
+			"title": "Royal Albert Close",
+			"description": "Worcester (WR5 1BZ), United Kingdom"
+		}
+	]
+}
+# [END woosmap_http_localities_search_collection_response]

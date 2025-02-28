@@ -1,0 +1,26 @@
+title: DistanceTollsLeg
+type: object
+description: Leg in a route
+properties:
+  distance:
+    $ref: "./DistanceValue.yml"
+  duration:
+    $ref: "./DurationValue.yml"
+  start_location:
+    $ref: "./LatLngLiteral.yml"
+  end_location:
+    $ref: "./LatLngLiteral.yml"
+  tolls:
+    type: array
+    items:
+      $ref: "./DistanceTollsStep.yml"
+  tollSystems:
+    type: array
+    items:
+      $ref: "./DistanceTollsSystemStep.yml"
+example: {
+  "distance": { "text": "1 km", "value": 1038 },
+  "duration": { "text": "1 min", "value": 75 },
+  "start_location": { "lat": 49.31067, "lng": 4.14525 },
+  "end_location": { "lat": 49.31344, "lng": 4.15293 }
+}
