@@ -1,8 +1,0 @@
-title: LocalitiesGeocodeTypes
-type: string
-description: Contains the type of the geocoded suggestion.
-enum:
-  - locality
-  - postal_code
-  - route
-  - address

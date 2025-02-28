@@ -1,0 +1,87 @@
+servers:
+  - url: https://api.woosmap.com
+tags:
+  - Localities API
+description: >
+  Search for suggestions given a text-based geographic query.
+
+security:
+  - PublicApiKeyAuth: []
+    RefererHeader: []
+  - PrivateApiKeyAuth: []
+  - PrivateApiKeyHeaderAuth: []
+parameters:
+  - $ref: "../../parameters/localities/input.yml"
+  - $ref: "../../parameters/localities/search_types.yml"
+  - $ref: "../../parameters/localities/excluded_types.yml"
+  - name: components
+    description: >
+      A grouping of places to which you would like to restrict your results.
+      Countries must be passed as an ISO 3166-1 Alpha-2 compatible country code.
+      For example: `components=country:fr` would restrict your results to places within France.
+      Multiple countries must be passed as multiple `country:XX` filters, with the pipe character (`|`) as a separator.
+      For example: `components=country:gb|country:fr` would restrict your results to city names or postal codes within the United Kingdom, France.
+    schema:
+      type: string
+    example: country:fr|country:gb
+    required: true
+    in: query
+  - name: location
+    description: >
+      This parameter is used to add a geographical bias to the query. The location defines the point around which to retrieve results in priority. It must be specified in the `latitude,longitude` string format.
+    schema:
+      type: string
+    required: true
+    example: 5.2,-2.3
+    in: query
+  - $ref: "../../parameters/localities/radius.yml"
+  - $ref: "../../parameters/localities/language.yml"
+responses:
+  "200":
+    description: Search suggestions successfully retrieved
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/LocalitiesSearchCollectionResponse.yml"
+        examples:
+          default:
+            summary: Search results for input `London` and components `country:gb`
+            value:
+              $ref: "../../responses/woosmap_http_localities_search_collection_response.yml"
+  "401":
+    description: Unauthorized. Incorrect authentication credentials.
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/Error401.yml"
+        examples:
+          Unauthorized:
+            summary: Error 401
+            value:
+              detail: "Incorrect authentication credentials. Please check or use a valid API Key"
+  "403":
+    description: Forbidden. This Woosmap API is not enabled for this project.
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/Error403.yml"
+        examples:
+          Forbidden:
+            summary: Error 403
+            value:
+              detail: "This Woosmap API is not enabled for this project."
+  "429":
+    description: Too Many Requests. The rate limit for this endpoint has been exceeded.
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/Error429.yml"
+        examples:
+          Forbidden:
+            summary: Error 429
+            value:
+              detail: "The rate limit for this endpoint has been exceeded"
+x-codeSamples:
+  - $ref:  "../../snippets/woosmap_http_localities_search_collection/woosmap_http_localities_search_collection.curl.yml"
+  - $ref:  "../../snippets/woosmap_http_localities_search_collection/woosmap_http_localities_search_collection.javascript.yml"
+  - $ref:  "../../snippets/woosmap_http_localities_search_collection/woosmap_http_localities_search_collection.python.yml"

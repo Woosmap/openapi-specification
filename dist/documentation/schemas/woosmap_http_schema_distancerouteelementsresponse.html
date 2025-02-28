@@ -26,7 +26,7 @@
           <code>bounds</code>
         </h4>
       </td>
-      <td>optional</td>
+      <td><strong>required</strong></td>
       <td><a href="#Bounds" title="Bounds">Bounds</a></td>
       <td>
         See <a href="#Bounds" title="Bounds">Bounds</a> for more information.
@@ -41,7 +41,7 @@
           <code>legs</code>
         </h4>
       </td>
-      <td>optional</td>
+      <td><strong>required</strong></td>
       <td>
         Array&#x3C;<a href="#DistanceLeg" title="DistanceLeg">DistanceLeg</a>>
       </td>
@@ -52,6 +52,42 @@
             See <a href="#DistanceLeg">DistanceLeg</a> for more information.
           </p>
         </div>
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
+          id="DistanceRouteElementsResponse-notice"
+          class="add-link schema-object-property-key"
+        >
+          <code>notice</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td>string</td>
+      <td>
+        <div class="nonref-property-description">
+          <p>Some noticeable information about the route</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
+          id="DistanceRouteElementsResponse-overview_polyline"
+          class="add-link schema-object-property-key"
+        >
+          <code>overview_polyline</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td>
+        <a href="#EncodedPolyline" title="EncodedPolyline">EncodedPolyline</a>
+      </td>
+      <td>
+        See
+        <a href="#EncodedPolyline" title="EncodedPolyline">EncodedPolyline</a>
+        for more information.
       </td>
     </tr>
     <tr>
@@ -77,37 +113,21 @@
     <tr>
       <td align="left">
         <h4
-          id="DistanceRouteElementsResponse-notice"
+          id="DistanceRouteElementsResponse-recommended"
           class="add-link schema-object-property-key"
         >
-          <code>notice</code>
+          <code>recommended</code>
         </h4>
       </td>
       <td>optional</td>
-      <td>string</td>
+      <td>boolean</td>
       <td>
         <div class="nonref-property-description">
-          <p>Some noticeable information about the route</p>
+          <p>
+            Optional field. Only present and set to true when the route is the
+            recommended route.
+          </p>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td align="left">
-        <h4
-          id="DistanceRouteElementsResponse-overview_polyline"
-          class="add-link schema-object-property-key"
-        >
-          <code>overview_polyline</code>
-        </h4>
-      </td>
-      <td>optional</td>
-      <td>
-        <a href="#EncodedPolyline" title="EncodedPolyline">EncodedPolyline</a>
-      </td>
-      <td>
-        See
-        <a href="#EncodedPolyline" title="EncodedPolyline">EncodedPolyline</a>
-        for more information.
       </td>
     </tr>
   </tbody>

@@ -1,0 +1,32 @@
+title: LocalitiesSearchResponse
+type: object
+description: Attributes describing a search result.
+required:
+  - public_id
+  - types
+  - title
+properties:
+  public_id:
+    description: Contains a unique ID for each suggestion. Please use this ID if you need to give us feedbacks on results. This ID is also required to perform Localities Details request.
+    type: string
+    example: MkvnYy6K6oVGqeqfWJGO/6eCgqo=
+  types:
+    description: An array containing the types of the result.
+    type: array
+    items:
+      $ref: "./LocalitiesSearchTypes.yml"
+  title:
+    description: Main string of the suggestion
+    type: string
+    example: "London"
+  description:
+    description: Address hint associated with that suggestion. The description can vary depending on the type requested.
+    type: string
+    example: "Westminster, City of London, England, United Kingdom"
+  categories:
+    description: An array containing the categories of the result if that result is a point of interest.
+    type: array
+    items:
+      $ref: "./LocalitiesNearbyCategory.yml"
+example:
+  $ref: "../responses/woosmap_http_localities_search_response.yml"

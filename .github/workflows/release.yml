@@ -9,7 +9,7 @@ on:
 jobs:
   release:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       WOOSMAP_PUBLIC_API_KEY: "${{ secrets.WOOSMAP_PUBLIC_API_KEY }}"
       WOOSMAP_PRIVATE_API_KEY: "${{ secrets.WOOSMAP_PRIVATE_API_KEY }}"

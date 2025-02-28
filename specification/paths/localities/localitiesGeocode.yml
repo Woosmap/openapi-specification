@@ -13,6 +13,7 @@ parameters:
   - $ref: "../../parameters/localities/address.yml"
   - $ref: "../../parameters/localities/latlng.yml"
   - $ref: "../../parameters/localities/geocode_types.yml"
+  - $ref: "../../parameters/localities/excluded_types.yml"
   - $ref: "../../parameters/localities/list_sub_buildings.yml"
   - $ref: "../../parameters/localities/components.yml"
   - $ref: "../../parameters/localities/language.yml"

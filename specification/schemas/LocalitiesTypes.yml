@@ -1,8 +1,16 @@
 title: LocalitiesTypes
 type: string
-description: Contains the type of the localities suggestion.
+description: Contains the type of the result.
 enum:
   - locality
+  - city
+  - town
+  - village
+  - hamlet
+  - borough
+  - suburb
+  - quarter
+  - neighbourhood
   - postal_code
   - admin_level
   - airport

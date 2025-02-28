@@ -20,6 +20,10 @@
 
     Two values for this parameter: `standard` or `advanced`. By default, if the parameter is not defined, value is set as `standard`. The `advanced` value opens suggestions to worldwide postal codes in addition to postal codes for Western Europe. ***A dedicated option subject to specific billing on your license is needed to use this parameter. Please contact us if you are interested in using this parameter and you do not have subscribed the proper option yet.***
 
+-   <h3 class="parameter-name" id="excluded_types">excluded_types</h3>
+
+    The types of suggestion to exclude. Multiple types can be passed using the pipe character (`|`) as a separator.
+
 -   <h3 class="parameter-name" id="fields">fields</h3>
 
     If set, it will limit the content of responses to the specified fields. This parameter can be any combination of `geometry`, `address_components` or `shape` (defaults to `geometry|address_components`).
@@ -40,7 +44,15 @@
 
     Specify the types of geocoding responses to return by separating multiple types with a pipe character (|).  This parameter is ignored when used with the `latlng` parameter.  When executing a geocode request with the `address` parameter, use this to select the expected result type.
 
-    -   `locality`: includes locality names (from city to village) and suburbs
+    -   `city`: includes city localities
+    -   `town`: includes town localities
+    -   `village`: includes village localities
+    -   `hamlet`: includes hamlet localities
+    -   `borough`: includes borough localities
+    -   `suburb`: includes suburb localities
+    -   `quarter`: includes quarter localities
+    -   `neighbourhood`: includes neighbourhood localities
+    -   `locality`: includes all previous locality names
     -   `postal_code`: publicly-used postal codes around the world
     -   `address`: addresses
     -   `admin_level`: most commonly used administrative areas
