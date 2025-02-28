@@ -1,0 +1,133 @@
+<!--- This is a generated file, do not edit! -->
+<!--- [START woosmap_http_parameters_distancetolls] -->
+<h2 id="required-parameters">Required parameters</h2>
+<ul>
+  <li>
+    <h3 class="parameter-name" id="destination">destination</h3>
+    <p>
+      The ending point for the route. It should be supplied in the form of
+      latitude/longitude coordinates. Ensure that no space exists between the
+      latitude and longitude values.
+    </p>
+  </li>
+  <li>
+    <h3 class="parameter-name" id="origin">origin</h3>
+    <p>
+      The starting point. It should be supplied in the form of
+      latitude/longitude coordinates. Ensure that no space exists between the
+      latitude and longitude values.
+    </p>
+  </li>
+</ul>
+<h2 id="optional-parameters">Optional parameters</h2>
+<ul>
+  <li>
+    <h3 class="parameter-name" id="alternatives">alternatives</h3>
+    <p>
+      Specifies if alternative routes should be returned. default is
+      <code>false</code>. Depending on the calculated route, alternatives may
+      not be provided. <code>alternatives</code> and <code>waypoints</code> can
+      not be used at the same time.
+    </p>
+  </li>
+  <li>
+    <h3 class="parameter-name" id="arrival_time">arrival_time</h3>
+    <p>
+      By using this parameter, Distance will calculate the duration with traffic
+      Specifies the arrival date/time as a timestamp to base the calculation on
+      (e.g. <code>1600799173</code> for the date:<code>22/09/2020 20:26:13</code
+      >). Use either <code>arrival_time</code> or <code>departure_time</code>,
+      not both.
+    </p>
+  </li>
+  <li>
+    <h3 class="parameter-name" id="departure_time">departure_time</h3>
+    <p>
+      By using this parameter, Distance will calculate the duration with traffic
+      Specifies the date/time at which to base the calculations on for traffic
+      purposes. Valid values are a timestamp (e.g. <code>1600799173</code> for
+      the date:<code>22/09/2020 20:26:13</code>) or <code>now</code>. Use either
+      <code>arrival_time</code> or <code>departure_time</code>, not both.
+    </p>
+  </li>
+  <li>
+    <h3 class="parameter-name" id="language">language</h3>
+    <p>
+      The language code, indicating in which language the results should be
+      returned, if possible. If language is not supplied, the Distance API
+      service will use the navigator language or “en”.
+    </p>
+  </li>
+  <li>
+    <h3 class="parameter-name" id="method">method</h3>
+    <p>
+      Specifies the method to compute the route between the start point and the
+      end point:
+    </p>
+    <ul>
+      <li>
+        <code>time</code>: fastest route (default) - <code>distance</code>:
+        shortest route
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h3 class="parameter-name" id="mode">mode</h3>
+    <p>Specifies the mode of transport to use when calculating distance</p>
+  </li>
+  <li>
+    <h3 class="parameter-name" id="units">units</h3>
+    <p>
+      Specifies the unit system parameter to use when expressing distance as
+      text. Two different units supported:
+    </p>
+    <ul>
+      <li>
+        <code>metric</code> (default) returns distances in kilometers and meters
+      </li>
+      <li><code>imperial</code> returns distances in miles and feet</li>
+    </ul>
+  </li>
+  <li>
+    <h3 class="parameter-name" id="waypoints">waypoints</h3>
+    <p>
+      A list of points by which the route should pass (route response is divided
+      into legs, one leg corresponding to a route between two waypoints).
+      Waypoints should be separated by | character. Optionally, you may pass
+      <code>optimize:true</code> as the first argument within the waypoints
+      parameter. This way the provided route is optimized by rearranging the
+      waypoints in a more efficient order based on distance or time according to
+      the method parameter. The route start point and end point order is not
+      changed, their position is considered fixed. <code>alternatives</code> and
+      <code>waypoints</code> can not be used at the same time.
+    </p>
+  </li>
+</ul>
+<p style="text-align: right; font-size: smaller">
+  Generated from the
+  <a
+    data-label="openapi-github"
+    href="https://github.com/woosmap/openapi-specification"
+    title="Woosmap OpenAPI Specification"
+    class="external"
+    >OpenAPI specification</a
+  >.
+  <a
+    data-label="openapi-github-woosmap-http-parameters-distancetolls"
+    data-action="edit"
+    style="margin-left: 5px"
+    href="https://github.com/woosmap/openapi-specification/tree/main/specification/parameters"
+    title="Edit on GitHub"
+    >✎ Edit</a
+  >
+  <a
+    data-label="openapi-github-woosmap-http-parameters-distancetolls"
+    data-action="bug"
+    style="margin-left: 5px"
+    href="https://github.com/woosmap/openapi-specification/issues/new?assignees=&labels=type%3A+bug%2C+triage+me&template=bug_report.md&title=[parameters] Bug - /distance/tolls/json"
+    title="File bug for parameters on GitHub"
+    ><span class="material-icons">bug_report</span> Report bug</a
+  >
+</p>
+
+<!--- [END woosmap_http_parameters_distancetolls] -->

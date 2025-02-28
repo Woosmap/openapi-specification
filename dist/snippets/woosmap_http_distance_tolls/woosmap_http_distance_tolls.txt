@@ -1,0 +1,7 @@
+[START woosmap_http_distance_tolls]
+https://api.woosmap.com/distance/tolls/json
+  ?destination=45.71971%2C%204.84891
+  &mode=driving
+  &origin=43.70386%2C%204.12200
+  &private_key=YOUR_PRIVATE_API_KEY
+[END woosmap_http_distance_tolls]

@@ -1,0 +1,11 @@
+title: LocalitiesSearchTypes
+type: string
+description: Contains the type of the search suggestion.
+enum:
+  - country
+  - admin_level
+  - locality
+  - postal_code
+  - address
+  - route
+  - point_of_interest

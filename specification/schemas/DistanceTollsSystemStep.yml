@@ -1,0 +1,13 @@
+title: DistanceTollsSystemStep
+type: object
+properties:
+  id:
+    type: integer
+    description: "Tolls System Id"
+  name:
+    type: string
+    description: "Tolls System Name"
+
+description: An array of toll authorities that collect payments for the use of (part of) the specified section of the route. Directly come from Here API
+example: { "id": 12, "name": "ASF" }
+

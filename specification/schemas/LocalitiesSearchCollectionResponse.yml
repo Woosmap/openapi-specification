@@ -1,0 +1,10 @@
+title: LocalitiesSearchCollectionResponse
+type: object
+description: Search Collection Response containing results
+properties:
+  results:
+    type: array
+    items:
+      $ref: "./LocalitiesSearchResponse.yml"
+example:
+  $ref: "../responses/woosmap_http_localities_search_collection_response.yml"
