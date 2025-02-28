@@ -354,7 +354,8 @@ paths:
           name: timestamp
           in: query
           schema:
-            type: string
+            type: int
+            minimum: 0
       responses:
         '200':
           description: Timezone successfully retrieved
@@ -364,7 +365,7 @@ paths:
                 $ref: '#/components/schemas/TimezoneResponse'
               examples:
                 default:
-                  summary: Timezone for the IP `173.79.254.254`
+                  summary: 'Timezone for 43.6, 3.883 location.'
                   value:
                     timezone: Europe/Paris
                     timezone_name: CET

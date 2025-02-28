@@ -10983,7 +10983,8 @@
             "in": "query",
             "name": "timestamp",
             "schema": {
-              "type": "string"
+              "minimum": 0,
+              "type": "int"
             }
           }
         ],
@@ -10993,7 +10994,7 @@
               "application/json": {
                 "examples": {
                   "default": {
-                    "summary": "Timezone for the IP `173.79.254.254`",
+                    "summary": "Timezone for 43.6, 3.883 location.",
                     "value": {
                       "dst_offset": 0,
                       "raw_offset": 3600,
