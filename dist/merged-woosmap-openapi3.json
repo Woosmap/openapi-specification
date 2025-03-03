@@ -7710,6 +7710,45 @@
         "title": "Timezone",
         "type": "string"
       },
+      "TimezoneResponse": {
+        "description": "Timezone information, name, raw offset to UTC and dst offset.",
+        "example": {
+          "dst_offset": 0,
+          "raw_offset": 3600,
+          "timezone": "Europe/Paris",
+          "timezone_name": "CET"
+        },
+        "properties": {
+          "dst_offset": {
+            "description": "The daylight saving time offset in seconds.",
+            "title": "Dst offset",
+            "type": "integer"
+          },
+          "raw_offset": {
+            "description": "offset from utc in seconds.",
+            "title": "Raw offset",
+            "type": "integer"
+          },
+          "timezone": {
+            "description": "The time zone identifier eg. 'Europe/Paris'. see \u003chttps://en.wikipedia.org/wiki/List_of_tz_database_time_zones\u003e",
+            "title": "Timezone id",
+            "type": "string"
+          },
+          "timezone_name": {
+            "description": "The timezone name eg. `PDT`",
+            "title": "Timezone name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "timezone",
+          "timezone_name",
+          "raw_offset",
+          "dst_offset"
+        ],
+        "title": "TimezoneResponse",
+        "type": "object"
+      },
       "TrafficDistanceLeg": {
         "description": "Leg in a route",
         "example": {
@@ -10922,6 +10961,147 @@
             "label": "Python",
             "lang": "python",
             "source": "import requests\n\nurl = \"https://api.woosmap.com/geolocation/stores?private_key=YOUR_PRIVATE_API_KEY\u0026ip_address=173.79.254.254\u0026limit=1\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ]
+      }
+    },
+    "/geolocation/timezone": {
+      "get": {
+        "description": "Returns timezone information based on the location, and optionally a timestamp for daylight saving time.\n\u003e Note: rawOffset never contains the dst.\n",
+        "operationId": "getTimezone",
+        "parameters": [
+          {
+            "description": "The location {lat},{lng}",
+            "in": "query",
+            "name": "location",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The UTC timestamp",
+            "in": "query",
+            "name": "timestamp",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "default": {
+                    "summary": "Timezone for 43.6, 3.883 location.",
+                    "value": {
+                      "dst_offset": 0,
+                      "raw_offset": 3600,
+                      "timezone": "Europe/Paris",
+                      "timezone_name": "CET"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/TimezoneResponse"
+                }
+              }
+            },
+            "description": "Timezone successfully retrieved"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Unauthorized": {
+                    "summary": "Error 401",
+                    "value": {
+                      "detail": "Incorrect authentication credentials. Please check or use a valid API Key"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error401"
+                }
+              }
+            },
+            "description": "Unauthorized. Incorrect authentication credentials."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Forbidden": {
+                    "summary": "Error 403",
+                    "value": {
+                      "detail": "This Woosmap API is not enabled for this project."
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error403"
+                }
+              }
+            },
+            "description": "Forbidden. This Woosmap API is not enabled for this project."
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Forbidden": {
+                    "summary": "Error 429",
+                    "value": {
+                      "detail": "The rate limit for this endpoint has been exceeded"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/Error429"
+                }
+              }
+            },
+            "description": "Too Many Requests. The rate limit for this endpoint has been exceeded."
+          }
+        },
+        "security": [
+          {
+            "PublicApiKeyAuth": [],
+            "RefererHeader": []
+          },
+          {
+            "PrivateApiKeyAuth": []
+          },
+          {
+            "PrivateApiKeyHeaderAuth": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://api.woosmap.com"
+          }
+        ],
+        "summary": "Timezone",
+        "tags": [
+          "Geolocation API"
+        ],
+        "x-codeSamples": [
+          {
+            "label": "cURL",
+            "lang": "curl",
+            "source": "curl -L -X GET 'https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY\u0026location=43.6114130%2C3.8735291'"
+          },
+          {
+            "label": "JavaScript",
+            "lang": "javascript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY\u0026location=43.6114130%2C3.8735291\", requestOptions)\n  .then(response =\u003e response.text())\n  .then(result =\u003e console.log(result))\n  .catch(error =\u003e console.log('error', error));"
+          },
+          {
+            "label": "Python",
+            "lang": "python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY\u0026location=43.6114130%2C3.8735291\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }

@@ -327,6 +327,112 @@ paths:
             response = requests.request("GET", url, headers=headers, data=payload)
 
             print(response.text)
+  /geolocation/timezone:
+    get:
+      summary: Timezone
+      operationId: getTimezone
+      servers:
+        - url: 'https://api.woosmap.com'
+      tags:
+        - Geolocation API
+      description: |
+        Returns timezone information based on the location, and optionally a timestamp for daylight saving time.
+        > Note: rawOffset never contains the dst.
+      security:
+        - PublicApiKeyAuth: []
+          RefererHeader: []
+        - PrivateApiKeyAuth: []
+        - PrivateApiKeyHeaderAuth: []
+      parameters:
+        - description: 'The location {lat},{lng}'
+          name: location
+          in: query
+          schema:
+            type: string
+          required: true
+        - description: The UTC timestamp
+          name: timestamp
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+      responses:
+        '200':
+          description: Timezone successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimezoneResponse'
+              examples:
+                default:
+                  summary: 'Timezone for 43.6, 3.883 location.'
+                  value:
+                    timezone: Europe/Paris
+                    timezone_name: CET
+                    raw_offset: 3600
+                    dst_offset: 0
+        '401':
+          description: Unauthorized. Incorrect authentication credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+              examples:
+                Unauthorized:
+                  summary: Error 401
+                  value:
+                    detail: Incorrect authentication credentials. Please check or use a valid API Key
+        '403':
+          description: Forbidden. This Woosmap API is not enabled for this project.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+              examples:
+                Forbidden:
+                  summary: Error 403
+                  value:
+                    detail: This Woosmap API is not enabled for this project.
+        '429':
+          description: Too Many Requests. The rate limit for this endpoint has been exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error429'
+              examples:
+                Forbidden:
+                  summary: Error 429
+                  value:
+                    detail: The rate limit for this endpoint has been exceeded
+      x-codeSamples:
+        - lang: curl
+          label: cURL
+          source: 'curl -L -X GET ''https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY&location=43.6114130%2C3.8735291'''
+        - lang: javascript
+          label: JavaScript
+          source: |-
+            var requestOptions = {
+              method: 'GET',
+              redirect: 'follow'
+            };
+
+            fetch("https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY&location=43.6114130%2C3.8735291", requestOptions)
+              .then(response => response.text())
+              .then(result => console.log(result))
+              .catch(error => console.log('error', error));
+        - lang: python
+          label: Python
+          source: |
+            import requests
+
+            url = "https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY&location=43.6114130%2C3.8735291"
+
+            payload={}
+            headers = {}
+
+            response = requests.request("GET", url, headers=headers, data=payload)
+
+            print(response.text)
   /stores:
     post:
       summary: Create your Assets
@@ -7292,6 +7398,37 @@ components:
           pagination:
             page: 1
             pageCount: 2
+    TimezoneResponse:
+      title: TimezoneResponse
+      type: object
+      description: 'Timezone information, name, raw offset to UTC and dst offset.'
+      properties:
+        timezone:
+          description: 'The time zone identifier eg. ''Europe/Paris''. see <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>'
+          title: Timezone id
+          type: string
+        timezone_name:
+          description: The timezone name eg. `PDT`
+          title: Timezone name
+          type: string
+        raw_offset:
+          description: offset from utc in seconds.
+          title: Raw offset
+          type: integer
+        dst_offset:
+          description: The daylight saving time offset in seconds.
+          title: Dst offset
+          type: integer
+      required:
+        - timezone
+        - timezone_name
+        - raw_offset
+        - dst_offset
+      example:
+        timezone: Europe/Paris
+        timezone_name: CET
+        raw_offset: 3600
+        dst_offset: 0
     AssetRequest:
       title: AssetRequest
       type: object
