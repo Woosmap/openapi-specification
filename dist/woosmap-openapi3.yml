@@ -13,7 +13,7 @@ info:
   termsOfService: 'https://www.woosmap.com/en/policies/terms/'
   x-document-meta-data:
     copyright: © 2023 Woosmap
-  version: 1.29.5
+  version: 1.30.0
   contact:
     name: Woosmap API
 servers:
