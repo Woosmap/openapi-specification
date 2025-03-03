@@ -13,7 +13,7 @@ info:
   termsOfService: 'https://www.woosmap.com/en/policies/terms/'
   x-document-meta-data:
     copyright: © 2023 Woosmap
-  version: 1.29.3
+  version: 1.29.4
   contact:
     name: Woosmap API
 servers:
@@ -8092,6 +8092,7 @@ components:
                   enum:
                     - ROOFTOP
                     - ROUTE
+                    - GEOMETRIC_CENTER
                     - DISTRICT
                     - POSTAL_CODE
                     - RANGE_INTERPOLATED
