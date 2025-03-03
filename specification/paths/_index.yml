@@ -8,6 +8,11 @@
     summary: Assets nearby a Geolocation
     operationId: getStoresFromGeolocationPosition
     $ref: "./geolocation/geolocationStores.yml"
+/geolocation/timezone:
+  get:
+    summary: Timezone
+    operationId: getTimezone
+    $ref: "./geolocation/geolocationTimezone.yml"
 /stores:
   post:
     summary: Create your Assets

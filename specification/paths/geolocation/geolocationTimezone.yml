@@ -1,0 +1,76 @@
+servers:
+  - url: https://api.woosmap.com
+tags:
+  - Geolocation API
+description: >
+    Returns timezone information based on the location, and optionally a timestamp for daylight saving time.
+  
+    > Note: rawOffset never contains the dst.
+security:
+  - PublicApiKeyAuth: []
+    RefererHeader: []
+  - PrivateApiKeyAuth: []
+  - PrivateApiKeyHeaderAuth: []
+parameters:
+  - description: "The location {lat},{lng}"
+    name: "location"
+    in: "query"
+    schema:
+      type: "string"
+    required: true
+  - description: "The UTC timestamp"
+    name: "timestamp"
+    in: "query"
+    schema:
+      type: "integer"
+      minimum: 0
+responses:
+  "200":
+    description: Timezone successfully retrieved
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/TimezoneResponse.yml"
+        examples:
+          default:
+            summary: Timezone for 43.6, 3.883 location.
+            value:
+              $ref: "../../responses/woosmap_http_geolocation_timezone_response.yml"
+  "401":
+    description: Unauthorized. Incorrect authentication credentials.
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/Error401.yml"
+        examples:
+          Unauthorized:
+            summary: Error 401
+            value:
+              detail: "Incorrect authentication credentials. Please check or use a valid API Key"
+  "403":
+    description: Forbidden. This Woosmap API is not enabled for this project.
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/Error403.yml"
+        examples:
+          Forbidden:
+            summary: Error 403
+            value:
+              detail: "This Woosmap API is not enabled for this project."
+  "429":
+    description: Too Many Requests. The rate limit for this endpoint has been exceeded.
+    content:
+      application/json:
+        schema:
+          $ref: "../../schemas/Error429.yml"
+        examples:
+          Forbidden:
+            summary: Error 429
+            value:
+              detail: "The rate limit for this endpoint has been exceeded"
+x-codeSamples:
+  - $ref:  "../../snippets/woosmap_http_geolocation_timezone/woosmap_http_geolocation_timezone.curl.yml"
+  - $ref:  "../../snippets/woosmap_http_geolocation_timezone/woosmap_http_geolocation_timezone.javascript.yml"
+  - $ref:  "../../snippets/woosmap_http_geolocation_timezone/woosmap_http_geolocation_timezone.python.yml"
+
