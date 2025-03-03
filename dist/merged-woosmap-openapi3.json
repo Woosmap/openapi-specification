@@ -496,7 +496,7 @@
         }
       },
       "localities_types": {
-        "description": "The types of suggestion to return. Multiple types can be passed using the pipe character (`|`) as a separator.\n  * `city`: includes city localities \n  * `town`: includes town localities \n  * `village`: includes village localities \n  * `hamlet`: includes hamlet localities \n  * `borough`: includes borough localities \n  * `suburb`: includes suburb localities \n  * `quarter`: includes quarter localities \n  * `neighbourhood`: includes neighbourhood localities\n  * `locality`: includes all previous locality names\n  * `postal_code`: publicly-used postal codes around the world\n  * `address`: addresses\n  * `admin_level`: most commonly used administrative areas\n  * `country`: countries as whole point of interest\n  * `airport`: includes all medium sized to international sized airports\n  * `train_station`: includes all train stations\n  * `metro_station`: includes all metro stations\n  * `shopping`: includes shopping malls (or \"shopping centers\") - *may include private retail brands*\n  * `museum`: includes museums\n  * `tourist_attraction`: includes tourist attractions like the Eiffel tower\n  * `amusement_park`: includes amusement parks like Disneyland Paris\n  * `art_gallery`: includes art galleries\n  * `zoo`: includes zoos\n",
+        "description": "The types of suggestion to return. Multiple types can be passed using the pipe character (`|`) as a separator.\n  * `city`: includes city localities \n  * `town`: includes town localities \n  * `village`: includes village localities \n  * `hamlet`: includes hamlet localities \n  * `borough`: includes borough localities \n  * `suburb`: includes suburb localities \n  * `quarter`: includes quarter localities \n  * `neighbourhood`: includes neighbourhood localities\n  * `locality`: an alias that groups all localities (`city`, `town`, `village`, `hamlet`, `borough`, `suburb`, `quarter` and `neighbourhood`)\n  * `postal_code`: publicly-used postal codes around the world\n  * `address`: addresses\n  * `admin_level`: most commonly used administrative areas\n  * `country`: countries as whole point of interest\n  * `airport`: includes all medium sized to international sized airports\n  * `train_station`: includes all train stations\n  * `metro_station`: includes all metro stations\n  * `shopping`: includes shopping malls (or \"shopping centers\") - *may include private retail brands*\n  * `museum`: includes museums\n  * `tourist_attraction`: includes tourist attractions like the Eiffel tower\n  * `amusement_park`: includes amusement parks like Disneyland Paris\n  * `art_gallery`: includes art galleries\n  * `zoo`: includes zoos\n",
         "example": "locality|airport|admin_level",
         "in": "query",
         "name": "types",
@@ -7710,45 +7710,6 @@
         "title": "Timezone",
         "type": "string"
       },
-      "TimezoneResponse": {
-        "description": "Timezone information, name, raw offset to UTC and dst offset.",
-        "example": {
-          "dst_offset": 0,
-          "raw_offset": 3600,
-          "timezone": "Europe/Paris",
-          "timezone_name": "CET"
-        },
-        "properties": {
-          "dst_offset": {
-            "description": "The daylight saving time offset in seconds.",
-            "title": "Dst offset",
-            "type": "integer"
-          },
-          "raw_offset": {
-            "description": "offset from utc in seconds.",
-            "title": "Raw offset",
-            "type": "integer"
-          },
-          "timezone": {
-            "description": "The time zone identifier eg. 'Europe/Paris'. see \u003chttps://en.wikipedia.org/wiki/List_of_tz_database_time_zones\u003e",
-            "title": "Timezone id",
-            "type": "string"
-          },
-          "timezone_name": {
-            "description": "The timezone name eg. `PDT`",
-            "title": "Timezone name",
-            "type": "string"
-          }
-        },
-        "required": [
-          "timezone",
-          "timezone_name",
-          "raw_offset",
-          "dst_offset"
-        ],
-        "title": "TimezoneResponse",
-        "type": "object"
-      },
       "TrafficDistanceLeg": {
         "description": "Leg in a route",
         "example": {
@@ -8826,7 +8787,7 @@
     "description": "The Woosmap API is a RESTful API built on HTTP. It has predictable resource URLs. It returns HTTP response codes to indicate errors. It also accepts and returns JSON in the HTTP body. You can use your favorite HTTP/REST library for your programming language to use Woosmap's API, or you can use one of our Javascript SDKs for supported APIs:\n  - [Map JS](https://developers.woosmap.com/products/map-api/get-started/) - support All APIs\n  - [Localities JS](https://developers.woosmap.com/products/localities/localities-jsapi/get-started/) - for Localities API\n  - [MultiSearch JS](https://developers.woosmap.com/products/multisearch-lib/js/get-started/) - for Localities API and Store Search API\n\nYou can use Postman to test the API (if you use the `PUBLIC_API_KEY` authentication, don't forget to set the `Referer` Header corresponding to one of your restricted domain name).\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9?action=collection%2Ffork\u0026source=rip_markdown\u0026collection-url=entityId%3D18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9%26entityType%3Dcollection%26workspaceId%3Dff0698d5-c4db-403e-b7c6-b622b68032d3)\n",
     "termsOfService": "https://www.woosmap.com/en/policies/terms/",
     "title": "Woosmap Platform API Reference",
-    "version": "1.29.4",
+    "version": "1.29.5",
     "x-document-meta-data": {
       "copyright": "© 2023 Woosmap"
     }
@@ -10961,147 +10922,6 @@
             "label": "Python",
             "lang": "python",
             "source": "import requests\n\nurl = \"https://api.woosmap.com/geolocation/stores?private_key=YOUR_PRIVATE_API_KEY\u0026ip_address=173.79.254.254\u0026limit=1\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
-          }
-        ]
-      }
-    },
-    "/geolocation/timezone": {
-      "get": {
-        "description": "Returns timezone information based on the location, and optionally a timestamp for daylight saving time.\n\u003e Note: rawOffset never contains the dst.\n",
-        "operationId": "getTimezone",
-        "parameters": [
-          {
-            "description": "The location {lat},{lng}",
-            "in": "query",
-            "name": "location",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "The UTC timestamp",
-            "in": "query",
-            "name": "timestamp",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "examples": {
-                  "default": {
-                    "summary": "Timezone for 43.6, 3.883 location.",
-                    "value": {
-                      "dst_offset": 0,
-                      "raw_offset": 3600,
-                      "timezone": "Europe/Paris",
-                      "timezone_name": "CET"
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/TimezoneResponse"
-                }
-              }
-            },
-            "description": "Timezone successfully retrieved"
-          },
-          "401": {
-            "content": {
-              "application/json": {
-                "examples": {
-                  "Unauthorized": {
-                    "summary": "Error 401",
-                    "value": {
-                      "detail": "Incorrect authentication credentials. Please check or use a valid API Key"
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/Error401"
-                }
-              }
-            },
-            "description": "Unauthorized. Incorrect authentication credentials."
-          },
-          "403": {
-            "content": {
-              "application/json": {
-                "examples": {
-                  "Forbidden": {
-                    "summary": "Error 403",
-                    "value": {
-                      "detail": "This Woosmap API is not enabled for this project."
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/Error403"
-                }
-              }
-            },
-            "description": "Forbidden. This Woosmap API is not enabled for this project."
-          },
-          "429": {
-            "content": {
-              "application/json": {
-                "examples": {
-                  "Forbidden": {
-                    "summary": "Error 429",
-                    "value": {
-                      "detail": "The rate limit for this endpoint has been exceeded"
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/Error429"
-                }
-              }
-            },
-            "description": "Too Many Requests. The rate limit for this endpoint has been exceeded."
-          }
-        },
-        "security": [
-          {
-            "PublicApiKeyAuth": [],
-            "RefererHeader": []
-          },
-          {
-            "PrivateApiKeyAuth": []
-          },
-          {
-            "PrivateApiKeyHeaderAuth": []
-          }
-        ],
-        "servers": [
-          {
-            "url": "https://api.woosmap.com"
-          }
-        ],
-        "summary": "Timezone",
-        "tags": [
-          "Geolocation API"
-        ],
-        "x-codeSamples": [
-          {
-            "label": "cURL",
-            "lang": "curl",
-            "source": "curl -L -X GET 'https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY\u0026location=43.6114130%2C3.8735291'"
-          },
-          {
-            "label": "JavaScript",
-            "lang": "javascript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY\u0026location=43.6114130%2C3.8735291\", requestOptions)\n  .then(response =\u003e response.text())\n  .then(result =\u003e console.log(result))\n  .catch(error =\u003e console.log('error', error));"
-          },
-          {
-            "label": "Python",
-            "lang": "python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY\u0026location=43.6114130%2C3.8735291\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
