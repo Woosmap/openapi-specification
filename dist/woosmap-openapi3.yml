@@ -5267,6 +5267,7 @@ paths:
         - $ref: '#/components/parameters/distance_language'
         - $ref: '#/components/parameters/distance_units'
         - $ref: '#/components/parameters/distance_method'
+        - $ref: '#/components/parameters/distance_avoid'
       responses:
         '200':
           description: Isochrone successfully retrieved
