@@ -16,6 +16,7 @@ parameters:
   - $ref: "../../parameters/distance/language.yml"
   - $ref: "../../parameters/distance/units.yml"
   - $ref: "../../parameters/distance/method.yml"
+  - $ref: "../../parameters/distance/avoid.yml"
 responses:
   "200":
     description: Isochrone successfully retrieved
