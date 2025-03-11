@@ -1,7 +1,7 @@
 {
   "name": "openapi-specification",
   "private": true,
-  "version": "1.30.0",
+  "version": "1.30.1",
   "homepage": "https://github.com/woosmap/openapi-specification#readme",
   "bugs": {
     "url": "https://github.com/woosmap/openapi-specification/issues"
