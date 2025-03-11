@@ -6088,6 +6088,9 @@
           },
           {
             "$ref": "#/components/parameters/distance_method"
+          },
+          {
+            "$ref": "#/components/parameters/distance_avoid"
           }
         ],
         "responses": {

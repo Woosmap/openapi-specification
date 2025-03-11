@@ -12,6 +12,10 @@
 
 <h2 id="optional-parameters">Optional parameters</h2>
 
+-   <h3 class="parameter-name" id="avoid">avoid</h3>
+
+    The list of features that you want to avoid. Valid values are `tolls`, `highways`, `ferries` or polygons coordinates whose vertex latlng are separated by a semicolon. To add multiple polygons, separate them with the `|` character.
+
 -   <h3 class="parameter-name" id="language">language</h3>
 
     The language code, indicating in which language the results should be returned, if possible. If language is not supplied, the Distance API service will use the navigator language or “en”.
