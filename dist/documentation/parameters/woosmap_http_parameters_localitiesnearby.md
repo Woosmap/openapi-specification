@@ -16,6 +16,10 @@
 
     The categories of points of interest to return.  Not specifying any category will not filter returned results.  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `categories=business.shop|medical.pharmacy|bank`.
 
+-   <h3 class="parameter-name" id="excluded_categories">excluded_categories</h3>
+
+    The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
+
 -   <h3 class="parameter-name" id="limit">limit</h3>
 
     Defines how many results should be included in a page

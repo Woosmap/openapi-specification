@@ -2429,7 +2429,6 @@ paths:
         - Localities API
       description: |
         Autocomplete on worldwide suggestions for a for text-based geographic searches. It can match on full words as well as substrings. You can therefore send queries as the user types, to provide on-the-fly addresses, city names, postal codes or suburb name suggestions.
-        >⚠️ To retrieve fields marked as  **deprecated** in response schema, please read [Details endpoint](#operation/localitiesDetails)
       security:
         - PublicApiKeyAuth: []
           RefererHeader: []
@@ -3015,6 +3014,13 @@ paths:
           in: query
           example: 15
         - $ref: '#/components/parameters/localities_categories'
+        - name: excluded_categories
+          description: |
+            The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
+          schema:
+            $ref: '#/components/schemas/LocalitiesNearbyCategory'
+          in: query
+          example: business.food_and_drinks.fast_food
       responses:
         '200':
           description: 'Points of interests surrounding `location` and matching provided `categories`, sorted by distance to `location`.'
@@ -3292,6 +3298,8 @@ paths:
           example: '5.2,-2.3'
           in: query
         - $ref: '#/components/parameters/localities_radius'
+        - $ref: '#/components/parameters/localities_categories'
+        - $ref: '#/paths/~1localities~1nearby/get/parameters/6'
         - $ref: '#/components/parameters/localities_language'
       responses:
         '200':
@@ -6066,7 +6074,7 @@ components:
       schema:
         $ref: '#/components/schemas/LocalitiesNearbyCategory'
       in: query
-      example: business.food_and_drinks.restaurant
+      example: business.food_and_drinks
     localities_cc_format:
       name: cc_format
       description: |
@@ -8020,6 +8028,7 @@ components:
           type: string
           example: MkvnYy6K6oVGqeqfWJGO/6eCgqo=
         type:
+          deprecated: true
           $ref: '#/components/schemas/LocalitiesTypes'
         types:
           description: An array containing the types of the result

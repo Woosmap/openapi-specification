@@ -2267,7 +2267,7 @@
         "tags": [
           "Localities API"
         ],
-        "description": "Autocomplete on worldwide suggestions for a for text-based geographic searches. It can match on full words as well as substrings. You can therefore send queries as the user types, to provide on-the-fly addresses, city names, postal codes or suburb name suggestions.\n>⚠️ To retrieve fields marked as  **deprecated** in response schema, please read [Details endpoint](#operation/localitiesDetails)\n",
+        "description": "Autocomplete on worldwide suggestions for a for text-based geographic searches. It can match on full words as well as substrings. You can therefore send queries as the user types, to provide on-the-fly addresses, city names, postal codes or suburb name suggestions.\n",
         "security": [
           {
             "PublicApiKeyAuth": [],
@@ -3170,6 +3170,15 @@
           },
           {
             "$ref": "#/components/parameters/localities_categories"
+          },
+          {
+            "name": "excluded_categories",
+            "description": "The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.\n",
+            "schema": {
+              "$ref": "#/components/schemas/LocalitiesNearbyCategory"
+            },
+            "in": "query",
+            "example": "business.food_and_drinks.fast_food"
           }
         ],
         "responses": {
@@ -3587,6 +3596,12 @@
           },
           {
             "$ref": "#/components/parameters/localities_radius"
+          },
+          {
+            "$ref": "#/components/parameters/localities_categories"
+          },
+          {
+            "$ref": "#/paths/~1localities~1nearby/get/parameters/6"
           },
           {
             "$ref": "#/components/parameters/localities_language"
@@ -7070,7 +7085,7 @@
           "$ref": "#/components/schemas/LocalitiesNearbyCategory"
         },
         "in": "query",
-        "example": "business.food_and_drinks.restaurant"
+        "example": "business.food_and_drinks"
       },
       "localities_cc_format": {
         "name": "cc_format",
@@ -9611,6 +9626,7 @@
             "example": "MkvnYy6K6oVGqeqfWJGO/6eCgqo="
           },
           "type": {
+            "deprecated": true,
             "$ref": "#/components/schemas/LocalitiesTypes"
           },
           "types": {
