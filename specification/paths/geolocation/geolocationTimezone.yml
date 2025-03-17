@@ -1,34 +1,41 @@
 servers:
   - url: https://api.woosmap.com
 tags:
-  - Distance API
+  - Geolocation API
 description: >
-  Find all destinations that can be reached in a specific amount of time or a maximum travel distance
+    Returns timezone information based on the location, and optionally a timestamp for daylight saving time.
+  
+    > Note: rawOffset never contains the dst.
 security:
   - PublicApiKeyAuth: []
     RefererHeader: []
   - PrivateApiKeyAuth: []
   - PrivateApiKeyHeaderAuth: []
 parameters:
-  - $ref: "../../parameters/distance/origin.yml"
-  - $ref: "../../parameters/distance/value.yml"
-  - $ref: "../../parameters/distance/mode.yml"
-  - $ref: "../../parameters/distance/language.yml"
-  - $ref: "../../parameters/distance/units.yml"
-  - $ref: "../../parameters/distance/method.yml"
-  - $ref: "../../parameters/distance/avoid.yml"
+  - description: "The location {lat},{lng}"
+    name: "location"
+    in: "query"
+    schema:
+      type: "string"
+    required: true
+  - description: "The UTC timestamp"
+    name: "timestamp"
+    in: "query"
+    schema:
+      type: "integer"
+      minimum: 0
 responses:
   "200":
-    description: Isochrone successfully retrieved
+    description: Timezone successfully retrieved
     content:
       application/json:
         schema:
-          $ref: "../../schemas/DistanceIsochroneResponse.yml"
+          $ref: "../../schemas/TimezoneResponse.yml"
         examples:
           default:
-            summary: Distance Isochrone Result for driving 1km by car from origin `48.709,2.403`
+            summary: Timezone for 43.6, 3.883 location.
             value:
-              $ref: "../../responses/woosmap_http_distance_isochrone_response.yml"
+              $ref: "../../responses/woosmap_http_geolocation_timezone_response.yml"
   "401":
     description: Unauthorized. Incorrect authentication credentials.
     content:
@@ -63,6 +70,7 @@ responses:
             value:
               detail: "The rate limit for this endpoint has been exceeded"
 x-codeSamples:
-  - $ref:  "../../snippets/woosmap_http_distance_isochrone/woosmap_http_distance_isochrone.curl.yml"
-  - $ref:  "../../snippets/woosmap_http_distance_isochrone/woosmap_http_distance_isochrone.javascript.yml"
-  - $ref:  "../../snippets/woosmap_http_distance_isochrone/woosmap_http_distance_isochrone.python.yml"
+  - $ref:  "../../snippets/woosmap_http_geolocation_timezone/woosmap_http_geolocation_timezone.curl.yml"
+  - $ref:  "../../snippets/woosmap_http_geolocation_timezone/woosmap_http_geolocation_timezone.javascript.yml"
+  - $ref:  "../../snippets/woosmap_http_geolocation_timezone/woosmap_http_geolocation_timezone.python.yml"
+

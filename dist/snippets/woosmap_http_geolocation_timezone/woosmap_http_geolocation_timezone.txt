@@ -1,0 +1,5 @@
+[START woosmap_http_geolocation_timezone]
+https://api.woosmap.com/geolocation/timezone
+  ?location=43.6114130%2C3.8735291
+  &private_key=YOUR_PRIVATE_API_KEY
+[END woosmap_http_geolocation_timezone]

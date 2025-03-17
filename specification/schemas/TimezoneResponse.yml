@@ -1,0 +1,32 @@
+title: TimezoneResponse
+type: object
+description: Timezone information, name, raw offset to UTC and dst offset.
+properties:
+  timezone:
+    description: "The time zone identifier eg. 'Europe/Paris'. see <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>"
+    title: "Timezone id"
+    type: "string"
+
+  timezone_name:
+    description: "The timezone name eg. `PDT`"
+    title: "Timezone name"
+    type: "string"
+
+  raw_offset:
+    description: "offset from utc in seconds."
+    title: "Raw offset"
+    type: "integer"
+
+  dst_offset:
+    description: "The daylight saving time offset in seconds."
+    title: "Dst offset"
+    type: "integer"
+
+required:
+  - "timezone"
+  - "timezone_name"
+  - "raw_offset"
+  - "dst_offset"
+
+example:
+  $ref: "../responses/woosmap_http_geolocation_timezone_response.yml"

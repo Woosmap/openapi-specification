@@ -60,6 +60,8 @@ GeolocationResponse:
   $ref: "./GeolocationResponse.yml"
 GeolocationStoresResponse:
   $ref: "./GeolocationStoresResponse.yml"
+TimezoneResponse:
+  $ref: "./TimezoneResponse.yml"
 
 # Data Management
 AssetRequest:
