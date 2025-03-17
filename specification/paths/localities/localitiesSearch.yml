@@ -35,6 +35,8 @@ parameters:
     example: 5.2,-2.3
     in: query
   - $ref: "../../parameters/localities/radius.yml"
+  - $ref: "../../parameters/localities/categories.yml"
+  - $ref: "../../parameters/localities/excluded_categories.yml"
   - $ref: "../../parameters/localities/language.yml"
 responses:
   "200":
