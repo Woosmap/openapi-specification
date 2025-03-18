@@ -316,7 +316,7 @@
       },
       "localities_categories": {
         "description": "The categories of points of interest to return.  Not specifying any category will not filter returned results.  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `categories=business.shop|medical.pharmacy|bank`.\n",
-        "example": "business.food_and_drinks.restaurant",
+        "example": "business.food_and_drinks",
         "in": "query",
         "name": "categories",
         "schema": {
@@ -365,6 +365,15 @@
             "advanced"
           ],
           "type": "string"
+        }
+      },
+      "localities_excluded_categories": {
+        "description": "The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.\n",
+        "example": "business.food_and_drinks.fast_food",
+        "in": "query",
+        "name": "excluded_categories",
+        "schema": {
+          "$ref": "#/components/schemas/LocalitiesNearbyCategory"
         }
       },
       "localities_excluded_types": {
@@ -5505,7 +5514,9 @@
             "$ref": "#/components/schemas/LocalitiesAutocompleteRelated"
           },
           "type": {
-            "$ref": "#/components/schemas/LocalitiesTypes"
+            "deprecated": true,
+            "description": "this field might be removed in the future, please use the `types` field which is more exhaustive",
+            "type": "string"
           },
           "types": {
             "description": "An array containing the types of the result",
@@ -12766,7 +12777,7 @@
     },
     "/localities/autocomplete": {
       "get": {
-        "description": "Autocomplete on worldwide suggestions for a for text-based geographic searches. It can match on full words as well as substrings. You can therefore send queries as the user types, to provide on-the-fly addresses, city names, postal codes or suburb name suggestions.\n\u003e⚠️ To retrieve fields marked as  **deprecated** in response schema, please read [Details endpoint](#operation/localitiesDetails)\n",
+        "description": "Autocomplete on worldwide suggestions for a for text-based geographic searches. It can match on full words as well as substrings. You can therefore send queries as the user types, to provide on-the-fly addresses, city names, postal codes or suburb name suggestions.\n",
         "operationId": "localitiesAutocomplete",
         "parameters": [
           {
@@ -13657,6 +13668,9 @@
           },
           {
             "$ref": "#/components/parameters/localities_categories"
+          },
+          {
+            "$ref": "#/components/parameters/localities_excluded_categories"
           }
         ],
         "responses": {
@@ -14074,6 +14088,12 @@
           },
           {
             "$ref": "#/components/parameters/localities_radius"
+          },
+          {
+            "$ref": "#/components/parameters/localities_categories"
+          },
+          {
+            "$ref": "#/components/parameters/localities_excluded_categories"
           },
           {
             "$ref": "#/components/parameters/localities_language"

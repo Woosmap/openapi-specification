@@ -7,4 +7,4 @@ description: >
 schema:
   $ref: "../../schemas/LocalitiesNearbyCategory.yml"
 in: query
-example: business.food_and_drinks.restaurant
+example: business.food_and_drinks

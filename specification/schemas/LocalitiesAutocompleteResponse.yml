@@ -6,13 +6,15 @@ properties:
     description: Contains a unique ID for each suggestion. Please use this ID if you need to give us feedbacks on results. This ID is also required to perform Localities Details request.
     type: string
     example: MkvnYy6K6oVGqeqfWJGO/6eCgqo=
-  type:
-    $ref: "./LocalitiesTypes.yml"
   types:
     description: An array containing the types of the result
     type: array
     items:
       $ref: "./LocalitiesTypes.yml"
+  type:
+    deprecated: true
+    description: this field might be removed in the future, please use the `types` field which is more exhaustive
+    type: string
   description:
     description: Concatenation of `name`, `admin_1`, `admin_0` to be used as suggestion in drop down list if needed. The description can vary depending on the type requested.
     type: string
