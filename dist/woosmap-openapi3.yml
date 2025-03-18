@@ -3014,13 +3014,7 @@ paths:
           in: query
           example: 15
         - $ref: '#/components/parameters/localities_categories'
-        - name: excluded_categories
-          description: |
-            The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
-          schema:
-            $ref: '#/components/schemas/LocalitiesNearbyCategory'
-          in: query
-          example: business.food_and_drinks.fast_food
+        - $ref: '#/components/parameters/localities_excluded_categories'
       responses:
         '200':
           description: 'Points of interests surrounding `location` and matching provided `categories`, sorted by distance to `location`.'
@@ -3299,7 +3293,7 @@ paths:
           in: query
         - $ref: '#/components/parameters/localities_radius'
         - $ref: '#/components/parameters/localities_categories'
-        - $ref: '#/paths/~1localities~1nearby/get/parameters/6'
+        - $ref: '#/components/parameters/localities_excluded_categories'
         - $ref: '#/components/parameters/localities_language'
       responses:
         '200':
@@ -6114,6 +6108,14 @@ components:
           - advanced
       in: query
       example: advanced
+    localities_excluded_categories:
+      name: excluded_categories
+      description: |
+        The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
+      schema:
+        $ref: '#/components/schemas/LocalitiesNearbyCategory'
+      in: query
+      example: business.food_and_drinks.fast_food
     localities_excluded_types:
       name: excluded_types
       description: |

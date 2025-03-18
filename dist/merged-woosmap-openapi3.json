@@ -367,6 +367,15 @@
           "type": "string"
         }
       },
+      "localities_excluded_categories": {
+        "description": "The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.\n",
+        "example": "business.food_and_drinks.fast_food",
+        "in": "query",
+        "name": "excluded_categories",
+        "schema": {
+          "$ref": "#/components/schemas/LocalitiesNearbyCategory"
+        }
+      },
       "localities_excluded_types": {
         "description": "The types of suggestion to exclude. Multiple types can be passed using the pipe character (`|`) as a separator.\n",
         "example": "suburb|quarter|neighbourhood",
@@ -13661,13 +13670,7 @@
             "$ref": "#/components/parameters/localities_categories"
           },
           {
-            "description": "The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.\n",
-            "example": "business.food_and_drinks.fast_food",
-            "in": "query",
-            "name": "excluded_categories",
-            "schema": {
-              "$ref": "#/components/schemas/LocalitiesNearbyCategory"
-            }
+            "$ref": "#/components/parameters/localities_excluded_categories"
           }
         ],
         "responses": {
@@ -14090,7 +14093,7 @@
             "$ref": "#/components/parameters/localities_categories"
           },
           {
-            "$ref": "#/paths/~1localities~1nearby/get/parameters/6"
+            "$ref": "#/components/parameters/localities_excluded_categories"
           },
           {
             "$ref": "#/components/parameters/localities_language"

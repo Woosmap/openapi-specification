@@ -3172,13 +3172,7 @@
             "$ref": "#/components/parameters/localities_categories"
           },
           {
-            "name": "excluded_categories",
-            "description": "The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.\n",
-            "schema": {
-              "$ref": "#/components/schemas/LocalitiesNearbyCategory"
-            },
-            "in": "query",
-            "example": "business.food_and_drinks.fast_food"
+            "$ref": "#/components/parameters/localities_excluded_categories"
           }
         ],
         "responses": {
@@ -3601,7 +3595,7 @@
             "$ref": "#/components/parameters/localities_categories"
           },
           {
-            "$ref": "#/paths/~1localities~1nearby/get/parameters/6"
+            "$ref": "#/components/parameters/localities_excluded_categories"
           },
           {
             "$ref": "#/components/parameters/localities_language"
@@ -7131,6 +7125,15 @@
         },
         "in": "query",
         "example": "advanced"
+      },
+      "localities_excluded_categories": {
+        "name": "excluded_categories",
+        "description": "The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.\n",
+        "schema": {
+          "$ref": "#/components/schemas/LocalitiesNearbyCategory"
+        },
+        "in": "query",
+        "example": "business.food_and_drinks.fast_food"
       },
       "localities_excluded_types": {
         "name": "excluded_types",
