@@ -1,5 +1,0 @@
-{
-  "lang": "nodejs",
-  "label": "NodeJS",
-  "source": "var axios = require('axios');\nvar data = JSON.stringify({\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"units\": \"imperial\",\n  \"routing\": \"fastest\",\n  \"departure_time\": \"now\"\n});\n\nvar config = {\n  method: 'post',\n  url: 'https://api.woosmap.com/traffic/distancematrix/json?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n",
-}

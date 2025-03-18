@@ -118,16 +118,6 @@ search_stores_by_page:
   $ref: "./search/stores_by_page.yml"
 search_zone:
   $ref: "./search/zone.yml"
-traffic_arrival_time:
-  $ref: "./traffic/arrival_time.yml"
-traffic_avoid:
-  $ref: "./traffic/avoid.yml"
-traffic_departure_time:
-  $ref: "./traffic/departure_time.yml"
-traffic_routing:
-  $ref: "./traffic/routing.yml"
-traffic_waypoints:
-  $ref: "./traffic/waypoints.yml"
 zones_limit:
   $ref: "./zones/limit.yml"
 zones_offset:

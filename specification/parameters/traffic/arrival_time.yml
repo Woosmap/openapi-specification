@@ -1,9 +1,0 @@
-name: arrival_time
-in: query
-example: "1600799173"
-schema:
-  type: string
-description: >
-  Specifies the arrival date/time as a timestamp to base the calculation on (e.g. `1600799173` for the date:`22/09/2020 20:26:13`).
-  
-  Use either `arrival_time` or `departure_time`, not both.
