@@ -1,5 +1,0 @@
-{
-  "lang": "python",
-  "label": "Python",
-  "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/traffic/distancematrix/json?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n    \"destinations\": \"48.83534,2.368308\",\n    \"units\": \"imperial\",\n    \"routing\": \"fastest\",\n    \"departure_time\": \"now\"\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n",
-}

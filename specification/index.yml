@@ -109,16 +109,6 @@ tags:
       This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
     externalDocs:
       url: https://developers.woosmap.com/products/distance-api/get-started/
-  - name: Traffic API
-    description: >
-      Woosmap Traffic API (Early Access) is a service that provides travel distances and durations with traffic, on a Worldwide scale. Compared to the Woosmap Distance API, this API uses traffic information when returning duration times. 
-      Request is done over HTTPS using GET or POST. Response is formatted as JSON.
-      You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
-      This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).  
-      
-      >**⚠️ This API has been deprecated in favour of Distance API**
-    externalDocs:
-      url: https://developers.woosmap.com/products/traffic-api/get-started/
   - name: Zones API
     description: >
       Woosmap Zones API is a web service that uses an HTTP request to manage, create or edit your Zones (polygons) attached to your assets.

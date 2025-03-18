@@ -1,5 +1,0 @@
-{
-  "lang": "curl",
-  "label": "cURL",
-  "source": "curl -L -X POST 'https://api.woosmap.com/traffic/distancematrix/json?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n--data-raw '{\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"units\": \"imperial\",\n  \"routing\": \"fastest\",\n  \"departure_time\": \"now\"\n}'",
-}

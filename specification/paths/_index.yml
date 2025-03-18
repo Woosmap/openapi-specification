@@ -144,20 +144,3 @@
     summary: Isochrone (Early Access)
     operationId: getIsochrone
     $ref: "./distance/distanceIsochrone.yml"
-/traffic/distancematrix/json:
-  get:
-    deprecated: true
-    summary: Traffic Distance Matrix
-    operationId: getTrafficDistanceMatrix
-    $ref: "./traffic/trafficMatrix.yml"
-  post:
-    deprecated: true
-    summary: Traffic Distance Matrix using POST
-    operationId: postTrafficDistanceMatrix
-    $ref: "./traffic/trafficMatrixPost.yml"
-/traffic/route/json:
-  get:
-    deprecated: true
-    summary: Traffic Route
-    operationId: getTrafficRoute
-    $ref: "./traffic/trafficRoute.yml"

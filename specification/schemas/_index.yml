@@ -205,22 +205,6 @@ DistanceStep:
 DistanceInstructions:
   $ref: "./DistanceInstructions.yml"
 
-## Traffic
-TrafficDistanceMatrixElementsResponse:
-  $ref: "./TrafficDistanceMatrixElementsResponse.yml"
-TrafficDistanceMatrixElementResponse:
-  $ref: "./TrafficDistanceMatrixElementResponse.yml"
-TrafficDistanceMatrixResponse:
-  $ref: "./TrafficDistanceMatrixResponse.yml"
-TrafficDistanceMatrixRequest:
-  $ref: "./TrafficDistanceMatrixRequest.yml"
-TrafficDistanceRouteElementsResponse:
-  $ref: "./TrafficDistanceRouteElementsResponse.yml"
-TrafficDistanceRouteResponse:
-  $ref: "./TrafficDistanceRouteResponse.yml"
-TrafficDistanceLeg:
-  $ref: "./TrafficDistanceLeg.yml"
-
 ## Bounds
 BoundsResponse:
   $ref: "./BoundsResponse.yml"
