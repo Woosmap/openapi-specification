@@ -58,6 +58,7 @@ parameters:
     in: query
     example: 15
   - $ref: "../../parameters/localities/categories.yml"
+  - $ref: "../../parameters/localities/excluded_categories.yml"
 responses:
   "200":
     description: Points of interests surrounding `location` and matching provided `categories`, sorted by distance to `location`.
