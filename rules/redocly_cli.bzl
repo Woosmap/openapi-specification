@@ -1,12 +1,12 @@
-load("@npm//swagger-cli:index.bzl", "swagger_cli", "swagger_cli_test")
+load("@npm//@redocly/cli:index.bzl", "redocly", "redocly_test")
 
 def bundle(name, data, entry, visibility = ["//visibility:public"]):
     JSON_FILENAME = "{}.json".format(name)
 
-    swagger_cli(
+    redocly(
         name = "raw",
         outs = ["raw.json"],
-        args = ["bundle", entry, "--type", "json", "--outfile $@"],
+        args = ["bundle", entry, "--output", "$@"],
         data = data,
     )
 
@@ -20,16 +20,16 @@ def bundle(name, data, entry, visibility = ["//visibility:public"]):
         visibility = visibility,
     )
 
-    swagger_cli(
+    redocly(
         name = "{}-yaml".format(name),
         outs = ["{}.yml".format(name)],
-        args = ["bundle", "$(location {})".format(JSON_FILENAME), "--type", "yaml", "--outfile $@"],
+        args = ["bundle", "$(location {})".format(JSON_FILENAME), "--output", "$@"],
         data = [JSON_FILENAME],
     )
 
 def validate(name, data):
-    swagger_cli_test(
+    redocly_test(
         name = "{}-validation".format(name),
-        args = ["validate", "$(location {})".format(data)],
+        args = ["lint", "$(location {})".format(data)],
         data = [data],
     )
