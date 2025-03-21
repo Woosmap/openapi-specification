@@ -13,11 +13,9 @@ properties:
     properties:
       next_page:
         description: If more results are available, this will contain the value to pass to the `page` parameter to get the next page
-        type: integer
-        nullable: true
+        type: [integer, "null"]
       previous_page:
         description: If previous results are available, this will contain the value to pass to the `page` parameter to get the previous page
-        type: integer
-        nullable: true
+        type: [integer, "null"]
 example:
   $ref: "../responses/woosmap_http_localities_nearby_collection_response.yml"

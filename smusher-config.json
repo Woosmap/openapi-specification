@@ -16,6 +16,11 @@
             "name": "transit",
             "openapi-url": "https://api.woosmap.com/transit/openapi.json",
             "doc-url": "https://developers.woosmap.com/products/transit-api/route-endpoint/"
+        },
+        {
+            "name": "datasets",
+            "openapi-url": "https://api.woosmap.com/datasets/openapi.json",
+            "doc-url": "https://developers.woosmap.com/products/datasets-api/get-started/"
         }
     ]
 }

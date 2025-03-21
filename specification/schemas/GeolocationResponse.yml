@@ -18,8 +18,7 @@ properties:
     example: -77.1067
   country_code:
     description: ISO 3166-1 Alpha-2 compatible country code
-    type: string
-    nullable: true
+    type: [string, "null"]
     example: "US"
   country_name:
     description: Country name

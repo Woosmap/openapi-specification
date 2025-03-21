@@ -22,8 +22,7 @@ properties:
     $ref: "./AssetTags.yml"
   userProperties:
     description: Contains all additional information relative to an Asset. If not set it returns null value.
-    nullable: true
-    type: object
+    type: [object, "null"]
     additionalProperties: true
     example: { "some_user_properties": "some_value" }
   localizedNames:

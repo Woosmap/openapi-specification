@@ -19,14 +19,12 @@ properties:
   tags:
     $ref: "./AssetTags.yml"
   last_updated:
-    type: string
-    nullable: true
+    type: [string, "null"]
     description: the previous date timestamp when the asset has been updated
     example: "2022-11-08T15:48:08.556803+00:00"
   user_properties:
     description: Contains all additional information relative to an Asset. If not set it returns null value.
-    nullable: true
-    type: object
+    type: [object, "null"]
     additionalProperties: true
     example: { "some_user_properties": "some_value" }
   opening_hours:

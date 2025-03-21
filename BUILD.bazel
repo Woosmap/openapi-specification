@@ -1,8 +1,8 @@
-load("//rules:swagger_cli.bzl", "bundle", "validate")
-load("@rules_pkg//:pkg.bzl", "pkg_tar")
 load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_test")
 load("@npm//openapi-examples-validator:index.bzl", "openapi_examples_validator_test")
 load("@npm//openapi-to-postmanv2:index.bzl", "openapi2postmanv2")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+load("//rules:redocly_cli.bzl", "bundle", "validate")
 
 exports_files(
     ["tsconfig.json"],
@@ -15,7 +15,7 @@ BUNDLE_NAME = "woosmap-openapi3"
 bundle(
     name = BUNDLE_NAME,
     data = ["//specification:openapi3"],
-    entry = "$(locations //specification:openapi3)/index.yml",
+    entry = "specification/index.yml",
 )
 
 validate(
@@ -142,7 +142,7 @@ genrule(
 
 genrule(
     name = "smusher",
-    srcs =  [
+    srcs = [
         "//:openapi-smusher.sh",
         "//:woosmap-openapi3.json",
         "//:smusher-config.json",
