@@ -61,13 +61,6 @@ tags:
       The general principle is that sometimes searching assets using crowfly distance is not good enough. For example to search the restaurant that will do the delivery for a specified address, each restaurant has a delivery zone and for topological or business reasons it’s not always the nearest restaurant in charge of your delivery. Woosmap Zones API allows you to associate a delivery zone to each of the restaurants.
     externalDocs:
       url: https://developers.woosmap.com/products/data-api/zones/
-  - name: Datasets API
-    description: |
-      The Datasets API is a versatile and powerful tool designed to manage, query, and interact with geospatial data. 
-      A dataset serves as an editable collection of features, which can include points, lines, or polygons.  The API is particularly well-suited for applications where location or spatial analysis are crucial, providing high accuracy analysis and flexibility in managing geospatial data.
-    externalDocs:
-      description: Visit the DataSet API Reference Here
-      url: https://developers.woosmap.com/products/datasets-api/reference/
 paths:
   /geolocation/position:
     get:

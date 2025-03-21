@@ -78,14 +78,6 @@
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/data-api/zones/"
       }
-    },
-    {
-      "name": "Datasets API",
-      "description": "The Datasets API is a versatile and powerful tool designed to manage, query, and interact with geospatial data. \nA dataset serves as an editable collection of features, which can include points, lines, or polygons.  The API is particularly well-suited for applications where location or spatial analysis are crucial, providing high accuracy analysis and flexibility in managing geospatial data.\n",
-      "externalDocs": {
-        "description": "Visit the DataSet API Reference Here",
-        "url": "https://developers.woosmap.com/products/datasets-api/reference/"
-      }
     }
   ],
   "paths": {
