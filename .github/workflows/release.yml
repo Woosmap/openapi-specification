@@ -18,6 +18,8 @@ jobs:
         with:
           token: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
       - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.9
       - name: Install dependencies
         run: |
           pnpm i -F
