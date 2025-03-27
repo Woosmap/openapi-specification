@@ -5,6 +5,7 @@ import path from "path";
 import {readFileSync} from "fs";
 import yaml from "js-yaml";
 
+
 function parseRequestBody(filename) {
     if (filename.match(/\.yml$/)) {
         return yaml.load(
@@ -420,12 +421,12 @@ export const REQUESTS: SnippetRequest[] = [
                         value: "40.71399,-74.00499",
                     },
                     {
-                        key:"categories",
-                        value:"business"
+                        key: "categories",
+                        value: "business"
                     },
-		            {
-                        key:"page",
-                        value:"3"
+                    {
+                        key: "page",
+                        value: "3"
                     },
                 ],
             }),

@@ -1,33 +1,36 @@
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
-load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+load("@aspect_rules_js//js:defs.bzl", "js_binary")
+load("//tools:ts_wrapper.bzl", "ts_project")
 
 package(default_visibility = ["//visibility:public"])
 
-ts_library(
+ts_project(
     name = "_lib",
     srcs = glob(["*.ts"]),
+    tsconfig = "//:tsconfig",
     deps = [
-        "@npm//@types/axios",
-        "@npm//@types/node",
-        "@npm//@types/yargs",
-        "@npm//axios",
-        "@npm//prettier",
-        "@npm//tar-stream",
-        "@npm//yargs",
+        "//:node_modules/@types/axios",
+        "//:node_modules/@types/node",
+        "//:node_modules/@types/yargs",
+        "//:node_modules/axios",
+        "//:node_modules/prettier",
+        "//:node_modules/tar-stream",
+        "//:node_modules/yargs",
     ],
 )
 
-nodejs_binary(
+js_binary(
     name = "_responses_bin",
+    args = [
+        "--archive",
+        "$(rootpath //generator/requests:snippets.tar)",
+    ],
     data = [
         ":_lib",
         "//generator/requests:snippets.tar",
     ],
     entry_point = ":response.ts",
-    configuration_env_vars= ["WOOSMAP_PRIVATE_API_KEY", "WOOSMAP_PUBLIC_API_KEY"],
-    templated_args = [
-        "--archive",
-        "$(rootpath //generator/requests:snippets.tar)",
-        "--nobazel_node_patches",
-    ],
+    env = {
+        "WOOSMAP_PRIVATE_API_KEY": "$(WOOSMAP_PRIVATE_API_KEY)",
+        "WOOSMAP_PUBLIC_API_KEY": "$(WOOSMAP_PUBLIC_API_KEY)",
+    },
 )

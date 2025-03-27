@@ -1,21 +1,43 @@
-load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_test")
-load("@npm//openapi-examples-validator:index.bzl", "openapi_examples_validator_test")
-load("@npm//openapi-to-postmanv2:index.bzl", "openapi2postmanv2")
+load("@aspect_bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
+load("@aspect_bazel_lib//lib:copy_to_directory.bzl", "copy_to_directory")
+load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_info_files", "js_run_binary", "js_test")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_config")
+load("@npm//:@redocly/cli/package_json.bzl", redoc_bin = "bin")
+load("@npm//:defs.bzl", "npm_link_all_packages")
+load("@npm//:openapi-examples-validator/package_json.bzl", validator_bin = "bin")
+load("@npm//:openapi-to-postmanv2/package_json.bzl", postman_bin = "bin")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
 load("//rules:redocly_cli.bzl", "bundle", "validate")
 
-exports_files(
-    ["tsconfig.json"],
+REDOCLY_DEPS = [":node_modules/" + d for d in [
+    "@redocly/cli",
+    "call-me-maybe",
+    "yaml",
+    "fast-safe-stringify",
+]]
+
+redoc_bin.redocly_binary(
+    name = "redocly_cli",
+    data = REDOCLY_DEPS,
+)
+
+package(default_visibility = ["//visibility:public"])
+
+npm_link_all_packages(name = "node_modules")
+
+ts_config(
+    name = "tsconfig",
+    src = "tsconfig.json",
     visibility = ["//visibility:public"],
+    deps = [],
 )
 
 BUNDLE_NAME = "woosmap-openapi3"
 
-# has .yml and .json outputs
 bundle(
     name = BUNDLE_NAME,
     data = ["//specification:openapi3"],
-    entry = "specification/index.yml",
+    entry = "//specification:index_yml",
 )
 
 validate(
@@ -55,99 +77,135 @@ filegroup(
 # test diff
 filegroup(
     name = "dist_files",
-    srcs = glob(["dist/**/*"]),
+    srcs = glob(
+        ["dist/**/*"],
+        allow_empty = True,
+    ),
 )
 
-nodejs_test(
+js_test(
     name = "dist-is-updated",
+    args = [
+        "--archive",
+        "$(rootpath :dist)",
+        "--dist",
+        "$(locations :dist_files)",
+    ],
     data = [
         ":dist",
         ":dist_files",
         "//rules:dist-is-updated",
     ],
     entry_point = "//rules:dist-is-updated.ts",
-    templated_args = [
-        "--archive",
-        "$(rootpath :dist)",
-        "--dist",
-        "$(locations :dist_files)",
-    ],
 )
 
-openapi_examples_validator_test(
+validator_bin.openapi_examples_validator_test(
     name = "validate_examples",
-    data = ["//:{}.json".format(BUNDLE_NAME)],
-    templated_args = [
+    args = [
         "--no-additional-properties",
         "$(rootpath //:{}.json)".format(BUNDLE_NAME),
     ],
+    data = ["//:{}.json".format(BUNDLE_NAME)],
 )
 
-nodejs_test(
+postman_bin.openapi2postmanv2(
+    name = "postman",
+    srcs = [
+        "//:merged-woosmap-openapi3.json",
+        "//:postman-config.json",
+    ],
+    outs = ["woosmap-postman.json"],
+    args = [
+        "--spec",
+        "$(rootpath //:merged-woosmap-openapi3.json)",
+        "--pretty",
+        "--options-config",
+        "$(rootpath //:postman-config.json)",
+        "--output woosmap-postman.json",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+js_test(
     name = "schema-in-index",
+    args = [
+        "--archive",
+        "$(rootpath :dist)",
+    ],
     data = [
         ":dist",
         "//rules:schema-in-index",
         "//specification:openapi3",
     ],
     entry_point = "//rules:schema-in-index.ts",
-    templated_args = [
-        "--archive",
-        "$(rootpath :dist)",
-    ],
 )
 
-nodejs_test(
+js_test(
     name = "schema-title",
+    args = [
+        "--spec",
+        "$(rootpath //:{}.json)".format(BUNDLE_NAME),
+    ],
     data = [
         "//:woosmap-openapi3.json",
         "//rules:schema-title",
     ],
     entry_point = "//rules:schema-title.ts",
-    templated_args = [
-        "--spec",
-        "$(rootpath //:{}.json)".format(BUNDLE_NAME),
-    ],
 )
 
-openapi2postmanv2(
-    name = "postman",
-    outs = ["woosmap-postman.json"],
-    args = [
-        "--spec",
-        "$(location //:merged-woosmap-openapi3.json)",
-        "--pretty",
-        "--options-config",
-        "$(location //:postman-config.json)",
-        "--output $@",
+js_run_binary(
+    name = "parameters",
+    srcs = [
+        "//specification:openapi3",
     ],
-    data = [
-        "//:merged-woosmap-openapi3.json",
-        "//:postman-config.json",
+    outs = ["parameters.yml"],
+    args = [
+        "--output",
+        "parameters.yml",
+        "$(locations //specification:openapi3)",
+    ],
+    tool = "//rules:parameters",
+)
+
+copy_to_directory(
+    name = "downloaded_openapi_specs",
+    srcs = [
+        "@datasets_openapi//file",
+        "@indoor_openapi//file",
+        "@transit_openapi//file",
+        "@what3words_openapi//file",
+    ],
+    out = "external_specs",
+    include_external_repositories = [
+        "what3words_openapi",
+        "indoor_openapi",
+        "transit_openapi",
+        "datasets_openapi",
     ],
     visibility = ["//visibility:public"],
 )
 
-genrule(
-    name = "parameters",
+js_run_binary(
+    name = "run_redocly_join",
     srcs = [
-        "//specification:openapi3",
-        "@npm//glob",
-        "@npm//yargs",
-    ],
-    outs = ["parameters.yml"],
-    cmd = "$(location //rules:parameters) --output $@ $(locations //specification:openapi3)",
-    tools = ["//rules:parameters"],
-)
-
-genrule(
-    name = "smusher",
-    srcs = [
-        "//:openapi-smusher.sh",
+        ":downloaded_openapi_specs",
         "//:woosmap-openapi3.json",
-        "//:smusher-config.json",
     ],
     outs = ["merged-woosmap-openapi3.json"],
-    cmd = "$(location openapi-smusher.sh) --spec $(location //:woosmap-openapi3.json) --output $@",
+    args = [
+        "join",
+        "$(rootpath //:woosmap-openapi3.json)",
+        "$(rootpath :downloaded_openapi_specs)/file/what3words.json",
+        "$(rootpath :downloaded_openapi_specs)/file/indoor.json",
+        "$(rootpath :downloaded_openapi_specs)/file/transit.json",
+        "$(rootpath :downloaded_openapi_specs)/file/datasets.json",
+        "--output",
+        "merged-woosmap-openapi3.json",
+        "--prefix-tags-with-info-prop",
+        "title",
+        "--prefix-components-with-info-prop",
+        "title",
+    ],
+    tool = "//:redocly_cli",
     visibility = ["//visibility:public"],
 )
