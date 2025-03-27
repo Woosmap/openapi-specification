@@ -28,7 +28,7 @@ js_binary(
         ":_lib",
         "//generator/requests:snippets.tar",
     ],
-    entry_point = ":response.ts",
+    entry_point = ":response.js",
     env = {
         "WOOSMAP_PRIVATE_API_KEY": "$(WOOSMAP_PRIVATE_API_KEY)",
         "WOOSMAP_PUBLIC_API_KEY": "$(WOOSMAP_PUBLIC_API_KEY)",

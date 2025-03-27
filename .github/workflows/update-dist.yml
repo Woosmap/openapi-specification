@@ -20,8 +20,6 @@ jobs:
           git add dist
           git commit -m "chore: update dist folder [skip ci]" || true
           git push origin
-        env:
-          GH_TOKEN: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
       - name: Add reaction
         uses: peter-evans/create-or-update-comment@v2
         with:

@@ -50,6 +50,12 @@ validate(
     data = "//:{}.json".format(BUNDLE_NAME),
 )
 
+# Currently this is providing validation error from redocly lint
+#validate(
+#    name = "validate_merge_test",
+#    data = "merged-woosmap-openapi3.json",
+#)
+
 pkg_tar(
     name = "dist",
     srcs = [
@@ -96,7 +102,7 @@ js_test(
         ":dist_files",
         "//rules:dist-is-updated",
     ],
-    entry_point = "//rules:dist-is-updated.ts",
+    entry_point = "//rules:dist-is-updated.js",
 )
 
 validator_bin.openapi_examples_validator_test(
@@ -137,7 +143,7 @@ js_test(
         "//rules:schema-in-index",
         "//specification:openapi3",
     ],
-    entry_point = "//rules:schema-in-index.ts",
+    entry_point = "//rules:schema-in-index.js",
 )
 
 js_test(
@@ -150,7 +156,7 @@ js_test(
         "//:woosmap-openapi3.json",
         "//rules:schema-title",
     ],
-    entry_point = "//rules:schema-title.ts",
+    entry_point = "//rules:schema-title.js",
 )
 
 js_run_binary(

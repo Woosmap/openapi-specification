@@ -47,8 +47,4 @@ js_binary(
         "//specification:openapi3",
     ],
     entry_point = ":x-code-samples.js",
-    node_options = [
-        "--experimental-modules",
-        "--es-module-specifier-resolution=node",
-    ],
 )

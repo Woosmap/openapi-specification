@@ -17,8 +17,10 @@ import %workspace%/.aspect/bazelrc/javascript.bazelrc
 build --action_env GH_TOKEN
 build --action_env PATH
 build --enable_runfiles
-run --action_env WOOSMAP_PUBLIC_API_KEY
-run --action_env WOOSMAP_PRIVATE_API_KEY
+run --define WOOSMAP_PUBLIC_API_KEY=
+run --define WOOSMAP_PRIVATE_API_KEY=
+test --define WOOSMAP_PUBLIC_API_KEY=
+test --define WOOSMAP_PRIVATE_API_KEY=
 
 try-import %workspace%/.bazelrc.user
 
