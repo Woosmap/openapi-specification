@@ -6,9 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci
-      - run: npm run build -- --profile /tmp/bazel-profile-build.gz --jobs 8
-      - run: npm test -- --jobs 8
+      - uses: pnpm/action-setup@v4
+      - name: Install dependencies
+        run: |
+          pnpm i -F
+      - run: pnpm run build -- --profile /tmp/bazel-profile-build.gz --jobs 8
+      - run: pnpm test -- --jobs 8
       - name: Upload Bazel profiles
         uses: actions/upload-artifact@v4
         with:

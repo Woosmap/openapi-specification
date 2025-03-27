@@ -11,10 +11,13 @@ jobs:
           token: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
           repository: ${{ github.event.client_payload.pull_request.head.repo.full_name }}
           ref: ${{ github.event.client_payload.pull_request.head.ref }}
-      - run: npm ci
+      - uses: pnpm/action-setup@v4
+      - name: Install dependencies
+        run: |
+          pnpm i -F
       - name: Update dist
         run: |
-          npm run build
+          pnpm run build
           git config --global user.name 'gaelsimon'
           git config --global user.email 'gael.simon@woosmap.com'
           git add dist
