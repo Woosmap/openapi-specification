@@ -11,8 +11,8 @@ jobs:
           version: 9.15.9
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
-      - run: pnpm run build -- --profile /tmp/bazel-profile-build.gz --jobs 8
-      - run: pnpm test -- --jobs 8
+      - run: pnpm run build
+      - run: pnpm test
       - name: Upload Bazel profiles
         uses: actions/upload-artifact@v4
         with:

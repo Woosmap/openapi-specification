@@ -22,8 +22,8 @@ jobs:
           version: 9.15.9
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
-      - run: pnpm run build -- --jobs 8
-      - run: pnpm test -- --jobs 8
+      - run: pnpm run build
+      - run: pnpm test
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
         with:
