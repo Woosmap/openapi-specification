@@ -21,8 +21,8 @@ jobs:
         with:
           version: 9.15.9
       - name: Install dependencies
-        run: |
-          pnpm i -F
+        run: pnpm i -F
+        working-directory: ${{ github.workspace }}
       - run: pnpm run build -- --jobs 8
       - run: pnpm test -- --jobs 8
       - name: Semantic Release

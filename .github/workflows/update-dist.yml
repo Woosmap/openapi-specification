@@ -15,8 +15,8 @@ jobs:
         with:
           version: 9.15.9
       - name: Install dependencies
-        run: |
-          pnpm i -F
+        run: pnpm i -F
+        working-directory: ${{ github.workspace }}
       - name: Update dist
         run: |
           pnpm run build
