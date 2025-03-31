@@ -3,7 +3,7 @@ import requests
 
 url = "https://api.woosmap.com/distance/route/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&details=full&key=YOUR_PUBLIC_API_KEY"
 
-payload={}
+payload = {}
 headers = {
     'Referer': 'http://localhost'
 }

@@ -70,26 +70,13 @@ load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
 
 rules_pkg_dependencies()
 
-http_file(
-    name = "what3words_openapi",
-    downloaded_file_path = "what3words.json",
-    urls = ["https://api.woosmap.com/what3words/openapi.json"],
-)
-
-http_file(
-    name = "indoor_openapi",
-    downloaded_file_path = "indoor.json",
-    urls = ["https://api.woosmap.com/indoor/openapi.json"],
-)
-
-http_file(
-    name = "transit_openapi",
-    downloaded_file_path = "transit.json",
-    urls = ["https://api.woosmap.com/transit/openapi.json"],
-)
-
-http_file(
-    name = "datasets_openapi",
-    downloaded_file_path = "datasets.json",
-    urls = ["https://api.woosmap.com/datasets/openapi.json"],
-)
+[http_file(
+    name = name + "_openapi",
+    downloaded_file_path = name + ".json",
+    urls = ["https://api.woosmap.com/{}/openapi.json".format(name)],
+) for name in [
+    "what3words",
+    "indoor",
+    "transit",
+    "datasets",
+]]

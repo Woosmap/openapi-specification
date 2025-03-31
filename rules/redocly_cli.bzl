@@ -1,6 +1,7 @@
+load("@aspect_bazel_lib//lib:copy_to_directory.bzl", "copy_to_directory")
 load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_run_binary", "js_test")
 
-def bundle(name, entry, data = None, visibility = ["//visibility:public"], **kwargs):
+def bundle(name, entry, data = None, config = None, decorators = None, visibility = ["//visibility:public"], **kwargs):
     """Bundle OpenAPI files with redocly CLI."""
     JSON_FILENAME = "{}.json".format(name)
     YAML_FILENAME = "{}.yml".format(name)
@@ -11,6 +12,10 @@ def bundle(name, entry, data = None, visibility = ["//visibility:public"], **kwa
     all_srcs = []
     if data:
         all_srcs.extend(data)
+    if config:
+        all_srcs.append(config)
+    if decorators:
+        all_srcs.extend(decorators)
 
     all_srcs.append(entry)
 
@@ -21,12 +26,8 @@ def bundle(name, entry, data = None, visibility = ["//visibility:public"], **kwa
         tool = "//:redocly_cli",  # Use the binary from the npm package
         args = [
             "bundle",
-            "$(rootpath {})".format(entry),
-            "--output",
-            "$(rootpath :{})".format(RAW_OUTPUT),
-            "--ext",
-            "json",
-        ],
+            "toBundle",
+        ] + (["--config", "$(rootpath {})".format(config)] if config else []),
         srcs = all_srcs,
         env = {"DEBUG": "true"},
         # Add a progress message that will be displayed during build
@@ -71,4 +72,62 @@ def validate(name, data):
         srcs = ["//:redocly_cli"],
         data = [data],
         args = ["lint", "$(location {})".format(data)],
+    )
+
+def bundle_external_specs(name, specs, main_spec = "//:woosmap-openapi3.json"):
+    """Downloads, bundles and joins multiple OpenAPI specs.
+
+    Args:
+        name: Target name for the final joined spec
+        specs: List of spec names to bundle
+        main_spec: Path to the main OpenAPI spec
+    """
+
+    # Copy external specs to a directory
+    copy_to_directory(
+        name = "downloaded_openapi_specs",
+        srcs = ["@{}_openapi//file".format(s) for s in specs],
+        out = "external_specs",
+        include_external_repositories = ["{}_openapi".format(s) for s in specs],
+        visibility = ["//visibility:public"],
+    )
+
+    # Bundle each spec
+    bundled_specs = []
+    for spec in specs:
+        bundle_name = "bundle_{}".format(spec)
+        bundled_specs.append(bundle_name)
+
+        js_run_binary(
+            name = bundle_name,
+            srcs = [":downloaded_openapi_specs"],
+            outs = ["{}-bundled.json".format(spec)],
+            args = [
+                "bundle",
+                "$(rootpath :downloaded_openapi_specs)/file/{}.json".format(spec),
+                "--output",
+                "{}-bundled.json".format(spec),
+                "--remove-unused-components",
+            ],
+            tool = "//:redocly_cli",
+        )
+
+    # Join specs
+    js_run_binary(
+        name = name,
+        srcs = [":{}".format(s) for s in bundled_specs] + [main_spec],
+        outs = ["merged-woosmap-openapi3.json"],
+        args = [
+            "join",
+            "$(rootpath {})".format(main_spec),
+        ] + ["$(rootpath :{})".format(s) for s in bundled_specs] + [
+            "--output",
+            "merged-woosmap-openapi3.json",
+            "--prefix-tags-with-info-prop",
+            "title",
+            "--prefix-components-with-info-prop",
+            "title",
+        ],
+        tool = "//:redocly_cli",
+        visibility = ["//visibility:public"],
     )

@@ -5,7 +5,7 @@
     "description": "The Woosmap API is a RESTful API built on HTTP. It has predictable resource URLs. It returns HTTP response codes to indicate errors. It also accepts and returns JSON in the HTTP body. You can use your favorite HTTP/REST library for your programming language to use Woosmap's API, or you can use one of our Javascript SDKs for supported APIs:\n  - [Map JS](https://developers.woosmap.com/products/map-api/get-started/) - support All APIs\n  - [Localities JS](https://developers.woosmap.com/products/localities/localities-jsapi/get-started/) - for Localities API\n  - [MultiSearch JS](https://developers.woosmap.com/products/multisearch-lib/js/get-started/) - for Localities API and Store Search API\n\nYou can use Postman to test the API (if you use the `PUBLIC_API_KEY` authentication, don't forget to set the `Referer` Header corresponding to one of your restricted domain name).\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9%26entityType%3Dcollection%26workspaceId%3Dff0698d5-c4db-403e-b7c6-b622b68032d3)\n",
     "termsOfService": "https://www.woosmap.com/en/policies/terms/",
     "x-document-meta-data": {
-      "copyright": "© 2023 Woosmap"
+      "copyright": "© 2025 Woosmap"
     },
     "version": "1.31.0",
     "contact": {
@@ -2378,7 +2378,7 @@
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_types"
           },
           {
-            "$ref": "#/Woosmap_Platform_API_Reference_components/parameters/components"
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_localities_components"
           },
           {
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_language-2"
@@ -2856,7 +2856,7 @@
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_list_sub_buildings"
           },
           {
-            "$ref": "#/Woosmap_Platform_API_Reference_components/parameters/components"
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_localities_components"
           },
           {
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_language-2"
@@ -3862,7 +3862,7 @@
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_input-2"
           },
           {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_components-2"
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_address_components"
           },
           {
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_location-2"
@@ -4217,7 +4217,7 @@
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_latlng-2"
           },
           {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_components-2"
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_address_components"
           },
           {
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_language-3"
@@ -10876,17 +10876,17 @@
         "name": "ip_address",
         "description": "The ip_address you want to geolocate. For **server call with private_key** only. Without this parameter, the API will geolocate the IP Address attached to the raw TCP request.\n",
         "in": "query",
-        "example": "75.134.29.90",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "75.134.29.90"
         }
       },
       "Woosmap_Platform_API_Reference_query": {
         "name": "query",
         "in": "query",
-        "example": "name:'My cool store'|type:'click_and_collect'",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "name:'My cool store'|type:'click_and_collect'"
         },
         "description": "Search query combining one or more search clauses. Each search clause is made up of three parts structured as `field` `:` `operator` `value`. , e.g. `name:=\"My cool store\"`\n### Vocabulary\n\n  - **Field**: attribute of the Store that is searched, e.g. the attribute `name` of the store.\n\n  - **Operator**: test that is performed on the data to provide a match, e.g. `=`.\n  Each field has a default operator. If none operator follow the `:`, the default one is used.\n\n  - **Value**: the content of the attribute that is tested, e.g. the name of the store `\"My cool store\"`.\n\nCombine clauses with the conjunctions `AND` or `OR`, and negate the query with `NOT`.\n### Fields\n\n  - `type`: An element is contained within `type` collection. e.g. `type:\"myType\"`\n\n  - `tag`: An element is contained within `tag` collection. e.g. `tag:\"myTag\"`\n\n  - `city`: text matching: the value match the `city` field. e.g. `city:=\"Paris\"`\n\n  - `country`: text matching: the value match the `countryCode` field. e.g. `country:=\"FR\"`\n\n  - `name`: text matching: the value match the `name` field. e.g. `name:=\"myName\"`\n\n  - `idstore`: text matching: the value match the `idstore` field.  e.g. `idstore:=\"myIdStore\"`\n\n  - `user`: concerns all fields inside `user_properties`. text matching or numerical comparison.  e.g. `user.myAttribute:=\"myValue\"`\n\n  - `localized`: used for [localizedNames](https://developers.woosmap.com/products/data-api/data-structure/#localizednames) to search in native language. text matching in collection: the value match one of the the `localizedNames`. e.g. `localized:=\"centro\"`\n\n> **userProperties** field has no restriction regarding the data you can put in it (Arrays, Object, Boolean, String, Numeric...) but you can only query for **text matching or numerical comparison**.\n### Operators\n\n  - `:` : Default and mandatory operator. For `type` and `tag` fields, define that an element is contained within a collection.\n\n  - `=` : The content of a string or a number is equal to the other.\n\n  - `>` : A number is greater than another.\n\n  - `<` : A number is smaller than another.\n\n  - `>=` : A number is greater than or equal to another.\n\n  - `<=` : A number is smaller than or equal to another.\n\n  - `AND` : Return assets that match both clauses.\n\n  - `OR` : Return assets that match either clauses.\n\n  - `NOT` : Negates a search clause.\n\nFor compound clauses, you can use parentheses to group clauses together. For example: ```(type:\"type1\" OR type:\"type2\") AND tag:\"hockey\"```\nYou can use `NOT` operator to negates a search clause. For example: ```not type:\"type1\"```\n"
       },
@@ -10896,45 +10896,45 @@
         "schema": {
           "type": "integer",
           "minimum": 1,
-          "maximum": 300
+          "maximum": 300,
+          "example": 10
         },
-        "example": 10,
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_lat": {
         "name": "lat",
         "description": "Latitude bias for the results. Should be pass with `lng`.\n",
         "schema": {
-          "type": "number"
+          "type": "number",
+          "example": 5.2
         },
-        "example": 5.2,
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_lng": {
         "name": "lng",
         "description": "Longitude bias for the results. Should be pass with `lat`.\n",
         "schema": {
-          "type": "number"
+          "type": "number",
+          "example": 3.5
         },
-        "example": 3.5,
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_radius": {
         "name": "radius",
         "description": "Unit in meters. Used to combine with lat/lng or encoded polyline. To bias the results within a given circular area. 3000 means to search for Assets that are at the most far from 3kms to search area (latlng or polyline).\n",
         "schema": {
-          "type": "number"
+          "type": "number",
+          "example": 3000
         },
-        "example": 3000,
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_encoded_polyline": {
         "name": "encoded_polyline",
         "description": "Find assets nearby an [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) and inside a defined radius.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "_p~iF~ps|U_ulLnnqC_mqNvxq`@"
         },
-        "example": "_p~iF~ps|U_ulLnnqC_mqNvxq`@",
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_stores_by_page": {
@@ -10943,26 +10943,26 @@
         "schema": {
           "type": "integer",
           "minimum": 1,
-          "maximum": 300
+          "maximum": 300,
+          "example": 150
         },
-        "example": 150,
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_page": {
         "name": "page",
         "description": "Page number when accessing paginated assets feature collection\n",
         "schema": {
-          "type": "integer"
+          "type": "integer",
+          "example": 2
         },
-        "example": 2,
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_zone": {
         "name": "zone",
         "in": "query",
-        "example": true,
         "schema": {
-          "type": "boolean"
+          "type": "boolean",
+          "example": true
         },
         "description": "returns the stores that are linked to a zone intersecting the provided `lat`,`lng` query parameters.\n"
       },
@@ -10970,10 +10970,10 @@
         "name": "language",
         "description": "The language code, using ISO 639-2 Alpha-2 country codes, indicating in which language the `localized` name  property should be searched , if present, or else the default `name` property.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "en"
         },
-        "in": "query",
-        "example": "en"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_limit-2": {
         "name": "limit",
@@ -10981,77 +10981,77 @@
         "schema": {
           "type": "integer",
           "minimum": 1,
-          "maximum": 50
+          "maximum": 50,
+          "example": 15
         },
-        "example": 15,
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_input": {
         "name": "input",
         "description": "The text string on which to search, for example: \"london\" or \"123 Cross Road\". The Woosmap Localities API will return predictions matches based on this string and order the results based on their perceived relevance.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "London"
         },
         "required": true,
-        "in": "query",
-        "example": "London"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_types": {
         "name": "types",
         "description": "The types of suggestion to return. Multiple types can be passed using the pipe character (`|`) as a separator.\n  * `city`: includes city localities \n  * `town`: includes town localities \n  * `village`: includes village localities \n  * `hamlet`: includes hamlet localities \n  * `borough`: includes borough localities \n  * `suburb`: includes suburb localities \n  * `quarter`: includes quarter localities \n  * `neighbourhood`: includes neighbourhood localities\n  * `locality`: an alias that groups all localities (`city`, `town`, `village`, `hamlet`, `borough`, `suburb`, `quarter` and `neighbourhood`)\n  * `postal_code`: publicly-used postal codes around the world\n  * `address`: addresses\n  * `admin_level`: most commonly used administrative areas\n  * `country`: countries as whole point of interest\n  * `airport`: includes all medium sized to international sized airports\n  * `train_station`: includes all train stations\n  * `metro_station`: includes all metro stations\n  * `shopping`: includes shopping malls (or \"shopping centers\") - *may include private retail brands*\n  * `museum`: includes museums\n  * `tourist_attraction`: includes tourist attractions like the Eiffel tower\n  * `amusement_park`: includes amusement parks like Disneyland Paris\n  * `art_gallery`: includes art galleries\n  * `zoo`: includes zoos\n",
         "schema": {
           "type": "string",
-          "default": "locality|postal_code"
+          "default": "locality|postal_code",
+          "example": "locality|airport|admin_level"
         },
-        "in": "query",
-        "example": "locality|airport|admin_level"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_excluded_types": {
         "name": "excluded_types",
         "description": "The types of suggestion to exclude. Multiple types can be passed using the pipe character (`|`) as a separator.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "suburb|quarter|neighbourhood"
         },
-        "in": "query",
-        "example": "suburb|quarter|neighbourhood"
+        "in": "query"
       },
-      "Woosmap_Platform_API_Reference_components": {
+      "Woosmap_Platform_API_Reference_localities_components": {
         "name": "components",
         "description": "A grouping of places to which you would like to restrict your results. Components can and should be used when applicable to filter over countries and retrieve more accurate results. Countries must be passed as an ISO 3166-1 Alpha-2 or Alpha-3 compatible country code. For example: `components=country:fr` or `components=country:fra` would restrict your results to places within France and `components=country:fr-fr` returns locations only in Metropolitan France. Multiple countries must be passed as multiple `country:XX` filters, with the pipe character (`|`) as a separator. For example: `components=country:gb|country:fr|country:be|country:sp|country:it` would restrict your results to city names or postal codes within the United Kingdom, France, Belgium, Spain and Italy.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "country:fr|country:es"
         },
-        "example": "country:fr|country:es",
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_language-2": {
         "name": "language",
         "description": "The language code, using ISO 639-2 Alpha-2 country codes, indicating in which language the results should be returned, if possible. If language is not supplied, first `Accept-Language` of the browser will be used.  If neither the provided `language` or the `Accept-Language` are known, the Localities service uses the international default language (English).  No `language` is necessary for a postal_code request. According to requested language, only parts of the address components might be translated.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "en"
         },
-        "in": "query",
-        "example": "en"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_location": {
         "name": "location",
         "description": "This parameter is used to add a geographical bias to the query. The location defines the point around which to retrieve results in priority. It must be specified in the `latitude,longitude` string format.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "5.2,-2.3"
         },
         "required": false,
-        "example": "5.2,-2.3",
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_radius-2": {
         "name": "radius",
         "description": "This parameter may be used in addition to the `location` parameter to define the distance in meters within which the API will return results in priority. Results outside of the defined area may still be displayed. Default radius if this parameter is not set is 100 000.\n",
         "schema": {
-          "type": "integer"
+          "type": "integer",
+          "example": 200000
         },
         "in": "query",
-        "required": false,
-        "example": 200000
+        "required": false
       },
       "Woosmap_Platform_API_Reference_data": {
         "name": "data",
@@ -11061,10 +11061,10 @@
           "enum": [
             "standard",
             "advanced"
-          ]
+          ],
+          "example": "advanced"
         },
-        "in": "query",
-        "example": "advanced"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_extended": {
         "name": "extended",
@@ -11073,30 +11073,30 @@
           "type": "string",
           "enum": [
             "postal_code"
-          ]
+          ],
+          "example": "postal_code"
         },
-        "in": "query",
-        "example": "postal_code"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_custom_description": {
         "name": "custom_description",
         "description": "This parameter allows to choose the description format for all or some of the suggestion types selected. The custom formats are described as follows (available fields depend on the returned type): `custom_description=type_A:\"{field_1}, {field_2}, [...]\"|type_B:\"{field_1}, {field_2}, [...]\"`\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "locality:\"{name} - {administrative_area_level_0}\"|postal_code:\"{name} ({administrative_area_level_1})\""
         },
         "required": false,
-        "in": "query",
-        "example": "locality:\"{name} - {administrative_area_level_0}\"|postal_code:\"{name} ({administrative_area_level_1})\""
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_public_id": {
         "name": "public_id",
         "description": "A textual identifier that uniquely identifies a locality, returned from a [Localities Autocomplete](https://developers.woosmap.com/products/localities/autocomplete/).\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "MkvnYy6K6oVGqeqfWJGO/6eCgqo="
         },
         "required": true,
-        "in": "query",
-        "example": "MkvnYy6K6oVGqeqfWJGO/6eCgqo="
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_fields": {
         "name": "fields",
@@ -11105,10 +11105,10 @@
           "type": "string",
           "enum": [
             "geometry"
-          ]
+          ],
+          "example": "geometry"
         },
-        "in": "query",
-        "example": "geometry"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_cc_format": {
         "name": "cc_format",
@@ -11118,49 +11118,49 @@
           "enum": [
             "alpha2",
             "alpha3"
-          ]
+          ],
+          "example": "alpha2"
         },
-        "example": "alpha2",
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_page-2": {
         "name": "page",
         "description": "In a few cases, a postal code details may contain addresses (UK postal codes). The address list is paginated. In that case, you can navigate in the address list thanks to the `addresses_per_page` and `page` parameters. Notice: as all the addresses are now automatically returned in the response, the `page` parameter is deprecated and has been turned off on December 31, 2021.\n",
         "schema": {
-          "type": "integer"
+          "type": "integer",
+          "example": 1
         },
         "in": "query",
-        "deprecated": true,
-        "example": 1
+        "deprecated": true
       },
       "Woosmap_Platform_API_Reference_addresses_per_page": {
         "name": "addresses_per_page",
         "description": "In a few cases, a postal code details may contain addresses (UK postal codes). The address list is paginated. In that case, you can navigate in the address list thanks to the `addresses_per_page` and `page` parameters. Notice: as all the addresses are now automatically returned in the response, the `addresses_per_page` parameter is deprecated and has been turned off on December 31, 2021.\n",
         "schema": {
-          "type": "integer"
+          "type": "integer",
+          "example": 10
         },
         "in": "query",
-        "deprecated": true,
-        "example": 10
+        "deprecated": true
       },
       "Woosmap_Platform_API_Reference_address": {
         "name": "address",
         "description": "The input string to geocode. Can represent an address, a street, a locality or a postal code. The `address` parameter must be URL encoded.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "224%20Rue%20de%20Rivoli%2C%20Paris"
         },
         "required": false,
-        "in": "query",
-        "example": "224%20Rue%20de%20Rivoli%2C%20Paris"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_latlng": {
         "name": "latlng",
         "description": "The latlng parameter is used for reverse geocoding, it’s required if the `address` parameter is missing.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "5.2,-2.3"
         },
         "required": false,
-        "example": "5.2,-2.3",
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_geocode_types": {
@@ -11168,19 +11168,19 @@
         "description": "Specify the types of geocoding responses to return by separating multiple types with a pipe character (|).  This parameter is ignored when used with the `latlng` parameter.  When executing a geocode request with the `address` parameter, use this to select the expected result type.\n  * `city`: includes city localities \n  * `town`: includes town localities \n  * `village`: includes village localities \n  * `hamlet`: includes hamlet localities \n  * `borough`: includes borough localities \n  * `suburb`: includes suburb localities \n  * `quarter`: includes quarter localities \n  * `neighbourhood`: includes neighbourhood localities\n  * `locality`: includes all previous locality names\n  * `postal_code`: publicly-used postal codes around the world\n  * `address`: addresses\n  * `admin_level`: most commonly used administrative areas\n  * `country`: countries as whole point of interest\n  * `airport`: includes all medium sized to international sized airports\n  * `train_station`: includes all train stations\n  * `metro_station`: includes all metro stations\n  * `shopping`: includes shopping malls (or \"shopping centers\") - *may include private retail brands*\n  * `museum`: includes museums\n  * `tourist_attraction`: includes tourist attractions like the Eiffel tower\n  * `amusement_park`: includes amusement parks like Disneyland Paris\n  * `art_gallery`: includes art galleries\n  * `zoo`: includes zoos\n",
         "schema": {
           "type": "string",
-          "default": "locality|postal_code|address"
+          "default": "locality|postal_code|address",
+          "example": "locality|admin_level"
         },
-        "in": "query",
-        "example": "locality|admin_level"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_list_sub_buildings": {
         "name": "list_sub_buildings",
         "description": "When latlng parameter is used for reverse geocoding, setting `list_sub_building=true` allows to retrieve all addresses at the same location for a common street number or building. Results may contain an additional key \"sub_buildings\" with \"public_id\" and \"description\" values for every addresses at the same location sharing the same address components.\n",
         "schema": {
-          "type": "boolean"
+          "type": "boolean",
+          "example": true
         },
         "required": false,
-        "example": true,
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_cc_format-2": {
@@ -11191,9 +11191,9 @@
           "enum": [
             "alpha2",
             "alpha3"
-          ]
+          ],
+          "example": "alpha2"
         },
-        "example": "alpha2",
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_categories": {
@@ -11202,8 +11202,7 @@
         "schema": {
           "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyCategory"
         },
-        "in": "query",
-        "example": "business.food_and_drinks"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_excluded_categories": {
         "name": "excluded_categories",
@@ -11211,65 +11210,64 @@
         "schema": {
           "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyCategory"
         },
-        "in": "query",
-        "example": "business.food_and_drinks.fast_food"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_search_types": {
         "name": "types",
         "description": "The types of suggestion to return. Multiple types can be passed using the pipe character (`|`) as a separator.\n  * `city`: includes city localities\n  * `town`: includes town localities\n  * `village`: includes village localities\n  * `hamlet`: includes hamlet localities\n  * `borough`: includes borough localities\n  * `suburb`: includes suburb localities\n  * `quarter`: includes quarter localities\n  * `neighbourhood`: includes neighbourhood localities\n  * `locality`: includes locality names (from city to village) and suburbs\n  * `postal_code`: publicly-used postal codes around the world\n  * `address`: addresses\n  * `admin_level`: most commonly used administrative areas\n  * `country`: countries as whole point of interest\n  * `point_of_interest`: includes points of interest\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "point_of_interest|address|locality|postal_code"
         },
         "required": true,
-        "in": "query",
-        "example": "point_of_interest|address|locality|postal_code"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_input-2": {
         "name": "input",
         "description": "The text string on which to search, for example: \"london\" or \"123 Cross Road\". The Woosmap Address API will return predictions matches based on this string and order the results based on their perceived relevance.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "London"
         },
         "required": true,
-        "in": "query",
-        "example": "London"
+        "in": "query"
       },
-      "Woosmap_Platform_API_Reference_components-2": {
+      "Woosmap_Platform_API_Reference_address_components": {
         "name": "components",
         "description": "To restrict your results to specific areas. Currently, you can use components to filter over countries. Countries must be passed as three characters string (ISO 3166-1 Alpha 3). Components should be passed as an array of different options which are separated by a `|`.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "country:CAN|country:BEL"
         },
-        "example": "country:CAN|country:BEL",
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_location-2": {
         "name": "location",
         "description": "Bias for the results. Should be pass in `lat`,`lng` format.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "5.2,-2.3"
         },
-        "example": "5.2,-2.3",
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_language-3": {
         "name": "language",
         "description": "The language code, using ISO 639-1 country codes, indicating in which language the results should be returned, if possible. If language is not supplied, the Localities service will use the default language of each country.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "en"
         },
-        "in": "query",
-        "example": "en"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_public_id-2": {
         "name": "public_id",
         "description": "A textual identifier that uniquely identifies a locality, returned from an [Address Autocomplete](https://developers.woosmap.com/products/address-api/autocomplete/).\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMDA1MTI2"
         },
         "required": true,
-        "in": "query",
-        "example": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMDA1MTI2"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_fields-2": {
         "name": "fields",
@@ -11278,29 +11276,29 @@
           "type": "string",
           "enum": [
             "geometry"
-          ]
+          ],
+          "example": "geometry"
         },
-        "in": "query",
-        "example": "geometry"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_address-2": {
         "name": "address",
         "description": "The address of which to find the coordinates for. A partial address is less likely to return the proper coordinates than the complete address.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "224%20Rue%20de%20Rivoli%2C%20Paris"
         },
         "required": false,
-        "in": "query",
-        "example": "224%20Rue%20de%20Rivoli%2C%20Paris"
+        "in": "query"
       },
       "Woosmap_Platform_API_Reference_latlng-2": {
         "name": "latlng",
         "description": "Geographic coordinates. Should be pass in `lat`,`lng` format.\n",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "5.2,-2.3"
         },
         "required": false,
-        "example": "5.2,-2.3",
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_limit-3": {
@@ -11309,9 +11307,9 @@
         "schema": {
           "type": "integer",
           "minimum": 1,
-          "maximum": 100
+          "maximum": 100,
+          "example": 10
         },
-        "example": 10,
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_limit-4": {
@@ -11320,9 +11318,9 @@
         "schema": {
           "type": "integer",
           "minimum": 1,
-          "maximum": 50
+          "maximum": 50,
+          "example": 10
         },
-        "example": 10,
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_offset": {
@@ -11330,192 +11328,192 @@
         "description": "To retrieve zones starting from an offset value.\n",
         "schema": {
           "type": "integer",
-          "minimum": 1
+          "minimum": 1,
+          "example": 20
         },
-        "example": 20,
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_origins": {
         "name": "origins",
         "in": "query",
-        "example": "48.709,2.403",
         "required": true,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "48.709,2.403"
         },
         "description": "The starting point for calculating travel distance. You can supply one or more locations separated by the pipe character (|), in the form of latitude/longitude coordinates. They are used unchanged to calculate distance. Ensure that no space exists between the latitude and longitude values. In order to reduce URL size, [encoded polylines](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) are also supported using `enc:encoded-polyline:`\n"
       },
       "Woosmap_Platform_API_Reference_destinations": {
         "name": "destinations",
         "in": "query",
-        "example": "48.709,2.403|48.768,2.338",
         "required": true,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "48.709,2.403|48.768,2.338"
         },
         "description": "One or more locations to use as the finishing point for calculating travel distance. The options for the destinations parameter are the same as for the origins parameter, described above. In order to reduce URL size, [encoded polylines](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) are also supported using `enc:encoded-polyline:`\n"
       },
       "Woosmap_Platform_API_Reference_mode": {
         "name": "mode",
         "in": "query",
-        "example": "driving",
         "schema": {
           "type": "string",
           "enum": [
             "driving",
             "cycling",
             "walking"
-          ]
+          ],
+          "example": "driving"
         },
         "description": "Specifies the mode of transport to use when calculating distance\n"
       },
       "Woosmap_Platform_API_Reference_language-4": {
         "name": "language",
         "in": "query",
-        "example": "en",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "en"
         },
         "description": "The language code, indicating in which language the results should be returned, if possible. If language is not supplied, the Distance API service will use the navigator language or “en”.\n"
       },
       "Woosmap_Platform_API_Reference_units": {
         "name": "units",
-        "example": "metric",
         "in": "query",
         "schema": {
           "type": "string",
           "enum": [
             "imperial",
             "metric"
-          ]
+          ],
+          "example": "metric"
         },
         "description": "Specifies the unit system parameter to use when expressing distance as text. Two different units supported:\n  * `metric` (default) returns distances in kilometers and meters\n  * `imperial` returns distances in miles and feet\n"
       },
       "Woosmap_Platform_API_Reference_elements": {
         "name": "elements",
         "in": "query",
-        "example": "duration_distance",
         "schema": {
           "type": "string",
           "enum": [
             "distance",
             "duration",
             "duration_distance"
-          ]
+          ],
+          "example": "duration_distance"
         },
         "description": "Specifies element values that will be part of the API response (distance and/or duration). if not specified default is `distance`\n"
       },
       "Woosmap_Platform_API_Reference_method": {
         "name": "method",
-        "example": "distance",
         "in": "query",
         "schema": {
           "type": "string",
           "enum": [
             "time",
             "distance"
-          ]
+          ],
+          "example": "distance"
         },
         "description": "Specifies the method to compute the route between the start point and the end point:\n- `time`: fastest route (default) - `distance`: shortest route\n"
       },
       "Woosmap_Platform_API_Reference_avoid": {
         "name": "avoid",
         "in": "query",
-        "example": "tolls|highways|43.3,3.4;42.1,3.5;41.4,3.6",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "tolls|highways|43.3,3.4;42.1,3.5;41.4,3.6"
         },
         "description": "The list of features that you want to avoid. Valid values are `tolls`, `highways`, `ferries` or polygons coordinates whose vertex latlng are separated by a semicolon. To add multiple polygons, separate them with the `|` character.\n"
       },
       "Woosmap_Platform_API_Reference_departure_time": {
         "name": "departure_time",
         "in": "query",
-        "example": "1600799173",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "1600799173"
         },
         "description": "By using this parameter, Distance will calculate the duration with traffic Specifies the date/time at which to base the calculations on for traffic purposes. Valid values are a timestamp (e.g. `1600799173` for the date:`22/09/2020 20:26:13`) or `now`.\nUse either `arrival_time` or `departure_time`, not both.\n"
       },
       "Woosmap_Platform_API_Reference_origin": {
         "name": "origin",
         "in": "query",
-        "example": "48.709,2.403",
         "required": true,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "48.709,2.403"
         },
         "description": "The starting point. It should be supplied in the form of latitude/longitude coordinates. Ensure that no space exists between the latitude and longitude values.\n"
       },
       "Woosmap_Platform_API_Reference_destination": {
         "name": "destination",
         "in": "query",
-        "example": "48.768,2.338",
         "required": true,
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "48.768,2.338"
         },
         "description": "The ending point for the route. It should be supplied in the form of latitude/longitude coordinates. Ensure that no space exists between the latitude and longitude values.\n"
       },
       "Woosmap_Platform_API_Reference_alternatives": {
         "name": "alternatives",
         "in": "query",
-        "example": true,
         "schema": {
-          "type": "boolean"
+          "type": "boolean",
+          "example": true
         },
         "description": "Specifies if alternative routes should be returned. default is `false`. Depending on the calculated route, alternatives may not be provided.\n`alternatives` and `waypoints` can not be used at the same time.\n"
       },
       "Woosmap_Platform_API_Reference_waypoints": {
         "name": "waypoints",
         "in": "query",
-        "example": "optimize:true|48.850077,3.311124|48.850077,3.411124",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "optimize:true|48.850077,3.311124|48.850077,3.411124"
         },
         "description": "A list of points by which the route should pass (route response is divided into legs, one leg corresponding to a route between two waypoints). Waypoints should be separated by | character.\nOptionally, you may pass `optimize:true` as the first argument within the waypoints parameter. This way the provided route is optimized by rearranging the waypoints in a more efficient order based on distance or time according to the method parameter. The route start point and end point order is not changed, their position is considered fixed.\n`alternatives` and `waypoints` can not be used at the same time.\n"
       },
       "Woosmap_Platform_API_Reference_details": {
         "name": "details",
         "in": "query",
-        "example": "full",
         "schema": {
           "type": "string",
           "enum": [
             "full",
             "none"
-          ]
+          ],
+          "example": "full"
         },
         "description": "Specifies if maneuver instructions should be returned (roadbook). Valid values are `none` and `full` (default is `none`)\n"
       },
       "Woosmap_Platform_API_Reference_arrival_time": {
         "name": "arrival_time",
         "in": "query",
-        "example": "1600799173",
         "schema": {
-          "type": "string"
+          "type": "string",
+          "example": "1600799173"
         },
         "description": "By using this parameter, Distance will calculate the duration with traffic Specifies the arrival date/time as a timestamp to base the calculation on (e.g. `1600799173` for the date:`22/09/2020 20:26:13`).\nUse either `arrival_time` or `departure_time`, not both.\n"
       },
       "Woosmap_Platform_API_Reference_value": {
         "name": "value",
         "in": "query",
-        "example": 120,
         "required": true,
         "schema": {
           "type": "integer",
           "minimum": 1,
-          "maximum": 120
+          "maximum": 120,
+          "example": 120
         },
         "description": "The value to use for isochrone contour. You can specify time in minutes or distance in kilometers (cf. method parameter). The maximum value that can be specified is 120 (120 minutes : 2 hours or 120 km).\n"
+      },
+      "Woosmap_Platform_API_Reference_address_address_components": {
+        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_address_components"
       },
       "Woosmap_Platform_API_Reference_address_address": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_address-2"
       },
       "Woosmap_Platform_API_Reference_address_cc_format": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format"
-      },
-      "Woosmap_Platform_API_Reference_address_components": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_components-2"
       },
       "Woosmap_Platform_API_Reference_address_fields": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_fields-2"
@@ -11604,9 +11602,6 @@
       "Woosmap_Platform_API_Reference_localities_cc_format": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format-2"
       },
-      "Woosmap_Platform_API_Reference_localities_components": {
-        "$ref": "#/Woosmap_Platform_API_Reference_components/parameters/components"
-      },
       "Woosmap_Platform_API_Reference_localities_custom_description": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_custom_description"
       },
@@ -11639,6 +11634,9 @@
       },
       "Woosmap_Platform_API_Reference_localities_list_sub_buildings": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_list_sub_buildings"
+      },
+      "Woosmap_Platform_API_Reference_localities_localities_components": {
+        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_localities_components"
       },
       "Woosmap_Platform_API_Reference_localities_location": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_location"
@@ -16361,37 +16359,6 @@
           }
         }
       },
-      "Woosmap_for_what3words_API_W3wQuery": {
-        "properties": {
-          "coordinates": {
-            "description": "Coordinates as a comma separated string of latitude and longitude",
-            "example": "48.858304,2.294514",
-            "title": "Coordinates",
-            "type": "string"
-          },
-          "format": {
-            "default": "json",
-            "description": "Return data format type; can be either json or geojson",
-            "enum": [
-              "json",
-              "geojson"
-            ],
-            "title": "Format",
-            "type": "string"
-          },
-          "language": {
-            "default": "en",
-            "description": "A supported address language as an ISO 639-1 2 letter code.",
-            "title": "Language",
-            "type": "string"
-          }
-        },
-        "required": [
-          "coordinates"
-        ],
-        "title": "W3wQuery",
-        "type": "object"
-      },
       "Woosmap_for_what3words_API_Coordinates": {
         "properties": {
           "lng": {
@@ -16648,27 +16615,6 @@
         "title": "Square",
         "type": "object"
       },
-      "Woosmap_for_what3words_API_AddressQuery": {
-        "properties": {
-          "words": {
-            "description": "A 3 word address as a string. It must be three words separated with dots or a japanese middle dot character (・). Words separated by spaces will be rejected. Optionally, the 3 word address can be prefixed with /// (which would be encoded as %2F%2F%2F)",
-            "example": "couch.spotted.amended",
-            "title": "Words",
-            "type": "string"
-          },
-          "language": {
-            "default": "en",
-            "description": "A supported address language as an ISO 639-1 2 letter code.",
-            "title": "Language",
-            "type": "string"
-          }
-        },
-        "required": [
-          "words"
-        ],
-        "title": "AddressQuery",
-        "type": "object"
-      },
       "Woosmap_for_what3words_API_AddressSummary": {
         "properties": {
           "public_id": {
@@ -16826,117 +16772,6 @@
           "public_id"
         ],
         "title": "LiteAddressResult",
-        "type": "object"
-      },
-      "Woosmap_for_what3words_API_AutoSuggestQuery": {
-        "properties": {
-          "input": {
-            "description": "The full or partial 3 word address to obtain suggestions for. At minimum this must be the first two complete words plus at least one character from the third word.",
-            "example": "couch.spotted.a",
-            "title": "Input",
-            "type": "string"
-          },
-          "focus": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "This is a location, specified as latitude,longitude (often where the user making the query is). If specified, the results will be weighted to give preference to those near the focus.",
-            "example": "48.861026,2.335853",
-            "title": "Focus"
-          },
-          "clip-to-country": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Restricts AutoSuggest to only return results inside the countries specified by comma-separated list of ISO 3166-1 alpha-2 country codes.",
-            "example": "FR",
-            "title": "Clip-To-Country"
-          },
-          "clip-to-bounding-box": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Restrict AutoSuggest results to a bounding box, specified by coordinates.south_lat,west_lng,north_lat,east_lng, where: south_lat less than or equal to north_lat, west_lng less than or equal to east_lng.",
-            "example": "48.624314,1.804429,49.058148,2.908555",
-            "title": "Clip-To-Bounding-Box"
-          },
-          "clip-to-circle": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Restrict AutoSuggest results to a circle, specified by lat, lng, kilometres, where kilometres is the radius of the circle.",
-            "example": "48.839701,2.291878,20",
-            "title": "Clip-To-Circle"
-          },
-          "clip-to-polygon": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Restrict AutoSuggest results to a polygon, specified by a comma-separated list of lat, lng pairs. The polygon should be closed, i.e. the first element should be repeated as the last element; also the list should contain at least 4 pairs. The API is currently limited to accepting up to 25 pairs.",
-            "example": "48.823547,2.199174,48.823547,2.199174,48.922216,2.328709,48.888626,2.473673,48.819279,2.445513,48.784865,2.330668,48.823547,2.199174",
-            "title": "Clip-To-Polygon"
-          },
-          "input-type": {
-            "default": "text",
-            "description": "For power users, used to specify voice input mode.",
-            "enum": [
-              "text",
-              "vocon-hybrid",
-              "nmdp-asr",
-              "generic-voice"
-            ],
-            "title": "Input-Type",
-            "type": "string"
-          },
-          "prefer-land": {
-            "default": true,
-            "description": "Makes AutoSuggest prefer results on land to those in the sea.",
-            "title": "Prefer-Land",
-            "type": "boolean"
-          },
-          "language": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "For normal text input, specifies a fallback language, which will help guide AutoSuggest if the input is particularly messy. A supported address language as an ISO 639-1 2 letter code.",
-            "example": "fr",
-            "title": "Language"
-          }
-        },
-        "required": [
-          "input"
-        ],
-        "title": "AutoSuggestQuery",
         "type": "object"
       },
       "Woosmap_for_what3words_API_AutoSuggestResponse": {
@@ -17426,36 +17261,6 @@
         "title": "VenueListSchema",
         "type": "object"
       },
-      "Indoor_API_DistanceMatrixDirectionsIn": {
-        "properties": {
-          "origins": {
-            "description": "A string with a list of origins seperated by `|`. Origins can be of the format: `lat,lng,level`, `poi_id`, `ref:poi_ref`",
-            "example": "1.2,2.1,1|exit_1|1.3,3.1,2|ref:main_exit",
-            "title": "Origins",
-            "type": "string"
-          },
-          "destinations": {
-            "description": "A string with a list of destinations seperated by `|`. Destinations can be of the format: `lat,lng,level`, `poi_id`, `ref:poi_ref`",
-            "example": "1.2,2.1,1|exit_1|1.3,3.1,2|ref:main_exit",
-            "title": "Destinations",
-            "type": "string"
-          }
-        },
-        "required": [
-          "origins",
-          "destinations"
-        ],
-        "title": "DistanceMatrixDirectionsIn",
-        "type": "object"
-      },
-      "Indoor_API_UnitSystem": {
-        "enum": [
-          "metric",
-          "imperial"
-        ],
-        "title": "UnitSystem",
-        "type": "string"
-      },
       "Indoor_API_Distance": {
         "properties": {
           "value": {
@@ -17558,67 +17363,6 @@
           "text"
         ],
         "title": "Duration",
-        "type": "object"
-      },
-      "Indoor_API_DirectionsIn": {
-        "properties": {
-          "origin": {
-            "description": "A string defining the origin of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI) or `ref:poi_ref` (ref of a poi with starting with 'ref:') ",
-            "examples": {
-              "lll": {
-                "summary": "lat,lng,level",
-                "value": "48.8818546,2.3572283,0"
-              },
-              "poi": {
-                "summary": "POI",
-                "value": "123456"
-              },
-              "ref": {
-                "summary": "Reference",
-                "value": "ref:entrance"
-              }
-            },
-            "title": "Origin",
-            "type": "string"
-          },
-          "destination": {
-            "description": "A string defining the destination of the route, in the format `lat,lng,level`, `poi_id` (identifier of a poi) or `ref:poi_ref` (ref of a poi with starting with 'ref:')",
-            "examples": {
-              "lll": {
-                "summary": "lat,lng,level",
-                "value": "48.8818546,2.3572283,0"
-              },
-              "poi": {
-                "summary": "POI",
-                "value": "123456"
-              },
-              "ref": {
-                "summary": "Reference",
-                "value": "ref:entrance"
-              }
-            },
-            "title": "Destination",
-            "type": "string"
-          }
-        },
-        "required": [
-          "origin",
-          "destination"
-        ],
-        "title": "DirectionsIn",
-        "type": "object"
-      },
-      "Indoor_API_WaypointsIn": {
-        "properties": {
-          "waypoints": {
-            "default": "",
-            "description": "A list of points by which the route should pass seperated by `|`. Waypoints can be of the format: `lat,lng,level`, `poi_id`, `ref:poi_ref`",
-            "example": "48.8818546,2.3572283,0|123456|48.8818546,2.3572283,0|ref:main_exit",
-            "title": "Waypoints",
-            "type": "string"
-          }
-        },
-        "title": "WaypointsIn",
         "type": "object"
       },
       "Indoor_API_Instruction": {
@@ -17965,79 +17709,6 @@
           "polyline"
         ],
         "title": "Step",
-        "type": "object"
-      },
-      "Indoor_API_SearchKeyInputSchema": {
-        "properties": {
-          "items_by_page": {
-            "default": 0,
-            "description": "Number of items per page. A value of 0 means no pagination.",
-            "title": "Items By Page",
-            "type": "integer"
-          },
-          "page": {
-            "default": 0,
-            "description": "Page number. 0 being the first page.",
-            "title": "Page",
-            "type": "integer"
-          },
-          "from_location": {
-            "description": "A string with the format lat,lng,level",
-            "example": "48.8818546,2.3572283,0",
-            "title": "From Location",
-            "type": "string"
-          },
-          "q": {
-            "description": "Search string. If not passed then all features will be listed alphabetically",
-            "title": "Q",
-            "type": "string"
-          },
-          "extended": {
-            "description": "Option to search even not searchable pois (extended=full)",
-            "example": "full",
-            "title": "Extended",
-            "type": "string"
-          },
-          "level": {
-            "description": "Filter by level.",
-            "title": "Level",
-            "type": "integer"
-          },
-          "building": {
-            "description": "Filter by building (use `undefined` to find POIs not associated with a building.).",
-            "title": "Building",
-            "type": "string"
-          },
-          "category": {
-            "description": "Filter by category.",
-            "title": "Category",
-            "type": "string"
-          },
-          "ref": {
-            "description": "Filter by a comma seperated list of POI Refs.",
-            "example": "ref:main_entrance,ref:side_entrance",
-            "title": "Ref",
-            "type": "string"
-          },
-          "language": {
-            "default": "en",
-            "description": "A supported language as an ISO 639-1 2 letter code.",
-            "title": "Language",
-            "type": "string"
-          },
-          "advanced_filter": {
-            "description": "Filter by complex queries on properties (ex: indoor:=\"room\" OR door:=\"yes\").",
-            "title": "Advanced Filter",
-            "type": "string"
-          },
-          "id": {
-            "description": "Filter by a comma seperated list of POI IDs.",
-            "example": "1234,4321,9876",
-            "title": "Id",
-            "type": "string"
-          }
-        },
-        "title": "SearchKeyInputSchema",
         "type": "object"
       },
       "Indoor_API_GeometryCollection": {
@@ -18892,73 +18563,6 @@
           "pagination"
         ],
         "title": "SearchPagination",
-        "type": "object"
-      },
-      "Indoor_API_AutocompleteInput": {
-        "properties": {
-          "items_by_page": {
-            "default": 0,
-            "description": "Number of items per page. A value of 0 means no pagination.",
-            "title": "Items By Page",
-            "type": "integer"
-          },
-          "page": {
-            "default": 0,
-            "description": "Page number. 0 being the first page.",
-            "title": "Page",
-            "type": "integer"
-          },
-          "from_location": {
-            "description": "A string with the format lat,lng,level",
-            "example": "48.8818546,2.3572283,0",
-            "title": "From Location",
-            "type": "string"
-          },
-          "q": {
-            "description": "Search string. If not passed then all features will be listed alphabetically",
-            "title": "Q",
-            "type": "string"
-          },
-          "extended": {
-            "description": "Option to search even not searchable pois (extended=full)",
-            "example": "full",
-            "title": "Extended",
-            "type": "string"
-          },
-          "level": {
-            "description": "Filter by level.",
-            "title": "Level",
-            "type": "integer"
-          },
-          "building": {
-            "description": "Filter by building (use `undefined` to find POIs not associated with a building.).",
-            "title": "Building",
-            "type": "string"
-          },
-          "category": {
-            "description": "Filter by category.",
-            "title": "Category",
-            "type": "string"
-          },
-          "ref": {
-            "description": "Filter by a comma seperated list of POI Refs.",
-            "example": "ref:main_entrance,ref:side_entrance",
-            "title": "Ref",
-            "type": "string"
-          },
-          "language": {
-            "default": "en",
-            "description": "A supported language as an ISO 639-1 2 letter code.",
-            "title": "Language",
-            "type": "string"
-          },
-          "advanced_filter": {
-            "description": "Filter by complex queries on properties (ex: indoor:=\"room\" OR door:=\"yes\").",
-            "title": "Advanced Filter",
-            "type": "string"
-          }
-        },
-        "title": "AutocompleteInput",
         "type": "object"
       },
       "Indoor_API_AutocompletePagination": {

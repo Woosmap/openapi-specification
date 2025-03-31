@@ -13,9 +13,3 @@ jobs:
         run: pnpm i --frozen-lockfile
       - run: pnpm run build
       - run: pnpm test
-      - name: Upload Bazel profiles
-        uses: actions/upload-artifact@v4
-        with:
-          name: bazel profiles
-          path: |
-            /tmp/bazel-profile-*.gz

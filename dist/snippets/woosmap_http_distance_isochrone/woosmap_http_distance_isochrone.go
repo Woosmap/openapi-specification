@@ -4,12 +4,12 @@ package main
 import (
   "fmt"
   "net/http"
-  "io/ioutil"
+  "io"
 )
 
 func main() {
 
-  url := "https://api.woosmap.com/distance/isochrone/json?origin=48.709,2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY"
+  url := "https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY"
   method := "GET"
 
   client := &http.Client {
@@ -29,7 +29,7 @@ func main() {
   }
   defer res.Body.Close()
 
-  body, err := ioutil.ReadAll(res.Body)
+  body, err := io.ReadAll(res.Body)
   if err != nil {
     fmt.Println(err)
     return

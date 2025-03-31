@@ -7,7 +7,7 @@ load("@npm//:defs.bzl", "npm_link_all_packages")
 load("@npm//:openapi-examples-validator/package_json.bzl", validator_bin = "bin")
 load("@npm//:openapi-to-postmanv2/package_json.bzl", postman_bin = "bin")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
-load("//rules:redocly_cli.bzl", "bundle", "validate")
+load("//rules:redocly_cli.bzl", "bundle", "bundle_external_specs", "validate")
 
 REDOCLY_DEPS = [":node_modules/" + d for d in [
     "@redocly/cli",
@@ -36,7 +36,9 @@ BUNDLE_NAME = "woosmap-openapi3"
 
 bundle(
     name = BUNDLE_NAME,
+    config = "redocly-plugins/redocly-config.yaml",
     data = ["//specification:openapi3"],
+    decorators = glob(["redocly-plugins/**/*.js"]),
     entry = "//specification:index_yml",
 )
 
@@ -49,12 +51,6 @@ validate(
     name = "validate_json_test",
     data = "//:{}.json".format(BUNDLE_NAME),
 )
-
-# Currently this is providing validation error from redocly lint
-#validate(
-#    name = "validate_merge_test",
-#    data = "merged-woosmap-openapi3.json",
-#)
 
 pkg_tar(
     name = "dist",
@@ -173,45 +169,20 @@ js_run_binary(
     tool = "//rules:parameters",
 )
 
-copy_to_directory(
-    name = "downloaded_openapi_specs",
-    srcs = [
-        "@datasets_openapi//file",
-        "@indoor_openapi//file",
-        "@transit_openapi//file",
-        "@what3words_openapi//file",
+bundle_external_specs(
+    name = "run_redocly_join",
+    main_spec = "//:woosmap-openapi3.json",
+    specs = [
+        "what3words",
+        "indoor",
+        "transit",
+        "datasets",
     ],
-    out = "external_specs",
-    include_external_repositories = [
-        "what3words_openapi",
-        "indoor_openapi",
-        "transit_openapi",
-        "datasets_openapi",
-    ],
-    visibility = ["//visibility:public"],
 )
 
-js_run_binary(
-    name = "run_redocly_join",
-    srcs = [
-        ":downloaded_openapi_specs",
-        "//:woosmap-openapi3.json",
-    ],
-    outs = ["merged-woosmap-openapi3.json"],
-    args = [
-        "join",
-        "$(rootpath //:woosmap-openapi3.json)",
-        "$(rootpath :downloaded_openapi_specs)/file/what3words.json",
-        "$(rootpath :downloaded_openapi_specs)/file/indoor.json",
-        "$(rootpath :downloaded_openapi_specs)/file/transit.json",
-        "$(rootpath :downloaded_openapi_specs)/file/datasets.json",
-        "--output",
-        "merged-woosmap-openapi3.json",
-        "--prefix-tags-with-info-prop",
-        "title",
-        "--prefix-components-with-info-prop",
-        "title",
-    ],
-    tool = "//:redocly_cli",
-    visibility = ["//visibility:public"],
-)
+# Currently this is providing validation error from redocly lint
+# Check with bazel test //:validate_merge_test
+#validate(
+#    name = "validate_merge_test",
+#    data = "merged-woosmap-openapi3.json",
+#)

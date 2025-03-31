@@ -1,7 +1,7 @@
 # [START woosmap_http_assets_replace_simple_request]
-curl -L -X POST 'https://api.woosmap.com/stores/replace?private_key=YOUR_PRIVATE_API_KEY' \
+curl -L 'https://api.woosmap.com/stores/replace?private_key=YOUR_PRIVATE_API_KEY' \
 -H 'content-type: application/json' \
---data-raw '{
+-d '{
   "stores": [
     {
       "storeId": "store_123",

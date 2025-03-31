@@ -1,19 +1,20 @@
 // [START woosmap_http_asset_search_by_zone_feature_collection]
-var axios = require('axios');
+const axios = require('axios');
 
-var config = {
+let config = {
   method: 'get',
+  maxBodyLength: Infinity,
   url: 'https://api.woosmap.com/stores/search/?lat=51.50976&lng=-0.145276&zone=true&key=YOUR_PUBLIC_API_KEY',
   headers: { 
     'Referer': 'http://localhost'
   }
 };
 
-axios(config)
-.then(function (response) {
+axios.request(config)
+.then((response) => {
   console.log(JSON.stringify(response.data));
 })
-.catch(function (error) {
+.catch((error) => {
   console.log(error);
 });
 

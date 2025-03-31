@@ -3,7 +3,7 @@ import requests
 
 url = "https://api.woosmap.com/stores/autocomplete/?language=en&query=localized%3Astreet&limit=3&key=YOUR_PUBLIC_API_KEY"
 
-payload={}
+payload = {}
 headers = {
     'Referer': 'http://localhost'
 }
