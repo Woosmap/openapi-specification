@@ -30,5 +30,6 @@ schema:
   type: string
   default:
     locality|postal_code|address
+  example: locality|admin_level
+
 in: query
-example: locality|admin_level

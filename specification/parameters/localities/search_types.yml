@@ -17,6 +17,7 @@ description: >
     * `point_of_interest`: includes points of interest
 schema:
   type: string
+  example: point_of_interest|address|locality|postal_code
+
 required: true
 in: query
-example: point_of_interest|address|locality|postal_code

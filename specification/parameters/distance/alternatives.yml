@@ -1,8 +1,9 @@
 name: alternatives
 in: query
-example: true
 schema:
   type: boolean
+  example: true
+
 description: >
   Specifies if alternative routes should be returned. default is `false`. Depending on the calculated route, alternatives may not be provided.
 

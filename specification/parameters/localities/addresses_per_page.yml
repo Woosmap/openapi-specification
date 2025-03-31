@@ -4,8 +4,8 @@ description: >
   Notice: as all the addresses are now automatically returned in the response, the `addresses_per_page` parameter is deprecated and has been turned off on December 31, 2021.
 schema:
   type: integer
+  example: 10
 in: query
 deprecated: true
-example: 10
 
 

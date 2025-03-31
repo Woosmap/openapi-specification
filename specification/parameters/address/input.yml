@@ -4,6 +4,6 @@ description: >
   The Woosmap Address API will return predictions matches based on this string and order the results based on their perceived relevance.
 schema:
   type: string
+  example: "London"
 required: true
 in: query
-example: "London"

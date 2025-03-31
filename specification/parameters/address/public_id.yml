@@ -3,6 +3,7 @@ description: >
   A textual identifier that uniquely identifies a locality, returned from an [Address Autocomplete](https://developers.woosmap.com/products/address-api/autocomplete/).
 schema:
   type: string
+  example: aGVyZTpjbTpuYW1lZHBsYWNlOjIwMDA1MTI2
+
 required: true
 in: query
-example: aGVyZTpjbTpuYW1lZHBsYWNlOjIwMDA1MTI2

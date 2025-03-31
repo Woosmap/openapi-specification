@@ -6,7 +6,8 @@ schema:
   type: string
   enum:
     - postal_code
+  example: "postal_code"
+
 in: query
-example: "postal_code"
 
 

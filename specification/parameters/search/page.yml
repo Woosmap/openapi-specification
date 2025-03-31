@@ -3,5 +3,5 @@ description: >
   Page number when accessing paginated assets feature collection
 schema:
   type: integer
-example: 2
+  example: 2
 in: query

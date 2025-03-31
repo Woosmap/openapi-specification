@@ -27,5 +27,6 @@ schema:
   type: string
   default:
     locality|postal_code
+  example: locality|airport|admin_level
+
 in: query
-example: locality|airport|admin_level

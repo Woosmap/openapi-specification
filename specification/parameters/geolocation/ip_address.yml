@@ -3,6 +3,6 @@ description: >
   The ip_address you want to geolocate. For **server call with private_key** only.
   Without this parameter, the API will geolocate the IP Address attached to the raw TCP request.
 in: query
-example: "75.134.29.90"
 schema:
   type: string
+  example: "75.134.29.90"
