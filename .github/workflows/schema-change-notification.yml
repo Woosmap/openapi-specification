@@ -1,0 +1,54 @@
+name: Notify on OpenAPI Schema Changes
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches: [master]
+
+jobs:
+  detect-and-notify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      actions: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Find changed schema files
+        id: schema_changes
+        run: |
+          # compare against the base branch
+          git fetch origin master
+          CHANGED=$(git diff --name-only origin/master...HEAD specification/schemas/)
+          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Comment on PR if schemas changed
+        if: steps.schema_changes.outputs.changed_files != ''
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: pr.number,
+              body: "OpenAPI schema has changed. Please bring Mobile team up to speed on the same."
+            });
+
+      - name: Send Slack notification if schemas changed
+        if: steps.schema_changes.outputs.changed_files != ''
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "channel": "#mobile",
+              "text": "OpenAPI schema has changed. Please refer to the PR <${{ github.event.pull_request.html_url }}|#${{ github.event.pull_request.number }}> for more insights."
+            }
+        env:
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
