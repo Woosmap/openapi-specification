@@ -51,4 +51,4 @@ jobs:
               "text": "OpenAPI schema has changed. Please refer to the PR <${{ github.event.pull_request.html_url }}|#${{ github.event.pull_request.number }}> for more insights."
             }
         env:
-          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+          SLACK_WEBHOOK_URL: ${{ secrets.WOOSMAP_SLACK_WEBHOOK }}
