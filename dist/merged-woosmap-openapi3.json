@@ -76,32 +76,51 @@
     },
     {
       "name": "Woosmap_for_what3words_API_what3words",
-      "x-displayName": "what3words"
+      "x-displayName": "Woosmap for what3words API",
+      "description": "The Woosmap for what3words integration enhances location search capabilities by incorporating what3words' unique\n3-word addressing system. \n\nThis API is a drop in replacement of what3words API but hosted on Woosmap Platform, with the addition of an endpoint leveraging the power of \n[Localities API](#tag/Woosmap_Platform_API_Reference_Localities-API) to convert a what3words address into a street address, bringing address level accuracy to what3words.\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/w3w-api/get-started/"
+      }
     },
     {
       "name": "Indoor_API_Indoor API",
-      "x-displayName": "Indoor API"
+      "x-displayName": "Indoor API",
+      "description": "The Indoor API suite provides comprehensive tools for indoor mapping, search, and navigation in complex venues.\n\nThe Indoor Map API renders detailed floor plans with customizable styling, while the Indoor Search API enables\nprecise location searching through an intelligent POI engine with autocompletion capabilities.\n\nFor wayfinding, the Indoor Distance API calculates optimal routes between indoor points, delivering polylines\nand turn-by-turn instructions. Advanced features include custom routing profiles for different user types\n(staff, visitors, etc.) and seamless integration with external systems.\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/indoor-api/get-started/"
+      }
     },
     {
-      "name": "Transit_API_Transit",
-      "description": "Get distance, duration and path (as a polyline and transports details) for a pair of origin and destination, based on the recommended route between those two points and by using public transportations.",
-      "x-displayName": "Transit"
-    },
-    {
-      "name": "Transit_API_transit",
-      "x-displayName": "transit"
+      "name": "External-api-wrapper_transit",
+      "x-displayName": "Transit API",
+      "description": "The Transit API delivers comprehensive public transportation routing information by calculating optimal travel paths between \norigins and destinations. It provides detailed route data including distance, duration, polyline visualization, \nand complete step-by-step transit instructions with transfer points and transportation modes. The API is ideal for \napplications requiring accurate public transit navigation and trip planning capabilities.\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/transit-api/route-endpoint/"
+      }
     },
     {
       "name": "Datasets_dataset",
-      "x-displayName": "dataset"
+      "x-displayName": "Datasets API",
+      "description": "The Datasets API enables you to store, manage, and analyze geospatial data collections. Work with custom datasets containing points, lines, or polygons - with each feature defined by its geometry and properties.\n\n* Create and manage datasets from uploaded Shapefile data\n* Import data from external sources via URL or scheduled updates\n* Monitor dataset status and processing through detailed status reports\n* Schedule dataset deletion for proper data lifecycle management\n* Leverage high accuracy storage for location-dependent business processes\n\nIdeal for applications that require precise location analysis, spatial queries and geographic data management.\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/datasets-api/get-started/"
+      }
     },
     {
       "name": "Datasets_search",
-      "x-displayName": "search"
+      "x-displayName": "Datasets API - Search",
+      "description": "Perform powerful spatial analysis on your geospatial data with four key search capabilities:\n\n* Nearby search: Find features within a specified distance from a location\n* Contains search: Discover which features completely contain a point or geometry\n* Intersects search: Identify features that intersect with a given geometry\n* Within search: Locate features that fall entirely inside a specified boundary\n\nAll operations support attribute filtering with WHERE clauses, pagination for large results, and multiple geometry formats (GeoJSON, WKB, encoded polylines).\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/datasets-api/first-queries/"
+      }
     },
     {
       "name": "Datasets_features",
-      "x-displayName": "features"
+      "x-displayName": "Datasets API - Features",
+      "description": "Access and retrieve individual geographic features from your datasets by their unique ID. This endpoint provides direct access to the complete geometry and properties of specific features within your datasets.\n\nThe API supports field masking to optimize response size by retrieving only needed attributes. Output formats include both GeoJSON and WKB, allowing flexible integration with various mapping and analysis systems.\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/datasets-api/get-started/"
+      }
     }
   ],
   "paths": {
@@ -6431,12 +6450,14 @@
                     "detail": {
                       "description": "The validation errors.",
                       "items": {
+                        "additionalProperties": true,
                         "type": "object"
                       },
                       "title": "Detail",
                       "type": "array"
                     },
                     "context": {
+                      "additionalProperties": true,
                       "description": "Context",
                       "title": "Context",
                       "type": "object"
@@ -6601,12 +6622,14 @@
                     "detail": {
                       "description": "The validation errors.",
                       "items": {
+                        "additionalProperties": true,
                         "type": "object"
                       },
                       "title": "Detail",
                       "type": "array"
                     },
                     "context": {
+                      "additionalProperties": true,
                       "description": "Context",
                       "title": "Context",
                       "type": "object"
@@ -6909,12 +6932,14 @@
                     "detail": {
                       "description": "The validation errors.",
                       "items": {
+                        "additionalProperties": true,
                         "type": "object"
                       },
                       "title": "Detail",
                       "type": "array"
                     },
                     "context": {
+                      "additionalProperties": true,
                       "description": "Context",
                       "title": "Context",
                       "type": "object"
@@ -7036,12 +7061,14 @@
                     "detail": {
                       "description": "The validation errors.",
                       "items": {
+                        "additionalProperties": true,
                         "type": "object"
                       },
                       "title": "Detail",
                       "type": "array"
                     },
                     "context": {
+                      "additionalProperties": true,
                       "description": "Context",
                       "title": "Context",
                       "type": "object"
@@ -7155,12 +7182,14 @@
                     "detail": {
                       "description": "The validation errors.",
                       "items": {
+                        "additionalProperties": true,
                         "type": "object"
                       },
                       "title": "Detail",
                       "type": "array"
                     },
                     "context": {
+                      "additionalProperties": true,
                       "description": "Context",
                       "title": "Context",
                       "type": "object"
@@ -7248,6 +7277,7 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "title": "Response",
                   "type": "object"
                 }
@@ -7297,12 +7327,14 @@
                     "detail": {
                       "description": "The validation errors.",
                       "items": {
+                        "additionalProperties": true,
                         "type": "object"
                       },
                       "title": "Detail",
                       "type": "array"
                     },
                     "context": {
+                      "additionalProperties": true,
                       "description": "Context",
                       "title": "Context",
                       "type": "object"
@@ -7504,12 +7536,14 @@
                     "detail": {
                       "description": "The validation errors.",
                       "items": {
+                        "additionalProperties": true,
                         "type": "object"
                       },
                       "title": "Detail",
                       "type": "array"
                     },
                     "context": {
+                      "additionalProperties": true,
                       "description": "Context",
                       "title": "Context",
                       "type": "object"
@@ -7563,79 +7597,27 @@
             "in": "query",
             "name": "origin",
             "schema": {
-              "description": "A string defining the origin of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI) or `ref:poi_ref` (ref of a poi with starting with 'ref:') ",
-              "examples": {
-                "lll": {
-                  "summary": "lat,lng,level",
-                  "value": "48.8818546,2.3572283,0"
-                },
-                "poi": {
-                  "summary": "POI",
-                  "value": "123456"
-                },
-                "ref": {
-                  "summary": "Reference",
-                  "value": "ref:entrance"
-                }
-              },
+              "description": "A string defining the origin of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI), or `ref:poi_ref` (ref of a POI starting with 'ref:').\n\nExamples:\n- `lat,lng,level`: `48.8818546,2.3572283,0`\n- `poi`: `123456`\n- `ref`: `ref:entrance`",
+              "example": "48.8818546,2.3572283,0",
               "title": "Origin",
               "type": "string"
             },
             "required": true,
-            "description": "A string defining the origin of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI) or `ref:poi_ref` (ref of a poi with starting with 'ref:') ",
-            "examples": {
-              "lll": {
-                "summary": "lat,lng,level",
-                "value": "48.8818546,2.3572283,0"
-              },
-              "poi": {
-                "summary": "POI",
-                "value": "123456"
-              },
-              "ref": {
-                "summary": "Reference",
-                "value": "ref:entrance"
-              }
-            }
+            "description": "A string defining the origin of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI), or `ref:poi_ref` (ref of a POI starting with 'ref:').\n\nExamples:\n- `lat,lng,level`: `48.8818546,2.3572283,0`\n- `poi`: `123456`\n- `ref`: `ref:entrance`",
+            "example": "48.8818546,2.3572283,0"
           },
           {
             "in": "query",
             "name": "destination",
             "schema": {
-              "description": "A string defining the destination of the route, in the format `lat,lng,level`, `poi_id` (identifier of a poi) or `ref:poi_ref` (ref of a poi with starting with 'ref:')",
-              "examples": {
-                "lll": {
-                  "summary": "lat,lng,level",
-                  "value": "48.8818546,2.3572283,0"
-                },
-                "poi": {
-                  "summary": "POI",
-                  "value": "123456"
-                },
-                "ref": {
-                  "summary": "Reference",
-                  "value": "ref:entrance"
-                }
-              },
+              "description": "A string defining the destination of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI), or `ref:poi_ref` (ref of a POI starting with 'ref:').\n\nExamples:\n- `lat,lng,level`: `48.8818546,2.3572283,0`\n- `poi`: `123456`\n- `ref`: `ref:entrance`",
+              "example": "123456",
               "title": "Destination",
               "type": "string"
             },
             "required": true,
-            "description": "A string defining the destination of the route, in the format `lat,lng,level`, `poi_id` (identifier of a poi) or `ref:poi_ref` (ref of a poi with starting with 'ref:')",
-            "examples": {
-              "lll": {
-                "summary": "lat,lng,level",
-                "value": "48.8818546,2.3572283,0"
-              },
-              "poi": {
-                "summary": "POI",
-                "value": "123456"
-              },
-              "ref": {
-                "summary": "Reference",
-                "value": "ref:entrance"
-              }
-            }
+            "description": "A string defining the destination of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI), or `ref:poi_ref` (ref of a POI starting with 'ref:').\n\nExamples:\n- `lat,lng,level`: `48.8818546,2.3572283,0`\n- `poi`: `123456`\n- `ref`: `ref:entrance`",
+            "example": "123456"
           },
           {
             "in": "query",
@@ -7784,12 +7766,14 @@
                     "detail": {
                       "description": "The validation errors.",
                       "items": {
+                        "additionalProperties": true,
                         "type": "object"
                       },
                       "title": "Detail",
                       "type": "array"
                     },
                     "context": {
+                      "additionalProperties": true,
                       "description": "Context",
                       "title": "Context",
                       "type": "object"
@@ -8054,12 +8038,14 @@
                     "detail": {
                       "description": "The validation errors.",
                       "items": {
+                        "additionalProperties": true,
                         "type": "object"
                       },
                       "title": "Detail",
                       "type": "array"
                     },
                     "context": {
+                      "additionalProperties": true,
                       "description": "Context",
                       "title": "Context",
                       "type": "object"
@@ -8311,12 +8297,14 @@
                     "detail": {
                       "description": "The validation errors.",
                       "items": {
+                        "additionalProperties": true,
                         "type": "object"
                       },
                       "title": "Detail",
                       "type": "array"
                     },
                     "context": {
+                      "additionalProperties": true,
                       "description": "Context",
                       "title": "Context",
                       "type": "object"
@@ -8449,12 +8437,14 @@
                     "detail": {
                       "description": "The validation errors.",
                       "items": {
+                        "additionalProperties": true,
                         "type": "object"
                       },
                       "title": "Detail",
                       "type": "array"
                     },
                     "context": {
+                      "additionalProperties": true,
                       "description": "Context",
                       "title": "Context",
                       "type": "object"
@@ -8636,12 +8626,14 @@
                     "detail": {
                       "description": "The validation errors.",
                       "items": {
+                        "additionalProperties": true,
                         "type": "object"
                       },
                       "title": "Detail",
                       "type": "array"
                     },
                     "context": {
+                      "additionalProperties": true,
                       "description": "Context",
                       "title": "Context",
                       "type": "object"
@@ -8678,19 +8670,19 @@
     "/transit/route": {
       "get": {
         "tags": [
-          "Transit_API_transit"
+          "External-api-wrapper_transit"
         ],
         "summary": "Transit Route",
         "operationId": "transit_route_transit_route_get",
         "security": [
           {
-            "Transit_API_PublicKeyAuth": []
+            "External-api-wrapper_PublicAPIKey": []
           },
           {
-            "Transit_API_PrivateKeyAuth": []
+            "External-api-wrapper_PrivateApiKey": []
           },
           {
-            "Transit_API_PrivateKeyHeader": []
+            "External-api-wrapper_PrivateApiKeyHeader": []
           }
         ],
         "parameters": [
@@ -8788,7 +8780,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Transit_API_Transit"
+                  "$ref": "#/components/schemas/External-api-wrapper_Transit"
                 }
               }
             }
@@ -8798,17 +8790,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Transit_API_AuthenticationErrorResponse"
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
                 }
               }
             }
           },
           "402": {
-            "description": "Out of free credits.",
+            "description": "Out of free quota.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Transit_API_AuthenticationErrorResponse"
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
                 }
               }
             }
@@ -8818,7 +8810,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Transit_API_AuthenticationErrorResponse"
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
                 }
               }
             }
@@ -8828,7 +8820,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Transit_API_HTTPValidationError"
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPErrorModel"
                 }
               }
             }
@@ -8988,6 +8990,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "additionalProperties": true,
                   "title": "Response Delete Dataset Datasets  Dataset Id  Delete"
                 }
               }
@@ -9647,7 +9650,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/datasets/{dataset_id}/features/search/": {
@@ -16443,6 +16447,7 @@
             "type": "array"
           },
           "geometry": {
+            "additionalProperties": true,
             "description": "Geometry",
             "title": "Geometry",
             "type": "object"
@@ -16718,7 +16723,16 @@
               "enum": [
                 "address",
                 "route",
+                "named_place",
                 "locality",
+                "city",
+                "town",
+                "village",
+                "hamlet",
+                "borough",
+                "suburb",
+                "quarter",
+                "neighbourhood",
                 "postal_code",
                 "admin_level"
               ],
@@ -17824,6 +17838,7 @@
         "properties": {
           "properties": {
             "type": "object",
+            "additionalProperties": true,
             "description": "Additional properties associated with this feature",
             "title": "Properties"
           },
@@ -18761,6 +18776,7 @@
         "properties": {
           "properties": {
             "type": "object",
+            "additionalProperties": true,
             "description": "Additional properties associated with this feature",
             "title": "Properties"
           },
@@ -18830,7 +18846,7 @@
         "title": "SingleIndoorFeatureSchema",
         "type": "object"
       },
-      "Transit_API_AuthenticationErrorResponse": {
+      "External-api-wrapper_AuthenticationErrorResponse": {
         "properties": {
           "detail": {
             "type": "string",
@@ -18841,13 +18857,27 @@
         "required": [
           "detail"
         ],
-        "title": "AuthenticationErrorResponse"
+        "title": "AuthenticationErrorResponse",
+        "description": "AuthenticationErrorResponse is the base authentication error model."
       },
-      "Transit_API_HTTPValidationError": {
+      "External-api-wrapper_HTTPErrorModel": {
+        "properties": {
+          "details": {
+            "type": "string",
+            "title": "Details"
+          }
+        },
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "title": "HTTPErrorModel"
+      },
+      "External-api-wrapper_HTTPValidationError": {
         "properties": {
           "detail": {
             "items": {
-              "$ref": "#/components/schemas/Transit_API_ValidationError"
+              "$ref": "#/components/schemas/External-api-wrapper_ValidationError"
             },
             "type": "array",
             "title": "Detail"
@@ -18856,7 +18886,7 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
-      "Transit_API_Transit": {
+      "External-api-wrapper_Transit": {
         "properties": {
           "status": {
             "type": "string",
@@ -18864,7 +18894,7 @@
           },
           "routes": {
             "items": {
-              "$ref": "#/components/schemas/Transit_API_TransitRoute"
+              "$ref": "#/components/schemas/External-api-wrapper_TransitRoute"
             },
             "type": "array",
             "title": "Routes",
@@ -18877,7 +18907,7 @@
         ],
         "title": "Transit"
       },
-      "Transit_API_TransitAttributions": {
+      "External-api-wrapper_TransitAttributions": {
         "properties": {
           "id": {
             "type": "string",
@@ -18905,7 +18935,7 @@
         ],
         "title": "TransitAttributions"
       },
-      "Transit_API_TransitLeg": {
+      "External-api-wrapper_TransitLeg": {
         "properties": {
           "travel_mode": {
             "type": "string",
@@ -18931,15 +18961,15 @@
             "title": "Polyline"
           },
           "start_location": {
-            "$ref": "#/components/schemas/Transit_API_TransitPlace"
+            "$ref": "#/components/schemas/External-api-wrapper_TransitPlace"
           },
           "end_location": {
-            "$ref": "#/components/schemas/Transit_API_TransitPlace"
+            "$ref": "#/components/schemas/External-api-wrapper_TransitPlace"
           },
           "transport": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/Transit_API_TransitTransport"
+                "$ref": "#/components/schemas/External-api-wrapper_TransitTransport"
               },
               {
                 "type": "null"
@@ -18950,7 +18980,7 @@
             "anyOf": [
               {
                 "items": {
-                  "$ref": "#/components/schemas/Transit_API_TransitAttributions"
+                  "$ref": "#/components/schemas/External-api-wrapper_TransitAttributions"
                 },
                 "type": "array"
               },
@@ -18972,7 +19002,7 @@
         ],
         "title": "TransitLeg"
       },
-      "Transit_API_TransitPlace": {
+      "External-api-wrapper_TransitPlace": {
         "properties": {
           "name": {
             "anyOf": [
@@ -18990,7 +19020,7 @@
             "title": "Type"
           },
           "location": {
-            "$ref": "#/components/schemas/Transit_API_TransitPosition"
+            "$ref": "#/components/schemas/External-api-wrapper_TransitPosition"
           }
         },
         "type": "object",
@@ -19000,7 +19030,7 @@
         ],
         "title": "TransitPlace"
       },
-      "Transit_API_TransitPosition": {
+      "External-api-wrapper_TransitPosition": {
         "properties": {
           "lat": {
             "type": "number",
@@ -19022,7 +19052,7 @@
         ],
         "title": "TransitPosition"
       },
-      "Transit_API_TransitRoute": {
+      "External-api-wrapper_TransitRoute": {
         "properties": {
           "notice": {
             "type": "string",
@@ -19035,7 +19065,7 @@
           },
           "legs": {
             "items": {
-              "$ref": "#/components/schemas/Transit_API_TransitLeg"
+              "$ref": "#/components/schemas/External-api-wrapper_TransitLeg"
             },
             "type": "array",
             "title": "Legs",
@@ -19048,7 +19078,7 @@
         ],
         "title": "TransitRoute"
       },
-      "Transit_API_TransitTransport": {
+      "External-api-wrapper_TransitTransport": {
         "properties": {
           "name": {
             "anyOf": [
@@ -19138,7 +19168,7 @@
         ],
         "title": "TransitTransport"
       },
-      "Transit_API_ValidationError": {
+      "External-api-wrapper_ValidationError": {
         "properties": {
           "loc": {
             "items": {
@@ -19616,6 +19646,7 @@
             "title": "Geometry"
           },
           "attributes": {
+            "additionalProperties": true,
             "type": "object",
             "title": "Attributes"
           }
@@ -19657,6 +19688,7 @@
           "attributes": {
             "anyOf": [
               {
+                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -20149,143 +20181,122 @@
         "description": "A Private key generated specifically to authenticate API requests on server side. Required for Data management API. See how to [register a Private API Key](https://developers.woosmap.com/support/api-keys/#registering-a-woosmap-private-api-key).",
         "type": "apiKey",
         "in": "query",
-        "name": "private_key"
+        "name": "private_key",
+        "x-displayName": "PrivateApiKeyAuth"
       },
       "Woosmap_Platform_API_Reference_PublicApiKeyAuth": {
         "description": "A Public key generated specifically to authenticate API requests on the front side. See how to [register a Public API Key](https://developers.woosmap.com/support/api-keys/#registering-a-woosmap-public-api-key).",
         "type": "apiKey",
         "in": "query",
-        "name": "key"
+        "name": "key",
+        "x-displayName": "PublicApiKeyAuth"
       },
       "Woosmap_Platform_API_Reference_RefererHeader": {
         "description": "The Referer HTTP request header is mandatory when using PublicApiKeyAuth. In browser environment, the Referer is set by the browser itself and cannot be overridden.",
         "type": "apiKey",
         "in": "header",
-        "name": "Referer"
+        "name": "Referer",
+        "x-displayName": "RefererHeader"
       },
       "Woosmap_Platform_API_Reference_PrivateApiKeyHeaderAuth": {
         "description": "A Private key to authenticate API requests through the Header instead of Query parameter. Use either PrivateApiKeyHeaderAuth or PrivateApiKeyAuth. See how to [register a Private API Key](https://developers.woosmap.com/support/api-keys/#registering-a-woosmap-private-api-key).",
         "type": "apiKey",
         "in": "header",
-        "name": "X-Api-Key"
+        "name": "X-Api-Key",
+        "x-displayName": "PrivateApiKeyHeaderAuth"
       },
       "Woosmap_for_what3words_API_PublicKeyAuth": {
         "type": "apiKey",
         "in": "query",
-        "name": "key"
+        "name": "key",
+        "x-displayName": "PublicKeyAuth"
       },
       "Woosmap_for_what3words_API_PrivateKeyAuth": {
         "type": "apiKey",
         "in": "query",
-        "name": "private_key"
+        "name": "private_key",
+        "x-displayName": "PrivateKeyAuth"
       },
       "Woosmap_for_what3words_API_PrivateKeyHeaderAuth": {
         "type": "apiKey",
         "in": "header",
-        "name": "X-Api-Key"
+        "name": "X-Api-Key",
+        "x-displayName": "PrivateKeyHeaderAuth"
       },
       "Indoor_API_PrivateKeyAuth": {
         "type": "apiKey",
         "in": "query",
-        "name": "private_key"
+        "name": "private_key",
+        "x-displayName": "PrivateKeyAuth"
       },
       "Indoor_API_PrivateKeyHeaderAuth": {
         "type": "apiKey",
         "in": "header",
-        "name": "X-Api-Key"
+        "name": "X-Api-Key",
+        "x-displayName": "PrivateKeyHeaderAuth"
       },
       "Indoor_API_PublicKeyAuth": {
         "type": "apiKey",
         "in": "query",
-        "name": "key"
+        "name": "key",
+        "x-displayName": "PublicKeyAuth"
       },
-      "Transit_API_PublicKeyAuth": {
+      "External-api-wrapper_PublicAPIKey": {
         "type": "apiKey",
-        "description": "PublicKeyAuth and Origin header",
+        "description": "Public key of the project usually starts with `woos-`",
         "in": "query",
-        "name": "key"
+        "name": "key",
+        "x-displayName": "PublicAPIKey"
       },
-      "Transit_API_PrivateKeyAuth": {
+      "External-api-wrapper_PrivateApiKey": {
         "type": "apiKey",
+        "description": "Private key with or without write permission.",
         "in": "query",
-        "name": "private_key"
+        "name": "private_key",
+        "x-displayName": "PrivateApiKey"
       },
-      "Transit_API_PrivateKeyHeader": {
+      "External-api-wrapper_PrivateApiKeyHeader": {
         "type": "apiKey",
+        "description": "Private key with or without write permission.",
         "in": "header",
-        "name": "X-Api-Key"
+        "name": "X-Api-Key",
+        "x-displayName": "PrivateApiKeyHeader"
       },
       "Datasets_PrivateKeyWithWrite": {
         "type": "apiKey",
         "description": "Private key with write permission. Must stay private.",
         "in": "query",
-        "name": "private_key"
+        "name": "private_key",
+        "x-displayName": "PrivateKeyWithWrite"
       },
       "Datasets_PrivateKeyWithWriteHeader": {
         "type": "apiKey",
         "description": "Private key with write permission. Must stay private.",
         "in": "header",
-        "name": "X-Api-Key"
+        "name": "X-Api-Key",
+        "x-displayName": "PrivateKeyWithWriteHeader"
       },
       "Datasets_PublicAPIKey": {
         "type": "apiKey",
         "description": "Public key of the project usually starts with `woos-`",
         "in": "query",
-        "name": "key"
+        "name": "key",
+        "x-displayName": "PublicAPIKey"
       },
       "Datasets_PrivateApiKey": {
         "type": "apiKey",
         "description": "Private key with or without write permission.",
         "in": "query",
-        "name": "private_key"
+        "name": "private_key",
+        "x-displayName": "PrivateApiKey"
       },
       "Datasets_PrivateApiKeyHeader": {
         "type": "apiKey",
         "description": "Private key with or without write permission.",
         "in": "header",
-        "name": "X-Api-Key"
+        "name": "X-Api-Key",
+        "x-displayName": "PrivateApiKeyHeader"
       }
     }
-  },
-  "x-tagGroups": [
-    {
-      "name": "Woosmap Platform API Reference",
-      "tags": [
-        "Woosmap_Platform_API_Reference_Store Search API",
-        "Woosmap_Platform_API_Reference_Data Management API",
-        "Woosmap_Platform_API_Reference_Geolocation API",
-        "Woosmap_Platform_API_Reference_Localities API",
-        "Woosmap_Platform_API_Reference_Address API",
-        "Woosmap_Platform_API_Reference_Distance API",
-        "Woosmap_Platform_API_Reference_Zones API"
-      ]
-    },
-    {
-      "name": "Woosmap for what3words API",
-      "tags": [
-        "Woosmap_for_what3words_API_what3words"
-      ]
-    },
-    {
-      "name": "Indoor API",
-      "tags": [
-        "Indoor_API_Indoor API"
-      ]
-    },
-    {
-      "name": "Transit API",
-      "tags": [
-        "Transit_API_Transit",
-        "Transit_API_transit"
-      ]
-    },
-    {
-      "name": "Datasets",
-      "tags": [
-        "Datasets_dataset",
-        "Datasets_search",
-        "Datasets_features"
-      ]
-    }
-  ]
+  }
 }

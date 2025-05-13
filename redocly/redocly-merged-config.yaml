@@ -1,0 +1,90 @@
+apis:
+  toBundle:
+    root: ../joined-woosmap-openapi3.json
+    output: ../merged-woosmap-openapi3.json
+    decorators:
+      woosmap/add-security-display-name: on
+      woosmap/merge-tag-groups: on
+      woosmap/process-tags:
+        tagMappings:
+          # Transit API
+          'External-api-wrapper_transit':
+            displayName: 'Transit API'
+            description: |
+              The Transit API delivers comprehensive public transportation routing information by calculating optimal travel paths between 
+              origins and destinations. It provides detailed route data including distance, duration, polyline visualization, 
+              and complete step-by-step transit instructions with transfer points and transportation modes. The API is ideal for 
+              applications requiring accurate public transit navigation and trip planning capabilities.
+            externalDocs:
+              url: "https://developers.woosmap.com/products/transit-api/route-endpoint/"
+
+          # Indoor API
+          'Indoor_API_Indoor API':
+            displayName: 'Indoor API'
+            description: |
+              The Indoor API suite provides comprehensive tools for indoor mapping, search, and navigation in complex venues.
+              
+              The Indoor Map API renders detailed floor plans with customizable styling, while the Indoor Search API enables
+              precise location searching through an intelligent POI engine with autocompletion capabilities.
+              
+              For wayfinding, the Indoor Distance API calculates optimal routes between indoor points, delivering polylines
+              and turn-by-turn instructions. Advanced features include custom routing profiles for different user types
+              (staff, visitors, etc.) and seamless integration with external systems.
+            externalDocs:
+              url: "https://developers.woosmap.com/products/indoor-api/get-started/"
+
+          # Woosmap for what3words API
+          'Woosmap_for_what3words_API_what3words':
+            displayName: 'Woosmap for what3words API'
+            description: |
+              The Woosmap for what3words integration enhances location search capabilities by incorporating what3words' unique
+              3-word addressing system. 
+              
+              This API is a drop in replacement of what3words API but hosted on Woosmap Platform, with the addition of an endpoint leveraging the power of 
+              [Localities API](#tag/Woosmap_Platform_API_Reference_Localities-API) to convert a what3words address into a street address, bringing address level accuracy to what3words.
+            externalDocs:
+              url: "https://developers.woosmap.com/products/w3w-api/get-started/"
+
+          # Datasets API
+          'Datasets_dataset':
+            displayName: 'Datasets API'
+            description: |
+              The Datasets API enables you to store, manage, and analyze geospatial data collections. Work with custom datasets containing points, lines, or polygons - with each feature defined by its geometry and properties.
+              
+              * Create and manage datasets from uploaded Shapefile data
+              * Import data from external sources via URL or scheduled updates
+              * Monitor dataset status and processing through detailed status reports
+              * Schedule dataset deletion for proper data lifecycle management
+              * Leverage high accuracy storage for location-dependent business processes
+              
+              Ideal for applications that require precise location analysis, spatial queries and geographic data management.
+            externalDocs:
+              url: "https://developers.woosmap.com/products/datasets-api/get-started/"
+              
+          'Datasets_search':
+            displayName: 'Datasets API - Search'
+            description: |
+              Perform powerful spatial analysis on your geospatial data with four key search capabilities:
+              
+              * Nearby search: Find features within a specified distance from a location
+              * Contains search: Discover which features completely contain a point or geometry
+              * Intersects search: Identify features that intersect with a given geometry
+              * Within search: Locate features that fall entirely inside a specified boundary
+              
+              All operations support attribute filtering with WHERE clauses, pagination for large results, and multiple geometry formats (GeoJSON, WKB, encoded polylines).
+            externalDocs:
+              url: "https://developers.woosmap.com/products/datasets-api/first-queries/"
+              
+          'Datasets_features':
+            displayName: 'Datasets API - Features'
+            description: |
+              Access and retrieve individual geographic features from your datasets by their unique ID. This endpoint provides direct access to the complete geometry and properties of specific features within your datasets.
+              
+              The API supports field masking to optimize response size by retrieving only needed attributes. Output formats include both GeoJSON and WKB, allowing flexible integration with various mapping and analysis systems.
+            externalDocs:
+              url: "https://developers.woosmap.com/products/datasets-api/get-started/"
+
+        tagsToDelete:
+          - 'External-api-wrapper_Transit'
+plugins:
+  - plugins.js

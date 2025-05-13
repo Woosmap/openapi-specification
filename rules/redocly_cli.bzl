@@ -8,7 +8,7 @@ def bundle(name, entry, data = None, config = None, decorators = None, visibilit
     RAW_TARGET = "{}_raw".format(name)
     RAW_OUTPUT = "raw_{}.json".format(name)  # Give unique name to avoid conflicts
 
-    # Use the entry directly without assuming it's a copy_to_bin target
+    # Use the entry directly
     all_srcs = []
     if data:
         all_srcs.extend(data)
@@ -71,16 +71,17 @@ def validate(name, data):
         name = name,
         srcs = ["//:redocly_cli"],
         data = [data],
-        args = ["lint", "$(location {})".format(data)],
+        args = ["lint", "--skip-rule=no-path-trailing-slash", "$(location {})".format(data)],
     )
 
-def bundle_external_specs(name, specs, main_spec = "//:woosmap-openapi3.json"):
+def bundle_external_specs(name, specs, main_spec = "//:woosmap-openapi3.json", config = None, plugins = None):
     """Downloads, bundles and joins multiple OpenAPI specs.
 
     Args:
         name: Target name for the final joined spec
         specs: List of spec names to bundle
         main_spec: Path to the main OpenAPI spec
+        config: Path to redocly config file
     """
 
     # Copy external specs to a directory
@@ -113,21 +114,43 @@ def bundle_external_specs(name, specs, main_spec = "//:woosmap-openapi3.json"):
         )
 
     # Join specs
+    joined_target = name + "_joined"
+    joined_output = "joined-woosmap-openapi3.json"
+
     js_run_binary(
-        name = name,
+        name = joined_target,
         srcs = [":{}".format(s) for s in bundled_specs] + [main_spec],
-        outs = ["merged-woosmap-openapi3.json"],
+        outs = [joined_output],
         args = [
             "join",
             "$(rootpath {})".format(main_spec),
         ] + ["$(rootpath :{})".format(s) for s in bundled_specs] + [
             "--output",
-            "merged-woosmap-openapi3.json",
+            joined_output,
             "--prefix-tags-with-info-prop",
             "title",
             "--prefix-components-with-info-prop",
             "title",
         ],
+        tool = "//:redocly_cli",
+        visibility = ["//visibility:public"],
+    )
+
+    # Apply decorators to the joined spec
+    final_srcs = [":" + joined_target]
+    if config:
+        final_srcs.append(config)
+    if plugins:
+        final_srcs.extend(plugins)
+
+    js_run_binary(
+        name = name,
+        srcs = final_srcs,
+        outs = ["merged-woosmap-openapi3.json"],
+        args = [
+            "bundle",
+            "toBundle",
+        ] + (["--config", "$(rootpath {})".format(config)] if config else []),
         tool = "//:redocly_cli",
         visibility = ["//visibility:public"],
     )

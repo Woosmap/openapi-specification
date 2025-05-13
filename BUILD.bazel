@@ -36,9 +36,9 @@ BUNDLE_NAME = "woosmap-openapi3"
 
 bundle(
     name = BUNDLE_NAME,
-    config = "redocly-plugins/redocly-config.yaml",
+    config = "redocly/redocly-raw-config.yaml",
     data = ["//specification:openapi3"],
-    decorators = glob(["redocly-plugins/**/*.js"]),
+    decorators = glob(["redocly/**/*.js"]),
     entry = "//specification:index_yml",
 )
 
@@ -171,7 +171,9 @@ js_run_binary(
 
 bundle_external_specs(
     name = "run_redocly_join",
+    config = "redocly/redocly-merged-config.yaml",
     main_spec = "//:woosmap-openapi3.json",
+    plugins = glob(["redocly/**/*.js"]),
     specs = [
         "what3words",
         "indoor",
@@ -180,9 +182,7 @@ bundle_external_specs(
     ],
 )
 
-# Currently this is providing validation error from redocly lint
-# Check with bazel test //:validate_merge_test
-#validate(
-#    name = "validate_merge_test",
-#    data = "merged-woosmap-openapi3.json",
-#)
+validate(
+    name = "validate_merge_test",
+    data = "merged-woosmap-openapi3.json",
+)

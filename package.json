@@ -24,11 +24,7 @@
     "publish:postman": "bazel run generator/postman:_postman_bin",
     "test": "bazel test ...",
     "watch": "ibazel build ...",
-    "watch:test": "ibazel test ...",
-    "extract:dereference": "redocly bundle --config ./redocly-plugins/redocly-config.yaml --dereferenced -o temp-extract-woosmap-openapi --ext json",
-    "extract:unused": "redocly bundle temp-extract-woosmap-openapi.json --remove-unused-components --output extract-woosmap-openapi-final --ext json",
-    "extract:lint": "redocly lint --config ./redocly-plugins/redocly-config.yaml extract-woosmap-openapi-final.json",
-    "extract": "npm run extract:dereference && npm run extract:unused && npm run extract:lint"
+    "watch:test": "ibazel test ..."
   },
   "devDependencies": {
     "@apidevtools/json-schema-ref-parser": "^11.9.3",

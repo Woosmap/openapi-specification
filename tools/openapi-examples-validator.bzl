@@ -1,1 +1,0 @@
-load("@aspect_rules_js//js:defs.bzl", "js_test")

@@ -4,8 +4,6 @@ apis:
     output: ../raw_woosmap-openapi3.json
     decorators:
       remove-unused-components: on
-plugins:
-  - plugins.js
 rules:
   no-unresolved-refs: error
   no-unused-components: error
