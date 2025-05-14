@@ -7,7 +7,7 @@
     "x-document-meta-data": {
       "copyright": "© 2025 Woosmap"
     },
-    "version": "1.32.3",
+    "version": "1.33.1",
     "contact": {
       "name": "Woosmap API"
     }
@@ -241,17 +241,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/geolocation/position?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254'"
+            "source": "curl -L 'https://api.woosmap.com/geolocation/position?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/geolocation/position?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/geolocation/position?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/geolocation/position?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/geolocation/position?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -534,17 +534,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/geolocation/stores?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254&limit=1'"
+            "source": "curl -L 'https://api.woosmap.com/geolocation/stores?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254&limit=1'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/geolocation/stores?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254&limit=1\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/geolocation/stores?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254&limit=1\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/geolocation/stores?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254&limit=1\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/geolocation/stores?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254&limit=1\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -675,17 +675,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY&location=43.6114130%2C3.8735291'"
+            "source": "curl -L 'https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY&location=43.6114130%2C3.8735291'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY&location=43.6114130%2C3.8735291\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY&location=43.6114130%2C3.8735291\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY&location=43.6114130%2C3.8735291\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY&location=43.6114130%2C3.8735291\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -904,7 +904,7 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X POST 'https://api.woosmap.com/stores?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n--data-raw '{\n  \"stores\": [\n    {\n      \"types\": [\n        \"drive\",\n        \"click_and_collect\"\n      ],\n      \"tags\": [\n        \"wifi\",\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.719,\n        \"lng\": -77.1067\n      },\n      \"storeId\": \"STORE_ID_123456\",\n      \"name\": \"My Cool Store\",\n      \"address\": {\n        \"lines\": [\n          \"Building Centre\",\n          \"26 Store Street\"\n        ],\n        \"countryCode\": \"UK\",\n        \"city\": \"London\",\n        \"zipcode\": \"WC1E 7BT\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"Europe/London\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        },\n        \"special\": {\n          \"2015-02-07\": [\n            {\n              \"start\": \"08:00\",\n              \"end\": \"23:00\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"types\": [\n        \"drive\"\n      ],\n      \"tags\": [\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.5239,\n        \"lng\": -77.0157\n      },\n      \"storeId\": \"STORE_ID_45678\",\n      \"name\": \"My Cool Store 2\",\n      \"address\": {\n        \"lines\": [\n          \"1805-1899\",\n          \"Orchard St\"\n        ],\n        \"countryCode\": \"US\",\n        \"city\": \"Alexandria\",\n        \"zipcode\": \"22309\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"America/New_York\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n}'"
+            "source": "curl -L 'https://api.woosmap.com/stores?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n--data-raw '{\n  \"stores\": [\n    {\n      \"types\": [\n        \"drive\",\n        \"click_and_collect\"\n      ],\n      \"tags\": [\n        \"wifi\",\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.719,\n        \"lng\": -77.1067\n      },\n      \"storeId\": \"STORE_ID_123456\",\n      \"name\": \"My Cool Store\",\n      \"address\": {\n        \"lines\": [\n          \"Building Centre\",\n          \"26 Store Street\"\n        ],\n        \"countryCode\": \"UK\",\n        \"city\": \"London\",\n        \"zipcode\": \"WC1E 7BT\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"Europe/London\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        },\n        \"special\": {\n          \"2015-02-07\": [\n            {\n              \"start\": \"08:00\",\n              \"end\": \"23:00\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"types\": [\n        \"drive\"\n      ],\n      \"tags\": [\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.5239,\n        \"lng\": -77.0157\n      },\n      \"storeId\": \"STORE_ID_45678\",\n      \"name\": \"My Cool Store 2\",\n      \"address\": {\n        \"lines\": [\n          \"1805-1899\",\n          \"Orchard St\"\n        ],\n        \"countryCode\": \"US\",\n        \"city\": \"Alexandria\",\n        \"zipcode\": \"22309\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"America/New_York\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n}'"
           },
           {
             "lang": "python",
@@ -914,7 +914,7 @@
           {
             "lang": "nodejs",
             "label": "NodeJS",
-            "source": "var axios = require('axios');\nvar data = JSON.stringify({\n  \"stores\": [\n    {\n      \"types\": [\n        \"drive\",\n        \"click_and_collect\"\n      ],\n      \"tags\": [\n        \"wifi\",\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.719,\n        \"lng\": -77.1067\n      },\n      \"storeId\": \"STORE_ID_123456\",\n      \"name\": \"My Cool Store\",\n      \"address\": {\n        \"lines\": [\n          \"Building Centre\",\n          \"26 Store Street\"\n        ],\n        \"countryCode\": \"UK\",\n        \"city\": \"London\",\n        \"zipcode\": \"WC1E 7BT\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"Europe/London\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        },\n        \"special\": {\n          \"2015-02-07\": [\n            {\n              \"start\": \"08:00\",\n              \"end\": \"23:00\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"types\": [\n        \"drive\"\n      ],\n      \"tags\": [\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.5239,\n        \"lng\": -77.0157\n      },\n      \"storeId\": \"STORE_ID_45678\",\n      \"name\": \"My Cool Store 2\",\n      \"address\": {\n        \"lines\": [\n          \"1805-1899\",\n          \"Orchard St\"\n        ],\n        \"countryCode\": \"US\",\n        \"city\": \"Alexandria\",\n        \"zipcode\": \"22309\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"America/New_York\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n});\n\nvar config = {\n  method: 'post',\n  url: 'https://api.woosmap.com/stores?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n"
+            "source": "const axios = require('axios');\nlet data = JSON.stringify({\n  \"stores\": [\n    {\n      \"types\": [\n        \"drive\",\n        \"click_and_collect\"\n      ],\n      \"tags\": [\n        \"wifi\",\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.719,\n        \"lng\": -77.1067\n      },\n      \"storeId\": \"STORE_ID_123456\",\n      \"name\": \"My Cool Store\",\n      \"address\": {\n        \"lines\": [\n          \"Building Centre\",\n          \"26 Store Street\"\n        ],\n        \"countryCode\": \"UK\",\n        \"city\": \"London\",\n        \"zipcode\": \"WC1E 7BT\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"Europe/London\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        },\n        \"special\": {\n          \"2015-02-07\": [\n            {\n              \"start\": \"08:00\",\n              \"end\": \"23:00\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"types\": [\n        \"drive\"\n      ],\n      \"tags\": [\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.5239,\n        \"lng\": -77.0157\n      },\n      \"storeId\": \"STORE_ID_45678\",\n      \"name\": \"My Cool Store 2\",\n      \"address\": {\n        \"lines\": [\n          \"1805-1899\",\n          \"Orchard St\"\n        ],\n        \"countryCode\": \"US\",\n        \"city\": \"Alexandria\",\n        \"zipcode\": \"22309\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"America/New_York\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n});\n\nlet config = {\n  method: 'post',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/stores?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n"
           }
         ]
       },
@@ -1098,7 +1098,7 @@
           {
             "lang": "nodejs",
             "label": "NodeJS",
-            "source": "var axios = require('axios');\nvar data = JSON.stringify({\n  \"stores\": [\n    {\n      \"types\": [\n        \"drive\",\n        \"click_and_collect\"\n      ],\n      \"tags\": [\n        \"wifi\",\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.719,\n        \"lng\": -77.1067\n      },\n      \"storeId\": \"STORE_ID_123456\",\n      \"name\": \"My Cool Store\",\n      \"address\": {\n        \"lines\": [\n          \"698-500\",\n          \" Lloyds Ln\"\n        ],\n        \"countryCode\": \"US\",\n        \"city\": \"Alexandria\",\n        \"zipcode\": \"VA 22302\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"Europe/London\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        },\n        \"special\": {\n          \"2015-02-07\": [\n            {\n              \"start\": \"08:00\",\n              \"end\": \"23:00\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n});\n\nvar config = {\n  method: 'put',\n  url: 'https://api.woosmap.com/stores?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n"
+            "source": "const axios = require('axios');\nlet data = JSON.stringify({\n  \"stores\": [\n    {\n      \"types\": [\n        \"drive\",\n        \"click_and_collect\"\n      ],\n      \"tags\": [\n        \"wifi\",\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.719,\n        \"lng\": -77.1067\n      },\n      \"storeId\": \"STORE_ID_123456\",\n      \"name\": \"My Cool Store\",\n      \"address\": {\n        \"lines\": [\n          \"698-500\",\n          \" Lloyds Ln\"\n        ],\n        \"countryCode\": \"US\",\n        \"city\": \"Alexandria\",\n        \"zipcode\": \"VA 22302\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"Europe/London\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        },\n        \"special\": {\n          \"2015-02-07\": [\n            {\n              \"start\": \"08:00\",\n              \"end\": \"23:00\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n});\n\nlet config = {\n  method: 'put',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/stores?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n"
           }
         ]
       },
@@ -1196,12 +1196,12 @@
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/stores/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"DELETE\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/stores/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"DELETE\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           },
           {
             "lang": "nodejs",
             "label": "NodeJS",
-            "source": "var axios = require('axios');\n\nvar config = {\n  method: 'delete',\n  url: 'https://api.woosmap.com/stores/?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { }\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n"
+            "source": "const axios = require('axios');\n\nlet config = {\n  method: 'delete',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/stores/?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { }\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n"
           }
         ]
       }
@@ -1478,17 +1478,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/stores/10031/?key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/stores/10031/?key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/stores/10031/?key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/stores/10031/?key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/stores/10031/?key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/stores/10031/?key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -1707,7 +1707,7 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X POST 'https://api.woosmap.com/stores/replace?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n--data-raw '{\n  \"stores\": [\n    {\n      \"types\": [\n        \"drive\",\n        \"click_and_collect\"\n      ],\n      \"tags\": [\n        \"wifi\",\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.719,\n        \"lng\": -77.1067\n      },\n      \"storeId\": \"STORE_ID_123456\",\n      \"name\": \"My Cool Store\",\n      \"address\": {\n        \"lines\": [\n          \"Building Centre\",\n          \"26 Store Street\"\n        ],\n        \"countryCode\": \"UK\",\n        \"city\": \"London\",\n        \"zipcode\": \"WC1E 7BT\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"Europe/London\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        },\n        \"special\": {\n          \"2015-02-07\": [\n            {\n              \"start\": \"08:00\",\n              \"end\": \"23:00\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"types\": [\n        \"drive\"\n      ],\n      \"tags\": [\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.5239,\n        \"lng\": -77.0157\n      },\n      \"storeId\": \"STORE_ID_45678\",\n      \"name\": \"My Cool Store 2\",\n      \"address\": {\n        \"lines\": [\n          \"1805-1899\",\n          \"Orchard St\"\n        ],\n        \"countryCode\": \"US\",\n        \"city\": \"Alexandria\",\n        \"zipcode\": \"22309\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"America/New_York\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n}'"
+            "source": "curl -L 'https://api.woosmap.com/stores/replace?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n--data-raw '{\n  \"stores\": [\n    {\n      \"types\": [\n        \"drive\",\n        \"click_and_collect\"\n      ],\n      \"tags\": [\n        \"wifi\",\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.719,\n        \"lng\": -77.1067\n      },\n      \"storeId\": \"STORE_ID_123456\",\n      \"name\": \"My Cool Store\",\n      \"address\": {\n        \"lines\": [\n          \"Building Centre\",\n          \"26 Store Street\"\n        ],\n        \"countryCode\": \"UK\",\n        \"city\": \"London\",\n        \"zipcode\": \"WC1E 7BT\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"Europe/London\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        },\n        \"special\": {\n          \"2015-02-07\": [\n            {\n              \"start\": \"08:00\",\n              \"end\": \"23:00\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"types\": [\n        \"drive\"\n      ],\n      \"tags\": [\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.5239,\n        \"lng\": -77.0157\n      },\n      \"storeId\": \"STORE_ID_45678\",\n      \"name\": \"My Cool Store 2\",\n      \"address\": {\n        \"lines\": [\n          \"1805-1899\",\n          \"Orchard St\"\n        ],\n        \"countryCode\": \"US\",\n        \"city\": \"Alexandria\",\n        \"zipcode\": \"22309\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"America/New_York\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n}'"
           },
           {
             "lang": "python",
@@ -1717,7 +1717,7 @@
           {
             "lang": "nodejs",
             "label": "NodeJS",
-            "source": "var axios = require('axios');\nvar data = JSON.stringify({\n  \"stores\": [\n    {\n      \"types\": [\n        \"drive\",\n        \"click_and_collect\"\n      ],\n      \"tags\": [\n        \"wifi\",\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.719,\n        \"lng\": -77.1067\n      },\n      \"storeId\": \"STORE_ID_123456\",\n      \"name\": \"My Cool Store\",\n      \"address\": {\n        \"lines\": [\n          \"Building Centre\",\n          \"26 Store Street\"\n        ],\n        \"countryCode\": \"UK\",\n        \"city\": \"London\",\n        \"zipcode\": \"WC1E 7BT\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"Europe/London\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        },\n        \"special\": {\n          \"2015-02-07\": [\n            {\n              \"start\": \"08:00\",\n              \"end\": \"23:00\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"types\": [\n        \"drive\"\n      ],\n      \"tags\": [\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.5239,\n        \"lng\": -77.0157\n      },\n      \"storeId\": \"STORE_ID_45678\",\n      \"name\": \"My Cool Store 2\",\n      \"address\": {\n        \"lines\": [\n          \"1805-1899\",\n          \"Orchard St\"\n        ],\n        \"countryCode\": \"US\",\n        \"city\": \"Alexandria\",\n        \"zipcode\": \"22309\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"America/New_York\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n});\n\nvar config = {\n  method: 'post',\n  url: 'https://api.woosmap.com/stores/replace?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n"
+            "source": "const axios = require('axios');\nlet data = JSON.stringify({\n  \"stores\": [\n    {\n      \"types\": [\n        \"drive\",\n        \"click_and_collect\"\n      ],\n      \"tags\": [\n        \"wifi\",\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.719,\n        \"lng\": -77.1067\n      },\n      \"storeId\": \"STORE_ID_123456\",\n      \"name\": \"My Cool Store\",\n      \"address\": {\n        \"lines\": [\n          \"Building Centre\",\n          \"26 Store Street\"\n        ],\n        \"countryCode\": \"UK\",\n        \"city\": \"London\",\n        \"zipcode\": \"WC1E 7BT\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"Europe/London\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        },\n        \"special\": {\n          \"2015-02-07\": [\n            {\n              \"start\": \"08:00\",\n              \"end\": \"23:00\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"types\": [\n        \"drive\"\n      ],\n      \"tags\": [\n        \"covered_parking\"\n      ],\n      \"location\": {\n        \"lat\": 38.5239,\n        \"lng\": -77.0157\n      },\n      \"storeId\": \"STORE_ID_45678\",\n      \"name\": \"My Cool Store 2\",\n      \"address\": {\n        \"lines\": [\n          \"1805-1899\",\n          \"Orchard St\"\n        ],\n        \"countryCode\": \"US\",\n        \"city\": \"Alexandria\",\n        \"zipcode\": \"22309\"\n      },\n      \"contact\": {\n        \"website\": \"https://www.woosmap.com\",\n        \"phone\": \"+44 20 7693 4000\",\n        \"email\": \"contact@woosmap.com\"\n      },\n      \"userProperties\": {\n        \"some_user_properties\": \"associated user value\"\n      },\n      \"openingHours\": {\n        \"timezone\": \"America/New_York\",\n        \"usual\": {\n          \"1\": [],\n          \"default\": [\n            {\n              \"start\": \"08:30\",\n              \"end\": \"22:00\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n});\n\nlet config = {\n  method: 'post',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/stores/replace?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n"
           }
         ]
       }
@@ -2027,17 +2027,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/stores/search/?lat=51.50976&lng=-0.145276&radius=300&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/stores/search/?lat=51.50976&lng=-0.145276&radius=300&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/stores/search/?lat=51.50976&lng=-0.145276&radius=300&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/stores/search/?lat=51.50976&lng=-0.145276&radius=300&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/stores/search/?lat=51.50976&lng=-0.145276&radius=300&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/stores/search/?lat=51.50976&lng=-0.145276&radius=300&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -2199,17 +2199,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/stores/autocomplete/?language=en&query=localized%3Astreet&limit=3&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/stores/autocomplete/?language=en&query=localized%3Astreet&limit=3&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/stores/autocomplete/?language=en&query=localized%3Astreet&limit=3&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/stores/autocomplete/?language=en&query=localized%3Astreet&limit=3&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/stores/autocomplete/?language=en&query=localized%3Astreet&limit=3&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/stores/autocomplete/?language=en&query=localized%3Astreet&limit=3&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -2333,17 +2333,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/stores/search/bounds?lat=51.50976&lng=-0.145276&radius=300&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/stores/search/bounds?lat=51.50976&lng=-0.145276&radius=300&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/stores/search/bounds?lat=51.50976&lng=-0.145276&radius=300&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/stores/search/bounds?lat=51.50976&lng=-0.145276&radius=300&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/stores/search/bounds?lat=51.50976&lng=-0.145276&radius=300&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/stores/search/bounds?lat=51.50976&lng=-0.145276&radius=300&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -2545,17 +2545,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/localities/autocomplete/?input=Lond&components=country%3Agb&no_deprecated_fields=true&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/localities/autocomplete/?input=Lond&components=country%3Agb&no_deprecated_fields=true&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/localities/autocomplete/?input=Lond&components=country%3Agb&no_deprecated_fields=true&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/localities/autocomplete/?input=Lond&components=country%3Agb&no_deprecated_fields=true&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/localities/autocomplete/?input=Lond&components=country%3Agb&no_deprecated_fields=true&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/localities/autocomplete/?input=Lond&components=country%3Agb&no_deprecated_fields=true&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -2805,17 +2805,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/localities/details?public_id=TVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPV9fTVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPQ%3D%3D&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/localities/details?public_id=TVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPV9fTVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPQ%3D%3D&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/localities/details?public_id=TVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPV9fTVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPQ%3D%3D&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/localities/details?public_id=TVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPV9fTVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPQ%3D%3D&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/localities/details?public_id=TVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPV9fTVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPQ%3D%3D&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/localities/details?public_id=TVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPV9fTVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPQ%3D%3D&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -3162,17 +3162,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/localities/geocode?address=Place%20Jeanne-d'\\''Arc&components=country%3AFR&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/localities/geocode?address=Place%20Jeanne-d%27Arc&components=country%3AFR&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/localities/geocode?address=Place%20Jeanne-d'Arc&components=country%3AFR&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/localities/geocode?address=Place%20Jeanne-d'Arc&components=country%3AFR&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/localities/geocode?address=Place%20Jeanne-d'Arc&components=country%3AFR&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/localities/geocode?address=Place%20Jeanne-d'Arc&components=country%3AFR&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -3611,17 +3611,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -3983,17 +3983,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/address/autocomplete/json?input=Lond&components=country%3Agb&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/address/autocomplete/json?input=Lond&components=country%3Agb&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/address/autocomplete/json?input=Lond&components=country%3Agb&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/address/autocomplete/json?input=Lond&components=country%3Agb&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/address/autocomplete/json?input=Lond&components=country%3Agb&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/address/autocomplete/json?input=Lond&components=country%3Agb&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -4174,17 +4174,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/address/details/json?public_id=aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/address/details/json?public_id=aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/address/details/json?public_id=aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/address/details/json?public_id=aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/address/details/json?public_id=aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/address/details/json?public_id=aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -4392,17 +4392,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/address/geocode/json?address=Place%20de%20la%20Resistance%20Paris&components=country%3AFR&limit=5&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/address/geocode/json?address=Place%20de%20la%20Resistance%20Paris&components=country%3AFR&limit=5&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/address/geocode/json?address=Place%20de%20la%20Resistance%20Paris&components=country%3AFR&limit=5&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/address/geocode/json?address=Place%20de%20la%20Resistance%20Paris&components=country%3AFR&limit=5&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/address/geocode/json?address=Place%20de%20la%20Resistance%20Paris&components=country%3AFR&limit=5&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/address/geocode/json?address=Place%20de%20la%20Resistance%20Paris&components=country%3AFR&limit=5&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -4531,17 +4531,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY&limit=2&offset=1'"
+            "source": "curl -L 'https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY&limit=2&offset=1'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY&limit=2&offset=1\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY&limit=2&offset=1\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY&limit=2&offset=1\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY&limit=2&offset=1\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       },
@@ -4689,7 +4689,7 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X POST 'https://api.woosmap.com/zones?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n--data-raw '{\n  \"zones\": [\n    {\n      \"zone_id\": \"ZoneA\",\n      \"description\": \"Delivery Zone for Store A\",\n      \"store_id\": \"STORE_ID_123456\",\n      \"polygon\": \"POLYGON ((-122.496116 37.7648181,-122.4954079 37.751518,-122.4635648 37.7530788,-122.4618481 37.7514501,-122.4601315 37.7521288,-122.4565266 37.7513144,-122.4540375 37.7566755,-122.4528359 37.7583041,-122.4515485 37.7595934,-122.4546384 37.774656,-122.4718903 37.7731635,-122.472577 37.772485,-122.4755811 37.7725529,-122.4791001 37.7723493,-122.4793576 37.7713995,-122.4784993 37.769839,-122.4783276 37.7680071,-122.4774693 37.766718,-122.4772118 37.7652931,-122.496116 37.7648181))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    },\n    {\n      \"zone_id\": \"ZoneB\",\n      \"description\": \"Delivery Zone for Store B\",\n      \"store_id\": \"STORE_ID_123456\",\n      \"polygon\": \"POLYGON ((-122.4546384 37.774656,-122.4515485 37.7595934,-122.4354306 37.7602172,-122.4333707 37.7512596,-122.423071 37.7511239,-122.4242726 37.7687665,-122.4259893 37.7691736,-122.4289075 37.7732444,-122.4306241 37.7850483,-122.4472753 37.7830133,-122.445902 37.7759581,-122.4546384 37.774656))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    },\n    {\n      \"zone_id\": \"ZoneC\",\n      \"description\": \"Delivery Zone for Store C\",\n      \"store_id\": \"STORE_ID_45678\",\n      \"polygon\": \"POLYGON ((-122.4758889 37.7524995,-122.4751594 37.7321718,-122.4688079 37.7299995,-122.4648597 37.7261979,-122.4519851 37.7228035,-122.4483802 37.7215815,-122.4458053 37.726741,-122.4365356 37.7310857,-122.4315574 37.7324433,-122.4246909 37.7312214,-122.4219444 37.731493,-122.423071 37.7511239,-122.4333707 37.7512596,-122.4354306 37.7602172,-122.4515485 37.7595934,-122.4528628 37.7582744,-122.4540375 37.7566755,-122.4565266 37.7513144,-122.4601315 37.7521288,-122.4618481 37.7514501,-122.4635648 37.7530788,-122.4758889 37.7524995))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    }\n  ]\n}'"
+            "source": "curl -L 'https://api.woosmap.com/zones?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"zones\": [\n    {\n      \"zone_id\": \"ZoneA\",\n      \"description\": \"Delivery Zone for Store A\",\n      \"store_id\": \"STORE_ID_123456\",\n      \"polygon\": \"POLYGON ((-122.496116 37.7648181,-122.4954079 37.751518,-122.4635648 37.7530788,-122.4618481 37.7514501,-122.4601315 37.7521288,-122.4565266 37.7513144,-122.4540375 37.7566755,-122.4528359 37.7583041,-122.4515485 37.7595934,-122.4546384 37.774656,-122.4718903 37.7731635,-122.472577 37.772485,-122.4755811 37.7725529,-122.4791001 37.7723493,-122.4793576 37.7713995,-122.4784993 37.769839,-122.4783276 37.7680071,-122.4774693 37.766718,-122.4772118 37.7652931,-122.496116 37.7648181))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    },\n    {\n      \"zone_id\": \"ZoneB\",\n      \"description\": \"Delivery Zone for Store B\",\n      \"store_id\": \"STORE_ID_123456\",\n      \"polygon\": \"POLYGON ((-122.4546384 37.774656,-122.4515485 37.7595934,-122.4354306 37.7602172,-122.4333707 37.7512596,-122.423071 37.7511239,-122.4242726 37.7687665,-122.4259893 37.7691736,-122.4289075 37.7732444,-122.4306241 37.7850483,-122.4472753 37.7830133,-122.445902 37.7759581,-122.4546384 37.774656))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    },\n    {\n      \"zone_id\": \"ZoneC\",\n      \"description\": \"Delivery Zone for Store C\",\n      \"store_id\": \"STORE_ID_45678\",\n      \"polygon\": \"POLYGON ((-122.4758889 37.7524995,-122.4751594 37.7321718,-122.4688079 37.7299995,-122.4648597 37.7261979,-122.4519851 37.7228035,-122.4483802 37.7215815,-122.4458053 37.726741,-122.4365356 37.7310857,-122.4315574 37.7324433,-122.4246909 37.7312214,-122.4219444 37.731493,-122.423071 37.7511239,-122.4333707 37.7512596,-122.4354306 37.7602172,-122.4515485 37.7595934,-122.4528628 37.7582744,-122.4540375 37.7566755,-122.4565266 37.7513144,-122.4601315 37.7521288,-122.4618481 37.7514501,-122.4635648 37.7530788,-122.4758889 37.7524995))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    }\n  ]\n}'"
           },
           {
             "lang": "python",
@@ -4699,7 +4699,7 @@
           {
             "lang": "nodejs",
             "label": "NodeJS",
-            "source": "var axios = require('axios');\nvar data = JSON.stringify({\n  \"zones\": [\n    {\n      \"zone_id\": \"ZoneA\",\n      \"description\": \"Delivery Zone for Store A\",\n      \"store_id\": \"STORE_ID_123456\",\n      \"polygon\": \"POLYGON ((-122.496116 37.7648181,-122.4954079 37.751518,-122.4635648 37.7530788,-122.4618481 37.7514501,-122.4601315 37.7521288,-122.4565266 37.7513144,-122.4540375 37.7566755,-122.4528359 37.7583041,-122.4515485 37.7595934,-122.4546384 37.774656,-122.4718903 37.7731635,-122.472577 37.772485,-122.4755811 37.7725529,-122.4791001 37.7723493,-122.4793576 37.7713995,-122.4784993 37.769839,-122.4783276 37.7680071,-122.4774693 37.766718,-122.4772118 37.7652931,-122.496116 37.7648181))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    },\n    {\n      \"zone_id\": \"ZoneB\",\n      \"description\": \"Delivery Zone for Store B\",\n      \"store_id\": \"STORE_ID_123456\",\n      \"polygon\": \"POLYGON ((-122.4546384 37.774656,-122.4515485 37.7595934,-122.4354306 37.7602172,-122.4333707 37.7512596,-122.423071 37.7511239,-122.4242726 37.7687665,-122.4259893 37.7691736,-122.4289075 37.7732444,-122.4306241 37.7850483,-122.4472753 37.7830133,-122.445902 37.7759581,-122.4546384 37.774656))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    },\n    {\n      \"zone_id\": \"ZoneC\",\n      \"description\": \"Delivery Zone for Store C\",\n      \"store_id\": \"STORE_ID_45678\",\n      \"polygon\": \"POLYGON ((-122.4758889 37.7524995,-122.4751594 37.7321718,-122.4688079 37.7299995,-122.4648597 37.7261979,-122.4519851 37.7228035,-122.4483802 37.7215815,-122.4458053 37.726741,-122.4365356 37.7310857,-122.4315574 37.7324433,-122.4246909 37.7312214,-122.4219444 37.731493,-122.423071 37.7511239,-122.4333707 37.7512596,-122.4354306 37.7602172,-122.4515485 37.7595934,-122.4528628 37.7582744,-122.4540375 37.7566755,-122.4565266 37.7513144,-122.4601315 37.7521288,-122.4618481 37.7514501,-122.4635648 37.7530788,-122.4758889 37.7524995))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    }\n  ]\n});\n\nvar config = {\n  method: 'post',\n  url: 'https://api.woosmap.com/zones?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n"
+            "source": "const axios = require('axios');\nlet data = JSON.stringify({\n  \"zones\": [\n    {\n      \"zone_id\": \"ZoneA\",\n      \"description\": \"Delivery Zone for Store A\",\n      \"store_id\": \"STORE_ID_123456\",\n      \"polygon\": \"POLYGON ((-122.496116 37.7648181,-122.4954079 37.751518,-122.4635648 37.7530788,-122.4618481 37.7514501,-122.4601315 37.7521288,-122.4565266 37.7513144,-122.4540375 37.7566755,-122.4528359 37.7583041,-122.4515485 37.7595934,-122.4546384 37.774656,-122.4718903 37.7731635,-122.472577 37.772485,-122.4755811 37.7725529,-122.4791001 37.7723493,-122.4793576 37.7713995,-122.4784993 37.769839,-122.4783276 37.7680071,-122.4774693 37.766718,-122.4772118 37.7652931,-122.496116 37.7648181))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    },\n    {\n      \"zone_id\": \"ZoneB\",\n      \"description\": \"Delivery Zone for Store B\",\n      \"store_id\": \"STORE_ID_123456\",\n      \"polygon\": \"POLYGON ((-122.4546384 37.774656,-122.4515485 37.7595934,-122.4354306 37.7602172,-122.4333707 37.7512596,-122.423071 37.7511239,-122.4242726 37.7687665,-122.4259893 37.7691736,-122.4289075 37.7732444,-122.4306241 37.7850483,-122.4472753 37.7830133,-122.445902 37.7759581,-122.4546384 37.774656))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    },\n    {\n      \"zone_id\": \"ZoneC\",\n      \"description\": \"Delivery Zone for Store C\",\n      \"store_id\": \"STORE_ID_45678\",\n      \"polygon\": \"POLYGON ((-122.4758889 37.7524995,-122.4751594 37.7321718,-122.4688079 37.7299995,-122.4648597 37.7261979,-122.4519851 37.7228035,-122.4483802 37.7215815,-122.4458053 37.726741,-122.4365356 37.7310857,-122.4315574 37.7324433,-122.4246909 37.7312214,-122.4219444 37.731493,-122.423071 37.7511239,-122.4333707 37.7512596,-122.4354306 37.7602172,-122.4515485 37.7595934,-122.4528628 37.7582744,-122.4540375 37.7566755,-122.4565266 37.7513144,-122.4601315 37.7521288,-122.4618481 37.7514501,-122.4635648 37.7530788,-122.4758889 37.7524995))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    }\n  ]\n});\n\nlet config = {\n  method: 'post',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/zones?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n"
           }
         ]
       },
@@ -4846,7 +4846,7 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X PUT 'https://api.woosmap.com/zones?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n--data-raw '{\n  \"zones\": [\n    {\n      \"zone_id\": \"ZoneA\",\n      \"description\": \"Delivery Zone for Store A\",\n      \"store_id\": \"STORE_ID_45678\",\n      \"polygon\": \"POLYGON ((-122.496116 37.7648181,-122.4954079 37.751518,-122.4635648 37.7530788,-122.4618481 37.7514501,-122.4601315 37.7521288,-122.4565266 37.7513144,-122.4540375 37.7566755,-122.4528359 37.7583041,-122.4515485 37.7595934,-122.4546384 37.774656,-122.4718903 37.7731635,-122.472577 37.772485,-122.4755811 37.7725529,-122.4791001 37.7723493,-122.4793576 37.7713995,-122.4784993 37.769839,-122.4783276 37.7680071,-122.4774693 37.766718,-122.4772118 37.7652931,-122.496116 37.7648181))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    }\n  ]\n}'"
+            "source": "curl -L -X PUT 'https://api.woosmap.com/zones?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"zones\": [\n    {\n      \"zone_id\": \"ZoneA\",\n      \"description\": \"Delivery Zone for Store A\",\n      \"store_id\": \"STORE_ID_45678\",\n      \"polygon\": \"POLYGON ((-122.496116 37.7648181,-122.4954079 37.751518,-122.4635648 37.7530788,-122.4618481 37.7514501,-122.4601315 37.7521288,-122.4565266 37.7513144,-122.4540375 37.7566755,-122.4528359 37.7583041,-122.4515485 37.7595934,-122.4546384 37.774656,-122.4718903 37.7731635,-122.472577 37.772485,-122.4755811 37.7725529,-122.4791001 37.7723493,-122.4793576 37.7713995,-122.4784993 37.769839,-122.4783276 37.7680071,-122.4774693 37.766718,-122.4772118 37.7652931,-122.496116 37.7648181))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    }\n  ]\n}'"
           },
           {
             "lang": "python",
@@ -4856,7 +4856,7 @@
           {
             "lang": "nodejs",
             "label": "NodeJS",
-            "source": "var axios = require('axios');\nvar data = JSON.stringify({\n  \"zones\": [\n    {\n      \"zone_id\": \"ZoneA\",\n      \"description\": \"Delivery Zone for Store A\",\n      \"store_id\": \"STORE_ID_45678\",\n      \"polygon\": \"POLYGON ((-122.496116 37.7648181,-122.4954079 37.751518,-122.4635648 37.7530788,-122.4618481 37.7514501,-122.4601315 37.7521288,-122.4565266 37.7513144,-122.4540375 37.7566755,-122.4528359 37.7583041,-122.4515485 37.7595934,-122.4546384 37.774656,-122.4718903 37.7731635,-122.472577 37.772485,-122.4755811 37.7725529,-122.4791001 37.7723493,-122.4793576 37.7713995,-122.4784993 37.769839,-122.4783276 37.7680071,-122.4774693 37.766718,-122.4772118 37.7652931,-122.496116 37.7648181))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    }\n  ]\n});\n\nvar config = {\n  method: 'put',\n  url: 'https://api.woosmap.com/zones?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n"
+            "source": "const axios = require('axios');\nlet data = JSON.stringify({\n  \"zones\": [\n    {\n      \"zone_id\": \"ZoneA\",\n      \"description\": \"Delivery Zone for Store A\",\n      \"store_id\": \"STORE_ID_45678\",\n      \"polygon\": \"POLYGON ((-122.496116 37.7648181,-122.4954079 37.751518,-122.4635648 37.7530788,-122.4618481 37.7514501,-122.4601315 37.7521288,-122.4565266 37.7513144,-122.4540375 37.7566755,-122.4528359 37.7583041,-122.4515485 37.7595934,-122.4546384 37.774656,-122.4718903 37.7731635,-122.472577 37.772485,-122.4755811 37.7725529,-122.4791001 37.7723493,-122.4793576 37.7713995,-122.4784993 37.769839,-122.4783276 37.7680071,-122.4774693 37.766718,-122.4772118 37.7652931,-122.496116 37.7648181))\",\n      \"types\": [\n        \"delivery\"\n      ]\n    }\n  ]\n});\n\nlet config = {\n  method: 'put',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/zones?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n"
           }
         ]
       },
@@ -4943,12 +4943,12 @@
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"DELETE\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"DELETE\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           },
           {
             "lang": "nodejs",
             "label": "NodeJS",
-            "source": "var axios = require('axios');\n\nvar config = {\n  method: 'delete',\n  url: 'https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { }\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n"
+            "source": "const axios = require('axios');\n\nlet config = {\n  method: 'delete',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { }\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n"
           }
         ]
       }
@@ -5053,17 +5053,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY'"
+            "source": "curl -L 'https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload={}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/zones/ZoneA/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       },
@@ -5332,17 +5332,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/distance/distancematrix/json?origins=48.709%2C2.403&destinations=48.709%2C2.303%7C48.768%2C2.338&mode=driving&language=en&elements=duration_distance&method=distance&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/distance/distancematrix/json?origins=48.709%2C2.403&destinations=48.709%2C2.303%7C48.768%2C2.338&mode=driving&language=en&elements=duration_distance&method=distance&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/distance/distancematrix/json?origins=48.709%2C2.403&destinations=48.709%2C2.303%7C48.768%2C2.338&mode=driving&language=en&elements=duration_distance&method=distance&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/distancematrix/json?origins=48.709%2C2.403&destinations=48.709%2C2.303%7C48.768%2C2.338&mode=driving&language=en&elements=duration_distance&method=distance&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/distancematrix/json?origins=48.709%2C2.403&destinations=48.709%2C2.303%7C48.768%2C2.338&mode=driving&language=en&elements=duration_distance&method=distance&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/distancematrix/json?origins=48.709%2C2.403&destinations=48.709%2C2.303%7C48.768%2C2.338&mode=driving&language=en&elements=duration_distance&method=distance&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       },
@@ -5519,7 +5519,7 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X POST 'https://api.woosmap.com/distance/distancematrix/json?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n--data-raw '{\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"units\": \"imperial\",\n  \"elements\": \"duration_distance\",\n  \"method\": \"distance\",\n  \"departure_time\": \"now\"\n}'"
+            "source": "curl -L 'https://api.woosmap.com/distance/distancematrix/json?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"units\": \"imperial\",\n  \"elements\": \"duration_distance\",\n  \"method\": \"distance\",\n  \"departure_time\": \"now\"\n}'"
           },
           {
             "lang": "python",
@@ -5529,7 +5529,7 @@
           {
             "lang": "nodejs",
             "label": "NodeJS",
-            "source": "var axios = require('axios');\nvar data = JSON.stringify({\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"units\": \"imperial\",\n  \"elements\": \"duration_distance\",\n  \"method\": \"distance\",\n  \"departure_time\": \"now\"\n});\n\nvar config = {\n  method: 'post',\n  url: 'https://api.woosmap.com/distance/distancematrix/json?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n"
+            "source": "const axios = require('axios');\nlet data = JSON.stringify({\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"units\": \"imperial\",\n  \"elements\": \"duration_distance\",\n  \"method\": \"distance\",\n  \"departure_time\": \"now\"\n});\n\nlet config = {\n  method: 'post',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/distance/distancematrix/json?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n"
           }
         ]
       }
@@ -5844,17 +5844,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/distance/route/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&details=full&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/distance/route/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&details=full&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/distance/route/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&details=full&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/route/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&details=full&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/route/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&details=full&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/route/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&details=full&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -6132,17 +6132,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/distance/tolls/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/distance/tolls/json?origin=43.70386%2C%204.12200&destination=45.71971%2C%204.84891&mode=driving&private_key=YOUR_PRIVATE_API_KEY'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/distance/tolls/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/tolls/json?origin=43.70386%2C%204.12200&destination=45.71971%2C%204.84891&mode=driving&private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/tolls/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/tolls/json?origin=43.70386%2C%204.12200&destination=45.71971%2C%204.84891&mode=driving&private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -6284,17 +6284,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
