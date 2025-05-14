@@ -1,7 +1,7 @@
 {
   "name": "openapi-specification",
   "private": true,
-  "version": "1.31.0",
+  "version": "1.32.2",
   "homepage": "https://github.com/woosmap/openapi-specification#readme",
   "bugs": {
     "url": "https://github.com/woosmap/openapi-specification/issues"
@@ -77,7 +77,6 @@
     "yaml": "^2.7.0"
   },
   "pnpm": {
-    "onlyBuiltDependencies": [
-    ]
+    "onlyBuiltDependencies": []
   }
 }
