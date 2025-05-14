@@ -21,7 +21,6 @@ jobs:
       - name: Find changed schema files
         id: schema_changes
         run: |
-          # compare against the base branch
           git fetch origin master
           CHANGED=$(git diff --name-only origin/master...HEAD specification/schemas/)
           echo "changed_files<<EOF" >> $GITHUB_OUTPUT
@@ -38,7 +37,28 @@ jobs:
             await github.rest.issues.createComment({
               ...context.repo,
               issue_number: pr.number,
-              body: "OpenAPI schema has changed. Please bring Mobile team up to speed on the same."
+              body: "🔔 OpenAPI schema has changed. Please bring Mobile team up to speed on the same."
+            });
+
+      - name: Create issue in Woosmap/woosmap if schemas changed
+        if: steps.schema_changes.outputs.changed_files != ''
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            await github.rest.issues.create({
+              owner: 'Woosmap',
+              repo: 'woosmap',
+              title: `OpenAPI schema changed in PR #${pr.number}`,
+              body: [
+                `Schema files under \`specification/schemas/\` were updated in PR #${pr.number}.`,
+                ``,
+                `> ${pr.title}`,
+                ``,
+                `Review it here: ${pr.html_url}`
+              ].join('\n'),
+              assignees: ['strider1981','sameerdhulap']
             });
 
       - name: Send Slack notification if schemas changed
@@ -48,7 +68,7 @@ jobs:
           payload: |
             {
               "channel": "#mobile",
-              "text": "OpenAPI schema has changed. Please refer to the PR <${{ github.event.pull_request.html_url }}|#${{ github.event.pull_request.number }}> for more insights."
+              "text": "🚨 OpenAPI schema has changed. Please refer to the PR <${{ github.event.pull_request.html_url }}|#${{ github.event.pull_request.number }}> for more insights."
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.WOOSMAP_SLACK_WEBHOOK }}
