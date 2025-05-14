@@ -1,9 +1,10 @@
 name: origin
 in: query
-example: 48.709,2.403
 required: true
 schema:
   type: string
+  example: 48.709,2.403
+
 description: >
   The starting point. It should be supplied in the form of latitude/longitude coordinates.
   Ensure that no space exists between the latitude and longitude values.

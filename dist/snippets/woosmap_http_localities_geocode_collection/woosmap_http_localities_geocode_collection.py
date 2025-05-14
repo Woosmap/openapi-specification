@@ -3,7 +3,7 @@ import requests
 
 url = "https://api.woosmap.com/localities/geocode?address=Place%20Jeanne-d'Arc&components=country%3AFR&key=YOUR_PUBLIC_API_KEY"
 
-payload={}
+payload = {}
 headers = {
     'Referer': 'http://localhost'
 }

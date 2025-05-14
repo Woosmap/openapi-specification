@@ -3,6 +3,7 @@ description: >
   Geographic coordinates. Should be pass in `lat`,`lng` format.
 schema:
   type: string
+  example: 5.2,-2.3
+
 required: false
-example: 5.2,-2.3
 in: query

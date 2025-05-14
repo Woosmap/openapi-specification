@@ -3,5 +3,5 @@ description: >
   Unit in meters. Used to combine with lat/lng or encoded polyline. To bias the results within a given circular area. 3000 means to search for Assets that are at the most far from 3kms to search area (latlng or polyline).
 schema:
   type: number
-example: 3000
+  example: 3000
 in: query

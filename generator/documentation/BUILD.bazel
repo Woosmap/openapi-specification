@@ -1,97 +1,97 @@
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
-load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_run_binary")
+load("//tools:ts_wrapper.bzl", "ts_project")
 
 package(default_visibility = ["//visibility:public"])
 
-ts_library(
+ts_project(
     name = "_lib",
     srcs = glob(["*.ts"]),
+    tsconfig = "//:tsconfig",
     deps = [
-        "@npm//@apidevtools/json-schema-ref-parser",
-        "@npm//@types/json-schema",
-        "@npm//@types/node",
-        "@npm//@types/unist",
-        "@npm//@types/yargs",
-        "@npm//mdast-builder",
-        "@npm//mdast-util-from-markdown",
-        "@npm//mdast-util-gfm",
-        "@npm//micromark-extension-gfm",
-        "@npm//openapi-types",
-        "@npm//prettier",
-        "@npm//remark-gfm",
-        "@npm//remark-html",
-        "@npm//remark-parse",
-        "@npm//remark-stringify",
-        "@npm//slugify",
-        "@npm//tar-stream",
-        "@npm//unified",
-        "@npm//yargs",
-        "@npm//clsx",
+        "//:node_modules/@apidevtools/json-schema-ref-parser",
+        "//:node_modules/@types/json-schema",
+        "//:node_modules/@types/node",
+        "//:node_modules/@types/unist",
+        "//:node_modules/@types/yargs",
+        "//:node_modules/clsx",
+        "//:node_modules/mdast-builder",
+        "//:node_modules/mdast-util-from-markdown",
+        "//:node_modules/mdast-util-gfm",
+        "//:node_modules/micromark-extension-gfm",
+        "//:node_modules/openapi-types",
+        "//:node_modules/prettier",
+        "//:node_modules/remark-gfm",
+        "//:node_modules/remark-html",
+        "//:node_modules/remark-parse",
+        "//:node_modules/remark-stringify",
+        "//:node_modules/slugify",
+        "//:node_modules/tar-stream",
+        "//:node_modules/unified",
+        "//:node_modules/yargs",
     ],
 )
 
-nodejs_binary(
+js_binary(
     name = "_schema_bin",
     data = [
         ":_lib",
+        "//specification:index_yml",
         "//specification:openapi3",
     ],
-    entry_point = ":schema.ts",
-    templated_args = [
-        "--nobazel_node_patches",
-        "--bazel_patch_module_resolver",  # https://github.com/bazelbuild/rules_nodejs/issues/2388
-    ],
+    entry_point = ":schema.js",
 )
 
-genrule(
+js_run_binary(
     name = "schemas",
-    srcs = ["//:woosmap-openapi3.json"],
-    outs = ["schemas.tar"],
-    cmd = "$(location :_schema_bin) " +
-          "--spec $(location //:woosmap-openapi3.json) " +
-          "--output $@",
-    tools = [
-        ":_lib",
+    srcs = [
         ":_schema_bin",
+        "//:woosmap-openapi3.json",
     ],
+    outs = ["schemas.tar"],
+    args = [
+        "--spec",
+        "$(rootpath //:woosmap-openapi3.json)",
+        "--output",
+        "$(rootpath schemas.tar)",
+    ],
+    tool = ":_schema_bin",  # add the tool argument
 )
 
-nodejs_binary(
+js_binary(
     name = "_parameters_bin",
     data = [
         ":_lib",
+        "//specification:index_yml",
         "//specification:openapi3",
     ],
-    entry_point = ":parameters.ts",
-    templated_args = [
-        "--nobazel_node_patches",
-        "--bazel_patch_module_resolver",  # https://github.com/bazelbuild/rules_nodejs/issues/2388
-    ],
+    entry_point = ":parameters.js",
 )
 
-genrule(
+js_run_binary(
     name = "parameters",
-    srcs = ["//:woosmap-openapi3.json"],
-    outs = ["parameters.tar"],
-    cmd = "$(location :_parameters_bin) " +
-          "--spec $(location //:woosmap-openapi3.json) " +
-          "--output $@",
-    tools = [
-        ":_lib",
+    srcs = [
         ":_parameters_bin",
+        "//:woosmap-openapi3.json",
     ],
+    outs = ["parameters.tar"],
+    args = [
+        "--spec",
+        "$(rootpath //:woosmap-openapi3.json)",
+        "--output",
+        "$(rootpath parameters.tar)",
+    ],
+    tool = ":_parameters_bin",
 )
 
-nodejs_binary(
+js_binary(
     name = "schema-dependencies-helper",
+    args = [
+        "--spec",
+        "$(rootpath //:woosmap-openapi3.json)",
+    ],
     data = [
         ":_lib",
-        "//:woosmap-openapi3.json"
+        "//:woosmap-openapi3.json",
     ],
-    entry_point = ":schema-dependencies-helper.ts",
-    templated_args = [
-        "--spec $(rootpath //:woosmap-openapi3.json)",
-        "--nobazel_node_patches",
-        "--bazel_patch_module_resolver",  # https://github.com/bazelbuild/rules_nodejs/issues/2388
-    ],
+    entry_point = ":schema-dependencies-helper.js",
 )

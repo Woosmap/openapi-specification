@@ -1,6 +1,6 @@
 // [START woosmap_http_assets_create_request]
-var axios = require('axios');
-var data = JSON.stringify({
+const axios = require('axios');
+let data = JSON.stringify({
   "stores": [
     {
       "types": [
@@ -101,8 +101,9 @@ var data = JSON.stringify({
   ]
 });
 
-var config = {
+let config = {
   method: 'post',
+  maxBodyLength: Infinity,
   url: 'https://api.woosmap.com/stores?private_key=YOUR_PRIVATE_API_KEY',
   headers: { 
     'content-type': 'application/json'
@@ -110,11 +111,11 @@ var config = {
   data : data
 };
 
-axios(config)
-.then(function (response) {
+axios.request(config)
+.then((response) => {
   console.log(JSON.stringify(response.data));
 })
-.catch(function (error) {
+.catch((error) => {
   console.log(error);
 });
 

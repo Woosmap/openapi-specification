@@ -3,7 +3,7 @@ import requests
 
 url = "https://api.woosmap.com/localities/geocode?latlng=51.52089223979333%2C-0.195460973340401&list_sub_buildings=true&key=YOUR_PUBLIC_API_KEY"
 
-payload={}
+payload = {}
 headers = {
     'Referer': 'http://localhost'
 }

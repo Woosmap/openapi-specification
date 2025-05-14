@@ -4,8 +4,9 @@ description: >
   Notice: as all the addresses are now automatically returned in the response, the `page` parameter is deprecated and has been turned off on December 31, 2021.
 schema:
   type: integer
+  example: 1
+
 in: query
 deprecated: true
-example: 1
 
 

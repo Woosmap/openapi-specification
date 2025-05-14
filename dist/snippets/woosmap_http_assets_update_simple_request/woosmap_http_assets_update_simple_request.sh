@@ -1,7 +1,7 @@
 # [START woosmap_http_assets_update_simple_request]
 curl -L -X PUT 'https://api.woosmap.com/stores?private_key=YOUR_PRIVATE_API_KEY' \
 -H 'content-type: application/json' \
---data-raw '{
+-d '{
   "stores": [
     {
       "storeId": "store_123",

@@ -3,7 +3,7 @@ import requests
 
 url = "https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY&limit=2&offset=1"
 
-payload={}
+payload = {}
 headers = {}
 
 response = requests.request("GET", url, headers=headers, data=payload)

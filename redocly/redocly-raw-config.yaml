@@ -1,0 +1,12 @@
+apis:
+  toBundle:
+    root: ../specification/index.yml
+    output: ../raw_woosmap-openapi3.json
+    decorators:
+      remove-unused-components: on
+rules:
+  no-unresolved-refs: error
+  no-unused-components: error
+  security-defined: error
+  spec: error
+  spec-components-invalid-map-name: error

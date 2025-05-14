@@ -4,5 +4,6 @@ description: >
   property should be searched , if present, or else the default `name` property.
 schema:
   type: string
+  example: en
+
 in: query
-example: en

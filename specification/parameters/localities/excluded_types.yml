@@ -3,5 +3,5 @@ description: >
   The types of suggestion to exclude. Multiple types can be passed using the pipe character (`|`) as a separator.
 schema:
   type: string
+  example: suburb|quarter|neighbourhood
 in: query
-example: suburb|quarter|neighbourhood

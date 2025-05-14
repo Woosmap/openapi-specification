@@ -1,9 +1,10 @@
 name: origins
 in: query
-example: 48.709,2.403
 required: true
 schema:
   type: string
+  example: 48.709,2.403
+
 description: >
   The starting point for calculating travel distance.
   You can supply one or more locations separated by the pipe character (|), in the form of latitude/longitude coordinates.

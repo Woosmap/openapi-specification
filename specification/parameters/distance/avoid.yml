@@ -1,8 +1,9 @@
 name: avoid
 in: query
-example: "tolls|highways|43.3,3.4;42.1,3.5;41.4,3.6"
 schema:
   type: string
+  example: "tolls|highways|43.3,3.4;42.1,3.5;41.4,3.6"
+
 description: >
   The list of features that you want to avoid. Valid values are `tolls`, `highways`, `ferries` or polygons coordinates whose vertex latlng are separated by a semicolon.
   To add multiple polygons, separate them with the `|` character.

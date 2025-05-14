@@ -1,0 +1,27 @@
+apis:
+  toValidate:
+    root: ../merged-woosmap-openapi3.json
+extends:
+  - recommended
+plugins:
+  - ./plugins.js
+rules:
+  tag-description: warn
+  no-path-trailing-slash: off
+  woosmap/validate-tags:
+    severity: error
+    requireOperationTags: true
+    expectedNames:
+      - "Store Search API"
+      - "Data Management API"
+      - "Geolocation API"
+      - "Localities API"
+      - "Address API"
+      - "Distance API"
+      - "Zones API"
+      - "Woosmap for what3words API"
+      - "Indoor API"
+      - "Transit API"
+      - "Datasets API" 
+      - "Datasets API - Search"
+      - "Datasets API - Features"

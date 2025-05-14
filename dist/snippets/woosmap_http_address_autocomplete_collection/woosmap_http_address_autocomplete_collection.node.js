@@ -1,19 +1,20 @@
 // [START woosmap_http_address_autocomplete_collection]
-var axios = require('axios');
+const axios = require('axios');
 
-var config = {
+let config = {
   method: 'get',
+  maxBodyLength: Infinity,
   url: 'https://api.woosmap.com/address/autocomplete/json?input=Lond&components=country%3Agb&key=YOUR_PUBLIC_API_KEY',
   headers: { 
     'Referer': 'http://localhost'
   }
 };
 
-axios(config)
-.then(function (response) {
+axios.request(config)
+.then((response) => {
   console.log(JSON.stringify(response.data));
 })
-.catch(function (error) {
+.catch((error) => {
   console.log(error);
 });
 

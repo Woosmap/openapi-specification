@@ -1,9 +1,10 @@
 name: destinations
 in: query
-example: 48.709,2.403|48.768,2.338
 required: true
 schema:
   type: string
+  example: 48.709,2.403|48.768,2.338
+
 description: >
   One or more locations to use as the finishing point for calculating travel distance.
   The options for the destinations parameter are the same as for the origins parameter, described above.

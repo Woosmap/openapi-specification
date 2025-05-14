@@ -4,12 +4,12 @@ package main
 import (
   "fmt"
   "net/http"
-  "io/ioutil"
+  "io"
 )
 
 func main() {
 
-  url := "https://api.woosmap.com/localities/autocomplete/?input=Lond&components=country:gb&no_deprecated_fields=true&key=YOUR_PUBLIC_API_KEY"
+  url := "https://api.woosmap.com/localities/autocomplete/?input=Lond&components=country%3Agb&no_deprecated_fields=true&key=YOUR_PUBLIC_API_KEY"
   method := "GET"
 
   client := &http.Client {
@@ -29,7 +29,7 @@ func main() {
   }
   defer res.Body.Close()
 
-  body, err := ioutil.ReadAll(res.Body)
+  body, err := io.ReadAll(res.Body)
   if err != nil {
     fmt.Println(err)
     return

@@ -6,5 +6,6 @@ schema:
   enum:
     - standard
     - advanced
+  example: advanced
 in: query
-example: advanced
+
