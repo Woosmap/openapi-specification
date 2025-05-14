@@ -29,5 +29,5 @@ js_binary(
         ":_lib",
         "//:woosmap-postman.json",
     ],
-    entry_point = ":postman.ts",
+    entry_point = ":postman.js",
 )
