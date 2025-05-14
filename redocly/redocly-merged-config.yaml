@@ -8,8 +8,8 @@ apis:
       woosmap/process-tags:
         tagMappings:
           # Transit API
-          'External-api-wrapper_transit':
-            displayName: 'Transit API'
+          'transit':
+            name: 'Transit API'
             description: |
               The Transit API delivers comprehensive public transportation routing information by calculating optimal travel paths between 
               origins and destinations. It provides detailed route data including distance, duration, polyline visualization, 
@@ -19,8 +19,8 @@ apis:
               url: "https://developers.woosmap.com/products/transit-api/route-endpoint/"
 
           # Indoor API
-          'Indoor_API_Indoor API':
-            displayName: 'Indoor API'
+          'Indoor API':
+            name: 'Indoor API'
             description: |
               The Indoor API suite provides comprehensive tools for indoor mapping, search, and navigation in complex venues.
               
@@ -34,8 +34,8 @@ apis:
               url: "https://developers.woosmap.com/products/indoor-api/get-started/"
 
           # Woosmap for what3words API
-          'Woosmap_for_what3words_API_what3words':
-            displayName: 'Woosmap for what3words API'
+          'what3words':
+            name: 'Woosmap for what3words API'
             description: |
               The Woosmap for what3words integration enhances location search capabilities by incorporating what3words' unique
               3-word addressing system. 
@@ -46,8 +46,8 @@ apis:
               url: "https://developers.woosmap.com/products/w3w-api/get-started/"
 
           # Datasets API
-          'Datasets_dataset':
-            displayName: 'Datasets API'
+          'dataset':
+            name: 'Datasets API'
             description: |
               The Datasets API enables you to store, manage, and analyze geospatial data collections. Work with custom datasets containing points, lines, or polygons - with each feature defined by its geometry and properties.
               
@@ -61,8 +61,8 @@ apis:
             externalDocs:
               url: "https://developers.woosmap.com/products/datasets-api/get-started/"
               
-          'Datasets_search':
-            displayName: 'Datasets API - Search'
+          'search':
+            name: 'Datasets API - Search'
             description: |
               Perform powerful spatial analysis on your geospatial data with four key search capabilities:
               
@@ -75,8 +75,8 @@ apis:
             externalDocs:
               url: "https://developers.woosmap.com/products/datasets-api/first-queries/"
               
-          'Datasets_features':
-            displayName: 'Datasets API - Features'
+          'features':
+            name: 'Datasets API - Features'
             description: |
               Access and retrieve individual geographic features from your datasets by their unique ID. This endpoint provides direct access to the complete geometry and properties of specific features within your datasets.
               
@@ -85,6 +85,6 @@ apis:
               url: "https://developers.woosmap.com/products/datasets-api/get-started/"
 
         tagsToDelete:
-          - 'External-api-wrapper_Transit'
+          - 'Transit'
 plugins:
   - plugins.js

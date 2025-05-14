@@ -141,8 +141,6 @@ def bundle_external_specs(name, specs, main_spec = "//:woosmap-openapi3.json", c
         ] + ["$(rootpath :{})".format(s) for s in bundled_specs] + [
             "--output",
             joined_output,
-            "--prefix-tags-with-info-prop",
-            "title",
             "--prefix-components-with-info-prop",
             "title",
         ],

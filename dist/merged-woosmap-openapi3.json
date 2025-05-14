@@ -19,104 +19,91 @@
   ],
   "tags": [
     {
-      "name": "Woosmap_Platform_API_Reference_Store Search API",
+      "name": "Store Search API",
       "description": "Stores Search API lets you query the Assets which are returned as a [GeoJson](https://geojson.org/). Request is done over HTTPS using GET. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/). If your request returns a high number of assets, the result will be paginated. If so, you can request assets by page using `page` and `stores_by_page` parameters (Default is **100**, max is **300**).\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/search-api/get-started/"
-      },
-      "x-displayName": "Store Search API"
+      }
     },
     {
-      "name": "Woosmap_Platform_API_Reference_Data Management API",
+      "name": "Data Management API",
       "description": "The Data Management API is a web service that uses an HTTP request to manage, create or edit your Assets. The API only supports JSON. So you have to create a JSON file with your assets’ addresses and other information. You’ll need to convert, or geocode, the addresses in your file to latitude/longitude (`lat` / `long`) coordinates. Those coordinates will be used for most of Woosmap features like [local searches](https://developers.woosmap.com/products/search-api/get-started/), [stores nearby a user location](https://developers.woosmap.com/products/geolocation-api/stores/) or for displaying markers on a map with [Woosmap Javascript API](https://developers.woosmap.com/products/js-api/get-started/).\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/data-api/get-started/"
-      },
-      "x-displayName": "Data Management API"
+      }
     },
     {
-      "name": "Woosmap_Platform_API_Reference_Geolocation API",
+      "name": "Geolocation API",
       "description": "Geolocation API returns a location (or nearby stores) and accuracy radius based on an IP address. Request is done over HTTPS using GET. Response is formatted as JSON. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/geolocation-api/location/"
-      },
-      "x-displayName": "Geolocation API"
+      }
     },
     {
-      "name": "Woosmap_Platform_API_Reference_Localities API",
+      "name": "Localities API",
       "description": "Woosmap Localities API is a web service that returns a great amount of geographical places in response to an HTTP request. Among others are city names, postal codes, suburbs, addresses or airports. Request is done over HTTPS using GET. Response is formatted as JSON. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/localities/get-started/"
-      },
-      "x-displayName": "Localities API"
+      }
     },
     {
-      "name": "Woosmap_Platform_API_Reference_Address API",
+      "name": "Address API",
       "description": "Woosmap Address API is a web service that returns addresses and other geographical places in response to an HTTP request. Request is done over HTTPS using GET. Response is formatted as JSON. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).\n>**⚠️ This API has been deprecated in favour of Localities API**\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/address-api/get-started/"
-      },
-      "x-displayName": "Address API"
+      }
     },
     {
-      "name": "Woosmap_Platform_API_Reference_Distance API",
+      "name": "Distance API",
       "description": "Woosmap Distance API is a service providing road travel distance and duration calculations, on a Worldwide scale. Request is done over HTTPS using GET or POST. Response is formatted as JSON. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/distance-api/get-started/"
-      },
-      "x-displayName": "Distance API"
+      }
     },
     {
-      "name": "Woosmap_Platform_API_Reference_Zones API",
+      "name": "Zones API",
       "description": "Woosmap Zones API is a web service that uses an HTTP request to manage, create or edit your Zones (polygons) attached to your assets.\nThe general principle is that sometimes searching assets using crowfly distance is not good enough. For example to search the restaurant that will do the delivery for a specified address, each restaurant has a delivery zone and for topological or business reasons it’s not always the nearest restaurant in charge of your delivery. Woosmap Zones API allows you to associate a delivery zone to each of the restaurants.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/data-api/zones/"
-      },
-      "x-displayName": "Zones API"
+      }
     },
     {
-      "name": "Woosmap_for_what3words_API_what3words",
-      "x-displayName": "Woosmap for what3words API",
+      "name": "Woosmap for what3words API",
       "description": "The Woosmap for what3words integration enhances location search capabilities by incorporating what3words' unique\n3-word addressing system. \n\nThis API is a drop in replacement of what3words API but hosted on Woosmap Platform, with the addition of an endpoint leveraging the power of \n[Localities API](#tag/Woosmap_Platform_API_Reference_Localities-API) to convert a what3words address into a street address, bringing address level accuracy to what3words.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/w3w-api/get-started/"
       }
     },
     {
-      "name": "Indoor_API_Indoor API",
-      "x-displayName": "Indoor API",
+      "name": "Indoor API",
       "description": "The Indoor API suite provides comprehensive tools for indoor mapping, search, and navigation in complex venues.\n\nThe Indoor Map API renders detailed floor plans with customizable styling, while the Indoor Search API enables\nprecise location searching through an intelligent POI engine with autocompletion capabilities.\n\nFor wayfinding, the Indoor Distance API calculates optimal routes between indoor points, delivering polylines\nand turn-by-turn instructions. Advanced features include custom routing profiles for different user types\n(staff, visitors, etc.) and seamless integration with external systems.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/indoor-api/get-started/"
       }
     },
     {
-      "name": "External-api-wrapper_transit",
-      "x-displayName": "Transit API",
+      "name": "Transit API",
       "description": "The Transit API delivers comprehensive public transportation routing information by calculating optimal travel paths between \norigins and destinations. It provides detailed route data including distance, duration, polyline visualization, \nand complete step-by-step transit instructions with transfer points and transportation modes. The API is ideal for \napplications requiring accurate public transit navigation and trip planning capabilities.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/transit-api/route-endpoint/"
       }
     },
     {
-      "name": "Datasets_dataset",
-      "x-displayName": "Datasets API",
+      "name": "Datasets API",
       "description": "The Datasets API enables you to store, manage, and analyze geospatial data collections. Work with custom datasets containing points, lines, or polygons - with each feature defined by its geometry and properties.\n\n* Create and manage datasets from uploaded Shapefile data\n* Import data from external sources via URL or scheduled updates\n* Monitor dataset status and processing through detailed status reports\n* Schedule dataset deletion for proper data lifecycle management\n* Leverage high accuracy storage for location-dependent business processes\n\nIdeal for applications that require precise location analysis, spatial queries and geographic data management.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/datasets-api/get-started/"
       }
     },
     {
-      "name": "Datasets_search",
-      "x-displayName": "Datasets API - Search",
+      "name": "Datasets API - Search",
       "description": "Perform powerful spatial analysis on your geospatial data with four key search capabilities:\n\n* Nearby search: Find features within a specified distance from a location\n* Contains search: Discover which features completely contain a point or geometry\n* Intersects search: Identify features that intersect with a given geometry\n* Within search: Locate features that fall entirely inside a specified boundary\n\nAll operations support attribute filtering with WHERE clauses, pagination for large results, and multiple geometry formats (GeoJSON, WKB, encoded polylines).\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/datasets-api/first-queries/"
       }
     },
     {
-      "name": "Datasets_features",
-      "x-displayName": "Datasets API - Features",
+      "name": "Datasets API - Features",
       "description": "Access and retrieve individual geographic features from your datasets by their unique ID. This endpoint provides direct access to the complete geometry and properties of specific features within your datasets.\n\nThe API supports field masking to optimize response size by retrieving only needed attributes. Output formats include both GeoJSON and WKB, allowing flexible integration with various mapping and analysis systems.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/datasets-api/get-started/"
@@ -134,7 +121,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Geolocation API"
+          "Geolocation API"
         ],
         "description": "The `/position` returns JSON location of your users thanks to IP address of their devices.\n",
         "security": [
@@ -279,7 +266,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Geolocation API"
+          "Geolocation API"
         ],
         "description": "Retrieve the stores nearby an ip location. Stores are returned only if a relevant ip location is found - for an accuracy of 20km or less.\n",
         "security": [
@@ -572,7 +559,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Geolocation API"
+          "Geolocation API"
         ],
         "description": "Returns timezone information based on the location, and optionally a timestamp for daylight saving time.\n> Note: rawOffset never contains the dst.\n",
         "security": [
@@ -713,7 +700,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Data Management API"
+          "Data Management API"
         ],
         "description": "Used to batch create Assets to a specific project identified with the `private_key` parameter.\n",
         "security": [
@@ -940,7 +927,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Data Management API"
+          "Data Management API"
         ],
         "description": "Used to update assets in batch. `storeId` must exists when using `PUT` method, if one asset does not exists, the batch will be refused.",
         "security": [
@@ -1124,7 +1111,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Data Management API"
+          "Data Management API"
         ],
         "description": "Used to delete one or more assets. The `storeId` specified in `query` parameter is the id of the asset to delete. To delete several assets, use the comma as a separator. To delete all project assets, omit the `query` parameter.\n",
         "security": [
@@ -1229,7 +1216,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Data Management API"
+          "Data Management API"
         ],
         "description": "Used to retrieve an asset from his `storeId`\n",
         "security": [
@@ -1516,7 +1503,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Data Management API"
+          "Data Management API"
         ],
         "description": "To replace all your Assets. This endpoint will delete all previous assets and import assets in request body. During the operation previous assets could always be displayed on map. If the import failed previous assets are not deleted.",
         "security": [
@@ -1745,7 +1732,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Store Search API"
+          "Store Search API"
         ],
         "description": "Used to retrieve assets from query.\n",
         "security": [
@@ -2065,7 +2052,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Store Search API"
+          "Store Search API"
         ],
         "description": "Autocomplete on `localizedNames` with highlighted results on asset name. Use the field `localized` in your query parameter to search for localized names.\n",
         "security": [
@@ -2237,7 +2224,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Store Search API"
+          "Store Search API"
         ],
         "description": "Used to retrieve Bounds for assets.\n",
         "security": [
@@ -2371,7 +2358,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Localities API"
+          "Localities API"
         ],
         "description": "Autocomplete on worldwide suggestions for a for text-based geographic searches. It can match on full words as well as substrings. You can therefore send queries as the user types, to provide on-the-fly addresses, city names, postal codes or suburb name suggestions.\n",
         "security": [
@@ -2583,7 +2570,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Localities API"
+          "Localities API"
         ],
         "description": "Provides details of an autocomplete suggestion (using the suggestion’s `public_id`).\n",
         "security": [
@@ -2843,7 +2830,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Localities API"
+          "Localities API"
         ],
         "description": "Provides details for an address or a geographic position. Either parameter `address` **or** `latlng` is required.\n",
         "security": [
@@ -3200,7 +3187,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Localities API"
+          "Localities API"
         ],
         "description": "Retrieve worldwide points of interest surrounding a given location. They can be filtered by categories.\n",
         "security": [
@@ -3649,7 +3636,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Localities API"
+          "Localities API"
         ],
         "description": "Search for suggestions given a text-based geographic query.\n",
         "security": [
@@ -3861,7 +3848,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Address API"
+          "Address API"
         ],
         "description": "Autocomplete on worldwide suggestions for a for text-based geographic searches. It can match on full words as well as substrings.\n",
         "security": [
@@ -4022,7 +4009,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Address API"
+          "Address API"
         ],
         "description": "Provides details of an address autocomplete suggestion (using the suggestion’s `public_id`).\n",
         "security": [
@@ -4213,7 +4200,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Address API"
+          "Address API"
         ],
         "description": "Provides details for an address or a geographic position. Either parameter `address` **or** `latlng` is required. Maximum of 25 queries per second (QPS)\n",
         "security": [
@@ -4430,7 +4417,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Zones API"
+          "Zones API"
         ],
         "description": "List all zones for the current project, sorted by `zone_id`.\n",
         "security": [
@@ -4567,7 +4554,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Zones API"
+          "Zones API"
         ],
         "description": "Used to batch create Zones to a specific project identified with the `private_key` parameter.\n",
         "security": [
@@ -4725,7 +4712,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Zones API"
+          "Zones API"
         ],
         "description": "Used to update zones in batch. `zone_id` must exists when using `PUT` method, if one zone does not exists, the batch will be refused.",
         "security": [
@@ -4882,7 +4869,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Zones API"
+          "Zones API"
         ],
         "description": "Used to delete one or more Zones.",
         "security": [
@@ -4976,7 +4963,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Zones API"
+          "Zones API"
         ],
         "description": "Used to retrieve a zone from his `zone_id`\n",
         "security": [
@@ -5089,7 +5076,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Zones API"
+          "Zones API"
         ],
         "description": "Used to delete one Zone. The `zone_id` is the id of the zone to delete. To delete several zones, use the comma as a separator.",
         "security": [
@@ -5195,7 +5182,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Distance API"
+          "Distance API"
         ],
         "description": "Get distances and durations for a matrix of origins and destinations, based on the recommended route between start and end points for a specified travel mode.\n",
         "security": [
@@ -5368,7 +5355,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Distance API"
+          "Distance API"
         ],
         "description": "Get distances and durations for a matrix of origins and destinations, based on the recommended route between start and end points for a specified travel mode. If the URL size is too short for your origins and destinations, you should request the server using this POST method and passing arguments as json.\n",
         "security": [
@@ -5557,7 +5544,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Distance API"
+          "Distance API"
         ],
         "description": "Get distance, duration and path (as a polyline) for a pair of origin and destination, based on the recommended route between those two points for a specified travel mode.\n",
         "security": [
@@ -5882,7 +5869,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Distance API"
+          "Distance API"
         ],
         "description": "Get Tolls\n",
         "security": [
@@ -6170,7 +6157,7 @@
           }
         ],
         "tags": [
-          "Woosmap_Platform_API_Reference_Distance API"
+          "Distance API"
         ],
         "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance\n",
         "security": [
@@ -6476,7 +6463,7 @@
         },
         "description": "This function will convert a latitude and longitude to a 3 word address, in the language of your choice.\nIt also returns country, the bounds of the grid square,\na nearby place (such as a local town) and a link to the what3words map site.",
         "tags": [
-          "Woosmap_for_what3words_API_what3words"
+          "Woosmap for what3words API"
         ],
         "security": [
           {
@@ -6648,7 +6635,7 @@
         },
         "description": "This function converts a 3 word address to a list of address.\nIt will return at most the 5 closest addresses to the what3words provided.",
         "tags": [
-          "Woosmap_for_what3words_API_what3words"
+          "Woosmap for what3words API"
         ],
         "security": [
           {
@@ -6958,7 +6945,7 @@
         },
         "description": "AutoSuggest can take a slightly incorrect 3 word address and suggest a list of valid 3 word addresses.\nIt has powerful features that can, for example, optionally limit results to a country or area,\nand prioritise results that are near the user.",
         "tags": [
-          "Woosmap_for_what3words_API_what3words"
+          "Woosmap for what3words API"
         ],
         "security": [
           {
@@ -7087,7 +7074,7 @@
         },
         "description": "Returns a Venue based on the ID given.",
         "tags": [
-          "Indoor_API_Indoor API"
+          "Indoor API"
         ],
         "security": [
           {
@@ -7208,7 +7195,7 @@
         },
         "description": "Returns a list of Venues associated with the project of the key used to authenticate the request.",
         "tags": [
-          "Indoor_API_Indoor API"
+          "Indoor API"
         ],
         "security": [
           {
@@ -7353,7 +7340,7 @@
         },
         "description": "Returns the style layers.",
         "tags": [
-          "Indoor_API_Indoor API"
+          "Indoor API"
         ],
         "security": [
           {
@@ -7562,7 +7549,7 @@
         },
         "description": "Get distances and durations for a matrix of origins and destinations, based on the recommended route between start and end points for a specified travel mode.\nThe API returns information consisting of rows containing distance and duration values for each pair of start and end point.\nThe returned distances are designed to be used to find and sort multiple assets by road distance.\nDuration values are provided as complementary info.",
         "tags": [
-          "Indoor_API_Indoor API"
+          "Indoor API"
         ],
         "security": [
           {
@@ -7792,7 +7779,7 @@
         },
         "description": "Returns the directions to go from an Origin to a Destination.\nRouting Configuration must be done before this endpoint will work.",
         "tags": [
-          "Indoor_API_Indoor API"
+          "Indoor API"
         ],
         "security": [
           {
@@ -8064,7 +8051,7 @@
         },
         "description": "Full text search of the features of a venue using name or description",
         "tags": [
-          "Indoor_API_Indoor API"
+          "Indoor API"
         ],
         "security": [
           {
@@ -8323,7 +8310,7 @@
         },
         "description": "Autocomplete text search of the features of a venue using a name or description",
         "tags": [
-          "Indoor_API_Indoor API"
+          "Indoor API"
         ],
         "security": [
           {
@@ -8463,7 +8450,7 @@
         },
         "description": "Returns a single feature using its ID.",
         "tags": [
-          "Indoor_API_Indoor API"
+          "Indoor API"
         ],
         "security": [
           {
@@ -8652,7 +8639,7 @@
         },
         "description": "Returns a tile for the venue.",
         "tags": [
-          "Indoor_API_Indoor API"
+          "Indoor API"
         ],
         "security": [
           {
@@ -8670,7 +8657,7 @@
     "/transit/route": {
       "get": {
         "tags": [
-          "External-api-wrapper_transit"
+          "Transit API"
         ],
         "summary": "Transit Route",
         "operationId": "transit_route_transit_route_get",
@@ -8858,7 +8845,7 @@
     "/datasets/{dataset_id}": {
       "get": {
         "tags": [
-          "Datasets_dataset"
+          "Datasets API"
         ],
         "summary": "Get Dataset",
         "description": "Gets dataset details.\n\n**Rate limit**: `1/1s`",
@@ -8958,7 +8945,7 @@
       },
       "delete": {
         "tags": [
-          "Datasets_dataset"
+          "Datasets API"
         ],
         "summary": "Delete Dataset",
         "description": "Schedule a dataset for deletion, deletion will happen in 7 days.\n\n\n**Rate limit**: `1/1s`",
@@ -9070,7 +9057,7 @@
       },
       "put": {
         "tags": [
-          "Datasets_dataset"
+          "Datasets API"
         ],
         "summary": "Update Dataset",
         "description": "Updates a dataset url or name.\n\n**Rate limit**: `1/1s`",
@@ -9182,7 +9169,7 @@
     "/datasets/": {
       "get": {
         "tags": [
-          "Datasets_dataset"
+          "Datasets API"
         ],
         "summary": "List Datasets",
         "description": "Lists datasets.\n\n**Rate limit**: `1/1s`",
@@ -9289,7 +9276,7 @@
       },
       "post": {
         "tags": [
-          "Datasets_dataset"
+          "Datasets API"
         ],
         "summary": "Create Dataset",
         "description": "Creates a dataset.\n\n**Rate limit**: `1/1s`",
@@ -9379,7 +9366,7 @@
     "/datasets/{dataset_id}/status": {
       "get": {
         "tags": [
-          "Datasets_dataset"
+          "Datasets API"
         ],
         "summary": "Get Dataset Status",
         "description": "Returns the dataset import status.\n\n**Rate limit**: `1/5s`",
@@ -9481,7 +9468,7 @@
     "/datasets/{dataset_id}/import": {
       "post": {
         "tags": [
-          "Datasets_dataset"
+          "Datasets API"
         ],
         "summary": "Trigger Import",
         "description": "Trigger the dataset import.\n\n**Rate limit**: `1/90s`",
@@ -9583,7 +9570,7 @@
     "/datasets/hooks/reimport/{reimport_key}": {
       "post": {
         "tags": [
-          "Datasets_dataset"
+          "Datasets API"
         ],
         "summary": "Reimport Dataset Webhook",
         "description": "Triggers the reimport of the dataset linked to the dataset.\n\n**Rate limit**: `1/90s`",
@@ -9657,7 +9644,7 @@
     "/datasets/{dataset_id}/features/search/": {
       "post": {
         "tags": [
-          "Datasets_search"
+          "Datasets API - Search"
         ],
         "summary": "Search Features",
         "description": "Search for features.\n\n**Rate limit**: `20/1s`",
@@ -9813,7 +9800,7 @@
     "/datasets/{dataset_id}/features/nearby/": {
       "post": {
         "tags": [
-          "Datasets_search"
+          "Datasets API - Search"
         ],
         "summary": "Nearby Features",
         "description": "Search for features nearby geometry.\n\n**Rate limit**: `20/1s`",
@@ -10055,7 +10042,7 @@
     "/datasets/{dataset_id}/features/intersects/": {
       "post": {
         "tags": [
-          "Datasets_search"
+          "Datasets API - Search"
         ],
         "summary": "Intersect Features",
         "description": "Returns the features that are intersecting with geometry.\n\n**Rate limit**: `20/1s`\n\n![Intersection](https://postgis.net/workshops/postgis-intro/_images/st_intersects.png)",
@@ -10297,7 +10284,7 @@
     "/datasets/{dataset_id}/features/contains/": {
       "post": {
         "tags": [
-          "Datasets_search"
+          "Datasets API - Search"
         ],
         "summary": "Contains Features",
         "description": "Search for features containing geometry.\n\n**Rate limit**: `20/1s`\n\n![Within](https://postgis.net/workshops/postgis-intro/_images/st_within.png)",
@@ -10539,7 +10526,7 @@
     "/datasets/{dataset_id}/features/within/": {
       "post": {
         "tags": [
-          "Datasets_search"
+          "Datasets API - Search"
         ],
         "summary": "Within Features",
         "description": "Search for features within geometry.\n\n**Rate limit**: `20/1s`\n\n![Within](https://postgis.net/workshops/postgis-intro/_images/st_within.png)",
@@ -10731,7 +10718,7 @@
     "/datasets/{dataset_id}/features/{feature_id}": {
       "get": {
         "tags": [
-          "Datasets_features"
+          "Datasets API - Features"
         ],
         "summary": "Get Feature",
         "description": "Gets a feature from its ID.\n\n**Rate limit**: `20/1s`",

@@ -1,10 +1,10 @@
 module.exports = ValidateTagsRule;
 
 /**
- * Validate that all expected display names are present and all operations have valid tags
+ * Validate that all expected tag names are present and all operations have valid tags
  */
 function ValidateTagsRule(options = {}) {
-  const expectedDisplayNames = options.expectedDisplayNames || [];
+  const expectedNames = options.expectedNames || [];
   
   return {
     Root: {
@@ -18,30 +18,20 @@ function ValidateTagsRule(options = {}) {
           return;
         }
 
-        // Get all defined displayNames
-        const definedDisplayNames = root.tags
-          .map(tag => tag['x-displayName'] || tag.name)
-          .filter(Boolean);
+        // Get all defined tag names
+        const definedNames = root.tags.map(tag => tag.name).filter(Boolean);
 
-        // Check if all expected displayNames are present
-        const missingDisplayNames = expectedDisplayNames.filter(
-          displayName => !definedDisplayNames.includes(displayName)
+        // Check if all expected names are present
+        const missingNames = expectedNames.filter(
+          name => !definedNames.includes(name)
         );
         
-        if (missingDisplayNames.length > 0) {
+        if (missingNames.length > 0) {
           ctx.report({
-            message: `Missing expected display names: ${missingDisplayNames.join(', ')}`,
+            message: `Missing expected tag names: ${missingNames.join(', ')}`,
             severity: 'error',
           });
         }
-
-        // Create a mapping from tag name to display name
-        const tagNameToDisplayName = {};
-        root.tags.forEach(tag => {
-          if (tag['x-displayName']) {
-            tagNameToDisplayName[tag.name] = tag['x-displayName'];
-          }
-        });
 
         // Collect all operation tags
         const usedTags = new Set();
@@ -58,7 +48,7 @@ function ValidateTagsRule(options = {}) {
         }
 
         // Check if all used tags are defined
-        const definedTagNames = new Set(root.tags.map(tag => tag.name));
+        const definedTagNames = new Set(definedNames);
         const undefinedTags = [...usedTags].filter(tag => !definedTagNames.has(tag));
         
         if (undefinedTags.length > 0) {

@@ -11,8 +11,7 @@ rules:
   woosmap/validate-tags:
     severity: error
     requireOperationTags: true
-    validateDisplayName: true
-    expectedDisplayNames:
+    expectedNames:
       - "Store Search API"
       - "Data Management API"
       - "Geolocation API"

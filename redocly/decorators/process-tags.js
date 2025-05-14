@@ -1,15 +1,7 @@
 module.exports = ProcessTags;
 
-/** @type {import('@redocly/cli').OasDecorator} */
-
 /**
- * A decorator that processes tags to improve their display names and handles specific API cases.
- * It's designed to fix issues with tags created during the Join command.
- * 
- * @param {Object} options Configuration options
- * @param {Object} options.tagMappings Custom mappings for specific tags with displayName, description, and externalDocs
- * @param {Array<string>} options.tagsToDelete Tags to be removed completely
- * @returns {Object} The decorator
+ * A decorator that processes tags to improve their names
  */
 function ProcessTags(options = {}) {
     const {
@@ -20,37 +12,44 @@ function ProcessTags(options = {}) {
     return {
         Root: {
             leave(root) {
-                // If there are no tags, return as is
                 if (!root.tags || !root.tags.length) {
                     return root;
                 }
 
-                // Process tags to improve displayNames and fix specific cases
+                const tagNameMapping = {};
+
                 root.tags = root.tags.map(tag => {
-                    if (tagsToDelete.includes(tag.name)) {
-                        return tag;
+                    const newTag = {...tag};
+                    delete newTag['x-displayName']; 
+                    
+                    if (tagsToDelete.includes(newTag.name)) {
+                        return newTag;
                     }
                     
-                    // Handle specific tag mappings from parameters
-                    if (tagMappings[tag.name]) {
-                        const mapping = tagMappings[tag.name];
+                    if (tagMappings[newTag.name]) {
+                        const mapping = tagMappings[newTag.name];
                         
                         if (typeof mapping === 'string') {
+                            tagNameMapping[newTag.name] = mapping;
                             return {
-                                ...tag,
-                                'x-displayName': mapping
+                                ...newTag,
+                                name: mapping
                             };
                         } else {
+                            if (mapping.name) {
+                                tagNameMapping[newTag.name] = mapping.name;
+                            }
+                            
                             return {
-                                ...tag,
-                                description: mapping.description || tag.description,
-                                'x-displayName': mapping.displayName,
-                                externalDocs: mapping.externalDocs || tag.externalDocs
+                                ...newTag,
+                                name: mapping.name || newTag.name,
+                                description: mapping.description || newTag.description,
+                                externalDocs: mapping.externalDocs || newTag.externalDocs
                             };
                         }
-                    }
+                    } 
                     
-                    return tag;
+                    return newTag;
                 });
 
                 // Remove tags that should be deleted
@@ -58,17 +57,28 @@ function ProcessTags(options = {}) {
                     root.tags = root.tags.filter(tag => !tagsToDelete.includes(tag.name));
                 }
 
-                // Remove duplicate tags by x-displayName
-                const processedDisplayNames = new Set();
+                // Remove duplicate tags by name
+                const processedNames = new Set();
                 root.tags = root.tags.filter(tag => {
-                    // Avoid duplicates by display name
-                    if (processedDisplayNames.has(tag['x-displayName'])) {
+                    if (processedNames.has(tag.name)) {
                         return false;
                     }
-                    
-                    processedDisplayNames.add(tag['x-displayName']);
+                    processedNames.add(tag.name);
                     return true;
                 });
+
+                // Update operation tags
+                if (Object.keys(tagNameMapping).length > 0 && root.paths) {
+                    Object.values(root.paths).forEach(pathItem => {
+                        Object.values(pathItem).forEach(operation => {
+                            if (operation && operation.tags) {
+                                operation.tags = operation.tags.map(tag => 
+                                    tagNameMapping[tag] || tag
+                                );
+                            }
+                        });
+                    });
+                }
 
                 return root;
             }
