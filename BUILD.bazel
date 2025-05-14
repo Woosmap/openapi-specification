@@ -44,12 +44,12 @@ bundle(
 
 validate(
     name = "validate_yml_test",
-    data = "//:{}.yml".format(BUNDLE_NAME),
+    openapi_file = "//:{}.yml".format(BUNDLE_NAME),
 )
 
 validate(
     name = "validate_json_test",
-    data = "//:{}.json".format(BUNDLE_NAME),
+    openapi_file = "//:{}.json".format(BUNDLE_NAME),
 )
 
 pkg_tar(
@@ -184,5 +184,7 @@ bundle_external_specs(
 
 validate(
     name = "validate_merge_test",
-    data = "merged-woosmap-openapi3.json",
+    config = "redocly/redocly-validate-config.yaml",
+    openapi_file = "//:merged-woosmap-openapi3.json",
+    rules = glob(["redocly/**/*.js"]),
 )

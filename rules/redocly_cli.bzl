@@ -66,12 +66,26 @@ def bundle(name, entry, data = None, config = None, decorators = None, visibilit
         progress_message = "Generating YAML from JSON for %{input}",
     )
 
-def validate(name, data):
+def validate(name, openapi_file = None, config = None, rules = None):
+    validate_data = []
+    if openapi_file:
+        validate_data.append(openapi_file)
+    if config:
+        validate_data.append(config)
+    if rules:
+        validate_data.extend(rules)
+
+    lint_args = []
+    if openapi_file and not config:
+        lint_args = ["lint", "$(location {})".format(openapi_file)]
+    elif config:
+        lint_args = ["lint", "toValidate", "--config", "$(rootpath {})".format(config)]
+
     native.sh_test(
         name = name,
         srcs = ["//:redocly_cli"],
-        data = [data],
-        args = ["lint", "--skip-rule=no-path-trailing-slash", "$(location {})".format(data)],
+        data = validate_data,
+        args = lint_args,
     )
 
 def bundle_external_specs(name, specs, main_spec = "//:woosmap-openapi3.json", config = None, plugins = None):
