@@ -1,5 +1,5 @@
 {
   "lang": "curl",
   "label": "cURL",
-  "source": "curl -L -X GET 'https://api.woosmap.com/geolocation/stores?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254&limit=1'",
+  "source": "curl -L 'https://api.woosmap.com/geolocation/stores?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254&limit=1'",
 }

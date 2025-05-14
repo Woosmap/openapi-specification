@@ -1,5 +1,5 @@
 {
   "lang": "curl",
   "label": "cURL",
-  "source": "curl -L -X POST 'https://api.woosmap.com/stores/replace?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n--data-raw '{\n  \"stores\": [\n    {\n      \"storeId\": \"store_123\",\n      \"name\": \"My first cool store\",\n      \"location\": {\n        \"lat\": 43.61,\n        \"lng\": 3.88\n      }\n    }\n  ]\n}'",
+  "source": "curl -L 'https://api.woosmap.com/stores/replace?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"stores\": [\n    {\n      \"storeId\": \"store_123\",\n      \"name\": \"My first cool store\",\n      \"location\": {\n        \"lat\": 43.61,\n        \"lng\": 3.88\n      }\n    }\n  ]\n}'",
 }

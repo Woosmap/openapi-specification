@@ -1,5 +1,5 @@
 {
   "lang": "nodejs",
   "label": "NodeJS",
-  "source": "var axios = require('axios');\nvar data = JSON.stringify({\n  \"stores\": [\n    {\n      \"storeId\": \"store_123\",\n      \"name\": \"My first cool store\",\n      \"location\": {\n        \"lat\": 43.61,\n        \"lng\": 3.88\n      }\n    }\n  ]\n});\n\nvar config = {\n  method: 'post',\n  url: 'https://api.woosmap.com/stores?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios(config)\n.then(function (response) {\n  console.log(JSON.stringify(response.data));\n})\n.catch(function (error) {\n  console.log(error);\n});\n",
+  "source": "const axios = require('axios');\nlet data = JSON.stringify({\n  \"stores\": [\n    {\n      \"storeId\": \"store_123\",\n      \"name\": \"My first cool store\",\n      \"location\": {\n        \"lat\": 43.61,\n        \"lng\": 3.88\n      }\n    }\n  ]\n});\n\nlet config = {\n  method: 'post',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/stores?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n",
 }
