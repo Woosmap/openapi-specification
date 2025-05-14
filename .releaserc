@@ -62,6 +62,9 @@ plugins:
               "label": "Postman Collection",
             },
           ],
+        "failComment": false,
+        "failTitle": false,
+        "successComment": false,
       },
     ]
   - "@semantic-release/npm"
