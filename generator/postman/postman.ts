@@ -17,8 +17,9 @@ const argv = options({
 
 const main = async (argv: any) => {
   const data = JSON.parse(
-    readFileSync(path.join(__dirname, "../../../", argv.file), "utf8")
+    readFileSync(path.join(__dirname, "../../", argv.file), "utf8")
   ) as any;
+
   await axios.put(
     `https://api.getpostman.com/collections/${argv.collection}`,
     {
