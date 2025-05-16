@@ -1,8 +1,9 @@
 name: waypoints
 in: query
-example: optimize:true|48.850077,3.311124|48.850077,3.411124
 schema:
   type: string
+  example: optimize:true|48.850077,3.311124|48.850077,3.411124
+
 description: >
   A list of points by which the route should pass (route response is divided into legs, one leg corresponding to a route between two waypoints). Waypoints should be separated by | character.
   

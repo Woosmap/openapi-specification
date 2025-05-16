@@ -8,5 +8,5 @@ description: >
   For example: `components=country:gb|country:fr|country:be|country:sp|country:it` would restrict your results to city names or postal codes within the United Kingdom, France, Belgium, Spain and Italy.
 schema:
   type: string
-example: country:fr|country:es
+  example: country:fr|country:es
 in: query

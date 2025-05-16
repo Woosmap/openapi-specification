@@ -4,5 +4,6 @@ description: >
   If language is not supplied, the Localities service will use the default language of each country.
 schema:
   type: string
+  example: en
+
 in: query
-example: en

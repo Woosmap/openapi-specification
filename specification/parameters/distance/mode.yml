@@ -1,11 +1,12 @@
 name: mode
 in: query
-example: driving
 schema:
   type: string
   enum:
     - driving
     - cycling
     - walking
+  example: driving
+
 description: >
   Specifies the mode of transport to use when calculating distance

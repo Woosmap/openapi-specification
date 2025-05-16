@@ -3,6 +3,7 @@ description: >
   The address of which to find the coordinates for. A partial address is less likely to return the proper coordinates than the complete address.
 schema:
   type: string
+  example: "224%20Rue%20de%20Rivoli%2C%20Paris"
+
 required: false
 in: query
-example: "224%20Rue%20de%20Rivoli%2C%20Paris"

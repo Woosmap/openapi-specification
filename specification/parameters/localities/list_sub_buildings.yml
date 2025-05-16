@@ -4,6 +4,7 @@ description: >
   Results may contain an additional key "sub_buildings" with "public_id" and "description" values for every addresses at the same location sharing the same address components.
 schema:
   type: boolean
+  example: true
+
 required: false
-example: true
 in: query

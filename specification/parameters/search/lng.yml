@@ -3,5 +3,5 @@ description: >
   Longitude bias for the results. Should be pass with `lat`.
 schema:
   type: number
-example: 3.5
+  example: 3.5
 in: query

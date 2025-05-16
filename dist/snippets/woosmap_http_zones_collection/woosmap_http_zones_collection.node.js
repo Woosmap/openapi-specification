@@ -1,17 +1,18 @@
 // [START woosmap_http_zones_collection]
-var axios = require('axios');
+const axios = require('axios');
 
-var config = {
+let config = {
   method: 'get',
+  maxBodyLength: Infinity,
   url: 'https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY&limit=2&offset=1',
   headers: { }
 };
 
-axios(config)
-.then(function (response) {
+axios.request(config)
+.then((response) => {
   console.log(JSON.stringify(response.data));
 })
-.catch(function (error) {
+.catch((error) => {
   console.log(error);
 });
 

@@ -15,7 +15,7 @@ parameters:
   - $ref: "../../parameters/localities/geocode_types.yml"
   - $ref: "../../parameters/localities/excluded_types.yml"
   - $ref: "../../parameters/localities/list_sub_buildings.yml"
-  - $ref: "../../parameters/localities/components.yml"
+  - $ref: "../../parameters/localities/localities_components.yml"
   - $ref: "../../parameters/localities/language.yml"
   - $ref: "../../parameters/localities/fields.yml"
   - $ref: "../../parameters/localities/data.yml"

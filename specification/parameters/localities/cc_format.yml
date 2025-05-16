@@ -6,5 +6,6 @@ schema:
   enum:
     - alpha2
     - alpha3
-example: alpha2
+  example: alpha2
+
 in: query

@@ -6,16 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci
-      - run: npm run build -- --profile /tmp/bazel-profile-build.gz --jobs 8
-        env:
-          GH_TOKEN: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
-      - run: npm test -- --jobs 8
-        env:
-          GH_TOKEN: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
-      - name: Upload Bazel profiles
-        uses: actions/upload-artifact@v4
+      - uses: pnpm/action-setup@v4
         with:
-          name: bazel profiles
-          path: |
-            /tmp/bazel-profile-*.gz
+          version: 9.15.9
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+      - run: pnpm run build
+      - run: pnpm test

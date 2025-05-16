@@ -1,5 +1,5 @@
 {
   "lang": "curl",
   "label": "cURL",
-  "source": "curl -L -X GET 'https://api.woosmap.com/localities/details?public_id=TVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPV9fTVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPQ%3D%3D&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'",
+  "source": "curl -L 'https://api.woosmap.com/localities/details?public_id=TVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPV9fTVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPQ%3D%3D&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'",
 }

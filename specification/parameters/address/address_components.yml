@@ -4,5 +4,5 @@ description: >
   Components should be passed as an array of different options which are separated by a `|`.
 schema:
   type: string
-example: country:CAN|country:BEL
+  example: country:CAN|country:BEL
 in: query

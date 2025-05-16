@@ -12,7 +12,7 @@ security:
 parameters:
   - $ref: "../../parameters/address/address.yml"
   - $ref: "../../parameters/address/latlng.yml"
-  - $ref: "../../parameters/address/components.yml"
+  - $ref: "../../parameters/address/address_components.yml"
   - $ref: "../../parameters/address/language.yml"
   - $ref: "../../parameters/address/location.yml"
   - $ref: "../../parameters/address/cc_format.yml"

@@ -1,11 +1,11 @@
 # WARNING: This file is automatically updated as part of `npm run build`.
 
+address_address_components:
+  $ref: "./address/address_components.yml"
 address_address:
   $ref: "./address/address.yml"
 address_cc_format:
   $ref: "./address/cc_format.yml"
-address_components:
-  $ref: "./address/components.yml"
 address_fields:
   $ref: "./address/fields.yml"
 address_input:
@@ -64,8 +64,6 @@ localities_categories:
   $ref: "./localities/categories.yml"
 localities_cc_format:
   $ref: "./localities/cc_format.yml"
-localities_components:
-  $ref: "./localities/components.yml"
 localities_custom_description:
   $ref: "./localities/custom_description.yml"
 localities_data:
@@ -88,6 +86,8 @@ localities_latlng:
   $ref: "./localities/latlng.yml"
 localities_list_sub_buildings:
   $ref: "./localities/list_sub_buildings.yml"
+localities_localities_components:
+  $ref: "./localities/localities_components.yml"
 localities_location:
   $ref: "./localities/location.yml"
 localities_page:

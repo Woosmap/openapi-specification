@@ -4,8 +4,9 @@ description: >
   Default radius if this parameter is not set is 100 000.
 schema:
   type: integer
+  example: 200000
+
 in: query
 required: false
-example: 200000
 
 

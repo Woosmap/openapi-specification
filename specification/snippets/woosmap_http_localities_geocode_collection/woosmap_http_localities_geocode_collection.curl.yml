@@ -1,5 +1,5 @@
 {
   "lang": "curl",
   "label": "cURL",
-  "source": "curl -L -X GET 'https://api.woosmap.com/localities/geocode?address=Place%20Jeanne-d'\\''Arc&components=country%3AFR&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'",
+  "source": "curl -L 'https://api.woosmap.com/localities/geocode?address=Place%20Jeanne-d%27Arc&components=country%3AFR&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'",
 }

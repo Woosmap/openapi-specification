@@ -1,8 +1,9 @@
 name: query
 in: query
-example: "name:'My cool store'|type:'click_and_collect'"
 schema:
   type: string
+  example: "name:'My cool store'|type:'click_and_collect'"
+
 description: >
   Search query combining one or more search clauses. Each search clause is made up of three parts structured as `field` `:` `operator` `value`. , e.g. `name:="My cool store"`
 

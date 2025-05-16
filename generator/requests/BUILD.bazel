@@ -1,50 +1,50 @@
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
-load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_run_binary")
+load("//tools:ts_wrapper.bzl", "ts_project")
 
 package(default_visibility = ["//visibility:public"])
 
-ts_library(
+ts_project(
     name = "_lib",
     srcs = glob(["**/*.ts"]),
+    tsconfig = "//:tsconfig",
     deps = [
-        "@npm//@types/node",
-        "@npm//@types/yargs",
-        "@npm//js-yaml",
-        "@npm//postman-code-generators",
-        "@npm//postman-collection",
-        "@npm//query-string",
-        "@npm//prettier",
-        "@npm//tar-stream",
-        "@npm//yargs",
+        "//:node_modules/@types/node",
+        "//:node_modules/@types/yargs",
+        "//:node_modules/js-yaml",
+        "//:node_modules/postman-code-generators",
+        "//:node_modules/postman-collection",
+        "//:node_modules/prettier",
+        "//:node_modules/query-string",
+        "//:node_modules/tar-stream",
+        "//:node_modules/yargs",
     ],
 )
 
-nodejs_binary(
+js_binary(
     name = "_snippets_bin",
     data = [
         ":_lib",
         "//specification:openapi3",
     ],
-    entry_point = ":snippets.ts",
-    templated_args = ["--bazel_patch_module_resolver"],  # https://github.com/bazelbuild/rules_nodejs/issues/2388
+    entry_point = ":snippets.js",
 )
 
-genrule(
+js_run_binary(
     name = "snippets",
+    srcs = [":_snippets_bin"],
     outs = ["snippets.tar"],
-    cmd = "$(location :_snippets_bin) --output $@",
-    tools = [
-        ":_snippets_bin",
+    args = [
+        "--output",
+        "$(rootpath snippets.tar)",
     ],
+    tool = ":_snippets_bin",  # Add the tool argument
 )
 
-
-nodejs_binary(
+js_binary(
     name = "_samples_bin",
-     data = [
+    data = [
         ":_lib",
         "//specification:openapi3",
     ],
-    entry_point = ":x-code-samples.ts",
-    templated_args = ["--bazel_patch_module_resolver"],
+    entry_point = ":x-code-samples.js",
 )

@@ -1,19 +1,20 @@
 // [START woosmap_http_distance_isochrone]
-var axios = require('axios');
+const axios = require('axios');
 
-var config = {
+let config = {
   method: 'get',
+  maxBodyLength: Infinity,
   url: 'https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY',
   headers: { 
     'Referer': 'http://localhost'
   }
 };
 
-axios(config)
-.then(function (response) {
+axios.request(config)
+.then((response) => {
   console.log(JSON.stringify(response.data));
 })
-.catch(function (error) {
+.catch((error) => {
   console.log(error);
 });
 

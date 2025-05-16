@@ -1,33 +1,33 @@
-load("@npm//@bazel/typescript:index.bzl", "ts_library")
-load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+load("@aspect_rules_js//js:defs.bzl", "js_binary")
+load("//tools:ts_wrapper.bzl", "ts_project")
 
 package(default_visibility = ["//visibility:public"])
 
-ts_library(
+ts_project(
     name = "_lib",
     srcs = glob(["*.ts"]),
+    tsconfig = "//:tsconfig",
     deps = [
-        "@npm//@types/axios",
-        "@npm//@types/node",
-        "@npm//@types/yargs",
-        "@npm//axios",
-        "@npm//tar-stream",
-        "@npm//yargs",
+        "//:node_modules/@types/axios",
+        "//:node_modules/@types/node",
+        "//:node_modules/@types/yargs",
+        "//:node_modules/axios",
+        "//:node_modules/tar-stream",
+        "//:node_modules/yargs",
     ],
 )
 
-nodejs_binary(
+js_binary(
     name = "_postman_bin",
+    args = [
+        "--collection",
+        "18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9",
+        "--file",
+        "$(rootpath //:woosmap-postman.json)",
+    ],
     data = [
         ":_lib",
         "//:woosmap-postman.json",
     ],
-    entry_point = ":postman.ts",
-    templated_args = [
-        "--bazel_patch_module_resolver",  # https://github.com/bazelbuild/rules_nodejs/issues/2388
-        "--collection",
-        "18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9",
-        "--file",
-        "$(location //:woosmap-postman.json)",
-    ],
+    entry_point = ":postman.js",
 )

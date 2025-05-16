@@ -1,11 +1,12 @@
 name: elements
 in: query
-example: duration_distance
 schema:
   type: string
   enum:
     - distance
     - duration
     - duration_distance
+  example: duration_distance
+
 description: >
   Specifies element values that will be part of the API response (distance and/or duration). if not specified default is `distance`

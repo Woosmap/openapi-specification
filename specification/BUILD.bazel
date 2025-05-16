@@ -1,8 +1,25 @@
+load("@aspect_bazel_lib//lib:copy_to_bin.bzl", "copy_to_bin")
+
 filegroup(
+    name = "openapi3_group",
+    srcs = glob(
+        [
+            "**/*.yml",
+            "**/*.json",
+        ],
+        allow_empty = True,
+    ),
+    visibility = ["//visibility:public"],
+)
+
+copy_to_bin(
     name = "openapi3",
-    srcs = glob([
-        "**/*.yml",
-        "**/*.json",
-    ]),
+    srcs = [":openapi3_group"],
+    visibility = ["//visibility:public"],
+)
+
+copy_to_bin(
+    name = "index_yml",
+    srcs = ["index.yml"],
     visibility = ["//visibility:public"],
 )
