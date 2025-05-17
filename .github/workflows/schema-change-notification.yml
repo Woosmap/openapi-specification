@@ -34,10 +34,38 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const pr = context.payload.pull_request;
+            
+            const result = await github.graphql(
+              `
+              query($owner:String!, $repo:String!, $number:Int!) {
+                repository(owner:$owner, name:$repo) {
+                  pullRequest(number:$number) {
+                    closingIssuesReferences(first: 1) {
+                      nodes {
+                        number
+                      }
+                    }
+                  }
+                }
+              }
+              `,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                number: pr.number
+              }
+            );
+
+            const refs = result.repository.pullRequest.closingIssuesReferences.nodes;
+            const targetNumber = refs.length
+              ? refs[0].number      // comment on the first linked issue
+              : pr.number;          // otherwise comment on the PR
+
             await github.rest.issues.createComment({
-              ...context.repo,
-              issue_number: pr.number,
-              body: "🔔 OpenAPI schema has changed. Please bring Mobile team up to speed on the same."
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: targetNumber,
+              body: "🔔 OpenAPI schema has changed. Please bring the team up to speed on the same."
             });
 
       - name: Create issue in Woosmap/woosmap if schemas changed
