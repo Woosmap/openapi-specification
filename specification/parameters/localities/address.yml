@@ -3,6 +3,6 @@ description: >
   The input string to geocode. Can represent an address, a street, a locality or a postal code. The `address` parameter must be URL encoded.
 schema:
   type: string
+  example: "224%20Rue%20de%20Rivoli%2C%20Paris"
 required: false
 in: query
-example: "224%20Rue%20de%20Rivoli%2C%20Paris"

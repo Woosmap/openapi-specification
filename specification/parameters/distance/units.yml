@@ -1,11 +1,12 @@
 name: units
-example: metric
 in: query
 schema:
   type: string
   enum:
     - imperial
     - metric
+  example: metric
+
 description: >
   Specifies the unit system parameter to use when expressing distance as text. Two different units supported:
     * `metric` (default) returns distances in kilometers and meters

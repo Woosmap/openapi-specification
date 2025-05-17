@@ -1,11 +1,12 @@
 name: method
-example: distance
 in: query
 schema:
   type: string
   enum:
     - time
     - distance
+  example: distance
+
 description: >
   Specifies the method to compute the route between the start point and the end point:
 

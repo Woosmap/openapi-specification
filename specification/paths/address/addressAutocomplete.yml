@@ -12,7 +12,7 @@ security:
   - PrivateApiKeyHeaderAuth: []
 parameters:
   - $ref: "../../parameters/address/input.yml"
-  - $ref: "../../parameters/address/components.yml"
+  - $ref: "../../parameters/address/address_components.yml"
   - $ref: "../../parameters/address/location.yml"
   - $ref: "../../parameters/address/language.yml"
 responses:

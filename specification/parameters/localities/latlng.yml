@@ -3,6 +3,7 @@ description: >
   The latlng parameter is used for reverse geocoding, it’s required if the `address` parameter is missing.
 schema:
   type: string
+  example: 5.2,-2.3
+
 required: false
-example: 5.2,-2.3
 in: query

@@ -5,5 +5,5 @@ schema:
   type: integer
   minimum: 1
   maximum: 300
-example: 150
+  example: 150
 in: query

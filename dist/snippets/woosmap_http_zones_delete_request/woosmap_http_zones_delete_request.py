@@ -3,7 +3,7 @@ import requests
 
 url = "https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY"
 
-payload={}
+payload = {}
 headers = {}
 
 response = requests.request("DELETE", url, headers=headers, data=payload)

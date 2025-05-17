@@ -1,5 +1,5 @@
 {
   "lang": "curl",
   "label": "cURL",
-  "source": "curl -L -X GET 'https://api.woosmap.com/localities/autocomplete/?input=Lond&components=country%3Agb&no_deprecated_fields=true&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'",
+  "source": "curl -L 'https://api.woosmap.com/localities/autocomplete/?input=Lond&components=country%3Agb&no_deprecated_fields=true&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'",
 }

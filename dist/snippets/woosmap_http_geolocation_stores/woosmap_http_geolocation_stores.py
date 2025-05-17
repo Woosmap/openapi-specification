@@ -3,7 +3,7 @@ import requests
 
 url = "https://api.woosmap.com/geolocation/stores?private_key=YOUR_PRIVATE_API_KEY&ip_address=173.79.254.254&limit=1"
 
-payload={}
+payload = {}
 headers = {}
 
 response = requests.request("GET", url, headers=headers, data=payload)

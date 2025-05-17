@@ -6,5 +6,6 @@ description: >
   No `language` is necessary for a postal_code request. According to requested language, only parts of the address components might be translated.
 schema:
   type: string
+  example: en
+
 in: query
-example: en

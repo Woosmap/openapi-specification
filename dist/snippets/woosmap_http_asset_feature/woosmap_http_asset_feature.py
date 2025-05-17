@@ -3,7 +3,7 @@ import requests
 
 url = "https://api.woosmap.com/stores/10031/?key=YOUR_PUBLIC_API_KEY"
 
-payload={}
+payload = {}
 headers = {
     'Referer': 'http://localhost'
 }

@@ -1,7 +1,7 @@
 # [START woosmap_http_zones_update_request]
 curl -L -X PUT 'https://api.woosmap.com/zones?private_key=YOUR_PRIVATE_API_KEY' \
 -H 'content-type: application/json' \
---data-raw '{
+-d '{
   "zones": [
     {
       "zone_id": "ZoneA",

@@ -3,7 +3,7 @@ import requests
 
 url = "https://api.woosmap.com/geolocation/timezone?private_key=YOUR_PRIVATE_API_KEY&location=43.6114130%2C3.8735291"
 
-payload={}
+payload = {}
 headers = {}
 
 response = requests.request("GET", url, headers=headers, data=payload)

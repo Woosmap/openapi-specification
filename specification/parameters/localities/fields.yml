@@ -6,5 +6,6 @@ schema:
   type: string
   enum:
     - geometry
+  example: geometry
+
 in: query
-example: geometry

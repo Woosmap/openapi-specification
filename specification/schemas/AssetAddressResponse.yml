@@ -6,9 +6,8 @@ properties:
     $ref: "./AssetAddressLines.yml"
   country_code:
     description: An ISO_3166-1 Country Code where the Asset is located (see <https://en.wikipedia.org/wiki/ISO_3166-1> for full list)
-    type: string
+    type: [string, "null"]
     example: "UK"
-    nullable: true
   city:
     description: A City where belongs an Asset
     type: string

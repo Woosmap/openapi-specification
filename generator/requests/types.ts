@@ -1,8 +1,11 @@
 import {RequestBody, Request as Request_, Url} from "postman-collection";
 
 // TODO current Request.definition is incorrect and requires fields
-interface Options extends Partial<Request_.definition> {
+interface Options {
     url: Url | string;
+    method?: string;
+    header?: { key: string; value: string }[];
+    body?: RequestBody.definition;
 }
 
 export class Request extends Request_ {
@@ -14,8 +17,7 @@ export class Request extends Request_ {
             if (options.url.getQueryString().indexOf("private_key=") == -1) {
                 options.url.addQueryParams({key: "private_key", value: "YOUR_PRIVATE_API_KEY"});
             }
-        }
-        else if (options.url.getQueryString().indexOf("key=") == -1) {
+        } else if (options.url.getQueryString().indexOf("key=") == -1) {
             options.url.addQueryParams({key: "key", value: "YOUR_PUBLIC_API_KEY"});
         }
 

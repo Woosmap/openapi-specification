@@ -4,5 +4,5 @@ description: >
 schema:
   type: integer
   minimum: 1
-example: 20
+  example: 20
 in: query

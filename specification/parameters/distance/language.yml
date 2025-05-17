@@ -1,7 +1,8 @@
 name: language
 in: query
-example: en
 schema:
   type: string
+  example: en
+
 description: >
   The language code, indicating in which language the results should be returned, if possible. If language is not supplied, the Distance API service will use the navigator language or “en”.

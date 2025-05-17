@@ -1,5 +1,5 @@
 {
   "lang": "javascript",
   "label": "JavaScript",
-  "source": "var requestOptions = {\n  method: 'DELETE',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));",
+  "source": "const requestOptions = {\n  method: \"DELETE\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/zones/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));",
 }
