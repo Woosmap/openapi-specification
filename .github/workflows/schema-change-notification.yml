@@ -34,38 +34,10 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const pr = context.payload.pull_request;
-
-            const result = await github.graphql(
-              `
-              query($owner:String!, $repo:String!, $number:Int!) {
-                repository(owner:$owner, name:$repo) {
-                  pullRequest(number:$number) {
-                    closingIssuesReferences(first: 1) {
-                      nodes {
-                        number
-                      }
-                    }
-                  }
-                }
-              }
-              `,
-              {
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                number: pr.number
-              }
-            );
-
-            const refs = result.repository.pullRequest.closingIssuesReferences.nodes;
-            const targetNumber = refs.length
-              ? refs[0].number      // comment on the first linked issue
-              : pr.number;          // otherwise comment on the PR
-
             await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: targetNumber,
-              body: "🔔 OpenAPI schema has changed. Please bring the team up to speed on the same."
+              ...context.repo,
+              issue_number: pr.number,
+              body: "🔔 OpenAPI schema has changed. Please bring Mobile team up to speed on the same."
             });
 
       - name: Create issue in Woosmap/woosmap if schemas changed
@@ -74,37 +46,30 @@ jobs:
         with:
           github-token: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
           script: |
-            const pr = context.payload.pull_request;
-            const issueTitle = `OpenAPI schema changed in PR #${pr.number}`;
-      
-            // 1) Grab up to 100 open issues from the private repo
-            const { data: openIssues } = await github.rest.issues.listForRepo({
-              owner: 'Woosmap',
-              repo: 'woosmap',
-              state: 'open',
-              per_page: 100
+            const { owner, repo, number, html_url, title: prTitle } = context.payload.pull_request;
+            const issueTitle = `OpenAPI schema changed in PR #${number}`;
+            // 1) Search for existing open issues with the same title
+            const search = await github.rest.search.issuesAndPullRequests({
+                q: `repo:Woosmap/woosmap is:issue is:open in:title "${issueTitle}"`
             });
-      
-            // 2) Check for an existing one with that exact title
-            if (openIssues.some(i => i.title === issueTitle)) {
-              console.log(`Skipping—"${issueTitle}" already exists.`);
-            } else {
-              // 3) Otherwise create it
-              await github.rest.issues.create({
+            if (search.data.total_count === 0) {
+                // 2) No duplicate found → create it
+                await github.rest.issues.create({
                 owner: 'Woosmap',
                 repo: 'woosmap',
                 title: issueTitle,
                 body: [
-                  `Schema files under \`specification/schemas/\` were updated in PR #${pr.number}.`,
-                  ``,
-                  `> ${pr.title}`,
-                  ``,
-                  `Review it here: ${pr.html_url}`
+                    `Schema files under \`specification/schemas/\` were updated in PR #${number}.`,
+                    ``,
+                    `> ${prTitle}`,
+                    ``,
+                    `Review it here: ${html_url}`
                 ].join('\n'),
                 assignees: ['strider1981','sameerdhulap']
-              });
+                });
+            } else {
+                console.log(`An open issue titled "${issueTitle}" already exists; skipping creation.`);
             }
-          
                 
       - name: Send Slack notification if schemas changed
         if: steps.schema_changes.outputs.changed_files != ''
