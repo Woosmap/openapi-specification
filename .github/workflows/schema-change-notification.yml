@@ -31,7 +31,7 @@ jobs:
         if: steps.schema_changes.outputs.changed_files != ''
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
           script: |
             const pr = context.payload.pull_request;
             const body = pr.body || "";
