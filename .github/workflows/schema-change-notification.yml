@@ -46,30 +46,37 @@ jobs:
         with:
           github-token: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
           script: |
-            const { owner, repo, number, html_url, title: prTitle } = context.payload.pull_request;
-            const issueTitle = `OpenAPI schema changed in PR #${number}`;
-            // 1) Search for existing open issues with the same title
-            const search = await github.rest.search.issuesAndPullRequests({
-                q: `repo:Woosmap/woosmap is:issue is:open in:title "${issueTitle}"`
+            const pr = context.payload.pull_request;
+            const issueTitle = `OpenAPI schema changed in PR #${pr.number}`;
+      
+            // 1) List up to 100 open issues in the private repo
+            const { data: openIssues } = await github.rest.issues.listForRepo({
+              owner: 'Woosmap',
+              repo: 'woosmap',
+              state: 'open',
+              per_page: 100
             });
-            if (search.data.total_count === 0) {
-                // 2) No duplicate found → create it
-                await github.rest.issues.create({
+      
+            // 2) Skip creation if one already matches the title
+            if (openIssues.some(issue => issue.title === issueTitle)) {
+              console.log(`Issue "${issueTitle}" already exists; skipping.`);
+            } else {
+              // 3) Otherwise create it
+              await github.rest.issues.create({
                 owner: 'Woosmap',
                 repo: 'woosmap',
                 title: issueTitle,
                 body: [
-                    `Schema files under \`specification/schemas/\` were updated in PR #${number}.`,
-                    ``,
-                    `> ${prTitle}`,
-                    ``,
-                    `Review it here: ${html_url}`
+                  `Schema files under \`specification/schemas/\` were updated in PR #${pr.number}.`,
+                  ``,
+                  `> ${pr.title}`,
+                  ``,
+                  `Review here: ${pr.html_url}`
                 ].join('\n'),
                 assignees: ['strider1981','sameerdhulap']
-                });
-            } else {
-                console.log(`An open issue titled "${issueTitle}" already exists; skipping creation.`);
+              });
             }
+          
                 
       - name: Send Slack notification if schemas changed
         if: steps.schema_changes.outputs.changed_files != ''
