@@ -27,39 +27,39 @@ jobs:
           echo "$CHANGED" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Comment on PR or linked Issue if schemas changed
-        if: steps.schema_changes.outputs.changed_files != ''
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
-          script: |
-            const pr = context.payload.pull_request;
-            const body = pr.body || "";
+      # - name: Comment on PR or linked Issue if schemas changed
+      #   if: steps.schema_changes.outputs.changed_files != ''
+      #   uses: actions/github-script@v6
+      #   with:
+      #     github-token: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
+      #     script: |
+      #       const pr = context.payload.pull_request;
+      #       const body = pr.body || "";
 
-            // Try both "Owner/Repo#123" and full "https://github.com/Owner/Repo/issues/123"
-            const urlRegex   = /https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/issues\/(\d+)/;
-            const shortRegex = /([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)#(\d+)/;
+      #       // Try both "Owner/Repo#123" and full "https://github.com/Owner/Repo/issues/123"
+      #       const urlRegex   = /https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/issues\/(\d+)/;
+      #       const shortRegex = /([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)#(\d+)/;
 
-            let match = body.match(urlRegex) || body.match(shortRegex);
-            let targetOwner, targetRepo, targetNumber;
+      #       let match = body.match(urlRegex) || body.match(shortRegex);
+      #       let targetOwner, targetRepo, targetNumber;
 
-            if (match) {
-              // In both cases, groups 1=owner, 2=repo, 3=number
-              [, targetOwner, targetRepo, targetNumber] = match;
-              targetNumber = parseInt(targetNumber, 10);
-            } else {
-              // No external issue reference → comment on this PR
-              targetOwner  = context.repo.owner;
-              targetRepo   = context.repo.repo;
-              targetNumber = pr.number;
-            }
+      #       if (match) {
+      #         // In both cases, groups 1=owner, 2=repo, 3=number
+      #         [, targetOwner, targetRepo, targetNumber] = match;
+      #         targetNumber = parseInt(targetNumber, 10);
+      #       } else {
+      #         // No external issue reference → comment on this PR
+      #         targetOwner  = context.repo.owner;
+      #         targetRepo   = context.repo.repo;
+      #         targetNumber = pr.number;
+      #       }
 
-            await github.rest.issues.createComment({
-              owner:        targetOwner,
-              repo:         targetRepo,
-              issue_number: targetNumber,
-              body: "🔔 OpenAPI schema has changed. Please bring Mobile team up to speed on the same."
-            });
+      #       await github.rest.issues.createComment({
+      #         owner:        targetOwner,
+      #         repo:         targetRepo,
+      #         issue_number: targetNumber,
+      #         body: "🔔 OpenAPI schema has changed. Please bring Mobile team up to speed on the same."
+      #       });
         
 
       - name: Create issue in Woosmap/woosmap if schemas changed
