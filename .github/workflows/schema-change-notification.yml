@@ -34,34 +34,29 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const pr = context.payload.pull_request;
-      
-            // 1) Fetch any issues the PR closes/references via GraphQL
-            const result = await github.graphql(`
-              query($owner:String!, $repo:String!, $number:Int!) {
-                repository(owner:$owner, name:$repo) {
-                  pullRequest(number:$number) {
-                    closingIssuesReferences(first: 1) {
-                      nodes { number }
-                    }
-                  }
-                }
-              }`,
-              {
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                number: pr.number
-              }
-            );
-      
-            // 2) Determine target: linked issue or PR
-            const refs = result.repository.pullRequest.closingIssuesReferences.nodes;
-            const target = refs.length ? refs[0].number : pr.number;
-      
-            // 3) Post the comment
+            const body = pr.body || "";
+
+            // 1) Try to find a cross-repo issue reference like "Owner/Repo#123"
+            const crossRepoPattern = /([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)#(\d+)/;
+            const match = body.match(crossRepoPattern);
+
+            let targetOwner, targetRepo, targetNumber;
+            if (match) {
+              // 2) Use the referenced repo/issue
+              [, targetOwner, targetRepo, targetNumber] = match;
+              targetNumber = parseInt(targetNumber, 10);
+            } else {
+              // 3) No cross-repo issue → comment on this PR
+              targetOwner = context.repo.owner;
+              targetRepo  = context.repo.repo;
+              targetNumber = pr.number;
+            }
+
+            // 4) Post the comment
             await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: target,
+              owner: targetOwner,
+              repo:  targetRepo,
+              issue_number: targetNumber,
               body: "🔔 OpenAPI schema has changed. Please bring Mobile team up to speed on the same."
             });
         
