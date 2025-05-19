@@ -27,27 +27,14 @@ jobs:
           echo "$CHANGED" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Comment on PR if schemas changed
+      - name: Comment on PR or linked Issue if schemas changed
         if: steps.schema_changes.outputs.changed_files != ''
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const pr = context.payload.pull_request;
-            await github.rest.issues.createComment({
-              ...context.repo,
-              issue_number: pr.number,
-              body: "🔔 OpenAPI schema has changed. Please bring Mobile team up to speed on the same."
-            });
-
-      - name: Create issue in Woosmap/woosmap if schemas changed
-        if: steps.schema_changes.outputs.changed_files != ''
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const pr = context.payload.pull_request;
-
+      
             // 1) Fetch any issues the PR closes/references via GraphQL
             const result = await github.graphql(`
               query($owner:String!, $repo:String!, $number:Int!) {
@@ -65,11 +52,11 @@ jobs:
                 number: pr.number
               }
             );
-
+      
             // 2) Determine target: linked issue or PR
             const refs = result.repository.pullRequest.closingIssuesReferences.nodes;
             const target = refs.length ? refs[0].number : pr.number;
-
+      
             // 3) Post the comment
             await github.rest.issues.createComment({
               owner: context.repo.owner,
@@ -77,6 +64,44 @@ jobs:
               issue_number: target,
               body: "🔔 OpenAPI schema has changed. Please bring Mobile team up to speed on the same."
             });
+        
+
+      # - name: Create issue in Woosmap/woosmap if schemas changed
+      #   if: steps.schema_changes.outputs.changed_files != ''
+      #   uses: actions/github-script@v6
+      #   with:
+      #     github-token: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
+      #     script: |
+      #       const pr = context.payload.pull_request;
+      #       const issueTitle = `OpenAPI schema changed in PR #${pr.number}`;
+      
+      #       // 1) List up to 100 open issues in the private repo
+      #       const { data: openIssues } = await github.rest.issues.listForRepo({
+      #         owner: 'Woosmap',
+      #         repo: 'woosmap',
+      #         state: 'open',
+      #         per_page: 100
+      #       });
+      
+      #       // 2) Skip creation if one already matches the title
+      #       if (openIssues.some(issue => issue.title === issueTitle)) {
+      #         console.log(`Issue "${issueTitle}" already exists; skipping.`);
+      #       } else {
+      #         // 3) Otherwise create it
+      #         await github.rest.issues.create({
+      #           owner: 'Woosmap',
+      #           repo: 'woosmap',
+      #           title: issueTitle,
+      #           body: [
+      #             `Schema files under \`specification/schemas/\` were updated in PR #${pr.number}.`,
+      #             ``,
+      #             `> ${pr.title}`,
+      #             ``,
+      #             `Review here: ${pr.html_url}`
+      #           ].join('\n'),
+      #           assignees: ['strider1981','sameerdhulap']
+      #         });
+      #       }
           
                 
       - name: Send Slack notification if schemas changed
