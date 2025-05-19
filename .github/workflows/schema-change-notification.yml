@@ -36,26 +36,27 @@ jobs:
             const pr = context.payload.pull_request;
             const body = pr.body || "";
 
-            // 1) Try to find a cross-repo issue reference like "Owner/Repo#123"
-            const crossRepoPattern = /([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)#(\d+)/;
-            const match = body.match(crossRepoPattern);
+            // Try both "Owner/Repo#123" and full "https://github.com/Owner/Repo/issues/123"
+            const urlRegex   = /https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/issues\/(\d+)/;
+            const shortRegex = /([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)#(\d+)/;
 
+            let match = body.match(urlRegex) || body.match(shortRegex);
             let targetOwner, targetRepo, targetNumber;
+
             if (match) {
-              // 2) Use the referenced repo/issue
+              // In both cases, groups 1=owner, 2=repo, 3=number
               [, targetOwner, targetRepo, targetNumber] = match;
               targetNumber = parseInt(targetNumber, 10);
             } else {
-              // 3) No cross-repo issue → comment on this PR
-              targetOwner = context.repo.owner;
-              targetRepo  = context.repo.repo;
+              // No external issue reference → comment on this PR
+              targetOwner  = context.repo.owner;
+              targetRepo   = context.repo.repo;
               targetNumber = pr.number;
             }
 
-            // 4) Post the comment
             await github.rest.issues.createComment({
-              owner: targetOwner,
-              repo:  targetRepo,
+              owner:        targetOwner,
+              repo:         targetRepo,
               issue_number: targetNumber,
               body: "🔔 OpenAPI schema has changed. Please bring Mobile team up to speed on the same."
             });
