@@ -68,73 +68,78 @@ jobs:
         with:
           github-token: ${{ secrets.WOOSMAP_AK_ACCESS_TOKEN }}
           script: |
+            // 0) Grab the PR payload
             const pr = context.payload.pull_request;
+            const publicOwner = context.repo.owner;
+            const publicRepo  = context.repo.repo;
 
-            const owner    = 'Woosmap';
-            const repo     = 'woosmap';
-            const number   = pr.number;
-            const html_url = pr.html_url;
-            const prTitle  = pr.title;
-            const author   = pr.user.login;
-            const issueTitle = `OpenAPI change: #${number} - ${prTitle}`;
+            // 1) Prepare private target repo
+            const targetOwner = 'Woosmap';
+            const targetRepo  = 'woosmap';
+            const issueTitle  = `OpenAPI change: #${pr.number} - ${pr.title}`;
+            const author      = pr.user.login;
 
-            // 1) Check for existing open issue to avoid duplicates
-            const { data: search } = await github.rest.search.issuesAndPullRequests({
-              q: `repo:Woosmap/woosmap is:issue is:open in:title "${issueTitle}"`
+            // 2) Dedup via listForRepo on the private repo
+            const { data: openIssues } = await github.rest.issues.listForRepo({
+              owner: targetOwner,
+              repo:  targetRepo,
+              state: 'open',
+              per_page: 100
             });
-            if (search.total_count > 0) {
+            if (openIssues.some(i => i.title === issueTitle)) {
               console.log(`Issue "${issueTitle}" already exists; skipping creation.`);
               return;
             }
-            
-            // 2) Fetch the PR diff
+
+            // 3) Fetch diff from the PUBLIC repo where this PR lives
             let diffText = '';
             try {
               const diffRes = await github.request(
                 'GET /repos/{owner}/{repo}/pulls/{pull_number}',
                 {
-                  owner,
-                  repo,
-                  pull_number: number,
+                  owner: publicOwner,
+                  repo:  publicRepo,
+                  pull_number: pr.number,
                   mediaType: { format: 'diff' }
                 }
               );
               diffText = diffRes.data;
             } catch (err) {
-              console.warn('Unable to fetch diff:', err.message);
+              console.warn('Unable to fetch PR diff:', err.message);
             }
 
-            // 3) Truncate or embed the diff
+            // 4) Truncate or embed the diff
             let diffBlock = '';
             if (diffText) {
-              const maxLen = 2000;
-              if (diffText.length <= maxLen) {
+              const MAX_FULL = 2000;
+              const MAX_SNIP = 500;
+              if (diffText.length <= MAX_FULL) {
                 diffBlock = '```diff\n' + diffText + '\n```';
               } else {
-                const snippet = diffText.slice(0, 500) + '\n...';
+                const snippet = diffText.slice(0, MAX_SNIP) + '\n...';
                 diffBlock = '```diff\n' + snippet + '\n```';
               }
             }
 
-            // 4) Build the issue body
-            const bodyLines = [
-              `Schema files under \`specification/schemas/\` were updated in PR ${html_url}.`,
+            // 5) Build the issue body
+            const body = [
+              `Schema files under \`specification/schemas/\` were updated in PR ${pr.html_url}.`,
               '',
-              `> ${prTitle}`,
+              `> ${pr.title}`,
               '',
               diffBlock
-            ].filter(Boolean);
+            ].filter(Boolean).join('\n');
 
-            // 5) Create the issue, assigning to the PR author
+
+            // 6) Create the issue in the PRIVATE repo, assigned to the PR author
             await github.rest.issues.create({
-              owner,
-              repo,
-              title: issueTitle,
-              body: bodyLines.join('\n'),
+              owner:  targetOwner,
+              repo:   targetRepo,
+              title:  issueTitle,
+              body,
               assignees: [author]
             });
-          
-                
+    
       - name: Send Slack notification if schemas changed
         if: steps.schema_changes.outputs.changed_files != ''
         uses: slackapi/slack-github-action@v1
