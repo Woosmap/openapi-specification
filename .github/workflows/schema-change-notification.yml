@@ -22,7 +22,13 @@ jobs:
         id: schema_changes
         run: |
           git fetch origin master
-          CHANGED=$(git diff --name-only origin/master...HEAD specification/schemas/)
+
+          # include both schema changes and the merged OpenAPI JSON
+          CHANGED=$(git diff --name-only origin/master...HEAD \
+            specification/schemas/ \
+            dist/merged-woosmap-openapi3.json \
+          )
+
           echo "changed_files<<EOF" >> $GITHUB_OUTPUT
           echo "$CHANGED" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
