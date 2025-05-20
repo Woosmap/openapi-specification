@@ -69,7 +69,7 @@ jobs:
           github-token: ${{ secrets.WOOSMAP_AK_ACCESS_TOKEN }}
           script: |
             const { owner, repo, number, html_url, title: prTitle } = context.payload.pull_request;
-            const issueTitle = `OpenAPI change: #${number} - ${title}`;
+            const issueTitle = `OpenAPI change: #${number} - ${prTitle}`;
             // 1) Search for existing open issues with the same title
             const search = await github.rest.search.issuesAndPullRequests({
                 q: `repo:Woosmap/woosmap is:issue is:open in:title "${issueTitle}"`
