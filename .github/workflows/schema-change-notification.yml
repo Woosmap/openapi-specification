@@ -78,28 +78,61 @@ jobs:
             const author   = pr.user.login;
             const issueTitle = `OpenAPI change: #${number} - ${prTitle}`;
 
-            // 1) Search for existing open issues with the same title
-            const search = await github.rest.search.issuesAndPullRequests({
-                q: `repo:Woosmap/woosmap is:issue is:open in:title "${issueTitle}"`
+            // 1) Check for existing open issue to avoid duplicates
+            const { data: search } = await github.rest.search.issuesAndPullRequests({
+              q: `repo:Woosmap/woosmap is:issue is:open in:title "${issueTitle}"`
             });
-            if (search.data.total_count === 0) {
-                // 2) No duplicate found → create it
-                await github.rest.issues.create({
-                owner: 'Woosmap',
-                repo: 'woosmap',
-                title: issueTitle,
-                body: [
-                    `Schema files under \`specification/schemas/\` were updated in PR ${html_url}.`,
-                    ``,
-                    `> ${prTitle}`,
-                    ``,
-                    `Review it here: ${html_url}`
-                ].join('\n'),
-                assignees: [author]
-                });
-            } else {
-                console.log(`An open issue titled "${issueTitle}" already exists; skipping creation.`);
+            if (search.total_count > 0) {
+              console.log(`Issue "${issueTitle}" already exists; skipping creation.`);
+              return;
             }
+            
+            // 2) Fetch the PR diff
+            let diffText = '';
+            try {
+              const diffRes = await github.request(
+                'GET /repos/{owner}/{repo}/pulls/{pull_number}',
+                {
+                  owner,
+                  repo,
+                  pull_number: number,
+                  mediaType: { format: 'diff' }
+                }
+              );
+              diffText = diffRes.data;
+            } catch (err) {
+              console.warn('Unable to fetch diff:', err.message);
+            }
+
+            // 3) Truncate or embed the diff
+            let diffBlock = '';
+            if (diffText) {
+              const maxLen = 2000;
+              if (diffText.length <= maxLen) {
+                diffBlock = '```diff\n' + diffText + '\n```';
+              } else {
+                const snippet = diffText.slice(0, 500) + '\n...';
+                diffBlock = '```diff\n' + snippet + '\n```';
+              }
+            }
+
+            // 4) Build the issue body
+            const bodyLines = [
+              `Schema files under \`specification/schemas/\` were updated in PR ${html_url}.`,
+              '',
+              `> ${prTitle}`,
+              '',
+              diffBlock
+            ].filter(Boolean);
+
+            // 5) Create the issue, assigning to the PR author
+            await github.rest.issues.create({
+              owner,
+              repo,
+              title: issueTitle,
+              body: bodyLines.join('\n'),
+              assignees: [author]
+            });
           
                 
       - name: Send Slack notification if schemas changed
