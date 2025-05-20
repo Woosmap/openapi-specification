@@ -70,6 +70,7 @@ jobs:
           script: |
             const { owner, repo, number, html_url, title: prTitle } = context.payload.pull_request;
             const issueTitle = `OpenAPI change: #${number} - ${prTitle}`;
+            const author = pr.user.login;
             // 1) Search for existing open issues with the same title
             const search = await github.rest.search.issuesAndPullRequests({
                 q: `repo:Woosmap/woosmap is:issue is:open in:title "${issueTitle}"`
@@ -87,7 +88,7 @@ jobs:
                     ``,
                     `Review it here: ${html_url}`
                 ].join('\n'),
-                assignees: ['strider1981','sameerdhulap']
+                assignees: [author]
                 });
             } else {
                 console.log(`An open issue titled "${issueTitle}" already exists; skipping creation.`);
