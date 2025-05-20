@@ -58,7 +58,7 @@ jobs:
               owner:        targetOwner,
               repo:         targetRepo,
               issue_number: targetNumber,
-              body: "🔔 OpenAPI schema has changed. Please bring Mobile team up to speed on the same."
+              body: "🔔 OpenAPI schema has changed. Dependent libraries/SDKs/Plugins need to be updated as well."
             });
         
 
@@ -69,7 +69,7 @@ jobs:
           github-token: ${{ secrets.WOOSMAP_AK_ACCESS_TOKEN }}
           script: |
             const { owner, repo, number, html_url, title: prTitle } = context.payload.pull_request;
-            const issueTitle = `OpenAPI schema changed in PR #${number}`;
+            const issueTitle = `OpenAPI change: #${number} - ${title}`;
             // 1) Search for existing open issues with the same title
             const search = await github.rest.search.issuesAndPullRequests({
                 q: `repo:Woosmap/woosmap is:issue is:open in:title "${issueTitle}"`
@@ -81,7 +81,7 @@ jobs:
                 repo: 'woosmap',
                 title: issueTitle,
                 body: [
-                    `Schema files under \`specification/schemas/\` were updated in PR #${number}.`,
+                    `Schema files under \`specification/schemas/\` were updated in PR ${html_url}.`,
                     ``,
                     `> ${prTitle}`,
                     ``,
