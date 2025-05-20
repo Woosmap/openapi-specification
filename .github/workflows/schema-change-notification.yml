@@ -1,8 +1,7 @@
 name: Notify on OpenAPI Schema Changes
 
 on:
-  pull_request:
-    types: [opened, synchronize]
+  push:
     branches: [master]
 
 jobs:
