@@ -121,23 +121,29 @@ jobs:
               }
             }
 
-            // 5) Build the issue body
-            const body = [
+            // 5) Build the issue body with a checklist
+            const bodyLines = [
               `Schema files under \`specification/schemas/\` were updated in PR ${pr.html_url}.`,
               '',
               `> ${pr.title}`,
               '',
-              diffBlock
-            ].filter(Boolean).join('\n');
+              diffBlock,
+              '',
+              '**Please update these dependent libraries/SDKs/Plugins:**',
+              '- [ ] MapsJS',
+              '- [ ] Native SDK',
+              '- [ ] RN Plugin',
+              '- [ ] Flutter Plugin'
+            ].filter(Boolean);
 
 
             // 6) Create the issue in the PRIVATE repo, assigned to the PR author
             await github.rest.issues.create({
-              owner:  targetOwner,
-              repo:   targetRepo,
-              title:  issueTitle,
-              body,
-              assignees: [author]
+              owner:      targetOwner,
+              repo:       targetRepo,
+              title:      issueTitle,
+              body:       bodyLines.join('\n'),
+              assignees:  [author]
             });
     
       - name: Send Slack notification if schemas changed
