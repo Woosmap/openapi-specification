@@ -175,6 +175,7 @@ bundle_external_specs(
     main_spec = "//:woosmap-openapi3.json",
     plugins = glob(["redocly/**/*.js"]),
     specs = [
+        "maps",
         "what3words",
         "indoor",
         "transit",

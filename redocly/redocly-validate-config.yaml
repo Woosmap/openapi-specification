@@ -25,3 +25,4 @@ rules:
       - "Datasets API" 
       - "Datasets API - Search"
       - "Datasets API - Features"
+      - "Static Map API"
