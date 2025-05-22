@@ -84,6 +84,15 @@ apis:
             externalDocs:
               url: "https://developers.woosmap.com/products/datasets-api/get-started/"
 
+          'static':
+            name: 'Static Map API'
+            description: |
+              The Woosmap Static Maps API lets you generate customizable, embeddable map images using simple HTTP requests. It’s a lightweight alternative to interactive maps—ideal for emails, reports, or websites where dynamic JavaScript maps aren't needed.  
+
+              You provide parameters such as location, zoom level, size, and markers, and the API returns a map image that can be embedded directly into any webpage or application.
+            externalDocs:
+              url: "https://developers.woosmap.com/products/map-static-api/get-started/"
+
         tagsToDelete:
           - 'Transit'
 plugins:

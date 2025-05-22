@@ -75,6 +75,7 @@ rules_pkg_dependencies()
     downloaded_file_path = name + ".json",
     urls = ["https://api.woosmap.com/{}/openapi.json".format(name)],
 ) for name in [
+    "maps",
     "what3words",
     "indoor",
     "transit",
