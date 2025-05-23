@@ -6471,14 +6471,19 @@
               ],
               "title": "Polygon"
             },
-            "example": "{\"shape\": \"ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??\", \"color\": \"rgba(255, 20, 147, 0.5)\", \"fill_color\": \"rgba(199, 21, 133, 0.7)\"}"
+            "example": "{\"shape\": \"ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??\", \"fill_color\": \"rgba(255, 20, 147, 0.5)\", \"color\": \"rgba(199, 21, 133, 0.7)\"}"
           }
         ],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
-              "image/webp": {}
+              "image/webp": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
             }
           },
           "401": {
@@ -16652,12 +16657,12 @@
           "color": {
             "type": "string",
             "title": "Color",
-            "default": "blue"
+            "default": "rgb(65, 176, 246)"
           },
           "fill_color": {
             "type": "string",
             "title": "Fill Color",
-            "default": "magenta"
+            "default": "rgba(65, 176, 246, 0.5)"
           },
           "weight": {
             "type": "number",
@@ -16680,7 +16685,7 @@
           "color": {
             "type": "string",
             "title": "Color",
-            "default": "blue"
+            "default": "rgb(65, 176, 246)"
           },
           "weight": {
             "type": "number",
