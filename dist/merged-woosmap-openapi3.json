@@ -6327,6 +6327,22 @@
         ],
         "parameters": [
           {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Language"
+            }
+          },
+          {
             "name": "lat",
             "in": "query",
             "required": true,
@@ -6395,23 +6411,82 @@
             }
           },
           {
-            "name": "language",
+            "name": "markers",
             "in": "query",
             "required": false,
             "schema": {
               "anyOf": [
                 {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "contentMediaType": "application/json",
+                    "contentSchema": {
+                      "$ref": "#/components/schemas/Maps_MarkerWithUrlOptions"
+                    }
+                  }
                 },
                 {
                   "type": "null"
                 }
               ],
-              "title": "Language"
-            }
+              "description": "Adds a marker.",
+              "title": "Markers"
+            },
+            "description": "Adds a marker."
           },
           {
-            "name": "marker",
+            "name": "polylines",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "contentMediaType": "application/json",
+                    "contentSchema": {
+                      "$ref": "#/components/schemas/Maps_PolylineOptions"
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Add a polyline.",
+              "title": "Polylines"
+            },
+            "description": "Add a polyline."
+          },
+          {
+            "name": "polygons",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "contentMediaType": "application/json",
+                    "contentSchema": {
+                      "$ref": "#/components/schemas/Maps_PolygonOptions"
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Adds a polygon.",
+              "title": "Polygons"
+            },
+            "description": "Adds a polygon."
+          },
+          {
+            "name": "stylers",
             "in": "query",
             "required": false,
             "schema": {
@@ -6420,58 +6495,19 @@
                   "type": "string",
                   "contentMediaType": "application/json",
                   "contentSchema": {
-                    "$ref": "#/components/schemas/Maps_MarkerOptions"
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Maps_MapStyle"
+                    }
                   }
                 },
                 {
                   "type": "null"
                 }
               ],
-              "title": "Marker"
+              "title": "Stylers"
             },
-            "example": "{\"lat\": 43.6, \"lng\": 3.883}"
-          },
-          {
-            "name": "polyline",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "contentMediaType": "application/json",
-                  "contentSchema": {
-                    "$ref": "#/components/schemas/Maps_PolylineOptions"
-                  }
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Polyline"
-            },
-            "example": "{\"enc\": \"ydjiG_}jVjn@cjAf`AycBnc@mqCp\\\\ewBrQmlBzrAeuCreBw_C\", \"color\": \"magenta\", \"weight\": 4}"
-          },
-          {
-            "name": "polygon",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "contentMediaType": "application/json",
-                  "contentSchema": {
-                    "$ref": "#/components/schemas/Maps_PolygonOptions"
-                  }
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Polygon"
-            },
-            "example": "{\"shape\": \"ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??\", \"fill_color\": \"rgba(255, 20, 147, 0.5)\", \"color\": \"rgba(199, 21, 133, 0.7)\"}"
+            "example": "[{\"featureType\": \"points_of_interest.business\", \"stylers\":[{\"visibility\": \"off\"}]}]"
           }
         ],
         "responses": {
@@ -14493,8 +14529,13 @@
           "transit.station",
           "transit.station.airport",
           "transit.station.rail",
+          "beach",
           "business",
+          "business.car_repair",
+          "business.car_rental",
           "business.cinema",
+          "business.conference_centre",
+          "business.exhibition_centre",
           "business.theatre",
           "business.nightclub",
           "business.finance",
@@ -14521,6 +14562,8 @@
           "business.shop.clothes",
           "business.shop.furniture",
           "business.shop.electronics",
+          "business.shop.doityourself",
+          "business.shop.craft",
           "education",
           "education.school",
           "education.kindergarten",
@@ -14547,10 +14590,13 @@
           "tourism.museum",
           "government",
           "park",
+          "park.national",
           "place_of_worship",
           "police",
           "post_office",
-          "sports"
+          "sports",
+          "sports.golf",
+          "sports.winter"
         ]
       },
       "Woosmap_Platform_API_Reference_LocalitiesNearbyResponse": {
@@ -16630,7 +16676,109 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
-      "Maps_MarkerOptions": {
+      "Maps_MapStyle": {
+        "properties": {
+          "featureType": {
+            "type": "string",
+            "title": "Featuretype"
+          },
+          "elementType": {
+            "type": "string",
+            "title": "Elementtype",
+            "default": "all"
+          },
+          "stylers": {
+            "items": {
+              "$ref": "#/components/schemas/Maps_MapStyler"
+            },
+            "type": "array",
+            "title": "Stylers"
+          }
+        },
+        "type": "object",
+        "required": [
+          "featureType",
+          "stylers"
+        ],
+        "title": "MapStyle"
+      },
+      "Maps_MapStyler": {
+        "properties": {
+          "visibility": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "on",
+                  "off"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Visibility"
+          },
+          "color": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Color"
+          },
+          "hue": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hue"
+          },
+          "saturation": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Saturation"
+          },
+          "gamma": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gamma"
+          },
+          "lightness": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lightness"
+          }
+        },
+        "type": "object",
+        "title": "MapStyler"
+      },
+      "Maps_MarkerWithUrlOptions": {
         "properties": {
           "lat": {
             "type": "number",
@@ -16639,6 +16787,19 @@
           "lng": {
             "type": "number",
             "title": "Lng"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
           }
         },
         "type": "object",
@@ -16646,7 +16807,14 @@
           "lat",
           "lng"
         ],
-        "title": "MarkerOptions"
+        "title": "MarkerWithUrlOptions",
+        "examples": [
+          {
+            "lat": 43.6,
+            "lng": 3.883,
+            "url": "https://www.pokepedia.fr/images/8/80/Sprite_0003_RB.png"
+          }
+        ]
       },
       "Maps_PolygonOptions": {
         "properties": {
@@ -16674,7 +16842,19 @@
         "required": [
           "shape"
         ],
-        "title": "PolygonOptions"
+        "title": "PolygonOptions",
+        "examples": [
+          {
+            "color": "rgba(199, 21, 133, 0.7)",
+            "fill_color": "rgba(255, 20, 147, 0.5)",
+            "shape": "ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??"
+          },
+          {
+            "color": "DarkViolet",
+            "fill_color": "IndianRed",
+            "shape": "{_`iG}emVku@o{B|rA}x@jg@`uBox@j_AmK?"
+          }
+        ]
       },
       "Maps_PolylineOptions": {
         "properties": {
@@ -16697,7 +16877,18 @@
         "required": [
           "enc"
         ],
-        "title": "PolylineOptions"
+        "title": "PolylineOptions",
+        "examples": [
+          {
+            "color": "magenta",
+            "enc": "ydjiG_}jVjn@cjAf`AycBnc@mqCp\\ewBrQmlBzrAeuCreBw_C",
+            "weight": 4
+          },
+          {
+            "color": "HotPink",
+            "enc": "}zaiGellVgd@urA?ijBvTa]rQwv@kqA_fBbP{rByaA_hA"
+          }
+        ]
       },
       "Maps_ValidationError": {
         "properties": {
