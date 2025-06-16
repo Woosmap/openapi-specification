@@ -7,7 +7,7 @@
     "x-document-meta-data": {
       "copyright": "© 2025 Woosmap"
     },
-    "version": "1.33.2",
+    "version": "1.36.0",
     "contact": {
       "name": "Woosmap API"
     }
@@ -65,6 +65,13 @@
       "description": "Woosmap Zones API is a web service that uses an HTTP request to manage, create or edit your Zones (polygons) attached to your assets.\nThe general principle is that sometimes searching assets using crowfly distance is not good enough. For example to search the restaurant that will do the delivery for a specified address, each restaurant has a delivery zone and for topological or business reasons it’s not always the nearest restaurant in charge of your delivery. Woosmap Zones API allows you to associate a delivery zone to each of the restaurants.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/data-api/zones/"
+      }
+    },
+    {
+      "name": "Static Map API",
+      "description": "The Woosmap Static Maps API lets you generate customizable, embeddable map images using simple HTTP requests. It’s a lightweight alternative to interactive maps—ideal for emails, reports, or websites where dynamic JavaScript maps aren't needed.  \n\nYou provide parameters such as location, zoom level, size, and markers, and the API returns a map image that can be embedded directly into any webpage or application.\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/map-static-api/get-started/"
       }
     },
     {
@@ -6297,6 +6304,275 @@
             "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
+      }
+    },
+    "/maps/static": {
+      "get": {
+        "tags": [
+          "Static Map API"
+        ],
+        "summary": "Get Static Map",
+        "description": "Retrieve a static map\n\n**Rate limit**: `20/1s`",
+        "operationId": "get_static_map_maps_static_get",
+        "security": [
+          {
+            "Maps_PublicAPIKey": []
+          },
+          {
+            "Maps_PrivateApiKey": []
+          },
+          {
+            "Maps_PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Language"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "title": "Lat"
+            },
+            "example": "43.6"
+          },
+          {
+            "name": "lng",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "title": "Lng"
+            },
+            "example": "3.883"
+          },
+          {
+            "name": "zoom",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "maximum": 24,
+              "minimum": 0,
+              "description": "The zoom",
+              "title": "Zoom"
+            },
+            "description": "The zoom",
+            "example": 11
+          },
+          {
+            "name": "width",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "maximum": 640,
+              "minimum": 40,
+              "title": "Width"
+            },
+            "example": 400
+          },
+          {
+            "name": "height",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "maximum": 640,
+              "minimum": 40,
+              "title": "Height"
+            },
+            "example": 400
+          },
+          {
+            "name": "retina",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Retina"
+            }
+          },
+          {
+            "name": "markers",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "contentMediaType": "application/json",
+                    "contentSchema": {
+                      "$ref": "#/components/schemas/Maps_MarkerWithUrlOptions"
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Adds a marker.",
+              "title": "Markers"
+            },
+            "description": "Adds a marker."
+          },
+          {
+            "name": "polylines",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "contentMediaType": "application/json",
+                    "contentSchema": {
+                      "$ref": "#/components/schemas/Maps_PolylineOptions"
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Add a polyline.",
+              "title": "Polylines"
+            },
+            "description": "Add a polyline."
+          },
+          {
+            "name": "polygons",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "contentMediaType": "application/json",
+                    "contentSchema": {
+                      "$ref": "#/components/schemas/Maps_PolygonOptions"
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Adds a polygon.",
+              "title": "Polygons"
+            },
+            "description": "Adds a polygon."
+          },
+          {
+            "name": "stylers",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "contentMediaType": "application/json",
+                  "contentSchema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Maps_MapStyle"
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Stylers"
+            },
+            "example": "[{\"featureType\": \"points_of_interest.business\", \"stylers\":[{\"visibility\": \"off\"}]}]"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "image/webp": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Maps_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Maps_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Maps_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Maps_HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Maps_HTTPErrorModel"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/what3words/convert-to-3wa": {
@@ -14253,8 +14529,13 @@
           "transit.station",
           "transit.station.airport",
           "transit.station.rail",
+          "beach",
           "business",
+          "business.car_repair",
+          "business.car_rental",
           "business.cinema",
+          "business.conference_centre",
+          "business.exhibition_centre",
           "business.theatre",
           "business.nightclub",
           "business.finance",
@@ -14281,6 +14562,8 @@
           "business.shop.clothes",
           "business.shop.furniture",
           "business.shop.electronics",
+          "business.shop.doityourself",
+          "business.shop.craft",
           "education",
           "education.school",
           "education.kindergarten",
@@ -14307,10 +14590,13 @@
           "tourism.museum",
           "government",
           "park",
+          "park.national",
           "place_of_worship",
           "police",
           "post_office",
-          "sports"
+          "sports",
+          "sports.golf",
+          "sports.winter"
         ]
       },
       "Woosmap_Platform_API_Reference_LocalitiesNearbyResponse": {
@@ -16349,6 +16635,293 @@
             "geometry": "s|ihHouuMZ`GdClCsA~QhCnQmBhEpCfF|HxGpBtFfEnBnHqJpH}AF_EeCcB@sBnEiEYiGmVyFaG{G[eFoCw@gAiIkDYg@_DwA@"
           }
         }
+      },
+      "Maps_AuthenticationErrorResponse": {
+        "properties": {
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "AuthenticationErrorResponse",
+        "description": "AuthenticationErrorResponse is the base authentication error model."
+      },
+      "Maps_HTTPErrorModel": {
+        "properties": {
+          "details": {
+            "type": "string",
+            "title": "Details"
+          }
+        },
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "title": "HTTPErrorModel"
+      },
+      "Maps_HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/Maps_ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Maps_MapStyle": {
+        "properties": {
+          "featureType": {
+            "type": "string",
+            "title": "Featuretype"
+          },
+          "elementType": {
+            "type": "string",
+            "title": "Elementtype",
+            "default": "all"
+          },
+          "stylers": {
+            "items": {
+              "$ref": "#/components/schemas/Maps_MapStyler"
+            },
+            "type": "array",
+            "title": "Stylers"
+          }
+        },
+        "type": "object",
+        "required": [
+          "featureType",
+          "stylers"
+        ],
+        "title": "MapStyle"
+      },
+      "Maps_MapStyler": {
+        "properties": {
+          "visibility": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "on",
+                  "off"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Visibility"
+          },
+          "color": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Color"
+          },
+          "hue": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hue"
+          },
+          "saturation": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Saturation"
+          },
+          "gamma": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gamma"
+          },
+          "lightness": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lightness"
+          }
+        },
+        "type": "object",
+        "title": "MapStyler"
+      },
+      "Maps_MarkerWithUrlOptions": {
+        "properties": {
+          "lat": {
+            "type": "number",
+            "title": "Lat"
+          },
+          "lng": {
+            "type": "number",
+            "title": "Lng"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          }
+        },
+        "type": "object",
+        "required": [
+          "lat",
+          "lng"
+        ],
+        "title": "MarkerWithUrlOptions",
+        "examples": [
+          {
+            "lat": 43.6,
+            "lng": 3.883,
+            "url": "https://www.pokepedia.fr/images/8/80/Sprite_0003_RB.png"
+          }
+        ]
+      },
+      "Maps_PolygonOptions": {
+        "properties": {
+          "shape": {
+            "type": "string",
+            "title": "Shape"
+          },
+          "color": {
+            "type": "string",
+            "title": "Color",
+            "default": "rgb(65, 176, 246)"
+          },
+          "fill_color": {
+            "type": "string",
+            "title": "Fill Color",
+            "default": "rgba(65, 176, 246, 0.5)"
+          },
+          "weight": {
+            "type": "number",
+            "title": "Weight",
+            "default": 1
+          }
+        },
+        "type": "object",
+        "required": [
+          "shape"
+        ],
+        "title": "PolygonOptions",
+        "examples": [
+          {
+            "color": "rgba(199, 21, 133, 0.7)",
+            "fill_color": "rgba(255, 20, 147, 0.5)",
+            "shape": "ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??"
+          },
+          {
+            "color": "DarkViolet",
+            "fill_color": "IndianRed",
+            "shape": "{_`iG}emVku@o{B|rA}x@jg@`uBox@j_AmK?"
+          }
+        ]
+      },
+      "Maps_PolylineOptions": {
+        "properties": {
+          "enc": {
+            "type": "string",
+            "title": "Enc"
+          },
+          "color": {
+            "type": "string",
+            "title": "Color",
+            "default": "rgb(65, 176, 246)"
+          },
+          "weight": {
+            "type": "number",
+            "title": "Weight",
+            "default": 1
+          }
+        },
+        "type": "object",
+        "required": [
+          "enc"
+        ],
+        "title": "PolylineOptions",
+        "examples": [
+          {
+            "color": "magenta",
+            "enc": "ydjiG_}jVjn@cjAf`AycBnc@mqCp\\ewBrQmlBzrAeuCreBw_C",
+            "weight": 4
+          },
+          {
+            "color": "HotPink",
+            "enc": "}zaiGellVgd@urA?ijBvTa]rQwv@kqA_fBbP{rByaA_hA"
+          }
+        ]
+      },
+      "Maps_ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
       },
       "Woosmap_for_what3words_API_Coordinates": {
         "properties": {
@@ -20191,6 +20764,27 @@
         "in": "header",
         "name": "X-Api-Key",
         "x-displayName": "PrivateApiKeyHeaderAuth"
+      },
+      "Maps_PublicAPIKey": {
+        "type": "apiKey",
+        "description": "Public key of the project usually starts with `woos-`",
+        "in": "query",
+        "name": "key",
+        "x-displayName": "PublicAPIKey"
+      },
+      "Maps_PrivateApiKey": {
+        "type": "apiKey",
+        "description": "Private key with or without write permission.",
+        "in": "query",
+        "name": "private_key",
+        "x-displayName": "PrivateApiKey"
+      },
+      "Maps_PrivateApiKeyHeader": {
+        "type": "apiKey",
+        "description": "Private key with or without write permission.",
+        "in": "header",
+        "name": "X-Api-Key",
+        "x-displayName": "PrivateApiKeyHeader"
       },
       "Woosmap_for_what3words_API_PublicKeyAuth": {
         "type": "apiKey",

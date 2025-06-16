@@ -13,7 +13,7 @@ info:
   termsOfService: https://www.woosmap.com/en/policies/terms/
   x-document-meta-data:
     copyright: © 2025 Woosmap
-  version: 1.33.2
+  version: 1.36.0
   contact:
     name: Woosmap API
 servers:
@@ -7987,8 +7987,13 @@ components:
         - transit.station
         - transit.station.airport
         - transit.station.rail
+        - beach
         - business
+        - business.car_repair
+        - business.car_rental
         - business.cinema
+        - business.conference_centre
+        - business.exhibition_centre
         - business.theatre
         - business.nightclub
         - business.finance
@@ -8015,6 +8020,8 @@ components:
         - business.shop.clothes
         - business.shop.furniture
         - business.shop.electronics
+        - business.shop.doityourself
+        - business.shop.craft
         - education
         - education.school
         - education.kindergarten
@@ -8041,10 +8048,13 @@ components:
         - tourism.museum
         - government
         - park
+        - park.national
         - place_of_worship
         - police
         - post_office
         - sports
+        - sports.golf
+        - sports.winter
     LocalitiesNearbyResponse:
       title: LocalitiesNearbyResponse
       type: object
