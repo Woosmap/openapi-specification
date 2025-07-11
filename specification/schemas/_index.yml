@@ -132,12 +132,6 @@ LocalitiesNearbyResponse:
   $ref: "./LocalitiesNearbyResponse.yml"
 LocalitiesNearbyCategory:
   $ref: "./LocalitiesNearbyCategory.yml"
-LocalitiesSearchCollectionResponse:
-  $ref: "./LocalitiesSearchCollectionResponse.yml"
-LocalitiesSearchResponse:
-  $ref: "./LocalitiesSearchResponse.yml"
-LocalitiesSearchTypes:
-  $ref: "./LocalitiesSearchTypes.yml"
 
 # Address
 AddressAutocompleteCollectionResponse:
