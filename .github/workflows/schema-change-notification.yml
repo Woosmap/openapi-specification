@@ -36,7 +36,7 @@ jobs:
         if: steps.schema_changes.outputs.changed_files != ''
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.WOOSMAP_AK_ACCESS_TOKEN }}
+          github-token: ${{ secrets.HELPER_TOKEN }}
           script: |
             const pr = context.payload.pull_request;
             const body = pr.body || "";
@@ -71,7 +71,7 @@ jobs:
         if: steps.schema_changes.outputs.changed_files != ''
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.WOOSMAP_AK_ACCESS_TOKEN }}
+          github-token: ${{ secrets.HELPER_TOKEN }}
           script: |
             // 0) Grab the PR payload
             const pr = context.payload.pull_request;
@@ -151,14 +151,14 @@ jobs:
               assignees:  [author]
             });
     
-      - name: Send Slack notification if schemas changed
-        if: steps.schema_changes.outputs.changed_files != ''
-        uses: slackapi/slack-github-action@v1
-        with:
-          payload: |
-            {
-              "channel": "#mobile",
-              "text": "🚨 OpenAPI schema has changed. Please refer to the PR <${{ github.event.pull_request.html_url }}|#${{ github.event.pull_request.number }}> for more insights."
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.WOOSMAP_SLACK_WEBHOOK }}
+      # - name: Send Slack notification if schemas changed
+      #   if: steps.schema_changes.outputs.changed_files != ''
+      #   uses: slackapi/slack-github-action@v1
+      #   with:
+      #     payload: |
+      #       {
+      #         "channel": "#mobile",
+      #         "text": "🚨 OpenAPI schema has changed. Please refer to the PR <${{ github.event.pull_request.html_url }}|#${{ github.event.pull_request.number }}> for more insights."
+      #       }
+      #   env:
+      #     SLACK_WEBHOOK_URL: ${{ secrets.WOOSMAP_SLACK_WEBHOOK }}
