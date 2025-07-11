@@ -71,11 +71,6 @@
     summary: Nearby points of interest
     operationId: localitiesNearby
     $ref: "./localities/localitiesNearby.yml"
-/localities/search:
-  get:
-    summary: Search for Localities
-    operationId: localitiesSearch
-    $ref: "./localities/localitiesSearch.yml"
 /address/autocomplete/json:
   get:
     deprecated: true
