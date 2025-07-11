@@ -3633,217 +3633,6 @@
         ]
       }
     },
-    "/localities/search": {
-      "get": {
-        "summary": "Search for Localities",
-        "operationId": "localitiesSearch",
-        "servers": [
-          {
-            "url": "https://api.woosmap.com"
-          }
-        ],
-        "tags": [
-          "Localities API"
-        ],
-        "description": "Search for suggestions given a text-based geographic query.\n",
-        "security": [
-          {
-            "Woosmap_Platform_API_Reference_PublicApiKeyAuth": [],
-            "Woosmap_Platform_API_Reference_RefererHeader": []
-          },
-          {
-            "Woosmap_Platform_API_Reference_PrivateApiKeyAuth": []
-          },
-          {
-            "Woosmap_Platform_API_Reference_PrivateApiKeyHeaderAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_input"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_search_types"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_types"
-          },
-          {
-            "name": "components",
-            "description": "A grouping of places to which you would like to restrict your results. Countries must be passed as an ISO 3166-1 Alpha-2 compatible country code. For example: `components=country:fr` would restrict your results to places within France. Multiple countries must be passed as multiple `country:XX` filters, with the pipe character (`|`) as a separator. For example: `components=country:gb|country:fr` would restrict your results to city names or postal codes within the United Kingdom, France.\n",
-            "schema": {
-              "type": "string"
-            },
-            "example": "country:fr|country:gb",
-            "required": true,
-            "in": "query"
-          },
-          {
-            "name": "location",
-            "description": "This parameter is used to add a geographical bias to the query. The location defines the point around which to retrieve results in priority. It must be specified in the `latitude,longitude` string format.\n",
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "example": "5.2,-2.3",
-            "in": "query"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_radius-2"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_categories"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_categories"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_language-2"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Search suggestions successfully retrieved",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesSearchCollectionResponse"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "Search results for input `London` and components `country:gb`",
-                    "value": {
-                      "results": [
-                        {
-                          "public_id": "cB15hd5Hv/cKrh3MSyIg6eoAAN4=",
-                          "types": [
-                            "point_of_interest"
-                          ],
-                          "title": "Royal Albert",
-                          "description": "New Cross Road, London, United Kingdom",
-                          "categories": [
-                            "business.food_and_drinks.pub"
-                          ]
-                        },
-                        {
-                          "public_id": "UJE0TA8sr5gily/0ivcsSs/oZbw=",
-                          "types": [
-                            "point_of_interest"
-                          ],
-                          "title": "Royal Albert Hall",
-                          "description": "Kensington Gore, London, United Kingdom",
-                          "categories": [
-                            "tourism.attraction"
-                          ]
-                        },
-                        {
-                          "public_id": "79w9P8Be74OsyIOD7BsdfcVBSRk=",
-                          "types": [
-                            "point_of_interest"
-                          ],
-                          "title": "The Royal Alfred",
-                          "description": "Manor Road, Erith, United Kingdom",
-                          "categories": [
-                            "business.shop.grocery"
-                          ]
-                        },
-                        {
-                          "public_id": "1XSvvFod2a+VRZjEVkIul11KTJs=",
-                          "types": [
-                            "route"
-                          ],
-                          "title": "Royal Albert Quay",
-                          "description": "London (E16 2YR), United Kingdom"
-                        },
-                        {
-                          "public_id": "07iTmTX2T0u9NEoh4weNXESt/i4=",
-                          "types": [
-                            "route"
-                          ],
-                          "title": "Royal Albert Close",
-                          "description": "Worcester (WR5 1BZ), United Kingdom"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized. Incorrect authentication credentials.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Error401"
-                },
-                "examples": {
-                  "Unauthorized": {
-                    "summary": "Error 401",
-                    "value": {
-                      "detail": "Incorrect authentication credentials. Please check or use a valid API Key"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden. This Woosmap API is not enabled for this project.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Error403"
-                },
-                "examples": {
-                  "Forbidden": {
-                    "summary": "Error 403",
-                    "value": {
-                      "detail": "This Woosmap API is not enabled for this project."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests. The rate limit for this endpoint has been exceeded.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Error429"
-                },
-                "examples": {
-                  "Forbidden": {
-                    "summary": "Error 429",
-                    "value": {
-                      "detail": "The rate limit for this endpoint has been exceeded"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-codeSamples": [
-          {
-            "lang": "curl",
-            "label": "cURL",
-            "source": "curl -L -X GET 'https://api.woosmap.com/localities/search/?input=royal%20al&types=point_of_interest|locality|address|postal_code&components=country%3Agb&location=51.50924,-0.11915&radius=2000&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
-          },
-          {
-            "lang": "javascript",
-            "label": "JavaScript",
-            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/localities/search/?input=royal%20al&types=point_of_interest|locality|address|postal_code&components=country%3Agb&location=51.50924,-0.11915&radius=2000&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
-          },
-          {
-            "lang": "python",
-            "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/localities/search/?input=royal%20al&types=point_of_interest|locality|address|postal_code&components=country%3Agb&location=51.50924,-0.11915&radius=2000&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
-          }
-        ]
-      }
-    },
     "/address/autocomplete/json": {
       "get": {
         "deprecated": true,
@@ -6401,89 +6190,61 @@
             "example": 400
           },
           {
-            "name": "retina",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "boolean",
-              "default": false,
-              "title": "Retina"
-            }
-          },
-          {
             "name": "markers",
             "in": "query",
             "required": false,
             "schema": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "type": "string",
-                    "contentMediaType": "application/json",
-                    "contentSchema": {
-                      "$ref": "#/components/schemas/Maps_MarkerWithUrlOptions"
-                    }
-                  }
-                },
-                {
-                  "type": "null"
+              "type": "array",
+              "items": {
+                "type": "string",
+                "contentMediaType": "application/json",
+                "contentSchema": {
+                  "$ref": "#/components/schemas/Maps_MarkerWithUrlOptions"
                 }
-              ],
-              "description": "Adds a marker.",
+              },
+              "description": "Adds a marker.\n        \nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n        \n        ",
               "title": "Markers"
             },
-            "description": "Adds a marker."
+            "description": "Adds a marker.\n        \nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n        \n        ",
+            "example": "{\"lat\": 43.6, \"lng\": 3.883, \"url\": \"https://webapp.woosmap.com/img/geolocated_marker.png?retina=yes\"}"
           },
           {
             "name": "polylines",
             "in": "query",
             "required": false,
             "schema": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "type": "string",
-                    "contentMediaType": "application/json",
-                    "contentSchema": {
-                      "$ref": "#/components/schemas/Maps_PolylineOptions"
-                    }
-                  }
-                },
-                {
-                  "type": "null"
+              "type": "array",
+              "items": {
+                "type": "string",
+                "contentMediaType": "application/json",
+                "contentSchema": {
+                  "$ref": "#/components/schemas/Maps_PolylineOptions"
                 }
-              ],
-              "description": "Add a polyline.",
+              },
+              "description": "Add a polyline.\n            \n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            ",
               "title": "Polylines"
             },
-            "description": "Add a polyline."
+            "description": "Add a polyline.\n            \n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            ",
+            "example": "{\"enc\": \"ydjiG_}jVjn@cjAf`AycBnc@mqCp\\\\ewBrQmlBzrAeuCreBw_C\", \"color\": \"magenta\", \"weight\": 4}"
           },
           {
             "name": "polygons",
             "in": "query",
             "required": false,
             "schema": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "type": "string",
-                    "contentMediaType": "application/json",
-                    "contentSchema": {
-                      "$ref": "#/components/schemas/Maps_PolygonOptions"
-                    }
-                  }
-                },
-                {
-                  "type": "null"
+              "type": "array",
+              "items": {
+                "type": "string",
+                "contentMediaType": "application/json",
+                "contentSchema": {
+                  "$ref": "#/components/schemas/Maps_PolygonOptions"
                 }
-              ],
-              "description": "Adds a polygon.",
+              },
+              "description": "Adds a polygon.\n            \n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            ",
               "title": "Polygons"
             },
-            "description": "Adds a polygon."
+            "description": "Adds a polygon.\n            \n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            ",
+            "example": "{\"shape\": \"ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??\", \"fill_color\": \"rgba(255, 20, 147, 0.5)\", \"color\": \"rgba(199, 21, 133, 0.7)\"}"
           },
           {
             "name": "stylers",
@@ -6508,6 +6269,16 @@
               "title": "Stylers"
             },
             "example": "[{\"featureType\": \"points_of_interest.business\", \"stylers\":[{\"visibility\": \"off\"}]}]"
+          },
+          {
+            "name": "retina",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Retina"
+            }
           }
         ],
         "responses": {
@@ -11479,16 +11250,6 @@
         },
         "in": "query"
       },
-      "Woosmap_Platform_API_Reference_search_types": {
-        "name": "types",
-        "description": "The types of suggestion to return. Multiple types can be passed using the pipe character (`|`) as a separator.\n  * `city`: includes city localities\n  * `town`: includes town localities\n  * `village`: includes village localities\n  * `hamlet`: includes hamlet localities\n  * `borough`: includes borough localities\n  * `suburb`: includes suburb localities\n  * `quarter`: includes quarter localities\n  * `neighbourhood`: includes neighbourhood localities\n  * `locality`: includes locality names (from city to village) and suburbs\n  * `postal_code`: publicly-used postal codes around the world\n  * `address`: addresses\n  * `admin_level`: most commonly used administrative areas\n  * `country`: countries as whole point of interest\n  * `point_of_interest`: includes points of interest\n",
-        "schema": {
-          "type": "string",
-          "example": "point_of_interest|address|locality|postal_code"
-        },
-        "required": true,
-        "in": "query"
-      },
       "Woosmap_Platform_API_Reference_input-2": {
         "name": "input",
         "description": "The text string on which to search, for example: \"london\" or \"123 Cross Road\". The Woosmap Address API will return predictions matches based on this string and order the results based on their perceived relevance.\n",
@@ -11916,9 +11677,6 @@
       },
       "Woosmap_Platform_API_Reference_localities_radius": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_radius-2"
-      },
-      "Woosmap_Platform_API_Reference_localities_search_types": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_search_types"
       },
       "Woosmap_Platform_API_Reference_localities_types": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_types"
@@ -14956,138 +14714,6 @@
           }
         }
       },
-      "Woosmap_Platform_API_Reference_LocalitiesSearchTypes": {
-        "title": "LocalitiesSearchTypes",
-        "type": "string",
-        "description": "Contains the type of the search suggestion.",
-        "enum": [
-          "country",
-          "admin_level",
-          "locality",
-          "postal_code",
-          "address",
-          "route",
-          "point_of_interest"
-        ]
-      },
-      "Woosmap_Platform_API_Reference_LocalitiesSearchResponse": {
-        "title": "LocalitiesSearchResponse",
-        "type": "object",
-        "description": "Attributes describing a search result.",
-        "required": [
-          "public_id",
-          "types",
-          "title"
-        ],
-        "properties": {
-          "public_id": {
-            "description": "Contains a unique ID for each suggestion. Please use this ID if you need to give us feedbacks on results. This ID is also required to perform Localities Details request.",
-            "type": "string",
-            "example": "MkvnYy6K6oVGqeqfWJGO/6eCgqo="
-          },
-          "types": {
-            "description": "An array containing the types of the result.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesSearchTypes"
-            }
-          },
-          "title": {
-            "description": "Main string of the suggestion",
-            "type": "string",
-            "example": "London"
-          },
-          "description": {
-            "description": "Address hint associated with that suggestion. The description can vary depending on the type requested.",
-            "type": "string",
-            "example": "Westminster, City of London, England, United Kingdom"
-          },
-          "categories": {
-            "description": "An array containing the categories of the result if that result is a point of interest.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyCategory"
-            }
-          }
-        },
-        "example": {
-          "public_id": "cB15hd5Hv/cKrh3MSyIg6eoAAN4=",
-          "types": [
-            "point_of_interest"
-          ],
-          "title": "Royal Albert",
-          "description": "New Cross Road, London, United Kingdom",
-          "categories": [
-            "business.food_and_drinks.pub"
-          ]
-        }
-      },
-      "Woosmap_Platform_API_Reference_LocalitiesSearchCollectionResponse": {
-        "title": "LocalitiesSearchCollectionResponse",
-        "type": "object",
-        "description": "Search Collection Response containing results",
-        "properties": {
-          "results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesSearchResponse"
-            }
-          }
-        },
-        "example": {
-          "results": [
-            {
-              "public_id": "cB15hd5Hv/cKrh3MSyIg6eoAAN4=",
-              "types": [
-                "point_of_interest"
-              ],
-              "title": "Royal Albert",
-              "description": "New Cross Road, London, United Kingdom",
-              "categories": [
-                "business.food_and_drinks.pub"
-              ]
-            },
-            {
-              "public_id": "UJE0TA8sr5gily/0ivcsSs/oZbw=",
-              "types": [
-                "point_of_interest"
-              ],
-              "title": "Royal Albert Hall",
-              "description": "Kensington Gore, London, United Kingdom",
-              "categories": [
-                "tourism.attraction"
-              ]
-            },
-            {
-              "public_id": "79w9P8Be74OsyIOD7BsdfcVBSRk=",
-              "types": [
-                "point_of_interest"
-              ],
-              "title": "The Royal Alfred",
-              "description": "Manor Road, Erith, United Kingdom",
-              "categories": [
-                "business.shop.grocery"
-              ]
-            },
-            {
-              "public_id": "1XSvvFod2a+VRZjEVkIul11KTJs=",
-              "types": [
-                "route"
-              ],
-              "title": "Royal Albert Quay",
-              "description": "London (E16 2YR), United Kingdom"
-            },
-            {
-              "public_id": "07iTmTX2T0u9NEoh4weNXESt/i4=",
-              "types": [
-                "route"
-              ],
-              "title": "Royal Albert Close",
-              "description": "Worcester (WR5 1BZ), United Kingdom"
-            }
-          ]
-        }
-      },
       "Woosmap_Platform_API_Reference_AddressAutocompleteMatchedFields": {
         "title": "AddressAutocompleteMatchedFields",
         "type": "object",
@@ -16792,6 +16418,7 @@
             "anyOf": [
               {
                 "type": "string",
+                "maxLength": 2083,
                 "minLength": 1,
                 "format": "uri"
               },
@@ -16808,13 +16435,11 @@
           "lng"
         ],
         "title": "MarkerWithUrlOptions",
-        "examples": [
-          {
-            "lat": 43.6,
-            "lng": 3.883,
-            "url": "https://www.pokepedia.fr/images/8/80/Sprite_0003_RB.png"
-          }
-        ]
+        "example": {
+          "lat": 43.6,
+          "lng": 3.883,
+          "url": "https://webapp.woosmap.com/img/geolocated_marker.png?retina=yes"
+        }
       },
       "Maps_PolygonOptions": {
         "properties": {
@@ -16843,18 +16468,11 @@
           "shape"
         ],
         "title": "PolygonOptions",
-        "examples": [
-          {
-            "color": "rgba(199, 21, 133, 0.7)",
-            "fill_color": "rgba(255, 20, 147, 0.5)",
-            "shape": "ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??"
-          },
-          {
-            "color": "DarkViolet",
-            "fill_color": "IndianRed",
-            "shape": "{_`iG}emVku@o{B|rA}x@jg@`uBox@j_AmK?"
-          }
-        ]
+        "example": {
+          "color": "rgba(199, 21, 133, 0.7)",
+          "fill_color": "rgba(255, 20, 147, 0.5)",
+          "shape": "ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??"
+        }
       },
       "Maps_PolylineOptions": {
         "properties": {
@@ -16878,17 +16496,11 @@
           "enc"
         ],
         "title": "PolylineOptions",
-        "examples": [
-          {
-            "color": "magenta",
-            "enc": "ydjiG_}jVjn@cjAf`AycBnc@mqCp\\ewBrQmlBzrAeuCreBw_C",
-            "weight": 4
-          },
-          {
-            "color": "HotPink",
-            "enc": "}zaiGellVgd@urA?ijBvTa]rQwv@kqA_fBbP{rByaA_hA"
-          }
-        ]
+        "example": {
+          "color": "magenta",
+          "enc": "ydjiG_}jVjn@cjAf`AycBnc@mqCp\\ewBrQmlBzrAeuCreBw_C",
+          "weight": 4
+        }
       },
       "Maps_ValidationError": {
         "properties": {
