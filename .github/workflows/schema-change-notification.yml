@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
+        
       - name: Find changed schema files
         id: schema_changes
         run: |
@@ -31,14 +31,34 @@ jobs:
           echo "changed_files<<EOF" >> $GITHUB_OUTPUT
           echo "$CHANGED" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-
+      
+      - name: Find PR
+        uses: jwalton/gh-find-current-pr@master
+        id: findPr
+        with:
+          state: all
+    
+      - name: No PR found
+        if: steps.findPr.outputs.number == ''
+        run: echo "No PR found for this push. Skipping comment and issue creation."
+      
       - name: Comment on PR or linked Issue if schemas changed
-        if: steps.schema_changes.outputs.changed_files != ''
+        if: steps.schema_changes.outputs.changed_files && steps.findPr.outputs.number != ''
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.HELPER_TOKEN }}
           script: |
-            const pr = context.payload.pull_request;
+            const publicOwner = context.repo.owner;
+            const publicRepo  = context.repo.repo;
+            const prNumber    = ${{ steps.findPr.outputs.number }};
+
+            // 1) grab PR details
+            const { data: pr } = await github.request('GET /repos/{owner}/{repo}/pulls/{pull_number}', {
+              owner: publicOwner,
+              repo: publicRepo,
+              pull_number: prNumber
+            });
+
             const body = pr.body || "";
 
             // Try both "Owner/Repo#123" and full "https://github.com/Owner/Repo/issues/123"
@@ -68,15 +88,22 @@ jobs:
         
 
       - name: Create issue in Woosmap/woosmap if schemas changed
-        if: steps.schema_changes.outputs.changed_files != ''
+        if: steps.schema_changes.outputs.changed_files && steps.findPr.outputs.number != ''
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.HELPER_TOKEN }}
           script: |
             // 0) Grab the PR payload
-            const pr = context.payload.pull_request;
             const publicOwner = context.repo.owner;
             const publicRepo  = context.repo.repo;
+            const prNumber    = ${{ steps.findPr.outputs.number }};
+
+            // 1) grab PR details
+            const { data: pr } = await github.request('GET /repos/{owner}/{repo}/pulls/{pull_number}', {
+              owner: publicOwner,
+              repo: publicRepo,
+              pull_number: prNumber
+            });
 
             // 1) Prepare private target repo
             const targetOwner = 'Woosmap';
