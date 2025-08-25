@@ -2486,6 +2486,7 @@ paths:
         - $ref: '#/components/parameters/types'
         - $ref: '#/components/parameters/excluded_types'
         - $ref: '#/components/parameters/localities_components'
+        - $ref: '#/components/parameters/limit-3'
         - $ref: '#/components/parameters/language-2'
         - $ref: '#/components/parameters/location'
         - $ref: '#/components/parameters/radius-2'
@@ -3576,7 +3577,7 @@ paths:
         - $ref: '#/components/parameters/language-3'
         - $ref: '#/components/parameters/location-2'
         - $ref: '#/components/parameters/cc_format'
-        - $ref: '#/components/parameters/limit-3'
+        - $ref: '#/components/parameters/limit-4'
       responses:
         '200':
           description: Request Address Geocode successful
@@ -3713,7 +3714,7 @@ paths:
       security:
         - PrivateApiKeyAuth: []
       parameters:
-        - $ref: '#/components/parameters/limit-4'
+        - $ref: '#/components/parameters/limit-5'
         - $ref: '#/components/parameters/offset'
       responses:
         '200':
@@ -5413,7 +5414,9 @@ components:
     input:
       name: input
       description: |
-        The text string on which to search, for example: "london" or "123 Cross Road". The Woosmap Localities API will return predictions matches based on this string and order the results based on their perceived relevance.
+        The text string on which to search, for example: "london" or "123 Cross Road".
+        The Woosmap Localities API will return predictions matches based on this string and order the results based on their perceived relevance.
+        To protect against illegitimate requests, only the 20 first tokens found in the first 150 characters will be used.
       schema:
         type: string
         example: London
@@ -5466,6 +5469,19 @@ components:
         type: string
         example: country:fr|country:es
       in: query
+    limit-3:
+      name: limit
+      description: |
+        The maximum number of suggestions returned in the response. 
+        Using the `extended=postal_code` parameter will ignore this limit when the first token in the input is a supported postal_code.
+      schema:
+        type: integer
+        example: 5
+        default: 5
+        minimum: 1
+        maximum: 100
+      in: query
+      required: false
     language-2:
       name: language
       description: |
@@ -5574,8 +5590,10 @@ components:
       name: address
       description: |
         The input string to geocode. Can represent an address, a street, a locality or a postal code. The `address` parameter must be URL encoded.
+        To protect against illegitimate requests, only the 20 first tokens found in the first 150 characters will be used.
       schema:
         type: string
+        maxLength: 150
         example: 224%20Rue%20de%20Rivoli%2C%20Paris
       required: false
       in: query
@@ -5723,7 +5741,7 @@ components:
         example: 5.2,-2.3
       required: false
       in: query
-    limit-3:
+    limit-4:
       name: limit
       description: |
         Maximum number of results to be returned (value from 1 to 100, default values for geocode request [20] and for reverse geocode request [1])
@@ -5733,7 +5751,7 @@ components:
         maximum: 100
         example: 10
       in: query
-    limit-4:
+    limit-5:
       name: limit
       description: |
         To limit number of zones retrieved (max 50).
@@ -5927,7 +5945,7 @@ components:
     address_latlng:
       $ref: '#/components/parameters/latlng-2'
     address_limit:
-      $ref: '#/components/parameters/limit-3'
+      $ref: '#/components/parameters/limit-4'
     address_location:
       $ref: '#/components/parameters/location-2'
     address_public_id:
@@ -6008,6 +6026,8 @@ components:
       $ref: '#/components/parameters/public_id'
     localities_radius:
       $ref: '#/components/parameters/radius-2'
+    localities_limit:
+      $ref: '#/components/parameters/limit-3'
     localities_types:
       $ref: '#/components/parameters/types'
     search_encoded_polyline:
@@ -6031,7 +6051,7 @@ components:
     search_zone:
       $ref: '#/components/parameters/zone'
     zones_limit:
-      $ref: '#/components/parameters/limit-4'
+      $ref: '#/components/parameters/limit-5'
     zones_offset:
       $ref: '#/components/parameters/offset'
   schemas:

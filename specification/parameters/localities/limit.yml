@@ -1,0 +1,15 @@
+name: limit
+description: |
+  The maximum number of suggestions returned in the response. 
+  Using the `extended=postal_code` parameter will ignore this limit when the first token in the input is a supported postal_code.
+schema:
+  type: integer
+  example: 5
+  default: 5
+  minimum: 1
+  maximum: 100
+
+in: query
+required: false
+
+
