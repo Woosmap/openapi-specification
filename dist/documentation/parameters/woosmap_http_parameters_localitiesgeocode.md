@@ -7,6 +7,7 @@
 -   <h3 class="parameter-name" id="address">address</h3>
 
     The input string to geocode. Can represent an address, a street, a locality or a postal code. The `address` parameter must be URL encoded.
+    To protect against illegitimate requests, only the 20 first tokens found in the first 150 characters will be used.
 
 -   <h3 class="parameter-name" id="cc_format">cc_format</h3>
 

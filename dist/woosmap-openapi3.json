@@ -2357,6 +2357,9 @@
             "$ref": "#/components/parameters/localities_components"
           },
           {
+            "$ref": "#/components/parameters/limit-3"
+          },
+          {
             "$ref": "#/components/parameters/language-2"
           },
           {
@@ -3994,7 +3997,7 @@
             "$ref": "#/components/parameters/cc_format"
           },
           {
-            "$ref": "#/components/parameters/limit-3"
+            "$ref": "#/components/parameters/limit-4"
           }
         ],
         "responses": {
@@ -4186,7 +4189,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/limit-4"
+            "$ref": "#/components/parameters/limit-5"
           },
           {
             "$ref": "#/components/parameters/offset"
@@ -6177,7 +6180,7 @@
       },
       "input": {
         "name": "input",
-        "description": "The text string on which to search, for example: \"london\" or \"123 Cross Road\". The Woosmap Localities API will return predictions matches based on this string and order the results based on their perceived relevance.\n",
+        "description": "The text string on which to search, for example: \"london\" or \"123 Cross Road\".\nThe Woosmap Localities API will return predictions matches based on this string and order the results based on their perceived relevance.\nTo protect against illegitimate requests, only the 20 first tokens found in the first 150 characters will be used.\n",
         "schema": {
           "type": "string",
           "example": "London"
@@ -6212,6 +6215,19 @@
           "example": "country:fr|country:es"
         },
         "in": "query"
+      },
+      "limit-3": {
+        "name": "limit",
+        "description": "The maximum number of suggestions returned in the response. \nUsing the `extended=postal_code` parameter will ignore this limit when the first token in the input is a supported postal_code.\n",
+        "schema": {
+          "type": "integer",
+          "example": 5,
+          "default": 5,
+          "minimum": 1,
+          "maximum": 100
+        },
+        "in": "query",
+        "required": false
       },
       "language-2": {
         "name": "language",
@@ -6334,9 +6350,10 @@
       },
       "address": {
         "name": "address",
-        "description": "The input string to geocode. Can represent an address, a street, a locality or a postal code. The `address` parameter must be URL encoded.\n",
+        "description": "The input string to geocode. Can represent an address, a street, a locality or a postal code. The `address` parameter must be URL encoded.\nTo protect against illegitimate requests, only the 20 first tokens found in the first 150 characters will be used.\n",
         "schema": {
           "type": "string",
+          "maxLength": 150,
           "example": "224%20Rue%20de%20Rivoli%2C%20Paris"
         },
         "required": false,
@@ -6480,7 +6497,7 @@
         "required": false,
         "in": "query"
       },
-      "limit-3": {
+      "limit-4": {
         "name": "limit",
         "description": "Maximum number of results to be returned (value from 1 to 100, default values for geocode request [20] and for reverse geocode request [1])\n",
         "schema": {
@@ -6491,7 +6508,7 @@
         },
         "in": "query"
       },
-      "limit-4": {
+      "limit-5": {
         "name": "limit",
         "description": "To limit number of zones retrieved (max 50).\n",
         "schema": {
@@ -6707,7 +6724,7 @@
         "$ref": "#/components/parameters/latlng-2"
       },
       "address_limit": {
-        "$ref": "#/components/parameters/limit-3"
+        "$ref": "#/components/parameters/limit-4"
       },
       "address_location": {
         "$ref": "#/components/parameters/location-2"
@@ -6829,6 +6846,9 @@
       "localities_radius": {
         "$ref": "#/components/parameters/radius-2"
       },
+      "localities_limit": {
+        "$ref": "#/components/parameters/limit-3"
+      },
       "localities_types": {
         "$ref": "#/components/parameters/types"
       },
@@ -6863,7 +6883,7 @@
         "$ref": "#/components/parameters/zone"
       },
       "zones_limit": {
-        "$ref": "#/components/parameters/limit-4"
+        "$ref": "#/components/parameters/limit-5"
       },
       "zones_offset": {
         "$ref": "#/components/parameters/offset"

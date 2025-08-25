@@ -7,7 +7,9 @@
     <p>
       The text string on which to search, for example: "london" or "123 Cross
       Road". The Woosmap Localities API will return predictions matches based on
-      this string and order the results based on their perceived relevance.
+      this string and order the results based on their perceived relevance. To
+      protect against illegitimate requests, only the 20 first tokens found in
+      the first 150 characters will be used.
     </p>
   </li>
 </ul>
@@ -95,6 +97,14 @@
       international default language (English). No <code>language</code> is
       necessary for a postal_code request. According to requested language, only
       parts of the address components might be translated.
+    </p>
+  </li>
+  <li>
+    <h3 class="parameter-name" id="limit">limit</h3>
+    <p>
+      The maximum number of suggestions returned in the response. Using the
+      <code>extended=postal_code</code> parameter will ignore this limit when
+      the first token in the input is a supported postal_code.
     </p>
   </li>
   <li>
