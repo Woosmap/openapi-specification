@@ -5413,9 +5413,12 @@ components:
     input:
       name: input
       description: |
-        The text string on which to search, for example: "london" or "123 Cross Road". The Woosmap Localities API will return predictions matches based on this string and order the results based on their perceived relevance.
+        The text string on which to search, for example: "london" or "123 Cross Road".
+        The Woosmap Localities API will return predictions matches based on this string and order the results based on their perceived relevance.
+        To protect against illegitimate requests, only the 20 first tokens found in the first 150 characters will be used.
       schema:
         type: string
+        maxLength: 150
         example: London
       required: true
       in: query
@@ -5574,8 +5577,10 @@ components:
       name: address
       description: |
         The input string to geocode. Can represent an address, a street, a locality or a postal code. The `address` parameter must be URL encoded.
+        To protect against illegitimate requests, only the 20 first tokens found in the first 150 characters will be used.
       schema:
         type: string
+        maxLength: 150
         example: 224%20Rue%20de%20Rivoli%2C%20Paris
       required: false
       in: query

@@ -4,7 +4,9 @@
 
 -   <h3 class="parameter-name" id="input">input</h3>
 
-    The text string on which to search, for example: "london" or "123 Cross Road". The Woosmap Localities API will return predictions matches based on this string and order the results based on their perceived relevance.
+    The text string on which to search, for example: "london" or "123 Cross Road".
+    The Woosmap Localities API will return predictions matches based on this string and order the results based on their perceived relevance.
+    To protect against illegitimate requests, only the 20 first tokens found in the first 150 characters will be used.
 
 <h2 id="optional-parameters">Optional parameters</h2>
 
