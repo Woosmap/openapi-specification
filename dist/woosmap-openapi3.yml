@@ -5418,6 +5418,7 @@ components:
         To protect against illegitimate requests, only the 20 first tokens found in the first 150 characters will be used.
       schema:
         type: string
+        maxLength: 150
         example: London
       required: true
       in: query
