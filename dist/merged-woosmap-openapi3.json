@@ -2391,9 +2391,6 @@
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_localities_components"
           },
           {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-3"
-          },
-          {
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_language-2"
           },
           {
@@ -4031,7 +4028,7 @@
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format"
           },
           {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-4"
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-3"
           }
         ],
         "responses": {
@@ -4223,7 +4220,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-5"
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-4"
           },
           {
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_offset"
@@ -6993,7 +6990,7 @@
             }
           }
         },
-        "description": "Returns a Venue based on the ID given.",
+        "description": "Returns a Venue based on the ID given.\n\n**Rate limit**: `20/1s`",
         "tags": [
           "Indoor API"
         ],
@@ -7135,7 +7132,7 @@
             }
           }
         },
-        "description": "Returns a list of Venues associated with the project of the key used to authenticate the request.",
+        "description": "Returns a list of Venues associated with the project of the key used to authenticate the request.\n\n**Rate limit**: `20/1s`",
         "tags": [
           "Indoor API"
         ],
@@ -7280,7 +7277,7 @@
             }
           }
         },
-        "description": "Returns the style layers.",
+        "description": "Returns the style layers.\n\n**Rate limit**: `20/1s`",
         "tags": [
           "Indoor API"
         ],
@@ -7489,7 +7486,7 @@
             }
           }
         },
-        "description": "Get distances and durations for a matrix of origins and destinations, based on the recommended route between start and end points for a specified travel mode.\nThe API returns information consisting of rows containing distance and duration values for each pair of start and end point.\nThe returned distances are designed to be used to find and sort multiple assets by road distance.\nDuration values are provided as complementary info.",
+        "description": "Get distances and durations for a matrix of origins and destinations, based on the recommended route between start and end points for a specified travel mode.\nThe API returns information consisting of rows containing distance and duration values for each pair of start and end point.\nThe returned distances are designed to be used to find and sort multiple assets by road distance.\nDuration values are provided as complementary info.\n\n**Rate limit**: `20/1s`",
         "tags": [
           "Indoor API"
         ],
@@ -7719,7 +7716,7 @@
             }
           }
         },
-        "description": "Returns the directions to go from an Origin to a Destination.\nRouting Configuration must be done before this endpoint will work.",
+        "description": "Returns the directions to go from an Origin to a Destination.\nRouting Configuration must be done before this endpoint will work.\n\n**Rate limit**: `20/1s`",
         "tags": [
           "Indoor API"
         ],
@@ -7991,7 +7988,7 @@
             }
           }
         },
-        "description": "Full text search of the features of a venue using name or description",
+        "description": "Full text search of the features of a venue using name or description\n\n**Rate limit**: `20/1s`",
         "tags": [
           "Indoor API"
         ],
@@ -8250,7 +8247,7 @@
             }
           }
         },
-        "description": "Autocomplete text search of the features of a venue using a name or description",
+        "description": "Autocomplete text search of the features of a venue using a name or description\n\n**Rate limit**: `20/1s`",
         "tags": [
           "Indoor API"
         ],
@@ -8390,7 +8387,7 @@
             }
           }
         },
-        "description": "Returns a single feature using its ID.",
+        "description": "Returns a single feature using its ID.\n\n**Rate limit**: `20/1s`",
         "tags": [
           "Indoor API"
         ],
@@ -8579,7 +8576,7 @@
             }
           }
         },
-        "description": "Returns a tile for the venue.",
+        "description": "Returns a tile for the venue.\n\n**Rate limit**: `20/1s`",
         "tags": [
           "Indoor API"
         ],
@@ -10957,19 +10954,6 @@
         },
         "in": "query"
       },
-      "Woosmap_Platform_API_Reference_limit-3": {
-        "name": "limit",
-        "description": "The maximum number of suggestions returned in the response. \nUsing the `extended=postal_code` parameter will ignore this limit when the first token in the input is a supported postal_code.\n",
-        "schema": {
-          "type": "integer",
-          "example": 5,
-          "default": 5,
-          "minimum": 1,
-          "maximum": 100
-        },
-        "in": "query",
-        "required": false
-      },
       "Woosmap_Platform_API_Reference_language-2": {
         "name": "language",
         "description": "The language code, using ISO 639-2 Alpha-2 country codes, indicating in which language the results should be returned, if possible. If language is not supplied, first `Accept-Language` of the browser will be used.  If neither the provided `language` or the `Accept-Language` are known, the Localities service uses the international default language (English).  No `language` is necessary for a postal_code request. According to requested language, only parts of the address components might be translated.\n",
@@ -11238,7 +11222,7 @@
         "required": false,
         "in": "query"
       },
-      "Woosmap_Platform_API_Reference_limit-4": {
+      "Woosmap_Platform_API_Reference_limit-3": {
         "name": "limit",
         "description": "Maximum number of results to be returned (value from 1 to 100, default values for geocode request [20] and for reverse geocode request [1])\n",
         "schema": {
@@ -11249,7 +11233,7 @@
         },
         "in": "query"
       },
-      "Woosmap_Platform_API_Reference_limit-5": {
+      "Woosmap_Platform_API_Reference_limit-4": {
         "name": "limit",
         "description": "To limit number of zones retrieved (max 50).\n",
         "schema": {
@@ -11465,7 +11449,7 @@
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_latlng-2"
       },
       "Woosmap_Platform_API_Reference_address_limit": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-4"
+        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-3"
       },
       "Woosmap_Platform_API_Reference_address_location": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_location-2"
@@ -11587,9 +11571,6 @@
       "Woosmap_Platform_API_Reference_localities_radius": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_radius-2"
       },
-      "Woosmap_Platform_API_Reference_localities_limit": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-3"
-      },
       "Woosmap_Platform_API_Reference_localities_types": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_types"
       },
@@ -11624,7 +11605,7 @@
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_zone"
       },
       "Woosmap_Platform_API_Reference_zones_limit": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-5"
+        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-4"
       },
       "Woosmap_Platform_API_Reference_zones_offset": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_offset"

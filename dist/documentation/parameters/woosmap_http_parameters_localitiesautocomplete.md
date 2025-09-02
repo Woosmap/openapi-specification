@@ -34,11 +34,6 @@
 
     The language code, using ISO 639-2 Alpha-2 country codes, indicating in which language the results should be returned, if possible. If language is not supplied, first `Accept-Language` of the browser will be used.  If neither the provided `language` or the `Accept-Language` are known, the Localities service uses the international default language (English).  No `language` is necessary for a postal_code request. According to requested language, only parts of the address components might be translated.
 
--   <h3 class="parameter-name" id="limit">limit</h3>
-
-    The maximum number of suggestions returned in the response.
-    Using the `extended=postal_code` parameter will ignore this limit when the first token in the input is a supported postal_code.
-
 -   <h3 class="parameter-name" id="location">location</h3>
 
     This parameter is used to add a geographical bias to the query. The location defines the point around which to retrieve results in priority. It must be specified in the `latitude,longitude` string format.
