@@ -16,7 +16,6 @@ parameters:
   - $ref: "../../parameters/localities/types.yml"
   - $ref: "../../parameters/localities/excluded_types.yml"
   - $ref: "../../parameters/localities/localities_components.yml"
-  - $ref: "../../parameters/localities/limit.yml"
   - $ref: "../../parameters/localities/language.yml"
   - $ref: "../../parameters/localities/location.yml"
   - $ref: "../../parameters/localities/radius.yml"

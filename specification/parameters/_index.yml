@@ -96,8 +96,6 @@ localities_public_id:
   $ref: "./localities/public_id.yml"
 localities_radius:
   $ref: "./localities/radius.yml"
-localities_limit:
-  $ref: "./localities/limit.yml"
 localities_types:
   $ref: "./localities/types.yml"
 search_encoded_polyline:
