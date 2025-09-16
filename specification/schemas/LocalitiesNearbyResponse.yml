@@ -35,3 +35,5 @@ properties:
     type: array
     items:
       $ref: "./LocalitiesNearbyCategory.yml"
+  formatted_address:
+    $ref: "./FormattedAddress.yml"
