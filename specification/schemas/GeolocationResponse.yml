@@ -42,5 +42,13 @@ properties:
     example: "22309"
   timezone:
     $ref: "./Timezone.yml"
+  raw_offset:
+    description: The offset from utc in seconds
+    type: integer
+    example: -18000
+  dst_offset:
+    description: The daylight saving time offset in seconds
+    type: integer
+    example: 3600
 example:
   $ref: "../responses/woosmap_http_geolocation_position_response.yml"
