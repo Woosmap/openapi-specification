@@ -14,6 +14,127 @@ Collection of nearby points of interest.
 <pre class="notranslate lang-json prettyprint">{
   "results": [
     {
+      "public_id": "rYahq2MbEXWVnGyH5LU0buEdd80=",
+      "types": [
+        "point_of_interest"
+      ],
+      "categories": [
+        "business.food_and_drinks.fast_food"
+      ],
+      "name": "Pret A Manger",
+      "geometry": {
+        "location": {
+          "lat": 40.715905992166256,
+          "lng": -74.00508673226767
+        }
+      },
+      "address_components": [
+        {
+          "types": [
+            "country",
+            "administrative_area_level_0",
+            "division_level_0"
+          ],
+          "long_name": "United States",
+          "short_name": "us"
+        }
+      ],
+      "formatted_address": "Broadway, New York"
+    },
+    {
+      "public_id": "VBHpz2xLZsm7GQtpO7dvDNbfijY=",
+      "types": [
+        "point_of_interest"
+      ],
+      "categories": [
+        "business.food_and_drinks.fast_food"
+      ],
+      "name": "Dunkin'",
+      "geometry": {
+        "location": {
+          "lat": 40.71602115951586,
+          "lng": -74.00494482664695
+        }
+      },
+      "address_components": [
+        {
+          "types": [
+            "country",
+            "administrative_area_level_0",
+            "division_level_0"
+          ],
+          "long_name": "United States",
+          "short_name": "us"
+        }
+      ],
+      "formatted_address": "Broadway, New York"
+    },
+    {
+      "public_id": "1uUpAmNtGKfo1rJeLgR91j/+Qw4=",
+      "types": [
+        "point_of_interest"
+      ],
+      "categories": [
+        "business.food_and_drinks.restaurant"
+      ],
+      "name": "Chambers",
+      "geometry": {
+        "location": {
+          "lat": 40.71461844801976,
+          "lng": -74.00754036678366
+        }
+      },
+      "address_components": [
+        {
+          "types": [
+            "country",
+            "administrative_area_level_0",
+            "division_level_0"
+          ],
+          "long_name": "United States",
+          "short_name": "us"
+        }
+      ],
+      "formatted_address": "Chambers Street, New York"
+    },
+    {
+      "public_id": "Czo2fiFo8oeskI9auvuCO6SFpUc=",
+      "types": [
+        "point_of_interest"
+      ],
+      "categories": [
+        "business.shop.grocery"
+      ],
+      "name": "City Hall Oasis",
+      "geometry": {
+        "location": {
+          "lat": 40.71283012706819,
+          "lng": -74.00727837935057
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 40.71286059528623,
+            "lng": -74.00724213866874
+          },
+          "southwest": {
+            "lat": 40.71279957503111,
+            "lng": -74.00731464213119
+          }
+        }
+      },
+      "address_components": [
+        {
+          "types": [
+            "country",
+            "administrative_area_level_0",
+            "division_level_0"
+          ],
+          "long_name": "United States",
+          "short_name": "us"
+        }
+      ]
+    },
+    {
       "public_id": "emXdi2D7RXOpIthsEyKVGBYZVSc=",
       "types": [
         "point_of_interest"
@@ -32,7 +153,36 @@ Collection of nearby points of interest.
         {
           "types": [
             "country",
-            "administrative_area_level_0"
+            "administrative_area_level_0",
+            "division_level_0"
+          ],
+          "long_name": "United States",
+          "short_name": "us"
+        }
+      ],
+      "formatted_address": "Broadway, New York"
+    },
+    {
+      "public_id": "c5rIR48wx55zG9RmeFYI7yujDwg=",
+      "types": [
+        "point_of_interest"
+      ],
+      "categories": [
+        "business.food_and_drinks.restaurant"
+      ],
+      "name": "Saffron",
+      "geometry": {
+        "location": {
+          "lat": 40.71467049963849,
+          "lng": -74.00767187884445
+        }
+      },
+      "address_components": [
+        {
+          "types": [
+            "country",
+            "administrative_area_level_0",
+            "division_level_0"
           ],
           "long_name": "United States",
           "short_name": "us"
@@ -58,7 +208,8 @@ Collection of nearby points of interest.
         {
           "types": [
             "country",
-            "administrative_area_level_0"
+            "administrative_area_level_0",
+            "division_level_0"
           ],
           "long_name": "United States",
           "short_name": "us"
@@ -66,30 +217,32 @@ Collection of nearby points of interest.
       ]
     },
     {
-      "public_id": "c5rIR48wx55zG9RmeFYI7yujDwg=",
+      "public_id": "9p4aCztWGDnOAUgv2JZKu8So+G8=",
       "types": [
         "point_of_interest"
       ],
       "categories": [
-        "business.food_and_drinks.restaurant"
+        "business.food_and_drinks.bar"
       ],
-      "name": "Saffron",
+      "name": "Bon Courage",
       "geometry": {
         "location": {
-          "lat": 40.714654825479556,
-          "lng": -74.0077106032371
+          "lat": 40.71541472882126,
+          "lng": -74.00719193106873
         }
       },
       "address_components": [
         {
           "types": [
             "country",
-            "administrative_area_level_0"
+            "administrative_area_level_0",
+            "division_level_0"
           ],
           "long_name": "United States",
           "short_name": "us"
         }
-      ]
+      ],
+      "formatted_address": "Reade Street, New York"
     },
     {
       "public_id": "eFFoZUgHxyJJNH+Hpm2MbBXPg5Y=",
@@ -110,168 +263,42 @@ Collection of nearby points of interest.
         {
           "types": [
             "country",
-            "administrative_area_level_0"
+            "administrative_area_level_0",
+            "division_level_0"
           ],
           "long_name": "United States",
           "short_name": "us"
         }
-      ]
+      ],
+      "formatted_address": "Broadway, New York"
     },
     {
-      "public_id": "6GSB3ngwjf3vpdOUnj2TZO2ecOc=",
+      "public_id": "1guamo/V7gSn6KGZgCtcam1bHr4=",
       "types": [
         "point_of_interest"
       ],
       "categories": [
-        "business.food_and_drinks.fast_food"
+        "business.theatre"
       ],
-      "name": "Dunkin'",
+      "name": "The Flea",
       "geometry": {
         "location": {
-          "lat": 40.71471299588757,
-          "lng": -74.00777455715831
+          "lat": 40.71609349534023,
+          "lng": -74.00589281989586
         }
       },
       "address_components": [
         {
           "types": [
             "country",
-            "administrative_area_level_0"
+            "administrative_area_level_0",
+            "division_level_0"
           ],
           "long_name": "United States",
           "short_name": "us"
         }
-      ]
-    },
-    {
-      "public_id": "GjVqQF0y4/8+puILSl4GwcvTpG8=",
-      "types": [
-        "point_of_interest"
       ],
-      "categories": [
-        "business.shop.grocery"
-      ],
-      "name": "Barakth & Saiful",
-      "geometry": {
-        "location": {
-          "lat": 40.71499001778744,
-          "lng": -74.00766701734061
-        }
-      },
-      "address_components": [
-        {
-          "types": [
-            "country",
-            "administrative_area_level_0"
-          ],
-          "long_name": "United States",
-          "short_name": "us"
-        }
-      ]
-    },
-    {
-      "public_id": "FAs4bm8/XWAzeqIfWy3c5vNNuJM=",
-      "types": [
-        "point_of_interest"
-      ],
-      "categories": [
-        "business.food_and_drinks.cafe"
-      ],
-      "name": "Hungry Ghost",
-      "geometry": {
-        "location": {
-          "lat": 40.71527793616147,
-          "lng": -74.00745294353355
-        }
-      },
-      "address_components": [
-        {
-          "types": [
-            "country",
-            "administrative_area_level_0"
-          ],
-          "long_name": "United States",
-          "short_name": "us"
-        }
-      ]
-    },
-    {
-      "public_id": "eev6v7sxhhbvAagkbC5NAKqzGV8=",
-      "types": [
-        "point_of_interest"
-      ],
-      "categories": [
-        "business.shop.grocery"
-      ],
-      "name": "Mr. Exotix",
-      "geometry": {
-        "location": {
-          "lat": 40.71523761920719,
-          "lng": -74.00749141646912
-        }
-      },
-      "address_components": [
-        {
-          "types": [
-            "country",
-            "administrative_area_level_0"
-          ],
-          "long_name": "United States",
-          "short_name": "us"
-        }
-      ]
-    },
-    {
-      "public_id": "VDUWUBQS+dBD6NJyMqfEondAEZE=",
-      "types": [
-        "point_of_interest"
-      ],
-      "categories": [
-        "business.shop.grocery"
-      ],
-      "name": "Civic Deli",
-      "geometry": {
-        "location": {
-          "lat": 40.71606784671653,
-          "lng": -74.00377261748812
-        }
-      },
-      "address_components": [
-        {
-          "types": [
-            "country",
-            "administrative_area_level_0"
-          ],
-          "long_name": "United States",
-          "short_name": "us"
-        }
-      ]
-    },
-    {
-      "public_id": "X8aAA+6/fLGaHeZkbc6EiqzOVR8=",
-      "types": [
-        "point_of_interest"
-      ],
-      "categories": [
-        "business.shop.grocery"
-      ],
-      "name": "Tribeca Deli Grill",
-      "geometry": {
-        "location": {
-          "lat": 40.7149423247584,
-          "lng": -74.00771462655064
-        }
-      },
-      "address_components": [
-        {
-          "types": [
-            "country",
-            "administrative_area_level_0"
-          ],
-          "long_name": "United States",
-          "short_name": "us"
-        }
-      ]
+      "formatted_address": "Thomas Street, New York"
     }
   ],
   "pagination": {

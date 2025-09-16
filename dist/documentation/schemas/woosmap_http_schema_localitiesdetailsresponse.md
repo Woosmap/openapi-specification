@@ -17,28 +17,55 @@ Attributes describing a locality. Not all attributes are available for all local
       "postal_code"
     ],
     "formatted_address": "SW1A 0AA, City of London",
+    "name": "SW1A 0AA",
     "geometry": {
       "location": {
-        "lat": 51.49984,
-        "lng": -0.124663
-      }
+        "lat": 51.499842,
+        "lng": -0.124638
+      },
+      "accuracy": "GEOMETRIC_CENTER"
     },
-    "name": "SW1A 0AA",
     "address_components": [
       {
-        "short_name": "GB",
-        "long_name": "United Kingdom",
         "types": [
           "country",
-          "administrative_area_level_0"
-        ]
+          "administrative_area_level_0",
+          "division_level_0"
+        ],
+        "long_name": "United Kingdom",
+        "short_name": "GB"
       },
       {
-        "short_name": "City of London",
-        "long_name": "City of London",
         "types": [
-          "administrative_area_level_1"
-        ]
+          "state",
+          "division_level_1"
+        ],
+        "long_name": "England",
+        "short_name": "England"
+      },
+      {
+        "types": [
+          "administrative_area_level_1",
+          "county",
+          "division_level_2"
+        ],
+        "long_name": "City of London",
+        "short_name": "City of London"
+      },
+      {
+        "types": [
+          "district",
+          "division_level_3"
+        ],
+        "long_name": "Westminster",
+        "short_name": "Westminster"
+      },
+      {
+        "types": [
+          "postal_codes"
+        ],
+        "long_name": "SW1A 0AA",
+        "short_name": "SW1A 0AA"
       }
     ],
     "addresses": {
@@ -51,7 +78,7 @@ Attributes describing a locality. Not all attributes are available for all local
       "list": [
         {
           "public_id": "TVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPV9fTVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPQ==",
-          "description": "House Of Commons, Houses Of Parliament, London, SW1A 0AA"
+          "description": "House Of Commons, Houses Of Parliament London, SW1A 0AA"
         }
       ]
     }

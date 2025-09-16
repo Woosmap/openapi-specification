@@ -56,7 +56,7 @@ Assets Collection Response as a GeoJSon FeatureCollection with Asset properties
               "start": "06:30"
             }
           ],
-          "week_day": 3,
+          "week_day": 2,
           "current_slice": {
             "end": "18:00",
             "start": "06:30"
