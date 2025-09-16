@@ -22,7 +22,7 @@ Attributes describing a distance isochrone response.
       "value": 1,
       "text": "1 km"
     },
-    "geometry": "s|ihHouuMZ`GdClCsA~QhCnQmBhEpCfF|HxGpBtFfEnBnHqJpH}AF_EeCcB@sBnEiEYiGmVyFaG{G[eFoCw@gAiIkDYg@_DwA@"
+    "geometry": "s|ihHouuMZ`GdClCsA~QhCnQmBhEpCfF|HxGpBtFfEnBnHqJpH}ADaEcCaB@sBnEiEYiGmVyFaG{G[eFoCw@gAiIkDYg@_DwA@"
   }
 }</pre>
 

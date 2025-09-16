@@ -38,6 +38,32 @@ Address Collection Response containing Localities
         ]
       },
       "type": "locality"
+    },
+    {
+      "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NjEw",
+      "description": "London Heathrow Airport, Hounslow, England, United Kingdom",
+      "matched_substring": {
+        "description": [
+          {
+            "offset": 0,
+            "length": 4
+          }
+        ]
+      },
+      "type": "locality"
+    },
+    {
+      "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM0NDEy",
+      "description": "London Luton Airport, Luton, England, United Kingdom",
+      "matched_substring": {
+        "description": [
+          {
+            "offset": 0,
+            "length": 4
+          }
+        ]
+      },
+      "type": "locality"
     }
   ],
   "status": "OK"

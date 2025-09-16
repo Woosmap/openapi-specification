@@ -5,7 +5,7 @@ properties:
   viewport:
     $ref: "./Bounds.yml"
   accuracy:
-    description: The accuracy of the estimated location, in meters. This represents the radius of a circle around the given `location` where the IP address is likely to be. If your Geolocation response shows a low value in the `accuracy` field (<=50), the IP has strong chance to be correctly located.
+    description: The accuracy of the estimated location, in kilometers. This represents the radius of a circle around the given `location` where the IP address is likely to be. If your Geolocation response shows a low value in the `accuracy` field (<=50), the IP has strong chance to be correctly located.
     type: number
     example: 5
   latitude:
@@ -42,5 +42,13 @@ properties:
     example: "22309"
   timezone:
     $ref: "./Timezone.yml"
+  raw_offset:
+    description: The offset from utc in seconds
+    type: integer
+    example: -18000
+  dst_offset:
+    description: The daylight saving time offset in seconds
+    type: integer
+    example: 3600
 example:
   $ref: "../responses/woosmap_http_geolocation_position_response.yml"

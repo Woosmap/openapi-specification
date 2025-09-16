@@ -8,13 +8,13 @@
           [
             {
               "status": "OK",
-              "duration": { "value": 986, "text": "16 mins" },
-              "distance": { "value": 10797, "text": "10.8 km" },
+              "duration": { "value": 978, "text": "16 mins" },
+              "distance": { "value": 10796, "text": "10.8 km" },
             },
             {
               "status": "OK",
-              "duration": { "value": 928, "text": "15 mins" },
-              "distance": { "value": 10334, "text": "10.3 km" },
+              "duration": { "value": 942, "text": "16 mins" },
+              "distance": { "value": 10322, "text": "10.3 km" },
             },
           ],
       },

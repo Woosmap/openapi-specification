@@ -13,63 +13,71 @@ Localities Geocode Collection Response. Contains one or more detailed Localities
 <pre class="notranslate lang-json prettyprint">{
   "results": [
     {
-      "public_id": "MCtGVFlkLzFNc2lCU3hMQUtxKy9GaXl5K3VNPV9f",
+      "public_id": "0+FTYd/1MsiBSxLAKq+/Fiyy+uM=",
       "types": [
+        "address",
         "route"
       ],
       "formatted_address": "Place Jeanne D'Arc, 75013, Paris",
+      "address_components": [
+        {
+          "types": [
+            "country",
+            "administrative_area_level_0",
+            "division_level_0"
+          ],
+          "long_name": "France",
+          "short_name": "FR"
+        },
+        {
+          "types": [
+            "state",
+            "division_level_1"
+          ],
+          "long_name": "Île-de-France",
+          "short_name": "Île-de-France"
+        },
+        {
+          "types": [
+            "administrative_area_level_1",
+            "county",
+            "division_level_2"
+          ],
+          "long_name": "Paris",
+          "short_name": "Paris"
+        },
+        {
+          "types": [
+            "locality"
+          ],
+          "long_name": "Paris",
+          "short_name": "Paris"
+        },
+        {
+          "types": [
+            "postal_codes"
+          ],
+          "long_name": "75013",
+          "short_name": "75013"
+        },
+        {
+          "types": [
+            "route"
+          ],
+          "long_name": "Place Jeanne D'Arc",
+          "short_name": "Place Jeanne D'Arc"
+        }
+      ],
       "geometry": {
         "location": {
-          "lat": 48.829941,
-          "lng": 2.369083
+          "lat": 48.829405,
+          "lng": 2.367944
         },
         "location_type": "GEOMETRIC_CENTER"
       },
-      "address_components": [
-        {
-          "short_name": "FR",
-          "long_name": "France",
-          "types": [
-            "country",
-            "administrative_area_level_0"
-          ]
-        },
-        {
-          "short_name": "Île-de-France",
-          "long_name": "Île-de-France",
-          "types": [
-            "state"
-          ]
-        },
-        {
-          "short_name": "Paris",
-          "long_name": "Paris",
-          "types": [
-            "county"
-          ]
-        },
-        {
-          "short_name": "Paris",
-          "long_name": "Paris",
-          "types": [
-            "locality"
-          ]
-        },
-        {
-          "short_name": "75013",
-          "long_name": "75013",
-          "types": [
-            "postal_codes"
-          ]
-        },
-        {
-          "short_name": "Place Jeanne D'Arc",
-          "long_name": "Place Jeanne D'Arc",
-          "types": [
-            "route"
-          ]
-        }
-      ]
+      "scores_per_components": {
+        "street_name": 1
+      }
     }
   ]
 }</pre>

@@ -16,6 +16,7 @@ Address Geocode Collection Response. Contains one or more Addresses with coordin
     {
       "formatted_address": "Place de la Résistance, 75007 Paris, France",
       "types": [
+        "address",
         "route"
       ],
       "address_components": [
@@ -72,13 +73,13 @@ Address Geocode Collection Response. Contains one or more Addresses with coordin
       "geometry": {
         "location_type": "GEOMETRIC_CENTER",
         "location": {
-          "lat": 48.86228,
-          "lng": 2.30345
+          "lat": 48.86213,
+          "lng": 2.30152
         },
         "viewport": {
           "northeast": {
             "lat": 48.86231,
-            "lng": 2.30544
+            "lng": 2.30541
           },
           "southwest": {
             "lat": 48.86191,

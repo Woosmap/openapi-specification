@@ -15,9 +15,9 @@ Timezone information, name, raw offset to UTC and dst offset.
 
 <pre class="notranslate lang-json prettyprint">{
   "timezone": "Europe/Paris",
-  "timezone_name": "CET",
+  "timezone_name": "CEST",
   "raw_offset": 3600,
-  "dst_offset": 0
+  "dst_offset": 3600
 }</pre>
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.
