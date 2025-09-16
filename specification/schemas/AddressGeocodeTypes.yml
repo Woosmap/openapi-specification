@@ -2,6 +2,7 @@ title: AddressGeocodeTypes
 type: string
 description: Contains the type of result.
 enum:
+  - address
   - house_number
   - route
   - address_block
