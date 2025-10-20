@@ -1,4 +1,4 @@
-name: extended_types
+name: types
 description: >
   The types of points of interest to return. 
   Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient. 
