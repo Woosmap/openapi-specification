@@ -14,9 +14,7 @@
 <h2 id="optional-parameters">Optional parameters</h2>
 <ul>
   <li>
-    <h3 class="parameter-name" id="excluded_extended_types">
-      excluded_extended_types
-    </h3>
+    <h3 class="parameter-name" id="excluded_types">excluded_types</h3>
     <p>
       The types of points of interest to exclude from results. results will
       match the specified <code>types</code>, if any, but will not match the
@@ -25,17 +23,6 @@
       <code
         >excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub</code
       >.
-    </p>
-  </li>
-  <li>
-    <h3 class="parameter-name" id="extended_types">extended_types</h3>
-    <p>
-      The types of points of interest to return. Not specifying any types will
-      not filter returned results and will default to the global
-      <code>point_of_interest</code>. Please make sure this matches your use
-      case as this behavior might not be efficient. Multiple types can be passed
-      using the pipe character (<code>|</code>) as a separator. For example:
-      <code>types=business.shop|medical.pharmacy|bank</code>.
     </p>
   </li>
   <li>
@@ -49,6 +36,17 @@
   <li>
     <h3 class="parameter-name" id="radius">radius</h3>
     <p>radius of the search circle, in meter.</p>
+  </li>
+  <li>
+    <h3 class="parameter-name" id="types">types</h3>
+    <p>
+      The types of points of interest to return. Not specifying any types will
+      not filter returned results and will default to the global
+      <code>point_of_interest</code>. Please make sure this matches your use
+      case as this behavior might not be efficient. Multiple types can be passed
+      using the pipe character (<code>|</code>) as a separator. For example:
+      <code>types=business.shop|medical.pharmacy|bank</code>.
+    </p>
   </li>
 </ul>
 <p style="text-align: right; font-size: smaller">

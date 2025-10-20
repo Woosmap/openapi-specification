@@ -12,13 +12,9 @@
 
 <h2 id="optional-parameters">Optional parameters</h2>
 
--   <h3 class="parameter-name" id="excluded_extended_types">excluded_extended_types</h3>
+-   <h3 class="parameter-name" id="excluded_types">excluded_types</h3>
 
     The types of points of interest to exclude from results.  results will match the specified `types`, if any, but will not match the specified `excluded_types`  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
-
--   <h3 class="parameter-name" id="extended_types">extended_types</h3>
-
-    The types of points of interest to return.  Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient.  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|bank`.
 
 -   <h3 class="parameter-name" id="limit">limit</h3>
 
@@ -31,6 +27,10 @@
 -   <h3 class="parameter-name" id="radius">radius</h3>
 
     radius of the search circle, in meter.
+
+-   <h3 class="parameter-name" id="types">types</h3>
+
+    The types of points of interest to return.  Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient.  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|bank`.
 
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.

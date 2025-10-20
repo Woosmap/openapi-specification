@@ -5742,14 +5742,14 @@ components:
         example: alpha2
       in: query
     extended_types:
-      name: extended_types
+      name: types
       description: |
         The types of points of interest to return.  Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient.  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|bank`.
       schema:
         $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
       in: query
     excluded_extended_types:
-      name: excluded_extended_types
+      name: excluded_types
       description: |
         The types of points of interest to exclude from results.  results will match the specified `types`, if any, but will not match the specified `excluded_types`  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
       schema:
