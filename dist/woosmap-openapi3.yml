@@ -3116,11 +3116,11 @@ paths:
             maximum: 30
           in: query
           example: 15
-        - $ref: '#/components/parameters/categories'
-        - $ref: '#/components/parameters/excluded_categories'
+        - $ref: '#/components/parameters/extended_types'
+        - $ref: '#/components/parameters/excluded_extended_types'
       responses:
         '200':
-          description: Points of interests surrounding `location` and matching provided `categories`, sorted by distance to `location`.
+          description: Points of interests surrounding `location` and matching provided `types`, sorted by distance to `location`.
           content:
             application/json:
               schema:
@@ -5741,19 +5741,19 @@ components:
           - alpha3
         example: alpha2
       in: query
-    categories:
-      name: categories
+    extended_types:
+      name: extended_types
       description: |
-        The categories of points of interest to return.  Not specifying any category will not filter returned results.  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `categories=business.shop|medical.pharmacy|bank`.
+        The types of points of interest to return.  Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient.  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|bank`.
       schema:
-        $ref: '#/components/schemas/LocalitiesNearbyCategory'
+        $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
       in: query
-    excluded_categories:
-      name: excluded_categories
+    excluded_extended_types:
+      name: excluded_extended_types
       description: |
-        The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
+        The types of points of interest to exclude from results.  results will match the specified `types`, if any, but will not match the specified `excluded_types`  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
       schema:
-        $ref: '#/components/schemas/LocalitiesNearbyCategory'
+        $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
       in: query
     input-2:
       name: input
@@ -6074,16 +6074,16 @@ components:
       $ref: '#/components/parameters/address'
     localities_addresses_per_page:
       $ref: '#/components/parameters/addresses_per_page'
-    localities_categories:
-      $ref: '#/components/parameters/categories'
+    localities_extended_types:
+      $ref: '#/components/parameters/extended_types'
     localities_cc_format:
       $ref: '#/components/parameters/cc_format-2'
     localities_custom_description:
       $ref: '#/components/parameters/custom_description'
     localities_data:
       $ref: '#/components/parameters/data'
-    localities_excluded_categories:
-      $ref: '#/components/parameters/excluded_categories'
+    localities_excluded_extended_types:
+      $ref: '#/components/parameters/excluded_extended_types'
     localities_excluded_types:
       $ref: '#/components/parameters/excluded_types'
     localities_extended:
@@ -7972,10 +7972,11 @@ components:
               location_type: GEOMETRIC_CENTER
             scores_per_components:
               street_name: 1
-    LocalitiesNearbyCategory:
-      title: LocalitiesNearbyCategory
+    LocalitiesNearbyExtendedType:
+      title: LocalitiesNearbyExtendedType
       type: string
       enum:
+        - point_of_interest
         - transit.station
         - transit.station.airport
         - transit.station.rail
@@ -8056,10 +8057,7 @@ components:
           description: An array containing the types of the result.
           type: array
           items:
-            type: string
-            description: type of result.
-            enum:
-              - point_of_interest
+            $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
         name:
           description: The name of the result.
           type: string
@@ -8082,10 +8080,11 @@ components:
         address_components:
           $ref: '#/components/schemas/AddressComponents'
         categories:
-          description: An array containing the categories of the result.
+          description: An array containing the categories of the result. This information is now available in the `types` field and will be removed.
           type: array
+          deprecated: true
           items:
-            $ref: '#/components/schemas/LocalitiesNearbyCategory'
+            $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
         formatted_address:
           $ref: '#/components/schemas/FormattedAddress'
     LocalitiesNearbyCollectionResponse:

@@ -86,6 +86,13 @@
       }
     },
     {
+      "name": "Transit & Matrix Async",
+      "description": "\n        Get distance, duration and path (as a polyline and transports details) for a pair of origin and destination, based on the recommended route between those two points and by using public transportations.\n        Also calculate large (10k x 10k) matrices of routes if you are travelling by car or HGV.\n        "
+    },
+    {
+      "name": "Distance Matrix Async"
+    },
+    {
       "name": "Transit API",
       "description": "The Transit API delivers comprehensive public transportation routing information by calculating optimal travel paths between \norigins and destinations. It provides detailed route data including distance, duration, polyline visualization, \nand complete step-by-step transit instructions with transfer points and transportation modes. The API is ideal for \napplications requiring accurate public transit navigation and trip planning capabilities.\n",
       "externalDocs": {
@@ -3337,15 +3344,15 @@
             "example": 15
           },
           {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_categories"
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_extended_types"
           },
           {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_categories"
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_extended_types"
           }
         ],
         "responses": {
           "200": {
-            "description": "Points of interests surrounding `location` and matching provided `categories`, sorted by distance to `location`.",
+            "description": "Points of interests surrounding `location` and matching provided `types`, sorted by distance to `location`.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6476,7 +6483,7 @@
           "Woosmap for what3words API"
         ],
         "summary": "Convert To What 3 Words",
-        "description": "This function will convert a latitude and longitude to a 3 word address, in the language of your choice.\nIt also returns country, the bounds of the grid square,\na nearby place (such as a local town) and a link to the what3words map site.",
+        "description": "This function will convert a latitude and longitude to a 3 word address, in the language of your choice.\nIt also returns country, the bounds of the grid square,\na nearby place (such as a local town) and a link to the what3words map site.\n\n**Rate limit**: `20/1s`",
         "operationId": "convert_to_what_3_words_what3words_convert_to_3wa_get",
         "security": [
           {
@@ -6628,7 +6635,7 @@
           "Woosmap for what3words API"
         ],
         "summary": "Convert To Address",
-        "description": "This function converts a 3 word address to a list of address.\nIt will return at most the 5 closest addresses to the what3words provided.",
+        "description": "This function converts a 3 word address to a list of address.\nIt will return at most the 5 closest addresses to the what3words provided.\n\n**Rate limit**: `20/1s`",
         "operationId": "convert_to_address_what3words_convert_to_address_get",
         "security": [
           {
@@ -6756,7 +6763,7 @@
           "Woosmap for what3words API"
         ],
         "summary": "Autosuggest",
-        "description": "AutoSuggest can take a slightly incorrect 3 word address and suggest a list of valid 3 word addresses.\nIt has powerful features that can, for example, optionally limit results to a country or area,\nand prioritise results that are near the user.",
+        "description": "AutoSuggest can take a slightly incorrect 3 word address and suggest a list of valid 3 word addresses.\nIt has powerful features that can, for example, optionally limit results to a country or area,\nand prioritise results that are near the user.\n\n**Rate limit**: `20/1s`",
         "operationId": "autosuggest_what3words_autosuggest_get",
         "security": [
           {
@@ -8720,12 +8727,296 @@
         ]
       }
     },
+    "/distance/matrix/async/": {
+      "post": {
+        "tags": [
+          "Distance Matrix Async"
+        ],
+        "summary": "Start Matrix Calculation",
+        "description": "Start an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`",
+        "operationId": "start_async_matrix_distance_matrix_async__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/External-api-wrapper_MatrixRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_MatrixResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPErrorModel"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "External-api-wrapper_PublicAPIKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/distance/matrix/async/{matrix_id}/status": {
+      "get": {
+        "tags": [
+          "Distance Matrix Async"
+        ],
+        "summary": "Check Matrix Calculation Status",
+        "description": "Check on the progress of an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`",
+        "operationId": "async_matrix_status_distance_matrix_async__matrix_id__status_get",
+        "security": [
+          {
+            "External-api-wrapper_PublicAPIKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "matrix_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the matrix you want to check the status of.",
+              "title": "Matrix Id"
+            },
+            "description": "The ID of the matrix you want to check the status of."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_MatrixCheckResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPErrorModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/distance/matrix/async/{matrix_id}": {
+      "get": {
+        "tags": [
+          "Distance Matrix Async"
+        ],
+        "summary": "Get Matrix Calculation Result",
+        "description": "Get the results of an asynchronous matrix calculation.\n\nYou should confirm using the `/matrix/{matrix_id}/status` endpoint that the calculation is `completed` before calling this endpoint.\n\n**Rate limit**: `20/1s`",
+        "operationId": "async_matrix_distance_matrix_async__matrix_id__get",
+        "security": [
+          {
+            "External-api-wrapper_PublicAPIKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "matrix_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the matrix you want to get the result of",
+              "title": "Matrix Id"
+            },
+            "description": "The ID of the matrix you want to get the result of"
+          }
+        ],
+        "responses": {
+          "303": {
+            "description": "Redirect to the result of the matrix calculation.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPErrorModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/transit/route": {
       "get": {
         "tags": [
           "Transit API"
         ],
         "summary": "Transit Route",
+        "description": "**Rate limit**: `10/1s`",
         "operationId": "transit_route_transit_route_get",
         "security": [
           {
@@ -11255,19 +11546,19 @@
         },
         "in": "query"
       },
-      "Woosmap_Platform_API_Reference_categories": {
-        "name": "categories",
-        "description": "The categories of points of interest to return.  Not specifying any category will not filter returned results.  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `categories=business.shop|medical.pharmacy|bank`.\n",
+      "Woosmap_Platform_API_Reference_extended_types": {
+        "name": "extended_types",
+        "description": "The types of points of interest to return.  Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient.  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|bank`.\n",
         "schema": {
-          "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyCategory"
+          "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyExtendedType"
         },
         "in": "query"
       },
-      "Woosmap_Platform_API_Reference_excluded_categories": {
-        "name": "excluded_categories",
-        "description": "The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.\n",
+      "Woosmap_Platform_API_Reference_excluded_extended_types": {
+        "name": "excluded_extended_types",
+        "description": "The types of points of interest to exclude from results.  results will match the specified `types`, if any, but will not match the specified `excluded_types`  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.\n",
         "schema": {
-          "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyCategory"
+          "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyExtendedType"
         },
         "in": "query"
       },
@@ -11645,8 +11936,8 @@
       "Woosmap_Platform_API_Reference_localities_addresses_per_page": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_addresses_per_page"
       },
-      "Woosmap_Platform_API_Reference_localities_categories": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_categories"
+      "Woosmap_Platform_API_Reference_localities_extended_types": {
+        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_extended_types"
       },
       "Woosmap_Platform_API_Reference_localities_cc_format": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format-2"
@@ -11657,8 +11948,8 @@
       "Woosmap_Platform_API_Reference_localities_data": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_data"
       },
-      "Woosmap_Platform_API_Reference_localities_excluded_categories": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_categories"
+      "Woosmap_Platform_API_Reference_localities_excluded_extended_types": {
+        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_extended_types"
       },
       "Woosmap_Platform_API_Reference_localities_excluded_types": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_types"
@@ -14385,10 +14676,11 @@
           ]
         }
       },
-      "Woosmap_Platform_API_Reference_LocalitiesNearbyCategory": {
-        "title": "LocalitiesNearbyCategory",
+      "Woosmap_Platform_API_Reference_LocalitiesNearbyExtendedType": {
+        "title": "LocalitiesNearbyExtendedType",
         "type": "string",
         "enum": [
+          "point_of_interest",
           "transit.station",
           "transit.station.airport",
           "transit.station.rail",
@@ -14471,11 +14763,7 @@
             "description": "An array containing the types of the result.",
             "type": "array",
             "items": {
-              "type": "string",
-              "description": "type of result.",
-              "enum": [
-                "point_of_interest"
-              ]
+              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyExtendedType"
             }
           },
           "name": {
@@ -14509,10 +14797,11 @@
             "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressComponents"
           },
           "categories": {
-            "description": "An array containing the categories of the result.",
+            "description": "An array containing the categories of the result. This information is now available in the `types` field and will be removed.",
             "type": "array",
+            "deprecated": true,
             "items": {
-              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyCategory"
+              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyExtendedType"
             }
           },
           "formatted_address": {
@@ -19293,6 +19582,93 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "External-api-wrapper_MatrixCheckResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "accepted",
+              "inProgress",
+              "completed",
+              "timeout",
+              "error"
+            ],
+            "title": "Status",
+            "description": "Status of the matrix calculation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "MatrixCheckResponse"
+      },
+      "External-api-wrapper_MatrixRequest": {
+        "properties": {
+          "origins": {
+            "type": "string",
+            "title": "Origins",
+            "description": "The starting points. You can supply one or more locations, in the form of `latitude,longitude` coordinates, separated by the pipe character `|`. Ensure that no space exists between the latitude and longitude values.",
+            "examples": [
+              "48.709,2.403|48.768,2.338"
+            ]
+          },
+          "destinations": {
+            "type": "string",
+            "title": "Destinations",
+            "description": "The ending points. You can supply one or more locations, in the form of `latitude,longitude` coordinates, separated by the pipe character `|`. Ensure that no space exists between the latitude and longitude values.",
+            "examples": [
+              "48.709,2.403|48.768,2.338"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "driving",
+              "truck"
+            ],
+            "title": "Mode",
+            "description": "Specifies the mode of transport to use when calculating distance",
+            "default": "driving",
+            "examples": [
+              "driving"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "origins",
+          "destinations"
+        ],
+        "title": "MatrixRequest"
+      },
+      "External-api-wrapper_MatrixResponse": {
+        "properties": {
+          "matrix_id": {
+            "type": "string",
+            "title": "Matrix Id",
+            "description": "Unique identifier for the matrix requested, this will be used to check the status and retrieve the completed calculation."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "accepted",
+              "inProgress",
+              "completed",
+              "timeout",
+              "error"
+            ],
+            "title": "Status",
+            "description": "Status of the matrix calculation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "matrix_id",
+          "status"
+        ],
+        "title": "MatrixResponse"
       },
       "External-api-wrapper_Transit": {
         "properties": {

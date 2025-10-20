@@ -41,7 +41,7 @@
       <td align="left">
         <h4
           id="LocalitiesNearbyResponse-categories"
-          class="add-link schema-object-property-key"
+          class="add-link schema-object-property-key deprecated-item hide-from-toc"
         >
           <code>categories</code>
         </h4>
@@ -49,18 +49,24 @@
       <td>optional</td>
       <td>
         Array&#x3C;<a
-          href="#LocalitiesNearbyCategory"
-          title="LocalitiesNearbyCategory"
-          >LocalitiesNearbyCategory</a
+          href="#LocalitiesNearbyExtendedType"
+          title="LocalitiesNearbyExtendedType"
+          >LocalitiesNearbyExtendedType</a
         >>
       </td>
       <td>
         <div class="ref-property-description">
-          <p>An array containing the categories of the result.</p>
+          <p>
+            An array containing the categories of the result. This information
+            is now available in the <code>types</code> field and will be
+            removed.
+          </p>
           <p>
             See
-            <a href="#LocalitiesNearbyCategory">LocalitiesNearbyCategory</a> for
-            more information.
+            <a href="#LocalitiesNearbyExtendedType"
+              >LocalitiesNearbyExtendedType</a
+            >
+            for more information.
           </p>
         </div>
       </td>
@@ -155,10 +161,23 @@
         </h4>
       </td>
       <td>optional</td>
-      <td>Array&#x3C;string></td>
       <td>
-        <div class="nonref-property-description">
+        Array&#x3C;<a
+          href="#LocalitiesNearbyExtendedType"
+          title="LocalitiesNearbyExtendedType"
+          >LocalitiesNearbyExtendedType</a
+        >>
+      </td>
+      <td>
+        <div class="ref-property-description">
           <p>An array containing the types of the result.</p>
+          <p>
+            See
+            <a href="#LocalitiesNearbyExtendedType"
+              >LocalitiesNearbyExtendedType</a
+            >
+            for more information.
+          </p>
         </div>
       </td>
     </tr>
