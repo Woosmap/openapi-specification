@@ -3070,14 +3070,7 @@ paths:
         - PrivateApiKeyAuth: []
         - PrivateApiKeyHeaderAuth: []
       parameters:
-        - name: types
-          required: true
-          description: types of targeted items.
-          in: query
-          schema:
-            type: string
-            enum:
-              - point_of_interest
+        - $ref: '#/components/parameters/extended_types'
         - name: location
           description: |
             Center of the search circle.
@@ -3116,7 +3109,6 @@ paths:
             maximum: 30
           in: query
           example: 15
-        - $ref: '#/components/parameters/extended_types'
         - $ref: '#/components/parameters/excluded_extended_types'
       responses:
         '200':
@@ -5744,7 +5736,7 @@ components:
     extended_types:
       name: types
       description: |
-        The types of points of interest to return.  Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient.  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|bank`.
+        The types of points of interest to return.  Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient.  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|business.finance.bank`.
       schema:
         $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
       in: query

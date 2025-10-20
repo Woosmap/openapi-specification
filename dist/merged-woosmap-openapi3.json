@@ -3286,16 +3286,7 @@
         ],
         "parameters": [
           {
-            "name": "types",
-            "required": true,
-            "description": "types of targeted items.",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "point_of_interest"
-              ]
-            }
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_extended_types"
           },
           {
             "name": "location",
@@ -3342,9 +3333,6 @@
             },
             "in": "query",
             "example": 15
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_extended_types"
           },
           {
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_extended_types"
@@ -11548,7 +11536,7 @@
       },
       "Woosmap_Platform_API_Reference_extended_types": {
         "name": "types",
-        "description": "The types of points of interest to return.  Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient.  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|bank`.\n",
+        "description": "The types of points of interest to return.  Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient.  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|business.finance.bank`.\n",
         "schema": {
           "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyExtendedType"
         },

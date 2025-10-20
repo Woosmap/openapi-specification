@@ -6,10 +6,6 @@
 
     Center of the search circle.
 
--   <h3 class="parameter-name" id="types">types</h3>
-
-    types of targeted items.
-
 <h2 id="optional-parameters">Optional parameters</h2>
 
 -   <h3 class="parameter-name" id="excluded_types">excluded_types</h3>
@@ -30,7 +26,7 @@
 
 -   <h3 class="parameter-name" id="types">types</h3>
 
-    The types of points of interest to return.  Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient.  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|bank`.
+    The types of points of interest to return.  Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient.  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|business.finance.bank`.
 
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.
