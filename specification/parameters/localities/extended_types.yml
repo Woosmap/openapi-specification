@@ -3,7 +3,7 @@ description: >
   The types of points of interest to return. 
   Not specifying any types will not filter returned results and will default to the global `point_of_interest`. Please make sure this matches your use case as this behavior might not be efficient. 
   Multiple types can be passed using the pipe character (`|`) as a separator.
-  For example: `types=business.shop|medical.pharmacy|bank`.
+  For example: `types=business.shop|medical.pharmacy|business.finance.bank`.
 schema:
   $ref: "../../schemas/LocalitiesNearbyExtendedType.yml"
 in: query
