@@ -1,9 +1,0 @@
-name: categories
-description: >
-  The categories of points of interest to return. 
-  Not specifying any category will not filter returned results. 
-  Multiple categories can be passed using the pipe character (`|`) as a separator.
-  For example: `categories=business.shop|medical.pharmacy|bank`.
-schema:
-  $ref: "../../schemas/LocalitiesNearbyCategory.yml"
-in: query

@@ -6,10 +6,7 @@ properties:
     description: An array containing the types of the result.
     type: array
     items:
-      type: string
-      description: type of result.
-      enum:
-        - point_of_interest
+      $ref: "./LocalitiesNearbyExtendedType.yml"
   name:
     description: The name of the result.
     type: string
@@ -31,9 +28,10 @@ properties:
   address_components:
     $ref: "./AddressComponents.yml"
   categories:
-    description: An array containing the categories of the result.
+    description: An array containing the categories of the result. This information is now available in the `types` field and will be removed.
     type: array
+    deprecated: true
     items:
-      $ref: "./LocalitiesNearbyCategory.yml"
+      $ref: "./LocalitiesNearbyExtendedType.yml"
   formatted_address:
     $ref: "./FormattedAddress.yml"

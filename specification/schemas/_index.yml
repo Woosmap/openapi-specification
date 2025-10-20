@@ -130,8 +130,8 @@ LocalitiesNearbyCollectionResponse:
   $ref: "./LocalitiesNearbyCollectionResponse.yml"
 LocalitiesNearbyResponse:
   $ref: "./LocalitiesNearbyResponse.yml"
-LocalitiesNearbyCategory:
-  $ref: "./LocalitiesNearbyCategory.yml"
+LocalitiesNearbyExtendedType:
+  $ref: "./LocalitiesNearbyExtendedType.yml"
 
 # Address
 AddressAutocompleteCollectionResponse:

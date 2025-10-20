@@ -60,16 +60,16 @@ localities_address:
   $ref: "./localities/address.yml"
 localities_addresses_per_page:
   $ref: "./localities/addresses_per_page.yml"
-localities_categories:
-  $ref: "./localities/categories.yml"
+localities_extended_types:
+  $ref: "./localities/extended_types.yml"
 localities_cc_format:
   $ref: "./localities/cc_format.yml"
 localities_custom_description:
   $ref: "./localities/custom_description.yml"
 localities_data:
   $ref: "./localities/data.yml"
-localities_excluded_categories:
-  $ref: "./localities/excluded_categories.yml"
+localities_excluded_extended_types:
+  $ref: "./localities/excluded_extended_types.yml"
 localities_excluded_types:
   $ref: "./localities/excluded_types.yml"
 localities_extended:
