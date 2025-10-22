@@ -86,13 +86,6 @@
       }
     },
     {
-      "name": "Transit & Matrix Async",
-      "description": "\n        Get distance, duration and path (as a polyline and transports details) for a pair of origin and destination, based on the recommended route between those two points and by using public transportations.\n        Also calculate large (10k x 10k) matrices of routes if you are travelling by car or HGV.\n        "
-    },
-    {
-      "name": "Distance Matrix Async"
-    },
-    {
       "name": "Transit API",
       "description": "The Transit API delivers comprehensive public transportation routing information by calculating optimal travel paths between \norigins and destinations. It provides detailed route data including distance, duration, polyline visualization, \nand complete step-by-step transit instructions with transfer points and transportation modes. The API is ideal for \napplications requiring accurate public transit navigation and trip planning capabilities.\n",
       "externalDocs": {
