@@ -3279,16 +3279,7 @@
         ],
         "parameters": [
           {
-            "name": "types",
-            "required": true,
-            "description": "types of targeted items.",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "point_of_interest"
-              ]
-            }
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_extended_types"
           },
           {
             "name": "location",
@@ -3337,15 +3328,12 @@
             "example": 15
           },
           {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_categories"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_categories"
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_extended_types"
           }
         ],
         "responses": {
           "200": {
-            "description": "Points of interests surrounding `location` and matching provided `categories`, sorted by distance to `location`.",
+            "description": "Points of interests surrounding `location` and matching provided `types`, sorted by distance to `location`.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3357,14 +3345,16 @@
                     "value": {
                       "results": [
                         {
-                          "public_id": "rYahq2MbEXWVnGyH5LU0buEdd80=",
+                          "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6ZTc2ZDA1YzBiM2M0M2NmNmVkNTJjNGQyZDFiZDE3Nzc0OTZkNjlmOA==",
                           "types": [
-                            "point_of_interest"
+                            "point_of_interest",
+                            "business.food_and_drinks.fast_food"
                           ],
                           "categories": [
                             "business.food_and_drinks.fast_food"
                           ],
                           "name": "Pret A Manger",
+                          "formatted_address": "Broadway, New York",
                           "geometry": {
                             "location": {
                               "lat": 40.715905992166256,
@@ -3379,20 +3369,35 @@
                                 "division_level_0"
                               ],
                               "long_name": "United States",
-                              "short_name": "us"
+                              "short_name": "US"
+                            },
+                            {
+                              "types": [
+                                "locality"
+                              ],
+                              "long_name": "New York",
+                              "short_name": "New York"
+                            },
+                            {
+                              "types": [
+                                "route"
+                              ],
+                              "long_name": "Broadway",
+                              "short_name": "Broadway"
                             }
-                          ],
-                          "formatted_address": "Broadway, New York"
+                          ]
                         },
                         {
-                          "public_id": "VBHpz2xLZsm7GQtpO7dvDNbfijY=",
+                          "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6MzBlMGYxMzVhNGUzZDQ4MzRiMmNlNDMzMWJiYjZkOTY0MWJhN2E0Zg==",
                           "types": [
-                            "point_of_interest"
+                            "point_of_interest",
+                            "business.food_and_drinks.fast_food"
                           ],
                           "categories": [
                             "business.food_and_drinks.fast_food"
                           ],
                           "name": "Dunkin'",
+                          "formatted_address": "Broadway, New York",
                           "geometry": {
                             "location": {
                               "lat": 40.71602115951586,
@@ -3407,20 +3412,35 @@
                                 "division_level_0"
                               ],
                               "long_name": "United States",
-                              "short_name": "us"
+                              "short_name": "US"
+                            },
+                            {
+                              "types": [
+                                "locality"
+                              ],
+                              "long_name": "New York",
+                              "short_name": "New York"
+                            },
+                            {
+                              "types": [
+                                "route"
+                              ],
+                              "long_name": "Broadway",
+                              "short_name": "Broadway"
                             }
-                          ],
-                          "formatted_address": "Broadway, New York"
+                          ]
                         },
                         {
-                          "public_id": "1uUpAmNtGKfo1rJeLgR91j/+Qw4=",
+                          "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmJlMWNkMTE2ZDQwM2E0Y2YwNGQ5NWQ2OTlmZWRmM2FhZTExNGU3ZWY=",
                           "types": [
-                            "point_of_interest"
+                            "point_of_interest",
+                            "business.food_and_drinks.restaurant"
                           ],
                           "categories": [
                             "business.food_and_drinks.restaurant"
                           ],
                           "name": "Chambers",
+                          "formatted_address": "Chambers Street, New York",
                           "geometry": {
                             "location": {
                               "lat": 40.71461844801976,
@@ -3435,15 +3455,29 @@
                                 "division_level_0"
                               ],
                               "long_name": "United States",
-                              "short_name": "us"
+                              "short_name": "US"
+                            },
+                            {
+                              "types": [
+                                "locality"
+                              ],
+                              "long_name": "New York",
+                              "short_name": "New York"
+                            },
+                            {
+                              "types": [
+                                "route"
+                              ],
+                              "long_name": "Chambers Street",
+                              "short_name": "Chambers Street"
                             }
-                          ],
-                          "formatted_address": "Chambers Street, New York"
+                          ]
                         },
                         {
-                          "public_id": "Czo2fiFo8oeskI9auvuCO6SFpUc=",
+                          "public_id": "cG9pOnVzOmJ1c2luZXNzLnNob3AuZ3JvY2VyeTo1YTczMjYxOTQyYjVlZmUwOGEzZjQ1NGZmMTMwMmJjNjA4ODE3NmRk",
                           "types": [
-                            "point_of_interest"
+                            "point_of_interest",
+                            "business.shop.grocery"
                           ],
                           "categories": [
                             "business.shop.grocery"
@@ -3473,19 +3507,21 @@
                                 "division_level_0"
                               ],
                               "long_name": "United States",
-                              "short_name": "us"
+                              "short_name": "US"
                             }
                           ]
                         },
                         {
-                          "public_id": "emXdi2D7RXOpIthsEyKVGBYZVSc=",
+                          "public_id": "cG9pOnVzOmJ1c2luZXNzLmZpbmFuY2UuYmFuazpiOGY5MDE4Nzc2ZDZjNmEwZTljOGM4YWM0OTAxZWZlNzNmODZkM2M3",
                           "types": [
-                            "point_of_interest"
+                            "point_of_interest",
+                            "business.finance.bank"
                           ],
                           "categories": [
                             "business.finance.bank"
                           ],
                           "name": "Citibank",
+                          "formatted_address": "Broadway, New York",
                           "geometry": {
                             "location": {
                               "lat": 40.7130414767567,
@@ -3500,15 +3536,29 @@
                                 "division_level_0"
                               ],
                               "long_name": "United States",
-                              "short_name": "us"
+                              "short_name": "US"
+                            },
+                            {
+                              "types": [
+                                "locality"
+                              ],
+                              "long_name": "New York",
+                              "short_name": "New York"
+                            },
+                            {
+                              "types": [
+                                "route"
+                              ],
+                              "long_name": "Broadway",
+                              "short_name": "Broadway"
                             }
-                          ],
-                          "formatted_address": "Broadway, New York"
+                          ]
                         },
                         {
-                          "public_id": "c5rIR48wx55zG9RmeFYI7yujDwg=",
+                          "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmQzMTMzZTJkODdiOGJjMGE3ZjI2YTdiMWVjYTZlZmI1MjQyYWE3MTE=",
                           "types": [
-                            "point_of_interest"
+                            "point_of_interest",
+                            "business.food_and_drinks.restaurant"
                           ],
                           "categories": [
                             "business.food_and_drinks.restaurant"
@@ -3528,14 +3578,15 @@
                                 "division_level_0"
                               ],
                               "long_name": "United States",
-                              "short_name": "us"
+                              "short_name": "US"
                             }
                           ]
                         },
                         {
-                          "public_id": "95FQZAdnETzbfFTEFVb/oofxJ4U=",
+                          "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmQ1NjMyN2RiM2EyNWJlYmIwNjJjZjNlYWYwMDE3ZDIyYzEyNWNlMjY=",
                           "types": [
-                            "point_of_interest"
+                            "point_of_interest",
+                            "business.food_and_drinks.restaurant"
                           ],
                           "categories": [
                             "business.food_and_drinks.restaurant"
@@ -3555,19 +3606,21 @@
                                 "division_level_0"
                               ],
                               "long_name": "United States",
-                              "short_name": "us"
+                              "short_name": "US"
                             }
                           ]
                         },
                         {
-                          "public_id": "9p4aCztWGDnOAUgv2JZKu8So+G8=",
+                          "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5iYXI6MDE5ZGUzNTdiZDkyNzAyZDM4ZDUyOWQ0YmJiZjBmODQ5YWEzZmY1NA==",
                           "types": [
-                            "point_of_interest"
+                            "point_of_interest",
+                            "business.food_and_drinks.bar"
                           ],
                           "categories": [
                             "business.food_and_drinks.bar"
                           ],
                           "name": "Bon Courage",
+                          "formatted_address": "Reade Street, New York",
                           "geometry": {
                             "location": {
                               "lat": 40.71541472882126,
@@ -3582,20 +3635,35 @@
                                 "division_level_0"
                               ],
                               "long_name": "United States",
-                              "short_name": "us"
+                              "short_name": "US"
+                            },
+                            {
+                              "types": [
+                                "locality"
+                              ],
+                              "long_name": "New York",
+                              "short_name": "New York"
+                            },
+                            {
+                              "types": [
+                                "route"
+                              ],
+                              "long_name": "Reade Street",
+                              "short_name": "Reade Street"
                             }
-                          ],
-                          "formatted_address": "Reade Street, New York"
+                          ]
                         },
                         {
-                          "public_id": "eFFoZUgHxyJJNH+Hpm2MbBXPg5Y=",
+                          "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6OGIyNDY5MDM4M2JhYzE1NmY4OGRiMGQzYmIyYzNjMTVmOTk0NDQwZQ==",
                           "types": [
-                            "point_of_interest"
+                            "point_of_interest",
+                            "business.food_and_drinks.fast_food"
                           ],
                           "categories": [
                             "business.food_and_drinks.fast_food"
                           ],
                           "name": "Burger King",
+                          "formatted_address": "Broadway, New York",
                           "geometry": {
                             "location": {
                               "lat": 40.71619516782573,
@@ -3610,20 +3678,35 @@
                                 "division_level_0"
                               ],
                               "long_name": "United States",
-                              "short_name": "us"
+                              "short_name": "US"
+                            },
+                            {
+                              "types": [
+                                "locality"
+                              ],
+                              "long_name": "New York",
+                              "short_name": "New York"
+                            },
+                            {
+                              "types": [
+                                "route"
+                              ],
+                              "long_name": "Broadway",
+                              "short_name": "Broadway"
                             }
-                          ],
-                          "formatted_address": "Broadway, New York"
+                          ]
                         },
                         {
-                          "public_id": "1guamo/V7gSn6KGZgCtcam1bHr4=",
+                          "public_id": "cG9pOnVzOmJ1c2luZXNzLnRoZWF0cmU6MTU1Yjk5YmEwY2FiYzIzZjYxYWYyYTViYzI0ZDViYTVlNmVmZTAwNA==",
                           "types": [
-                            "point_of_interest"
+                            "point_of_interest",
+                            "business.theatre"
                           ],
                           "categories": [
                             "business.theatre"
                           ],
                           "name": "The Flea",
+                          "formatted_address": "Thomas Street, New York",
                           "geometry": {
                             "location": {
                               "lat": 40.71609349534023,
@@ -3638,10 +3721,23 @@
                                 "division_level_0"
                               ],
                               "long_name": "United States",
-                              "short_name": "us"
+                              "short_name": "US"
+                            },
+                            {
+                              "types": [
+                                "locality"
+                              ],
+                              "long_name": "New York",
+                              "short_name": "New York"
+                            },
+                            {
+                              "types": [
+                                "route"
+                              ],
+                              "long_name": "Thomas Street",
+                              "short_name": "Thomas Street"
                             }
-                          ],
-                          "formatted_address": "Thomas Street, New York"
+                          ]
                         }
                       ],
                       "pagination": {
@@ -3713,17 +3809,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L 'https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+            "source": "curl -L 'https://api.woosmap.com/localities/nearby?types=business&location=40.71399%2C-74.00499&page=3&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/localities/nearby?types=business&location=40.71399%2C-74.00499&page=3&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/localities/nearby?types=business&location=40.71399%2C-74.00499&page=3&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ]
       }
@@ -6476,7 +6572,7 @@
           "Woosmap for what3words API"
         ],
         "summary": "Convert To What 3 Words",
-        "description": "This function will convert a latitude and longitude to a 3 word address, in the language of your choice.\nIt also returns country, the bounds of the grid square,\na nearby place (such as a local town) and a link to the what3words map site.",
+        "description": "This function will convert a latitude and longitude to a 3 word address, in the language of your choice.\nIt also returns country, the bounds of the grid square,\na nearby place (such as a local town) and a link to the what3words map site.\n\n**Rate limit**: `20/1s`",
         "operationId": "convert_to_what_3_words_what3words_convert_to_3wa_get",
         "security": [
           {
@@ -6628,7 +6724,7 @@
           "Woosmap for what3words API"
         ],
         "summary": "Convert To Address",
-        "description": "This function converts a 3 word address to a list of address.\nIt will return at most the 5 closest addresses to the what3words provided.",
+        "description": "This function converts a 3 word address to a list of address.\nIt will return at most the 5 closest addresses to the what3words provided.\n\n**Rate limit**: `20/1s`",
         "operationId": "convert_to_address_what3words_convert_to_address_get",
         "security": [
           {
@@ -6756,7 +6852,7 @@
           "Woosmap for what3words API"
         ],
         "summary": "Autosuggest",
-        "description": "AutoSuggest can take a slightly incorrect 3 word address and suggest a list of valid 3 word addresses.\nIt has powerful features that can, for example, optionally limit results to a country or area,\nand prioritise results that are near the user.",
+        "description": "AutoSuggest can take a slightly incorrect 3 word address and suggest a list of valid 3 word addresses.\nIt has powerful features that can, for example, optionally limit results to a country or area,\nand prioritise results that are near the user.\n\n**Rate limit**: `20/1s`",
         "operationId": "autosuggest_what3words_autosuggest_get",
         "security": [
           {
@@ -8726,6 +8822,7 @@
           "Transit API"
         ],
         "summary": "Transit Route",
+        "description": "**Rate limit**: `10/1s`",
         "operationId": "transit_route_transit_route_get",
         "security": [
           {
@@ -11255,19 +11352,19 @@
         },
         "in": "query"
       },
-      "Woosmap_Platform_API_Reference_categories": {
-        "name": "categories",
-        "description": "The categories of points of interest to return.  Not specifying any category will not filter returned results.  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `categories=business.shop|medical.pharmacy|bank`.\n",
+      "Woosmap_Platform_API_Reference_extended_types": {
+        "name": "types",
+        "description": "The types of points of interest to return.   Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|business.finance.bank`.\n",
         "schema": {
-          "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyCategory"
+          "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyExtendedType"
         },
         "in": "query"
       },
-      "Woosmap_Platform_API_Reference_excluded_categories": {
-        "name": "excluded_categories",
-        "description": "The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.\n",
+      "Woosmap_Platform_API_Reference_excluded_extended_types": {
+        "name": "excluded_types",
+        "description": "The types of points of interest to exclude from results.  results will match the specified `types`, if any, but will not match the specified `excluded_types`  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.\n",
         "schema": {
-          "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyCategory"
+          "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyExtendedType"
         },
         "in": "query"
       },
@@ -11645,9 +11742,6 @@
       "Woosmap_Platform_API_Reference_localities_addresses_per_page": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_addresses_per_page"
       },
-      "Woosmap_Platform_API_Reference_localities_categories": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_categories"
-      },
       "Woosmap_Platform_API_Reference_localities_cc_format": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format-2"
       },
@@ -11657,11 +11751,14 @@
       "Woosmap_Platform_API_Reference_localities_data": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_data"
       },
-      "Woosmap_Platform_API_Reference_localities_excluded_categories": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_categories"
+      "Woosmap_Platform_API_Reference_localities_excluded_extended_types": {
+        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_extended_types"
       },
       "Woosmap_Platform_API_Reference_localities_excluded_types": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_types"
+      },
+      "Woosmap_Platform_API_Reference_localities_extended_types": {
+        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_extended_types"
       },
       "Woosmap_Platform_API_Reference_localities_extended": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_extended"
@@ -14385,10 +14482,11 @@
           ]
         }
       },
-      "Woosmap_Platform_API_Reference_LocalitiesNearbyCategory": {
-        "title": "LocalitiesNearbyCategory",
+      "Woosmap_Platform_API_Reference_LocalitiesNearbyExtendedType": {
+        "title": "LocalitiesNearbyExtendedType",
         "type": "string",
         "enum": [
+          "point_of_interest",
           "transit.station",
           "transit.station.airport",
           "transit.station.rail",
@@ -14471,11 +14569,7 @@
             "description": "An array containing the types of the result.",
             "type": "array",
             "items": {
-              "type": "string",
-              "description": "type of result.",
-              "enum": [
-                "point_of_interest"
-              ]
+              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyExtendedType"
             }
           },
           "name": {
@@ -14509,10 +14603,11 @@
             "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressComponents"
           },
           "categories": {
-            "description": "An array containing the categories of the result.",
+            "description": "An array containing the categories of the result. This information is now available in the `types` field and will be removed.",
             "type": "array",
+            "deprecated": true,
             "items": {
-              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyCategory"
+              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesNearbyExtendedType"
             }
           },
           "formatted_address": {
@@ -14556,14 +14651,16 @@
         "example": {
           "results": [
             {
-              "public_id": "rYahq2MbEXWVnGyH5LU0buEdd80=",
+              "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6ZTc2ZDA1YzBiM2M0M2NmNmVkNTJjNGQyZDFiZDE3Nzc0OTZkNjlmOA==",
               "types": [
-                "point_of_interest"
+                "point_of_interest",
+                "business.food_and_drinks.fast_food"
               ],
               "categories": [
                 "business.food_and_drinks.fast_food"
               ],
               "name": "Pret A Manger",
+              "formatted_address": "Broadway, New York",
               "geometry": {
                 "location": {
                   "lat": 40.715905992166256,
@@ -14578,20 +14675,35 @@
                     "division_level_0"
                   ],
                   "long_name": "United States",
-                  "short_name": "us"
+                  "short_name": "US"
+                },
+                {
+                  "types": [
+                    "locality"
+                  ],
+                  "long_name": "New York",
+                  "short_name": "New York"
+                },
+                {
+                  "types": [
+                    "route"
+                  ],
+                  "long_name": "Broadway",
+                  "short_name": "Broadway"
                 }
-              ],
-              "formatted_address": "Broadway, New York"
+              ]
             },
             {
-              "public_id": "VBHpz2xLZsm7GQtpO7dvDNbfijY=",
+              "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6MzBlMGYxMzVhNGUzZDQ4MzRiMmNlNDMzMWJiYjZkOTY0MWJhN2E0Zg==",
               "types": [
-                "point_of_interest"
+                "point_of_interest",
+                "business.food_and_drinks.fast_food"
               ],
               "categories": [
                 "business.food_and_drinks.fast_food"
               ],
               "name": "Dunkin'",
+              "formatted_address": "Broadway, New York",
               "geometry": {
                 "location": {
                   "lat": 40.71602115951586,
@@ -14606,20 +14718,35 @@
                     "division_level_0"
                   ],
                   "long_name": "United States",
-                  "short_name": "us"
+                  "short_name": "US"
+                },
+                {
+                  "types": [
+                    "locality"
+                  ],
+                  "long_name": "New York",
+                  "short_name": "New York"
+                },
+                {
+                  "types": [
+                    "route"
+                  ],
+                  "long_name": "Broadway",
+                  "short_name": "Broadway"
                 }
-              ],
-              "formatted_address": "Broadway, New York"
+              ]
             },
             {
-              "public_id": "1uUpAmNtGKfo1rJeLgR91j/+Qw4=",
+              "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmJlMWNkMTE2ZDQwM2E0Y2YwNGQ5NWQ2OTlmZWRmM2FhZTExNGU3ZWY=",
               "types": [
-                "point_of_interest"
+                "point_of_interest",
+                "business.food_and_drinks.restaurant"
               ],
               "categories": [
                 "business.food_and_drinks.restaurant"
               ],
               "name": "Chambers",
+              "formatted_address": "Chambers Street, New York",
               "geometry": {
                 "location": {
                   "lat": 40.71461844801976,
@@ -14634,15 +14761,29 @@
                     "division_level_0"
                   ],
                   "long_name": "United States",
-                  "short_name": "us"
+                  "short_name": "US"
+                },
+                {
+                  "types": [
+                    "locality"
+                  ],
+                  "long_name": "New York",
+                  "short_name": "New York"
+                },
+                {
+                  "types": [
+                    "route"
+                  ],
+                  "long_name": "Chambers Street",
+                  "short_name": "Chambers Street"
                 }
-              ],
-              "formatted_address": "Chambers Street, New York"
+              ]
             },
             {
-              "public_id": "Czo2fiFo8oeskI9auvuCO6SFpUc=",
+              "public_id": "cG9pOnVzOmJ1c2luZXNzLnNob3AuZ3JvY2VyeTo1YTczMjYxOTQyYjVlZmUwOGEzZjQ1NGZmMTMwMmJjNjA4ODE3NmRk",
               "types": [
-                "point_of_interest"
+                "point_of_interest",
+                "business.shop.grocery"
               ],
               "categories": [
                 "business.shop.grocery"
@@ -14672,19 +14813,21 @@
                     "division_level_0"
                   ],
                   "long_name": "United States",
-                  "short_name": "us"
+                  "short_name": "US"
                 }
               ]
             },
             {
-              "public_id": "emXdi2D7RXOpIthsEyKVGBYZVSc=",
+              "public_id": "cG9pOnVzOmJ1c2luZXNzLmZpbmFuY2UuYmFuazpiOGY5MDE4Nzc2ZDZjNmEwZTljOGM4YWM0OTAxZWZlNzNmODZkM2M3",
               "types": [
-                "point_of_interest"
+                "point_of_interest",
+                "business.finance.bank"
               ],
               "categories": [
                 "business.finance.bank"
               ],
               "name": "Citibank",
+              "formatted_address": "Broadway, New York",
               "geometry": {
                 "location": {
                   "lat": 40.7130414767567,
@@ -14699,15 +14842,29 @@
                     "division_level_0"
                   ],
                   "long_name": "United States",
-                  "short_name": "us"
+                  "short_name": "US"
+                },
+                {
+                  "types": [
+                    "locality"
+                  ],
+                  "long_name": "New York",
+                  "short_name": "New York"
+                },
+                {
+                  "types": [
+                    "route"
+                  ],
+                  "long_name": "Broadway",
+                  "short_name": "Broadway"
                 }
-              ],
-              "formatted_address": "Broadway, New York"
+              ]
             },
             {
-              "public_id": "c5rIR48wx55zG9RmeFYI7yujDwg=",
+              "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmQzMTMzZTJkODdiOGJjMGE3ZjI2YTdiMWVjYTZlZmI1MjQyYWE3MTE=",
               "types": [
-                "point_of_interest"
+                "point_of_interest",
+                "business.food_and_drinks.restaurant"
               ],
               "categories": [
                 "business.food_and_drinks.restaurant"
@@ -14727,14 +14884,15 @@
                     "division_level_0"
                   ],
                   "long_name": "United States",
-                  "short_name": "us"
+                  "short_name": "US"
                 }
               ]
             },
             {
-              "public_id": "95FQZAdnETzbfFTEFVb/oofxJ4U=",
+              "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmQ1NjMyN2RiM2EyNWJlYmIwNjJjZjNlYWYwMDE3ZDIyYzEyNWNlMjY=",
               "types": [
-                "point_of_interest"
+                "point_of_interest",
+                "business.food_and_drinks.restaurant"
               ],
               "categories": [
                 "business.food_and_drinks.restaurant"
@@ -14754,19 +14912,21 @@
                     "division_level_0"
                   ],
                   "long_name": "United States",
-                  "short_name": "us"
+                  "short_name": "US"
                 }
               ]
             },
             {
-              "public_id": "9p4aCztWGDnOAUgv2JZKu8So+G8=",
+              "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5iYXI6MDE5ZGUzNTdiZDkyNzAyZDM4ZDUyOWQ0YmJiZjBmODQ5YWEzZmY1NA==",
               "types": [
-                "point_of_interest"
+                "point_of_interest",
+                "business.food_and_drinks.bar"
               ],
               "categories": [
                 "business.food_and_drinks.bar"
               ],
               "name": "Bon Courage",
+              "formatted_address": "Reade Street, New York",
               "geometry": {
                 "location": {
                   "lat": 40.71541472882126,
@@ -14781,20 +14941,35 @@
                     "division_level_0"
                   ],
                   "long_name": "United States",
-                  "short_name": "us"
+                  "short_name": "US"
+                },
+                {
+                  "types": [
+                    "locality"
+                  ],
+                  "long_name": "New York",
+                  "short_name": "New York"
+                },
+                {
+                  "types": [
+                    "route"
+                  ],
+                  "long_name": "Reade Street",
+                  "short_name": "Reade Street"
                 }
-              ],
-              "formatted_address": "Reade Street, New York"
+              ]
             },
             {
-              "public_id": "eFFoZUgHxyJJNH+Hpm2MbBXPg5Y=",
+              "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6OGIyNDY5MDM4M2JhYzE1NmY4OGRiMGQzYmIyYzNjMTVmOTk0NDQwZQ==",
               "types": [
-                "point_of_interest"
+                "point_of_interest",
+                "business.food_and_drinks.fast_food"
               ],
               "categories": [
                 "business.food_and_drinks.fast_food"
               ],
               "name": "Burger King",
+              "formatted_address": "Broadway, New York",
               "geometry": {
                 "location": {
                   "lat": 40.71619516782573,
@@ -14809,20 +14984,35 @@
                     "division_level_0"
                   ],
                   "long_name": "United States",
-                  "short_name": "us"
+                  "short_name": "US"
+                },
+                {
+                  "types": [
+                    "locality"
+                  ],
+                  "long_name": "New York",
+                  "short_name": "New York"
+                },
+                {
+                  "types": [
+                    "route"
+                  ],
+                  "long_name": "Broadway",
+                  "short_name": "Broadway"
                 }
-              ],
-              "formatted_address": "Broadway, New York"
+              ]
             },
             {
-              "public_id": "1guamo/V7gSn6KGZgCtcam1bHr4=",
+              "public_id": "cG9pOnVzOmJ1c2luZXNzLnRoZWF0cmU6MTU1Yjk5YmEwY2FiYzIzZjYxYWYyYTViYzI0ZDViYTVlNmVmZTAwNA==",
               "types": [
-                "point_of_interest"
+                "point_of_interest",
+                "business.theatre"
               ],
               "categories": [
                 "business.theatre"
               ],
               "name": "The Flea",
+              "formatted_address": "Thomas Street, New York",
               "geometry": {
                 "location": {
                   "lat": 40.71609349534023,
@@ -14837,10 +15027,23 @@
                     "division_level_0"
                   ],
                   "long_name": "United States",
-                  "short_name": "us"
+                  "short_name": "US"
+                },
+                {
+                  "types": [
+                    "locality"
+                  ],
+                  "long_name": "New York",
+                  "short_name": "New York"
+                },
+                {
+                  "types": [
+                    "route"
+                  ],
+                  "long_name": "Thomas Street",
+                  "short_name": "Thomas Street"
                 }
-              ],
-              "formatted_address": "Thomas Street, New York"
+              ]
             }
           ],
           "pagination": {
@@ -19293,6 +19496,93 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "External-api-wrapper_MatrixCheckResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "accepted",
+              "inProgress",
+              "completed",
+              "timeout",
+              "error"
+            ],
+            "title": "Status",
+            "description": "Status of the matrix calculation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "MatrixCheckResponse"
+      },
+      "External-api-wrapper_MatrixRequest": {
+        "properties": {
+          "origins": {
+            "type": "string",
+            "title": "Origins",
+            "description": "The starting points. You can supply one or more locations, in the form of `latitude,longitude` coordinates, separated by the pipe character `|`. Ensure that no space exists between the latitude and longitude values.",
+            "examples": [
+              "48.709,2.403|48.768,2.338"
+            ]
+          },
+          "destinations": {
+            "type": "string",
+            "title": "Destinations",
+            "description": "The ending points. You can supply one or more locations, in the form of `latitude,longitude` coordinates, separated by the pipe character `|`. Ensure that no space exists between the latitude and longitude values.",
+            "examples": [
+              "48.709,2.403|48.768,2.338"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "driving",
+              "truck"
+            ],
+            "title": "Mode",
+            "description": "Specifies the mode of transport to use when calculating distance",
+            "default": "driving",
+            "examples": [
+              "driving"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "origins",
+          "destinations"
+        ],
+        "title": "MatrixRequest"
+      },
+      "External-api-wrapper_MatrixResponse": {
+        "properties": {
+          "matrix_id": {
+            "type": "string",
+            "title": "Matrix Id",
+            "description": "Unique identifier for the matrix requested, this will be used to check the status and retrieve the completed calculation."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "accepted",
+              "inProgress",
+              "completed",
+              "timeout",
+              "error"
+            ],
+            "title": "Status",
+            "description": "Status of the matrix calculation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "matrix_id",
+          "status"
+        ],
+        "title": "MatrixResponse"
       },
       "External-api-wrapper_Transit": {
         "properties": {

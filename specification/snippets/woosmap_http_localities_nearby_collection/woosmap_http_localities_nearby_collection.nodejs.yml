@@ -1,5 +1,5 @@
 {
   "lang": "nodejs",
   "label": "NodeJS",
-  "source": "const axios = require('axios');\n\nlet config = {\n  method: 'get',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY',\n  headers: { \n    'Referer': 'http://localhost'\n  }\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n",
+  "source": "const axios = require('axios');\n\nlet config = {\n  method: 'get',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/localities/nearby?types=business&location=40.71399%2C-74.00499&page=3&key=YOUR_PUBLIC_API_KEY',\n  headers: { \n    'Referer': 'http://localhost'\n  }\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n",
 }

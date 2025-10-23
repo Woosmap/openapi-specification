@@ -3070,14 +3070,7 @@ paths:
         - PrivateApiKeyAuth: []
         - PrivateApiKeyHeaderAuth: []
       parameters:
-        - name: types
-          required: true
-          description: types of targeted items.
-          in: query
-          schema:
-            type: string
-            enum:
-              - point_of_interest
+        - $ref: '#/components/parameters/extended_types'
         - name: location
           description: |
             Center of the search circle.
@@ -3116,11 +3109,10 @@ paths:
             maximum: 30
           in: query
           example: 15
-        - $ref: '#/components/parameters/categories'
-        - $ref: '#/components/parameters/excluded_categories'
+        - $ref: '#/components/parameters/excluded_extended_types'
       responses:
         '200':
-          description: Points of interests surrounding `location` and matching provided `categories`, sorted by distance to `location`.
+          description: Points of interests surrounding `location` and matching provided `types`, sorted by distance to `location`.
           content:
             application/json:
               schema:
@@ -3130,12 +3122,14 @@ paths:
                   summary: Nearby points of interest with category `business.shop` around New-York center.
                   value:
                     results:
-                      - public_id: rYahq2MbEXWVnGyH5LU0buEdd80=
+                      - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6ZTc2ZDA1YzBiM2M0M2NmNmVkNTJjNGQyZDFiZDE3Nzc0OTZkNjlmOA==
                         types:
                           - point_of_interest
+                          - business.food_and_drinks.fast_food
                         categories:
                           - business.food_and_drinks.fast_food
                         name: Pret A Manger
+                        formatted_address: Broadway, New York
                         geometry:
                           location:
                             lat: 40.715905992166256
@@ -3146,14 +3140,23 @@ paths:
                               - administrative_area_level_0
                               - division_level_0
                             long_name: United States
-                            short_name: us
-                        formatted_address: Broadway, New York
-                      - public_id: VBHpz2xLZsm7GQtpO7dvDNbfijY=
+                            short_name: US
+                          - types:
+                              - locality
+                            long_name: New York
+                            short_name: New York
+                          - types:
+                              - route
+                            long_name: Broadway
+                            short_name: Broadway
+                      - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6MzBlMGYxMzVhNGUzZDQ4MzRiMmNlNDMzMWJiYjZkOTY0MWJhN2E0Zg==
                         types:
                           - point_of_interest
+                          - business.food_and_drinks.fast_food
                         categories:
                           - business.food_and_drinks.fast_food
                         name: Dunkin'
+                        formatted_address: Broadway, New York
                         geometry:
                           location:
                             lat: 40.71602115951586
@@ -3164,14 +3167,23 @@ paths:
                               - administrative_area_level_0
                               - division_level_0
                             long_name: United States
-                            short_name: us
-                        formatted_address: Broadway, New York
-                      - public_id: 1uUpAmNtGKfo1rJeLgR91j/+Qw4=
+                            short_name: US
+                          - types:
+                              - locality
+                            long_name: New York
+                            short_name: New York
+                          - types:
+                              - route
+                            long_name: Broadway
+                            short_name: Broadway
+                      - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmJlMWNkMTE2ZDQwM2E0Y2YwNGQ5NWQ2OTlmZWRmM2FhZTExNGU3ZWY=
                         types:
                           - point_of_interest
+                          - business.food_and_drinks.restaurant
                         categories:
                           - business.food_and_drinks.restaurant
                         name: Chambers
+                        formatted_address: Chambers Street, New York
                         geometry:
                           location:
                             lat: 40.71461844801976
@@ -3182,11 +3194,19 @@ paths:
                               - administrative_area_level_0
                               - division_level_0
                             long_name: United States
-                            short_name: us
-                        formatted_address: Chambers Street, New York
-                      - public_id: Czo2fiFo8oeskI9auvuCO6SFpUc=
+                            short_name: US
+                          - types:
+                              - locality
+                            long_name: New York
+                            short_name: New York
+                          - types:
+                              - route
+                            long_name: Chambers Street
+                            short_name: Chambers Street
+                      - public_id: cG9pOnVzOmJ1c2luZXNzLnNob3AuZ3JvY2VyeTo1YTczMjYxOTQyYjVlZmUwOGEzZjQ1NGZmMTMwMmJjNjA4ODE3NmRk
                         types:
                           - point_of_interest
+                          - business.shop.grocery
                         categories:
                           - business.shop.grocery
                         name: City Hall Oasis
@@ -3207,13 +3227,15 @@ paths:
                               - administrative_area_level_0
                               - division_level_0
                             long_name: United States
-                            short_name: us
-                      - public_id: emXdi2D7RXOpIthsEyKVGBYZVSc=
+                            short_name: US
+                      - public_id: cG9pOnVzOmJ1c2luZXNzLmZpbmFuY2UuYmFuazpiOGY5MDE4Nzc2ZDZjNmEwZTljOGM4YWM0OTAxZWZlNzNmODZkM2M3
                         types:
                           - point_of_interest
+                          - business.finance.bank
                         categories:
                           - business.finance.bank
                         name: Citibank
+                        formatted_address: Broadway, New York
                         geometry:
                           location:
                             lat: 40.7130414767567
@@ -3224,11 +3246,19 @@ paths:
                               - administrative_area_level_0
                               - division_level_0
                             long_name: United States
-                            short_name: us
-                        formatted_address: Broadway, New York
-                      - public_id: c5rIR48wx55zG9RmeFYI7yujDwg=
+                            short_name: US
+                          - types:
+                              - locality
+                            long_name: New York
+                            short_name: New York
+                          - types:
+                              - route
+                            long_name: Broadway
+                            short_name: Broadway
+                      - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmQzMTMzZTJkODdiOGJjMGE3ZjI2YTdiMWVjYTZlZmI1MjQyYWE3MTE=
                         types:
                           - point_of_interest
+                          - business.food_and_drinks.restaurant
                         categories:
                           - business.food_and_drinks.restaurant
                         name: Saffron
@@ -3242,10 +3272,11 @@ paths:
                               - administrative_area_level_0
                               - division_level_0
                             long_name: United States
-                            short_name: us
-                      - public_id: 95FQZAdnETzbfFTEFVb/oofxJ4U=
+                            short_name: US
+                      - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmQ1NjMyN2RiM2EyNWJlYmIwNjJjZjNlYWYwMDE3ZDIyYzEyNWNlMjY=
                         types:
                           - point_of_interest
+                          - business.food_and_drinks.restaurant
                         categories:
                           - business.food_and_drinks.restaurant
                         name: Gran Morsi
@@ -3259,13 +3290,15 @@ paths:
                               - administrative_area_level_0
                               - division_level_0
                             long_name: United States
-                            short_name: us
-                      - public_id: 9p4aCztWGDnOAUgv2JZKu8So+G8=
+                            short_name: US
+                      - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5iYXI6MDE5ZGUzNTdiZDkyNzAyZDM4ZDUyOWQ0YmJiZjBmODQ5YWEzZmY1NA==
                         types:
                           - point_of_interest
+                          - business.food_and_drinks.bar
                         categories:
                           - business.food_and_drinks.bar
                         name: Bon Courage
+                        formatted_address: Reade Street, New York
                         geometry:
                           location:
                             lat: 40.71541472882126
@@ -3276,14 +3309,23 @@ paths:
                               - administrative_area_level_0
                               - division_level_0
                             long_name: United States
-                            short_name: us
-                        formatted_address: Reade Street, New York
-                      - public_id: eFFoZUgHxyJJNH+Hpm2MbBXPg5Y=
+                            short_name: US
+                          - types:
+                              - locality
+                            long_name: New York
+                            short_name: New York
+                          - types:
+                              - route
+                            long_name: Reade Street
+                            short_name: Reade Street
+                      - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6OGIyNDY5MDM4M2JhYzE1NmY4OGRiMGQzYmIyYzNjMTVmOTk0NDQwZQ==
                         types:
                           - point_of_interest
+                          - business.food_and_drinks.fast_food
                         categories:
                           - business.food_and_drinks.fast_food
                         name: Burger King
+                        formatted_address: Broadway, New York
                         geometry:
                           location:
                             lat: 40.71619516782573
@@ -3294,14 +3336,23 @@ paths:
                               - administrative_area_level_0
                               - division_level_0
                             long_name: United States
-                            short_name: us
-                        formatted_address: Broadway, New York
-                      - public_id: 1guamo/V7gSn6KGZgCtcam1bHr4=
+                            short_name: US
+                          - types:
+                              - locality
+                            long_name: New York
+                            short_name: New York
+                          - types:
+                              - route
+                            long_name: Broadway
+                            short_name: Broadway
+                      - public_id: cG9pOnVzOmJ1c2luZXNzLnRoZWF0cmU6MTU1Yjk5YmEwY2FiYzIzZjYxYWYyYTViYzI0ZDViYTVlNmVmZTAwNA==
                         types:
                           - point_of_interest
+                          - business.theatre
                         categories:
                           - business.theatre
                         name: The Flea
+                        formatted_address: Thomas Street, New York
                         geometry:
                           location:
                             lat: 40.71609349534023
@@ -3312,8 +3363,15 @@ paths:
                               - administrative_area_level_0
                               - division_level_0
                             long_name: United States
-                            short_name: us
-                        formatted_address: Thomas Street, New York
+                            short_name: US
+                          - types:
+                              - locality
+                            long_name: New York
+                            short_name: New York
+                          - types:
+                              - route
+                            long_name: Thomas Street
+                            short_name: Thomas Street
                     pagination:
                       previous_page: 2
                       next_page: 4
@@ -3354,7 +3412,7 @@ paths:
         - lang: curl
           label: cURL
           source: |-
-            curl -L 'https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY' \
+            curl -L 'https://api.woosmap.com/localities/nearby?types=business&location=40.71399%2C-74.00499&page=3&key=YOUR_PUBLIC_API_KEY' \
             -H 'Referer: http://localhost'
         - lang: javascript
           label: JavaScript
@@ -3364,7 +3422,7 @@ paths:
               redirect: "follow"
             };
 
-            fetch("https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY", requestOptions)
+            fetch("https://api.woosmap.com/localities/nearby?types=business&location=40.71399%2C-74.00499&page=3&key=YOUR_PUBLIC_API_KEY", requestOptions)
               .then((response) => response.text())
               .then((result) => console.log(result))
               .catch((error) => console.error(error));
@@ -3373,7 +3431,7 @@ paths:
           source: |
             import requests
 
-            url = "https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY"
+            url = "https://api.woosmap.com/localities/nearby?types=business&location=40.71399%2C-74.00499&page=3&key=YOUR_PUBLIC_API_KEY"
 
             payload = {}
             headers = {
@@ -5741,19 +5799,19 @@ components:
           - alpha3
         example: alpha2
       in: query
-    categories:
-      name: categories
+    extended_types:
+      name: types
       description: |
-        The categories of points of interest to return.  Not specifying any category will not filter returned results.  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `categories=business.shop|medical.pharmacy|bank`.
+        The types of points of interest to return.   Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|business.finance.bank`.
       schema:
-        $ref: '#/components/schemas/LocalitiesNearbyCategory'
+        $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
       in: query
-    excluded_categories:
-      name: excluded_categories
+    excluded_extended_types:
+      name: excluded_types
       description: |
-        The categories of points of interest to exclude from results.  results will match the specified `categories`, if any, but will not match the specified `excluded_categories`  Multiple categories can be passed using the pipe character (`|`) as a separator. For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
+        The types of points of interest to exclude from results.  results will match the specified `types`, if any, but will not match the specified `excluded_types`  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
       schema:
-        $ref: '#/components/schemas/LocalitiesNearbyCategory'
+        $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
       in: query
     input-2:
       name: input
@@ -6074,18 +6132,18 @@ components:
       $ref: '#/components/parameters/address'
     localities_addresses_per_page:
       $ref: '#/components/parameters/addresses_per_page'
-    localities_categories:
-      $ref: '#/components/parameters/categories'
     localities_cc_format:
       $ref: '#/components/parameters/cc_format-2'
     localities_custom_description:
       $ref: '#/components/parameters/custom_description'
     localities_data:
       $ref: '#/components/parameters/data'
-    localities_excluded_categories:
-      $ref: '#/components/parameters/excluded_categories'
+    localities_excluded_extended_types:
+      $ref: '#/components/parameters/excluded_extended_types'
     localities_excluded_types:
       $ref: '#/components/parameters/excluded_types'
+    localities_extended_types:
+      $ref: '#/components/parameters/extended_types'
     localities_extended:
       $ref: '#/components/parameters/extended'
     localities_fields:
@@ -7972,10 +8030,11 @@ components:
               location_type: GEOMETRIC_CENTER
             scores_per_components:
               street_name: 1
-    LocalitiesNearbyCategory:
-      title: LocalitiesNearbyCategory
+    LocalitiesNearbyExtendedType:
+      title: LocalitiesNearbyExtendedType
       type: string
       enum:
+        - point_of_interest
         - transit.station
         - transit.station.airport
         - transit.station.rail
@@ -8056,10 +8115,7 @@ components:
           description: An array containing the types of the result.
           type: array
           items:
-            type: string
-            description: type of result.
-            enum:
-              - point_of_interest
+            $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
         name:
           description: The name of the result.
           type: string
@@ -8082,10 +8138,11 @@ components:
         address_components:
           $ref: '#/components/schemas/AddressComponents'
         categories:
-          description: An array containing the categories of the result.
+          description: An array containing the categories of the result. This information is now available in the `types` field and will be removed.
           type: array
+          deprecated: true
           items:
-            $ref: '#/components/schemas/LocalitiesNearbyCategory'
+            $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
         formatted_address:
           $ref: '#/components/schemas/FormattedAddress'
     LocalitiesNearbyCollectionResponse:
@@ -8114,12 +8171,14 @@ components:
                 - 'null'
       example:
         results:
-          - public_id: rYahq2MbEXWVnGyH5LU0buEdd80=
+          - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6ZTc2ZDA1YzBiM2M0M2NmNmVkNTJjNGQyZDFiZDE3Nzc0OTZkNjlmOA==
             types:
               - point_of_interest
+              - business.food_and_drinks.fast_food
             categories:
               - business.food_and_drinks.fast_food
             name: Pret A Manger
+            formatted_address: Broadway, New York
             geometry:
               location:
                 lat: 40.715905992166256
@@ -8130,14 +8189,23 @@ components:
                   - administrative_area_level_0
                   - division_level_0
                 long_name: United States
-                short_name: us
-            formatted_address: Broadway, New York
-          - public_id: VBHpz2xLZsm7GQtpO7dvDNbfijY=
+                short_name: US
+              - types:
+                  - locality
+                long_name: New York
+                short_name: New York
+              - types:
+                  - route
+                long_name: Broadway
+                short_name: Broadway
+          - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6MzBlMGYxMzVhNGUzZDQ4MzRiMmNlNDMzMWJiYjZkOTY0MWJhN2E0Zg==
             types:
               - point_of_interest
+              - business.food_and_drinks.fast_food
             categories:
               - business.food_and_drinks.fast_food
             name: Dunkin'
+            formatted_address: Broadway, New York
             geometry:
               location:
                 lat: 40.71602115951586
@@ -8148,14 +8216,23 @@ components:
                   - administrative_area_level_0
                   - division_level_0
                 long_name: United States
-                short_name: us
-            formatted_address: Broadway, New York
-          - public_id: 1uUpAmNtGKfo1rJeLgR91j/+Qw4=
+                short_name: US
+              - types:
+                  - locality
+                long_name: New York
+                short_name: New York
+              - types:
+                  - route
+                long_name: Broadway
+                short_name: Broadway
+          - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmJlMWNkMTE2ZDQwM2E0Y2YwNGQ5NWQ2OTlmZWRmM2FhZTExNGU3ZWY=
             types:
               - point_of_interest
+              - business.food_and_drinks.restaurant
             categories:
               - business.food_and_drinks.restaurant
             name: Chambers
+            formatted_address: Chambers Street, New York
             geometry:
               location:
                 lat: 40.71461844801976
@@ -8166,11 +8243,19 @@ components:
                   - administrative_area_level_0
                   - division_level_0
                 long_name: United States
-                short_name: us
-            formatted_address: Chambers Street, New York
-          - public_id: Czo2fiFo8oeskI9auvuCO6SFpUc=
+                short_name: US
+              - types:
+                  - locality
+                long_name: New York
+                short_name: New York
+              - types:
+                  - route
+                long_name: Chambers Street
+                short_name: Chambers Street
+          - public_id: cG9pOnVzOmJ1c2luZXNzLnNob3AuZ3JvY2VyeTo1YTczMjYxOTQyYjVlZmUwOGEzZjQ1NGZmMTMwMmJjNjA4ODE3NmRk
             types:
               - point_of_interest
+              - business.shop.grocery
             categories:
               - business.shop.grocery
             name: City Hall Oasis
@@ -8191,13 +8276,15 @@ components:
                   - administrative_area_level_0
                   - division_level_0
                 long_name: United States
-                short_name: us
-          - public_id: emXdi2D7RXOpIthsEyKVGBYZVSc=
+                short_name: US
+          - public_id: cG9pOnVzOmJ1c2luZXNzLmZpbmFuY2UuYmFuazpiOGY5MDE4Nzc2ZDZjNmEwZTljOGM4YWM0OTAxZWZlNzNmODZkM2M3
             types:
               - point_of_interest
+              - business.finance.bank
             categories:
               - business.finance.bank
             name: Citibank
+            formatted_address: Broadway, New York
             geometry:
               location:
                 lat: 40.7130414767567
@@ -8208,11 +8295,19 @@ components:
                   - administrative_area_level_0
                   - division_level_0
                 long_name: United States
-                short_name: us
-            formatted_address: Broadway, New York
-          - public_id: c5rIR48wx55zG9RmeFYI7yujDwg=
+                short_name: US
+              - types:
+                  - locality
+                long_name: New York
+                short_name: New York
+              - types:
+                  - route
+                long_name: Broadway
+                short_name: Broadway
+          - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmQzMTMzZTJkODdiOGJjMGE3ZjI2YTdiMWVjYTZlZmI1MjQyYWE3MTE=
             types:
               - point_of_interest
+              - business.food_and_drinks.restaurant
             categories:
               - business.food_and_drinks.restaurant
             name: Saffron
@@ -8226,10 +8321,11 @@ components:
                   - administrative_area_level_0
                   - division_level_0
                 long_name: United States
-                short_name: us
-          - public_id: 95FQZAdnETzbfFTEFVb/oofxJ4U=
+                short_name: US
+          - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmQ1NjMyN2RiM2EyNWJlYmIwNjJjZjNlYWYwMDE3ZDIyYzEyNWNlMjY=
             types:
               - point_of_interest
+              - business.food_and_drinks.restaurant
             categories:
               - business.food_and_drinks.restaurant
             name: Gran Morsi
@@ -8243,13 +8339,15 @@ components:
                   - administrative_area_level_0
                   - division_level_0
                 long_name: United States
-                short_name: us
-          - public_id: 9p4aCztWGDnOAUgv2JZKu8So+G8=
+                short_name: US
+          - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5iYXI6MDE5ZGUzNTdiZDkyNzAyZDM4ZDUyOWQ0YmJiZjBmODQ5YWEzZmY1NA==
             types:
               - point_of_interest
+              - business.food_and_drinks.bar
             categories:
               - business.food_and_drinks.bar
             name: Bon Courage
+            formatted_address: Reade Street, New York
             geometry:
               location:
                 lat: 40.71541472882126
@@ -8260,14 +8358,23 @@ components:
                   - administrative_area_level_0
                   - division_level_0
                 long_name: United States
-                short_name: us
-            formatted_address: Reade Street, New York
-          - public_id: eFFoZUgHxyJJNH+Hpm2MbBXPg5Y=
+                short_name: US
+              - types:
+                  - locality
+                long_name: New York
+                short_name: New York
+              - types:
+                  - route
+                long_name: Reade Street
+                short_name: Reade Street
+          - public_id: cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6OGIyNDY5MDM4M2JhYzE1NmY4OGRiMGQzYmIyYzNjMTVmOTk0NDQwZQ==
             types:
               - point_of_interest
+              - business.food_and_drinks.fast_food
             categories:
               - business.food_and_drinks.fast_food
             name: Burger King
+            formatted_address: Broadway, New York
             geometry:
               location:
                 lat: 40.71619516782573
@@ -8278,14 +8385,23 @@ components:
                   - administrative_area_level_0
                   - division_level_0
                 long_name: United States
-                short_name: us
-            formatted_address: Broadway, New York
-          - public_id: 1guamo/V7gSn6KGZgCtcam1bHr4=
+                short_name: US
+              - types:
+                  - locality
+                long_name: New York
+                short_name: New York
+              - types:
+                  - route
+                long_name: Broadway
+                short_name: Broadway
+          - public_id: cG9pOnVzOmJ1c2luZXNzLnRoZWF0cmU6MTU1Yjk5YmEwY2FiYzIzZjYxYWYyYTViYzI0ZDViYTVlNmVmZTAwNA==
             types:
               - point_of_interest
+              - business.theatre
             categories:
               - business.theatre
             name: The Flea
+            formatted_address: Thomas Street, New York
             geometry:
               location:
                 lat: 40.71609349534023
@@ -8296,8 +8412,15 @@ components:
                   - administrative_area_level_0
                   - division_level_0
                 long_name: United States
-                short_name: us
-            formatted_address: Thomas Street, New York
+                short_name: US
+              - types:
+                  - locality
+                long_name: New York
+                short_name: New York
+              - types:
+                  - route
+                long_name: Thomas Street
+                short_name: Thomas Street
         pagination:
           previous_page: 2
           next_page: 4

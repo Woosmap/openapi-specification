@@ -1,6 +1,7 @@
-title: LocalitiesNearbyCategory
+title: LocalitiesNearbyExtendedType
 type: string
 enum:
+  - 'point_of_interest'
   - 'transit.station'
   - 'transit.station.airport'
   - 'transit.station.rail'

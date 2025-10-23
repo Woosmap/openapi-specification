@@ -1,0 +1,8 @@
+name: types
+description: >
+  The types of points of interest to return.  
+  Multiple types can be passed using the pipe character (`|`) as a separator.
+  For example: `types=business.shop|medical.pharmacy|business.finance.bank`.
+schema:
+  $ref: "../../schemas/LocalitiesNearbyExtendedType.yml"
+in: query

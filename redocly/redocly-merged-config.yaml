@@ -95,5 +95,7 @@ apis:
 
         tagsToDelete:
           - 'Transit'
+          - 'Transit & Matrix Async'
+          - 'Distance Matrix Async'
 plugins:
   - plugins.js

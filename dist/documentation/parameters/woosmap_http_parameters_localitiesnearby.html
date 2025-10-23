@@ -6,32 +6,18 @@
     <h3 class="parameter-name" id="location">location</h3>
     <p>Center of the search circle.</p>
   </li>
-  <li>
-    <h3 class="parameter-name" id="types">types</h3>
-    <p>types of targeted items.</p>
-  </li>
 </ul>
 <h2 id="optional-parameters">Optional parameters</h2>
 <ul>
   <li>
-    <h3 class="parameter-name" id="categories">categories</h3>
+    <h3 class="parameter-name" id="excluded_types">excluded_types</h3>
     <p>
-      The categories of points of interest to return. Not specifying any
-      category will not filter returned results. Multiple categories can be
-      passed using the pipe character (<code>|</code>) as a separator. For
-      example: <code>categories=business.shop|medical.pharmacy|bank</code>.
-    </p>
-  </li>
-  <li>
-    <h3 class="parameter-name" id="excluded_categories">excluded_categories</h3>
-    <p>
-      The categories of points of interest to exclude from results. results will
-      match the specified <code>categories</code>, if any, but will not match
-      the specified <code>excluded_categories</code> Multiple categories can be
-      passed using the pipe character (<code>|</code>) as a separator. For
-      example:
+      The types of points of interest to exclude from results. results will
+      match the specified <code>types</code>, if any, but will not match the
+      specified <code>excluded_types</code> Multiple types can be passed using
+      the pipe character (<code>|</code>) as a separator. For example:
       <code
-        >excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub</code
+        >excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub</code
       >.
     </p>
   </li>
@@ -46,6 +32,14 @@
   <li>
     <h3 class="parameter-name" id="radius">radius</h3>
     <p>radius of the search circle, in meter.</p>
+  </li>
+  <li>
+    <h3 class="parameter-name" id="types">types</h3>
+    <p>
+      The types of points of interest to return. Multiple types can be passed
+      using the pipe character (<code>|</code>) as a separator. For example:
+      <code>types=business.shop|medical.pharmacy|business.finance.bank</code>.
+    </p>
   </li>
 </ul>
 <p style="text-align: right; font-size: smaller">

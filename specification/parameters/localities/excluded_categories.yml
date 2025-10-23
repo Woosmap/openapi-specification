@@ -1,9 +1,0 @@
-name: excluded_categories
-description: >
-  The categories of points of interest to exclude from results. 
-  results will match the specified `categories`, if any, but will not match the specified `excluded_categories` 
-  Multiple categories can be passed using the pipe character (`|`) as a separator.
-  For example: `excluded_categories=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
-schema:
-  $ref: "../../schemas/LocalitiesNearbyCategory.yml"
-in: query

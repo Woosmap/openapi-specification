@@ -11,14 +11,7 @@ security:
   - PrivateApiKeyAuth: []
   - PrivateApiKeyHeaderAuth: []
 parameters:
-  - name: types
-    required: true
-    description: types of targeted items.
-    in: query
-    schema:
-      type: string
-      enum:
-        - point_of_interest
+  - $ref: "../../parameters/localities/extended_types.yml"
   - name: location
     description: >
       Center of the search circle.
@@ -57,11 +50,10 @@ parameters:
       maximum: 30
     in: query
     example: 15
-  - $ref: "../../parameters/localities/categories.yml"
-  - $ref: "../../parameters/localities/excluded_categories.yml"
+  - $ref: "../../parameters/localities/excluded_extended_types.yml"
 responses:
   "200":
-    description: Points of interests surrounding `location` and matching provided `categories`, sorted by distance to `location`.
+    description: Points of interests surrounding `location` and matching provided `types`, sorted by distance to `location`.
     content:
       application/json:
         schema:
