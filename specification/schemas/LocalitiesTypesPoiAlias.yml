@@ -1,0 +1,14 @@
+title: PoiAliases
+type: string
+description: aliases for some point_of_interest types
+deprecated: true
+enum:
+  - airport
+  - train_station
+  - metro_station
+  - shopping
+  - museum
+  - zoo
+  - amusement_park
+  - art_gallery
+  - tourist_attraction

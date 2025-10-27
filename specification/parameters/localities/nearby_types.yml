@@ -4,5 +4,5 @@ description: >
   Multiple types can be passed using the pipe character (`|`) as a separator.
   For example: `types=business.shop|medical.pharmacy|business.finance.bank`.
 schema:
-  $ref: "../../schemas/LocalitiesNearbyExtendedType.yml"
+  $ref: "../../schemas/LocalitiesTypesPoi.yml"
 in: query

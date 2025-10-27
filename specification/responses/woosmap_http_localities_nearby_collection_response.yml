@@ -3,10 +3,11 @@
   "results":
     [
       {
-        "public_id": "rYahq2MbEXWVnGyH5LU0buEdd80=",
-        "types": ["point_of_interest"],
+        "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6ZTc2ZDA1YzBiM2M0M2NmNmVkNTJjNGQyZDFiZDE3Nzc0OTZkNjlmOA==",
+        "types": ["point_of_interest", "business.food_and_drinks.fast_food"],
         "categories": ["business.food_and_drinks.fast_food"],
         "name": "Pret A Manger",
+        "formatted_address": "Broadway, New York",
         "geometry":
           {
             "location":
@@ -18,16 +19,26 @@
               "types":
                 ["country", "administrative_area_level_0", "division_level_0"],
               "long_name": "United States",
-              "short_name": "us",
+              "short_name": "US",
+            },
+            {
+              "types": ["locality"],
+              "long_name": "New York",
+              "short_name": "New York",
+            },
+            {
+              "types": ["route"],
+              "long_name": "Broadway",
+              "short_name": "Broadway",
             },
           ],
-        "formatted_address": "Broadway, New York",
       },
       {
-        "public_id": "VBHpz2xLZsm7GQtpO7dvDNbfijY=",
-        "types": ["point_of_interest"],
+        "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6MzBlMGYxMzVhNGUzZDQ4MzRiMmNlNDMzMWJiYjZkOTY0MWJhN2E0Zg==",
+        "types": ["point_of_interest", "business.food_and_drinks.fast_food"],
         "categories": ["business.food_and_drinks.fast_food"],
         "name": "Dunkin'",
+        "formatted_address": "Broadway, New York",
         "geometry":
           {
             "location": { "lat": 40.71602115951586, "lng": -74.00494482664695 },
@@ -38,16 +49,26 @@
               "types":
                 ["country", "administrative_area_level_0", "division_level_0"],
               "long_name": "United States",
-              "short_name": "us",
+              "short_name": "US",
+            },
+            {
+              "types": ["locality"],
+              "long_name": "New York",
+              "short_name": "New York",
+            },
+            {
+              "types": ["route"],
+              "long_name": "Broadway",
+              "short_name": "Broadway",
             },
           ],
-        "formatted_address": "Broadway, New York",
       },
       {
-        "public_id": "1uUpAmNtGKfo1rJeLgR91j/+Qw4=",
-        "types": ["point_of_interest"],
+        "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmJlMWNkMTE2ZDQwM2E0Y2YwNGQ5NWQ2OTlmZWRmM2FhZTExNGU3ZWY=",
+        "types": ["point_of_interest", "business.food_and_drinks.restaurant"],
         "categories": ["business.food_and_drinks.restaurant"],
         "name": "Chambers",
+        "formatted_address": "Chambers Street, New York",
         "geometry":
           {
             "location": { "lat": 40.71461844801976, "lng": -74.00754036678366 },
@@ -58,14 +79,23 @@
               "types":
                 ["country", "administrative_area_level_0", "division_level_0"],
               "long_name": "United States",
-              "short_name": "us",
+              "short_name": "US",
+            },
+            {
+              "types": ["locality"],
+              "long_name": "New York",
+              "short_name": "New York",
+            },
+            {
+              "types": ["route"],
+              "long_name": "Chambers Street",
+              "short_name": "Chambers Street",
             },
           ],
-        "formatted_address": "Chambers Street, New York",
       },
       {
-        "public_id": "Czo2fiFo8oeskI9auvuCO6SFpUc=",
-        "types": ["point_of_interest"],
+        "public_id": "cG9pOnVzOmJ1c2luZXNzLnNob3AuZ3JvY2VyeTo1YTczMjYxOTQyYjVlZmUwOGEzZjQ1NGZmMTMwMmJjNjA4ODE3NmRk",
+        "types": ["point_of_interest", "business.shop.grocery"],
         "categories": ["business.shop.grocery"],
         "name": "City Hall Oasis",
         "geometry":
@@ -85,15 +115,16 @@
               "types":
                 ["country", "administrative_area_level_0", "division_level_0"],
               "long_name": "United States",
-              "short_name": "us",
+              "short_name": "US",
             },
           ],
       },
       {
-        "public_id": "emXdi2D7RXOpIthsEyKVGBYZVSc=",
-        "types": ["point_of_interest"],
+        "public_id": "cG9pOnVzOmJ1c2luZXNzLmZpbmFuY2UuYmFuazpiOGY5MDE4Nzc2ZDZjNmEwZTljOGM4YWM0OTAxZWZlNzNmODZkM2M3",
+        "types": ["point_of_interest", "business.finance.bank"],
         "categories": ["business.finance.bank"],
         "name": "Citibank",
+        "formatted_address": "Broadway, New York",
         "geometry":
           { "location": { "lat": 40.7130414767567, "lng": -74.0074818610995 } },
         "address_components":
@@ -102,14 +133,23 @@
               "types":
                 ["country", "administrative_area_level_0", "division_level_0"],
               "long_name": "United States",
-              "short_name": "us",
+              "short_name": "US",
+            },
+            {
+              "types": ["locality"],
+              "long_name": "New York",
+              "short_name": "New York",
+            },
+            {
+              "types": ["route"],
+              "long_name": "Broadway",
+              "short_name": "Broadway",
             },
           ],
-        "formatted_address": "Broadway, New York",
       },
       {
-        "public_id": "c5rIR48wx55zG9RmeFYI7yujDwg=",
-        "types": ["point_of_interest"],
+        "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmQzMTMzZTJkODdiOGJjMGE3ZjI2YTdiMWVjYTZlZmI1MjQyYWE3MTE=",
+        "types": ["point_of_interest", "business.food_and_drinks.restaurant"],
         "categories": ["business.food_and_drinks.restaurant"],
         "name": "Saffron",
         "geometry":
@@ -122,13 +162,13 @@
               "types":
                 ["country", "administrative_area_level_0", "division_level_0"],
               "long_name": "United States",
-              "short_name": "us",
+              "short_name": "US",
             },
           ],
       },
       {
-        "public_id": "95FQZAdnETzbfFTEFVb/oofxJ4U=",
-        "types": ["point_of_interest"],
+        "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5yZXN0YXVyYW50OmQ1NjMyN2RiM2EyNWJlYmIwNjJjZjNlYWYwMDE3ZDIyYzEyNWNlMjY=",
+        "types": ["point_of_interest", "business.food_and_drinks.restaurant"],
         "categories": ["business.food_and_drinks.restaurant"],
         "name": "Gran Morsi",
         "geometry":
@@ -141,15 +181,16 @@
               "types":
                 ["country", "administrative_area_level_0", "division_level_0"],
               "long_name": "United States",
-              "short_name": "us",
+              "short_name": "US",
             },
           ],
       },
       {
-        "public_id": "9p4aCztWGDnOAUgv2JZKu8So+G8=",
-        "types": ["point_of_interest"],
+        "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5iYXI6MDE5ZGUzNTdiZDkyNzAyZDM4ZDUyOWQ0YmJiZjBmODQ5YWEzZmY1NA==",
+        "types": ["point_of_interest", "business.food_and_drinks.bar"],
         "categories": ["business.food_and_drinks.bar"],
         "name": "Bon Courage",
+        "formatted_address": "Reade Street, New York",
         "geometry":
           {
             "location": { "lat": 40.71541472882126, "lng": -74.00719193106873 },
@@ -160,16 +201,26 @@
               "types":
                 ["country", "administrative_area_level_0", "division_level_0"],
               "long_name": "United States",
-              "short_name": "us",
+              "short_name": "US",
+            },
+            {
+              "types": ["locality"],
+              "long_name": "New York",
+              "short_name": "New York",
+            },
+            {
+              "types": ["route"],
+              "long_name": "Reade Street",
+              "short_name": "Reade Street",
             },
           ],
-        "formatted_address": "Reade Street, New York",
       },
       {
-        "public_id": "eFFoZUgHxyJJNH+Hpm2MbBXPg5Y=",
-        "types": ["point_of_interest"],
+        "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6OGIyNDY5MDM4M2JhYzE1NmY4OGRiMGQzYmIyYzNjMTVmOTk0NDQwZQ==",
+        "types": ["point_of_interest", "business.food_and_drinks.fast_food"],
         "categories": ["business.food_and_drinks.fast_food"],
         "name": "Burger King",
+        "formatted_address": "Broadway, New York",
         "geometry":
           {
             "location": { "lat": 40.71619516782573, "lng": -74.00480635760651 },
@@ -180,16 +231,26 @@
               "types":
                 ["country", "administrative_area_level_0", "division_level_0"],
               "long_name": "United States",
-              "short_name": "us",
+              "short_name": "US",
+            },
+            {
+              "types": ["locality"],
+              "long_name": "New York",
+              "short_name": "New York",
+            },
+            {
+              "types": ["route"],
+              "long_name": "Broadway",
+              "short_name": "Broadway",
             },
           ],
-        "formatted_address": "Broadway, New York",
       },
       {
-        "public_id": "1guamo/V7gSn6KGZgCtcam1bHr4=",
-        "types": ["point_of_interest"],
+        "public_id": "cG9pOnVzOmJ1c2luZXNzLnRoZWF0cmU6MTU1Yjk5YmEwY2FiYzIzZjYxYWYyYTViYzI0ZDViYTVlNmVmZTAwNA==",
+        "types": ["point_of_interest", "business.theatre"],
         "categories": ["business.theatre"],
         "name": "The Flea",
+        "formatted_address": "Thomas Street, New York",
         "geometry":
           {
             "location": { "lat": 40.71609349534023, "lng": -74.00589281989586 },
@@ -200,10 +261,19 @@
               "types":
                 ["country", "administrative_area_level_0", "division_level_0"],
               "long_name": "United States",
-              "short_name": "us",
+              "short_name": "US",
+            },
+            {
+              "types": ["locality"],
+              "long_name": "New York",
+              "short_name": "New York",
+            },
+            {
+              "types": ["route"],
+              "long_name": "Thomas Street",
+              "short_name": "Thomas Street",
             },
           ],
-        "formatted_address": "Thomas Street, New York",
       },
     ],
   "pagination": { "previous_page": 2, "next_page": 4 },

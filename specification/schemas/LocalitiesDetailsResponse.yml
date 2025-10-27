@@ -22,7 +22,7 @@ properties:
         description: available localities types
         type: array
         items:
-          $ref: "./LocalitiesTypes.yml"
+          $ref: "./LocalitiesTypesAll.yml"
       geometry:
         description: The location of the PostalCode, in latitude and longitude, eventually associated with a Viewport and a shape.
         type: object
