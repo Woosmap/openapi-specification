@@ -44,30 +44,7 @@
 
 -   <h3 class="parameter-name" id="types">types</h3>
 
-    The types of suggestion to return. Multiple types can be passed using the pipe character (`|`) as a separator.
-
-    -   `city`: includes city localities
-    -   `town`: includes town localities
-    -   `village`: includes village localities
-    -   `hamlet`: includes hamlet localities
-    -   `borough`: includes borough localities
-    -   `suburb`: includes suburb localities
-    -   `quarter`: includes quarter localities
-    -   `neighbourhood`: includes neighbourhood localities
-    -   `locality`: an alias that groups all localities (`city`, `town`, `village`, `hamlet`, `borough`, `suburb`, `quarter` and `neighbourhood`)
-    -   `postal_code`: publicly-used postal codes around the world
-    -   `address`: addresses
-    -   `admin_level`: most commonly used administrative areas
-    -   `country`: countries as whole point of interest
-    -   `airport`: includes all medium sized to international sized airports
-    -   `train_station`: includes all train stations
-    -   `metro_station`: includes all metro stations
-    -   `shopping`: includes shopping malls (or "shopping centers") - *may include private retail brands*
-    -   `museum`: includes museums
-    -   `tourist_attraction`: includes tourist attractions like the Eiffel tower
-    -   `amusement_park`: includes amusement parks like Disneyland Paris
-    -   `art_gallery`: includes art galleries
-    -   `zoo`: includes zoos
+    Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including: - Standard locality types (e.g., cities, administrative areas, postal codes) - Points of Interest (POI) categories - POI aliases These classifications enable flexible geographic data representation and querying.
 
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.

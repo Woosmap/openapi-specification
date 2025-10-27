@@ -1,4 +1,6 @@
-title: PoiTypes
+title: LocalitiesTypesPoi
+description: >
+  Categories of points of interest (POI) supported for detailed classification in geographic data queries.
 type: string
 enum:
   - 'point_of_interest'

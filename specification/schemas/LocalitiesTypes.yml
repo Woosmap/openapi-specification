@@ -1,8 +1,9 @@
-title: GenericTypes
+title: LocalitiesTypes
 type: string
 description: >
-  Common types unrelated to points of interest.
-  The `locality` type is an alias that groups all types of settlements (`city`, `town`, `village`, `hamlet`, `borough`, `suburb`, `quarter` and `neighbourhood`)
+  Common types unrelated to points of interest (POI).
+  The `locality` type serves as an alias grouping various settlement types (see `enum` for details).
+  This grouping enables flexible and efficient querying of related geographic data.
 enum:
   - country
   - admin_level

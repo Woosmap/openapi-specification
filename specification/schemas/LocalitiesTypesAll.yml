@@ -1,8 +1,8 @@
 title: LocalitiesTypesAll
 type: string
 description: >
-  All supported types: any of [GeneralTypes](#/schemas/LocalitiesTypes), [PoiTypes](#/schemas/LocalitiesTypesPoi) or [PoiAlias](#/schemas/LocalitiesTypesPoiAlias)
-# writeOnly: true
+  A comprehensive string type that encompasses all supported locality classifications. This includes standard locality types (e.g., cities, regions), points of interest (POI) categories, and POI aliases for flexible geographic data representation and querying.
+
 anyOf:
   - $ref: "./LocalitiesTypes.yml"
   - $ref: "./LocalitiesTypesPoi.yml"

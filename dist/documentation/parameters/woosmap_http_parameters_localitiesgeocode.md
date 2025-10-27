@@ -58,15 +58,6 @@
     -   `address`: addresses
     -   `admin_level`: most commonly used administrative areas
     -   `country`: countries as whole point of interest
-    -   `airport`: includes all medium sized to international sized airports
-    -   `train_station`: includes all train stations
-    -   `metro_station`: includes all metro stations
-    -   `shopping`: includes shopping malls (or "shopping centers") - *may include private retail brands*
-    -   `museum`: includes museums
-    -   `tourist_attraction`: includes tourist attractions like the Eiffel tower
-    -   `amusement_park`: includes amusement parks like Disneyland Paris
-    -   `art_gallery`: includes art galleries
-    -   `zoo`: includes zoos
 
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.
