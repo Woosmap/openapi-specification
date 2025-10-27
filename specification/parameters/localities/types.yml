@@ -2,9 +2,10 @@ name: types
 description: >
   Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator.
   This parameter supports a wide range of locality classifications, including:
-  - Standard locality types (e.g., cities, administrative areas, postal codes)
-  - Points of Interest (POI) categories
-  - POI aliases
+    - Standard locality types (e.g., cities, administrative areas, postal codes)
+    - Points of Interest (POI) categories
+    - POI aliases
+    
   These classifications enable flexible geographic data representation and querying.
 
 schema:

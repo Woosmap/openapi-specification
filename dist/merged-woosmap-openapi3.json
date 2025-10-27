@@ -11153,7 +11153,7 @@
       },
       "Woosmap_Platform_API_Reference_types": {
         "name": "types",
-        "description": "Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including: - Standard locality types (e.g., cities, administrative areas, postal codes) - Points of Interest (POI) categories - POI aliases These classifications enable flexible geographic data representation and querying.\n",
+        "description": "Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:\n  - Standard locality types (e.g., cities, administrative areas, postal codes)\n  - Points of Interest (POI) categories\n  - POI aliases\n  \nThese classifications enable flexible geographic data representation and querying.\n",
         "schema": {
           "default": "locality|postal_code",
           "example": "locality|airport|admin_level",
@@ -13746,7 +13746,7 @@
       "Woosmap_Platform_API_Reference_LocalitiesTypesPoiAlias": {
         "title": "LocalitiesTypesPoiAlias",
         "type": "string",
-        "description": "Aliases for some point_of_interest types. These aliases are deprecated and should be replaced with the corresponding types in `LocalitiesTypesPoi`. For example: - `airport` -> `transit.station.airport` - `train_station` -> `transit.station.rail` - `shopping` -> `business` This ensures consistency and alignment with the updated schema.\n",
+        "description": "Aliases for some point_of_interest types. These aliases are deprecated and should be replaced with the corresponding types in `LocalitiesTypesPoi`. For example:\n  - `airport` → `transit.station.airport`\n  - `train_station` → `transit.station.rail`\n  - `shopping` → `business`\n\nThis ensures consistency and alignment with the updated schema.\n",
         "enum": [
           "airport",
           "train_station",

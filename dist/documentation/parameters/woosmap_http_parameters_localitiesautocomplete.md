@@ -44,7 +44,13 @@
 
 -   <h3 class="parameter-name" id="types">types</h3>
 
-    Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including: - Standard locality types (e.g., cities, administrative areas, postal codes) - Points of Interest (POI) categories - POI aliases These classifications enable flexible geographic data representation and querying.
+    Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:
+
+    -   Standard locality types (e.g., cities, administrative areas, postal codes)
+    -   Points of Interest (POI) categories
+    -   POI aliases
+
+    These classifications enable flexible geographic data representation and querying.
 
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.

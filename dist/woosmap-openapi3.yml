@@ -5580,7 +5580,12 @@ components:
     types:
       name: types
       description: |
-        Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including: - Standard locality types (e.g., cities, administrative areas, postal codes) - Points of Interest (POI) categories - POI aliases These classifications enable flexible geographic data representation and querying.
+        Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:
+          - Standard locality types (e.g., cities, administrative areas, postal codes)
+          - Points of Interest (POI) categories
+          - POI aliases
+          
+        These classifications enable flexible geographic data representation and querying.
       schema:
         default: locality|postal_code
         example: locality|airport|admin_level
@@ -7513,7 +7518,12 @@ components:
       title: LocalitiesTypesPoiAlias
       type: string
       description: |
-        Aliases for some point_of_interest types. These aliases are deprecated and should be replaced with the corresponding types in `LocalitiesTypesPoi`. For example: - `airport` -> `transit.station.airport` - `train_station` -> `transit.station.rail` - `shopping` -> `business` This ensures consistency and alignment with the updated schema.
+        Aliases for some point_of_interest types. These aliases are deprecated and should be replaced with the corresponding types in `LocalitiesTypesPoi`. For example:
+          - `airport` → `transit.station.airport`
+          - `train_station` → `transit.station.rail`
+          - `shopping` → `business`
+
+        This ensures consistency and alignment with the updated schema.
       enum:
         - airport
         - train_station
