@@ -14,7 +14,6 @@ import %workspace%/.aspect/bazelrc/debug.bazelrc
 # Import Aspect recommended Bazel javascript settings for all projects
 import %workspace%/.aspect/bazelrc/javascript.bazelrc
 
-build --action_env GH_TOKEN
 build --action_env PATH
 build --enable_runfiles
 run --define WOOSMAP_PUBLIC_API_KEY=
