@@ -6579,11 +6579,11 @@
       },
       "geocode_types": {
         "name": "types",
-        "description": "Specify the types of geocoding responses to return by separating multiple types with a pipe character (|).  This parameter is ignored when used with the `latlng` parameter.  When executing a geocode request with the `address` parameter, use this to select the expected result type.\n  * `city`: includes city localities \n  * `town`: includes town localities \n  * `village`: includes village localities \n  * `hamlet`: includes hamlet localities \n  * `borough`: includes borough localities \n  * `suburb`: includes suburb localities \n  * `quarter`: includes quarter localities \n  * `neighbourhood`: includes neighbourhood localities\n  * `locality`: includes all previous locality names\n  * `postal_code`: publicly-used postal codes around the world\n  * `address`: addresses\n  * `admin_level`: most commonly used administrative areas\n  * `country`: countries as whole point of interest\n",
+        "description": "Specify the types of geocoding responses to return by separating multiple types with a pipe character (|).  Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter is ignored when used with the `latlng` parameter.  When executing a geocode request with the `address` parameter, this parameter supports a wide range of locality classifications, including:\n  - Standard locality types (e.g., cities, administrative areas, postal codes)\n  - Points of Interest (POI) categories\n  - POI aliases\n\nThese classifications enable flexible geographic data representation and querying.\n",
         "schema": {
           "default": "locality|postal_code|address",
           "example": "locality|admin_level",
-          "$ref": "#/components/schemas/LocalitiesTypes"
+          "$ref": "#/components/schemas/LocalitiesTypesAll"
         },
         "in": "query"
       },
@@ -9720,7 +9720,7 @@
             "description": "An array containing the types of the result",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/LocalitiesTypes"
+              "$ref": "#/components/schemas/LocalitiesTypesAll"
             }
           },
           "administrative_area_label": {

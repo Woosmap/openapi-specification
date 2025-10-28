@@ -43,21 +43,13 @@
 
 -   <h3 class="parameter-name" id="types">types</h3>
 
-    Specify the types of geocoding responses to return by separating multiple types with a pipe character (|).  This parameter is ignored when used with the `latlng` parameter.  When executing a geocode request with the `address` parameter, use this to select the expected result type.
+    Specify the types of geocoding responses to return by separating multiple types with a pipe character (|).  Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter is ignored when used with the `latlng` parameter.  When executing a geocode request with the `address` parameter, this parameter supports a wide range of locality classifications, including:
 
-    -   `city`: includes city localities
-    -   `town`: includes town localities
-    -   `village`: includes village localities
-    -   `hamlet`: includes hamlet localities
-    -   `borough`: includes borough localities
-    -   `suburb`: includes suburb localities
-    -   `quarter`: includes quarter localities
-    -   `neighbourhood`: includes neighbourhood localities
-    -   `locality`: includes all previous locality names
-    -   `postal_code`: publicly-used postal codes around the world
-    -   `address`: addresses
-    -   `admin_level`: most commonly used administrative areas
-    -   `country`: countries as whole point of interest
+    -   Standard locality types (e.g., cities, administrative areas, postal codes)
+    -   Points of Interest (POI) categories
+    -   POI aliases
+
+    These classifications enable flexible geographic data representation and querying.
 
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.
