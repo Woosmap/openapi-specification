@@ -43,13 +43,14 @@
 
 -   <h3 class="parameter-name" id="types">types</h3>
 
-    Specify the types of geocoding responses to return by separating multiple types with a pipe character (|).  Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter is ignored when used with the `latlng` parameter.  When executing a geocode request with the `address` parameter, this parameter supports a wide range of locality classifications, including:
+    When executing a geocode request with the `address` parameter, it specifies the types of suggestions to return in the query.  Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:
 
     -   Standard locality types (e.g., cities, administrative areas, postal codes)
     -   Points of Interest (POI) categories
     -   POI aliases
 
     These classifications enable flexible geographic data representation and querying.
+    This parameter is ignored when used with the `latlng` parameter.
 
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.

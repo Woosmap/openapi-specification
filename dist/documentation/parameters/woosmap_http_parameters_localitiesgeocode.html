@@ -109,13 +109,11 @@
   <li>
     <h3 class="parameter-name" id="types">types</h3>
     <p>
-      Specify the types of geocoding responses to return by separating multiple
-      types with a pipe character (|). Specifies the types of suggestions to
-      return in the query. Multiple types can be combined using the pipe
-      character (<code>|</code>) as a separator. This parameter is ignored when
-      used with the <code>latlng</code> parameter. When executing a geocode
-      request with the <code>address</code> parameter, this parameter supports a
-      wide range of locality classifications, including:
+      When executing a geocode request with the <code>address</code> parameter,
+      it specifies the types of suggestions to return in the query. Multiple
+      types can be combined using the pipe character (<code>|</code>) as a
+      separator. This parameter supports a wide range of locality
+      classifications, including:
     </p>
     <ul>
       <li>
@@ -127,7 +125,8 @@
     </ul>
     <p>
       These classifications enable flexible geographic data representation and
-      querying.
+      querying. This parameter is ignored when used with the
+      <code>latlng</code> parameter.
     </p>
   </li>
 </ul>
