@@ -5,8 +5,7 @@
 Aliases for some point_of_interest types. These aliases are deprecated and should be replaced with the corresponding types in `LocalitiesTypesPoi`. For example:
 
 - `airport` → `transit.station.airport`
-- `train_station` → `transit.station.rail`
-- `shopping` → `business`
+- `train_station` → `transit.station.rail.train`
 
 This ensures consistency and alignment with the updated schema.
 

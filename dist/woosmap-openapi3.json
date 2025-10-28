@@ -9004,7 +9004,7 @@
       "LocalitiesTypesPoiAlias": {
         "title": "LocalitiesTypesPoiAlias",
         "type": "string",
-        "description": "Aliases for some point_of_interest types. These aliases are deprecated and should be replaced with the corresponding types in `LocalitiesTypesPoi`. For example:\n  - `airport` → `transit.station.airport`\n  - `train_station` → `transit.station.rail`\n  - `shopping` → `business`\n\nThis ensures consistency and alignment with the updated schema.\n",
+        "description": "Aliases for some point_of_interest types. These aliases are deprecated and should be replaced with the corresponding types in `LocalitiesTypesPoi`. For example:\n  - `airport` → `transit.station.airport`\n  - `train_station` → `transit.station.rail.train`\n\nThis ensures consistency and alignment with the updated schema.\n",
         "enum": [
           "airport",
           "train_station",
