@@ -1,7 +1,15 @@
 title: LocalitiesTypes
 type: string
-description: Contains the type of the result.
+description: >
+  Common types unrelated to points of interest (POI).
+  The `locality` type serves as an alias grouping various settlement types (see `enum` for details).
+  This grouping enables flexible and efficient querying of related geographic data.
 enum:
+  - country
+  - admin_level
+  - postal_code
+  - address
+  - route
   - locality
   - city
   - town
@@ -11,17 +19,3 @@ enum:
   - suburb
   - quarter
   - neighbourhood
-  - postal_code
-  - admin_level
-  - airport
-  - train_station
-  - metro_station
-  - shopping
-  - museum
-  - zoo
-  - amusement_park
-  - art_gallery
-  - tourist_attraction
-  - country
-  - address
-  - route

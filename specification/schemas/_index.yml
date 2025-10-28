@@ -120,6 +120,12 @@ LocalitiesStatus:
   $ref: "./LocalitiesStatus.yml"
 LocalitiesTypes:
   $ref: "./LocalitiesTypes.yml"
+LocalitiesTypesAll:
+  $ref: "./LocalitiesTypesAll.yml"
+LocalitiesTypesPoi:
+  $ref: "./LocalitiesTypesPoi.yml"
+LocalitiesTypesPoiAlias:
+  $ref: "./LocalitiesTypesPoiAlias.yml"
 LocalitiesGeocodeCollectionResponse:
   $ref: "./LocalitiesGeocodeCollectionResponse.yml"
 LocalitiesGeocodeResponse:
@@ -130,8 +136,6 @@ LocalitiesNearbyCollectionResponse:
   $ref: "./LocalitiesNearbyCollectionResponse.yml"
 LocalitiesNearbyResponse:
   $ref: "./LocalitiesNearbyResponse.yml"
-LocalitiesNearbyExtendedType:
-  $ref: "./LocalitiesNearbyExtendedType.yml"
 
 # Address
 AddressAutocompleteCollectionResponse:

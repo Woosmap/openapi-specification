@@ -1,0 +1,12 @@
+<!--- This is a generated file, do not edit! -->
+<!--- [START woosmap_http_schema_localitiestypesall] -->
+<h3 class="schema-object" id="LocalitiesTypesAll">LocalitiesTypesAll</h3>
+
+A comprehensive string type that encompasses all supported locality classifications. This includes standard locality types (e.g., cities, regions), points of interest (POI) categories, and POI aliases for flexible geographic data representation and querying.
+
+<p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.
+<a data-label="openapi-github-woosmap-http-schema-localitiestypesall" data-action="edit" style="margin-left: 5px;" href="https://github.com/woosmap/openapi-specification/blob/main/specification/schemas/LocalitiesTypesAll.yml" title="Edit on GitHub">✎ Edit</a>
+<a data-label="openapi-github-woosmap-http-schema-localitiestypesall" data-action="bug" style="margin-left: 5px;" href="https://github.com/woosmap/openapi-specification/issues/new?assignees=&labels=type%3A+bug%2C+triage+me&template=bug_report.md&title=[schemas] Bug - LocalitiesTypesAll" title="File bug for schemas on GitHub"><span class="material-icons">bug_report</span> Report bug</a>
+</p>
+
+<!--- [END woosmap_http_schema_localitiestypesall] -->

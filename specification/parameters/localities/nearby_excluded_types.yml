@@ -5,5 +5,5 @@ description: >
   Multiple types can be passed using the pipe character (`|`) as a separator.
   For example: `excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
 schema:
-  $ref: "../../schemas/LocalitiesNearbyExtendedType.yml"
+  $ref: "../../schemas/LocalitiesTypesPoi.yml"
 in: query
