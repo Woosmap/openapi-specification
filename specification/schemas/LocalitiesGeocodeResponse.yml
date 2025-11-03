@@ -8,7 +8,7 @@ properties:
     description: An array containing the types of the result
     type: array
     items:
-      $ref: "./LocalitiesTypes.yml"
+      $ref: "./LocalitiesTypesAll.yml"
   administrative_area_label:
     $ref: "./AdministrativeAreaLabel.yml"
   public_id:

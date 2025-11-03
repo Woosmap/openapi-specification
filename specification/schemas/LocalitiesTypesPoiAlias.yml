@@ -1,0 +1,19 @@
+title: LocalitiesTypesPoiAlias
+type: string
+description: >
+  Aliases for some point_of_interest types. These aliases are deprecated and should be replaced with the corresponding types in `LocalitiesTypesPoi`.
+  For example:
+    - `airport` → `transit.station.airport`
+    - `train_station` → `transit.station.rail.train`
+  
+  This ensures consistency and alignment with the updated schema.
+enum:
+  - airport
+  - train_station
+  - metro_station
+  - shopping
+  - museum
+  - zoo
+  - amusement_park
+  - art_gallery
+  - tourist_attraction

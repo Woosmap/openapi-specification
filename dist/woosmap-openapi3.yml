@@ -2538,15 +2538,15 @@ paths:
                           description:
                             - offset: 0
                               length: 4
-                      - public_id: 4Ew1mvbob3vobGMQ44AdRNY/5xE=
+                      - public_id: 52MnrbHVWH21CLWH8VY/YWKhqeM=
                         type: locality
                         types:
                           - locality
                           - village
-                        description: Little London, Hampshire, United Kingdom
+                        description: London Apprentice, Cornwall, United Kingdom
                         matched_substrings:
                           description:
-                            - offset: 7
+                            - offset: 0
                               length: 4
                       - public_id: S/5AkUmMBhX35qVI2jR38+dALwk=
                         type: locality
@@ -3070,7 +3070,7 @@ paths:
         - PrivateApiKeyAuth: []
         - PrivateApiKeyHeaderAuth: []
       parameters:
-        - $ref: '#/components/parameters/extended_types'
+        - $ref: '#/components/parameters/nearby_types'
         - name: location
           description: |
             Center of the search circle.
@@ -3109,7 +3109,7 @@ paths:
             maximum: 30
           in: query
           example: 15
-        - $ref: '#/components/parameters/excluded_extended_types'
+        - $ref: '#/components/parameters/nearby_excluded_types'
       responses:
         '200':
           description: Points of interests surrounding `location` and matching provided `types`, sorted by distance to `location`.
@@ -5580,33 +5580,16 @@ components:
     types:
       name: types
       description: |
-        The types of suggestion to return. Multiple types can be passed using the pipe character (`|`) as a separator.
-          * `city`: includes city localities 
-          * `town`: includes town localities 
-          * `village`: includes village localities 
-          * `hamlet`: includes hamlet localities 
-          * `borough`: includes borough localities 
-          * `suburb`: includes suburb localities 
-          * `quarter`: includes quarter localities 
-          * `neighbourhood`: includes neighbourhood localities
-          * `locality`: an alias that groups all localities (`city`, `town`, `village`, `hamlet`, `borough`, `suburb`, `quarter` and `neighbourhood`)
-          * `postal_code`: publicly-used postal codes around the world
-          * `address`: addresses
-          * `admin_level`: most commonly used administrative areas
-          * `country`: countries as whole point of interest
-          * `airport`: includes all medium sized to international sized airports
-          * `train_station`: includes all train stations
-          * `metro_station`: includes all metro stations
-          * `shopping`: includes shopping malls (or "shopping centers") - *may include private retail brands*
-          * `museum`: includes museums
-          * `tourist_attraction`: includes tourist attractions like the Eiffel tower
-          * `amusement_park`: includes amusement parks like Disneyland Paris
-          * `art_gallery`: includes art galleries
-          * `zoo`: includes zoos
+        Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:
+          - Standard locality types (e.g., cities, administrative areas, postal codes)
+          - Points of Interest (POI) categories
+          - POI aliases
+          
+        These classifications enable flexible geographic data representation and querying.
       schema:
-        type: string
         default: locality|postal_code
         example: locality|airport|admin_level
+        $ref: '#/components/schemas/LocalitiesTypesAll'
       in: query
     excluded_types:
       name: excluded_types
@@ -5751,33 +5734,17 @@ components:
     geocode_types:
       name: types
       description: |
-        Specify the types of geocoding responses to return by separating multiple types with a pipe character (|).  This parameter is ignored when used with the `latlng` parameter.  When executing a geocode request with the `address` parameter, use this to select the expected result type.
-          * `city`: includes city localities 
-          * `town`: includes town localities 
-          * `village`: includes village localities 
-          * `hamlet`: includes hamlet localities 
-          * `borough`: includes borough localities 
-          * `suburb`: includes suburb localities 
-          * `quarter`: includes quarter localities 
-          * `neighbourhood`: includes neighbourhood localities
-          * `locality`: includes all previous locality names
-          * `postal_code`: publicly-used postal codes around the world
-          * `address`: addresses
-          * `admin_level`: most commonly used administrative areas
-          * `country`: countries as whole point of interest
-          * `airport`: includes all medium sized to international sized airports
-          * `train_station`: includes all train stations
-          * `metro_station`: includes all metro stations
-          * `shopping`: includes shopping malls (or "shopping centers") - *may include private retail brands*
-          * `museum`: includes museums
-          * `tourist_attraction`: includes tourist attractions like the Eiffel tower
-          * `amusement_park`: includes amusement parks like Disneyland Paris
-          * `art_gallery`: includes art galleries
-          * `zoo`: includes zoos
+        When executing a geocode request with the `address` parameter, it specifies the types of suggestions to return in the query.  Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:
+          - Standard locality types (e.g., cities, administrative areas, postal codes)
+          - Points of Interest (POI) categories
+          - POI aliases
+
+        These classifications enable flexible geographic data representation and querying.
+        This parameter is ignored when used with the `latlng` parameter. 
       schema:
-        type: string
         default: locality|postal_code|address
         example: locality|admin_level
+        $ref: '#/components/schemas/LocalitiesTypesAll'
       in: query
     list_sub_buildings:
       name: list_sub_buildings
@@ -5799,19 +5766,19 @@ components:
           - alpha3
         example: alpha2
       in: query
-    extended_types:
+    nearby_types:
       name: types
       description: |
         The types of points of interest to return.   Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|business.finance.bank`.
       schema:
-        $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
+        $ref: '#/components/schemas/LocalitiesTypesPoi'
       in: query
-    excluded_extended_types:
+    nearby_excluded_types:
       name: excluded_types
       description: |
         The types of points of interest to exclude from results.  results will match the specified `types`, if any, but will not match the specified `excluded_types`  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
       schema:
-        $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
+        $ref: '#/components/schemas/LocalitiesTypesPoi'
       in: query
     input-2:
       name: input
@@ -6138,12 +6105,8 @@ components:
       $ref: '#/components/parameters/custom_description'
     localities_data:
       $ref: '#/components/parameters/data'
-    localities_excluded_extended_types:
-      $ref: '#/components/parameters/excluded_extended_types'
     localities_excluded_types:
       $ref: '#/components/parameters/excluded_types'
-    localities_extended_types:
-      $ref: '#/components/parameters/extended_types'
     localities_extended:
       $ref: '#/components/parameters/extended'
     localities_fields:
@@ -6162,6 +6125,10 @@ components:
       $ref: '#/components/parameters/localities_components'
     localities_location:
       $ref: '#/components/parameters/location'
+    localities_nearby_excluded_types:
+      $ref: '#/components/parameters/nearby_excluded_types'
+    localities_nearby_types:
+      $ref: '#/components/parameters/nearby_types'
     localities_page:
       $ref: '#/components/parameters/page-2'
     localities_public_id:
@@ -7445,8 +7412,14 @@ components:
     LocalitiesTypes:
       title: LocalitiesTypes
       type: string
-      description: Contains the type of the result.
+      description: |
+        Common types unrelated to points of interest (POI). The `locality` type serves as an alias grouping various settlement types (see `enum` for details). This grouping enables flexible and efficient querying of related geographic data.
       enum:
+        - country
+        - admin_level
+        - postal_code
+        - address
+        - route
         - locality
         - city
         - town
@@ -7456,8 +7429,94 @@ components:
         - suburb
         - quarter
         - neighbourhood
-        - postal_code
-        - admin_level
+    LocalitiesTypesPoi:
+      title: LocalitiesTypesPoi
+      description: |
+        Categories of points of interest (POI) supported for detailed classification in geographic data queries.
+      type: string
+      enum:
+        - point_of_interest
+        - transit.station
+        - transit.station.airport
+        - transit.station.rail
+        - beach
+        - business
+        - business.car_repair
+        - business.car_rental
+        - business.cinema
+        - business.conference_centre
+        - business.exhibition_centre
+        - business.theatre
+        - business.nightclub
+        - business.finance
+        - business.finance.bank
+        - business.fuel
+        - business.parking
+        - business.mall
+        - business.food_and_drinks
+        - business.food_and_drinks.bar
+        - business.food_and_drinks.biergarten
+        - business.food_and_drinks.cafe
+        - business.food_and_drinks.fast_food
+        - business.food_and_drinks.pub
+        - business.food_and_drinks.restaurant
+        - business.food_and_drinks.food_court
+        - business.shop
+        - business.shop.mall
+        - business.shop.bakery
+        - business.shop.butcher
+        - business.shop.library
+        - business.shop.grocery
+        - business.shop.sports
+        - business.shop.toys
+        - business.shop.clothes
+        - business.shop.furniture
+        - business.shop.electronics
+        - business.shop.doityourself
+        - business.shop.craft
+        - education
+        - education.school
+        - education.kindergarten
+        - education.university
+        - education.college
+        - education.library
+        - hospitality
+        - hospitality.hotel
+        - hospitality.hostel
+        - hospitality.guest_house
+        - hospitality.bed_and_breakfast
+        - hospitality.motel
+        - medical
+        - medical.hospital
+        - medical.pharmacy
+        - medical.clinic
+        - tourism
+        - tourism.attraction
+        - tourism.attraction.amusement_park
+        - tourism.attraction.zoo
+        - tourism.attraction.aquarium
+        - tourism.monument
+        - tourism.monument.castle
+        - tourism.museum
+        - government
+        - park
+        - park.national
+        - place_of_worship
+        - police
+        - post_office
+        - sports
+        - sports.golf
+        - sports.winter
+    LocalitiesTypesPoiAlias:
+      title: LocalitiesTypesPoiAlias
+      type: string
+      description: |
+        Aliases for some point_of_interest types. These aliases are deprecated and should be replaced with the corresponding types in `LocalitiesTypesPoi`. For example:
+          - `airport` → `transit.station.airport`
+          - `train_station` → `transit.station.rail.train`
+
+        This ensures consistency and alignment with the updated schema.
+      enum:
         - airport
         - train_station
         - metro_station
@@ -7467,9 +7526,15 @@ components:
         - amusement_park
         - art_gallery
         - tourist_attraction
-        - country
-        - address
-        - route
+    LocalitiesTypesAll:
+      title: LocalitiesTypesAll
+      type: string
+      description: |
+        A comprehensive string type that encompasses all supported locality classifications. This includes standard locality types (e.g., cities, regions), points of interest (POI) categories, and POI aliases for flexible geographic data representation and querying.
+      anyOf:
+        - $ref: '#/components/schemas/LocalitiesTypes'
+        - $ref: '#/components/schemas/LocalitiesTypesPoi'
+        - $ref: '#/components/schemas/LocalitiesTypesPoiAlias'
     LocalitiesAutocompleteMatchedFields:
       title: LocalitiesAutocompleteMatchedFields
       type: object
@@ -7514,7 +7579,7 @@ components:
           description: An array containing the types of the result
           type: array
           items:
-            $ref: '#/components/schemas/LocalitiesTypes'
+            $ref: '#/components/schemas/LocalitiesTypesAll'
         type:
           deprecated: true
           description: this field might be removed in the future, please use the `types` field which is more exhaustive
@@ -7583,15 +7648,15 @@ components:
               description:
                 - offset: 0
                   length: 4
-          - public_id: 4Ew1mvbob3vobGMQ44AdRNY/5xE=
+          - public_id: 52MnrbHVWH21CLWH8VY/YWKhqeM=
             type: locality
             types:
               - locality
               - village
-            description: Little London, Hampshire, United Kingdom
+            description: London Apprentice, Cornwall, United Kingdom
             matched_substrings:
               description:
-                - offset: 7
+                - offset: 0
                   length: 4
           - public_id: S/5AkUmMBhX35qVI2jR38+dALwk=
             type: locality
@@ -7774,7 +7839,7 @@ components:
               description: available localities types
               type: array
               items:
-                $ref: '#/components/schemas/LocalitiesTypes'
+                $ref: '#/components/schemas/LocalitiesTypesAll'
             geometry:
               description: The location of the PostalCode, in latitude and longitude, eventually associated with a Viewport and a shape.
               type: object
@@ -7952,7 +8017,7 @@ components:
           description: An array containing the types of the result
           type: array
           items:
-            $ref: '#/components/schemas/LocalitiesTypes'
+            $ref: '#/components/schemas/LocalitiesTypesAll'
         administrative_area_label:
           $ref: '#/components/schemas/AdministrativeAreaLabel'
         public_id:
@@ -8030,82 +8095,6 @@ components:
               location_type: GEOMETRIC_CENTER
             scores_per_components:
               street_name: 1
-    LocalitiesNearbyExtendedType:
-      title: LocalitiesNearbyExtendedType
-      type: string
-      enum:
-        - point_of_interest
-        - transit.station
-        - transit.station.airport
-        - transit.station.rail
-        - beach
-        - business
-        - business.car_repair
-        - business.car_rental
-        - business.cinema
-        - business.conference_centre
-        - business.exhibition_centre
-        - business.theatre
-        - business.nightclub
-        - business.finance
-        - business.finance.bank
-        - business.fuel
-        - business.parking
-        - business.mall
-        - business.food_and_drinks
-        - business.food_and_drinks.bar
-        - business.food_and_drinks.biergarten
-        - business.food_and_drinks.cafe
-        - business.food_and_drinks.fast_food
-        - business.food_and_drinks.pub
-        - business.food_and_drinks.restaurant
-        - business.food_and_drinks.food_court
-        - business.shop
-        - business.shop.mall
-        - business.shop.bakery
-        - business.shop.butcher
-        - business.shop.library
-        - business.shop.grocery
-        - business.shop.sports
-        - business.shop.toys
-        - business.shop.clothes
-        - business.shop.furniture
-        - business.shop.electronics
-        - business.shop.doityourself
-        - business.shop.craft
-        - education
-        - education.school
-        - education.kindergarten
-        - education.university
-        - education.college
-        - education.library
-        - hospitality
-        - hospitality.hotel
-        - hospitality.hostel
-        - hospitality.guest_house
-        - hospitality.bed_and_breakfast
-        - hospitality.motel
-        - medical
-        - medical.hospital
-        - medical.pharmacy
-        - medical.clinic
-        - tourism
-        - tourism.attraction
-        - tourism.attraction.amusement_park
-        - tourism.attraction.zoo
-        - tourism.attraction.aquarium
-        - tourism.monument
-        - tourism.monument.castle
-        - tourism.museum
-        - government
-        - park
-        - park.national
-        - place_of_worship
-        - police
-        - post_office
-        - sports
-        - sports.golf
-        - sports.winter
     LocalitiesNearbyResponse:
       title: LocalitiesNearbyResponse
       type: object
@@ -8114,8 +8103,12 @@ components:
         types:
           description: An array containing the types of the result.
           type: array
+          example:
+            - point_of_interest
+            - transit.station.rail.train
+            - train_station
           items:
-            $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
+            $ref: '#/components/schemas/LocalitiesTypesPoi'
         name:
           description: The name of the result.
           type: string
@@ -8142,7 +8135,7 @@ components:
           type: array
           deprecated: true
           items:
-            $ref: '#/components/schemas/LocalitiesNearbyExtendedType'
+            $ref: '#/components/schemas/LocalitiesTypesPoi'
         formatted_address:
           $ref: '#/components/schemas/FormattedAddress'
     LocalitiesNearbyCollectionResponse:

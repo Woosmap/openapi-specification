@@ -11,7 +11,7 @@ security:
   - PrivateApiKeyAuth: []
   - PrivateApiKeyHeaderAuth: []
 parameters:
-  - $ref: "../../parameters/localities/extended_types.yml"
+  - $ref: "../../parameters/localities/nearby_types.yml"
   - name: location
     description: >
       Center of the search circle.
@@ -50,7 +50,7 @@ parameters:
       maximum: 30
     in: query
     example: 15
-  - $ref: "../../parameters/localities/excluded_extended_types.yml"
+  - $ref: "../../parameters/localities/nearby_excluded_types.yml"
 responses:
   "200":
     description: Points of interests surrounding `location` and matching provided `types`, sorted by distance to `location`.

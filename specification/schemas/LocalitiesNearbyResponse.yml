@@ -5,8 +5,9 @@ properties:
   types:
     description: An array containing the types of the result.
     type: array
+    example: ["point_of_interest", "transit.station.rail.train", "train_station"]
     items:
-      $ref: "./LocalitiesNearbyExtendedType.yml"
+      $ref: "./LocalitiesTypesPoi.yml"
   name:
     description: The name of the result.
     type: string
@@ -32,6 +33,6 @@ properties:
     type: array
     deprecated: true
     items:
-      $ref: "./LocalitiesNearbyExtendedType.yml"
+      $ref: "./LocalitiesTypesPoi.yml"
   formatted_address:
     $ref: "./FormattedAddress.yml"

@@ -24,11 +24,11 @@
         "matched_substrings": { "description": [{ "offset": 0, "length": 4 }] },
       },
       {
-        "public_id": "4Ew1mvbob3vobGMQ44AdRNY/5xE=",
+        "public_id": "52MnrbHVWH21CLWH8VY/YWKhqeM=",
         "type": "locality",
         "types": ["locality", "village"],
-        "description": "Little London, Hampshire, United Kingdom",
-        "matched_substrings": { "description": [{ "offset": 7, "length": 4 }] },
+        "description": "London Apprentice, Cornwall, United Kingdom",
+        "matched_substrings": { "description": [{ "offset": 0, "length": 4 }] },
       },
       {
         "public_id": "S/5AkUmMBhX35qVI2jR38+dALwk=",
