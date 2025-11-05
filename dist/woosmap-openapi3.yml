@@ -13,7 +13,7 @@ info:
   termsOfService: https://www.woosmap.com/en/policies/terms/
   x-document-meta-data:
     copyright: © 2025 Woosmap
-  version: 1.37.4
+  version: 1.37.5
   contact:
     name: Woosmap API
 servers:
@@ -5772,6 +5772,7 @@ components:
         The types of points of interest to return.   Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|business.finance.bank`.
       schema:
         $ref: '#/components/schemas/LocalitiesTypesPoi'
+      required: true
       in: query
     nearby_excluded_types:
       name: excluded_types

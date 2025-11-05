@@ -7,7 +7,7 @@
     "x-document-meta-data": {
       "copyright": "© 2025 Woosmap"
     },
-    "version": "1.37.4",
+    "version": "1.37.5",
     "contact": {
       "name": "Woosmap API"
     }
@@ -11358,6 +11358,7 @@
         "schema": {
           "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesTypesPoi"
         },
+        "required": true,
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_nearby_excluded_types": {
