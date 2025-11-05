@@ -5,4 +5,5 @@ description: >
   For example: `types=business.shop|medical.pharmacy|business.finance.bank`.
 schema:
   $ref: "../../schemas/LocalitiesTypesPoi.yml"
+required: true
 in: query
