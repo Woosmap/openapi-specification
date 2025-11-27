@@ -22,6 +22,7 @@ parameters:
   - $ref: "../../parameters/localities/data.yml"
   - $ref: "../../parameters/localities/extended.yml"
   - $ref: "../../parameters/localities/custom_description.yml"
+  - $ref: "../../parameters/localities/session_id.yml"
 responses:
   "200":
     description: Autocompletion Localities successfully retrieved
