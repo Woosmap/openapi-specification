@@ -118,6 +118,16 @@
     </p>
   </li>
   <li>
+    <h3 class="parameter-name" id="session_id">session_id</h3>
+    <p>
+      This uuid4 string creates a link in all autocomplete made by a user and
+      the details query. To make correct use of the <code>session_id</code>, it
+      must be unique to each end user and regenerated after a details query, and
+      set on all autocomplete queries and the details query terminating the
+      autocomplete session.
+    </p>
+  </li>
+  <li>
     <h3 class="parameter-name" id="types">types</h3>
     <p>
       Specifies the types of suggestions to return in the query. Multiple types

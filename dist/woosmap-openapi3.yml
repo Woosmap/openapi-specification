@@ -2496,6 +2496,7 @@ paths:
         - $ref: '#/components/parameters/data'
         - $ref: '#/components/parameters/extended'
         - $ref: '#/components/parameters/custom_description'
+        - $ref: '#/components/parameters/session_id'
       responses:
         '200':
           description: Autocompletion Localities successfully retrieved
@@ -2644,6 +2645,7 @@ paths:
         - $ref: '#/components/parameters/language-2'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/cc_format'
+        - $ref: '#/components/parameters/session_id'
         - $ref: '#/components/parameters/page-2'
         - $ref: '#/components/parameters/addresses_per_page'
       responses:
@@ -5662,6 +5664,15 @@ components:
         type: string
         example: locality:"{name} - {administrative_area_level_0}"|postal_code:"{name} ({administrative_area_level_1})"
       required: false
+      in: query
+    session_id:
+      name: session_id
+      description: |
+        This uuid4 string creates a link in all autocomplete made by a user and the details query.  To make correct use of the `session_id`, it must be unique to each end user and regenerated after a details query,  and set on all autocomplete queries and the details query terminating the autocomplete session.
+      schema:
+        type: string
+        format: uuid
+        example: 541bf062-76c3-4e7c-8d9b-ae00043290d9
       in: query
     public_id:
       name: public_id
