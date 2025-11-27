@@ -98,6 +98,8 @@ localities_radius:
   $ref: "./localities/radius.yml"
 localities_types:
   $ref: "./localities/types.yml"
+session_id:
+  $ref: "./localities/session_id.yml"
 search_encoded_polyline:
   $ref: "./search/encoded_polyline.yml"
 search_language:
