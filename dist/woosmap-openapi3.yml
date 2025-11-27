@@ -5668,7 +5668,7 @@ components:
     session_id:
       name: session_id
       description: |
-        This uuid4 string creates a link in all autocomplete made by a user and the details query.  To make correct use of the `session_id`, it must be unique to each end user and regenerated after a details query,  and set on all autocomplete queries and the details query terminating the autocomplete session.
+        A unique identifier used to **optimize the autocomplete session** for the end user.  This ID links all subsequent autocomplete queries and the final details query.  It **must** be regenerated after the details query, which terminates the current session.
       schema:
         type: string
         format: uuid
@@ -6147,6 +6147,8 @@ components:
       $ref: '#/components/parameters/public_id'
     localities_radius:
       $ref: '#/components/parameters/radius-2'
+    localities_session_id:
+      $ref: '#/components/parameters/session_id'
     localities_types:
       $ref: '#/components/parameters/types'
     search_encoded_polyline:
