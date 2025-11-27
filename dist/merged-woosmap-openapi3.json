@@ -2409,6 +2409,9 @@
           },
           {
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_custom_description"
+          },
+          {
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_session_id"
           }
         ],
         "responses": {
@@ -2627,6 +2630,9 @@
           },
           {
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format"
+          },
+          {
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_session_id"
           },
           {
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_page-2"
@@ -6357,6 +6363,8 @@
             "required": true,
             "schema": {
               "type": "number",
+              "maximum": 90,
+              "minimum": -90,
               "title": "Lat"
             },
             "example": "43.6"
@@ -6367,6 +6375,8 @@
             "required": true,
             "schema": {
               "type": "number",
+              "maximum": 180,
+              "minimum": -180,
               "title": "Lng"
             },
             "example": "3.883"
@@ -9079,7 +9089,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9099,7 +9109,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9181,7 +9191,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9191,7 +9201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9211,7 +9221,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9301,7 +9311,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9321,7 +9331,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9430,7 +9440,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9518,7 +9528,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9600,7 +9610,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9620,7 +9630,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9702,7 +9712,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9722,7 +9732,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9775,7 +9785,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9795,7 +9805,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9932,7 +9942,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9952,7 +9962,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -10174,7 +10184,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -10194,7 +10204,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -10416,7 +10426,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -10436,7 +10446,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -10658,7 +10668,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -10678,7 +10688,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -10850,7 +10860,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -10870,7 +10880,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -10995,7 +11005,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -11015,7 +11025,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -11241,6 +11251,16 @@
           "example": "locality:\"{name} - {administrative_area_level_0}\"|postal_code:\"{name} ({administrative_area_level_1})\""
         },
         "required": false,
+        "in": "query"
+      },
+      "Woosmap_Platform_API_Reference_session_id": {
+        "name": "session_id",
+        "description": "A unique identifier used to **optimize the autocomplete session** for the end user.  This ID links all subsequent autocomplete queries and the final details query.  It **must** be regenerated after the details query, which terminates the current session.\n",
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "example": "541bf062-76c3-4e7c-8d9b-ae00043290d9"
+        },
         "in": "query"
       },
       "Woosmap_Platform_API_Reference_public_id": {
@@ -11796,6 +11816,9 @@
       },
       "Woosmap_Platform_API_Reference_localities_radius": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_radius-2"
+      },
+      "Woosmap_Platform_API_Reference_localities_session_id": {
+        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_session_id"
       },
       "Woosmap_Platform_API_Reference_localities_types": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_types"
@@ -20450,19 +20473,6 @@
         "title": "FeatureSummaryResponse",
         "description": "FeatureSummaryResponse represents the minimal amount of information to be able to fetch a feature details."
       },
-      "Datasets_HTTPErrorModel": {
-        "properties": {
-          "details": {
-            "type": "string",
-            "title": "Details"
-          }
-        },
-        "type": "object",
-        "required": [
-          "details"
-        ],
-        "title": "HTTPErrorModel"
-      },
       "Datasets_HTTPValidationError": {
         "properties": {
           "detail": {
@@ -20918,6 +20928,19 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "Datasets_features__internal__responses__HTTPErrorModel": {
+        "properties": {
+          "details": {
+            "type": "string",
+            "title": "Details"
+          }
+        },
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "title": "HTTPErrorModel"
       }
     },
     "securitySchemes": {

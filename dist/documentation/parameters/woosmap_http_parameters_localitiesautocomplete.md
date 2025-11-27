@@ -42,6 +42,10 @@
 
     This parameter may be used in addition to the `location` parameter to define the distance in meters within which the API will return results in priority. Results outside of the defined area may still be displayed. Default radius if this parameter is not set is 100 000.
 
+-   <h3 class="parameter-name" id="session_id">session_id</h3>
+
+    A unique identifier used to **optimize the autocomplete session** for the end user.  This ID links all subsequent autocomplete queries and the final details query.  It **must** be regenerated after the details query, which terminates the current session.
+
 -   <h3 class="parameter-name" id="types">types</h3>
 
     Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:

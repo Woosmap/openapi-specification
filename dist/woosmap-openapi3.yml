@@ -2496,6 +2496,7 @@ paths:
         - $ref: '#/components/parameters/data'
         - $ref: '#/components/parameters/extended'
         - $ref: '#/components/parameters/custom_description'
+        - $ref: '#/components/parameters/session_id'
       responses:
         '200':
           description: Autocompletion Localities successfully retrieved
@@ -2644,6 +2645,7 @@ paths:
         - $ref: '#/components/parameters/language-2'
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/cc_format'
+        - $ref: '#/components/parameters/session_id'
         - $ref: '#/components/parameters/page-2'
         - $ref: '#/components/parameters/addresses_per_page'
       responses:
@@ -5663,6 +5665,15 @@ components:
         example: locality:"{name} - {administrative_area_level_0}"|postal_code:"{name} ({administrative_area_level_1})"
       required: false
       in: query
+    session_id:
+      name: session_id
+      description: |
+        A unique identifier used to **optimize the autocomplete session** for the end user.  This ID links all subsequent autocomplete queries and the final details query.  It **must** be regenerated after the details query, which terminates the current session.
+      schema:
+        type: string
+        format: uuid
+        example: 541bf062-76c3-4e7c-8d9b-ae00043290d9
+      in: query
     public_id:
       name: public_id
       description: |
@@ -6136,6 +6147,8 @@ components:
       $ref: '#/components/parameters/public_id'
     localities_radius:
       $ref: '#/components/parameters/radius-2'
+    localities_session_id:
+      $ref: '#/components/parameters/session_id'
     localities_types:
       $ref: '#/components/parameters/types'
     search_encoded_polyline:
