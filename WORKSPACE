@@ -80,4 +80,5 @@ rules_pkg_dependencies()
     "indoor",
     "transit",
     "datasets",
+    "distance",
 ]]

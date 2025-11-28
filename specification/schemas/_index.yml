@@ -163,46 +163,6 @@ Zone:
 SuccessZones:
   $ref: "./SuccessZones.yml"
 
-## Distance
-DistanceLeg:
-  $ref: "./DistanceLeg.yml"
-DistanceValue:
-  $ref: "./DistanceValue.yml"
-DurationValue:
-  $ref: "./DurationValue.yml"
-EncodedPolyline:
-  $ref: "./EncodedPolyline.yml"
-DistanceMatrixElementsResponse:
-  $ref: "./DistanceMatrixElementsResponse.yml"
-DistanceMatrixElementResponse:
-  $ref: "./DistanceMatrixElementResponse.yml"
-DistanceMatrixResponse:
-  $ref: "./DistanceMatrixResponse.yml"
-DistanceRouteElementsResponse:
-  $ref: "./DistanceRouteElementsResponse.yml"
-DistanceRouteResponse:
-  $ref: "./DistanceRouteResponse.yml"
-DistanceTollsElementsResponse:
-  $ref: "./DistanceTollsElementsResponse.yml"
-DistanceTollsLeg:
-  $ref: "./DistanceTollsLeg.yml"
-DistanceTollsResponse:
-  $ref: "./DistanceTollsResponse.yml"
-DistanceTollsStep:
-  $ref: "./DistanceTollsStep.yml"
-DistanceTollsSystemStep:
-  $ref: "./DistanceTollsSystemStep.yml"
-DistanceStatus:
-  $ref: "./DistanceStatus.yml"
-DistanceMatrixRequest:
-  $ref: "./DistanceMatrixRequest.yml"
-DistanceIsochroneResponse:
-  $ref: "./DistanceIsochroneResponse.yml"
-DistanceStep:
-  $ref: "./DistanceStep.yml"
-DistanceInstructions:
-  $ref: "./DistanceInstructions.yml"
-
 ## Bounds
 BoundsResponse:
   $ref: "./BoundsResponse.yml"
