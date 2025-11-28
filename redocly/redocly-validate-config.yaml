@@ -26,3 +26,6 @@ rules:
       - "Datasets API - Features"
       - "Static Map API"
       - "Route API"
+      - "Matrix API"
+      - "Tolls API"
+      - "Isochrone API"

@@ -137,5 +137,31 @@ apis:
           - 'Transit'
           - 'Transit & Matrix Async'
           - 'Distance Matrix Async'
+
+      woosmap/tag-groups:
+        tagGroups:
+          - name: 'Search'
+            tags:
+              - 'Store Search API'
+              - 'Data Management API'
+              - 'Geolocation API'
+              - 'Localities API'
+              - 'Address API'
+              - 'Datasets API'
+              - 'Datasets API - Search'
+              - 'Datasets API - Features'
+              - 'Woosmap for what3words API'
+              - 'Zones API'
+          - name: 'Map'
+            tags:
+              - 'Static Map API'
+              - 'Indoor API'
+          - name: 'Route'
+            tags:
+              - 'Route API'
+              - 'Matrix API'
+              - 'Transit API'
+              - 'Isochrone API'
+              - 'Tolls API'
 plugins:
   - plugins.js
