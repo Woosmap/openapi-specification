@@ -87,21 +87,7 @@
     },
     {
       "name": "Datasets API",
-      "description": "The Datasets API enables you to store, manage, and analyze geospatial data collections. Work with custom datasets containing points, lines, or polygons - with each feature defined by its geometry and properties.\n\n* Create and manage datasets from uploaded Shapefile data\n* Import data from external sources via URL or scheduled updates\n* Monitor dataset status and processing through detailed status reports\n* Schedule dataset deletion for proper data lifecycle management\n* Leverage high accuracy storage for location-dependent business processes\n\nIdeal for applications that require precise location analysis, spatial queries and geographic data management.\n",
-      "externalDocs": {
-        "url": "https://developers.woosmap.com/products/datasets-api/get-started/"
-      }
-    },
-    {
-      "name": "Datasets API - Search",
-      "description": "Perform powerful spatial analysis on your geospatial data with four key search capabilities:\n\n* Nearby search: Find features within a specified distance from a location\n* Contains search: Discover which features completely contain a point or geometry\n* Intersects search: Identify features that intersect with a given geometry\n* Within search: Locate features that fall entirely inside a specified boundary\n\nAll operations support attribute filtering with WHERE clauses, pagination for large results, and multiple geometry formats (GeoJSON, WKB, encoded polylines).\n",
-      "externalDocs": {
-        "url": "https://developers.woosmap.com/products/datasets-api/first-queries/"
-      }
-    },
-    {
-      "name": "Datasets API - Features",
-      "description": "Access and retrieve individual geographic features from your datasets by their unique ID. This endpoint provides direct access to the complete geometry and properties of specific features within your datasets.\n\nThe API supports field masking to optimize response size by retrieving only needed attributes. Output formats include both GeoJSON and WKB, allowing flexible integration with various mapping and analysis systems.\n",
+      "description": "Manage the full lifecycle of your geospatial data alongside powerful analysis and retrieval.\n\n* **Management:** Programmatically create datasets, import features in bulk (CSV/GeoJSON), and handle updates or deletions.\n* **Search:** Execute **Nearby**, **Contains**, **Intersects**, and **Within** queries using SQL-like `WHERE` filters.\n* **Features:** Direct access to individual geographic features by unique ID with field masking.              \n\nIdeal for applications that require precise location analysis, spatial queries and geographic data management.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/datasets-api/get-started/"
       }
@@ -8703,7 +8689,7 @@
     "/datasets/{dataset_id}/features/search/": {
       "post": {
         "tags": [
-          "Datasets API - Search"
+          "Datasets API"
         ],
         "summary": "Search Features",
         "description": "Search for features.\n\n**Rate limit**: `20/1s`",
@@ -8859,7 +8845,7 @@
     "/datasets/{dataset_id}/features/nearby/": {
       "post": {
         "tags": [
-          "Datasets API - Search"
+          "Datasets API"
         ],
         "summary": "Nearby Features",
         "description": "Search for features nearby geometry.\n\n**Rate limit**: `20/1s`",
@@ -9101,7 +9087,7 @@
     "/datasets/{dataset_id}/features/intersects/": {
       "post": {
         "tags": [
-          "Datasets API - Search"
+          "Datasets API"
         ],
         "summary": "Intersect Features",
         "description": "Returns the features that are intersecting with geometry.\n\n**Rate limit**: `20/1s`\n\n![Intersection](https://postgis.net/workshops/postgis-intro/_images/st_intersects.png)",
@@ -9343,7 +9329,7 @@
     "/datasets/{dataset_id}/features/contains/": {
       "post": {
         "tags": [
-          "Datasets API - Search"
+          "Datasets API"
         ],
         "summary": "Contains Features",
         "description": "Search for features containing geometry.\n\n**Rate limit**: `20/1s`\n\n![Within](https://postgis.net/workshops/postgis-intro/_images/st_within.png)",
@@ -9585,7 +9571,7 @@
     "/datasets/{dataset_id}/features/within/": {
       "post": {
         "tags": [
-          "Datasets API - Search"
+          "Datasets API"
         ],
         "summary": "Within Features",
         "description": "Search for features within geometry.\n\n**Rate limit**: `20/1s`\n\n![Within](https://postgis.net/workshops/postgis-intro/_images/st_within.png)",
@@ -9777,7 +9763,7 @@
     "/datasets/{dataset_id}/features/{feature_id}": {
       "get": {
         "tags": [
-          "Datasets API - Features"
+          "Datasets API"
         ],
         "summary": "Get Feature",
         "description": "Gets a feature from its ID.\n\n**Rate limit**: `20/1s`",
@@ -21592,8 +21578,6 @@
         "Localities API",
         "Address API",
         "Datasets API",
-        "Datasets API - Search",
-        "Datasets API - Features",
         "Woosmap for what3words API",
         "Zones API"
       ]
