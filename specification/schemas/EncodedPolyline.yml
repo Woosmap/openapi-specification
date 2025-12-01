@@ -1,9 +1,0 @@
-title: EncodedPolyline
-type: object
-description: The polyline of the route (encoded with the [poyline algorithm](https://developers.google.com/maps/documentation/utilities/polylinealgorithm)).
-properties:
-  points:
-    type: string
-    description: The encoded string value for points of the polyline
-    example: "a_jyHfol@aAfEzGlIfER~JqV_KqLu@pDiHv@bAfEeCfE"
-example: { points: "a_jyHfol@aAfEzGlIfER~JqV_KqLu@pDiHv@bAfEeCfE" }
