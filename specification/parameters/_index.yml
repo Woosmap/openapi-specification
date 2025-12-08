@@ -20,38 +20,6 @@ address_location:
   $ref: "./address/location.yml"
 address_public_id:
   $ref: "./address/public_id.yml"
-distance_alternatives:
-  $ref: "./distance/alternatives.yml"
-distance_arrival_time:
-  $ref: "./distance/arrival_time.yml"
-distance_avoid:
-  $ref: "./distance/avoid.yml"
-distance_departure_time:
-  $ref: "./distance/departure_time.yml"
-distance_destination:
-  $ref: "./distance/destination.yml"
-distance_destinations:
-  $ref: "./distance/destinations.yml"
-distance_details:
-  $ref: "./distance/details.yml"
-distance_elements:
-  $ref: "./distance/elements.yml"
-distance_language:
-  $ref: "./distance/language.yml"
-distance_method:
-  $ref: "./distance/method.yml"
-distance_mode:
-  $ref: "./distance/mode.yml"
-distance_origin:
-  $ref: "./distance/origin.yml"
-distance_origins:
-  $ref: "./distance/origins.yml"
-distance_units:
-  $ref: "./distance/units.yml"
-distance_value:
-  $ref: "./distance/value.yml"
-distance_waypoints:
-  $ref: "./distance/waypoints.yml"
 geolocation_ip_address:
   $ref: "./geolocation/ip_address.yml"
 geolocation_limit:

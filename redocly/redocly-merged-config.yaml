@@ -49,40 +49,18 @@ apis:
           'dataset':
             name: 'Datasets API'
             description: |
-              The Datasets API enables you to store, manage, and analyze geospatial data collections. Work with custom datasets containing points, lines, or polygons - with each feature defined by its geometry and properties.
-              
-              * Create and manage datasets from uploaded Shapefile data
-              * Import data from external sources via URL or scheduled updates
-              * Monitor dataset status and processing through detailed status reports
-              * Schedule dataset deletion for proper data lifecycle management
-              * Leverage high accuracy storage for location-dependent business processes
+              Manage the full lifecycle of your geospatial data alongside powerful analysis and retrieval.
+  
+              * **Management:** Programmatically create datasets, import features in bulk (CSV/GeoJSON), and handle updates or deletions.
+              * **Search:** Execute **Nearby**, **Contains**, **Intersects**, and **Within** queries using SQL-like `WHERE` filters.
+              * **Features:** Direct access to individual geographic features by unique ID with field masking.              
               
               Ideal for applications that require precise location analysis, spatial queries and geographic data management.
             externalDocs:
               url: "https://developers.woosmap.com/products/datasets-api/get-started/"
-              
-          'search':
-            name: 'Datasets API - Search'
-            description: |
-              Perform powerful spatial analysis on your geospatial data with four key search capabilities:
-              
-              * Nearby search: Find features within a specified distance from a location
-              * Contains search: Discover which features completely contain a point or geometry
-              * Intersects search: Identify features that intersect with a given geometry
-              * Within search: Locate features that fall entirely inside a specified boundary
-              
-              All operations support attribute filtering with WHERE clauses, pagination for large results, and multiple geometry formats (GeoJSON, WKB, encoded polylines).
-            externalDocs:
-              url: "https://developers.woosmap.com/products/datasets-api/first-queries/"
-              
-          'features':
-            name: 'Datasets API - Features'
-            description: |
-              Access and retrieve individual geographic features from your datasets by their unique ID. This endpoint provides direct access to the complete geometry and properties of specific features within your datasets.
-              
-              The API supports field masking to optimize response size by retrieving only needed attributes. Output formats include both GeoJSON and WKB, allowing flexible integration with various mapping and analysis systems.
-            externalDocs:
-              url: "https://developers.woosmap.com/products/datasets-api/get-started/"
+
+          'search': 'Datasets API'
+          'features': 'Datasets API'
 
           'static':
             name: 'Static Map API'
@@ -93,9 +71,73 @@ apis:
             externalDocs:
               url: "https://developers.woosmap.com/products/map-static-api/get-started/"
 
+          'route':
+            name: 'Route API'
+            description: >
+              Woosmap Route API is a service providing road travel distance and duration calculations, on a Worldwide scale.
+              Request is done over HTTPS using GET or POST. Response is formatted as JSON.
+              You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
+              This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
+            externalDocs:
+              url: "https://developers.woosmap.com/products/distance-api/features/route/"
+
+          'distancematrix':
+            name: 'Matrix API'
+            description: >
+              Woosmap Matrix API is a service providing travel distance and time for a matrix of origins and destinations.
+              Request is done over HTTPS using GET or POST. Response is formatted as JSON.
+              You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
+              This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
+            externalDocs:
+              url: "https://developers.woosmap.com/products/distance-api/features/distancematrix/"
+
+          'isochrone':
+            name: 'Isochrone API'
+            description: >
+              Woosmap Isochrone API is a service providing all destinations that can be reached in a specific amount of time or a maximum travel distance.
+              Request is done over HTTPS using GET or POST. Response is formatted as JSON.
+              You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
+              This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
+            externalDocs:
+              url: "https://developers.woosmap.com/products/distance-api/features/isochrone/"
+
+          'tolls':
+            name: 'Tolls API'
+            description: >
+              Woosmap Tolls API is a service providing toll costs and informations for an origin and destination pair.
+              Request is done over HTTPS using GET or POST. Response is formatted as JSON.
+              You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
+              This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
+            externalDocs:
+              url: "https://developers.woosmap.com/products/distance-api/features/tolls/"
+
         tagsToDelete:
           - 'Transit'
           - 'Transit & Matrix Async'
           - 'Distance Matrix Async'
+
+      woosmap/tag-groups:
+        tagGroups:
+          - name: 'Search'
+            tags:
+              - 'Store Search API'
+              - 'Data Management API'
+              - 'Geolocation API'
+              - 'Localities API'
+              - 'Address API'
+              - 'Datasets API'
+              - 'Woosmap for what3words API'
+              - 'Zones API'
+          - name: 'Map'
+            tags:
+              - 'Static Map API'
+              - 'Indoor API'
+          - name: 'Route'
+            tags:
+              - 'Route API'
+              - 'Matrix API'
+              - 'Transit API'
+              - 'Isochrone API'
+              - 'Tolls API'
 plugins:
   - plugins.js

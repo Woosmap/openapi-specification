@@ -180,6 +180,7 @@ bundle_external_specs(
         "indoor",
         "transit",
         "datasets",
+        "distance",
     ],
 )
 
