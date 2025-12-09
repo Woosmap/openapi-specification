@@ -132,7 +132,7 @@ apis:
             tags:
               - 'Static Map API'
               - 'Indoor API'
-          - name: 'Route'
+          - name: 'Distance'
             tags:
               - 'Route API'
               - 'Matrix API'
