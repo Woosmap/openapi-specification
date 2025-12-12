@@ -1,91 +1,156 @@
 module.exports = ProcessTags;
 
-/**
- * A decorator that processes tags to improve their names,
- * and removes endpoints associated with deleted tags.
- */
 function ProcessTags(options = {}) {
     const {
         tagMappings = {},
-        tagsToDelete = []
+        tagsToDelete = [],
+        sortOrder = {}
     } = options;
+
+    const METHODS = ['get', 'post', 'put', 'delete', 'patch'];
 
     return {
         Root: {
             leave(root) {
-                if (!root.tags || !root.tags.length) {
-                    root.tags = [];
-                }
+                if (!root.tags) root.tags = [];
 
                 const tagNameMapping = {};
 
-                // Process and rename tags
+                // 1. Rename tags
                 root.tags = root.tags.map(tag => {
-                    const newTag = { ...tag };
+                    const newTag = {...tag};
                     delete newTag['x-displayName'];
 
-                    if (tagMappings[newTag.name]) {
-                        const mapping = tagMappings[newTag.name];
-
+                    const mapping = tagMappings[newTag.name];
+                    if (mapping) {
                         if (typeof mapping === 'string') {
                             tagNameMapping[newTag.name] = mapping;
                             newTag.name = mapping;
                         } else {
-                            if (mapping.name) tagNameMapping[newTag.name] = mapping.name;
-
-                            newTag.name = mapping.name || newTag.name;
-                            newTag.description = mapping.description || newTag.description;
-                            newTag.externalDocs = mapping.externalDocs || newTag.externalDocs;
+                            if (mapping.name) {
+                                tagNameMapping[newTag.name] = mapping.name;
+                                newTag.name = mapping.name;
+                            }
                         }
                     }
-
                     return newTag;
                 });
 
-                // Remove deleted tags from root.tags
+                // 2. Filter deleted tags
                 if (tagsToDelete.length > 0) {
                     root.tags = root.tags.filter(tag => !tagsToDelete.includes(tag.name));
                 }
 
-                // Remove duplicate tags
-                const processedNames = new Set();
-                root.tags = root.tags.filter(tag => {
-                    if (processedNames.has(tag.name)) return false;
-                    processedNames.add(tag.name);
-                    return true;
+                // 3. Merge duplicates
+                const tagMap = new Map();
+                root.tags.forEach(tag => {
+                    if (tagMap.has(tag.name)) {
+                        const existing = tagMap.get(tag.name);
+                        if (tag.description && !existing.description) {
+                            existing.description = tag.description;
+                            if (tag.externalDocs) existing.externalDocs = tag.externalDocs;
+                        }
+                    } else {
+                        tagMap.set(tag.name, tag);
+                    }
                 });
 
-                // Update and clean up paths
+                // 4. Inject authoritative config definitions
+                Object.keys(tagMappings).forEach(sourceName => {
+                    const mapping = tagMappings[sourceName];
+
+                    if (typeof mapping === 'object' && mapping.name && mapping.description) {
+                        const targetName = mapping.name;
+                        let tagEntry = tagMap.get(targetName);
+
+                        if (!tagEntry) {
+                            tagEntry = {name: targetName};
+                            tagMap.set(targetName, tagEntry);
+                        }
+
+                        tagEntry.description = mapping.description;
+                        if (mapping.externalDocs) {
+                            tagEntry.externalDocs = mapping.externalDocs;
+                        }
+                    }
+
+                    const name = typeof mapping === 'string' ? mapping : mapping.name;
+                    tagNameMapping[sourceName] = name;
+                });
+
+                root.tags = Array.from(tagMap.values());
+
+                // 5. Update operations
                 if (root.paths) {
                     Object.keys(root.paths).forEach(path => {
                         const pathItem = root.paths[path];
 
-                        // Iterate through each HTTP method
                         Object.keys(pathItem).forEach(method => {
                             const operation = pathItem[method];
                             if (!operation || !operation.tags) return;
 
-                            // Remove operations with deleted tags
-                            const hasDeletedTag = operation.tags.some(tag =>
-                                tagsToDelete.includes(tag)
-                            );
-
-                            if (hasDeletedTag) {
+                            if (operation.tags.some(t => tagsToDelete.includes(t))) {
                                 delete pathItem[method];
                                 return;
                             }
 
-                            // Rename tags in operations if mapping exists
+                            const originalTag = operation.tags[0];
+
                             operation.tags = operation.tags
                                 .map(tag => tagNameMapping[tag] || tag)
                                 .filter(tag => !tagsToDelete.includes(tag));
+
+                            if (tagNameMapping[originalTag]) {
+                                operation['x-original-tag'] = originalTag;
+                            }
                         });
 
-                        // If path has no methods left, remove it entirely
                         if (Object.keys(pathItem).length === 0) {
                             delete root.paths[path];
                         }
                     });
+
+                    // 6. Sort paths
+                    if (Object.keys(sortOrder).length > 0) {
+                        const getPrimaryTag = (pathItem) => {
+                            for (const method of METHODS) {
+                                if (pathItem[method]?.tags?.[0]) return pathItem[method].tags[0];
+                            }
+                            return 'Other';
+                        };
+
+                        const getOriginalTag = (pathItem) => {
+                            for (const method of METHODS) {
+                                if (pathItem[method]?.['x-original-tag']) return pathItem[method]['x-original-tag'];
+                                if (pathItem[method]?.tags?.[0]) return pathItem[method].tags[0];
+                            }
+                            return null;
+                        };
+
+                        const getPathScore = (pathItem, currentTag) => {
+                            const order = sortOrder[currentTag];
+                            if (!order) return 999;
+                            const originalKey = getOriginalTag(pathItem);
+                            if (!originalKey) return 999;
+                            const index = order.findIndex(keyword =>
+                                originalKey.toLowerCase().includes(keyword.toLowerCase())
+                            );
+                            return index === -1 ? 999 : index;
+                        };
+
+                        const sortedPaths = Object.entries(root.paths).sort(([_, itemA], [__, itemB]) => {
+                            const tagA = getPrimaryTag(itemA);
+                            const tagB = getPrimaryTag(itemB);
+
+                            if (tagA !== tagB) return tagA.localeCompare(tagB);
+
+                            const scoreA = getPathScore(itemA, tagA);
+                            const scoreB = getPathScore(itemB, tagB);
+                            return scoreA - scoreB;
+                        });
+
+                        root.paths = Object.fromEntries(sortedPaths);
+                    }
                 }
 
                 return root;

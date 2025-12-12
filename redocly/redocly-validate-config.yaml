@@ -23,7 +23,4 @@ rules:
       - "Transit API"
       - "Datasets API"
       - "Static Map API"
-      - "Route API"
-      - "Matrix API"
-      - "Tolls API"
-      - "Isochrone API"
+      - "Distance API"

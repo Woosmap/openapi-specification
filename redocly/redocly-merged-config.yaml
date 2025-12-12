@@ -46,21 +46,22 @@ apis:
               url: "https://developers.woosmap.com/products/w3w-api/get-started/"
 
           # Datasets API
-          'dataset':
+          'search': 'Datasets API'
+          'features': 'Datasets API'
+          'dataset': 'Datasets API'
+          'Datasets API':
             name: 'Datasets API'
             description: |
               Manage the full lifecycle of your geospatial data alongside powerful analysis and retrieval.
-  
+
               * **Management:** Programmatically create datasets, import features in bulk (CSV/GeoJSON), and handle updates or deletions.
               * **Search:** Execute **Nearby**, **Contains**, **Intersects**, and **Within** queries using SQL-like `WHERE` filters.
               * **Features:** Direct access to individual geographic features by unique ID with field masking.              
-              
+
               Ideal for applications that require precise location analysis, spatial queries and geographic data management.
             externalDocs:
               url: "https://developers.woosmap.com/products/datasets-api/get-started/"
 
-          'search': 'Datasets API'
-          'features': 'Datasets API'
 
           'static':
             name: 'Static Map API'
@@ -71,51 +72,36 @@ apis:
             externalDocs:
               url: "https://developers.woosmap.com/products/map-static-api/get-started/"
 
-          'route':
-            name: 'Route API'
-            description: >
-              Woosmap Route API is a service providing road travel distance and duration calculations, on a Worldwide scale.
-              Request is done over HTTPS using GET or POST. Response is formatted as JSON.
-              You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
-              This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
+           # Distance API
+          'route': 'Distance API'
+          'distancematrix': 'Distance API'
+          'isochrone': 'Distance API'
+          'tolls': 'Distance API'
+          'Distance API':
+            name: 'Distance API'
+            description: |
+              The Woosmap Distance API suite provides comprehensive tools for road travel calculations worldwide.
+              
+              * **Route:** Calculate travel distance, duration, and paths between origin and destination.
+              * **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.
+              * **Isochrone:** Determine all locations reachable within a specific time or distance.
+              * **Tolls:** Estimate toll costs and details for specific routes.
+              
+              Requests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.
             externalDocs:
-              url: "https://developers.woosmap.com/products/distance-api/features/route/"
+              url: "https://developers.woosmap.com/products/distance-api/get-started/"
 
-          'distancematrix':
-            name: 'Matrix API'
-            description: >
-              Woosmap Matrix API is a service providing travel distance and time for a matrix of origins and destinations.
-              Request is done over HTTPS using GET or POST. Response is formatted as JSON.
-              You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
-              This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
-            externalDocs:
-              url: "https://developers.woosmap.com/products/distance-api/features/distancematrix/"
-
-          'isochrone':
-            name: 'Isochrone API'
-            description: >
-              Woosmap Isochrone API is a service providing all destinations that can be reached in a specific amount of time or a maximum travel distance.
-              Request is done over HTTPS using GET or POST. Response is formatted as JSON.
-              You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
-              This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
-            externalDocs:
-              url: "https://developers.woosmap.com/products/distance-api/features/isochrone/"
-
-          'tolls':
-            name: 'Tolls API'
-            description: >
-              Woosmap Tolls API is a service providing toll costs and informations for an origin and destination pair.
-              Request is done over HTTPS using GET or POST. Response is formatted as JSON.
-              You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
-              This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
-            externalDocs:
-              url: "https://developers.woosmap.com/products/distance-api/features/tolls/"
 
         tagsToDelete:
           - 'Transit'
           - 'Transit & Matrix Async'
           - 'Distance Matrix Async'
-
+        sortOrder:
+          'Distance API':
+            - route
+            - distancematrix
+            - isochrone
+            - tolls
       woosmap/tag-groups:
         tagGroups:
           - name: 'Search'
@@ -134,10 +120,7 @@ apis:
               - 'Indoor API'
           - name: 'Distance'
             tags:
-              - 'Route API'
-              - 'Matrix API'
+              - 'Distance API'
               - 'Transit API'
-              - 'Isochrone API'
-              - 'Tolls API'
 plugins:
   - plugins.js
