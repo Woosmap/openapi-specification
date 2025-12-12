@@ -93,32 +93,7 @@
       }
     },
     {
-      "name": "Isochrone API",
-      "description": "Woosmap Isochrone API is a service providing all destinations that can be reached in a specific amount of time or a maximum travel distance. Request is done over HTTPS using GET or POST. Response is formatted as JSON. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).\n",
-      "externalDocs": {
-        "url": "https://developers.woosmap.com/products/distance-api/features/isochrone/"
-      }
-    },
-    {
-      "name": "Tolls API",
-      "description": "Woosmap Tolls API is a service providing toll costs and informations for an origin and destination pair. Request is done over HTTPS using GET or POST. Response is formatted as JSON. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).\n",
-      "externalDocs": {
-        "url": "https://developers.woosmap.com/products/distance-api/features/tolls/"
-      }
-    },
-    {
-      "name": "Route API",
-      "description": "Woosmap Route API is a service providing road travel distance and duration calculations, on a Worldwide scale. Request is done over HTTPS using GET or POST. Response is formatted as JSON. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).\n",
-      "externalDocs": {
-        "url": "https://developers.woosmap.com/products/distance-api/features/route/"
-      }
-    },
-    {
-      "name": "Matrix API",
-      "description": "Woosmap Matrix API is a service providing travel distance and time for a matrix of origins and destinations. Request is done over HTTPS using GET or POST. Response is formatted as JSON. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).\n",
-      "externalDocs": {
-        "url": "https://developers.woosmap.com/products/distance-api/features/distancematrix/"
-      }
+      "name": "Distance API"
     }
   ],
   "paths": {
@@ -5235,8 +5210,6 @@
             "required": true,
             "schema": {
               "type": "number",
-              "maximum": 90,
-              "minimum": -90,
               "title": "Lat"
             },
             "example": "43.6"
@@ -5247,8 +5220,6 @@
             "required": true,
             "schema": {
               "type": "number",
-              "maximum": 180,
-              "minimum": -180,
               "title": "Lng"
             },
             "example": "3.883"
@@ -7961,7 +7932,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -7981,7 +7952,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8063,7 +8034,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8073,7 +8044,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8093,7 +8064,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8183,7 +8154,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8203,7 +8174,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8312,7 +8283,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8400,7 +8371,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8482,7 +8453,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8502,7 +8473,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8584,7 +8555,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8604,7 +8575,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8657,7 +8628,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8677,7 +8648,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8814,7 +8785,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -8834,7 +8805,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -9056,7 +9027,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -9076,7 +9047,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -9298,7 +9269,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -9318,7 +9289,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -9540,7 +9511,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -9560,7 +9531,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -9732,7 +9703,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -9752,7 +9723,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -9877,7 +9848,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -9897,7 +9868,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -9908,7 +9879,7 @@
     "/distance/isochrone/json/": {
       "get": {
         "tags": [
-          "Isochrone API"
+          "Distance API"
         ],
         "summary": "Calculate Isochrone",
         "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`",
@@ -10134,7 +10105,7 @@
       },
       "post": {
         "tags": [
-          "Isochrone API"
+          "Distance API"
         ],
         "summary": "Calculate Isochrone",
         "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`",
@@ -10245,7 +10216,7 @@
     "/distance/tolls/json/": {
       "get": {
         "tags": [
-          "Tolls API"
+          "Distance API"
         ],
         "summary": "Find Tolls",
         "description": "Get distance, duration and tolls for an origin,destination pair, based on the recommended route between those two points for a specified travel mode.\n\n**Rate limit**: `5/1s`",
@@ -10525,7 +10496,7 @@
     "/distance/route/json/": {
       "get": {
         "tags": [
-          "Route API"
+          "Distance API"
         ],
         "summary": "Find Routes",
         "description": "Get distance, duration and path (as a polyline) for a pair of origin and destination, based on the recommended route between those two points for a specified travel mode.\n\n**Rate limit**: `10/1s`\n\n**Rate limit with TRAFFIC**: `20/1s`",
@@ -10848,7 +10819,7 @@
     "/distance/distancematrix/json/": {
       "get": {
         "tags": [
-          "Matrix API"
+          "Distance API"
         ],
         "summary": "Calculate Matrix",
         "description": "Get distances and durations for a matrix of origins and destinations, based on the recommended route between start and end points for a specified travel mode.\n\n**Rate limit**: `10 requests/1s` GET and POST\n\n**Elements limit**: `1000 elements/1s` GET and POST\n\n**Rate limit with TRAFFIC**: `10 requests/1s` GET and POST\n\n**Elements limit with TRAFFIC**: `1000 elements/1s`GET and POST",
@@ -11138,7 +11109,7 @@
       },
       "post": {
         "tags": [
-          "Matrix API"
+          "Distance API"
         ],
         "summary": "Calculate Matrix",
         "description": "Get distances and durations for a matrix of origins and destinations, based on the recommended route between start and end points for a specified travel mode.\n\n**Rate limit**: `10 requests/1s` GET and POST\n\n**Elements limit**: `1000 elements/1s` GET and POST\n\n**Rate limit with TRAFFIC**: `10 requests/1s` GET and POST\n\n**Elements limit with TRAFFIC**: `1000 elements/1s` GET and POST",
@@ -18793,8 +18764,7 @@
                 "minimum": -90
               },
               {
-                "type": "string",
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
+                "type": "string"
               }
             ],
             "title": "Lat"
@@ -18807,8 +18777,7 @@
                 "minimum": -180
               },
               {
-                "type": "string",
-                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
+                "type": "string"
               }
             ],
             "title": "Lng"
@@ -19475,6 +19444,19 @@
         "title": "FeatureSummaryResponse",
         "description": "FeatureSummaryResponse represents the minimal amount of information to be able to fetch a feature details."
       },
+      "Datasets_HTTPErrorModel": {
+        "properties": {
+          "details": {
+            "type": "string",
+            "title": "Details"
+          }
+        },
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "title": "HTTPErrorModel"
+      },
       "Datasets_HTTPValidationError": {
         "properties": {
           "detail": {
@@ -19930,19 +19912,6 @@
           "type"
         ],
         "title": "ValidationError"
-      },
-      "Datasets_features__internal__responses__HTTPErrorModel": {
-        "properties": {
-          "details": {
-            "type": "string",
-            "title": "Details"
-          }
-        },
-        "type": "object",
-        "required": [
-          "details"
-        ],
-        "title": "HTTPErrorModel"
       },
       "Distance_AuthenticationErrorResponse": {
         "properties": {
