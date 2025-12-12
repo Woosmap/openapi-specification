@@ -113,10 +113,7 @@ apis:
               - 'Indoor API'
           - name: 'Distance'
             tags:
-              - 'Route API'
-              - 'Matrix API'
+              - 'Distance API'
               - 'Transit API'
-              - 'Isochrone API'
-              - 'Tolls API'
 plugins:
   - plugins.js

@@ -21561,10 +21561,7 @@
     {
       "name": "Distance",
       "tags": [
-        "Route API",
-        "Matrix API",
-        "Transit API",
-        "Isochrone API",
+        "Distance API",
         "Tolls API"
       ]
     }
