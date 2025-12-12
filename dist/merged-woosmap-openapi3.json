@@ -5210,6 +5210,8 @@
             "required": true,
             "schema": {
               "type": "number",
+              "maximum": 90,
+              "minimum": -90,
               "title": "Lat"
             },
             "example": "43.6"
@@ -5220,6 +5222,8 @@
             "required": true,
             "schema": {
               "type": "number",
+              "maximum": 180,
+              "minimum": -180,
               "title": "Lng"
             },
             "example": "3.883"
@@ -7932,7 +7936,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -7952,7 +7956,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8034,7 +8038,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8044,7 +8048,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8064,7 +8068,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8154,7 +8158,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8174,7 +8178,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8283,7 +8287,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8371,7 +8375,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8453,7 +8457,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8473,7 +8477,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8555,7 +8559,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8575,7 +8579,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8628,7 +8632,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8648,7 +8652,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8785,7 +8789,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -8805,7 +8809,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9027,7 +9031,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9047,7 +9051,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9269,7 +9273,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9289,7 +9293,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9511,7 +9515,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9531,7 +9535,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9703,7 +9707,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9723,7 +9727,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9848,7 +9852,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -9868,7 +9872,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
                 }
               }
             }
@@ -18764,7 +18768,8 @@
                 "minimum": -90
               },
               {
-                "type": "string"
+                "type": "string",
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
               }
             ],
             "title": "Lat"
@@ -18777,7 +18782,8 @@
                 "minimum": -180
               },
               {
-                "type": "string"
+                "type": "string",
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
               }
             ],
             "title": "Lng"
@@ -19444,19 +19450,6 @@
         "title": "FeatureSummaryResponse",
         "description": "FeatureSummaryResponse represents the minimal amount of information to be able to fetch a feature details."
       },
-      "Datasets_HTTPErrorModel": {
-        "properties": {
-          "details": {
-            "type": "string",
-            "title": "Details"
-          }
-        },
-        "type": "object",
-        "required": [
-          "details"
-        ],
-        "title": "HTTPErrorModel"
-      },
       "Datasets_HTTPValidationError": {
         "properties": {
           "detail": {
@@ -19912,6 +19905,19 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "Datasets_features__internal__responses__HTTPErrorModel": {
+        "properties": {
+          "details": {
+            "type": "string",
+            "title": "Details"
+          }
+        },
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "title": "HTTPErrorModel"
       },
       "Distance_AuthenticationErrorResponse": {
         "properties": {
@@ -21562,7 +21568,7 @@
       "name": "Distance",
       "tags": [
         "Distance API",
-        "Tolls API"
+        "Transit API"
       ]
     }
   ]
