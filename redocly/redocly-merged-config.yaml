@@ -46,21 +46,22 @@ apis:
               url: "https://developers.woosmap.com/products/w3w-api/get-started/"
 
           # Datasets API
-          'dataset':
+          'search': 'Datasets API'
+          'features': 'Datasets API'
+          'dataset': 'Datasets API'
+          'Datasets API':
             name: 'Datasets API'
             description: |
               Manage the full lifecycle of your geospatial data alongside powerful analysis and retrieval.
-              
+
               * **Management:** Programmatically create datasets, import features in bulk (CSV/GeoJSON), and handle updates or deletions.
               * **Search:** Execute **Nearby**, **Contains**, **Intersects**, and **Within** queries using SQL-like `WHERE` filters.
               * **Features:** Direct access to individual geographic features by unique ID with field masking.              
-              
+
               Ideal for applications that require precise location analysis, spatial queries and geographic data management.
             externalDocs:
               url: "https://developers.woosmap.com/products/datasets-api/get-started/"
 
-          'search': 'Datasets API'
-          'features': 'Datasets API'
 
           'static':
             name: 'Static Map API'
@@ -71,24 +72,25 @@ apis:
             externalDocs:
               url: "https://developers.woosmap.com/products/map-static-api/get-started/"
 
-          # Distance API
-          'route':
+           # Distance API
+          'route': 'Distance API'
+          'distancematrix': 'Distance API'
+          'isochrone': 'Distance API'
+          'tolls': 'Distance API'
+          'Distance API':
             name: 'Distance API'
             description: |
               The Woosmap Distance API suite provides comprehensive tools for road travel calculations worldwide.
-
+              
               * **Route:** Calculate travel distance, duration, and paths between origin and destination.
               * **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.
               * **Isochrone:** Determine all locations reachable within a specific time or distance.
               * **Tolls:** Estimate toll costs and details for specific routes.
-
+              
               Requests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.
             externalDocs:
               url: "https://developers.woosmap.com/products/distance-api/get-started/"
 
-          'distancematrix': 'Distance API'
-          'isochrone': 'Distance API'
-          'tolls': 'Distance API'
 
         tagsToDelete:
           - 'Transit'

@@ -69,7 +69,10 @@
     },
     {
       "name": "Woosmap for what3words API",
-      "description": "Add What3Words capabilities to your address search."
+      "description": "The Woosmap for what3words integration enhances location search capabilities by incorporating what3words' unique\n3-word addressing system. \n\nThis API is a drop in replacement of what3words API but hosted on Woosmap Platform, with the addition of an endpoint leveraging the power of \n[Localities API](#tag/Woosmap_Platform_API_Reference_Localities-API) to convert a what3words address into a street address, bringing address level accuracy to what3words.\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/w3w-api/get-started/"
+      }
     },
     {
       "name": "Indoor API",
@@ -93,7 +96,11 @@
       }
     },
     {
-      "name": "Distance API"
+      "name": "Distance API",
+      "description": "The Woosmap Distance API suite provides comprehensive tools for road travel calculations worldwide.\n\n* **Route:** Calculate travel distance, duration, and paths between origin and destination.\n* **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.\n* **Isochrone:** Determine all locations reachable within a specific time or distance.\n* **Tolls:** Estimate toll costs and details for specific routes.\n\nRequests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/distance-api/get-started/"
+      }
     }
   ],
   "paths": {
