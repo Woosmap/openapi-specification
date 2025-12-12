@@ -1,13 +1,14 @@
 module.exports = ProcessTags;
 
 /**
- * A decorator that processes tags to improve their names,
+ * A decorator that processes tags to improve their names, sort them
  * and removes endpoints associated with deleted tags.
  */
 function ProcessTags(options = {}) {
     const {
         tagMappings = {},
-        tagsToDelete = []
+        tagsToDelete = [],
+        sortOrder = {}
     } = options;
 
     return {
@@ -21,7 +22,7 @@ function ProcessTags(options = {}) {
 
                 // Process and rename tags
                 root.tags = root.tags.map(tag => {
-                    const newTag = { ...tag };
+                    const newTag = {...tag};
                     delete newTag['x-displayName'];
 
                     if (tagMappings[newTag.name]) {
@@ -75,10 +76,18 @@ function ProcessTags(options = {}) {
                                 return;
                             }
 
+                            // Preserve original tag before renaming
+                            const originalTag = operation.tags[0];
+
                             // Rename tags in operations if mapping exists
                             operation.tags = operation.tags
                                 .map(tag => tagNameMapping[tag] || tag)
                                 .filter(tag => !tagsToDelete.includes(tag));
+
+                            // Store original tag for sorting purposes
+                            if (tagNameMapping[originalTag]) {
+                                operation['x-original-tag'] = originalTag;
+                            }
                         });
 
                         // If path has no methods left, remove it entirely
@@ -86,6 +95,68 @@ function ProcessTags(options = {}) {
                             delete root.paths[path];
                         }
                     });
+
+                    // Sort paths if sortOrder is provided
+                    if (Object.keys(sortOrder).length > 0) {
+                        const getPrimaryTag = (pathItem) => {
+                            const methods = ['get', 'post', 'put', 'delete', 'patch'];
+                            for (const method of methods) {
+                                if (pathItem[method]?.tags?.[0]) {
+                                    return pathItem[method].tags[0];
+                                }
+                            }
+                            return 'Other';
+                        };
+
+                        const getOriginalTag = (pathItem) => {
+                            const methods = ['get', 'post', 'put', 'delete', 'patch'];
+                            for (const method of methods) {
+                                if (pathItem[method]?.['x-original-tag']) {
+                                    return pathItem[method]['x-original-tag'];
+                                }
+                            }
+                            return null;
+                        };
+
+                        const getPathScore = (pathItem, tag) => {
+                            const order = sortOrder[tag];
+                            if (!order) return -1;
+
+                            const originalTag = getOriginalTag(pathItem);
+                            if (!originalTag) return -1;
+
+                            const matchIndex = order.findIndex(keyword =>
+                                originalTag.toLowerCase() === keyword.toLowerCase()
+                            );
+
+                            return matchIndex;
+                        };
+
+                        const sortedPaths = Object.entries(root.paths)
+                            .sort(([keyA, itemA], [keyB, itemB]) => {
+                                const tagA = getPrimaryTag(itemA);
+                                const tagB = getPrimaryTag(itemB);
+
+                                if (tagA !== tagB) {
+                                    return tagA.localeCompare(tagB);
+                                }
+
+                                const scoreA = getPathScore(itemA, tagA);
+                                const scoreB = getPathScore(itemB, tagB);
+
+                                if (scoreA !== -1 && scoreB !== -1) {
+                                    return scoreA - scoreB;
+                                }
+
+                                if (scoreA === -1 && scoreB === -1) {
+                                    return 0;
+                                }
+
+                                return scoreA === -1 ? 1 : -1;
+                            });
+
+                        root.paths = Object.fromEntries(sortedPaths);
+                    }
                 }
 
                 return root;

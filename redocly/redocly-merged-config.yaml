@@ -94,7 +94,12 @@ apis:
           - 'Transit'
           - 'Transit & Matrix Async'
           - 'Distance Matrix Async'
-
+        sortOrder:
+          'Distance API':
+            - route
+            - distancematrix
+            - isochrone
+            - tolls
       woosmap/tag-groups:
         tagGroups:
           - name: 'Search'
