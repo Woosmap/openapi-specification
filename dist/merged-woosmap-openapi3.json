@@ -62,14 +62,14 @@
     },
     {
       "name": "Static Map API",
-      "description": "The Woosmap Static Maps API lets you generate customizable, embeddable map images using simple HTTP requests. It’s a lightweight alternative to interactive maps—ideal for emails, reports, or websites where dynamic JavaScript maps aren't needed.  \n\nYou provide parameters such as location, zoom level, size, and markers, and the API returns a map image that can be embedded directly into any webpage or application.\n",
+      "description": "The Woosmap Static Maps API lets you generate customizable, embeddable map images using simple HTTP requests. It’s a lightweight alternative to interactive maps—ideal for emails, reports, or websites where dynamic JavaScript maps aren't needed.\n\nYou provide parameters such as location, zoom level, size, and markers, and the API returns a map image that can be embedded directly into any webpage or application.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/map-static-api/get-started/"
       }
     },
     {
       "name": "Woosmap for what3words API",
-      "description": "The Woosmap for what3words integration enhances location search capabilities by incorporating what3words' unique\n3-word addressing system. \n\nThis API is a drop in replacement of what3words API but hosted on Woosmap Platform, with the addition of an endpoint leveraging the power of \n[Localities API](#tag/Woosmap_Platform_API_Reference_Localities-API) to convert a what3words address into a street address, bringing address level accuracy to what3words.\n",
+      "description": "The Woosmap for what3words integration enhances location search capabilities by incorporating what3words' unique\n3-word addressing system.\n\nThis API is a drop in replacement of what3words API but hosted on Woosmap Platform, with the addition of an endpoint leveraging the power of\n[Localities API](#tag/Woosmap_Platform_API_Reference_Localities-API) to convert a what3words address into a street address, bringing address level accuracy to what3words.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/w3w-api/get-started/"
       }
@@ -82,24 +82,24 @@
       }
     },
     {
+      "name": "Distance API",
+      "description": "The Woosmap Distance API suite provides comprehensive tools for road travel calculations worldwide.\n\n* **Route:** Calculate travel distance, duration, and paths between origin and destination.\n* **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.\n* **Isochrone:** Determine all locations reachable within a specific time or distance.\n* **Tolls:** Estimate toll costs and details for specific routes.\n\nRequests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/distance-api/get-started/"
+      }
+    },
+    {
       "name": "Transit API",
-      "description": "The Transit API delivers comprehensive public transportation routing information by calculating optimal travel paths between \norigins and destinations. It provides detailed route data including distance, duration, polyline visualization, \nand complete step-by-step transit instructions with transfer points and transportation modes. The API is ideal for \napplications requiring accurate public transit navigation and trip planning capabilities.\n",
+      "description": "The Transit API delivers comprehensive public transportation routing information by calculating optimal travel paths between\norigins and destinations. It provides detailed route data including distance, duration, polyline visualization,\nand complete step-by-step transit instructions with transfer points and transportation modes. The API is ideal for\napplications requiring accurate public transit navigation and trip planning capabilities.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/transit-api/route-endpoint/"
       }
     },
     {
       "name": "Datasets API",
-      "description": "Manage the full lifecycle of your geospatial data alongside powerful analysis and retrieval.\n\n* **Management:** Programmatically create datasets, import features in bulk (CSV/GeoJSON), and handle updates or deletions.\n* **Search:** Execute **Nearby**, **Contains**, **Intersects**, and **Within** queries using SQL-like `WHERE` filters.\n* **Features:** Direct access to individual geographic features by unique ID with field masking.              \n\nIdeal for applications that require precise location analysis, spatial queries and geographic data management.\n",
+      "description": "Manage the full lifecycle of your geospatial data alongside powerful analysis and retrieval.\n\n* **Management:** Programmatically create datasets, import features in bulk (CSV/GeoJSON), and handle updates or deletions.\n* **Search:** Execute **Nearby**, **Contains**, **Intersects**, and **Within** queries using SQL-like `WHERE` filters.\n* **Features:** Direct access to individual geographic features by unique ID with field masking.\n\nIdeal for applications that require precise location analysis, spatial queries and geographic data management.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/datasets-api/get-started/"
-      }
-    },
-    {
-      "name": "Distance API",
-      "description": "The Woosmap Distance API suite provides comprehensive tools for road travel calculations worldwide.\n\n* **Route:** Calculate travel distance, duration, and paths between origin and destination.\n* **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.\n* **Isochrone:** Determine all locations reachable within a specific time or distance.\n* **Tolls:** Estimate toll costs and details for specific routes.\n\nRequests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.\n",
-      "externalDocs": {
-        "url": "https://developers.woosmap.com/products/distance-api/get-started/"
       }
     }
   ],
@@ -1808,7 +1808,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -1828,7 +1828,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -1911,7 +1911,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -1921,7 +1921,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -1941,7 +1941,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2032,7 +2032,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2052,7 +2052,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2162,7 +2162,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2251,7 +2251,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2334,7 +2334,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2354,7 +2354,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2437,7 +2437,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2457,7 +2457,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2511,7 +2511,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2531,7 +2531,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2669,7 +2669,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2689,7 +2689,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2912,7 +2912,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -2932,7 +2932,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -3155,7 +3155,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -3175,7 +3175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -3398,7 +3398,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -3418,7 +3418,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -3591,7 +3591,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -3611,7 +3611,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -3737,7 +3737,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -3757,7 +3757,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Datasets_features__internal__responses__HTTPErrorModel"
+                  "$ref": "#/components/schemas/Datasets_HTTPErrorModel"
                 }
               }
             }
@@ -5111,6 +5111,292 @@
           }
         },
         "x-original-tag": "tolls"
+      }
+    },
+    "/distance/matrix/async/": {
+      "post": {
+        "tags": [
+          "Distance API"
+        ],
+        "summary": "Start Matrix Calculation",
+        "description": "Start an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`",
+        "operationId": "start_async_matrix_distance_matrix_async__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/External-api-wrapper_MatrixRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_MatrixResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPErrorModel"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "External-api-wrapper_PublicAPIKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKeyHeader": []
+          }
+        ],
+        "x-original-tag": "Distance Matrix Async"
+      }
+    },
+    "/distance/matrix/async/{matrix_id}/status": {
+      "get": {
+        "tags": [
+          "Distance API"
+        ],
+        "summary": "Check Matrix Calculation Status",
+        "description": "Check on the progress of an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`",
+        "operationId": "async_matrix_status_distance_matrix_async__matrix_id__status_get",
+        "security": [
+          {
+            "External-api-wrapper_PublicAPIKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "matrix_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the matrix you want to check the status of.",
+              "title": "Matrix Id"
+            },
+            "description": "The ID of the matrix you want to check the status of."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_MatrixCheckResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPErrorModel"
+                }
+              }
+            }
+          }
+        },
+        "x-original-tag": "Distance Matrix Async"
+      }
+    },
+    "/distance/matrix/async/{matrix_id}": {
+      "get": {
+        "tags": [
+          "Distance API"
+        ],
+        "summary": "Get Matrix Calculation Result",
+        "description": "Get the results of an asynchronous matrix calculation.\n\nYou should confirm using the `/matrix/{matrix_id}/status` endpoint that the calculation is `completed` before calling this endpoint.\n\n**Rate limit**: `20/1s`",
+        "operationId": "async_matrix_distance_matrix_async__matrix_id__get",
+        "security": [
+          {
+            "External-api-wrapper_PublicAPIKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "matrix_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the matrix you want to get the result of",
+              "title": "Matrix Id"
+            },
+            "description": "The ID of the matrix you want to get the result of"
+          }
+        ],
+        "responses": {
+          "303": {
+            "description": "Redirect to the result of the matrix calculation.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPErrorModel"
+                }
+              }
+            }
+          }
+        },
+        "x-original-tag": "Distance Matrix Async"
       }
     },
     "/geolocation/position": {
@@ -19491,6 +19777,19 @@
         "title": "FeatureSummaryResponse",
         "description": "FeatureSummaryResponse represents the minimal amount of information to be able to fetch a feature details."
       },
+      "Datasets_HTTPErrorModel": {
+        "properties": {
+          "details": {
+            "type": "string",
+            "title": "Details"
+          }
+        },
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "title": "HTTPErrorModel"
+      },
       "Datasets_HTTPValidationError": {
         "properties": {
           "detail": {
@@ -19946,19 +20245,6 @@
           "type"
         ],
         "title": "ValidationError"
-      },
-      "Datasets_features__internal__responses__HTTPErrorModel": {
-        "properties": {
-          "details": {
-            "type": "string",
-            "title": "Details"
-          }
-        },
-        "type": "object",
-        "required": [
-          "details"
-        ],
-        "title": "HTTPErrorModel"
       },
       "Distance_AuthenticationErrorResponse": {
         "properties": {
