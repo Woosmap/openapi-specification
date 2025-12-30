@@ -76,7 +76,6 @@ apis:
           "distancematrix": "Distance API"
           "isochrone": "Distance API"
           "tolls": "Distance API"
-          "Distance Matrix Async": "Distance API"
           "Distance API":
             name: "Distance API"
             description: |
@@ -86,6 +85,19 @@ apis:
               * **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.
               * **Isochrone:** Determine all locations reachable within a specific time or distance.
               * **Tolls:** Estimate toll costs and details for specific routes.
+
+              Requests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.
+            externalDocs:
+              url: "https://developers.woosmap.com/products/distance-api/get-started/"
+
+            # Distance Async API
+          "Distance Matrix Async": "Distance Async API"
+          "Distance Async API":
+            name: "Distance Async API"
+            description: |
+              The Woosmap Distance Async API suite provides tools for large or difficult distance calculations.
+
+              * **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.
 
               Requests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.
             externalDocs:
@@ -119,6 +131,7 @@ apis:
           - name: "Distance"
             tags:
               - "Distance API"
+              - "Distance Async API"
               - "Transit API"
 plugins:
   - plugins.js

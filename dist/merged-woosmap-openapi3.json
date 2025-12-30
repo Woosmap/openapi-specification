@@ -82,8 +82,8 @@
       }
     },
     {
-      "name": "Distance API",
-      "description": "The Woosmap Distance API suite provides comprehensive tools for road travel calculations worldwide.\n\n* **Route:** Calculate travel distance, duration, and paths between origin and destination.\n* **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.\n* **Isochrone:** Determine all locations reachable within a specific time or distance.\n* **Tolls:** Estimate toll costs and details for specific routes.\n\nRequests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.\n",
+      "name": "Distance Async API",
+      "description": "The Woosmap Distance Async API suite provides tools for large or difficult distance calculations.\n\n* **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.\n\nRequests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/distance-api/get-started/"
       }
@@ -100,6 +100,13 @@
       "description": "Manage the full lifecycle of your geospatial data alongside powerful analysis and retrieval.\n\n* **Management:** Programmatically create datasets, import features in bulk (CSV/GeoJSON), and handle updates or deletions.\n* **Search:** Execute **Nearby**, **Contains**, **Intersects**, and **Within** queries using SQL-like `WHERE` filters.\n* **Features:** Direct access to individual geographic features by unique ID with field masking.\n\nIdeal for applications that require precise location analysis, spatial queries and geographic data management.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/datasets-api/get-started/"
+      }
+    },
+    {
+      "name": "Distance API",
+      "description": "The Woosmap Distance API suite provides comprehensive tools for road travel calculations worldwide.\n\n* **Route:** Calculate travel distance, duration, and paths between origin and destination.\n* **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.\n* **Isochrone:** Determine all locations reachable within a specific time or distance.\n* **Tolls:** Estimate toll costs and details for specific routes.\n\nRequests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/distance-api/get-started/"
       }
     }
   ],
@@ -5116,7 +5123,7 @@
     "/distance/matrix/async/": {
       "post": {
         "tags": [
-          "Distance API"
+          "Distance Async API"
         ],
         "summary": "Start Matrix Calculation",
         "description": "Start an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`",
@@ -5210,7 +5217,7 @@
     "/distance/matrix/async/{matrix_id}/status": {
       "get": {
         "tags": [
-          "Distance API"
+          "Distance Async API"
         ],
         "summary": "Check Matrix Calculation Status",
         "description": "Check on the progress of an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`",
@@ -5307,7 +5314,7 @@
     "/distance/matrix/async/{matrix_id}": {
       "get": {
         "tags": [
-          "Distance API"
+          "Distance Async API"
         ],
         "summary": "Get Matrix Calculation Result",
         "description": "Get the results of an asynchronous matrix calculation.\n\nYou should confirm using the `/matrix/{matrix_id}/status` endpoint that the calculation is `completed` before calling this endpoint.\n\n**Rate limit**: `20/1s`",
@@ -21895,6 +21902,7 @@
       "name": "Distance",
       "tags": [
         "Distance API",
+        "Distance Async API",
         "Transit API"
       ]
     }
