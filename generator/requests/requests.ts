@@ -138,6 +138,49 @@ export const REQUESTS: SnippetRequest[] = [
         }),
     },
     {
+        regionTag: "woosmap_http_distance_matrix_async",
+        request: new PostJsonRequest({
+            url: "https://api.woosmap.com/distance/matrix/async",
+            json: parseRequestBody(
+                "../../specification/requests/woosmap_http_distance_matrix_async_request.yml"
+            ),
+        }),
+    },
+    {
+        regionTag: "woosmap_http_distance_matrix_async_result",
+        request: new Request({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/distance/matrix/async/39585bfc-59cc-478c-9b87-12685c9b880c",
+                query: [
+                    {
+                        key: "private_key",
+                        value: "YOUR_PRIVATE_API_KEY",
+                    },
+                ],
+            }),
+            header: [{key: "Referer", value: "http://localhost"}],
+        }),
+    },
+    {
+        regionTag: "woosmap_http_distance_matrix_async_status",
+        request: new Request({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/distance/matrix/async/39585bfc-59cc-478c-9b87-12685c9b880c/status",
+                query: [
+                    {
+                        key: "private_key",
+                        value: "YOUR_PRIVATE_API_KEY",
+                    },
+                ],
+            }),
+            header: [{key: "Referer", value: "http://localhost"}],
+        }),
+    },
+    {
         regionTag: "woosmap_http_distance_route",
         request: new Request({
             url: new Url({
@@ -204,6 +247,47 @@ export const REQUESTS: SnippetRequest[] = [
                     }
                 ],
             }),
+        }),
+    },
+    {
+        regionTag: "woosmap_http_maps_static",
+        request: new Request({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/maps/static",
+                query: [
+                    {
+                        key: "lat",
+                        value: "48.8566",
+                    },
+                    {
+                        key: "lng",
+                        value: "2.3522",
+                    },
+                    {
+                        key: "zoom",
+                        value: "14",
+                    },
+                    {
+                        key: "width",
+                        value: "600",
+                    },
+                    {
+                        key: "height",
+                        value: "400",
+                    },
+                    {
+                        key: "markers",
+                        value: "48.8566,2.3522",
+                    },
+                    {
+                        key: "language",
+                        value: "en",
+                    },
+                ],
+            }),
+            header: [{key: "Referer", value: "http://localhost"}],
         }),
     },
     {

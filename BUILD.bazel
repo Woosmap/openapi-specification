@@ -173,7 +173,7 @@ bundle_external_specs(
     name = "run_redocly_join",
     config = "redocly/redocly-merged-config.yaml",
     main_spec = "//:woosmap-openapi3.json",
-    plugins = glob(["redocly/**/*.js"]),
+    plugins = glob(["redocly/**/*.js"]) + ["redocly/inject-code-samples-mappings.yaml"],
     specs = [
         "maps",
         "what3words",
