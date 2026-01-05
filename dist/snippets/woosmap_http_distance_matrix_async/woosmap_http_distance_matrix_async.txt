@@ -1,0 +1,4 @@
+[START woosmap_http_distance_matrix_async]
+https://api.woosmap.com/distance/matrix/async
+  ?private_key=YOUR_PRIVATE_API_KEY
+[END woosmap_http_distance_matrix_async]
