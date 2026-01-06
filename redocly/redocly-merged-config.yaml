@@ -8,25 +8,25 @@ apis:
       woosmap/process-tags:
         tagMappings:
           # Transit API
-          'transit':
-            name: 'Transit API'
+          "transit":
+            name: "Transit API"
             description: |
-              The Transit API delivers comprehensive public transportation routing information by calculating optimal travel paths between 
-              origins and destinations. It provides detailed route data including distance, duration, polyline visualization, 
-              and complete step-by-step transit instructions with transfer points and transportation modes. The API is ideal for 
+              The Transit API delivers comprehensive public transportation routing information by calculating optimal travel paths between
+              origins and destinations. It provides detailed route data including distance, duration, polyline visualization,
+              and complete step-by-step transit instructions with transfer points and transportation modes. The API is ideal for
               applications requiring accurate public transit navigation and trip planning capabilities.
             externalDocs:
               url: "https://developers.woosmap.com/products/transit-api/route-endpoint/"
 
           # Indoor API
-          'Indoor API':
-            name: 'Indoor API'
+          "Indoor API":
+            name: "Indoor API"
             description: |
               The Indoor API suite provides comprehensive tools for indoor mapping, search, and navigation in complex venues.
-              
+
               The Indoor Map API renders detailed floor plans with customizable styling, while the Indoor Search API enables
               precise location searching through an intelligent POI engine with autocompletion capabilities.
-              
+
               For wayfinding, the Indoor Distance API calculates optimal routes between indoor points, delivering polylines
               and turn-by-turn instructions. Advanced features include custom routing profiles for different user types
               (staff, visitors, etc.) and seamless integration with external systems.
@@ -34,93 +34,106 @@ apis:
               url: "https://developers.woosmap.com/products/indoor-api/get-started/"
 
           # Woosmap for what3words API
-          'what3words':
-            name: 'Woosmap for what3words API'
+          "what3words":
+            name: "Woosmap for what3words API"
             description: |
               The Woosmap for what3words integration enhances location search capabilities by incorporating what3words' unique
-              3-word addressing system. 
-              
-              This API is a drop in replacement of what3words API but hosted on Woosmap Platform, with the addition of an endpoint leveraging the power of 
+              3-word addressing system.
+
+              This API is a drop in replacement of what3words API but hosted on Woosmap Platform, with the addition of an endpoint leveraging the power of
               [Localities API](#tag/Woosmap_Platform_API_Reference_Localities-API) to convert a what3words address into a street address, bringing address level accuracy to what3words.
             externalDocs:
               url: "https://developers.woosmap.com/products/w3w-api/get-started/"
 
           # Datasets API
-          'search': 'Datasets API'
-          'features': 'Datasets API'
-          'dataset': 'Datasets API'
-          'Datasets API':
-            name: 'Datasets API'
+          "search": "Datasets API"
+          "features": "Datasets API"
+          "dataset": "Datasets API"
+          "Datasets API":
+            name: "Datasets API"
             description: |
               Manage the full lifecycle of your geospatial data alongside powerful analysis and retrieval.
 
               * **Management:** Programmatically create datasets, import features in bulk (CSV/GeoJSON), and handle updates or deletions.
               * **Search:** Execute **Nearby**, **Contains**, **Intersects**, and **Within** queries using SQL-like `WHERE` filters.
-              * **Features:** Direct access to individual geographic features by unique ID with field masking.              
+              * **Features:** Direct access to individual geographic features by unique ID with field masking.
 
               Ideal for applications that require precise location analysis, spatial queries and geographic data management.
             externalDocs:
               url: "https://developers.woosmap.com/products/datasets-api/get-started/"
 
-
-          'static':
-            name: 'Static Map API'
+          "static":
+            name: "Static Map API"
             description: |
-              The Woosmap Static Maps API lets you generate customizable, embeddable map images using simple HTTP requests. It’s a lightweight alternative to interactive maps—ideal for emails, reports, or websites where dynamic JavaScript maps aren't needed.  
+              The Woosmap Static Maps API lets you generate customizable, embeddable map images using simple HTTP requests. It’s a lightweight alternative to interactive maps—ideal for emails, reports, or websites where dynamic JavaScript maps aren't needed.
 
               You provide parameters such as location, zoom level, size, and markers, and the API returns a map image that can be embedded directly into any webpage or application.
             externalDocs:
               url: "https://developers.woosmap.com/products/map-static-api/get-started/"
 
-           # Distance API
-          'route': 'Distance API'
-          'distancematrix': 'Distance API'
-          'isochrone': 'Distance API'
-          'tolls': 'Distance API'
-          'Distance API':
-            name: 'Distance API'
+            # Distance API
+          "route": "Distance API"
+          "distancematrix": "Distance API"
+          "isochrone": "Distance API"
+          "tolls": "Distance API"
+          "Distance API":
+            name: "Distance API"
             description: |
               The Woosmap Distance API suite provides comprehensive tools for road travel calculations worldwide.
-              
+
               * **Route:** Calculate travel distance, duration, and paths between origin and destination.
               * **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.
               * **Isochrone:** Determine all locations reachable within a specific time or distance.
               * **Tolls:** Estimate toll costs and details for specific routes.
-              
+
               Requests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.
             externalDocs:
               url: "https://developers.woosmap.com/products/distance-api/get-started/"
 
+            # Distance Async API
+          "Distance Matrix Async": "Distance Async API"
+          "Distance Async API":
+            name: "Distance Async API"
+            description: |
+              The Woosmap Distance Async API suite provides tools for large or difficult distance calculations.
+
+              * **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.
+
+              Requests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.
+            externalDocs:
+              url: "https://developers.woosmap.com/products/distance-api/get-started/"
 
         tagsToDelete:
-          - 'Transit'
-          - 'Transit & Matrix Async'
-          - 'Distance Matrix Async'
+          - "Transit"
+          - "Transit & Matrix Async"
         sortOrder:
-          'Distance API':
+          "Distance API":
             - route
             - distancematrix
             - isochrone
             - tolls
       woosmap/tag-groups:
         tagGroups:
-          - name: 'Search'
+          - name: "Search"
             tags:
-              - 'Store Search API'
-              - 'Data Management API'
-              - 'Geolocation API'
-              - 'Localities API'
-              - 'Address API'
-              - 'Datasets API'
-              - 'Woosmap for what3words API'
-              - 'Zones API'
-          - name: 'Map'
+              - "Store Search API"
+              - "Data Management API"
+              - "Geolocation API"
+              - "Localities API"
+              - "Address API"
+              - "Datasets API"
+              - "Woosmap for what3words API"
+              - "Zones API"
+          - name: "Map"
             tags:
-              - 'Static Map API'
-              - 'Indoor API'
-          - name: 'Distance'
+              - "Static Map API"
+              - "Indoor API"
+          - name: "Distance"
             tags:
-              - 'Distance API'
-              - 'Transit API'
+              - "Distance API"
+              - "Distance Async API"
+              - "Transit API"
+      woosmap/inject-code-samples:
+        mappingsFile: redocly/inject-code-samples-mappings.yaml
 plugins:
   - plugins.js

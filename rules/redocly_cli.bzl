@@ -154,6 +154,9 @@ def bundle_external_specs(name, specs, main_spec = "//:woosmap-openapi3.json", c
         final_srcs.append(config)
     if plugins:
         final_srcs.extend(plugins)
+    
+    # Add specification files (includes snippets and responses) for inject-code-samples decorator
+    final_srcs.append("//specification:openapi3")
 
     js_run_binary(
         name = name,

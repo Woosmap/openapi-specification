@@ -138,6 +138,49 @@ export const REQUESTS: SnippetRequest[] = [
         }),
     },
     {
+        regionTag: "woosmap_http_distance_matrix_async",
+        request: new PostJsonRequest({
+            url: "https://api.woosmap.com/distance/matrix/async",
+            json: parseRequestBody(
+                "../../specification/requests/woosmap_http_distance_matrix_async_request.yml"
+            ),
+        }),
+    },
+    {
+        regionTag: "woosmap_http_distance_matrix_async_result",
+        request: new Request({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/distance/matrix/async/39585bfc-59cc-478c-9b87-12685c9b880c",
+                query: [
+                    {
+                        key: "private_key",
+                        value: "YOUR_PRIVATE_API_KEY",
+                    },
+                ],
+            }),
+            header: [{key: "Referer", value: "http://localhost"}],
+        }),
+    },
+    {
+        regionTag: "woosmap_http_distance_matrix_async_status",
+        request: new Request({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/distance/matrix/async/39585bfc-59cc-478c-9b87-12685c9b880c/status",
+                query: [
+                    {
+                        key: "private_key",
+                        value: "YOUR_PRIVATE_API_KEY",
+                    },
+                ],
+            }),
+            header: [{key: "Referer", value: "http://localhost"}],
+        }),
+    },
+    {
         regionTag: "woosmap_http_distance_route",
         request: new Request({
             url: new Url({
@@ -204,6 +247,47 @@ export const REQUESTS: SnippetRequest[] = [
                     }
                 ],
             }),
+        }),
+    },
+    {
+        regionTag: "woosmap_http_maps_static",
+        request: new Request({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/maps/static",
+                query: [
+                    {
+                        key: "lat",
+                        value: "48.8566",
+                    },
+                    {
+                        key: "lng",
+                        value: "2.3522",
+                    },
+                    {
+                        key: "zoom",
+                        value: "14",
+                    },
+                    {
+                        key: "width",
+                        value: "600",
+                    },
+                    {
+                        key: "height",
+                        value: "400",
+                    },
+                    {
+                        key: "markers",
+                        value: "48.8566,2.3522",
+                    },
+                    {
+                        key: "language",
+                        value: "en",
+                    },
+                ],
+            }),
+            header: [{key: "Referer", value: "http://localhost"}],
         }),
     },
     {
@@ -675,6 +759,200 @@ export const REQUESTS: SnippetRequest[] = [
                     {
                         key: "query",
                         value: "idstore:=store_123",
+                    },
+                ],
+            }),
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_list",
+        request: new Request({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/datasets/",
+                query: [
+                    {
+                        key: "private_key",
+                        value: "YOUR_PRIVATE_API_KEY",
+                    },
+                ],
+            }),
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_create",
+        request: new PostJsonRequest({
+            url: "https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY",
+            json: {
+                name: "string",
+                url: "http://example.com",
+                schema_mapping: [
+                    {
+                        schema_key: "title",
+                        data_key: "string",
+                    },
+                ],
+            },
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_get",
+        request: new Request({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0",
+                query: [
+                    {
+                        key: "private_key",
+                        value: "YOUR_PRIVATE_API_KEY",
+                    },
+                ],
+            }),
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_update",
+        request: new PutJsonRequest({
+            url: "https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY",
+            json: {
+                name: "string",
+                url: "http://example.com",
+            },
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_delete",
+        request: new DeleteRequest({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0",
+                query: [
+                    {
+                        key: "private_key",
+                        value: "YOUR_PRIVATE_API_KEY",
+                    },
+                ],
+            }),
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_status",
+        request: new Request({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/status",
+                query: [
+                    {
+                        key: "private_key",
+                        value: "YOUR_PRIVATE_API_KEY",
+                    },
+                ],
+            }),
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_import",
+        request: new PostJsonRequest({
+            url: "https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/import?private_key=YOUR_PRIVATE_API_KEY",
+            json: {},
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_reimport_webhook",
+        request: new PostJsonRequest({
+            url: "https://api.woosmap.com/datasets/hooks/reimport/my_reimport_key",
+            json: {},
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_search_features",
+        request: new PostJsonRequest({
+            url: "https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/search/?private_key=YOUR_PRIVATE_API_KEY",
+            json: {
+                where: "cost_col:>32.3",
+            },
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_nearby_features",
+        request: new PostJsonRequest({
+            url: "https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/nearby/?private_key=YOUR_PRIVATE_API_KEY",
+            json: {
+                geometry: {
+                    type: "Point",
+                    coordinates: [3.883, 43.6],
+                },
+                buffer: 5000,
+            },
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_intersect_features",
+        request: new PostJsonRequest({
+            url: "https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/intersects/?private_key=YOUR_PRIVATE_API_KEY",
+            json: {
+                geometry: {
+                    type: "Polygon",
+                    coordinates: [
+                        [
+                            [2.3522, 48.8566],
+                            [2.3622, 48.8566],
+                            [2.3622, 48.8666],
+                            [2.3522, 48.8666],
+                            [2.3522, 48.8566],
+                        ],
+                    ],
+                },
+            },
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_contains_features",
+        request: new PostJsonRequest({
+            url: "https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/contains/?private_key=YOUR_PRIVATE_API_KEY",
+            json: {
+                geometry: {
+                    type: "Point",
+                    coordinates: [3.883, 43.6],
+                },
+            },
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_within_features",
+        request: new PostJsonRequest({
+            url: "https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/within/?private_key=YOUR_PRIVATE_API_KEY",
+            json: {
+                geometry: {
+                    type: "Polygon",
+                    coordinates: [
+                        [
+                            [2.3522, 48.8566],
+                            [2.3622, 48.8566],
+                            [2.3622, 48.8666],
+                            [2.3522, 48.8666],
+                            [2.3522, 48.8566],
+                        ],
+                    ],
+                },
+            },
+        }),
+    },
+    {
+        regionTag: "woosmap_http_datasets_get_feature",
+        request: new Request({
+            url: new Url({
+                protocol: "https",
+                host: "api.woosmap.com",
+                path: "/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/497f6eca-6276-4993-bfeb-53cbbbba6f08",
+                query: [
+                    {
+                        key: "private_key",
+                        value: "YOUR_PRIVATE_API_KEY",
                     },
                 ],
             }),
