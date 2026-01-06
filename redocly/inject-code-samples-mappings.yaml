@@ -70,4 +70,77 @@ mappings:
   get_static_map_maps_static_get:
     regionTag: woosmap_http_maps_static
     snippetPath: specification/snippets
-    
+
+  # DATASETS API
+  # List Datasets
+  list_datasets_datasets__get:
+    regionTag: woosmap_http_datasets_list
+    snippetPath: specification/snippets
+
+  # Create Dataset
+  create_dataset_datasets__post:
+    regionTag: woosmap_http_datasets_create
+    snippetPath: specification/snippets
+
+  # Get Dataset
+  get_dataset_datasets__dataset_id__get:
+    regionTag: woosmap_http_datasets_get
+    snippetPath: specification/snippets
+
+  # Update Dataset
+  update_dataset_datasets__dataset_id__put:
+    regionTag: woosmap_http_datasets_update
+    snippetPath: specification/snippets
+
+  # Delete Dataset
+  delete_dataset_datasets__dataset_id__delete:
+    regionTag: woosmap_http_datasets_delete
+    snippetPath: specification/snippets
+
+  # Get Dataset Status
+  get_dataset_status_datasets__dataset_id__status_get:
+    regionTag: woosmap_http_datasets_status
+    snippetPath: specification/snippets
+
+  # Trigger Import
+  trigger_import_datasets__dataset_id__import_post:
+    responseCode: "202"
+    regionTag: woosmap_http_datasets_import
+    snippetPath: specification/snippets
+
+  # Reimport Webhook
+  reimport_dataset_webhook_datasets_hooks_reimport__reimport_key__post:
+    responseCode: "202"
+    regionTag: woosmap_http_datasets_reimport_webhook
+    snippetPath: specification/snippets
+
+  # Search Features
+  search_features_datasets__dataset_id__features_search__post:
+    regionTag: woosmap_http_datasets_search_features
+    snippetPath: specification/snippets
+
+  # Nearby Features
+  nearby_features_datasets__dataset_id__features_nearby__post:
+    regionTag: woosmap_http_datasets_nearby_features
+    snippetPath: specification/snippets
+
+  # Intersect Features
+  intersect_features_datasets__dataset_id__features_intersects__post:
+    regionTag: woosmap_http_datasets_intersect_features
+    snippetPath: specification/snippets
+
+  # Contains Features
+  contains_features_datasets__dataset_id__features_contains__post:
+    regionTag: woosmap_http_datasets_contains_features
+    snippetPath: specification/snippets
+
+  # Within Features
+  within_features_datasets__dataset_id__features_within__post:
+    regionTag: woosmap_http_datasets_within_features
+    snippetPath: specification/snippets
+
+  # Get Feature
+  get_feature_datasets__dataset_id__features__feature_id__get:
+    regionTag: woosmap_http_datasets_get_feature
+    snippetPath: specification/snippets
+

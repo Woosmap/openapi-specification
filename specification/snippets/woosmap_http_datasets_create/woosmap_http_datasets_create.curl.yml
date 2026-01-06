@@ -1,0 +1,5 @@
+{
+  "lang": "curl",
+  "label": "cURL",
+  "source": "curl -L 'https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"name\": \"my_dataset\",\n  \"description\": \"My dataset description\"\n}'",
+}

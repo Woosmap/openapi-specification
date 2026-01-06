@@ -1,5 +1,5 @@
 {
   "lang": "curl",
   "label": "cURL",
-  "source": "curl -L 'https://api.woosmap.com/distance/matrix/async?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"units\": \"imperial\",\n  \"elements\": \"duration_distance\",\n  \"method\": \"distance\",\n  \"departure_time\": \"now\"\n}'",
+  "source": "curl -L 'https://api.woosmap.com/distance/matrix/async?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"mode\": \"driving\"\n}'",
 }
