@@ -46,43 +46,22 @@ apis:
               url: "https://developers.woosmap.com/products/w3w-api/get-started/"
 
           # Datasets API
-          'dataset':
+          'search': 'Datasets API'
+          'features': 'Datasets API'
+          'dataset': 'Datasets API'
+          'Datasets API':
             name: 'Datasets API'
             description: |
-              The Datasets API enables you to store, manage, and analyze geospatial data collections. Work with custom datasets containing points, lines, or polygons - with each feature defined by its geometry and properties.
-              
-              * Create and manage datasets from uploaded Shapefile data
-              * Import data from external sources via URL or scheduled updates
-              * Monitor dataset status and processing through detailed status reports
-              * Schedule dataset deletion for proper data lifecycle management
-              * Leverage high accuracy storage for location-dependent business processes
-              
+              Manage the full lifecycle of your geospatial data alongside powerful analysis and retrieval.
+
+              * **Management:** Programmatically create datasets, import features in bulk (CSV/GeoJSON), and handle updates or deletions.
+              * **Search:** Execute **Nearby**, **Contains**, **Intersects**, and **Within** queries using SQL-like `WHERE` filters.
+              * **Features:** Direct access to individual geographic features by unique ID with field masking.              
+
               Ideal for applications that require precise location analysis, spatial queries and geographic data management.
             externalDocs:
               url: "https://developers.woosmap.com/products/datasets-api/get-started/"
-              
-          'search':
-            name: 'Datasets API - Search'
-            description: |
-              Perform powerful spatial analysis on your geospatial data with four key search capabilities:
-              
-              * Nearby search: Find features within a specified distance from a location
-              * Contains search: Discover which features completely contain a point or geometry
-              * Intersects search: Identify features that intersect with a given geometry
-              * Within search: Locate features that fall entirely inside a specified boundary
-              
-              All operations support attribute filtering with WHERE clauses, pagination for large results, and multiple geometry formats (GeoJSON, WKB, encoded polylines).
-            externalDocs:
-              url: "https://developers.woosmap.com/products/datasets-api/first-queries/"
-              
-          'features':
-            name: 'Datasets API - Features'
-            description: |
-              Access and retrieve individual geographic features from your datasets by their unique ID. This endpoint provides direct access to the complete geometry and properties of specific features within your datasets.
-              
-              The API supports field masking to optimize response size by retrieving only needed attributes. Output formats include both GeoJSON and WKB, allowing flexible integration with various mapping and analysis systems.
-            externalDocs:
-              url: "https://developers.woosmap.com/products/datasets-api/get-started/"
+
 
           'static':
             name: 'Static Map API'
@@ -93,7 +72,55 @@ apis:
             externalDocs:
               url: "https://developers.woosmap.com/products/map-static-api/get-started/"
 
+           # Distance API
+          'route': 'Distance API'
+          'distancematrix': 'Distance API'
+          'isochrone': 'Distance API'
+          'tolls': 'Distance API'
+          'Distance API':
+            name: 'Distance API'
+            description: |
+              The Woosmap Distance API suite provides comprehensive tools for road travel calculations worldwide.
+              
+              * **Route:** Calculate travel distance, duration, and paths between origin and destination.
+              * **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.
+              * **Isochrone:** Determine all locations reachable within a specific time or distance.
+              * **Tolls:** Estimate toll costs and details for specific routes.
+              
+              Requests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.
+            externalDocs:
+              url: "https://developers.woosmap.com/products/distance-api/get-started/"
+
+
         tagsToDelete:
           - 'Transit'
+          - 'Transit & Matrix Async'
+          - 'Distance Matrix Async'
+        sortOrder:
+          'Distance API':
+            - route
+            - distancematrix
+            - isochrone
+            - tolls
+      woosmap/tag-groups:
+        tagGroups:
+          - name: 'Search'
+            tags:
+              - 'Store Search API'
+              - 'Data Management API'
+              - 'Geolocation API'
+              - 'Localities API'
+              - 'Address API'
+              - 'Datasets API'
+              - 'Woosmap for what3words API'
+              - 'Zones API'
+          - name: 'Map'
+            tags:
+              - 'Static Map API'
+              - 'Indoor API'
+          - name: 'Distance'
+            tags:
+              - 'Distance API'
+              - 'Transit API'
 plugins:
   - plugins.js

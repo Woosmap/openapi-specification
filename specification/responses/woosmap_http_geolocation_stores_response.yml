@@ -5,16 +5,18 @@
   "continent": "North America",
   "latitude": 38.719,
   "longitude": -77.1067,
-  "accuracy": 5,
   "viewport":
     {
       "northeast": { "lat": 38.763915764205976, "lng": -77.0491321464058 },
       "southwest": { "lat": 38.674084235794034, "lng": -77.16426785359421 },
     },
+  "accuracy": 5,
   "city": "Alexandria",
   "region_state": "Virginia",
   "postal_code": "22309",
   "timezone": "America/New_York",
+  "raw_offset": -18000,
+  "dst_offset": 3600,
   "stores":
     {
       "type": "FeatureCollection",
@@ -43,13 +45,13 @@
                   { "some_user_properties": "associated user value" },
                 "tags": ["wifi", "covered_parking"],
                 "types": ["drive", "click_and_collect"],
-                "last_updated": "2024-03-20T15:14:51.067524+00:00",
+                "last_updated": "2025-09-16T08:49:42.523114+00:00",
                 "distance": 0,
                 "open":
                   {
                     "open_now": true,
                     "open_hours": [{ "end": "22:00", "start": "08:30" }],
-                    "week_day": 3,
+                    "week_day": 2,
                     "current_slice": { "end": "22:00", "start": "08:30" },
                   },
                 "weekly_opening":

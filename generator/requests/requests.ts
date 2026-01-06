@@ -414,15 +414,11 @@ export const REQUESTS: SnippetRequest[] = [
                 query: [
                     {
                         key: "types",
-                        value: "point_of_interest"
+                        value: "business"
                     },
                     {
                         key: "location",
                         value: "40.71399,-74.00499",
-                    },
-                    {
-                        key: "categories",
-                        value: "business"
                     },
                     {
                         key: "page",

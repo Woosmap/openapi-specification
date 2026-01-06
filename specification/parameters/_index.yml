@@ -20,38 +20,6 @@ address_location:
   $ref: "./address/location.yml"
 address_public_id:
   $ref: "./address/public_id.yml"
-distance_alternatives:
-  $ref: "./distance/alternatives.yml"
-distance_arrival_time:
-  $ref: "./distance/arrival_time.yml"
-distance_avoid:
-  $ref: "./distance/avoid.yml"
-distance_departure_time:
-  $ref: "./distance/departure_time.yml"
-distance_destination:
-  $ref: "./distance/destination.yml"
-distance_destinations:
-  $ref: "./distance/destinations.yml"
-distance_details:
-  $ref: "./distance/details.yml"
-distance_elements:
-  $ref: "./distance/elements.yml"
-distance_language:
-  $ref: "./distance/language.yml"
-distance_method:
-  $ref: "./distance/method.yml"
-distance_mode:
-  $ref: "./distance/mode.yml"
-distance_origin:
-  $ref: "./distance/origin.yml"
-distance_origins:
-  $ref: "./distance/origins.yml"
-distance_units:
-  $ref: "./distance/units.yml"
-distance_value:
-  $ref: "./distance/value.yml"
-distance_waypoints:
-  $ref: "./distance/waypoints.yml"
 geolocation_ip_address:
   $ref: "./geolocation/ip_address.yml"
 geolocation_limit:
@@ -60,16 +28,12 @@ localities_address:
   $ref: "./localities/address.yml"
 localities_addresses_per_page:
   $ref: "./localities/addresses_per_page.yml"
-localities_categories:
-  $ref: "./localities/categories.yml"
 localities_cc_format:
   $ref: "./localities/cc_format.yml"
 localities_custom_description:
   $ref: "./localities/custom_description.yml"
 localities_data:
   $ref: "./localities/data.yml"
-localities_excluded_categories:
-  $ref: "./localities/excluded_categories.yml"
 localities_excluded_types:
   $ref: "./localities/excluded_types.yml"
 localities_extended:
@@ -90,14 +54,16 @@ localities_localities_components:
   $ref: "./localities/localities_components.yml"
 localities_location:
   $ref: "./localities/location.yml"
+localities_nearby_excluded_types:
+  $ref: "./localities/nearby_excluded_types.yml"
+localities_nearby_types:
+  $ref: "./localities/nearby_types.yml"
 localities_page:
   $ref: "./localities/page.yml"
 localities_public_id:
   $ref: "./localities/public_id.yml"
 localities_radius:
   $ref: "./localities/radius.yml"
-localities_search_types:
-  $ref: "./localities/search_types.yml"
 localities_types:
   $ref: "./localities/types.yml"
 search_encoded_polyline:

@@ -5,35 +5,37 @@
       {
         "public_id": "Ch6qA8cLmvyvEEoFy6nYeFcEdNU=",
         "type": "locality",
+        "types": ["locality", "city"],
         "description": "London, City of London, United Kingdom",
-        "matched_substrings":
-          {
-            "description":
-              [{ "offset": 0, "length": 4 }, { "offset": 16, "length": 4 }],
-          },
+        "matched_substrings": { "description": [{ "offset": 0, "length": 4 }] },
       },
       {
         "public_id": "m/T2C4YI2LgszkKXrELBC+9dfC8=",
         "type": "locality",
+        "types": ["locality", "city"],
         "description": "Derry/Londonderry, Derry City and Strabane, United Kingdom",
         "matched_substrings": { "description": [{ "offset": 6, "length": 4 }] },
       },
       {
         "public_id": "J6eISGMjjvQwPkao8rsByB3aVwM=",
         "type": "locality",
+        "types": ["locality", "village"],
         "description": "London Colney, Hertfordshire, United Kingdom",
         "matched_substrings": { "description": [{ "offset": 0, "length": 4 }] },
       },
       {
         "public_id": "52MnrbHVWH21CLWH8VY/YWKhqeM=",
         "type": "locality",
+        "types": ["locality", "village"],
         "description": "London Apprentice, Cornwall, United Kingdom",
         "matched_substrings": { "description": [{ "offset": 0, "length": 4 }] },
       },
       {
-        "public_id": "Js0mQmmeI46X3hiqRj/R4pvb8mQ=",
+        "public_id": "S/5AkUmMBhX35qVI2jR38+dALwk=",
         "type": "locality",
-        "description": "Long Stratton, Norfolk, United Kingdom",
+        "types": ["locality", "city"],
+        "description": "City of London, United Kingdom",
+        "matched_substrings": { "description": [{ "offset": 8, "length": 4 }] },
       },
     ],
 }

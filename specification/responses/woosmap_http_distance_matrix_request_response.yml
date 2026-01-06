@@ -8,8 +8,8 @@
           [
             {
               "status": "OK",
-              "duration": { "value": 1248, "text": "21 mins" },
-              "distance": { "value": 12221, "text": "7.6 miles" },
+              "duration": { "value": 2406, "text": "40 mins" },
+              "distance": { "value": 12210, "text": "7.6 miles" },
             },
           ],
       },
@@ -18,8 +18,8 @@
           [
             {
               "status": "OK",
-              "duration": { "value": 1248, "text": "21 mins" },
-              "distance": { "value": 12221, "text": "7.6 miles" },
+              "duration": { "value": 2406, "text": "40 mins" },
+              "distance": { "value": 12210, "text": "7.6 miles" },
             },
           ],
       },

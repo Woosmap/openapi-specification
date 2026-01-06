@@ -11,7 +11,6 @@ security:
   - PrivateApiKeyHeaderAuth: []
 parameters:
   - $ref: "../../parameters/geolocation/ip_address.yml"
-  - $ref: "../../parameters/search/query.yml"
 responses:
   "200":
     description: Geolocation successfully retrieved

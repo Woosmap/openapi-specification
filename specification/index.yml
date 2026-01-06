@@ -17,7 +17,7 @@ info:
   termsOfService: "https://www.woosmap.com/en/policies/terms/"
   x-document-meta-data:
     copyright: "© 2025 Woosmap"
-  version: 1.36.0
+  version: 1.39.0
   contact:
     name: "Woosmap API"
 servers:
@@ -101,14 +101,6 @@ tags:
       >**⚠️ This API has been deprecated in favour of Localities API**
     externalDocs:
       url: https://developers.woosmap.com/products/address-api/get-started/
-  - name: Distance API
-    description: >
-      Woosmap Distance API is a service providing road travel distance and duration calculations, on a Worldwide scale.
-      Request is done over HTTPS using GET or POST. Response is formatted as JSON.
-      You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
-      This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
-    externalDocs:
-      url: https://developers.woosmap.com/products/distance-api/get-started/
   - name: Zones API
     description: >
       Woosmap Zones API is a web service that uses an HTTP request to manage, create or edit your Zones (polygons) attached to your assets.

@@ -1,0 +1,9 @@
+title: LocalitiesTypesAll
+type: string
+description: >
+  A comprehensive string type that encompasses all supported locality classifications. This includes standard locality types (e.g., cities, regions), points of interest (POI) categories, and POI aliases for flexible geographic data representation and querying.
+
+anyOf:
+  - $ref: "./LocalitiesTypes.yml"
+  - $ref: "./LocalitiesTypesPoi.yml"
+  - $ref: "./LocalitiesTypesPoiAlias.yml"

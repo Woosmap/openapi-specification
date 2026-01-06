@@ -1,5 +1,5 @@
 {
   "lang": "javascript",
   "label": "JavaScript",
-  "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/localities/nearby?types=point_of_interest&location=40.71399%2C-74.00499&categories=business&page=3&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));",
+  "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/localities/nearby?types=business&location=40.71399%2C-74.00499&page=3&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));",
 }

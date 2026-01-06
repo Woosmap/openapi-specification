@@ -7,6 +7,7 @@
 -   <h3 class="parameter-name" id="address">address</h3>
 
     The input string to geocode. Can represent an address, a street, a locality or a postal code. The `address` parameter must be URL encoded.
+    To protect against illegitimate requests, only the 20 first tokens found in the first 150 characters will be used.
 
 -   <h3 class="parameter-name" id="cc_format">cc_format</h3>
 
@@ -42,30 +43,14 @@
 
 -   <h3 class="parameter-name" id="types">types</h3>
 
-    Specify the types of geocoding responses to return by separating multiple types with a pipe character (|).  This parameter is ignored when used with the `latlng` parameter.  When executing a geocode request with the `address` parameter, use this to select the expected result type.
+    When executing a geocode request with the `address` parameter, it specifies the types of suggestions to return in the query.  Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:
 
-    -   `city`: includes city localities
-    -   `town`: includes town localities
-    -   `village`: includes village localities
-    -   `hamlet`: includes hamlet localities
-    -   `borough`: includes borough localities
-    -   `suburb`: includes suburb localities
-    -   `quarter`: includes quarter localities
-    -   `neighbourhood`: includes neighbourhood localities
-    -   `locality`: includes all previous locality names
-    -   `postal_code`: publicly-used postal codes around the world
-    -   `address`: addresses
-    -   `admin_level`: most commonly used administrative areas
-    -   `country`: countries as whole point of interest
-    -   `airport`: includes all medium sized to international sized airports
-    -   `train_station`: includes all train stations
-    -   `metro_station`: includes all metro stations
-    -   `shopping`: includes shopping malls (or "shopping centers") - *may include private retail brands*
-    -   `museum`: includes museums
-    -   `tourist_attraction`: includes tourist attractions like the Eiffel tower
-    -   `amusement_park`: includes amusement parks like Disneyland Paris
-    -   `art_gallery`: includes art galleries
-    -   `zoo`: includes zoos
+    -   Standard locality types (e.g., cities, administrative areas, postal codes)
+    -   Points of Interest (POI) categories
+    -   POI aliases
+
+    These classifications enable flexible geographic data representation and querying.
+    This parameter is ignored when used with the `latlng` parameter.
 
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.

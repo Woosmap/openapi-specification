@@ -7,7 +7,8 @@
     <p>
       The input string to geocode. Can represent an address, a street, a
       locality or a postal code. The <code>address</code> parameter must be URL
-      encoded.
+      encoded. To protect against illegitimate requests, only the 20 first
+      tokens found in the first 150 characters will be used.
     </p>
   </li>
   <li>
@@ -108,50 +109,25 @@
   <li>
     <h3 class="parameter-name" id="types">types</h3>
     <p>
-      Specify the types of geocoding responses to return by separating multiple
-      types with a pipe character (|). This parameter is ignored when used with
-      the <code>latlng</code> parameter. When executing a geocode request with
-      the <code>address</code> parameter, use this to select the expected result
-      type.
+      When executing a geocode request with the <code>address</code> parameter,
+      it specifies the types of suggestions to return in the query. Multiple
+      types can be combined using the pipe character (<code>|</code>) as a
+      separator. This parameter supports a wide range of locality
+      classifications, including:
     </p>
     <ul>
-      <li><code>city</code>: includes city localities</li>
-      <li><code>town</code>: includes town localities</li>
-      <li><code>village</code>: includes village localities</li>
-      <li><code>hamlet</code>: includes hamlet localities</li>
-      <li><code>borough</code>: includes borough localities</li>
-      <li><code>suburb</code>: includes suburb localities</li>
-      <li><code>quarter</code>: includes quarter localities</li>
-      <li><code>neighbourhood</code>: includes neighbourhood localities</li>
-      <li><code>locality</code>: includes all previous locality names</li>
       <li>
-        <code>postal_code</code>: publicly-used postal codes around the world
+        Standard locality types (e.g., cities, administrative areas, postal
+        codes)
       </li>
-      <li><code>address</code>: addresses</li>
-      <li><code>admin_level</code>: most commonly used administrative areas</li>
-      <li><code>country</code>: countries as whole point of interest</li>
-      <li>
-        <code>airport</code>: includes all medium sized to international sized
-        airports
-      </li>
-      <li><code>train_station</code>: includes all train stations</li>
-      <li><code>metro_station</code>: includes all metro stations</li>
-      <li>
-        <code>shopping</code>: includes shopping malls (or "shopping centers") -
-        <em>may include private retail brands</em>
-      </li>
-      <li><code>museum</code>: includes museums</li>
-      <li>
-        <code>tourist_attraction</code>: includes tourist attractions like the
-        Eiffel tower
-      </li>
-      <li>
-        <code>amusement_park</code>: includes amusement parks like Disneyland
-        Paris
-      </li>
-      <li><code>art_gallery</code>: includes art galleries</li>
-      <li><code>zoo</code>: includes zoos</li>
+      <li>Points of Interest (POI) categories</li>
+      <li>POI aliases</li>
     </ul>
+    <p>
+      These classifications enable flexible geographic data representation and
+      querying. This parameter is ignored when used with the
+      <code>latlng</code> parameter.
+    </p>
   </li>
 </ul>
 <p style="text-align: right; font-size: smaller">

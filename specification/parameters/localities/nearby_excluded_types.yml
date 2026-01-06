@@ -1,0 +1,9 @@
+name: excluded_types
+description: >
+  The types of points of interest to exclude from results. 
+  results will match the specified `types`, if any, but will not match the specified `excluded_types` 
+  Multiple types can be passed using the pipe character (`|`) as a separator.
+  For example: `excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.
+schema:
+  $ref: "../../schemas/LocalitiesTypesPoi.yml"
+in: query
