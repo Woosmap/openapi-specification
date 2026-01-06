@@ -1,0 +1,5 @@
+# [START woosmap_http_distance_matrix_async_status_response]
+{
+  "status": "completed"
+}
+# [END woosmap_http_distance_matrix_async_status_response]

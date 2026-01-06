@@ -133,5 +133,7 @@ apis:
               - "Distance API"
               - "Distance Async API"
               - "Transit API"
+      woosmap/inject-code-samples:
+        mappingsFile: redocly/inject-code-samples-mappings.yaml
 plugins:
   - plugins.js

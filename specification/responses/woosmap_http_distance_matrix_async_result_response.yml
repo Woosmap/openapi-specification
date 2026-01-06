@@ -1,0 +1,14 @@
+# [START woosmap_http_distance_matrix_async_result_response]
+{
+  "matrixId": "39585bfc-59cc-478c-9b87-12685c9b880c",
+  "matrix": {
+    "numOrigins": 2,
+    "numDestinations": 2,
+    "travelTimes": [0, 1001, 1057, 0],
+    "distances": [0, 15156, 14345, 0]
+  },
+  "regionDefinition": {
+    "type": "world"
+  }
+}
+# [END woosmap_http_distance_matrix_async_result_response]

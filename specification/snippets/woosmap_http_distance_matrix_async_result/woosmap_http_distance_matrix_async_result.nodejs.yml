@@ -1,0 +1,5 @@
+{
+  "lang": "nodejs",
+  "label": "NodeJS",
+  "source": "const axios = require('axios');\n\nlet config = {\n  method: 'get',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/distance/matrix/async/39585bfc-59cc-478c-9b87-12685c9b880c?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'Referer': 'http://localhost'\n  }\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n",
+}

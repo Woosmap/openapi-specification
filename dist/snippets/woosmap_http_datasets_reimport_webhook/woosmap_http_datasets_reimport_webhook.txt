@@ -1,0 +1,4 @@
+[START woosmap_http_datasets_reimport_webhook]
+https://api.woosmap.com/datasets/hooks/reimport/my_reimport_key
+  ?private_key=YOUR_PRIVATE_API_KEY
+[END woosmap_http_datasets_reimport_webhook]
