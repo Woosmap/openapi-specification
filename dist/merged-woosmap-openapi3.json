@@ -1841,6 +1841,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       },
       "delete": {
@@ -1954,6 +1971,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X DELETE 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"DELETE\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"DELETE\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       },
       "put": {
@@ -2065,6 +2099,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X PUT 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"name\": \"my_updated_dataset\",\n  \"description\": \"My updated dataset description\"\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"name\": \"my_updated_dataset\",\n  \"description\": \"My updated dataset description\"\n});\n\nconst requestOptions = {\n  method: \"PUT\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"name\": \"my_updated_dataset\",\n    \"description\": \"My updated dataset description\"\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"PUT\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       }
     },
@@ -2175,6 +2226,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       },
       "post": {
@@ -2264,6 +2332,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"name\": \"my_dataset\",\n  \"description\": \"My dataset description\"\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"name\": \"my_dataset\",\n  \"description\": \"My dataset description\"\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"name\": \"my_dataset\",\n    \"description\": \"My dataset description\"\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       }
     },
@@ -2367,6 +2452,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/status?private_key=YOUR_PRIVATE_API_KEY'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/status?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/status?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       }
     },
@@ -2470,6 +2572,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/import?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/import?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/import?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       }
     },
@@ -2544,6 +2663,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/hooks/reimport/my_reimport_key?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/hooks/reimport/my_reimport_key?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/hooks/reimport/my_reimport_key?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "security": [],
         "x-original-tag": "dataset"
       }
@@ -2702,6 +2838,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/search/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"where\": \"cost_col:>32.3\"\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"where\": \"cost_col:>32.3\"\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/search/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/search/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"where\": \"cost_col:>32.3\"\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "search"
       }
     },
@@ -2945,6 +3098,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/nearby/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      3.883,\n      43.6\n    ]\n  },\n  \"buffer\": 5000\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      3.883,\n      43.6\n    ]\n  },\n  \"buffer\": 5000\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/nearby/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/nearby/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            3.883,\n            43.6\n        ]\n    },\n    \"buffer\": 5000\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "search"
       }
     },
@@ -3188,6 +3358,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/intersects/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          2.3522,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8566\n        ]\n      ]\n    ]\n  }\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          2.3522,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8566\n        ]\n      ]\n    ]\n  }\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/intersects/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/intersects/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n            [\n                [\n                    2.3522,\n                    48.8566\n                ],\n                [\n                    2.3622,\n                    48.8566\n                ],\n                [\n                    2.3622,\n                    48.8666\n                ],\n                [\n                    2.3522,\n                    48.8666\n                ],\n                [\n                    2.3522,\n                    48.8566\n                ]\n            ]\n        ]\n    }\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "search"
       }
     },
@@ -3431,6 +3618,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/contains/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      3.883,\n      43.6\n    ]\n  }\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      3.883,\n      43.6\n    ]\n  }\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/contains/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/contains/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            3.883,\n            43.6\n        ]\n    }\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "search"
       }
     },
@@ -3624,6 +3828,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/within/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          2.3522,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8566\n        ]\n      ]\n    ]\n  }\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          2.3522,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8566\n        ]\n      ]\n    ]\n  }\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/within/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/within/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n            [\n                [\n                    2.3522,\n                    48.8566\n                ],\n                [\n                    2.3622,\n                    48.8566\n                ],\n                [\n                    2.3622,\n                    48.8666\n                ],\n                [\n                    2.3522,\n                    48.8666\n                ],\n                [\n                    2.3522,\n                    48.8566\n                ]\n            ]\n        ]\n    }\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "search"
       }
     },
@@ -3770,6 +3991,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/my_feature_id?private_key=YOUR_PRIVATE_API_KEY'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/my_feature_id?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/my_feature_id?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "features"
       }
     },
@@ -5686,10 +5924,7 @@
               "example": {
                 "origins": "48.73534,2.368308|48.73534,2.368308",
                 "destinations": "48.83534,2.368308",
-                "units": "imperial",
-                "elements": "duration_distance",
-                "method": "distance",
-                "departure_time": "now"
+                "mode": "driving"
               }
             }
           },
@@ -5781,17 +6016,17 @@
           {
             "lang": "curl",
             "label": "cURL",
-            "source": "curl -L 'https://api.woosmap.com/distance/matrix/async?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"units\": \"imperial\",\n  \"elements\": \"duration_distance\",\n  \"method\": \"distance\",\n  \"departure_time\": \"now\"\n}'"
+            "source": "curl -L 'https://api.woosmap.com/distance/matrix/async?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"mode\": \"driving\"\n}'"
           },
           {
             "lang": "javascript",
             "label": "JavaScript",
-            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"units\": \"imperial\",\n  \"elements\": \"duration_distance\",\n  \"method\": \"distance\",\n  \"departure_time\": \"now\"\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/matrix/async?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"mode\": \"driving\"\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/matrix/async?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
           },
           {
             "lang": "python",
             "label": "Python",
-            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/distance/matrix/async?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n    \"destinations\": \"48.83534,2.368308\",\n    \"units\": \"imperial\",\n    \"elements\": \"duration_distance\",\n    \"method\": \"distance\",\n    \"departure_time\": \"now\"\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/distance/matrix/async?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n    \"destinations\": \"48.83534,2.368308\",\n    \"mode\": \"driving\"\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
           }
         ],
         "x-original-tag": "Distance Matrix Async"
