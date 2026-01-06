@@ -7,7 +7,7 @@
     "x-document-meta-data": {
       "copyright": "© 2025 Woosmap"
     },
-    "version": "1.39.0",
+    "version": "1.40.0",
     "contact": {
       "name": "Woosmap API"
     }
@@ -62,14 +62,14 @@
     },
     {
       "name": "Static Map API",
-      "description": "The Woosmap Static Maps API lets you generate customizable, embeddable map images using simple HTTP requests. It’s a lightweight alternative to interactive maps—ideal for emails, reports, or websites where dynamic JavaScript maps aren't needed.  \n\nYou provide parameters such as location, zoom level, size, and markers, and the API returns a map image that can be embedded directly into any webpage or application.\n",
+      "description": "The Woosmap Static Maps API lets you generate customizable, embeddable map images using simple HTTP requests. It’s a lightweight alternative to interactive maps—ideal for emails, reports, or websites where dynamic JavaScript maps aren't needed.\n\nYou provide parameters such as location, zoom level, size, and markers, and the API returns a map image that can be embedded directly into any webpage or application.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/map-static-api/get-started/"
       }
     },
     {
       "name": "Woosmap for what3words API",
-      "description": "The Woosmap for what3words integration enhances location search capabilities by incorporating what3words' unique\n3-word addressing system. \n\nThis API is a drop in replacement of what3words API but hosted on Woosmap Platform, with the addition of an endpoint leveraging the power of \n[Localities API](#tag/Woosmap_Platform_API_Reference_Localities-API) to convert a what3words address into a street address, bringing address level accuracy to what3words.\n",
+      "description": "The Woosmap for what3words integration enhances location search capabilities by incorporating what3words' unique\n3-word addressing system.\n\nThis API is a drop in replacement of what3words API but hosted on Woosmap Platform, with the addition of an endpoint leveraging the power of\n[Localities API](#tag/Woosmap_Platform_API_Reference_Localities-API) to convert a what3words address into a street address, bringing address level accuracy to what3words.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/w3w-api/get-started/"
       }
@@ -82,15 +82,22 @@
       }
     },
     {
+      "name": "Distance Async API",
+      "description": "The Woosmap Distance Async API suite provides tools for large or difficult distance calculations.\n\n* **Matrix:** Compute travel distance and time for a matrix of multiple origins and destinations.\n\nRequests are made via HTTPS (GET/POST) and require an API key (`key` or `private_key`) for quota management.\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/distance-api/get-started/"
+      }
+    },
+    {
       "name": "Transit API",
-      "description": "The Transit API delivers comprehensive public transportation routing information by calculating optimal travel paths between \norigins and destinations. It provides detailed route data including distance, duration, polyline visualization, \nand complete step-by-step transit instructions with transfer points and transportation modes. The API is ideal for \napplications requiring accurate public transit navigation and trip planning capabilities.\n",
+      "description": "The Transit API delivers comprehensive public transportation routing information by calculating optimal travel paths between\norigins and destinations. It provides detailed route data including distance, duration, polyline visualization,\nand complete step-by-step transit instructions with transfer points and transportation modes. The API is ideal for\napplications requiring accurate public transit navigation and trip planning capabilities.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/transit-api/route-endpoint/"
       }
     },
     {
       "name": "Datasets API",
-      "description": "Manage the full lifecycle of your geospatial data alongside powerful analysis and retrieval.\n\n* **Management:** Programmatically create datasets, import features in bulk (CSV/GeoJSON), and handle updates or deletions.\n* **Search:** Execute **Nearby**, **Contains**, **Intersects**, and **Within** queries using SQL-like `WHERE` filters.\n* **Features:** Direct access to individual geographic features by unique ID with field masking.              \n\nIdeal for applications that require precise location analysis, spatial queries and geographic data management.\n",
+      "description": "Manage the full lifecycle of your geospatial data alongside powerful analysis and retrieval.\n\n* **Management:** Programmatically create datasets, import features in bulk (CSV/GeoJSON), and handle updates or deletions.\n* **Search:** Execute **Nearby**, **Contains**, **Intersects**, and **Within** queries using SQL-like `WHERE` filters.\n* **Features:** Direct access to individual geographic features by unique ID with field masking.\n\nIdeal for applications that require precise location analysis, spatial queries and geographic data management.\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/datasets-api/get-started/"
       }
@@ -1834,6 +1841,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       },
       "delete": {
@@ -1947,6 +1971,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X DELETE 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"DELETE\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"DELETE\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       },
       "put": {
@@ -2058,6 +2099,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X PUT 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"name\": \"string\",\n  \"url\": \"http://example.com\"\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"name\": \"string\",\n  \"url\": \"http://example.com\"\n});\n\nconst requestOptions = {\n  method: \"PUT\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"name\": \"string\",\n    \"url\": \"http://example.com\"\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"PUT\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       }
     },
@@ -2168,6 +2226,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       },
       "post": {
@@ -2257,6 +2332,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"name\": \"string\",\n  \"url\": \"http://example.com\",\n  \"schema_mapping\": [\n    {\n      \"schema_key\": \"title\",\n      \"data_key\": \"string\"\n    }\n  ]\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"name\": \"string\",\n  \"url\": \"http://example.com\",\n  \"schema_mapping\": [\n    {\n      \"schema_key\": \"title\",\n      \"data_key\": \"string\"\n    }\n  ]\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"name\": \"string\",\n    \"url\": \"http://example.com\",\n    \"schema_mapping\": [\n        {\n            \"schema_key\": \"title\",\n            \"data_key\": \"string\"\n        }\n    ]\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       }
     },
@@ -2360,6 +2452,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/status?private_key=YOUR_PRIVATE_API_KEY'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/status?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/status?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       }
     },
@@ -2463,6 +2572,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/import?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/import?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/import?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "dataset"
       }
     },
@@ -2537,6 +2663,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/hooks/reimport/my_reimport_key?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/hooks/reimport/my_reimport_key?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/hooks/reimport/my_reimport_key?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "security": [],
         "x-original-tag": "dataset"
       }
@@ -2695,6 +2838,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/search/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"where\": \"cost_col:>32.3\"\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"where\": \"cost_col:>32.3\"\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/search/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/search/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"where\": \"cost_col:>32.3\"\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "search"
       }
     },
@@ -2938,6 +3098,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/nearby/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      3.883,\n      43.6\n    ]\n  },\n  \"buffer\": 5000\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      3.883,\n      43.6\n    ]\n  },\n  \"buffer\": 5000\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/nearby/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/nearby/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            3.883,\n            43.6\n        ]\n    },\n    \"buffer\": 5000\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "search"
       }
     },
@@ -3181,6 +3358,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/intersects/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          2.3522,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8566\n        ]\n      ]\n    ]\n  }\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          2.3522,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8566\n        ]\n      ]\n    ]\n  }\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/intersects/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/intersects/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n            [\n                [\n                    2.3522,\n                    48.8566\n                ],\n                [\n                    2.3622,\n                    48.8566\n                ],\n                [\n                    2.3622,\n                    48.8666\n                ],\n                [\n                    2.3522,\n                    48.8666\n                ],\n                [\n                    2.3522,\n                    48.8566\n                ]\n            ]\n        ]\n    }\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "search"
       }
     },
@@ -3424,6 +3618,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/contains/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      3.883,\n      43.6\n    ]\n  }\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      3.883,\n      43.6\n    ]\n  }\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/contains/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/contains/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            3.883,\n            43.6\n        ]\n    }\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "search"
       }
     },
@@ -3617,6 +3828,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/within/?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          2.3522,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8566\n        ]\n      ]\n    ]\n  }\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"geometry\": {\n    \"type\": \"Polygon\",\n    \"coordinates\": [\n      [\n        [\n          2.3522,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8566\n        ],\n        [\n          2.3622,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8666\n        ],\n        [\n          2.3522,\n          48.8566\n        ]\n      ]\n    ]\n  }\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/within/?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/within/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n            [\n                [\n                    2.3522,\n                    48.8566\n                ],\n                [\n                    2.3622,\n                    48.8566\n                ],\n                [\n                    2.3622,\n                    48.8666\n                ],\n                [\n                    2.3522,\n                    48.8666\n                ],\n                [\n                    2.3522,\n                    48.8566\n                ]\n            ]\n        ]\n    }\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "search"
       }
     },
@@ -3763,6 +3991,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/497f6eca-6276-4993-bfeb-53cbbbba6f08?private_key=YOUR_PRIVATE_API_KEY'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/497f6eca-6276-4993-bfeb-53cbbbba6f08?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/497f6eca-6276-4993-bfeb-53cbbbba6f08?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "features"
       }
     },
@@ -4032,6 +4277,185 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Distance_RouteResponse"
+                },
+                "examples": {
+                  "custom": {
+                    "summary": "Example response",
+                    "value": {
+                      "status": "OK",
+                      "routes": [
+                        {
+                          "overview_polyline": {
+                            "points": "a_~kHgrhXu@yAe@y@c@q@e@q@c@o@e@m@y@eAa@g@a@c@Y[UUQQYUQOSOQKSKOKQISIWKSEUEMCQAa@CeA@[E}@EUAOEOGKKIOM[I]Ea@A[?QBIBU?WFWDOLUP[P]j@y@^g@`@i@NUNONMJKJIFELCJBJAHGFIDMBSASBKDILURa@LWt@eAHO"
+                          },
+                          "bounds": {
+                            "northeast": {
+                              "lat": 49.315678,
+                              "lng": 4.152915
+                            },
+                            "southwest": {
+                              "lat": 49.31073,
+                              "lng": 4.145162
+                            }
+                          },
+                          "notice": "",
+                          "legs": [
+                            {
+                              "distance": {
+                                "text": "1 km",
+                                "value": 1038
+                              },
+                              "duration": {
+                                "text": "1 min",
+                                "value": 75
+                              },
+                              "start_location": {
+                                "lat": 49.31067,
+                                "lng": 4.14525
+                              },
+                              "end_location": {
+                                "lat": 49.31344,
+                                "lng": 4.15293
+                              },
+                              "start_waypoint": 0,
+                              "end_waypoint": 1,
+                              "end_address": "D 30",
+                              "start_address": "D 151",
+                              "steps": [
+                                {
+                                  "distance": "676 m",
+                                  "duration": "1 min",
+                                  "polyline": "a_~kHgrhXu@yAe@y@c@q@e@q@c@o@e@m@y@eAa@g@a@c@Y[UUQQYUQOSOQKSKOKQISIWKSEUEMCQAa@CeA@[E}@EUAOEOGKKIOM[I]Ea@A[?Q",
+                                  "start_location": {
+                                    "lat": 49.31073,
+                                    "lng": 4.145163
+                                  },
+                                  "end_location": {
+                                    "lat": 49.315679,
+                                    "lng": 4.149621
+                                  },
+                                  "travel_mode": "DRIVING",
+                                  "instructions": {
+                                    "action": 2,
+                                    "summary": "Drive northeast on D 151.",
+                                    "verbal_succint": "Drive northeast. Then Enter the roundabout and take the 2nd exit onto D 30.",
+                                    "verbal_before": "Drive northeast on D 151. Then Enter the roundabout and take the 2nd exit onto D 30.",
+                                    "verbal_after": "Continue for 700 meters."
+                                  }
+                                },
+                                {
+                                  "distance": "22 m",
+                                  "duration": "1 min",
+                                  "polyline": "}}~kHcniXBIBU?W",
+                                  "start_location": {
+                                    "lat": 49.315679,
+                                    "lng": 4.149621
+                                  },
+                                  "end_location": {
+                                    "lat": 49.31563,
+                                    "lng": 4.149905
+                                  },
+                                  "travel_mode": "DRIVING",
+                                  "instructions": {
+                                    "action": 26,
+                                    "summary": "Enter the roundabout and take the 2nd exit onto D 30.",
+                                    "verbal_alert": "Enter the roundabout and take the 2nd exit onto D 30.",
+                                    "verbal_succint": "Enter the roundabout and take the 2nd exit.",
+                                    "verbal_before": "Enter the roundabout and take the 2nd exit onto D 30."
+                                  }
+                                },
+                                {
+                                  "distance": "198 m",
+                                  "duration": "1 min",
+                                  "polyline": "u}~kH{oiXFWDOLUP[P]j@y@^g@`@i@NUNONMJKJIFELC",
+                                  "start_location": {
+                                    "lat": 49.31563,
+                                    "lng": 4.149905
+                                  },
+                                  "end_location": {
+                                    "lat": 49.314292,
+                                    "lng": 4.151623
+                                  },
+                                  "travel_mode": "DRIVING",
+                                  "instructions": {
+                                    "action": 27,
+                                    "summary": "Exit the roundabout onto D 30.",
+                                    "verbal_succint": "Exit the roundabout.",
+                                    "verbal_before": "Exit the roundabout onto D 30.",
+                                    "verbal_after": "Continue for 200 meters."
+                                  }
+                                },
+                                {
+                                  "distance": "46 m",
+                                  "duration": "1 min",
+                                  "polyline": "iu~kHsziXJBJAHGFIDMBSAS",
+                                  "start_location": {
+                                    "lat": 49.314292,
+                                    "lng": 4.151623
+                                  },
+                                  "end_location": {
+                                    "lat": 49.314041,
+                                    "lng": 4.151976
+                                  },
+                                  "travel_mode": "DRIVING",
+                                  "instructions": {
+                                    "action": 26,
+                                    "summary": "Enter the roundabout and take the 2nd exit onto D 30.",
+                                    "verbal_alert": "Enter the roundabout and take the 2nd exit onto D 30.",
+                                    "verbal_succint": "Enter the roundabout and take the 2nd exit.",
+                                    "verbal_before": "Enter the roundabout and take the 2nd exit onto D 30."
+                                  }
+                                },
+                                {
+                                  "distance": "96 m",
+                                  "duration": "1 min",
+                                  "polyline": "ws~kHy|iXBKDILURa@LWt@eAHO",
+                                  "start_location": {
+                                    "lat": 49.314041,
+                                    "lng": 4.151976
+                                  },
+                                  "end_location": {
+                                    "lat": 49.313431,
+                                    "lng": 4.152916
+                                  },
+                                  "travel_mode": "DRIVING",
+                                  "instructions": {
+                                    "action": 27,
+                                    "summary": "Exit the roundabout onto D 30.",
+                                    "verbal_succint": "Exit the roundabout. Then, in 100 meters, You will arrive at your destination.",
+                                    "verbal_before": "Exit the roundabout onto D 30. Then, in 100 meters, You will arrive at your destination.",
+                                    "verbal_after": "Continue for 100 meters."
+                                  }
+                                },
+                                {
+                                  "distance": "1 m",
+                                  "duration": "1 min",
+                                  "polyline": "}o~kHubjX",
+                                  "start_location": {
+                                    "lat": 49.313431,
+                                    "lng": 4.152916
+                                  },
+                                  "end_location": {
+                                    "lat": 49.313431,
+                                    "lng": 4.152916
+                                  },
+                                  "travel_mode": "DRIVING",
+                                  "instructions": {
+                                    "action": 4,
+                                    "summary": "You have arrived at your destination.",
+                                    "verbal_alert": "You will arrive at your destination.",
+                                    "verbal_before": "You have arrived at your destination."
+                                  }
+                                }
+                              ]
+                            }
+                          ],
+                          "main_route_name": "D 151",
+                          "recommended": true
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -4087,6 +4511,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/distance/route/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&details=full&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/route/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&details=full&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/route/json?origin=49.31067%2C4.14525&destination=49.31344%2C4.15293&mode=driving&language=en&alternatives=true&method=distance&details=full&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "route"
       }
     },
@@ -4325,6 +4766,42 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Distance_MatrixResponse"
+                },
+                "examples": {
+                  "custom": {
+                    "summary": "Example response",
+                    "value": {
+                      "status": "OK",
+                      "rows": [
+                        {
+                          "elements": [
+                            {
+                              "status": "OK",
+                              "duration": {
+                                "value": 978,
+                                "text": "16 mins"
+                              },
+                              "distance": {
+                                "value": 10796,
+                                "text": "10.8 km"
+                              }
+                            },
+                            {
+                              "status": "OK",
+                              "duration": {
+                                "value": 942,
+                                "text": "16 mins"
+                              },
+                              "distance": {
+                                "value": 10322,
+                                "text": "10.3 km"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -4380,6 +4857,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/distance/distancematrix/json?origins=48.709%2C2.403&destinations=48.709%2C2.303%7C48.768%2C2.338&mode=driving&language=en&elements=duration_distance&method=distance&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/distancematrix/json?origins=48.709%2C2.403&destinations=48.709%2C2.303%7C48.768%2C2.338&mode=driving&language=en&elements=duration_distance&method=distance&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/distancematrix/json?origins=48.709%2C2.403&destinations=48.709%2C2.303%7C48.768%2C2.338&mode=driving&language=en&elements=duration_distance&method=distance&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "distancematrix"
       },
       "post": {
@@ -4424,6 +4918,14 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/Distance_MatrixRequest"
+              },
+              "example": {
+                "origins": "48.73534,2.368308|48.73534,2.368308",
+                "destinations": "48.83534,2.368308",
+                "units": "imperial",
+                "elements": "duration_distance",
+                "method": "distance",
+                "departure_time": "now"
               }
             }
           }
@@ -4435,6 +4937,46 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Distance_MatrixResponse"
+                },
+                "examples": {
+                  "custom": {
+                    "summary": "Example response",
+                    "value": {
+                      "status": "OK",
+                      "rows": [
+                        {
+                          "elements": [
+                            {
+                              "status": "OK",
+                              "duration": {
+                                "value": 2406,
+                                "text": "40 mins"
+                              },
+                              "distance": {
+                                "value": 12210,
+                                "text": "7.6 miles"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "elements": [
+                            {
+                              "status": "OK",
+                              "duration": {
+                                "value": 2406,
+                                "text": "40 mins"
+                              },
+                              "distance": {
+                                "value": 12210,
+                                "text": "7.6 miles"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -4490,6 +5032,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/distance/distancematrix/json?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"units\": \"imperial\",\n  \"elements\": \"duration_distance\",\n  \"method\": \"distance\",\n  \"departure_time\": \"now\"\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"units\": \"imperial\",\n  \"elements\": \"duration_distance\",\n  \"method\": \"distance\",\n  \"departure_time\": \"now\"\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/distancematrix/json?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/distance/distancematrix/json?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n    \"destinations\": \"48.83534,2.368308\",\n    \"units\": \"imperial\",\n    \"elements\": \"duration_distance\",\n    \"method\": \"distance\",\n    \"departure_time\": \"now\"\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "distancematrix"
       }
     },
@@ -4664,6 +5223,25 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Distance_IsochroneResponse"
+                },
+                "examples": {
+                  "custom": {
+                    "summary": "Example response",
+                    "value": {
+                      "status": "OK",
+                      "isoline": {
+                        "origin": {
+                          "lat": 48.709,
+                          "lng": 2.403
+                        },
+                        "distance": {
+                          "value": 1,
+                          "text": "1 km"
+                        },
+                        "geometry": "s|ihHouuMZ`GdClCsA~QhCnQmBhEpCfF|HxGpBtFfEnBnHqJpH}ADaEcCaB@sBnEiEYiGmVyFaG{G[eFoCw@gAiIkDYg@_DwA@"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -4719,6 +5297,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "isochrone"
       },
       "post": {
@@ -4774,6 +5369,25 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Distance_IsochroneResponse"
+                },
+                "examples": {
+                  "custom": {
+                    "summary": "Example response",
+                    "value": {
+                      "status": "OK",
+                      "isoline": {
+                        "origin": {
+                          "lat": 48.709,
+                          "lng": 2.403
+                        },
+                        "distance": {
+                          "value": 1,
+                          "text": "1 km"
+                        },
+                        "geometry": "s|ihHouuMZ`GdClCsA~QhCnQmBhEpCfF|HxGpBtFfEnBnHqJpH}ADaEcCaB@sBnEiEYiGmVyFaG{G[eFoCw@gAiIkDYg@_DwA@"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -4829,6 +5443,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/isochrone/json?origin=48.709%2C2.403&value=1&mode=driving&language=en&method=distance&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "isochrone"
       }
     },
@@ -5055,6 +5686,152 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Distance_TollsResponse"
+                },
+                "examples": {
+                  "custom": {
+                    "summary": "Example response",
+                    "value": {
+                      "status": "OK",
+                      "routes": [
+                        {
+                          "legs": [
+                            {
+                              "distance": {
+                                "value": 272304,
+                                "text": "272 km"
+                              },
+                              "duration": {
+                                "value": 8834,
+                                "text": "2 hours 27 mins"
+                              },
+                              "start_location": {
+                                "lat": 43.7037562,
+                                "lng": 4.1217688
+                              },
+                              "end_location": {
+                                "lat": 45.7196995,
+                                "lng": 4.848819
+                              },
+                              "tolls": [
+                                {
+                                  "countryCode": "FRA",
+                                  "tollSystemRef": 0,
+                                  "tollSystem": "ASF",
+                                  "tollSystems": [
+                                    0
+                                  ],
+                                  "fares": [
+                                    {
+                                      "id": "e4626716-1e29-4f9a-905a-19f0376cfb38",
+                                      "name": "ASF",
+                                      "price": {
+                                        "type": "value",
+                                        "currency": "EUR",
+                                        "value": 28.9
+                                      },
+                                      "reason": "toll",
+                                      "paymentMethods": [
+                                        "cash",
+                                        "bankCard",
+                                        "creditCard",
+                                        "transponder",
+                                        "travelCard"
+                                      ],
+                                      "transponders": [
+                                        {
+                                          "system": "BipandGo"
+                                        },
+                                        {
+                                          "system": "BipandGo"
+                                        },
+                                        {
+                                          "system": "BipandGo IDVROOM carpoorling"
+                                        },
+                                        {
+                                          "system": "Cito30"
+                                        },
+                                        {
+                                          "system": "Easytrip pass"
+                                        },
+                                        {
+                                          "system": "Liane 30"
+                                        },
+                                        {
+                                          "system": "Liber-t"
+                                        },
+                                        {
+                                          "system": "Liber-t mobilitis"
+                                        },
+                                        {
+                                          "system": "Pass Pont-Pont"
+                                        },
+                                        {
+                                          "system": "Progressivi'T Maurienne"
+                                        },
+                                        {
+                                          "system": "TopEurop"
+                                        },
+                                        {
+                                          "system": "Tunnel Pass+"
+                                        },
+                                        {
+                                          "system": "Ulys"
+                                        },
+                                        {
+                                          "system": "Ulys Europe"
+                                        },
+                                        {
+                                          "system": "VIA-T"
+                                        },
+                                        {
+                                          "system": "Viaduc-t 30"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "tollCollectionLocations": [
+                                    {
+                                      "name": "MONTPELLIER (M.EST)",
+                                      "location": {
+                                        "lat": 43.70291,
+                                        "lng": 4.11982
+                                      }
+                                    },
+                                    {
+                                      "name": "VIENNE",
+                                      "location": {
+                                        "lat": 45.4761,
+                                        "lng": 4.83378
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "tollSystems": [
+                                {
+                                  "id": 7607,
+                                  "name": "ASF"
+                                }
+                              ]
+                            }
+                          ],
+                          "bounds": {
+                            "northeast": {
+                              "lat": 45.7197,
+                              "lng": 4.89669
+                            },
+                            "southwest": {
+                              "lat": 43.7022,
+                              "lng": 4.11696
+                            }
+                          },
+                          "overview_polyline": {
+                            "points": "m{viG_`dXDGLUDU@a@C]GUGMOOOEQCQDMFMPGPGf@@\\H\\HPJHNF\\@N?RFTNNTVh@Rh@Nl@^zBXlAb@|A\\~@\\t@Rx@RhADl@?VCd@EZGTKRUZUL]FM?MCQISOcAaA]WwF{HcDoEgA}AkBoCeCyDuE_IqEkIoEiI_@s@gBiDmCkFkC_FmRw^sB_Ea@w@c@y@sDcHuH{NyDwH}AeD{AoDy@uBmBuFiAuDeA{DiAcFOq@w@eEk@cDs@iFo@}Fo@iI[oGSaHGmFCyEGaXGmHG}DKkEKmDWqG_@qHa@wGi@aHMsAMsAk@mGK}@i@yEKu@_@uCAKWgBU}ASoAUwAWaBgAkGm@iDWoAy@cDaAkDiAeDcAgCeAaCoAcCmAuBaCqDsAcB}@eA_BaBq@m@aCoBgBoAgBeAaAg@iBy@w@[}Bu@sM}D_Cy@gEiBmCuAaBaAwDcCs@i@sBcByAsAiBeBwB_CiBwBqCwDoAiBoCsEgAqBoBgEqAyCmA_DiAcDgAeDc@{Aq@aCu@}CQw@_AwEc@gCy@oFi@{EUgCUyCWsEOkDO{GAkHBsEB_BFoBLiDNsCf@{Hx@qLTsCdI{iAj@}INeEFcGAkDGyCUiFSqCk@cFQqA]uBw@}Dq@mCoAoEa@mAi@wAyAkDm@qAWe@}AmCw@iAgBcCoA{A_C_CwKyJaEkDiL_KsHwGwC_CsE_D_DkBmBcAmEcCeBkAwBcByAqAq@o@}AgB}AoBuAsBk@_AyAmCaAqBuAiDq@sB{@{CeDmL{@sCmB{FuBwF{BaFuAqC{@_BuBmDaBeCqBqCw@cAwAeBgAmA{CyCgD_D_BsAoC_CyG{FyByBuB_CmCaDcByBgCuDoBcDcIsNk@_A_BgCu@eAcByBmB{BaEmE_GiG_DcDwD}DmBmBsAuAcB}AoCcCcA}@s@k@}CcCgDeC{FcEuAeAmAiAmAiAuAyAiAsAe@o@sAoB}@{Au@uAw@_Bq@}AoAgDa@oAiAeEm@sCa@wB]yBUiBi@wEYuCg@{EEe@K_AGk@y@uHYeCGe@}AcMi@qDOaAeBoK{AcIwDiQwC}LqD}NkAaF}@_EuAmGo@sC_ByIWaBq@oD]oB[yBw@cFo@oDi@uDcBiKkB_LSqAw@yEc@_CcAyFo@iDiA{Fm@aDmA_GsDuPGYoCeL_CcJqAwEw@sC_DuKoC}ImCmIgAcDmAiDyDmKaDqIeDiI_@{@Ui@eAkCeEwJuSoe@iFyLmCsGkDwI}FsOSk@kE_MoHoTgDsJSi@]}@gBgEyA_Ds@uA_BsCq@gAaCkD{BqCe@k@cDeDaB{AgA_AyBcBoAy@mBgAsBiAiEyBm@YsB{@aD}As@[eFaC_Bw@gCuA{B{AqCuBwBgByLsKmC_C_EoDgB_B_Ay@qO_NyFkFoAiAyE_E{I_IOMkSsQyDoDi@g@s@s@qCuCyBgCaDcEcCkDuBeDqBmDeC{EsAuCkBsEWq@{@}BgA{CmAqDcLg^wDuLiBaGe@wAuAmEwAsEwAwEgAyDgBgHw@uDq@wDqA{JW_CUaC_@iFc@}JQiH_@}RMeEWuGI}AWuD}@mK[_DeA{Im@qEeAmH}@sFs@cEeAsFkCaM_@cB{B_J_AmDiC_JcAcDuCuIwCcImAcDmCmG}BgFcCiFyCcGwCmFiB_DcDiFsEcHuHgLwC}EwAkCiBwDuBeF{AmEe@yAoAmE_BwG_AsEy@wEc@qCIk@w@iG{@_Ji@kHa@gG}@uOm@qJ_@cH]eGGoAi@qJGaAg@kIqAyUIuAEs@e@wHiAuO_@sEUyBi@_Fk@iEgAcHy@uEs@sDEQwAiGkAsEiA_Eu@cCwDaL{AaEuCmHeEwIkCkFiCuEcBuCkAmBsFoIgNyRiCqDeD_F_A}AkGaLuAcCy@{AcEsH}AsC[k@_Tc`@{@yAyFiKkDiGmCqE}A_CcDsEuBkCuBcC{BcCaAeA}BcCa@c@c@e@s@w@yAaBsD}EgBkC}AgC}C_GgA{BqBiE}AoD}BcF}BaFiA}B{Pg[aD}Fu@oAmIcOmB{CoAcByAeBuCwC_Aw@uAcAeBeAqDsBgFmCoCyAeC{AkCgBy@o@q@g@}AqA_EuDsCuC}CeDmEcF_D{D}CaEuEsGsCkEwDiGwD{G_@o@u@yAmA}BuAgCgBoDcAmBuAqCqBuDy@}A_BuC{CaFoBcDuFqIgK}NuB_DeA_BwBkDaAeBmCeF{AaDaCqF{ByFwBwFyBgGoAcD_C{FyAcD_AqByA_DcDyGaDaHwCaH{BaGsB{FiBuFmA_E}GmUqC{IaD_JoBcFqCuGaAyBmEiJoCmF_ByCcEmHyC_FcEqGkBuC_AsAsAoBm@y@eEwFeBcCqC_EiAeBkCiEm@eAm@gAuBgEkAyB_BiDmAuCyGuPeBiEm@yA]w@aCaFg@eA}AqCgB}CgCaEwCgEeEoFkByBqFcGwHkIsCkDmBgCcCiDeBoCw@mAcDmFyCqFsB}D}AcD_AuBy@wB}@mCq@_C_AcEe@gC[oB_@kCeAiIy@kFkAyFi@qBc@sAkBaFe@eAsAmCmAuBoBwCu@cAwCyDoFmHiBgCgAaBgDmFqBeDgB_DmCeFoB}D}B}E}AoDaA_CeEyKkAcDqBeGoBsGkBsG_E_OiBsGiBuFoAiDk@sAuAyC}AsCeBiCmCqDoAwAqBqBaA{@kCoBkBmAcCqAcAe@cAa@cA[gA[gAWkCe@kAOkCOmAEeA?oCHmAHkCViCZgFh@qBLaBFkBD}@CaAEeAK{@KiASmAYy@Y{Bw@aAc@c@QiCqAmE{BeEiBo@SqCm@cAO{AMw@Iu@C{A?yBD_AF}BVaCh@gAZeCx@cAb@uDzAgC`AeA\\eCp@cARyC`@w@FmADmC@}@CmCQqAQ{@OcAUiCs@oDsA{@]cBq@o@WsAm@iGgC_IcDi@S{@a@kQsH_FcCuBeA_CsAqD_CeCeB}BgB_CmB{BuBMMoBiBe@c@mAyAaBiB_AgAyEgG}KgO{BwCaCwC_@e@qCcDwBaCwA{A_DoCiCqBiBoAyA_A}BoAiAi@aBw@wCiAgCy@QGy@SwCs@}Cm@sB[iH}@cAIkBQ{D[}He@sCMo@?uE?aCDkF^u@HqBXkDn@iAViCn@mAb@y@PqBd@cDr@gC^cBR}ADmBB}BAeBKo@E}@MyAUuA[oBk@yAi@qCkA}DmBgG{CmB_AoBy@q@WgE}AqBm@sCs@{Be@mASiDa@oAIwAE_A?eBFuARiBd@k@RiB~@]Pu@j@]Tk@f@e@f@gAvAgA~Aa@p@wCxFcEbJkCnFq@rAcAjBs@hA{CzE}@fAgAnAyAxAYXo@j@_BrA}BbB}@l@cBbAsHjEkEbCoKjGoBbA}BbAq@XwChAoCjAm@VgHnCgBp@a@NcBf@c@TiGfCqDpAsLtEuJpDuDxAmAh@aBv@q@^yFlDmAz@eAt@qBnAmBpAmBlAmBpAkD|B{HdF{E~CaLpHeDtBmMxI{DhC[TmGdEuc@xYiAv@{FtDeGlEyBdBwD`DgE|DsDpDiBnBqElFqE|FmBlCiCxDqEjHcBvCaCnEIN{ChGaDhHuElLqBjFk@zAgCxGkBrEqArC}BtEq@nAiCbEkBdCmAvAeAfAkAdAgCpBqBjAmAn@gAf@{Bz@kBh@oB`@gAPiCVyCL_B@kC?yIMkCFyADwBNkAL_ANuB`@q@N{@RmA\\aAZoAf@kBx@{BlAsAx@wCrBwAhAmAfAeC`CmAnAaAbAiBrB}AfBcJzKuCfDsD|DuDnD{@r@uAhAwDrCiBnAiBhAoAr@}Ax@}HrDmJdEiDvA}Ap@kDrAyC`AgAXsCj@sATeBNsCPyDFqBEkCMqBOiSuBiBSiHu@mDg@uAYeBa@wBm@sBs@{CsAkBcAmAu@gMgIkTwN_SoMwDgC_C}Aa_@mVez@mj@yIgGsFcEcG_F{FiFyBuBsIqIwNeOm@m@}@_AkHqH{GaHqFqFwBoB{BeBw@k@aC}AeCuA_CgAaDoAaA[gAYkEaAeAOuBYgBOaFUiAEaGOgACw@Ac@Ac@?iEM_Sa@iCCmC@eBFoBHqALwAPeBZwAVwA^iA\\wAf@eBp@aBt@sDfBwJhF{FtCoFjCmD|AmBt@iBp@mDfAsA^cEdAiB\\mEt@{C`@kBR}@JoDZaDPmQnAaEV_OdAyG^oI`@_FRoDJgGRwGLoDDeJHiC@wX?iGCkMBoAByBFuCDiCFsBFa@BiADiHb@mBLsBN{Iz@iD`@mDd@iGbAcF|@qLbC{M|CgKxBoEv@uDl@uEn@gIz@sE`@gk@vEcCPmDXmD\\i`@`DcCT{Jv@oFd@gIl@gHf@_CNqJf@qELgB@yDD_HEaBCwDKwBKsBGsAKcEYkBQmBQgCYaH_AiEs@kAUk@Ki@Ke@I]ImCi@mEiAaHmBaEoAyHsC_DqAuDaBkAk@{F{CcHeEm@[oBoAyAeAsB{AyHoG}AuA_CuBeIcIiHeIkC{CcBuBk@q@yBiCmBuBqBsBsBsBgD}CgDoCyAiAaBkAgAw@mD{BoBiAeEwB}As@cCcAeE{AiCy@yC{@mCo@mE{@y@UcF_A_F_AkN{CuD{@oGgBcAY_AYUGqDiAwE_BeA]aBk@eEcBeBs@sEoBsDaBkFmCk@[gIkE{SuLqDmByCyAqCoAyEgBuFiB}Bk@mBe@{E_AuB[iEi@aCSaDSqEQwAEwCC}CCoIIeHIsJMoDGaLI{FIuDGaCEkX[mACuHW_Fa@iBSaEk@kASiDq@kAW_EkAiCy@aC{@w@YyAm@yCsAqBcAeFsCwDeC{AeAiFgE}AsAyAuAqCqC}@_Ao@u@oAwAsD{Ek@s@_@k@_AsAyBgDwC_Fs@kAwFiKaIsOgBeDmD_HwB{D}CqFaBmCiCaEyAyBcGeIaCyC{AgBeCqC_DgDeCeC{GiGwFsEqDkCmCkB_DqB_JiFo@]gFeCcCeA_CaAq@YqAg@_C_AsB{@cRyGkPqFu@UoImCQGoBm@uHyBkA]cMiDgHeBqEw@iCc@aEe@cDW{AIgEM_DGeD?wEFmCDgGTeFVwE\\sALwLlAuG|@_BVcKhByE`AsFrAyCt@eGdB{IpCe[rKgQhGWHq@VcLzDuE`B]Jg@PuAh@kAb@mHtC_Ab@aEbBiKvEsAp@sCtAeItDcEfB{DzAiDnAuBr@yDjA{Bl@{EhAeCn@aCd@qIxAsBZqBVsDb@aGj@oDXqDVmGZeFPwDHcEDmIBcHAoNCa@?uMCgQLaNRkJTsJZ_Md@yOx@mIXiCH_@?c@@oGBaCAkEIcFQsE[kHs@_@CwB[iC]{E{@oFiASESC{Bi@iEgAcJsBmGsAkFeAkDm@kEq@yGy@uCYsFc@uCWaJg@s@AsG[iE]q@EYA{@?wC?mCM_S{@s@CcGO}BMcBIkDMgEKmBC}B?yCDgAD_EVeBPkBVqB\\uDv@iCr@_Cv@mBr@gBt@mAj@yAt@cAj@{CfBsSdN}D~BiGfDsEtBwB|@}Aj@wFjBu@VeCr@}Bh@gCj@yDv@oEv@aJxAqHpA_MtBy@LkC\\uGx@kFh@cAHwF\\oDPqHLuDB{GGeEIgGWw@GwCOoSwA{Jw@yDa@gDi@y@MkCm@{Aa@qA[aCu@cEoAeF}AuAc@qFsAmEy@{B]aAKeCUyAKcEOoDC}B?aCFy@D_Kl@gBNmIf@sCJcEFcA?mFIoDQsAKcCWeC]sB[kBa@_B_@{Cw@sBo@qBq@}B_AsF_C_Bo@aGoCw@]qFeCkAg@yBaAeAc@u@[cNkGqAm@eCiAy@[kGqC_DuAm@[gJmEkDgB{CaBq@_@kBeAUMwBsAgFiDoA}@wDuCqF{EoBoBgAiA{@aAmCaD{CeEeBiCgEkH_B_Dy@gBwCeHuAyDQg@cAaDgBiGkB_IyAuHmAgH_Fc\\sA}HcAiF}@{DgA_E]kAaBiFa@kA_AcCu@iBs@_BaAwBkA_CeB_DoAwBoAmBmBmC_CwCY]]a@yB_C_B}AmFwEsD{CiUwQoQ{NuMmKcNsKaGiEoFmDcF{CuDqBqCuAkAi@o@[_EeBsAi@iE}A_IiC}MgE{FcBsEoAwBi@cBc@eDs@gEy@cCe@uQuCoFw@_m@iJs]gFkC]oWqDwFw@qC_@gd@gGgGw@yGw@uEc@iCSeDQeBGaCG{CEkA?{FFkDJwDRYBkE\\eBPg@FcH|@_QfCuDd@cEb@g@BsCRcDL}BB}E?yDKaCK}@G_CScCWuCa@qF_AsCm@YKUGiF{Ae@OsFiBgIuCg@Q{h@aRoE}AmG{ByCcA_A[s@Ww@Y_Cw@cA]mC_AiDaAyAc@oKoCsDo@mB]{AUkDe@qB[aBWmC[oB[wAU{B]oIoAeC]gBUwAQcAK}@KyCWuEUgCKgEEmBBcGHwDL{G^}CLoCHsA?aCCgAE}C[oASwB_@iAWkA[gC{@uAi@u@[yBkAcBeAeCaByBcBiCsBiByAi@_@iG}E]YcIkGcBoAo@i@mDgDs@y@wE_Gm@o@cB}Aw@o@w@k@yEiCeBq@iA]cAWaAQuC[cI]gFUaFYuBWgASwFoAsBa@}@MaAIgACy@?aBHsAL}@Lc@LeBf@aA`@]RcDjBsAn@cBl@wBj@q@LuAP{O~AcAH_BRmBPaBViB\\}LrCkBd@mBh@s@RyAh@aA`@oB|@eBz@wBlAi@TmAd@gAZuAXgAL{AHqB@oCQ_AIiAUkDu@sEaAuA[oAU_B[s@MkB]y@KeAImACu@Ci@?g@@yADeBNaC^qBd@YHoAf@q@Tu@\\yB|@qIlD_DlAsBr@QD[H}@XeB^uB`@aBT_CX_BN_AFuAFaCDeIFqGLaBL_CZoAPyBd@k@LiAZcBf@uBx@mB|@{PlJwDjBuD`Bs@VcA`@}Ah@yEvAyDz@iB\\w@LkDh@eAPsCV{CTqBJo@BaGJyDAmR]iJQoEIsIMgC?uA@kELcBJg@BaY~AyAFmFXmCL}BFsCFmEBuC?o@A{CCiAEoHWkIo@{Eg@yEk@mGeAuN}CuGyAwDs@wB]iAOyEg@uF[mEKuCAiA@mFL{CLoBJeDTkY|AsWzAa@BiBL{BR_D`@uDp@wCn@sDbA{DrAqDzA_ErB}@d@iAn@aCzAyAbAsAbAcDrC}ApAsDhD{@z@{@t@[RiAx@mAr@o@Z]Pq@^y@X{@XiDr@cCV_DLuEM_Dc@iBc@qA_@_A_@]O{Aw@m@]w@g@wB_ByAuAuA{AcBuBqGwI}@oAgD{Dk@m@gDyCoAeAkBsAkAs@{@i@kAo@mAm@{B_AqBq@cBk@yAa@wA[{AWgBUeEa@cCOeCIcCBeBJkD^oARcK`C_BPmANyALyABsBAgBG}AKsDg@qDcAoDuAiDkBwEgDqB{AeL}IgHuFwJsHsJuHyAsAiBgBiAmAqCcDiC_DuCuDiDgEgBuBiAmAsAoAgCyBoCkBeC}AQKSKiDwA{B{@{Cw@wB]_Ca@yE[kBE_DBsEZeFr@sq@rOaOhDyDdA}Af@yAh@_C`AaBv@wEdC_HzDkB|@{B|@kBl@_AVmAXyB`@aCZkAJcBHiCDsB?sCCo@C_BAcDIgLYiHMk@AiGO{BGmBCk@CoFMO?Y?a^s@iJWaEG}BAeE@}AD{BLiBPgCZwAToAVyCv@}Br@yBx@oBx@mB~@{@f@yAz@uDfCiBzA[XUR}ArA}ApAmAbA_BhAsBpAu@^cBv@uAd@mAZsCd@wAPwCd@qAV_AViA^}An@}Av@cAl@sBxAuAjAyEjEgF|EuBdBeAv@y@h@w@d@}Ar@eA^]Lo@Rm@PwAZ{@LsBPoBHwA@yBK_AGu@MgB[mBe@wBs@y@[}Ae@uBi@}AYkBUeCKgBBu@@aBJqBVkAT_Bb@y@Xm@RyBbAiAn@aAn@sAbA{BtBy@~@q@z@qAhBe@r@W`@qAdCm@tAaAbCs@xBaAjDi@dCiA~Es@lC]tAg@xA_BzDe@`As@tAo@dA}AxBk@r@iBnBw@r@w@p@mBrA}BpAgAd@aA^w@VkBh@_Cp@yN~D}CdA_C|@uBz@aDxAgCrAqDtBoAv@eBjAa@VqCrBeCtBmAlA_BfBqA`BwBtCsDbFwAhBgAjAcAdAyArA_Av@kBvAo@b@yCdB}BhAsCnA}VjKeBv@uAr@g@ZQH}AbA_Ar@u@l@u@r@aBjBmA|A_AtAw@pAmA~B_AnBsCnFsAxBcAzA{@fAmCtCkBbBkA`ASLyAdAe@XuCzAoBx@eCx@sCp@}@RiCZeBLkCDwCEqBKcBMcZiCcIs@cCQkCMuAEiCCiA@oDL}DXyDj@qCj@qBh@sC|@wChAk@ViB~@gBbAaB`AgAr@eBrAk@^oB|AwE`EuBjBqAhA{BnBqC~BoNzLwEdEkGjF{F`FiA~@eAr@_@VeAn@q@\\mBx@qBn@iBb@s@LiBRy@FsBF{BEgCSmBYaCi@oBc@kPiEoE_A}@MwAK}@Cs@Cg@?cCFmBNgBVwBd@gBh@iBt@i@VmAp@{AbAmA~@{AxAyA|Aq@x@iA|AsB`D_FlHoBxCmCxD{AjBiApAmDfDy@r@qCpBmAv@sAt@ULsB`AqAd@}Ah@eAZ{A^aBZ_CZ_DXsAFc@?oB?eCE_IYeACoLe@oO]oACyB@qD?aFFcJH}@B_IZS@iCNkEVwJx@{Db@wKtAuHlA_[tFyB^iJdBmJbBk`@bHmB`@]Hk@JgFbA{J|AcCZkAJeAJcEN{C@kBCkCKqAIcCSoBWmRwBqDe@_Eo@qFkAaB]oMsCcGkAaBQkACgBDg@FsARuA\\aBl@}Az@kA|@g@f@oErEsAjAc@ZgAp@cBv@{@V_APaALmAHaA?aAGyAKy@McC]oBW_Fs@sAOwG{@qBQiBIgBIqAAsAAmA@aBDsFXqABgCAcDMoBO_AKyB[aBYyA[aBe@_EkA}@[yB_A}@a@qCwAwBsAqA{@cBmA{AmAo@i@yBuBwZgYuDiDyBqBiG{F_EwDwCoCkEaEaA{@gAgA_A}@sCmCg@e@_FsEaQ_PSQmAcA{CsBk@c@qAo@kAi@cAc@{@[s@UyBm@wBa@{AS_CSiAGoC?kA@u@BuBLiBToB\\aCj@mA`@kBt@mAh@_A`@c@Tk@V_@PmAh@oLfFq@VaDdAkCn@wB`@{C`@wBL}@BiBDgA?iAGqDY_BQoASqEy@eEaAeIcBwIkBgLeCqQsDgCm@_B[oGsA{D}@aCe@aDs@mLcCgDs@kNyCcHwA{GyAiE_AcEy@qCe@qFw@_Ee@}AOuKu@w@EiGU{BIoDA{BAq@@iCB{@BmCH{BF_@@_@@qDKeCMcAKo@KkBa@aAMs@Ko@Ai@Ck@BmALwCf@_AL}APc@@W?oFE_BIaAIs@MyA]iA[qFeBi@QsA]uAYmAMk@Ck@?iADe@DgAPc@JkA`@oAl@mGbDeBx@wAj@g@Pg@He@FkAHkA@qAIgAQeAYe@QcAe@iAs@a@[iAcAiAoAkAyAeFiHq@_AqC{Du@cAy@}@u@s@s@i@k@[eAa@cA[]Im@K[EmAMeAC}ABkBFgERwDHq@BoBDu@AoBKiB]_CeASKm@a@m@e@k@k@oA}Ae@q@]m@c@}@q@}ASi@[_AcAuCg@qAs@}Ak@eAw@oAg@o@}@cAkAkAgAaA_D_DqDcDwAwAu@cA]i@g@_Ac@}@{@wBqAaEoB}G]uA_EaN}@cCy@kBg@_Ai@{@kA{Ak@m@o@q@e@a@_BgA{@c@s@]s@Uy@W}AYuAKgHYoBQeAO_@KyAa@q@UaNkFyBu@eBc@m@M}AY}AOm@EeCCyA@_AF}ANaC`@}A`@qAd@aCdAeBbA{B~AuBbBoBdBuC|BoBnAeB`AaC`AuG|BoC`A{HhCaEvAc@TUJi@Xk@^a@Zu@r@w@`Ak@|@mAbCi@|Aa@~AQx@WfBIz@K|AIbC@tBPpFRjFBrA?fBE|AGdAMrAc@bDc@`Cg@~BqAfFs@hC{@lCu@rBy@zBoA~CKXKR}AtDa@x@qB`E}@bBGHeAjBiBzCiDdF{FzHcEfFoEdFyB`CkClCkDjDsElEuEfEyKtJa@Z{AlA{AlAoDrCyFhEyEfDqCfBqBjAuBdAkE`BkCfAeDdBgBhAm@b@wBbBo@j@yCxCuA|Ao@v@_@d@yAtBm@`Am@bAkAxBaApB{ApDi@tAiA`DeAtCu@fBiAxB_A|Ak@z@}BzCuBrBiA~@kAz@iAr@cAh@qAn@sDjBeHjDsHbDoDxAsEhBa@Rq@Tw@Ze@RwFnBgA`@sDnA}EzAwCr@cFpAqE`AoB^g@JgBVkEp@iEj@{AP_Ed@mAJoCPmCPkCLeC@cBIyBS{@Qy@Q}@WaBo@e@UoAs@_@WkByAwAsA_CcCmC_D{AoB{AuBiHmKyEgGqDiEwCaDcCcCeE{D{DcDeCiBsDeCkBiA_FuCsGmDwGcDeEqBuCoAyFyB}JuD_UmIiEeB_Aa@kIuDgB{@mHuDiBcAs@_@qAw@cEcCkAs@kFqD}CyB{DaDi@c@s@m@WUaCqB}AuAq@o@iBgBmDmDyPaR_EeEw@w@qCwCoJcJiC}BkJgIyGsFiF{DgDaCoCgBaBaAaFgCgEkBeCeAgGuBwHuBsF}AiIiCyK{DeHsCgVmKkBs@mA_@eAWyBi@{Bc@gDi@_AKo@CWEkESi@AmBC{ABu@@}AFcEVs@FwKt@kHf@{BPuE\\c@FmAJy@Js@HqBV_Fr@o@J{PfCcBXu@LQBwAHo@J_AZ_A^g@RoAd@oAZoB`@eANcAHmADkAAsAMq@Mm@Qa@MqE{AcA]q@MuB[eAIqBIyA?_CJuBVmAT[DcAVcAZkG|BeCp@}AVcAH_@DsAFeK`@aHXiCHu@DwDToAHi@DaGRsCDiABoA?WAqAAe@?]KQGQKQOQUUk@I_@MiAKeBIsBKmEOmDE_AKwBUsFEs@MuCMoCSuD@W@sA?cAB]PaAKuBS]OYSQ[MOUc@c@]@_@Fa@V}@L}@HkBLS?gAFFxFLnL@rAB`C@n@BhA?RAl@yA`@QD"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -5110,7 +5887,410 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/distance/tolls/json?origin=43.70386%2C%204.12200&destination=45.71971%2C%204.84891&mode=driving&private_key=YOUR_PRIVATE_API_KEY'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/tolls/json?origin=43.70386%2C%204.12200&destination=45.71971%2C%204.84891&mode=driving&private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/tolls/json?origin=43.70386%2C%204.12200&destination=45.71971%2C%204.84891&mode=driving&private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "tolls"
+      }
+    },
+    "/distance/matrix/async/": {
+      "post": {
+        "tags": [
+          "Distance Async API"
+        ],
+        "summary": "Start Matrix Calculation",
+        "description": "Start an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`",
+        "operationId": "start_async_matrix_distance_matrix_async__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/External-api-wrapper_MatrixRequest"
+              },
+              "example": {
+                "origins": "48.73534,2.368308|48.73534,2.368308",
+                "destinations": "48.83534,2.368308",
+                "mode": "driving"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_MatrixResponse"
+                },
+                "examples": {
+                  "custom": {
+                    "summary": "Example response",
+                    "value": {
+                      "matrix_id": "39585bfc-59cc-478c-9b87-12685c9b880c",
+                      "status": "accepted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPErrorModel"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "External-api-wrapper_PublicAPIKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKeyHeader": []
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/distance/matrix/async?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'content-type: application/json' \\\n-d '{\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"mode\": \"driving\"\n}'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const myHeaders = new Headers();\nmyHeaders.append(\"content-type\", \"application/json\");\n\nconst raw = JSON.stringify({\n  \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n  \"destinations\": \"48.83534,2.368308\",\n  \"mode\": \"driving\"\n});\n\nconst requestOptions = {\n  method: \"POST\",\n  headers: myHeaders,\n  body: raw,\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/matrix/async?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\nimport json\n\nurl = \"https://api.woosmap.com/distance/matrix/async?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = json.dumps({\n    \"origins\": \"48.73534,2.368308|48.73534,2.368308\",\n    \"destinations\": \"48.83534,2.368308\",\n    \"mode\": \"driving\"\n})\nheaders = {\n    'content-type': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
+        "x-original-tag": "Distance Matrix Async"
+      }
+    },
+    "/distance/matrix/async/{matrix_id}/status": {
+      "get": {
+        "tags": [
+          "Distance Async API"
+        ],
+        "summary": "Check Matrix Calculation Status",
+        "description": "Check on the progress of an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`",
+        "operationId": "async_matrix_status_distance_matrix_async__matrix_id__status_get",
+        "security": [
+          {
+            "External-api-wrapper_PublicAPIKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "matrix_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the matrix you want to check the status of.",
+              "title": "Matrix Id"
+            },
+            "description": "The ID of the matrix you want to check the status of."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_MatrixCheckResponse"
+                },
+                "examples": {
+                  "custom": {
+                    "summary": "Example response",
+                    "value": {
+                      "status": "completed"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPErrorModel"
+                }
+              }
+            }
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/distance/matrix/async/39585bfc-59cc-478c-9b87-12685c9b880c/status?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/matrix/async/39585bfc-59cc-478c-9b87-12685c9b880c/status?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/matrix/async/39585bfc-59cc-478c-9b87-12685c9b880c/status?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
+        "x-original-tag": "Distance Matrix Async"
+      }
+    },
+    "/distance/matrix/async/{matrix_id}": {
+      "get": {
+        "tags": [
+          "Distance Async API"
+        ],
+        "summary": "Get Matrix Calculation Result",
+        "description": "Get the results of an asynchronous matrix calculation.\n\nYou should confirm using the `/matrix/{matrix_id}/status` endpoint that the calculation is `completed` before calling this endpoint.\n\n**Rate limit**: `20/1s`",
+        "operationId": "async_matrix_distance_matrix_async__matrix_id__get",
+        "security": [
+          {
+            "External-api-wrapper_PublicAPIKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKey": []
+          },
+          {
+            "External-api-wrapper_PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "matrix_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the matrix you want to get the result of",
+              "title": "Matrix Id"
+            },
+            "description": "The ID of the matrix you want to get the result of"
+          }
+        ],
+        "responses": {
+          "303": {
+            "description": "Redirect to the result of the matrix calculation.",
+            "content": {
+              "application/json": {
+                "schema": {},
+                "examples": {
+                  "custom": {
+                    "summary": "Example response",
+                    "value": {
+                      "matrixId": "39585bfc-59cc-478c-9b87-12685c9b880c",
+                      "matrix": {
+                        "numOrigins": 2,
+                        "numDestinations": 2,
+                        "travelTimes": [
+                          0,
+                          1001,
+                          1057,
+                          0
+                        ],
+                        "distances": [
+                          0,
+                          15156,
+                          14345,
+                          0
+                        ]
+                      },
+                      "regionDefinition": {
+                        "type": "world"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPValidationError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/External-api-wrapper_HTTPErrorModel"
+                }
+              }
+            }
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/distance/matrix/async/39585bfc-59cc-478c-9b87-12685c9b880c?private_key=YOUR_PRIVATE_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/distance/matrix/async/39585bfc-59cc-478c-9b87-12685c9b880c?private_key=YOUR_PRIVATE_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/distance/matrix/async/39585bfc-59cc-478c-9b87-12685c9b880c?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
+        "x-original-tag": "Distance Matrix Async"
       }
     },
     "/geolocation/position": {
@@ -9123,6 +10303,23 @@
             }
           }
         },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L 'https://api.woosmap.com/maps/static?lat=48.8566&lng=2.3522&zoom=14&width=600&height=400&markers=48.8566%2C2.3522&language=en&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/maps/static?lat=48.8566&lng=2.3522&zoom=14&width=600&height=400&markers=48.8566%2C2.3522&language=en&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/maps/static?lat=48.8566&lng=2.3522&zoom=14&width=600&height=400&markers=48.8566%2C2.3522&language=en&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          }
+        ],
         "x-original-tag": "static"
       }
     },
@@ -21609,6 +22806,7 @@
       "name": "Distance",
       "tags": [
         "Distance API",
+        "Distance Async API",
         "Transit API"
       ]
     }

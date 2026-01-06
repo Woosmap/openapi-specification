@@ -2,6 +2,7 @@ const AddSecurityDisplayName = require('./decorators/add-security-display-name.j
 const MergeTagGroups = require('./decorators/merge-tag-groups.js');
 const ProcessTags = require('./decorators/process-tags.js');
 const TagGroups = require('./decorators/tag-groups.js');
+const InjectCodeSamples = require('./decorators/inject-code-samples.js');
 const ValidateTags = require('./rules/validate-tags.js');
 
 /**
@@ -16,6 +17,7 @@ module.exports = function woosmapPlugin() {
         'merge-tag-groups': MergeTagGroups,
         'process-tags': ProcessTags,
         'tag-groups': TagGroups,
+        'inject-code-samples': InjectCodeSamples,
       },
     },
     rules: {

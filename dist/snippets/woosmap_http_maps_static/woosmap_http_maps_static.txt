@@ -1,0 +1,11 @@
+[START woosmap_http_maps_static]
+https://api.woosmap.com/maps/static
+  ?height=400
+  &language=en
+  &lat=48.8566
+  &lng=2.3522
+  &markers=48.8566%2C2.3522
+  &width=600
+  &zoom=14
+  &key=YOUR_PUBLIC_API_KEY
+[END woosmap_http_maps_static]

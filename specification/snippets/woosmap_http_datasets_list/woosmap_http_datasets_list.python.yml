@@ -1,0 +1,5 @@
+{
+  "lang": "python",
+  "label": "Python",
+  "source": "import requests\n\nurl = \"https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY\"\n\npayload = {}\nheaders = {}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n",
+}

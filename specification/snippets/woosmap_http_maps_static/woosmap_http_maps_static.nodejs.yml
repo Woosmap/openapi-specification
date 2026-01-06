@@ -1,0 +1,5 @@
+{
+  "lang": "nodejs",
+  "label": "NodeJS",
+  "source": "const axios = require('axios');\n\nlet config = {\n  method: 'get',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/maps/static?lat=48.8566&lng=2.3522&zoom=14&width=600&height=400&markers=48.8566%2C2.3522&language=en&key=YOUR_PUBLIC_API_KEY',\n  headers: { \n    'Referer': 'http://localhost'\n  }\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n",
+}

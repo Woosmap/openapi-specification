@@ -1,0 +1,5 @@
+{
+  "lang": "javascript",
+  "label": "JavaScript",
+  "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/maps/static?lat=48.8566&lng=2.3522&zoom=14&width=600&height=400&markers=48.8566%2C2.3522&language=en&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));",
+}
