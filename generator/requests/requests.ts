@@ -785,8 +785,14 @@ export const REQUESTS: SnippetRequest[] = [
         request: new PostJsonRequest({
             url: "https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY",
             json: {
-                name: "my_dataset",
-                description: "My dataset description",
+                name: "string",
+                url: "http://example.com",
+                schema_mapping: [
+                    {
+                        schema_key: "title",
+                        data_key: "string",
+                    },
+                ],
             },
         }),
     },
@@ -811,8 +817,8 @@ export const REQUESTS: SnippetRequest[] = [
         request: new PutJsonRequest({
             url: "https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY",
             json: {
-                name: "my_updated_dataset",
-                description: "My updated dataset description",
+                name: "string",
+                url: "http://example.com",
             },
         }),
     },
@@ -942,7 +948,7 @@ export const REQUESTS: SnippetRequest[] = [
             url: new Url({
                 protocol: "https",
                 host: "api.woosmap.com",
-                path: "/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/my_feature_id",
+                path: "/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0/features/497f6eca-6276-4993-bfeb-53cbbbba6f08",
                 query: [
                     {
                         key: "private_key",

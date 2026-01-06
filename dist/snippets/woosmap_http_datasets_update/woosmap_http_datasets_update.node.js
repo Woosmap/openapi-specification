@@ -1,8 +1,8 @@
 // [START woosmap_http_datasets_update]
 const axios = require('axios');
 let data = JSON.stringify({
-  "name": "my_updated_dataset",
-  "description": "My updated dataset description"
+  "name": "string",
+  "url": "http://example.com"
 });
 
 let config = {

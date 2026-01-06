@@ -1,5 +1,5 @@
 {
   "lang": "nodejs",
   "label": "NodeJS",
-  "source": "const axios = require('axios');\nlet data = JSON.stringify({\n  \"name\": \"my_updated_dataset\",\n  \"description\": \"My updated dataset description\"\n});\n\nlet config = {\n  method: 'put',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n",
+  "source": "const axios = require('axios');\nlet data = JSON.stringify({\n  \"name\": \"string\",\n  \"url\": \"http://example.com\"\n});\n\nlet config = {\n  method: 'put',\n  maxBodyLength: Infinity,\n  url: 'https://api.woosmap.com/datasets/8c4c51f1-f6f3-43bc-b65d-7415e8ef22c0?private_key=YOUR_PRIVATE_API_KEY',\n  headers: { \n    'content-type': 'application/json'\n  },\n  data : data\n};\n\naxios.request(config)\n.then((response) => {\n  console.log(JSON.stringify(response.data));\n})\n.catch((error) => {\n  console.log(error);\n});\n",
 }

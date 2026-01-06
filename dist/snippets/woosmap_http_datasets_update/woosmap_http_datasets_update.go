@@ -14,8 +14,8 @@ func main() {
   method := "PUT"
 
   payload := strings.NewReader(`{
-  "name": "my_updated_dataset",
-  "description": "My updated dataset description"
+  "name": "string",
+  "url": "http://example.com"
 }`)
 
   client := &http.Client {

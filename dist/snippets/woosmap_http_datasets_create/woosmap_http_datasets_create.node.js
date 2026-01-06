@@ -1,8 +1,14 @@
 // [START woosmap_http_datasets_create]
 const axios = require('axios');
 let data = JSON.stringify({
-  "name": "my_dataset",
-  "description": "My dataset description"
+  "name": "string",
+  "url": "http://example.com",
+  "schema_mapping": [
+    {
+      "schema_key": "title",
+      "data_key": "string"
+    }
+  ]
 });
 
 let config = {

@@ -5,8 +5,14 @@ import json
 url = "https://api.woosmap.com/datasets/?private_key=YOUR_PRIVATE_API_KEY"
 
 payload = json.dumps({
-    "name": "my_dataset",
-    "description": "My dataset description"
+    "name": "string",
+    "url": "http://example.com",
+    "schema_mapping": [
+        {
+            "schema_key": "title",
+            "data_key": "string"
+        }
+    ]
 })
 headers = {
     'content-type': 'application/json'

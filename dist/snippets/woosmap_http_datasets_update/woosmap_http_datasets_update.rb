@@ -11,8 +11,8 @@ https.use_ssl = true
 request = Net::HTTP::Put.new(url)
 request["content-type"] = "application/json"
 request.body = JSON.dump({
-  "name": "my_updated_dataset",
-  "description": "My updated dataset description"
+  "name": "string",
+  "url": "http://example.com"
 })
 
 response = https.request(request)
