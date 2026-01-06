@@ -13,10 +13,7 @@ request["content-type"] = "application/json"
 request.body = JSON.dump({
   "origins": "48.73534,2.368308|48.73534,2.368308",
   "destinations": "48.83534,2.368308",
-  "units": "imperial",
-  "elements": "duration_distance",
-  "method": "distance",
-  "departure_time": "now"
+  "mode": "driving"
 })
 
 response = https.request(request)
