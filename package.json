@@ -50,7 +50,7 @@
     "fast-safe-stringify": "^2.1.1",
     "glob": "^8.0.3",
     "js-yaml": "^4.1.1",
-    "jsonpath-plus": "^6.0.1",
+    "jsonpath-plus": "^10.3.0",
     "mdast-builder": "^1.1.1",
     "mdast-util-from-markdown": "^0.8.5",
     "mdast-util-gfm": "^0.1.2",
