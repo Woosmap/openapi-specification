@@ -99,7 +99,7 @@ tags:
       https://api.woosmap.com/zones
       ```
     externalDocs:
-      url: https://developers.woosmap.com/products/search-api/get-started/
+      url: https://developers.woosmap.com/products/stores-api/overview/
   - name: Geolocation API
     description: >
       Geolocation API returns a location (or nearby stores) and accuracy radius based on an IP address.

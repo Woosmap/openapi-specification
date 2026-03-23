@@ -10,7 +10,7 @@ An OpenAPI specification for Woosmap Platform.
 | API                                                                              | Status   |
 |----------------------------------------------------------------------------------|----------|
 | [Geolocation](https://developers.woosmap.com/products/geolocation-api/location/) | Complete |
-| [Stores](https://developers.woosmap.com/products/search-api/get-started/)        | Complete |
+| [Stores](https://developers.woosmap.com/products/stores-api/overview/)           | Complete |
 | [Localities](https://developers.woosmap.com/products/localities/get-started/)    | Complete |
 | [Address](https://developers.woosmap.com/products/address-api/get-started/)      | Complete |
 | [Distance](https://developers.woosmap.com/products/distance-api/get-started/)    | Complete |
