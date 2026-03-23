@@ -2,7 +2,7 @@
 servers:
   - url: https://api.woosmap.com
 tags:
-  - Data Management API
+  - Stores API
 description: >
   Used to delete one or more assets. The `storeId` specified in `query` parameter is the id of the asset to delete. To delete several assets, use the comma as a separator.
   To delete all project assets, omit the `query` parameter.

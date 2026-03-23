@@ -1,7 +1,7 @@
 servers:
   - url: https://api.woosmap.com
 tags:
-  - Store Search API
+  - Stores API
 description: >
   Used to retrieve assets from query.
 security:
