@@ -1,7 +1,7 @@
 servers:
   - url: https://api.woosmap.com
 tags:
-  - Stores API
+  - Zones
 description:
  Used to delete one Zone. The `zone_id` is the id of the zone to delete. To delete several zones, use the comma as a separator.
 security:

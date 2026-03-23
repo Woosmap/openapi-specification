@@ -1,7 +1,7 @@
 servers:
   - url: https://api.woosmap.com
 tags:
-  - Stores API
+  - Data Management
 description:
   Used to update assets in batch.
   `storeId` must exists when using `PUT` method, if one asset does not exists, the batch will be refused.

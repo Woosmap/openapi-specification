@@ -56,16 +56,17 @@ security:
   - PrivateApiKeyAuth: []
   - PrivateApiKeyHeaderAuth: []
 tags:
-  - name: Stores API
+  - name: Search
     description: >
-      Stores API lets you query the Assets which are returned as a [GeoJson](https://geojson.org/).
+      Store Search lets you query the Assets which are returned as a [GeoJson](https://geojson.org/).
       Request is done over HTTPS using GET.
       You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
       This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
       If your request returns a high number of assets, the result will be paginated. If so, you can request assets by page using `page` and `stores_by_page` parameters (Default is **100**, max is **300**).
-
-      ## Data Management
-
+    externalDocs:
+      url: https://developers.woosmap.com/products/stores-api/overview/
+  - name: Data Management
+    description: >
       Manage the store and asset data within your Woosmap project. It provides full CRUD (Create, Read, Update, Delete) operations
       through standard HTTP methods, supporting batch imports up to 15MB, along with an atomic replace operation for swapping
       entire datasets without downtime.
@@ -79,9 +80,10 @@ tags:
       ```
       POST|GET|PUT|DELETE https://api.woosmap.com/stores
       ```
-
-      ## Zones
-
+    externalDocs:
+      url: https://developers.woosmap.com/products/stores-api/overview/
+  - name: Zones
+    description: >
       The Zones Endpoint lets you associate geographic polygons (zones) with your stores and then search for stores whose zone
       contains a specific point. Unlike distance-based search, which relies on straight-line proximity, zone-based search accounts
       for real-world boundaries like delivery areas, service regions, or franchise territories.
@@ -122,7 +124,7 @@ tags:
       Request is done over HTTPS using GET. Response is formatted as JSON.
       You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
       This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
-      
+
       >**⚠️ This API has been deprecated in favour of Localities API**
     externalDocs:
       url: https://developers.woosmap.com/products/address-api/get-started/

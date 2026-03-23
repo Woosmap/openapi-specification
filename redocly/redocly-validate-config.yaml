@@ -12,7 +12,9 @@ rules:
     severity: error
     requireOperationTags: true
     expectedNames:
-      - "Stores API"
+      - "Store Search"
+      - "Data Management"
+      - "Zones"
       - "Geolocation API"
       - "Localities API"
       - "Address API"

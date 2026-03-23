@@ -1,7 +1,7 @@
 servers:
   - url: https://api.woosmap.com
 tags:
-  - Stores API
+  - Data Management
 description: >
   Used to batch create Assets to a specific project identified with the `private_key` parameter.
 security:

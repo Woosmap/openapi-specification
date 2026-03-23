@@ -1,7 +1,7 @@
 servers:
   - url: https://api.woosmap.com
 tags:
-  - Stores API
+  - Data Management
 description: >
   Used to retrieve an asset from his `storeId`
 security:
