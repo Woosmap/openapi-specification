@@ -1,7 +1,7 @@
 servers:
   - url: https://api.woosmap.com
 tags:
-  - Zones API
+  - Zones
 description: >
   List all zones for the current project, sorted by `zone_id`.
 security:

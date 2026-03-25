@@ -1,7 +1,7 @@
 servers:
   - url: https://api.woosmap.com
 tags:
-  - Zones API
+  - Zones
 description: >
   Used to batch create Zones to a specific project identified with the `private_key` parameter.
 security:

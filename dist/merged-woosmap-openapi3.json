@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Woosmap Platform API Reference",
-    "description": "The Woosmap API is a RESTful API built on HTTP. It has predictable resource URLs. It returns HTTP response codes to indicate errors. It also accepts and returns JSON in the HTTP body. You can use your favorite HTTP/REST library for your programming language to use Woosmap's API, or you can use one of our Javascript SDKs for supported APIs:\n  - [Map JS](https://developers.woosmap.com/products/map-api/get-started/) - support All APIs\n  - [Localities JS](https://developers.woosmap.com/products/localities/localities-jsapi/get-started/) - for Localities API\n  - [MultiSearch JS](https://developers.woosmap.com/products/multisearch-lib/js/get-started/) - for Localities API and Store Search API\n\nYou can use Postman to test the API (if you use the `PUBLIC_API_KEY` authentication, don't forget to set the `Referer` Header corresponding to one of your restricted domain name).\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9%26entityType%3Dcollection%26workspaceId%3Dff0698d5-c4db-403e-b7c6-b622b68032d3)\n",
+    "description": "The Woosmap API is a RESTful API built on HTTP. It has predictable resource URLs. It returns HTTP response codes to indicate errors. It also accepts and returns JSON in the HTTP body. You can use your favorite HTTP/REST library for your programming language to use Woosmap's API, or you can use one of our Javascript SDKs for supported APIs:\n  - [Map JS](https://developers.woosmap.com/products/map-api/get-started/) - support All APIs\n  - [Localities JS](https://developers.woosmap.com/products/localities/localities-jsapi/get-started/) - for Localities API\n  - [MultiSearch JS](https://developers.woosmap.com/products/multisearch-lib/js/get-started/) - for Localities API and Stores API\n\nYou can use Postman to test the API (if you use the `PUBLIC_API_KEY` authentication, don't forget to set the `Referer` Header corresponding to one of your restricted domain name).\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D18437534-dad12f37-6d84-42d1-9889-2f529aee0ab9%26entityType%3Dcollection%26workspaceId%3Dff0698d5-c4db-403e-b7c6-b622b68032d3)\n",
     "termsOfService": "https://www.woosmap.com/en/policies/terms/",
     "x-document-meta-data": {
       "copyright": "© 2025 Woosmap"
@@ -19,17 +19,24 @@
   ],
   "tags": [
     {
-      "name": "Store Search API",
-      "description": "Stores Search API lets you query the Assets which are returned as a [GeoJson](https://geojson.org/). Request is done over HTTPS using GET. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/). If your request returns a high number of assets, the result will be paginated. If so, you can request assets by page using `page` and `stores_by_page` parameters (Default is **100**, max is **300**).\n",
+      "name": "Search",
+      "description": "Store Search lets you query the Assets which are returned as a [GeoJson](https://geojson.org/). Request is done over HTTPS using GET. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/). If your request returns a high number of assets, the result will be paginated. If so, you can request assets by page using `page` and `stores_by_page` parameters (Default is **100**, max is **300**).\n",
       "externalDocs": {
-        "url": "https://developers.woosmap.com/products/search-api/get-started/"
+        "url": "https://developers.woosmap.com/products/stores-api/overview/"
       }
     },
     {
-      "name": "Data Management API",
-      "description": "The Data Management API is a web service that uses an HTTP request to manage, create or edit your Assets. The API only supports JSON. So you have to create a JSON file with your assets’ addresses and other information. You’ll need to convert, or geocode, the addresses in your file to latitude/longitude (`lat` / `long`) coordinates. Those coordinates will be used for most of Woosmap features like [local searches](https://developers.woosmap.com/products/search-api/get-started/), [stores nearby a user location](https://developers.woosmap.com/products/geolocation-api/stores/) or for displaying markers on a map with [Woosmap Javascript API](https://developers.woosmap.com/products/js-api/get-started/).\n",
+      "name": "Data Management",
+      "description": "Manage the store and asset data within your Woosmap project. It provides full CRUD (Create, Read, Update, Delete) operations through standard HTTP methods, supporting batch imports up to 15MB, along with an atomic replace operation for swapping entire datasets without downtime.\nThis endpoint handles the complete lifecycle of your location data. You can add new assets in batch using POST, update existing assets with PUT, retrieve assets as GeoJSON with GET, remove individual or all assets with DELETE, and atomically replace your entire dataset using the replace operation. All write operations accept JSON payloads containing an array of store objects, each with a unique storeId, name, and geographic coordinates.\n\n``` POST|GET|PUT|DELETE https://api.woosmap.com/stores ```\n",
       "externalDocs": {
-        "url": "https://developers.woosmap.com/products/data-api/get-started/"
+        "url": "https://developers.woosmap.com/products/stores-api/overview/"
+      }
+    },
+    {
+      "name": "Zones",
+      "description": "The Zones Endpoint lets you associate geographic polygons (zones) with your stores and then search for stores whose zone contains a specific point. Unlike distance-based search, which relies on straight-line proximity, zone-based search accounts for real-world boundaries like delivery areas, service regions, or franchise territories.\nZone management provides a full set of CRUD operations: import zones in bulk, update existing zones, list all zones in your project, retrieve or delete individual zones by ID, and remove all zones at once. Each zone links a polygon (defined in WKT format) to a specific store via store_id and zone_id.\n\nOnce zones are imported, you can search for stores by adding `zone=true` to your Search request. The API returns stores whose zone polygon intersects the queried location rather than the nearest stores by distance.\n\n``` https://api.woosmap.com/zones ```\n",
+      "externalDocs": {
+        "url": "https://developers.woosmap.com/products/stores-api/overview/"
       }
     },
     {
@@ -54,11 +61,7 @@
       }
     },
     {
-      "name": "Zones API",
-      "description": "Woosmap Zones API is a web service that uses an HTTP request to manage, create or edit your Zones (polygons) attached to your assets.\nThe general principle is that sometimes searching assets using crowfly distance is not good enough. For example to search the restaurant that will do the delivery for a specified address, each restaurant has a delivery zone and for topological or business reasons it’s not always the nearest restaurant in charge of your delivery. Woosmap Zones API allows you to associate a delivery zone to each of the restaurants.\n",
-      "externalDocs": {
-        "url": "https://developers.woosmap.com/products/data-api/zones/"
-      }
+      "name": "Store Search"
     },
     {
       "name": "Static Map API",
@@ -718,7 +721,7 @@
           }
         ],
         "tags": [
-          "Data Management API"
+          "Data Management"
         ],
         "description": "Used to batch create Assets to a specific project identified with the `private_key` parameter.\n",
         "security": [
@@ -945,7 +948,7 @@
           }
         ],
         "tags": [
-          "Data Management API"
+          "Data Management"
         ],
         "description": "Used to update assets in batch. `storeId` must exists when using `PUT` method, if one asset does not exists, the batch will be refused.",
         "security": [
@@ -1129,7 +1132,7 @@
           }
         ],
         "tags": [
-          "Data Management API"
+          "Data Management"
         ],
         "description": "Used to delete one or more assets. The `storeId` specified in `query` parameter is the id of the asset to delete. To delete several assets, use the comma as a separator. To delete all project assets, omit the `query` parameter.\n",
         "security": [
@@ -1234,7 +1237,7 @@
           }
         ],
         "tags": [
-          "Data Management API"
+          "Data Management"
         ],
         "description": "Used to retrieve an asset from his `storeId`\n",
         "security": [
@@ -1522,7 +1525,7 @@
           }
         ],
         "tags": [
-          "Data Management API"
+          "Data Management"
         ],
         "description": "To replace all your Assets. This endpoint will delete all previous assets and import assets in request body. During the operation previous assets could always be displayed on map. If the import failed previous assets are not deleted.",
         "security": [
@@ -5058,7 +5061,7 @@
           "Distance API"
         ],
         "summary": "Calculate Isochrone",
-        "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`",
+        "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`\n\n**Ratelimit:** 10/1s",
         "operationId": "isochrone_distance_isochrone_json__get",
         "security": [
           {
@@ -5297,6 +5300,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 10,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -5321,7 +5326,7 @@
           "Distance API"
         ],
         "summary": "Calculate Isochrone",
-        "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`",
+        "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`\n\n**Ratelimit:** 10/1s",
         "operationId": "isochrone_post_distance_isochrone_json__post",
         "security": [
           {
@@ -5443,6 +5448,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 10,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -5469,7 +5476,7 @@
           "Distance API"
         ],
         "summary": "Find Tolls",
-        "description": "Get distance, duration and tolls for an origin,destination pair, based on the recommended route between those two points for a specified travel mode.\n\n**Rate limit**: `5/1s`",
+        "description": "Get distance, duration and tolls for an origin,destination pair, based on the recommended route between those two points for a specified travel mode.\n\n**Rate limit**: `5/1s`\n\n**Ratelimit:** 5/1s",
         "operationId": "tolls_distance_tolls_json__get",
         "security": [
           {
@@ -5887,6 +5894,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 5,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -5913,7 +5922,7 @@
           "Distance Async API"
         ],
         "summary": "Start Matrix Calculation",
-        "description": "Start an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`",
+        "description": "Start an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
         "operationId": "start_async_matrix_distance_matrix_async__post",
         "requestBody": {
           "content": {
@@ -6012,6 +6021,8 @@
             "External-api-wrapper_PrivateApiKeyHeader": []
           }
         ],
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -6038,7 +6049,7 @@
           "Distance Async API"
         ],
         "summary": "Check Matrix Calculation Status",
-        "description": "Check on the progress of an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`",
+        "description": "Check on the progress of an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
         "operationId": "async_matrix_status_distance_matrix_async__matrix_id__status_get",
         "security": [
           {
@@ -6134,6 +6145,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -6160,7 +6173,7 @@
           "Distance Async API"
         ],
         "summary": "Get Matrix Calculation Result",
-        "description": "Get the results of an asynchronous matrix calculation.\n\nYou should confirm using the `/matrix/{matrix_id}/status` endpoint that the calculation is `completed` before calling this endpoint.\n\n**Rate limit**: `20/1s`",
+        "description": "Get the results of an asynchronous matrix calculation.\n\nYou should confirm using the `/matrix/{matrix_id}/status` endpoint that the calculation is `completed` before calling this endpoint.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
         "operationId": "async_matrix_distance_matrix_async__matrix_id__get",
         "security": [
           {
@@ -6273,6 +6286,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -10056,7 +10071,7 @@
           "Static Map API"
         ],
         "summary": "Get Static Map",
-        "description": "Retrieve a static map\n\n**Rate limit**: `20/1s`",
+        "description": "Retrieve a static map\n\n**Ratelimit:** 20/1s",
         "operationId": "get_static_map_maps_static_get",
         "security": [
           {
@@ -10130,10 +10145,12 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "maximum": 640,
+              "maximum": 1280,
               "minimum": 40,
+              "description": "Width in pixels. width * height must not exceed 409,600.",
               "title": "Width"
             },
+            "description": "Width in pixels. width * height must not exceed 409,600.",
             "example": 400
           },
           {
@@ -10142,10 +10159,12 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "maximum": 640,
+              "maximum": 1280,
               "minimum": 40,
+              "description": "Height in pixels. width * height must not exceed 409,600.",
               "title": "Height"
             },
+            "description": "Height in pixels. width * height must not exceed 409,600.",
             "example": 400
           },
           {
@@ -10155,16 +10174,16 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string",
                 "contentMediaType": "application/json",
                 "contentSchema": {
                   "$ref": "#/components/schemas/Maps_MarkerWithUrlOptions"
-                }
+                },
+                "type": "string"
               },
-              "description": "Adds a marker.\n        \nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n        \n        ",
+              "description": "Adds a marker.\n\nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n\n        ",
               "title": "Markers"
             },
-            "description": "Adds a marker.\n        \nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n        \n        ",
+            "description": "Adds a marker.\n\nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n\n        ",
             "example": "{\"lat\": 43.6, \"lng\": 3.883, \"url\": \"https://webapp.woosmap.com/img/geolocated_marker.png?retina=yes\"}"
           },
           {
@@ -10174,16 +10193,16 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string",
                 "contentMediaType": "application/json",
                 "contentSchema": {
                   "$ref": "#/components/schemas/Maps_PolylineOptions"
-                }
+                },
+                "type": "string"
               },
-              "description": "Add a polyline.\n            \n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            ",
+              "description": "Add a polyline.\n\n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            ",
               "title": "Polylines"
             },
-            "description": "Add a polyline.\n            \n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            ",
+            "description": "Add a polyline.\n\n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            ",
             "example": "{\"enc\": \"ydjiG_}jVjn@cjAf`AycBnc@mqCp\\\\ewBrQmlBzrAeuCreBw_C\", \"color\": \"magenta\", \"weight\": 4}"
           },
           {
@@ -10193,41 +10212,17 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string",
                 "contentMediaType": "application/json",
                 "contentSchema": {
                   "$ref": "#/components/schemas/Maps_PolygonOptions"
-                }
+                },
+                "type": "string"
               },
-              "description": "Adds a polygon.\n            \n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            ",
+              "description": "Adds a polygon.\n\n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            ",
               "title": "Polygons"
             },
-            "description": "Adds a polygon.\n            \n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            ",
+            "description": "Adds a polygon.\n\n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            ",
             "example": "{\"shape\": \"ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??\", \"fill_color\": \"rgba(255, 20, 147, 0.5)\", \"color\": \"rgba(199, 21, 133, 0.7)\"}"
-          },
-          {
-            "name": "stylers",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "contentMediaType": "application/json",
-                  "contentSchema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Maps_MapStyle"
-                    }
-                  }
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Stylers"
-            },
-            "example": "[{\"featureType\": \"points_of_interest.business\", \"stylers\":[{\"visibility\": \"off\"}]}]"
           },
           {
             "name": "retina",
@@ -10238,6 +10233,31 @@
               "default": false,
               "title": "Retina"
             }
+          },
+          {
+            "name": "stylers",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "contentMediaType": "application/json",
+              "contentSchema": {
+                "items": {
+                  "$ref": "#/components/schemas/Maps_MapStyle"
+                },
+                "type": "array"
+              },
+              "type": "string",
+              "title": "Stylers"
+            },
+            "example": "[{\"featureType\": \"points_of_interest.business\", \"stylers\":[{\"visibility\": \"off\"}]}]"
           }
         ],
         "responses": {
@@ -10303,6 +10323,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -10333,7 +10355,7 @@
           }
         ],
         "tags": [
-          "Store Search API"
+          "Store Search"
         ],
         "description": "Used to retrieve assets from query.\n",
         "security": [
@@ -10653,7 +10675,7 @@
           }
         ],
         "tags": [
-          "Store Search API"
+          "Store Search"
         ],
         "description": "Autocomplete on `localizedNames` with highlighted results on asset name. Use the field `localized` in your query parameter to search for localized names.\n",
         "security": [
@@ -10825,7 +10847,7 @@
           }
         ],
         "tags": [
-          "Store Search API"
+          "Store Search"
         ],
         "description": "Used to retrieve Bounds for assets.\n",
         "security": [
@@ -10955,7 +10977,7 @@
           "Transit API"
         ],
         "summary": "Transit Route",
-        "description": "**Rate limit**: `10/1s`",
+        "description": "**Rate limit**: `10/1s`\n\n**Ratelimit:** 10/1s",
         "operationId": "transit_route_transit_route_get",
         "security": [
           {
@@ -11136,6 +11158,8 @@
             "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/transit/route?origin=48.73534,2.368308&destination=48.83534,2.368308&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
           }
         ],
+        "x-ratelimit-limit": 10,
+        "x-ratelimit-window-seconds": 1,
         "x-original-tag": "transit"
       }
     },
@@ -11145,7 +11169,7 @@
           "Woosmap for what3words API"
         ],
         "summary": "Convert To What 3 Words",
-        "description": "This function will convert a latitude and longitude to a 3 word address, in the language of your choice.\nIt also returns country, the bounds of the grid square,\na nearby place (such as a local town) and a link to the what3words map site.\n\n**Rate limit**: `20/1s`",
+        "description": "This function will convert a latitude and longitude to a 3 word address, in the language of your choice.\nIt also returns country, the bounds of the grid square,\na nearby place (such as a local town) and a link to the what3words map site.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
         "operationId": "convert_to_what_3_words_what3words_convert_to_3wa_get",
         "security": [
           {
@@ -11289,6 +11313,8 @@
             "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/what3words/convert-to-3wa?coordinates=48.858304,2.294514&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
           }
         ],
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-original-tag": "what3words"
       }
     },
@@ -11298,7 +11324,7 @@
           "Woosmap for what3words API"
         ],
         "summary": "Convert To Address",
-        "description": "This function converts a 3 word address to a list of address.\nIt will return at most the 5 closest addresses to the what3words provided.\n\n**Rate limit**: `20/1s`",
+        "description": "This function converts a 3 word address to a list of address.\nIt will return at most the 5 closest addresses to the what3words provided.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
         "operationId": "convert_to_address_what3words_convert_to_address_get",
         "security": [
           {
@@ -11418,6 +11444,8 @@
             "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/what3words/convert-to-address?words=couch.spotted.amended&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
           }
         ],
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-original-tag": "what3words"
       }
     },
@@ -11427,7 +11455,7 @@
           "Woosmap for what3words API"
         ],
         "summary": "Autosuggest",
-        "description": "AutoSuggest can take a slightly incorrect 3 word address and suggest a list of valid 3 word addresses.\nIt has powerful features that can, for example, optionally limit results to a country or area,\nand prioritise results that are near the user.\n\n**Rate limit**: `20/1s`",
+        "description": "AutoSuggest can take a slightly incorrect 3 word address and suggest a list of valid 3 word addresses.\nIt has powerful features that can, for example, optionally limit results to a country or area,\nand prioritise results that are near the user.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
         "operationId": "autosuggest_what3words_autosuggest_get",
         "security": [
           {
@@ -11691,6 +11719,8 @@
             "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/what3words/autosuggest?input=couch.spotted.am&clip-to-country=fr&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
           }
         ],
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-original-tag": "what3words"
       }
     },
@@ -11704,7 +11734,7 @@
           }
         ],
         "tags": [
-          "Zones API"
+          "Zones"
         ],
         "description": "List all zones for the current project, sorted by `zone_id`.\n",
         "security": [
@@ -11841,7 +11871,7 @@
           }
         ],
         "tags": [
-          "Zones API"
+          "Zones"
         ],
         "description": "Used to batch create Zones to a specific project identified with the `private_key` parameter.\n",
         "security": [
@@ -11999,7 +12029,7 @@
           }
         ],
         "tags": [
-          "Zones API"
+          "Zones"
         ],
         "description": "Used to update zones in batch. `zone_id` must exists when using `PUT` method, if one zone does not exists, the batch will be refused.",
         "security": [
@@ -12156,7 +12186,7 @@
           }
         ],
         "tags": [
-          "Zones API"
+          "Zones"
         ],
         "description": "Used to delete one or more Zones.",
         "security": [
@@ -12250,7 +12280,7 @@
           }
         ],
         "tags": [
-          "Zones API"
+          "Zones"
         ],
         "description": "Used to retrieve a zone from his `zone_id`\n",
         "security": [
@@ -12363,7 +12393,7 @@
           }
         ],
         "tags": [
-          "Zones API"
+          "Zones"
         ],
         "description": "Used to delete one Zone. The `zone_id` is the id of the zone to delete. To delete several zones, use the comma as a separator.",
         "security": [
@@ -16938,206 +16968,6 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
-      "Maps_MapStyle": {
-        "properties": {
-          "featureType": {
-            "type": "string",
-            "title": "Featuretype"
-          },
-          "elementType": {
-            "type": "string",
-            "title": "Elementtype",
-            "default": "all"
-          },
-          "stylers": {
-            "items": {
-              "$ref": "#/components/schemas/Maps_MapStyler"
-            },
-            "type": "array",
-            "title": "Stylers"
-          }
-        },
-        "type": "object",
-        "required": [
-          "featureType",
-          "stylers"
-        ],
-        "title": "MapStyle"
-      },
-      "Maps_MapStyler": {
-        "properties": {
-          "visibility": {
-            "anyOf": [
-              {
-                "type": "string",
-                "enum": [
-                  "on",
-                  "off"
-                ]
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Visibility"
-          },
-          "color": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Color"
-          },
-          "hue": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Hue"
-          },
-          "saturation": {
-            "anyOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Saturation"
-          },
-          "gamma": {
-            "anyOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Gamma"
-          },
-          "lightness": {
-            "anyOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Lightness"
-          }
-        },
-        "type": "object",
-        "title": "MapStyler"
-      },
-      "Maps_MarkerWithUrlOptions": {
-        "properties": {
-          "lat": {
-            "type": "number",
-            "title": "Lat"
-          },
-          "lng": {
-            "type": "number",
-            "title": "Lng"
-          },
-          "url": {
-            "anyOf": [
-              {
-                "type": "string",
-                "maxLength": 2083,
-                "minLength": 1,
-                "format": "uri"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Url"
-          }
-        },
-        "type": "object",
-        "required": [
-          "lat",
-          "lng"
-        ],
-        "title": "MarkerWithUrlOptions",
-        "example": {
-          "lat": 43.6,
-          "lng": 3.883,
-          "url": "https://webapp.woosmap.com/img/geolocated_marker.png?retina=yes"
-        }
-      },
-      "Maps_PolygonOptions": {
-        "properties": {
-          "shape": {
-            "type": "string",
-            "title": "Shape"
-          },
-          "color": {
-            "type": "string",
-            "title": "Color",
-            "default": "rgb(65, 176, 246)"
-          },
-          "fill_color": {
-            "type": "string",
-            "title": "Fill Color",
-            "default": "rgba(65, 176, 246, 0.5)"
-          },
-          "weight": {
-            "type": "number",
-            "title": "Weight",
-            "default": 1
-          }
-        },
-        "type": "object",
-        "required": [
-          "shape"
-        ],
-        "title": "PolygonOptions",
-        "example": {
-          "color": "rgba(199, 21, 133, 0.7)",
-          "fill_color": "rgba(255, 20, 147, 0.5)",
-          "shape": "ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??"
-        }
-      },
-      "Maps_PolylineOptions": {
-        "properties": {
-          "enc": {
-            "type": "string",
-            "title": "Enc"
-          },
-          "color": {
-            "type": "string",
-            "title": "Color",
-            "default": "rgb(65, 176, 246)"
-          },
-          "weight": {
-            "type": "number",
-            "title": "Weight",
-            "default": 1
-          }
-        },
-        "type": "object",
-        "required": [
-          "enc"
-        ],
-        "title": "PolylineOptions",
-        "example": {
-          "color": "magenta",
-          "enc": "ydjiG_}jVjn@cjAf`AycBnc@mqCp\\ewBrQmlBzrAeuCreBw_C",
-          "weight": 4
-        }
-      },
       "Maps_ValidationError": {
         "properties": {
           "loc": {
@@ -17161,6 +16991,13 @@
           "type": {
             "type": "string",
             "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
           }
         },
         "type": "object",
@@ -17170,6 +17007,213 @@
           "type"
         ],
         "title": "ValidationError"
+      },
+      "Maps_MarkerWithUrlOptions": {
+        "example": {
+          "lat": 43.6,
+          "lng": 3.883,
+          "url": "https://webapp.woosmap.com/img/geolocated_marker.png?retina=yes"
+        },
+        "properties": {
+          "lat": {
+            "title": "Lat",
+            "type": "number"
+          },
+          "lng": {
+            "title": "Lng",
+            "type": "number"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "format": "uri",
+                "maxLength": 2083,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          }
+        },
+        "required": [
+          "lat",
+          "lng"
+        ],
+        "title": "MarkerWithUrlOptions",
+        "type": "object"
+      },
+      "Maps_PolylineOptions": {
+        "example": {
+          "color": "magenta",
+          "enc": "ydjiG_}jVjn@cjAf`AycBnc@mqCp\\ewBrQmlBzrAeuCreBw_C",
+          "weight": 4
+        },
+        "properties": {
+          "enc": {
+            "title": "Enc",
+            "type": "string"
+          },
+          "color": {
+            "default": "rgb(65, 176, 246)",
+            "title": "Color",
+            "type": "string"
+          },
+          "weight": {
+            "default": 1,
+            "title": "Weight",
+            "type": "number"
+          }
+        },
+        "required": [
+          "enc"
+        ],
+        "title": "PolylineOptions",
+        "type": "object"
+      },
+      "Maps_PolygonOptions": {
+        "example": {
+          "color": "rgba(199, 21, 133, 0.7)",
+          "fill_color": "rgba(255, 20, 147, 0.5)",
+          "shape": "ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??"
+        },
+        "properties": {
+          "shape": {
+            "title": "Shape",
+            "type": "string"
+          },
+          "color": {
+            "default": "rgb(65, 176, 246)",
+            "title": "Color",
+            "type": "string"
+          },
+          "fill_color": {
+            "default": "rgba(65, 176, 246, 0.5)",
+            "title": "Fill Color",
+            "type": "string"
+          },
+          "weight": {
+            "default": 1,
+            "title": "Weight",
+            "type": "number"
+          }
+        },
+        "required": [
+          "shape"
+        ],
+        "title": "PolygonOptions",
+        "type": "object"
+      },
+      "Maps_MapStyle": {
+        "properties": {
+          "featureType": {
+            "title": "Featuretype",
+            "type": "string"
+          },
+          "elementType": {
+            "default": "all",
+            "title": "Elementtype",
+            "type": "string"
+          },
+          "stylers": {
+            "items": {
+              "$ref": "#/components/schemas/Maps_MapStyler"
+            },
+            "title": "Stylers",
+            "type": "array"
+          }
+        },
+        "required": [
+          "featureType",
+          "stylers"
+        ],
+        "title": "MapStyle",
+        "type": "object"
+      },
+      "Maps_MapStyler": {
+        "properties": {
+          "visibility": {
+            "anyOf": [
+              {
+                "enum": [
+                  "on",
+                  "off"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Visibility"
+          },
+          "color": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Color"
+          },
+          "hue": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Hue"
+          },
+          "saturation": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Saturation"
+          },
+          "gamma": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Gamma"
+          },
+          "lightness": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Lightness"
+          }
+        },
+        "title": "MapStyler",
+        "type": "object"
       },
       "External-api-wrapper_what3words_AddressSummary": {
         "properties": {
@@ -18324,6 +18368,18 @@
             },
             "title": "Steps",
             "type": "array"
+          },
+          "waypoint": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "If waypoints were provided, this gives the input waypoint for this leg.",
+            "title": "Waypoint"
           }
         },
         "required": [
@@ -22785,14 +22841,19 @@
     {
       "name": "Search",
       "tags": [
-        "Store Search API",
-        "Data Management API",
         "Geolocation API",
         "Localities API",
         "Address API",
         "Datasets API",
-        "Woosmap for what3words API",
-        "Zones API"
+        "Woosmap for what3words API"
+      ]
+    },
+    {
+      "name": "Stores",
+      "tags": [
+        "Store Search",
+        "Data Management",
+        "Zones"
       ]
     },
     {

@@ -1,7 +1,7 @@
 servers:
   - url: https://api.woosmap.com
 tags:
-  - Store Search API
+  - Store Search
 description: >
   Autocomplete on `localizedNames` with highlighted results on asset name.
   Use the field `localized` in your query parameter to search for localized names.

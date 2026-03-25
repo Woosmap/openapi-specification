@@ -1,7 +1,7 @@
 servers:
   - url: https://api.woosmap.com
 tags:
-  - Data Management API
+  - Data Management
 description: To replace all your Assets. This endpoint will delete all previous assets and import assets in request body.
   During the operation previous assets could always be displayed on map.
   If the import failed previous assets are not deleted.

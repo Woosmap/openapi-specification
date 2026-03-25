@@ -12,12 +12,12 @@ rules:
     severity: error
     requireOperationTags: true
     expectedNames:
-      - "Store Search API"
-      - "Data Management API"
+      - "Store Search"
+      - "Data Management"
+      - "Zones"
       - "Geolocation API"
       - "Localities API"
       - "Address API"
-      - "Zones API"
       - "Woosmap for what3words API"
       - "Indoor API"
       - "Transit API"

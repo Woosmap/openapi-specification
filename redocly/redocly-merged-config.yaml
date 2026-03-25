@@ -116,14 +116,16 @@ apis:
         tagGroups:
           - name: "Search"
             tags:
-              - "Store Search API"
-              - "Data Management API"
               - "Geolocation API"
               - "Localities API"
               - "Address API"
               - "Datasets API"
               - "Woosmap for what3words API"
-              - "Zones API"
+          - name: "Stores"
+            tags:
+              - "Store Search"
+              - "Data Management"
+              - "Zones"
           - name: "Map"
             tags:
               - "Static Map API"

@@ -1,7 +1,7 @@
 servers:
   - url: https://api.woosmap.com
 tags:
-  - Zones API
+  - Zones
 description: >
   Used to retrieve a zone from his `zone_id`
 security:
