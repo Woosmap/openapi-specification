@@ -118,13 +118,3 @@ tags:
       This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
     externalDocs:
       url: https://developers.woosmap.com/products/localities/get-started/
-  - name: Address API
-    description: >
-      Woosmap Address API is a web service that returns addresses and other geographical places in response to an HTTP request.
-      Request is done over HTTPS using GET. Response is formatted as JSON.
-      You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key.
-      This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).
-
-      >**⚠️ This API has been deprecated in favour of Localities API**
-    externalDocs:
-      url: https://developers.woosmap.com/products/address-api/get-started/

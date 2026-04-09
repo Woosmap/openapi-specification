@@ -54,13 +54,6 @@
       }
     },
     {
-      "name": "Address API",
-      "description": "Woosmap Address API is a web service that returns addresses and other geographical places in response to an HTTP request. Request is done over HTTPS using GET. Response is formatted as JSON. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).\n>**⚠️ This API has been deprecated in favour of Localities API**\n",
-      "externalDocs": {
-        "url": "https://developers.woosmap.com/products/address-api/get-started/"
-      }
-    },
-    {
       "name": "Store Search"
     },
     {
@@ -114,603 +107,6 @@
     }
   ],
   "paths": {
-    "/address/autocomplete/json": {
-      "get": {
-        "deprecated": true,
-        "summary": "Autocomplete for Addresses",
-        "operationId": "addressAutocomplete",
-        "servers": [
-          {
-            "url": "https://api.woosmap.com"
-          }
-        ],
-        "tags": [
-          "Address API"
-        ],
-        "description": "Autocomplete on worldwide suggestions for a for text-based geographic searches. It can match on full words as well as substrings.\n",
-        "security": [
-          {
-            "Woosmap_Platform_API_Reference_PublicApiKeyAuth": [],
-            "Woosmap_Platform_API_Reference_RefererHeader": []
-          },
-          {
-            "Woosmap_Platform_API_Reference_PrivateApiKeyAuth": []
-          },
-          {
-            "Woosmap_Platform_API_Reference_PrivateApiKeyHeaderAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_input-2"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_address_components"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_location-2"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_language-3"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Autocompletion Address successfully retrieved",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressAutocompleteCollectionResponse"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "Autocomplete address results for input `Lond` and components `country:gb`",
-                    "value": {
-                      "predictions": [
-                        {
-                          "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0",
-                          "description": "London, England, United Kingdom",
-                          "matched_substring": {
-                            "description": [
-                              {
-                                "offset": 0,
-                                "length": 4
-                              }
-                            ]
-                          },
-                          "type": "locality"
-                        },
-                        {
-                          "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwNDE5Nzgz",
-                          "description": "Londonderry, Northern Ireland, United Kingdom",
-                          "matched_substring": {
-                            "description": [
-                              {
-                                "offset": 0,
-                                "length": 4
-                              }
-                            ]
-                          },
-                          "type": "locality"
-                        },
-                        {
-                          "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NjEw",
-                          "description": "London Heathrow Airport, Hounslow, England, United Kingdom",
-                          "matched_substring": {
-                            "description": [
-                              {
-                                "offset": 0,
-                                "length": 4
-                              }
-                            ]
-                          },
-                          "type": "locality"
-                        },
-                        {
-                          "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM0NDEy",
-                          "description": "London Luton Airport, Luton, England, United Kingdom",
-                          "matched_substring": {
-                            "description": [
-                              {
-                                "offset": 0,
-                                "length": 4
-                              }
-                            ]
-                          },
-                          "type": "locality"
-                        }
-                      ],
-                      "status": "OK"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized. Incorrect authentication credentials.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Error401"
-                },
-                "examples": {
-                  "Unauthorized": {
-                    "summary": "Error 401",
-                    "value": {
-                      "detail": "Incorrect authentication credentials. Please check or use a valid API Key"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden. This Woosmap API is not enabled for this project.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Error403"
-                },
-                "examples": {
-                  "Forbidden": {
-                    "summary": "Error 403",
-                    "value": {
-                      "detail": "This Woosmap API is not enabled for this project."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests. The rate limit for this endpoint has been exceeded.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Error429"
-                },
-                "examples": {
-                  "Forbidden": {
-                    "summary": "Error 429",
-                    "value": {
-                      "detail": "The rate limit for this endpoint has been exceeded"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-codeSamples": [
-          {
-            "lang": "curl",
-            "label": "cURL",
-            "source": "curl -L 'https://api.woosmap.com/address/autocomplete/json?input=Lond&components=country%3Agb&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
-          },
-          {
-            "lang": "javascript",
-            "label": "JavaScript",
-            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/address/autocomplete/json?input=Lond&components=country%3Agb&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
-          },
-          {
-            "lang": "python",
-            "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/address/autocomplete/json?input=Lond&components=country%3Agb&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
-          }
-        ]
-      }
-    },
-    "/address/details/json": {
-      "get": {
-        "deprecated": true,
-        "summary": "Details of an Address",
-        "operationId": "addressDetails",
-        "servers": [
-          {
-            "url": "https://api.woosmap.com"
-          }
-        ],
-        "tags": [
-          "Address API"
-        ],
-        "description": "Provides details of an address autocomplete suggestion (using the suggestion’s `public_id`).\n",
-        "security": [
-          {
-            "Woosmap_Platform_API_Reference_PublicApiKeyAuth": [],
-            "Woosmap_Platform_API_Reference_RefererHeader": []
-          },
-          {
-            "Woosmap_Platform_API_Reference_PrivateApiKeyAuth": []
-          },
-          {
-            "Woosmap_Platform_API_Reference_PrivateApiKeyHeaderAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_public_id-2"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_fields-2"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Details Address successfully retrieved",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressDetailsResponse"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "Address Details for `London, England, United Kingdom`",
-                    "value": {
-                      "result": {
-                        "formatted_address": "London, England, United Kingdom",
-                        "types": [
-                          "locality"
-                        ],
-                        "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0",
-                        "address_components": [
-                          {
-                            "types": [
-                              "country"
-                            ],
-                            "long_name": "United Kingdom",
-                            "short_name": "GBR"
-                          },
-                          {
-                            "types": [
-                              "state"
-                            ],
-                            "long_name": "England",
-                            "short_name": "England"
-                          },
-                          {
-                            "types": [
-                              "county"
-                            ],
-                            "long_name": "London",
-                            "short_name": "LDN"
-                          },
-                          {
-                            "long_name": "London",
-                            "short_name": "London",
-                            "types": [
-                              "locality"
-                            ]
-                          },
-                          {
-                            "long_name": "SW1A 2",
-                            "short_name": "SW1A 2",
-                            "types": [
-                              "postal_code"
-                            ]
-                          }
-                        ],
-                        "geometry": {
-                          "location_type": "GEOMETRIC_CENTER",
-                          "location": {
-                            "lat": 51.50643,
-                            "lng": -0.12719
-                          },
-                          "viewport": {
-                            "northeast": {
-                              "lat": 51.68629,
-                              "lng": 0.28206
-                            },
-                            "southwest": {
-                              "lat": 51.28043,
-                              "lng": -0.56316
-                            }
-                          }
-                        }
-                      },
-                      "status": "OK"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized. Incorrect authentication credentials.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Error401"
-                },
-                "examples": {
-                  "Unauthorized": {
-                    "summary": "Error 401",
-                    "value": {
-                      "detail": "Incorrect authentication credentials. Please check or use a valid API Key"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden. This Woosmap API is not enabled for this project.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Error403"
-                },
-                "examples": {
-                  "Forbidden": {
-                    "summary": "Error 403",
-                    "value": {
-                      "detail": "This Woosmap API is not enabled for this project."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests. The rate limit for this endpoint has been exceeded.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Error429"
-                },
-                "examples": {
-                  "Forbidden": {
-                    "summary": "Error 429",
-                    "value": {
-                      "detail": "The rate limit for this endpoint has been exceeded"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-codeSamples": [
-          {
-            "lang": "curl",
-            "label": "cURL",
-            "source": "curl -L 'https://api.woosmap.com/address/details/json?public_id=aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
-          },
-          {
-            "lang": "javascript",
-            "label": "JavaScript",
-            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/address/details/json?public_id=aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
-          },
-          {
-            "lang": "python",
-            "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/address/details/json?public_id=aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
-          }
-        ]
-      }
-    },
-    "/address/geocode/json": {
-      "get": {
-        "deprecated": true,
-        "summary": "Geocode an Address or Reverse Geocode a latlng",
-        "operationId": "addressGeocode",
-        "servers": [
-          {
-            "url": "https://api.woosmap.com"
-          }
-        ],
-        "tags": [
-          "Address API"
-        ],
-        "description": "Provides details for an address or a geographic position. Either parameter `address` **or** `latlng` is required. Maximum of 25 queries per second (QPS)\n",
-        "security": [
-          {
-            "Woosmap_Platform_API_Reference_PublicApiKeyAuth": [],
-            "Woosmap_Platform_API_Reference_RefererHeader": []
-          },
-          {
-            "Woosmap_Platform_API_Reference_PrivateApiKeyAuth": []
-          },
-          {
-            "Woosmap_Platform_API_Reference_PrivateApiKeyHeaderAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_address-2"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_latlng-2"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_address_components"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_language-3"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_location-2"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format"
-          },
-          {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-3"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Request Address Geocode successful",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressGeocodeCollectionResponse"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "Geocode Results for address `Place de la Resistance` with components `country:FR`",
-                    "value": {
-                      "results": [
-                        {
-                          "formatted_address": "Place de la Résistance, 75007 Paris, France",
-                          "types": [
-                            "address",
-                            "route"
-                          ],
-                          "address_components": [
-                            {
-                              "types": [
-                                "country"
-                              ],
-                              "long_name": "France",
-                              "short_name": "FRA"
-                            },
-                            {
-                              "types": [
-                                "state"
-                              ],
-                              "long_name": "Ile-de-France",
-                              "short_name": "IDF"
-                            },
-                            {
-                              "types": [
-                                "county"
-                              ],
-                              "long_name": "Paris",
-                              "short_name": "Paris"
-                            },
-                            {
-                              "long_name": "Paris",
-                              "short_name": "Paris",
-                              "types": [
-                                "locality"
-                              ]
-                            },
-                            {
-                              "long_name": "7th Arrondissement",
-                              "short_name": "7th Arrondissement",
-                              "types": [
-                                "district"
-                              ]
-                            },
-                            {
-                              "long_name": "Place de la Résistance",
-                              "short_name": "Place de la Résistance",
-                              "types": [
-                                "route"
-                              ]
-                            },
-                            {
-                              "long_name": "75007",
-                              "short_name": "75007",
-                              "types": [
-                                "postal_code"
-                              ]
-                            }
-                          ],
-                          "geometry": {
-                            "location_type": "GEOMETRIC_CENTER",
-                            "location": {
-                              "lat": 48.86213,
-                              "lng": 2.30152
-                            },
-                            "viewport": {
-                              "northeast": {
-                                "lat": 48.86231,
-                                "lng": 2.30541
-                              },
-                              "southwest": {
-                                "lat": 48.86191,
-                                "lng": 2.30147
-                              }
-                            }
-                          }
-                        }
-                      ],
-                      "status": "OK"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized. Incorrect authentication credentials.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Error401"
-                },
-                "examples": {
-                  "Unauthorized": {
-                    "summary": "Error 401",
-                    "value": {
-                      "detail": "Incorrect authentication credentials. Please check or use a valid API Key"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden. This Woosmap API is not enabled for this project.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Error403"
-                },
-                "examples": {
-                  "Forbidden": {
-                    "summary": "Error 403",
-                    "value": {
-                      "detail": "This Woosmap API is not enabled for this project."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests. The rate limit for this endpoint has been exceeded.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Error429"
-                },
-                "examples": {
-                  "Forbidden": {
-                    "summary": "Error 429",
-                    "value": {
-                      "detail": "The rate limit for this endpoint has been exceeded"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-codeSamples": [
-          {
-            "lang": "curl",
-            "label": "cURL",
-            "source": "curl -L 'https://api.woosmap.com/address/geocode/json?address=Place%20de%20la%20Resistance%20Paris&components=country%3AFR&limit=5&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
-          },
-          {
-            "lang": "javascript",
-            "label": "JavaScript",
-            "source": "const requestOptions = {\n  method: \"GET\",\n  redirect: \"follow\"\n};\n\nfetch(\"https://api.woosmap.com/address/geocode/json?address=Place%20de%20la%20Resistance%20Paris&components=country%3AFR&limit=5&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then((response) => response.text())\n  .then((result) => console.log(result))\n  .catch((error) => console.error(error));"
-          },
-          {
-            "lang": "python",
-            "label": "Python",
-            "source": "import requests\n\nurl = \"https://api.woosmap.com/address/geocode/json?address=Place%20de%20la%20Resistance%20Paris&components=country%3AFR&limit=5&key=YOUR_PUBLIC_API_KEY\"\n\npayload = {}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
-          }
-        ]
-      }
-    },
     "/stores": {
       "post": {
         "summary": "Create your Assets",
@@ -1750,7 +1146,7 @@
           "Datasets API"
         ],
         "summary": "Get Dataset",
-        "description": "Gets dataset details.\n\n**Rate limit**: `1/1s`",
+        "description": "Gets dataset details.\n\n**Rate limit**: `1/1s`\n\n**Ratelimit:** 1/1s",
         "operationId": "get_dataset_datasets__dataset_id__get",
         "security": [
           {
@@ -1844,6 +1240,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -1868,7 +1266,7 @@
           "Datasets API"
         ],
         "summary": "Delete Dataset",
-        "description": "Schedule a dataset for deletion, deletion will happen in 7 days.\n\n\n**Rate limit**: `1/1s`",
+        "description": "Schedule a dataset for deletion, deletion will happen in 7 days.\n\n\n**Rate limit**: `1/1s`\n\n**Ratelimit:** 1/1s",
         "operationId": "delete_dataset_datasets__dataset_id__delete",
         "security": [
           {
@@ -1974,6 +1372,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -1998,7 +1398,7 @@
           "Datasets API"
         ],
         "summary": "Update Dataset",
-        "description": "Updates a dataset url or name.\n\n**Rate limit**: `1/1s`",
+        "description": "Updates a dataset url or name.\n\n**Rate limit**: `1/1s`\n\n**Ratelimit:** 1/1s",
         "operationId": "update_dataset_datasets__dataset_id__put",
         "security": [
           {
@@ -2102,6 +1502,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -2128,7 +1530,7 @@
           "Datasets API"
         ],
         "summary": "List Datasets",
-        "description": "Lists datasets.\n\n**Rate limit**: `1/1s`",
+        "description": "Lists datasets.\n\n**Rate limit**: `1/1s`\n\n**Ratelimit:** 1/1s",
         "operationId": "list_datasets_datasets__get",
         "security": [
           {
@@ -2229,6 +1631,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -2253,7 +1657,7 @@
           "Datasets API"
         ],
         "summary": "Create Dataset",
-        "description": "Creates a dataset.\n\n**Rate limit**: `1/1s`",
+        "description": "Creates a dataset.\n\n**Rate limit**: `1/1s`\n\n**Ratelimit:** 1/1s",
         "operationId": "create_dataset_datasets__post",
         "security": [
           {
@@ -2335,6 +1739,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -2361,7 +1767,7 @@
           "Datasets API"
         ],
         "summary": "Get Dataset Status",
-        "description": "Returns the dataset import status.\n\n**Rate limit**: `1/5s`",
+        "description": "Returns the dataset import status.\n\n**Rate limit**: `1/5s`\n\n**Ratelimit:** 1/5s",
         "operationId": "get_dataset_status_datasets__dataset_id__status_get",
         "security": [
           {
@@ -2455,6 +1861,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 5,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -2481,7 +1889,7 @@
           "Datasets API"
         ],
         "summary": "Trigger Import",
-        "description": "Trigger the dataset import.\n\n**Rate limit**: `1/90s`",
+        "description": "Trigger the dataset import.\n\n**Rate limit**: `1/90s`\n\n**Ratelimit:** 1/90s",
         "operationId": "trigger_import_datasets__dataset_id__import_post",
         "security": [
           {
@@ -2575,6 +1983,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 90,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -2601,7 +2011,7 @@
           "Datasets API"
         ],
         "summary": "Reimport Dataset Webhook",
-        "description": "Triggers the reimport of the dataset linked to the dataset.\n\n**Rate limit**: `1/90s`",
+        "description": "Triggers the reimport of the dataset linked to the dataset.\n\n**Rate limit**: `1/90s`\n\n**Ratelimit:** 1/90s",
         "operationId": "reimport_dataset_webhook_datasets_hooks_reimport__reimport_key__post",
         "parameters": [
           {
@@ -2666,6 +2076,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 90,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -2693,7 +2105,7 @@
           "Datasets API"
         ],
         "summary": "Search Features",
-        "description": "Search for features.\n\n**Rate limit**: `20/1s`",
+        "description": "Search for features.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
         "operationId": "search_features_datasets__dataset_id__features_search__post",
         "security": [
           {
@@ -2841,6 +2253,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -2867,7 +2281,7 @@
           "Datasets API"
         ],
         "summary": "Nearby Features",
-        "description": "Search for features nearby geometry.\n\n**Rate limit**: `20/1s`",
+        "description": "Search for features nearby geometry.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
         "operationId": "nearby_features_datasets__dataset_id__features_nearby__post",
         "security": [
           {
@@ -3101,6 +2515,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -3127,7 +2543,7 @@
           "Datasets API"
         ],
         "summary": "Intersect Features",
-        "description": "Returns the features that are intersecting with geometry.\n\n**Rate limit**: `20/1s`\n\n![Intersection](https://postgis.net/workshops/postgis-intro/_images/st_intersects.png)",
+        "description": "Returns the features that are intersecting with geometry.\n\n**Rate limit**: `20/1s`\n\n![Intersection](https://postgis.net/workshops/postgis-intro/_images/st_intersects.png)\n\n**Ratelimit:** 20/1s",
         "operationId": "intersect_features_datasets__dataset_id__features_intersects__post",
         "security": [
           {
@@ -3361,6 +2777,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -3387,7 +2805,7 @@
           "Datasets API"
         ],
         "summary": "Contains Features",
-        "description": "Search for features containing geometry.\n\n**Rate limit**: `20/1s`\n\n![Within](https://postgis.net/workshops/postgis-intro/_images/st_within.png)",
+        "description": "Search for features containing geometry.\n\n**Rate limit**: `20/1s`\n\n![Within](https://postgis.net/workshops/postgis-intro/_images/st_within.png)\n\n**Ratelimit:** 20/1s",
         "operationId": "contains_features_datasets__dataset_id__features_contains__post",
         "security": [
           {
@@ -3621,6 +3039,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -3647,7 +3067,7 @@
           "Datasets API"
         ],
         "summary": "Within Features",
-        "description": "Search for features within geometry.\n\n**Rate limit**: `20/1s`\n\n![Within](https://postgis.net/workshops/postgis-intro/_images/st_within.png)",
+        "description": "Search for features within geometry.\n\n**Rate limit**: `20/1s`\n\n![Within](https://postgis.net/workshops/postgis-intro/_images/st_within.png)\n\n**Ratelimit:** 20/1s",
         "operationId": "within_features_datasets__dataset_id__features_within__post",
         "security": [
           {
@@ -3831,6 +3251,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -3857,7 +3279,7 @@
           "Datasets API"
         ],
         "summary": "Get Feature",
-        "description": "Gets a feature from its ID.\n\n**Rate limit**: `20/1s`",
+        "description": "Gets a feature from its ID.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
         "operationId": "get_feature_datasets__dataset_id__features__feature_id__get",
         "security": [
           {
@@ -3994,6 +3416,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -4117,6 +3541,7 @@
                 "da",
                 "de",
                 "es",
+                "et",
                 "fi",
                 "he",
                 "it",
@@ -4619,6 +4044,7 @@
                 "da",
                 "de",
                 "es",
+                "et",
                 "fi",
                 "he",
                 "it",
@@ -5144,6 +4570,7 @@
                 "da",
                 "de",
                 "es",
+                "et",
                 "fi",
                 "he",
                 "it",
@@ -5624,6 +5051,7 @@
                 "da",
                 "de",
                 "es",
+                "et",
                 "fi",
                 "he",
                 "it",
@@ -9193,7 +8621,7 @@
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_data"
           },
           {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format-2"
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format"
           }
         ],
         "responses": {
@@ -11760,7 +11188,7 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-4"
+            "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-3"
           },
           {
             "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_offset"
@@ -12749,7 +12177,7 @@
       },
       "Woosmap_Platform_API_Reference_cc_format": {
         "name": "cc_format",
-        "description": "To specify the format for the short [country code](https://en.wikipedia.org/wiki/ISO_3166-1) expected to be returned in the address_components field (default is `alpha3`).\n",
+        "description": "To specify the format for the short [country code](https://en.wikipedia.org/wiki/ISO_3166-1) expected to be returned in the address_components field. Default is the format used to specify `components` or `alpha2` if no components are specified.\n",
         "schema": {
           "type": "string",
           "enum": [
@@ -12821,19 +12249,6 @@
         "required": false,
         "in": "query"
       },
-      "Woosmap_Platform_API_Reference_cc_format-2": {
-        "name": "cc_format",
-        "description": "To specify the format for the short [country code](https://en.wikipedia.org/wiki/ISO_3166-1) expected to be returned in the address_components field. Default is the format used to specify `components` or `alpha2` if no components are specified.\n",
-        "schema": {
-          "type": "string",
-          "enum": [
-            "alpha2",
-            "alpha3"
-          ],
-          "example": "alpha2"
-        },
-        "in": "query"
-      },
       "Woosmap_Platform_API_Reference_nearby_types": {
         "name": "types",
         "description": "The types of points of interest to return.   Multiple types can be passed using the pipe character (`|`) as a separator. For example: `types=business.shop|medical.pharmacy|business.finance.bank`.\n",
@@ -12851,97 +12266,7 @@
         },
         "in": "query"
       },
-      "Woosmap_Platform_API_Reference_input-2": {
-        "name": "input",
-        "description": "The text string on which to search, for example: \"london\" or \"123 Cross Road\". The Woosmap Address API will return predictions matches based on this string and order the results based on their perceived relevance.\n",
-        "schema": {
-          "type": "string",
-          "example": "London"
-        },
-        "required": true,
-        "in": "query"
-      },
-      "Woosmap_Platform_API_Reference_address_components": {
-        "name": "components",
-        "description": "To restrict your results to specific areas. Currently, you can use components to filter over countries. Countries must be passed as three characters string (ISO 3166-1 Alpha 3). Components should be passed as an array of different options which are separated by a `|`.\n",
-        "schema": {
-          "type": "string",
-          "example": "country:CAN|country:BEL"
-        },
-        "in": "query"
-      },
-      "Woosmap_Platform_API_Reference_location-2": {
-        "name": "location",
-        "description": "Bias for the results. Should be pass in `lat`,`lng` format.\n",
-        "schema": {
-          "type": "string",
-          "example": "5.2,-2.3"
-        },
-        "in": "query"
-      },
-      "Woosmap_Platform_API_Reference_language-3": {
-        "name": "language",
-        "description": "The language code, using ISO 639-1 country codes, indicating in which language the results should be returned, if possible. If language is not supplied, the Localities service will use the default language of each country.\n",
-        "schema": {
-          "type": "string",
-          "example": "en"
-        },
-        "in": "query"
-      },
-      "Woosmap_Platform_API_Reference_public_id-2": {
-        "name": "public_id",
-        "description": "A textual identifier that uniquely identifies a locality, returned from an [Address Autocomplete](https://developers.woosmap.com/products/address-api/autocomplete/).\n",
-        "schema": {
-          "type": "string",
-          "example": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMDA1MTI2"
-        },
-        "required": true,
-        "in": "query"
-      },
-      "Woosmap_Platform_API_Reference_fields-2": {
-        "name": "fields",
-        "description": "Used to limit the returning fields (by default, all fields are return). Available fields are (geometry) (fields should be separated by a `,`). By using this parameter you will limit content of responses to the geometry part. No address component will be returned.\n",
-        "schema": {
-          "type": "string",
-          "enum": [
-            "geometry"
-          ],
-          "example": "geometry"
-        },
-        "in": "query"
-      },
-      "Woosmap_Platform_API_Reference_address-2": {
-        "name": "address",
-        "description": "The address of which to find the coordinates for. A partial address is less likely to return the proper coordinates than the complete address.\n",
-        "schema": {
-          "type": "string",
-          "example": "224%20Rue%20de%20Rivoli%2C%20Paris"
-        },
-        "required": false,
-        "in": "query"
-      },
-      "Woosmap_Platform_API_Reference_latlng-2": {
-        "name": "latlng",
-        "description": "Geographic coordinates. Should be pass in `lat`,`lng` format.\n",
-        "schema": {
-          "type": "string",
-          "example": "5.2,-2.3"
-        },
-        "required": false,
-        "in": "query"
-      },
       "Woosmap_Platform_API_Reference_limit-3": {
-        "name": "limit",
-        "description": "Maximum number of results to be returned (value from 1 to 100, default values for geocode request [20] and for reverse geocode request [1])\n",
-        "schema": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 100,
-          "example": 10
-        },
-        "in": "query"
-      },
-      "Woosmap_Platform_API_Reference_limit-4": {
         "name": "limit",
         "description": "To limit number of zones retrieved (max 50).\n",
         "schema": {
@@ -12962,36 +12287,6 @@
         },
         "in": "query"
       },
-      "Woosmap_Platform_API_Reference_address_address_components": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_address_components"
-      },
-      "Woosmap_Platform_API_Reference_address_address": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_address-2"
-      },
-      "Woosmap_Platform_API_Reference_address_cc_format": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format"
-      },
-      "Woosmap_Platform_API_Reference_address_fields": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_fields-2"
-      },
-      "Woosmap_Platform_API_Reference_address_input": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_input-2"
-      },
-      "Woosmap_Platform_API_Reference_address_language": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_language-3"
-      },
-      "Woosmap_Platform_API_Reference_address_latlng": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_latlng-2"
-      },
-      "Woosmap_Platform_API_Reference_address_limit": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-3"
-      },
-      "Woosmap_Platform_API_Reference_address_location": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_location-2"
-      },
-      "Woosmap_Platform_API_Reference_address_public_id": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_public_id-2"
-      },
       "Woosmap_Platform_API_Reference_geolocation_ip_address": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_ip_address"
       },
@@ -13005,7 +12300,7 @@
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_addresses_per_page"
       },
       "Woosmap_Platform_API_Reference_localities_cc_format": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format-2"
+        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format"
       },
       "Woosmap_Platform_API_Reference_localities_custom_description": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_custom_description"
@@ -13092,7 +12387,7 @@
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_zone"
       },
       "Woosmap_Platform_API_Reference_zones_limit": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-4"
+        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-3"
       },
       "Woosmap_Platform_API_Reference_zones_offset": {
         "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_offset"
@@ -16341,422 +15636,6 @@
             "previous_page": 2,
             "next_page": 4
           }
-        }
-      },
-      "Woosmap_Platform_API_Reference_AddressAutocompleteMatchedFields": {
-        "title": "AddressAutocompleteMatchedFields",
-        "type": "object",
-        "description": "Contains a set of substrings for description. Each substring is identified by an `offset` and a `length`.`",
-        "properties": {
-          "description": {
-            "description": "match substrings for address `description`",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_MatchedSubstring"
-            }
-          }
-        }
-      },
-      "Woosmap_Platform_API_Reference_AddressTypes": {
-        "title": "AddressTypes",
-        "type": "string",
-        "description": "Contains the type of result.",
-        "enum": [
-          "house_number",
-          "route",
-          "address_block",
-          "locality",
-          "admin_level",
-          "country"
-        ]
-      },
-      "Woosmap_Platform_API_Reference_AddressStatus": {
-        "title": "AddressStatus",
-        "type": "string",
-        "example": "OK",
-        "description": "Returns more info on if the request was successful or not, valid responses.\n  * `OK` indicates the response contains a valid result.\n  * `INVALID_REQUEST` indicates that the provided request was invalid (e.g. wrong URL syntax).\n  * `REQUEST_DENIED` indicates that the service denied use of the Address API (e.g. wrong API Key, wrong/no referer, …).\n  * `UNKNOWN_ERROR` indicates an Address API request could not be processed due to a server error. The request may succeed if you try again.\n",
-        "enum": [
-          "OK",
-          "INVALID_REQUEST",
-          "REQUEST_DENIED",
-          "UNKNOWN_ERROR"
-        ]
-      },
-      "Woosmap_Platform_API_Reference_AddressAutocompleteResponse": {
-        "title": "AddressAutocompleteResponse",
-        "type": "object",
-        "description": "Attributes describing an Address.",
-        "properties": {
-          "description": {
-            "description": "Address description to be used as suggestion in drop down list if needed.",
-            "type": "string",
-            "example": "London, England, United Kingdom"
-          },
-          "public_id": {
-            "description": "Contains a unique ID for each suggestion. Please use this ID if you need to give us feedbacks on results. This ID is also required to perform Address Details request.",
-            "type": "string",
-            "example": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0"
-          },
-          "matched_substring": {
-            "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressAutocompleteMatchedFields"
-          },
-          "type": {
-            "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressTypes"
-          },
-          "status": {
-            "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressStatus"
-          }
-        },
-        "example": {
-          "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0",
-          "description": "London, England, United Kingdom",
-          "matched_substring": {
-            "description": [
-              {
-                "offset": 0,
-                "length": 4
-              }
-            ]
-          },
-          "type": "locality"
-        }
-      },
-      "Woosmap_Platform_API_Reference_AddressAutocompleteCollectionResponse": {
-        "title": "AddressAutocompleteCollectionResponse",
-        "type": "object",
-        "description": "Address Collection Response containing Localities",
-        "properties": {
-          "predictions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressAutocompleteResponse"
-            }
-          },
-          "status": {
-            "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressStatus"
-          }
-        },
-        "example": {
-          "predictions": [
-            {
-              "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0",
-              "description": "London, England, United Kingdom",
-              "matched_substring": {
-                "description": [
-                  {
-                    "offset": 0,
-                    "length": 4
-                  }
-                ]
-              },
-              "type": "locality"
-            },
-            {
-              "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwNDE5Nzgz",
-              "description": "Londonderry, Northern Ireland, United Kingdom",
-              "matched_substring": {
-                "description": [
-                  {
-                    "offset": 0,
-                    "length": 4
-                  }
-                ]
-              },
-              "type": "locality"
-            },
-            {
-              "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NjEw",
-              "description": "London Heathrow Airport, Hounslow, England, United Kingdom",
-              "matched_substring": {
-                "description": [
-                  {
-                    "offset": 0,
-                    "length": 4
-                  }
-                ]
-              },
-              "type": "locality"
-            },
-            {
-              "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM0NDEy",
-              "description": "London Luton Airport, Luton, England, United Kingdom",
-              "matched_substring": {
-                "description": [
-                  {
-                    "offset": 0,
-                    "length": 4
-                  }
-                ]
-              },
-              "type": "locality"
-            }
-          ],
-          "status": "OK"
-        }
-      },
-      "Woosmap_Platform_API_Reference_AddressGeometry": {
-        "title": "AddressGeometry",
-        "type": "object",
-        "description": "The location of the result, in latitude and longitude. Accuracy is also provided.",
-        "properties": {
-          "location_type": {
-            "description": "Specifies additional data about the geocoded location. The following values are currently supported: \n  - `ROOFTOP` result is a precise geocode for which we have location information accurate down to street address precision.\n  - `RANGE_INTERPOLATED` result reflects an approximation (usually on a road) interpolated between two precise points (such as intersections). Interpolated results are generally returned when rooftop geocodes are unavailable for a street address.\n  - `GEOMETRIC_CENTER` result is the geometric center of a result such as a polyline (for example, a street) or polygon (city, region, …).\n  - `APPROXIMATE` result is approximate (usually when no other above value applies)\n",
-            "type": "string",
-            "enum": [
-              "ROOFTOP",
-              "RANGE_INTERPOLATED",
-              "GEOMETRIC_CENTER",
-              "APPROXIMATE"
-            ]
-          },
-          "location": {
-            "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LatLngLiteral"
-          },
-          "viewport": {
-            "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_Bounds"
-          }
-        },
-        "example": {
-          "location": {
-            "lat": 48.829405,
-            "lng": 2.367944
-          },
-          "location_type": "GEOMETRIC_CENTER"
-        }
-      },
-      "Woosmap_Platform_API_Reference_AddressDetailsResponse": {
-        "title": "AddressDetailsResponse",
-        "type": "object",
-        "description": "Address Details Response",
-        "properties": {
-          "status": {
-            "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressStatus"
-          },
-          "result": {
-            "description": "the root node of address details",
-            "type": "object",
-            "properties": {
-              "formatted_address": {
-                "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_FormattedAddress"
-              },
-              "types": {
-                "description": "The types of result.",
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressTypes"
-                }
-              },
-              "public_id": {
-                "description": "Contains a unique ID for each suggestion. Please use this ID to give feedbacks on results.",
-                "type": "string",
-                "example": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0"
-              },
-              "address_components": {
-                "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressComponents"
-              },
-              "geometry": {
-                "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressGeometry"
-              }
-            }
-          }
-        },
-        "example": {
-          "result": {
-            "formatted_address": "London, England, United Kingdom",
-            "types": [
-              "locality"
-            ],
-            "public_id": "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0",
-            "address_components": [
-              {
-                "types": [
-                  "country"
-                ],
-                "long_name": "United Kingdom",
-                "short_name": "GBR"
-              },
-              {
-                "types": [
-                  "state"
-                ],
-                "long_name": "England",
-                "short_name": "England"
-              },
-              {
-                "types": [
-                  "county"
-                ],
-                "long_name": "London",
-                "short_name": "LDN"
-              },
-              {
-                "long_name": "London",
-                "short_name": "London",
-                "types": [
-                  "locality"
-                ]
-              },
-              {
-                "long_name": "SW1A 2",
-                "short_name": "SW1A 2",
-                "types": [
-                  "postal_code"
-                ]
-              }
-            ],
-            "geometry": {
-              "location_type": "GEOMETRIC_CENTER",
-              "location": {
-                "lat": 51.50643,
-                "lng": -0.12719
-              },
-              "viewport": {
-                "northeast": {
-                  "lat": 51.68629,
-                  "lng": 0.28206
-                },
-                "southwest": {
-                  "lat": 51.28043,
-                  "lng": -0.56316
-                }
-              }
-            }
-          },
-          "status": "OK"
-        }
-      },
-      "Woosmap_Platform_API_Reference_AddressGeocodeTypes": {
-        "title": "AddressGeocodeTypes",
-        "type": "string",
-        "description": "Contains the type of result.",
-        "enum": [
-          "address",
-          "house_number",
-          "route",
-          "address_block",
-          "locality",
-          "admin_level",
-          "country",
-          "place"
-        ]
-      },
-      "Woosmap_Platform_API_Reference_AddressGeocodeResponse": {
-        "title": "AddressGeocodeResponse",
-        "type": "object",
-        "description": "Address Geocode Response",
-        "properties": {
-          "formatted_address": {
-            "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_FormattedAddress"
-          },
-          "types": {
-            "description": "The types of result. If result type is a `place`, additional types may be returned (`eat_and_drink`, `going_out_entertainment`, `sights_and_museums`, `natural_and_geographical`, `transport`, `accommodations`, `leisure_and_outdoor`, `shopping`, `business_and_services`, `facilities`, `areas_and_buildings`)",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressGeocodeTypes"
-            }
-          },
-          "address_components": {
-            "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressComponents"
-          },
-          "geometry": {
-            "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressGeometry"
-          }
-        }
-      },
-      "Woosmap_Platform_API_Reference_AddressGeocodeCollectionResponse": {
-        "title": "AddressGeocodeCollectionResponse",
-        "type": "object",
-        "description": "Address Geocode Collection Response. Contains one or more Addresses with coordinates (default to one result for reverse geocoding)",
-        "properties": {
-          "results": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressGeocodeResponse"
-            }
-          },
-          "status": {
-            "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AddressStatus"
-          }
-        },
-        "example": {
-          "results": [
-            {
-              "formatted_address": "Place de la Résistance, 75007 Paris, France",
-              "types": [
-                "address",
-                "route"
-              ],
-              "address_components": [
-                {
-                  "types": [
-                    "country"
-                  ],
-                  "long_name": "France",
-                  "short_name": "FRA"
-                },
-                {
-                  "types": [
-                    "state"
-                  ],
-                  "long_name": "Ile-de-France",
-                  "short_name": "IDF"
-                },
-                {
-                  "types": [
-                    "county"
-                  ],
-                  "long_name": "Paris",
-                  "short_name": "Paris"
-                },
-                {
-                  "long_name": "Paris",
-                  "short_name": "Paris",
-                  "types": [
-                    "locality"
-                  ]
-                },
-                {
-                  "long_name": "7th Arrondissement",
-                  "short_name": "7th Arrondissement",
-                  "types": [
-                    "district"
-                  ]
-                },
-                {
-                  "long_name": "Place de la Résistance",
-                  "short_name": "Place de la Résistance",
-                  "types": [
-                    "route"
-                  ]
-                },
-                {
-                  "long_name": "75007",
-                  "short_name": "75007",
-                  "types": [
-                    "postal_code"
-                  ]
-                }
-              ],
-              "geometry": {
-                "location_type": "GEOMETRIC_CENTER",
-                "location": {
-                  "lat": 48.86213,
-                  "lng": 2.30152
-                },
-                "viewport": {
-                  "northeast": {
-                    "lat": 48.86231,
-                    "lng": 2.30541
-                  },
-                  "southwest": {
-                    "lat": 48.86191,
-                    "lng": 2.30147
-                  }
-                }
-              }
-            }
-          ],
-          "status": "OK"
         }
       },
       "Woosmap_Platform_API_Reference_Zone": {
@@ -21427,6 +20306,7 @@
               "da",
               "de",
               "es",
+              "et",
               "fi",
               "he",
               "it",
@@ -21682,6 +20562,7 @@
               "da",
               "de",
               "es",
+              "et",
               "fi",
               "he",
               "it",
@@ -22867,7 +21748,6 @@
       "tags": [
         "Geolocation API",
         "Localities API",
-        "Address API",
         "Datasets API",
         "Woosmap for what3words API"
       ]

@@ -12,7 +12,6 @@ An OpenAPI specification for Woosmap Platform.
 | [Geolocation](https://developers.woosmap.com/products/geolocation-api/location/) | Complete |
 | [Stores](https://developers.woosmap.com/products/stores-api/overview/)           | Complete |
 | [Localities](https://developers.woosmap.com/products/localities/get-started/)    | Complete |
-| [Address](https://developers.woosmap.com/products/address-api/get-started/)      | Complete |
 | [Distance](https://developers.woosmap.com/products/distance-api/get-started/)    | Complete |
 | [Transit](https://developers.woosmap.com/products/transit-api/route-endpoint/)   | Complete |
 | [Indoor](https://developers.woosmap.com/products/indoor-api/get-started/)        | Complete |

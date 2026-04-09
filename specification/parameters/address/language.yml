@@ -1,9 +1,0 @@
-name: language
-description: >
-  The language code, using ISO 639-1 country codes, indicating in which language the results should be returned, if possible.
-  If language is not supplied, the Localities service will use the default language of each country.
-schema:
-  type: string
-  example: en
-
-in: query

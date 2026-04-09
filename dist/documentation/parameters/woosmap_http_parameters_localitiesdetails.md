@@ -16,7 +16,7 @@
 
 -   <h3 class="parameter-name" id="cc_format">cc_format</h3>
 
-    To specify the format for the short [country code](https://en.wikipedia.org/wiki/ISO\_3166-1) expected to be returned in the address_components field (default is `alpha3`).
+    To specify the format for the short [country code](https://en.wikipedia.org/wiki/ISO\_3166-1) expected to be returned in the address_components field. Default is the format used to specify `components` or `alpha2` if no components are specified.
 
 -   <h3 class="parameter-name" id="fields">fields</h3>
 

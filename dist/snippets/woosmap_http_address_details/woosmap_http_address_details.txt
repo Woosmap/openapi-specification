@@ -1,5 +1,0 @@
-[START woosmap_http_address_details]
-https://api.woosmap.com/address/details/json
-  ?public_id=aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0
-  &key=YOUR_PUBLIC_API_KEY
-[END woosmap_http_address_details]
