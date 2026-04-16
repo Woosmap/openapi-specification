@@ -7,7 +7,7 @@
     "x-document-meta-data": {
       "copyright": "© 2025 Woosmap"
     },
-    "version": "1.41.0",
+    "version": "1.42.0",
     "contact": {
       "name": "Woosmap API"
     }
@@ -9553,9 +9553,11 @@
               "type": "number",
               "maximum": 90,
               "minimum": -90,
+              "examples": [
+                "43.6"
+              ],
               "title": "Lat"
-            },
-            "example": "43.6"
+            }
           },
           {
             "name": "lng",
@@ -9565,9 +9567,11 @@
               "type": "number",
               "maximum": 180,
               "minimum": -180,
+              "examples": [
+                "3.883"
+              ],
               "title": "Lng"
-            },
-            "example": "3.883"
+            }
           },
           {
             "name": "zoom",
@@ -9578,10 +9582,12 @@
               "maximum": 24,
               "minimum": 0,
               "description": "The zoom",
+              "examples": [
+                11
+              ],
               "title": "Zoom"
             },
-            "description": "The zoom",
-            "example": 11
+            "description": "The zoom"
           },
           {
             "name": "width",
@@ -9592,10 +9598,12 @@
               "maximum": 1280,
               "minimum": 40,
               "description": "Width in pixels. width * height must not exceed 409,600.",
+              "examples": [
+                400
+              ],
               "title": "Width"
             },
-            "description": "Width in pixels. width * height must not exceed 409,600.",
-            "example": 400
+            "description": "Width in pixels. width * height must not exceed 409,600."
           },
           {
             "name": "height",
@@ -9606,10 +9614,12 @@
               "maximum": 1280,
               "minimum": 40,
               "description": "Height in pixels. width * height must not exceed 409,600.",
+              "examples": [
+                400
+              ],
               "title": "Height"
             },
-            "description": "Height in pixels. width * height must not exceed 409,600.",
-            "example": 400
+            "description": "Height in pixels. width * height must not exceed 409,600."
           },
           {
             "name": "markers",
@@ -9625,10 +9635,12 @@
                 "type": "string"
               },
               "description": "Adds a marker.\n\nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n\n        ",
+              "examples": [
+                "{\"lat\": 43.6, \"lng\": 3.883, \"url\": \"https://webapp.woosmap.com/img/geolocated_marker.png?retina=yes\"}"
+              ],
               "title": "Markers"
             },
-            "description": "Adds a marker.\n\nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n\n        ",
-            "example": "{\"lat\": 43.6, \"lng\": 3.883, \"url\": \"https://webapp.woosmap.com/img/geolocated_marker.png?retina=yes\"}"
+            "description": "Adds a marker.\n\nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n\n        "
           },
           {
             "name": "polylines",
@@ -9644,10 +9656,12 @@
                 "type": "string"
               },
               "description": "Add a polyline.\n\n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            ",
+              "examples": [
+                "{\"enc\": \"ydjiG_}jVjn@cjAf`AycBnc@mqCp\\\\ewBrQmlBzrAeuCreBw_C\", \"color\": \"magenta\", \"weight\": 4}"
+              ],
               "title": "Polylines"
             },
-            "description": "Add a polyline.\n\n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            ",
-            "example": "{\"enc\": \"ydjiG_}jVjn@cjAf`AycBnc@mqCp\\\\ewBrQmlBzrAeuCreBw_C\", \"color\": \"magenta\", \"weight\": 4}"
+            "description": "Add a polyline.\n\n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            "
           },
           {
             "name": "polygons",
@@ -9663,10 +9677,12 @@
                 "type": "string"
               },
               "description": "Adds a polygon.\n\n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            ",
+              "examples": [
+                "{\"shape\": \"ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??\", \"fill_color\": \"rgba(255, 20, 147, 0.5)\", \"color\": \"rgba(199, 21, 133, 0.7)\"}"
+              ],
               "title": "Polygons"
             },
-            "description": "Adds a polygon.\n\n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            ",
-            "example": "{\"shape\": \"ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??\", \"fill_color\": \"rgba(255, 20, 147, 0.5)\", \"color\": \"rgba(199, 21, 133, 0.7)\"}"
+            "description": "Adds a polygon.\n\n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            "
           },
           {
             "name": "retina",
@@ -9691,6 +9707,9 @@
                   "type": "null"
                 }
               ],
+              "examples": [
+                "[{\"featureType\": \"points_of_interest.business\", \"stylers\":[{\"visibility\": \"off\"}]}]"
+              ],
               "contentMediaType": "application/json",
               "contentSchema": {
                 "items": {
@@ -9700,8 +9719,7 @@
               },
               "type": "string",
               "title": "Stylers"
-            },
-            "example": "[{\"featureType\": \"points_of_interest.business\", \"stylers\":[{\"visibility\": \"off\"}]}]"
+            }
           }
         ],
         "responses": {
