@@ -1,25 +1,5 @@
 # WARNING: This file is automatically updated as part of `npm run build`.
 
-address_address_components:
-  $ref: "./address/address_components.yml"
-address_address:
-  $ref: "./address/address.yml"
-address_cc_format:
-  $ref: "./address/cc_format.yml"
-address_fields:
-  $ref: "./address/fields.yml"
-address_input:
-  $ref: "./address/input.yml"
-address_language:
-  $ref: "./address/language.yml"
-address_latlng:
-  $ref: "./address/latlng.yml"
-address_limit:
-  $ref: "./address/limit.yml"
-address_location:
-  $ref: "./address/location.yml"
-address_public_id:
-  $ref: "./address/public_id.yml"
 geolocation_ip_address:
   $ref: "./geolocation/ip_address.yml"
 geolocation_limit:

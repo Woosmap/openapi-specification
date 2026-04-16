@@ -1,8 +1,0 @@
-name: components
-description: >
-  To restrict your results to specific areas. Currently, you can use components to filter over countries. Countries must be passed as three characters string (ISO 3166-1 Alpha 3).
-  Components should be passed as an array of different options which are separated by a `|`.
-schema:
-  type: string
-  example: country:CAN|country:BEL
-in: query

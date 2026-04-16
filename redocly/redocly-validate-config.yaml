@@ -17,7 +17,6 @@ rules:
       - "Zones"
       - "Geolocation API"
       - "Localities API"
-      - "Address API"
       - "Woosmap for what3words API"
       - "Indoor API"
       - "Transit API"

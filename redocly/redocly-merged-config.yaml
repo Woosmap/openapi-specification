@@ -118,7 +118,6 @@ apis:
             tags:
               - "Geolocation API"
               - "Localities API"
-              - "Address API"
               - "Datasets API"
               - "Woosmap for what3words API"
           - name: "Stores"

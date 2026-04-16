@@ -1,6 +1,0 @@
-[START woosmap_http_address_autocomplete_collection]
-https://api.woosmap.com/address/autocomplete/json
-  ?components=country%3Agb
-  &input=Lond
-  &key=YOUR_PUBLIC_API_KEY
-[END woosmap_http_address_autocomplete_collection]

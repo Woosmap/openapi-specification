@@ -13,7 +13,7 @@ parameters:
   - $ref: "../../parameters/localities/public_id.yml"
   - $ref: "../../parameters/localities/language.yml"
   - $ref: "../../parameters/localities/fields.yml"
-  - $ref: "../../parameters/address/cc_format.yml"
+  - $ref: "../../parameters/localities/cc_format.yml"
   - $ref: "../../parameters/localities/page.yml"
   - $ref: "../../parameters/localities/addresses_per_page.yml"
 responses:

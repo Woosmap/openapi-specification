@@ -1,7 +1,0 @@
-name: location
-description: >
-  Bias for the results. Should be pass in `lat`,`lng` format.
-schema:
-  type: string
-  example: 5.2,-2.3
-in: query

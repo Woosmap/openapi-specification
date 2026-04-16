@@ -29,69 +29,6 @@ export const REQUESTS: SnippetRequest[] = [
         }),
     },
     {
-        regionTag: "woosmap_http_address_autocomplete_collection",
-        request: new Request({
-            url: new Url({
-                protocol: "https",
-                host: "api.woosmap.com",
-                path: "/address/autocomplete/json",
-                query: [
-                    {
-                        key: "input",
-                        value: "Lond",
-                    },
-                    {
-                        key: "components",
-                        value: "country:gb",
-                    },
-                ],
-            }),
-            header: [{key: "Referer", value: "http://localhost"}],
-        }),
-    },
-    {
-        regionTag: "woosmap_http_address_details",
-        request: new Request({
-            url: new Url({
-                protocol: "https",
-                host: "api.woosmap.com",
-                path: "/address/details/json",
-                query: [
-                    {
-                        key: "public_id",
-                        value: "aGVyZTpjbTpuYW1lZHBsYWNlOjIwMzM3NDU0",
-                    }
-                ],
-            }),
-            header: [{key: "Referer", value: "http://localhost"}],
-        }),
-    },
-    {
-        regionTag: "woosmap_http_address_geocode_collection",
-        request: new Request({
-            url: new Url({
-                protocol: "https",
-                host: "api.woosmap.com",
-                path: "/address/geocode/json",
-                query: [
-                    {
-                        key: "address",
-                        value: "Place de la Resistance Paris",
-                    },
-                    {
-                        key: "components",
-                        value: "country:FR"
-                    },
-                    {
-                        key: "limit",
-                        value: "5"
-                    }
-                ],
-            }),
-            header: [{key: "Referer", value: "http://localhost"}],
-        }),
-    },
-    {
         regionTag: "woosmap_http_distance_matrix",
         request: new Request({
             url: new Url({
