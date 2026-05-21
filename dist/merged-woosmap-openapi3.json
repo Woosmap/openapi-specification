@@ -14225,6 +14225,9 @@
         "enum": [
           "country",
           "admin_level",
+          "admin_level_1",
+          "admin_level_2",
+          "admin_level_3",
           "postal_code",
           "address",
           "route",
