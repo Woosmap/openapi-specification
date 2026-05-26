@@ -3,7 +3,7 @@ type: object
 description: Attributes describing a locality. Not all attributes will be available for all locality types.
 properties:
   public_id:
-    description: Contains a unique ID for each suggestion. Please use this ID if you need to give us feedbacks on results. This ID is also required to perform Localities Details request.
+    description: Contains a unique ID for each suggestion. Please use this ID if you need to give us feedback on results. This ID is also required to perform a Localities Details Request.
     type: string
     example: MkvnYy6K6oVGqeqfWJGO/6eCgqo=
   types:
@@ -13,10 +13,10 @@ properties:
       $ref: "./LocalitiesTypesAll.yml"
   type:
     deprecated: true
-    description: this field might be removed in the future, please use the `types` field which is more exhaustive
+    description: This field might be removed in the future, please use the `types` field which is more exhaustive.
     type: string
   description:
-    description: Concatenation of `name`, `admin_1`, `admin_0` to be used as suggestion in drop down list if needed. The description can vary depending on the type requested.
+    description: Concatenation of `name`, `admin_1`, `admin_0` to be used as suggestion in drop-down list if needed. The description can vary depending on the type requested.
     type: string
     example: "20121, Milano, Italy"
   matched_substrings:

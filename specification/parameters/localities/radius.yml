@@ -1,7 +1,7 @@
 name: radius
 description: >
   This parameter may be used in addition to the `location` parameter to define the distance in meters within which the API will return results in priority. Results outside of the defined area may still be displayed.
-  Default radius if this parameter is not set is 100 000.
+  Default radius if this parameter is not set is 100000.
 schema:
   type: integer
   example: 200000

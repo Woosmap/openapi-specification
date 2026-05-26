@@ -1,6 +1,6 @@
 title: LocalitiesAutocompleteMatchedFields
 type: object
-description: Contains a set of substrings in the `description` field that match elements in the `input`. It can be used to highlight those substrings. Each substring is identified by an `offset` and a `length`.`
+description: Contains a set of substrings in the `description` field that match elements in the `input`. It can be used to highlight those substrings. Each substring is identified by an `offset` and a `length`.
 properties:
   description:
     description: match substrings for localities `description`

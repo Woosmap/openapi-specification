@@ -5,7 +5,7 @@ description: >
     - Standard locality types (e.g., cities, administrative areas, postal codes)
     - Points of Interest (POI) categories
     - POI aliases
-    
+
   These classifications enable flexible geographic data representation and querying.
 
 schema:

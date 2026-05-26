@@ -3,7 +3,7 @@ servers:
 tags:
   - Localities API
 description: >
-  Autocomplete on worldwide suggestions for a for text-based geographic searches.
+  Autocomplete on worldwide suggestions for text-based geographic searches.
   It can match on full words as well as substrings. You can therefore send queries as the user types, to provide on-the-fly addresses, city names, postal codes or suburb name suggestions.
 
 security:
