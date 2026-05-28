@@ -1,4 +1,4 @@
 title: LocalitiesStatus
 type: string
-description: This optional field is only available for UK addresses referenced as not yet built by Royal Mail. Only one value yet.
+description: This optional field is only available for UK addresses referenced as not yet built by Royal Mail.
 enum: [ not_yet_built ]
