@@ -12,7 +12,7 @@ Attributes describing a locality. Not all attributes are available for all local
 
 <pre class="notranslate lang-json prettyprint">{
   "result": {
-    "public_id": "QaCU+fBtigK65ztSrqHqUoUDwZw=",
+    "public_id": "cG9zdGFsX2NvZGU6Z2I6OmNDN0N0ZUF2MW9YRi9KLzlnS2cremJndktFaz0=",
     "types": [
       "postal_code"
     ],

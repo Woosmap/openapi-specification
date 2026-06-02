@@ -3537,13 +3537,18 @@
               "enum": [
                 "en",
                 "fr",
+                "bg",
                 "ca",
+                "cs",
                 "da",
                 "de",
+                "el",
                 "es",
                 "et",
                 "fi",
                 "he",
+                "hi",
+                "hu",
                 "it",
                 "ja",
                 "nb",
@@ -3552,7 +3557,10 @@
                 "pt",
                 "ro",
                 "ru",
+                "sk",
+                "sl",
                 "sv",
+                "tr",
                 "uk",
                 "zh"
               ],
@@ -4040,13 +4048,18 @@
               "enum": [
                 "en",
                 "fr",
+                "bg",
                 "ca",
+                "cs",
                 "da",
                 "de",
+                "el",
                 "es",
                 "et",
                 "fi",
                 "he",
+                "hi",
+                "hu",
                 "it",
                 "ja",
                 "nb",
@@ -4055,7 +4068,10 @@
                 "pt",
                 "ro",
                 "ru",
+                "sk",
+                "sl",
                 "sv",
+                "tr",
                 "uk",
                 "zh"
               ],
@@ -4566,13 +4582,18 @@
               "enum": [
                 "en",
                 "fr",
+                "bg",
                 "ca",
+                "cs",
                 "da",
                 "de",
+                "el",
                 "es",
                 "et",
                 "fi",
                 "he",
+                "hi",
+                "hu",
                 "it",
                 "ja",
                 "nb",
@@ -4581,7 +4602,10 @@
                 "pt",
                 "ro",
                 "ru",
+                "sk",
+                "sl",
                 "sv",
+                "tr",
                 "uk",
                 "zh"
               ],
@@ -5047,13 +5071,18 @@
               "enum": [
                 "en",
                 "fr",
+                "bg",
                 "ca",
+                "cs",
                 "da",
                 "de",
+                "el",
                 "es",
                 "et",
                 "fi",
                 "he",
+                "hi",
+                "hu",
                 "it",
                 "ja",
                 "nb",
@@ -5062,7 +5091,10 @@
                 "pt",
                 "ro",
                 "ru",
+                "sk",
+                "sl",
                 "sv",
+                "tr",
                 "uk",
                 "zh"
               ],
@@ -8051,7 +8083,7 @@
         "tags": [
           "Localities API"
         ],
-        "description": "Autocomplete on worldwide suggestions for a for text-based geographic searches. It can match on full words as well as substrings. You can therefore send queries as the user types, to provide on-the-fly addresses, city names, postal codes or suburb name suggestions.\n",
+        "description": "Autocomplete on worldwide suggestions for text-based geographic searches. It can match on full words as well as substrings. You can therefore send queries as the user types, to provide on-the-fly addresses, city names, postal codes or suburb name suggestions.\n",
         "security": [
           {
             "Woosmap_Platform_API_Reference_PublicApiKeyAuth": [],
@@ -8416,7 +8448,7 @@
                     "summary": "Localities Postal Code details from a `public_id` retrieved using Localities autocomplete",
                     "value": {
                       "result": {
-                        "public_id": "QaCU+fBtigK65ztSrqHqUoUDwZw=",
+                        "public_id": "cG9zdGFsX2NvZGU6Z2I6OmNDN0N0ZUF2MW9YRi9KLzlnS2cremJndktFaz0=",
                         "types": [
                           "postal_code"
                         ],
@@ -8978,7 +9010,7 @@
           },
           {
             "name": "radius",
-            "description": "radius of the search circle, in meter.\n",
+            "description": "Radius of the search circle, in meters.\n",
             "schema": {
               "type": "integer",
               "default": 1000,
@@ -8991,7 +9023,7 @@
           },
           {
             "name": "page",
-            "description": "use `page` to navigate through paginated results.\n",
+            "description": "Use `page` to navigate through paginated results.\n",
             "schema": {
               "type": "integer",
               "default": 1,
@@ -9002,7 +9034,7 @@
           },
           {
             "name": "limit",
-            "description": "Defines how many results should be included in a page\n",
+            "description": "Defines how many results should be included in a page.\n",
             "schema": {
               "type": "integer",
               "default": 10,
@@ -9018,7 +9050,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Points of interests surrounding `location` and matching provided `types`, sorted by distance to `location`.",
+            "description": "Points of interest surrounding `location` and matching provided `types`, sorted by distance to `location`.",
             "content": {
               "application/json": {
                 "schema": {
@@ -9026,7 +9058,7 @@
                 },
                 "examples": {
                   "default": {
-                    "summary": "Nearby points of interest with category `business.shop` around New-York center.",
+                    "summary": "Nearby points of interest with category `business.shop` around New York center.",
                     "value": {
                       "results": [
                         {
@@ -12081,7 +12113,7 @@
       },
       "Woosmap_Platform_API_Reference_types": {
         "name": "types",
-        "description": "Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:\n  - Standard locality types (e.g., cities, administrative areas, postal codes)\n  - Points of Interest (POI) categories\n  - POI aliases\n  \nThese classifications enable flexible geographic data representation and querying.\n",
+        "description": "Specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:\n  - Standard locality types (e.g., cities, administrative areas, postal codes)\n  - Points of Interest (POI) categories\n  - POI aliases\n\nThese classifications enable flexible geographic data representation and querying.\n",
         "schema": {
           "default": "locality|postal_code",
           "example": "locality|airport|admin_level",
@@ -12128,7 +12160,7 @@
       },
       "Woosmap_Platform_API_Reference_radius-2": {
         "name": "radius",
-        "description": "This parameter may be used in addition to the `location` parameter to define the distance in meters within which the API will return results in priority. Results outside of the defined area may still be displayed. Default radius if this parameter is not set is 100 000.\n",
+        "description": "This parameter may be used in addition to the `location` parameter to define the distance in meters within which the API will return results in priority. Results outside of the defined area may still be displayed. Default radius if this parameter is not set is 100000.\n",
         "schema": {
           "type": "integer",
           "example": 200000
@@ -12176,7 +12208,7 @@
         "description": "A textual identifier that uniquely identifies a locality, returned from a [Localities Autocomplete](https://developers.woosmap.com/products/localities/autocomplete/).\n",
         "schema": {
           "type": "string",
-          "example": "MkvnYy6K6oVGqeqfWJGO/6eCgqo="
+          "example": "cG9zdGFsX2NvZGU6Z2I6OmNDN0N0ZUF2MW9YRi9KLzlnS2cremJndktFaz0="
         },
         "required": true,
         "in": "query"
@@ -12239,7 +12271,7 @@
       },
       "Woosmap_Platform_API_Reference_latlng": {
         "name": "latlng",
-        "description": "The latlng parameter is used for reverse geocoding, it’s required if the `address` parameter is missing.\n",
+        "description": "The latlng parameter is used for reverse geocoding, it's required if the `address` parameter is missing.\n",
         "schema": {
           "type": "string",
           "example": "5.2,-2.3"
@@ -12249,7 +12281,7 @@
       },
       "Woosmap_Platform_API_Reference_geocode_types": {
         "name": "types",
-        "description": "When executing a geocode request with the `address` parameter, it specifies the types of suggestions to return in the query.  Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:\n  - Standard locality types (e.g., cities, administrative areas, postal codes)\n  - Points of Interest (POI) categories\n  - POI aliases\n\nThese classifications enable flexible geographic data representation and querying.\nThis parameter is ignored when used with the `latlng` parameter. \n",
+        "description": "When executing a geocode request with the `address` parameter, it specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:\n  - Standard locality types (e.g., cities, administrative areas, postal codes)\n  - Points of Interest (POI) categories\n  - POI aliases\n\nThese classifications enable flexible geographic data representation and querying.\nThis parameter is ignored when used with the `latlng` parameter.\n",
         "schema": {
           "default": "locality|postal_code|address",
           "example": "locality|admin_level",
@@ -12278,7 +12310,7 @@
       },
       "Woosmap_Platform_API_Reference_nearby_excluded_types": {
         "name": "excluded_types",
-        "description": "The types of points of interest to exclude from results.  results will match the specified `types`, if any, but will not match the specified `excluded_types`  Multiple types can be passed using the pipe character (`|`) as a separator. For example: `excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.\n",
+        "description": "The types of points of interest to exclude from results.  Results will match the specified `types`, if any, but will not match the specified `excluded_types`. Multiple types can be passed using the pipe character (`|`) as a separator. For example: `excluded_types=business.food_and_drinks.fast_food|business.food_and_drinks.pub`.\n",
         "schema": {
           "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesTypesPoi"
         },
@@ -14362,7 +14394,7 @@
       "Woosmap_Platform_API_Reference_LocalitiesAutocompleteMatchedFields": {
         "title": "LocalitiesAutocompleteMatchedFields",
         "type": "object",
-        "description": "Contains a set of substrings in the `description` field that match elements in the `input`. It can be used to highlight those substrings. Each substring is identified by an `offset` and a `length`.`",
+        "description": "Contains a set of substrings in the `description` field that match elements in the `input`. It can be used to highlight those substrings. Each substring is identified by an `offset` and a `length`.",
         "properties": {
           "description": {
             "description": "match substrings for localities `description`",
@@ -14408,7 +14440,7 @@
         "description": "Attributes describing a locality. Not all attributes will be available for all locality types.",
         "properties": {
           "public_id": {
-            "description": "Contains a unique ID for each suggestion. Please use this ID if you need to give us feedbacks on results. This ID is also required to perform Localities Details request.",
+            "description": "Contains a unique ID for each suggestion. Please use this ID if you need to give us feedback on results. This ID is also required to perform a Localities Details Request.",
             "type": "string",
             "example": "MkvnYy6K6oVGqeqfWJGO/6eCgqo="
           },
@@ -14421,11 +14453,11 @@
           },
           "type": {
             "deprecated": true,
-            "description": "this field might be removed in the future, please use the `types` field which is more exhaustive",
+            "description": "This field might be removed in the future, please use the `types` field which is more exhaustive.",
             "type": "string"
           },
           "description": {
-            "description": "Concatenation of `name`, `admin_1`, `admin_0` to be used as suggestion in drop down list if needed. The description can vary depending on the type requested.",
+            "description": "Concatenation of `name`, `admin_1`, `admin_0` to be used as suggestion in drop-down list if needed. The description can vary depending on the type requested.",
             "type": "string",
             "example": "20121, Milano, Italy"
           },
@@ -14744,7 +14776,7 @@
       "Woosmap_Platform_API_Reference_LocalitiesStatus": {
         "title": "LocalitiesStatus",
         "type": "string",
-        "description": "This optional field is only available for UK addresses referenced as not yey built by Royal Mail. Only one value yet.",
+        "description": "This optional field is only available for UK addresses referenced as not yet built by Royal Mail.",
         "enum": [
           "not_yet_built"
         ]
@@ -14791,7 +14823,7 @@
             ],
             "properties": {
               "public_id": {
-                "description": "Contains a unique ID for each suggestion. Please use this ID to give feedbacks on results.",
+                "description": "Contains a unique ID for each suggestion. Please use this ID to give feedback on results.",
                 "type": "string",
                 "example": "MkvnYy6K6oVGqeqfWJGO/6eCgqo="
               },
@@ -14799,7 +14831,7 @@
                 "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_FormattedAddress"
               },
               "types": {
-                "description": "available localities types",
+                "description": "Available localities types.",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesTypesAll"
@@ -14863,7 +14895,7 @@
                   "pagination": {
                     "type": "object",
                     "deprecated": true,
-                    "description": "The pagination part of the response is deprecated as all the addresses are now automatically returned in the response. It will be turned off at some point. From now on, the pagination will systematically return `page=1`, `pages_count=1`, `addresses_per_page=total addresses count` and `address_count=total addresses count`.",
+                    "description": "The pagination part of the response is deprecated as all the addresses are now automatically returned in the response. It will be turned off at some point. From now on, the pagination will systematically return `page=1`, `page_count=1`, `addresses_per_page=total addresses count` and `address_count=total addresses count`.",
                     "properties": {
                       "page": {
                         "type": "integer",
@@ -14901,7 +14933,7 @@
         },
         "example": {
           "result": {
-            "public_id": "QaCU+fBtigK65ztSrqHqUoUDwZw=",
+            "public_id": "cG9zdGFsX2NvZGU6Z2I6OmNDN0N0ZUF2MW9YRi9KLzlnS2cremJndktFaz0=",
             "types": [
               "postal_code"
             ],
@@ -15053,7 +15085,7 @@
             "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_AdministrativeAreaLabel"
           },
           "public_id": {
-            "description": "Contains a unique ID for each suggestion. Please use this ID to give feedbacks on results.",
+            "description": "Contains a unique ID for each suggestion. Please use this ID to give feedback on results.",
             "type": "string",
             "example": "MkvnYy6K6oVGqeqfWJGO/6eCgqo="
           },
@@ -15079,7 +15111,7 @@
             }
           },
           "scores_per_components": {
-            "description": "For each component (street_name, postal_code, and locality), it indicates the degree of correspondence with the original query. This value ranges from 0 to 1, with 0 indicating no match with the original query, and enables you to assess the quality of the Geocode’s result.",
+            "description": "For each component (street_name, postal_code, and locality), it indicates the degree of correspondence with the original query. This value ranges from 0 to 1, with 0 indicating no match with the original query, and enables you to assess the quality of the Geocode's result.",
             "$ref": "#/components/schemas/Woosmap_Platform_API_Reference_LocalitiesScoresPerComponents"
           }
         }
@@ -15190,7 +15222,7 @@
             "type": "string"
           },
           "public_id": {
-            "description": "Contains a unique ID for each result. Please use this ID to give feedbacks on results.",
+            "description": "Contains a unique ID for each result. Please use this ID to give feedback on results.",
             "type": "string",
             "example": "NOAeiQADqqisOuN3NM7oXlhkROI="
           },
@@ -20329,13 +20361,18 @@
             "enum": [
               "en",
               "fr",
+              "bg",
               "ca",
+              "cs",
               "da",
               "de",
+              "el",
               "es",
               "et",
               "fi",
               "he",
+              "hi",
+              "hu",
               "it",
               "ja",
               "nb",
@@ -20344,7 +20381,10 @@
               "pt",
               "ro",
               "ru",
+              "sk",
+              "sl",
               "sv",
+              "tr",
               "uk",
               "zh"
             ],
@@ -20585,13 +20625,18 @@
             "enum": [
               "en",
               "fr",
+              "bg",
               "ca",
+              "cs",
               "da",
               "de",
+              "el",
               "es",
               "et",
               "fi",
               "he",
+              "hi",
+              "hu",
               "it",
               "ja",
               "nb",
@@ -20600,7 +20645,10 @@
               "pt",
               "ro",
               "ru",
+              "sk",
+              "sl",
               "sv",
+              "tr",
               "uk",
               "zh"
             ],

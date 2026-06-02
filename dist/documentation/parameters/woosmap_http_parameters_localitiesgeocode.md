@@ -35,7 +35,7 @@
 
 -   <h3 class="parameter-name" id="latlng">latlng</h3>
 
-    The latlng parameter is used for reverse geocoding, it’s required if the `address` parameter is missing.
+    The latlng parameter is used for reverse geocoding, it's required if the `address` parameter is missing.
 
 -   <h3 class="parameter-name" id="list_sub_buildings">list_sub_buildings</h3>
 
@@ -43,7 +43,7 @@
 
 -   <h3 class="parameter-name" id="types">types</h3>
 
-    When executing a geocode request with the `address` parameter, it specifies the types of suggestions to return in the query.  Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:
+    When executing a geocode request with the `address` parameter, it specifies the types of suggestions to return in the query. Multiple types can be combined using the pipe character (`|`) as a separator. This parameter supports a wide range of locality classifications, including:
 
     -   Standard locality types (e.g., cities, administrative areas, postal codes)
     -   Points of Interest (POI) categories
