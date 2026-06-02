@@ -40,7 +40,7 @@
 
 -   <h3 class="parameter-name" id="radius">radius</h3>
 
-    This parameter may be used in addition to the `location` parameter to define the distance in meters within which the API will return results in priority. Results outside of the defined area may still be displayed. Default radius if this parameter is not set is 100 000.
+    This parameter may be used in addition to the `location` parameter to define the distance in meters within which the API will return results in priority. Results outside of the defined area may still be displayed. Default radius if this parameter is not set is 100000.
 
 -   <h3 class="parameter-name" id="types">types</h3>
 

@@ -2,7 +2,7 @@
 <!--- [START woosmap_http_schema_localitiesautocompletematchedfields] -->
 <h3 class="schema-object" id="LocalitiesAutocompleteMatchedFields">LocalitiesAutocompleteMatchedFields</h3>
 
-Contains a set of substrings in the `description` field that match elements in the `input`. It can be used to highlight those substrings. Each substring is identified by an `offset` and a `length`.\`
+Contains a set of substrings in the `description` field that match elements in the `input`. It can be used to highlight those substrings. Each substring is identified by an `offset` and a `length`.
 
 | Field                                                                                                                              | Required | Type                                                                  | Description                                                                                                                                                                              |
 | :--------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

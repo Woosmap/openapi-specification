@@ -13,13 +13,13 @@ properties:
       - address_components
     properties:
       public_id:
-        description: Contains a unique ID for each suggestion. Please use this ID to give feedbacks on results.
+        description: Contains a unique ID for each suggestion. Please use this ID to give feedback on results.
         type: string
         example: MkvnYy6K6oVGqeqfWJGO/6eCgqo=
       formatted_address:
         $ref: "./FormattedAddress.yml"
       types:
-        description: available localities types
+        description: Available localities types.
         type: array
         items:
           $ref: "./LocalitiesTypesAll.yml"
@@ -57,7 +57,7 @@ properties:
           pagination:
             type: object
             deprecated: true
-            description: The pagination part of the response is deprecated as all the addresses are now automatically returned in the response. It will be turned off at some point. From now on, the pagination will systematically return `page=1`, `pages_count=1`, `addresses_per_page=total addresses count` and `address_count=total addresses count`.
+            description: The pagination part of the response is deprecated as all the addresses are now automatically returned in the response. It will be turned off at some point. From now on, the pagination will systematically return `page=1`, `page_count=1`, `addresses_per_page=total addresses count` and `address_count=total addresses count`.
             properties:
               page:
                 type: integer

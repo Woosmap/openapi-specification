@@ -12,7 +12,7 @@ properties:
   administrative_area_label:
     $ref: "./AdministrativeAreaLabel.yml"
   public_id:
-    description: Contains a unique ID for each suggestion. Please use this ID to give feedbacks on results.
+    description: Contains a unique ID for each suggestion. Please use this ID to give feedback on results.
     type: string
     example: MkvnYy6K6oVGqeqfWJGO/6eCgqo=
   geometry:
@@ -31,5 +31,5 @@ properties:
     items:
       $ref: "./LocalitiesAddressSummary.yml"
   scores_per_components:
-    description: For each component (street_name, postal_code, and locality), it indicates the degree of correspondence with the original query. This value ranges from 0 to 1, with 0 indicating no match with the original query, and enables you to assess the quality of the Geocode’s result.
+    description: For each component (street_name, postal_code, and locality), it indicates the degree of correspondence with the original query. This value ranges from 0 to 1, with 0 indicating no match with the original query, and enables you to assess the quality of the Geocode's result.
     $ref: "./LocalitiesScoresPerComponents.yml"

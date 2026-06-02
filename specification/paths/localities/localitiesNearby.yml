@@ -22,7 +22,7 @@ parameters:
     in: query
   - name: radius
     description: >
-      radius of the search circle, in meter.
+      Radius of the search circle, in meters.
     schema:
       type: integer
       default: 1000
@@ -33,7 +33,7 @@ parameters:
     example: 3000
   - name: page
     description: >
-      use `page` to navigate through paginated results.
+      Use `page` to navigate through paginated results.
     schema:
       type: integer
       default: 1
@@ -42,7 +42,7 @@ parameters:
     example: 7
   - name: limit
     description: >
-      Defines how many results should be included in a page
+      Defines how many results should be included in a page.
     schema:
       type: integer
       default: 10
@@ -53,14 +53,14 @@ parameters:
   - $ref: "../../parameters/localities/nearby_excluded_types.yml"
 responses:
   "200":
-    description: Points of interests surrounding `location` and matching provided `types`, sorted by distance to `location`.
+    description: Points of interest surrounding `location` and matching provided `types`, sorted by distance to `location`.
     content:
       application/json:
         schema:
           $ref: "../../schemas/LocalitiesNearbyCollectionResponse.yml"
         examples:
           default:
-            summary: Nearby points of interest with category `business.shop` around New-York center.
+            summary: Nearby points of interest with category `business.shop` around New York center.
             value:
               $ref: "../../responses/woosmap_http_localities_nearby_collection_response.yml"
   "401":

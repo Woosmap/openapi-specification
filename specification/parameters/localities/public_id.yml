@@ -3,6 +3,6 @@ description: >
   A textual identifier that uniquely identifies a locality, returned from a [Localities Autocomplete](https://developers.woosmap.com/products/localities/autocomplete/).
 schema:
   type: string
-  example: MkvnYy6K6oVGqeqfWJGO/6eCgqo=
+  example: cG9zdGFsX2NvZGU6Z2I6OmNDN0N0ZUF2MW9YRi9KLzlnS2cremJndktFaz0=
 required: true
 in: query

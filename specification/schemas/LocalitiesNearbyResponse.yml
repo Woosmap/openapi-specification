@@ -12,7 +12,7 @@ properties:
     description: The name of the result.
     type: string
   public_id:
-    description: Contains a unique ID for each result. Please use this ID to give feedbacks on results.
+    description: Contains a unique ID for each result. Please use this ID to give feedback on results.
     type: string
     example: NOAeiQADqqisOuN3NM7oXlhkROI=
   geometry:
