@@ -9,3 +9,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    # Bundle all npm updates into a single grouped PR per run.
+    groups:
+      npm-dependencies:
+        patterns:
+          - "*"
