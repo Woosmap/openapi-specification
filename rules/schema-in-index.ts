@@ -1,7 +1,7 @@
 
 
 import yargs from "yargs";
-import tar from "tar";
+import * as tar from "tar";
 import tmp from "tmp";
 import fs from "fs";
 import path from "path";
