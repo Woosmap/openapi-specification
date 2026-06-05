@@ -4,9 +4,9 @@
 
 Localities Geocode Collection Response. Contains one or more detailed Localities or Addresses in FR or in the UK, with coordinates (default to one result for reverse geocoding)
 
-| Field                                                                                                                      | Required | Type                                                                                             | Description                                                                                                   |
-| :------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
-| <h4 id="LocalitiesGeocodeCollectionResponse-results" class="add-link schema-object-property-key"><code>results</code></h4> | optional | Array&lt;[LocalitiesGeocodeResponse](#LocalitiesGeocodeResponse "LocalitiesGeocodeResponse")&gt; | See [LocalitiesGeocodeResponse](#LocalitiesGeocodeResponse "LocalitiesGeocodeResponse") for more information. |
+| Field                                                                                                                      | Required | Type                                                                                               | Description                                                                                                   |
+| :------------------------------------------------------------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| <h4 id="LocalitiesGeocodeCollectionResponse-results" class="add-link schema-object-property-key"><code>results</code></h4> | optional | Array\&lt;[LocalitiesGeocodeResponse](#LocalitiesGeocodeResponse "LocalitiesGeocodeResponse")\&gt; | See [LocalitiesGeocodeResponse](#LocalitiesGeocodeResponse "LocalitiesGeocodeResponse") for more information. |
 
 <h4 class="schema-object-example" id="LocalitiesGeocodeCollectionResponse-example">Example</h4>
 

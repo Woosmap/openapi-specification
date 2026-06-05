@@ -4,9 +4,9 @@
 
 A Collection of Woosmap Assets as expected for Data Management Data API.
 
-| Field                                                                                                        | Required     | Type                                                      | Description                                                                                                                                   |
-| :----------------------------------------------------------------------------------------------------------- | ------------ | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| <h4 id="AssetsCollectionRequest-stores" class="add-link schema-object-property-key"><code>stores</code></h4> | **required** | Array&lt;[AssetRequest](#AssetRequest "AssetRequest")&gt; | <div class="ref-property-description"><p>The Assets collection</p><p>See <a href="#AssetRequest">AssetRequest</a> for more information.</div> |
+| Field                                                                                                        | Required     | Type                                                        | Description                                                                                                                                   |
+| :----------------------------------------------------------------------------------------------------------- | ------------ | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| <h4 id="AssetsCollectionRequest-stores" class="add-link schema-object-property-key"><code>stores</code></h4> | **required** | Array\&lt;[AssetRequest](#AssetRequest "AssetRequest")\&gt; | <div class="ref-property-description"><p>The Assets collection</p><p>See <a href="#AssetRequest">AssetRequest</a> for more information.</div> |
 
 <h4 class="schema-object-example" id="AssetsCollectionRequest-example">Example</h4>
 

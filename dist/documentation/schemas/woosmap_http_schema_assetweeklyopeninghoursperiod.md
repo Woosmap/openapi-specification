@@ -4,10 +4,10 @@
 
 The opening Hours for Monday
 
-| Field                                                                                                                    | Required | Type                                                                                       | Description                                                                                                       |
-| :----------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| <h4 id="AssetWeeklyOpeningHoursPeriod-hours" class="add-link schema-object-property-key"><code>hours</code></h4>         | optional | Array&lt;[AssetOpeningHoursPeriod](#AssetOpeningHoursPeriod "AssetOpeningHoursPeriod")&gt; | See [AssetOpeningHoursPeriod](#AssetOpeningHoursPeriod "AssetOpeningHoursPeriod") for more information.           |
-| <h4 id="AssetWeeklyOpeningHoursPeriod-isSpecial" class="add-link schema-object-property-key"><code>isSpecial</code></h4> | optional | boolean                                                                                    | <div class="nonref-property-description"><p>Define if the hours comes from a special opening hours day.</p></div> |
+| Field                                                                                                                    | Required | Type                                                                                         | Description                                                                                                       |
+| :----------------------------------------------------------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| <h4 id="AssetWeeklyOpeningHoursPeriod-hours" class="add-link schema-object-property-key"><code>hours</code></h4>         | optional | Array\&lt;[AssetOpeningHoursPeriod](#AssetOpeningHoursPeriod "AssetOpeningHoursPeriod")\&gt; | See [AssetOpeningHoursPeriod](#AssetOpeningHoursPeriod "AssetOpeningHoursPeriod") for more information.           |
+| <h4 id="AssetWeeklyOpeningHoursPeriod-isSpecial" class="add-link schema-object-property-key"><code>isSpecial</code></h4> | optional | boolean                                                                                      | <div class="nonref-property-description"><p>Define if the hours comes from a special opening hours day.</p></div> |
 
 <h4 class="schema-object-example" id="AssetWeeklyOpeningHoursPeriod-example">Example</h4>
 

@@ -12,11 +12,6 @@
       "name": "Woosmap API"
     }
   },
-  "servers": [
-    {
-      "url": "https://api.woosmap.com"
-    }
-  ],
   "tags": [
     {
       "name": "Search",
@@ -108,6 +103,11 @@
   ],
   "paths": {
     "/stores": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "post": {
         "summary": "Create your Assets",
         "operationId": "createStores",
@@ -624,6 +624,11 @@
       }
     },
     "/stores/{storeId}": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "Get Asset from ID",
         "operationId": "getStore",
@@ -912,6 +917,11 @@
       }
     },
     "/stores/replace": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "post": {
         "summary": "Replace all assets",
         "operationId": "replaceStores",
@@ -1141,6 +1151,7 @@
       }
     },
     "/datasets/{dataset_id}": {
+      "servers": [],
       "get": {
         "tags": [
           "Datasets API"
@@ -1525,6 +1536,7 @@
       }
     },
     "/datasets/": {
+      "servers": [],
       "get": {
         "tags": [
           "Datasets API"
@@ -1762,6 +1774,7 @@
       }
     },
     "/datasets/{dataset_id}/status": {
+      "servers": [],
       "get": {
         "tags": [
           "Datasets API"
@@ -1884,6 +1897,7 @@
       }
     },
     "/datasets/{dataset_id}/import": {
+      "servers": [],
       "post": {
         "tags": [
           "Datasets API"
@@ -2006,6 +2020,7 @@
       }
     },
     "/datasets/hooks/reimport/{reimport_key}": {
+      "servers": [],
       "post": {
         "tags": [
           "Datasets API"
@@ -2100,6 +2115,7 @@
       }
     },
     "/datasets/{dataset_id}/features/search/": {
+      "servers": [],
       "post": {
         "tags": [
           "Datasets API"
@@ -2276,6 +2292,7 @@
       }
     },
     "/datasets/{dataset_id}/features/nearby/": {
+      "servers": [],
       "post": {
         "tags": [
           "Datasets API"
@@ -2538,6 +2555,7 @@
       }
     },
     "/datasets/{dataset_id}/features/intersects/": {
+      "servers": [],
       "post": {
         "tags": [
           "Datasets API"
@@ -2800,6 +2818,7 @@
       }
     },
     "/datasets/{dataset_id}/features/contains/": {
+      "servers": [],
       "post": {
         "tags": [
           "Datasets API"
@@ -3062,6 +3081,7 @@
       }
     },
     "/datasets/{dataset_id}/features/within/": {
+      "servers": [],
       "post": {
         "tags": [
           "Datasets API"
@@ -3274,6 +3294,7 @@
       }
     },
     "/datasets/{dataset_id}/features/{feature_id}": {
+      "servers": [],
       "get": {
         "tags": [
           "Datasets API"
@@ -3439,6 +3460,7 @@
       }
     },
     "/distance/route/json/": {
+      "servers": [],
       "get": {
         "tags": [
           "Distance API"
@@ -3972,6 +3994,7 @@
       }
     },
     "/distance/distancematrix/json/": {
+      "servers": [],
       "get": {
         "tags": [
           "Distance API"
@@ -4506,6 +4529,7 @@
       }
     },
     "/distance/isochrone/json/": {
+      "servers": [],
       "get": {
         "tags": [
           "Distance API"
@@ -4934,6 +4958,7 @@
       }
     },
     "/distance/tolls/json/": {
+      "servers": [],
       "get": {
         "tags": [
           "Distance API"
@@ -5393,6 +5418,7 @@
       }
     },
     "/distance/matrix/async/": {
+      "servers": [],
       "post": {
         "tags": [
           "Distance Async API"
@@ -5520,6 +5546,7 @@
       }
     },
     "/distance/matrix/async/{matrix_id}/status": {
+      "servers": [],
       "get": {
         "tags": [
           "Distance Async API"
@@ -5644,6 +5671,7 @@
       }
     },
     "/distance/matrix/async/{matrix_id}": {
+      "servers": [],
       "get": {
         "tags": [
           "Distance Async API"
@@ -5785,6 +5813,11 @@
       }
     },
     "/geolocation/position": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "Geolocation from an IP address",
         "operationId": "getGeolocationPosition",
@@ -5929,6 +5962,11 @@
       }
     },
     "/geolocation/stores": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "Assets nearby a Geolocation",
         "operationId": "getStoresFromGeolocationPosition",
@@ -6224,6 +6262,11 @@
       }
     },
     "/geolocation/timezone": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "Timezone",
         "operationId": "getTimezone",
@@ -6365,6 +6408,12 @@
       }
     },
     "/indoor/venues/{venue_id}": {
+      "servers": [
+        {
+          "description": "Woosmap",
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "operationId": "api_routers_indoor_get_venue_by_key",
         "summary": "Get Venue By Key",
@@ -6495,6 +6544,12 @@
       }
     },
     "/indoor/venues": {
+      "servers": [
+        {
+          "description": "Woosmap",
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "operationId": "api_routers_indoor_get_venues_by_key",
         "summary": "Get Venues By Key",
@@ -6638,6 +6693,12 @@
       }
     },
     "/indoor/style": {
+      "servers": [
+        {
+          "description": "Woosmap",
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "operationId": "api_routers_indoor_get_indoor_style",
         "summary": "Get Indoor Style",
@@ -6784,6 +6845,12 @@
       }
     },
     "/indoor/distancematrix/{venue_id}": {
+      "servers": [
+        {
+          "description": "Woosmap",
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "operationId": "api_routers_indoor_distance_matrix",
         "summary": "Distance Matrix",
@@ -6977,6 +7044,12 @@
       }
     },
     "/indoor/directions/{venue_id}": {
+      "servers": [
+        {
+          "description": "Woosmap",
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "operationId": "api_routers_indoor_directions",
         "summary": "Directions",
@@ -7225,6 +7298,12 @@
       }
     },
     "/indoor/venues/{venue_id}/pois/search": {
+      "servers": [
+        {
+          "description": "Woosmap",
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "operationId": "api_routers_indoor_search_venue_pois_by_key",
         "summary": "Search Venue Pois By Key",
@@ -7498,6 +7577,12 @@
       }
     },
     "/indoor/venues/{venue_id}/pois/autocomplete": {
+      "servers": [
+        {
+          "description": "Woosmap",
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "operationId": "api_routers_indoor_autocomplete_venue_pois_by_key",
         "summary": "Autocomplete Venue Pois By Key",
@@ -7758,6 +7843,12 @@
       }
     },
     "/indoor/venues/{venue_id}/features/{feature_id}": {
+      "servers": [
+        {
+          "description": "Woosmap",
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "operationId": "api_routers_indoor_get_feature_by_key",
         "summary": "Get Feature By Key",
@@ -7899,6 +7990,12 @@
       }
     },
     "/indoor/venues/{venue_id}/tiles/{z}/{x}/{y}.pbf": {
+      "servers": [
+        {
+          "description": "Woosmap",
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "operationId": "api_routers_indoor_tiles_by_key",
         "summary": "Tiles By Key",
@@ -8072,6 +8169,11 @@
       }
     },
     "/localities/autocomplete": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "Autocomplete for Localities",
         "operationId": "localitiesAutocomplete",
@@ -8308,6 +8410,11 @@
       }
     },
     "/localities/details": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "Details of a Locality",
         "operationId": "localitiesDetails",
@@ -8600,6 +8707,11 @@
       }
     },
     "/localities/geocode": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "Geocode a locality or Reverse Geocode a latlng",
         "operationId": "localitiesGeocode",
@@ -8970,6 +9082,11 @@
       }
     },
     "/localities/nearby": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "Nearby points of interest",
         "operationId": "localitiesNearby",
@@ -9542,6 +9659,7 @@
       }
     },
     "/maps/static": {
+      "servers": [],
       "get": {
         "tags": [
           "Static Map API"
@@ -9840,6 +9958,11 @@
       }
     },
     "/stores/search": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "Search for assets",
         "operationId": "storeSearch",
@@ -10160,6 +10283,11 @@
       }
     },
     "/stores/autocomplete": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "Autocomplete for assets",
         "operationId": "storeAutocomplete",
@@ -10332,6 +10460,11 @@
       }
     },
     "/stores/search/bounds": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "Bounds for assets",
         "operationId": "storesBounds",
@@ -10466,6 +10599,7 @@
       }
     },
     "/transit/route": {
+      "servers": [],
       "get": {
         "tags": [
           "Transit API"
@@ -10658,6 +10792,7 @@
       }
     },
     "/what3words/convert-to-3wa": {
+      "servers": [],
       "get": {
         "tags": [
           "Woosmap for what3words API"
@@ -10813,6 +10948,7 @@
       }
     },
     "/what3words/convert-to-address": {
+      "servers": [],
       "get": {
         "tags": [
           "Woosmap for what3words API"
@@ -10944,6 +11080,7 @@
       }
     },
     "/what3words/autosuggest": {
+      "servers": [],
       "get": {
         "tags": [
           "Woosmap for what3words API"
@@ -11219,6 +11356,11 @@
       }
     },
     "/zones": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "List your Zones",
         "operationId": "listZones",
@@ -11765,6 +11907,11 @@
       }
     },
     "/zones/{zone_id}": {
+      "servers": [
+        {
+          "url": "https://api.woosmap.com"
+        }
+      ],
       "get": {
         "summary": "Get Zone from ID",
         "operationId": "getZone",
@@ -12336,111 +12483,6 @@
           "example": 20
         },
         "in": "query"
-      },
-      "Woosmap_Platform_API_Reference_geolocation_ip_address": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_ip_address"
-      },
-      "Woosmap_Platform_API_Reference_geolocation_limit": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit"
-      },
-      "Woosmap_Platform_API_Reference_localities_address": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_address"
-      },
-      "Woosmap_Platform_API_Reference_localities_addresses_per_page": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_addresses_per_page"
-      },
-      "Woosmap_Platform_API_Reference_localities_cc_format": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_cc_format"
-      },
-      "Woosmap_Platform_API_Reference_localities_custom_description": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_custom_description"
-      },
-      "Woosmap_Platform_API_Reference_localities_data": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_data"
-      },
-      "Woosmap_Platform_API_Reference_localities_excluded_types": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_excluded_types"
-      },
-      "Woosmap_Platform_API_Reference_localities_extended": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_extended"
-      },
-      "Woosmap_Platform_API_Reference_localities_fields": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_fields"
-      },
-      "Woosmap_Platform_API_Reference_localities_geocode_types": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_geocode_types"
-      },
-      "Woosmap_Platform_API_Reference_localities_input": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_input"
-      },
-      "Woosmap_Platform_API_Reference_localities_language": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_language-2"
-      },
-      "Woosmap_Platform_API_Reference_localities_latlng": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_latlng"
-      },
-      "Woosmap_Platform_API_Reference_localities_list_sub_buildings": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_list_sub_buildings"
-      },
-      "Woosmap_Platform_API_Reference_localities_localities_components": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_localities_components"
-      },
-      "Woosmap_Platform_API_Reference_localities_location": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_location"
-      },
-      "Woosmap_Platform_API_Reference_localities_nearby_excluded_types": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_nearby_excluded_types"
-      },
-      "Woosmap_Platform_API_Reference_localities_nearby_types": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_nearby_types"
-      },
-      "Woosmap_Platform_API_Reference_localities_page": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_page-2"
-      },
-      "Woosmap_Platform_API_Reference_localities_public_id": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_public_id"
-      },
-      "Woosmap_Platform_API_Reference_localities_radius": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_radius-2"
-      },
-      "Woosmap_Platform_API_Reference_localities_types": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_types"
-      },
-      "Woosmap_Platform_API_Reference_search_encoded_polyline": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_encoded_polyline"
-      },
-      "Woosmap_Platform_API_Reference_search_language": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_language"
-      },
-      "Woosmap_Platform_API_Reference_search_lat": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_lat"
-      },
-      "Woosmap_Platform_API_Reference_search_limit": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-2"
-      },
-      "Woosmap_Platform_API_Reference_search_lng": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_lng"
-      },
-      "Woosmap_Platform_API_Reference_search_page": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_page"
-      },
-      "Woosmap_Platform_API_Reference_search_query": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_query"
-      },
-      "Woosmap_Platform_API_Reference_search_radius": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_radius"
-      },
-      "Woosmap_Platform_API_Reference_search_stores_by_page": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_stores_by_page"
-      },
-      "Woosmap_Platform_API_Reference_search_zone": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_zone"
-      },
-      "Woosmap_Platform_API_Reference_zones_limit": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_limit-3"
-      },
-      "Woosmap_Platform_API_Reference_zones_offset": {
-        "$ref": "#/components/parameters/Woosmap_Platform_API_Reference_offset"
       }
     },
     "schemas": {
@@ -15859,28 +15901,6 @@
             "type": "string"
           }
         }
-      },
-      "Woosmap_Platform_API_Reference_Destinations": {
-        "title": "Destinations",
-        "example": "48.709,2.403|48.768,2.338",
-        "type": "string",
-        "description": "One or more locations to use as the finishing point for calculating travel distance. The options for the destinations parameter are the same as for the origins parameter, described above. In order to reduce URL size, [encoded polylines](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) are also supported using `enc:encoded-polyline:`\n"
-      },
-      "Woosmap_Platform_API_Reference_Origins": {
-        "title": "Origins",
-        "example": "48.709,2.403",
-        "type": "string",
-        "description": "The starting point for calculating travel distance. You can supply one or more locations separated by the pipe character, in the form of latitude/longitude coordinates. They are used unchanged to calculate distance. Ensure that no space exists between the latitude and longitude values. In order to reduce URL size, [encoded polylines](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) are also supported using `enc:encoded-polyline:`\n"
-      },
-      "Woosmap_Platform_API_Reference_Units": {
-        "title": "Units",
-        "example": "metric",
-        "type": "string",
-        "enum": [
-          "imperial",
-          "metric"
-        ],
-        "description": "Specifies the unit system to use when expressing distance as text. Two different units supported:\n  * `metric` (default) returns distances in kilometers and meters\n  * `imperial` returns distances in miles and feet\n"
       },
       "Maps_AuthenticationErrorResponse": {
         "properties": {

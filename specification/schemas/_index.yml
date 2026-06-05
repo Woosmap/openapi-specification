@@ -32,12 +32,6 @@ MatchedSubstring:
   $ref: "./MatchedSubstring.yml"
 AddressComponents:
   $ref: "./AddressComponents.yml"
-Destinations:
-  $ref: "./Destinations.yml"
-Origins:
-  $ref: "./Origins.yml"
-Units:
-  $ref: "./Units.yml"
 Success:
   $ref: "./Success.yml"
 Error400:

@@ -4,9 +4,9 @@
 
 <h2 id="optional-parameters">Optional parameters</h2>
 
--   <h3 class="parameter-name" id="ip_address">ip_address</h3>
+- <h3 class="parameter-name" id="ip_address">ip_address</h3>
 
-    The ip_address you want to geolocate. For **server call with private_key** only. Without this parameter, the API will geolocate the IP Address attached to the raw TCP request.
+  The ip\_address you want to geolocate. For **server call with private\_key** only. Without this parameter, the API will geolocate the IP Address attached to the raw TCP request.
 
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.

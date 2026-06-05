@@ -4570,76 +4570,6 @@ components:
         minimum: 1
         example: 20
       in: query
-    geolocation_ip_address:
-      $ref: '#/components/parameters/ip_address'
-    geolocation_limit:
-      $ref: '#/components/parameters/limit'
-    localities_address:
-      $ref: '#/components/parameters/address'
-    localities_addresses_per_page:
-      $ref: '#/components/parameters/addresses_per_page'
-    localities_cc_format:
-      $ref: '#/components/parameters/cc_format'
-    localities_custom_description:
-      $ref: '#/components/parameters/custom_description'
-    localities_data:
-      $ref: '#/components/parameters/data'
-    localities_excluded_types:
-      $ref: '#/components/parameters/excluded_types'
-    localities_extended:
-      $ref: '#/components/parameters/extended'
-    localities_fields:
-      $ref: '#/components/parameters/fields'
-    localities_geocode_types:
-      $ref: '#/components/parameters/geocode_types'
-    localities_input:
-      $ref: '#/components/parameters/input'
-    localities_language:
-      $ref: '#/components/parameters/language-2'
-    localities_latlng:
-      $ref: '#/components/parameters/latlng'
-    localities_list_sub_buildings:
-      $ref: '#/components/parameters/list_sub_buildings'
-    localities_localities_components:
-      $ref: '#/components/parameters/localities_components'
-    localities_location:
-      $ref: '#/components/parameters/location'
-    localities_nearby_excluded_types:
-      $ref: '#/components/parameters/nearby_excluded_types'
-    localities_nearby_types:
-      $ref: '#/components/parameters/nearby_types'
-    localities_page:
-      $ref: '#/components/parameters/page-2'
-    localities_public_id:
-      $ref: '#/components/parameters/public_id'
-    localities_radius:
-      $ref: '#/components/parameters/radius-2'
-    localities_types:
-      $ref: '#/components/parameters/types'
-    search_encoded_polyline:
-      $ref: '#/components/parameters/encoded_polyline'
-    search_language:
-      $ref: '#/components/parameters/language'
-    search_lat:
-      $ref: '#/components/parameters/lat'
-    search_limit:
-      $ref: '#/components/parameters/limit-2'
-    search_lng:
-      $ref: '#/components/parameters/lng'
-    search_page:
-      $ref: '#/components/parameters/page'
-    search_query:
-      $ref: '#/components/parameters/query'
-    search_radius:
-      $ref: '#/components/parameters/radius'
-    search_stores_by_page:
-      $ref: '#/components/parameters/stores_by_page'
-    search_zone:
-      $ref: '#/components/parameters/zone'
-    zones_limit:
-      $ref: '#/components/parameters/limit-3'
-    zones_offset:
-      $ref: '#/components/parameters/offset'
   schemas:
     LatLngLiteral:
       title: LatLngLiteral
@@ -7022,29 +6952,6 @@ components:
           description: message returned with the 2OO Zones request
           example: Zones successfully updated.
           type: string
-    Destinations:
-      title: Destinations
-      example: 48.709,2.403|48.768,2.338
-      type: string
-      description: |
-        One or more locations to use as the finishing point for calculating travel distance. The options for the destinations parameter are the same as for the origins parameter, described above. In order to reduce URL size, [encoded polylines](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) are also supported using `enc:encoded-polyline:`
-    Origins:
-      title: Origins
-      example: 48.709,2.403
-      type: string
-      description: |
-        The starting point for calculating travel distance. You can supply one or more locations separated by the pipe character, in the form of latitude/longitude coordinates. They are used unchanged to calculate distance. Ensure that no space exists between the latitude and longitude values. In order to reduce URL size, [encoded polylines](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) are also supported using `enc:encoded-polyline:`
-    Units:
-      title: Units
-      example: metric
-      type: string
-      enum:
-        - imperial
-        - metric
-      description: |
-        Specifies the unit system to use when expressing distance as text. Two different units supported:
-          * `metric` (default) returns distances in kilometers and meters
-          * `imperial` returns distances in miles and feet
   securitySchemes:
     PrivateApiKeyAuth:
       description: A Private key generated specifically to authenticate API requests on server side. Required for Data management API. See how to [register a Private API Key](https://developers.woosmap.com/support/api-keys/#registering-a-woosmap-private-api-key).

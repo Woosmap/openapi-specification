@@ -2,15 +2,15 @@
 <!--- [START woosmap_http_parameters_geolocationtimezone] -->
 <h2 id="required-parameters">Required parameters</h2>
 
--   <h3 class="parameter-name" id="location">location</h3>
+- <h3 class="parameter-name" id="location">location</h3>
 
-    The location {lat},{lng}
+  The location {lat},{lng}
 
 <h2 id="optional-parameters">Optional parameters</h2>
 
--   <h3 class="parameter-name" id="timestamp">timestamp</h3>
+- <h3 class="parameter-name" id="timestamp">timestamp</h3>
 
-    The UTC timestamp
+  The UTC timestamp
 
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.

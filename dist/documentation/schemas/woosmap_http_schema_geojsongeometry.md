@@ -12,10 +12,10 @@ To display on the map, simply wrap this object in a feature:
 }
 ```
 
-| Field                                                                                                          | Required | Type                                                         | Description                                                                                                                                                     |
-| :------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <h4 id="GeoJsonGeometry-coordinates" class="add-link schema-object-property-key"><code>coordinates</code></h4> | optional | Array&lt;[GeoJsonCoords](#GeoJsonCoords "GeoJsonCoords")&gt; | See [GeoJsonCoords](#GeoJsonCoords "GeoJsonCoords") for more information.                                                                                       |
-| <h4 id="GeoJsonGeometry-type" class="add-link schema-object-property-key"><code>type</code></h4>               | optional | string                                                       | <div class="nonref-property-description"><p>the geometry type</p><div class="notranslate">The allowed values include: `Polygon`, and `MultiPoligon`</div></div> |
+| Field                                                                                                          | Required | Type                                                           | Description                                                                                                                                                     |
+| :------------------------------------------------------------------------------------------------------------- | -------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <h4 id="GeoJsonGeometry-coordinates" class="add-link schema-object-property-key"><code>coordinates</code></h4> | optional | Array\&lt;[GeoJsonCoords](#GeoJsonCoords "GeoJsonCoords")\&gt; | See [GeoJsonCoords](#GeoJsonCoords "GeoJsonCoords") for more information.                                                                                       |
+| <h4 id="GeoJsonGeometry-type" class="add-link schema-object-property-key"><code>type</code></h4>               | optional | string                                                         | <div class="nonref-property-description"><p>the geometry type</p><div class="notranslate">The allowed values include: `Polygon`, and `MultiPoligon`</div></div> |
 
 <h4 class="schema-object-example" id="GeoJsonGeometry-example">Example</h4>
 

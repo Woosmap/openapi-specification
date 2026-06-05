@@ -4,10 +4,10 @@
 
 A Collection of Woosmap Zones retrieved in response to a get zones list.
 
-| Field                                                                                                        | Required | Type                              | Description                                                                                                                  |
-| :----------------------------------------------------------------------------------------------------------- | -------- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| <h4 id="ZonesCollectionResponse-status" class="add-link schema-object-property-key"><code>status</code></h4> | optional | string                            | <div class="nonref-property-description"><p>the status as string</p></div>                                                   |
-| <h4 id="ZonesCollectionResponse-zones" class="add-link schema-object-property-key"><code>zones</code></h4>   | optional | Array&lt;[Zone](#Zone "Zone")&gt; | <div class="ref-property-description"><p>The Zones collection</p><p>See <a href="#Zone">Zone</a> for more information.</div> |
+| Field                                                                                                        | Required | Type                                | Description                                                                                                                  |
+| :----------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| <h4 id="ZonesCollectionResponse-status" class="add-link schema-object-property-key"><code>status</code></h4> | optional | string                              | <div class="nonref-property-description"><p>the status as string</p></div>                                                   |
+| <h4 id="ZonesCollectionResponse-zones" class="add-link schema-object-property-key"><code>zones</code></h4>   | optional | Array\&lt;[Zone](#Zone "Zone")\&gt; | <div class="ref-property-description"><p>The Zones collection</p><p>See <a href="#Zone">Zone</a> for more information.</div> |
 
 <h4 class="schema-object-example" id="ZonesCollectionResponse-example">Example</h4>
 
