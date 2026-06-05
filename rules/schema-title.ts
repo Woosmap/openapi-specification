@@ -1,10 +1,10 @@
 
 
-import { options } from "yargs";
+import yargs from "yargs";
 import { OpenAPIV3 } from "openapi-types";
 import fs from "fs";
 
-const argv = options({
+const argv = yargs(process.argv.slice(2)).options({
   spec: {
     type: "string",
     demandOption: true,

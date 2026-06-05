@@ -1,11 +1,11 @@
 
 import $RefParser from '@apidevtools/json-schema-ref-parser';
 
-import { options } from 'yargs';
+import yargs from "yargs";
 import { readFileSync, writeFileSync } from 'fs';
 import { OpenAPIV3 } from 'openapi-types';
 
-const argv = options({
+const argv = yargs(process.argv.slice(2)).options({
 	output: {
 		type: 'string',
 		demandOption: true,

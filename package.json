@@ -77,6 +77,9 @@
     "yargs": "^18.0.0"
   },
   "pnpm": {
-    "onlyBuiltDependencies": []
+    "onlyBuiltDependencies": [],
+    "overrides": {
+      "@types/unist": "^3.0.3"
+    }
   }
 }

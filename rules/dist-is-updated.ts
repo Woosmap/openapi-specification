@@ -1,10 +1,10 @@
-import { options } from "yargs";
+import yargs from "yargs";
 import tar from "tar";
 import tmp from "tmp";
 import { compareSync } from "dir-compare";
 import fs from "fs";
 
-const argv = options({
+const argv = yargs(process.argv.slice(2)).options({
   archive: {
     type: "string",
     demandOption: true,

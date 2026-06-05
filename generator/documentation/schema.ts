@@ -1,6 +1,6 @@
 
 import { createWriteStream, readFileSync } from "fs";
-import { options } from "yargs";
+import yargs from "yargs";
 import tar from "tar-stream";
 import { OpenAPIV3 } from "openapi-types";
 import slugify from "slugify";
@@ -8,7 +8,7 @@ import prettier from "prettier";
 import { build } from "./build";
 import { mdProcessor, htmlProcessor } from "./processors";
 
-const argv = options({
+const argv = yargs(process.argv.slice(2)).options({
   output: {
     type: "string",
     demandOption: true,
@@ -29,13 +29,15 @@ const main = async (argv: any) => {
   for (const key in spec.components!.schemas) {
     const schema = spec.components!.schemas[key];
     const regionTag = `woosmap_http_schema_${slugify(key).toLowerCase()}`;
-    const markdown = mdProcessor.stringify(await build(schema, key, spec, regionTag));
+    // build() composes mdast-builder nodes (typed as loose unist Parent); the
+    // remark stringifier wants an mdast Root (structurally identical here).
+    const markdown = mdProcessor.stringify((await build(schema, key, spec, regionTag)) as any);
     // write markdown file
     pack.entry(
       {
         name: `documentation/schemas/${regionTag}.md`,
       },
-      prettier.format(
+      await prettier.format(
         `<!--- This is a generated file, do not edit! -->\n<!--- [START ${regionTag}] -->\n${markdown}\n<!--- [END ${regionTag}] -->`,
         { parser: "markdown" }
       )
@@ -47,7 +49,7 @@ const main = async (argv: any) => {
       {
         name: `documentation/schemas/${regionTag}.html`,
       },
-      prettier.format(
+      await prettier.format(
         `<!--- This is a generated file, do not edit! -->\n<!--- [START ${regionTag}] -->\n${html}\n<!--- [END ${regionTag}] -->`,
         { parser: "html" }
       )

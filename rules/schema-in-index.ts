@@ -1,20 +1,20 @@
 
 
-import { options } from "yargs";
+import yargs from "yargs";
 import tar from "tar";
 import tmp from "tmp";
 import fs from "fs";
 import path from "path";
-import glob from "glob";
+import { glob } from "glob";
 
-const argv = options({
+const argv = yargs(process.argv.slice(2)).options({
   archive: {
     type: "string",
     demandOption: true,
   },
 }).argv;
 
-const main = (argv) => {
+const main = async (argv) => {
   const dir = tmp.dirSync();
 
   tar.x({
@@ -27,30 +27,29 @@ const main = (argv) => {
     path.join(dir.name, "documentation", "schemas")
   );
 
-  glob(
-    path.join(__dirname, "..", "specification", "schemas", "**", "*.yml"),
-    (_: any, files: string[]) => {
-      files
-        .map(
-          (f) =>
-            `woosmap_http_schema_${path
-              .basename(f)
-              .toLocaleLowerCase()
-              .replace(".yml", ".md")}`
-        )
-        // remove the index files as those are not generated
-        .filter((f) => f.indexOf("_index") === -1)
-        .forEach((f) => {
-          if (generatedSchemaFiles.indexOf(f) === -1) {
-            throw `
-		
-Please update specification/schemas/_index.yml to generate ${f}.
-		
-`;
-          }
-        });
-    }
+  const files = await glob(
+    path.join(__dirname, "..", "specification", "schemas", "**", "*.yml")
   );
+
+  files
+    .map(
+      (f) =>
+        `woosmap_http_schema_${path
+          .basename(f)
+          .toLocaleLowerCase()
+          .replace(".yml", ".md")}`
+    )
+    // remove the index files as those are not generated
+    .filter((f) => f.indexOf("_index") === -1)
+    .forEach((f) => {
+      if (generatedSchemaFiles.indexOf(f) === -1) {
+        throw `
+
+Please update specification/schemas/_index.yml to generate ${f}.
+
+`;
+      }
+    });
 };
 
 main(argv);
