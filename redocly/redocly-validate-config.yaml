@@ -8,6 +8,11 @@ plugins:
 rules:
   tag-description: warn
   no-path-trailing-slash: off
+  # redocly v2's "recommended" set promotes these to error; keep them warnings
+  # to preserve prior behavior. Revisit by fixing the offending example data
+  # (no-invalid-schema-examples) and adding servers (no-empty-servers).
+  no-invalid-schema-examples: warn
+  no-empty-servers: warn
   woosmap/validate-tags:
     severity: error
     requireOperationTags: true

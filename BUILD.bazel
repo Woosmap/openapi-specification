@@ -107,7 +107,12 @@ validator_bin.openapi_examples_validator_test(
         "--no-additional-properties",
         "$(rootpath //:{}.json)".format(BUNDLE_NAME),
     ],
-    data = ["//:{}.json".format(BUNDLE_NAME)],
+    # openapi-examples-validator@7 requires js-yaml at runtime but does not
+    # declare it as a dependency; provide it so it resolves at the root.
+    data = [
+        "//:{}.json".format(BUNDLE_NAME),
+        "//:node_modules/js-yaml",
+    ],
 )
 
 postman_bin.openapi2postmanv2(

@@ -45,7 +45,10 @@ def bundle(name, entry, data = None, config = None, decorators = None, visibilit
             "--output",
             "$(rootpath {})".format(JSON_FILENAME),
         ],
-        srcs = [":" + RAW_TARGET],
+        # The spec sources are needed so dereference can resolve the
+        # example-value $refs (responses/requests) that redocly v2 leaves
+        # external in the bundle.
+        srcs = [":" + RAW_TARGET] + all_srcs,
         visibility = visibility,
         env = {"BAZEL_BINDIR": "$(BINDIR)"},
     )

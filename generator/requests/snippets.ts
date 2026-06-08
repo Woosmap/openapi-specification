@@ -2,7 +2,7 @@ import {REQUESTS} from "./requests";
 import {SnippetRequest} from "./types";
 import {createWriteStream} from "fs";
 import {convert as generateSnippetCB} from "postman-code-generators";
-import {options} from "yargs";
+import yargs from "yargs";
 import {promisify} from "util";
 import tar from "tar-stream";
 import {Request} from "postman-collection";
@@ -112,7 +112,7 @@ const generateSnippet = async (
     return promisify(generateSnippetCB)(lang, variant, request, options);
 };
 
-const argv = options({
+const argv = yargs(process.argv.slice(2)).options({
     output: {
         type: "string",
         demandOption: true,

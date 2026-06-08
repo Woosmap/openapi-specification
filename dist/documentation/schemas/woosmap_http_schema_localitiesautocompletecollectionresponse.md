@@ -4,9 +4,9 @@
 
 Localities Collection Response containing Localities
 
-| Field                                                                                                                                 | Required | Type                                                                                                            | Description                                                                                                                  |
-| :------------------------------------------------------------------------------------------------------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| <h4 id="LocalitiesAutocompleteCollectionResponse-localities" class="add-link schema-object-property-key"><code>localities</code></h4> | optional | Array&lt;[LocalitiesAutocompleteResponse](#LocalitiesAutocompleteResponse "LocalitiesAutocompleteResponse")&gt; | See [LocalitiesAutocompleteResponse](#LocalitiesAutocompleteResponse "LocalitiesAutocompleteResponse") for more information. |
+| Field                                                                                                                                 | Required | Type                                                                                                              | Description                                                                                                                  |
+| :------------------------------------------------------------------------------------------------------------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| <h4 id="LocalitiesAutocompleteCollectionResponse-localities" class="add-link schema-object-property-key"><code>localities</code></h4> | optional | Array\&lt;[LocalitiesAutocompleteResponse](#LocalitiesAutocompleteResponse "LocalitiesAutocompleteResponse")\&gt; | See [LocalitiesAutocompleteResponse](#LocalitiesAutocompleteResponse "LocalitiesAutocompleteResponse") for more information. |
 
 <h4 class="schema-object-example" id="LocalitiesAutocompleteCollectionResponse-example">Example</h4>
 

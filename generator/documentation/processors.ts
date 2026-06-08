@@ -1,16 +1,16 @@
 import stringify from "remark-stringify";
-import unified from "unified";
+import { unified } from "unified";
 import remarkHtml from "remark-html";
 import remarkParse from "remark-parse";
-import fromMarkdown_ from "mdast-util-from-markdown";
+import { fromMarkdown as fromMarkdown_ } from "mdast-util-from-markdown";
 import gfm from "remark-gfm";
-import syntax from "micromark-extension-gfm";
+import { gfm as syntax } from "micromark-extension-gfm";
 import { gfmFromMarkdown } from "mdast-util-gfm";
 
 export const fromMarkdown = (s: string) =>
   fromMarkdown_(s, {
     extensions: [syntax()],
-    mdastExtensions: [gfmFromMarkdown],
+    mdastExtensions: [gfmFromMarkdown()],
   });
 
 export const mdProcessor = unified().use(gfm).use(stringify, {

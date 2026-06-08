@@ -4,9 +4,9 @@
 
 A Collection of Woosmap Zones as expected for Data Management Data API.
 
-| Field                                                                                                     | Required     | Type                              | Description                                                                                                                  |
-| :-------------------------------------------------------------------------------------------------------- | ------------ | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| <h4 id="ZonesCollectionRequest-zones" class="add-link schema-object-property-key"><code>zones</code></h4> | **required** | Array&lt;[Zone](#Zone "Zone")&gt; | <div class="ref-property-description"><p>The Zones collection</p><p>See <a href="#Zone">Zone</a> for more information.</div> |
+| Field                                                                                                     | Required     | Type                                | Description                                                                                                                  |
+| :-------------------------------------------------------------------------------------------------------- | ------------ | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| <h4 id="ZonesCollectionRequest-zones" class="add-link schema-object-property-key"><code>zones</code></h4> | **required** | Array\&lt;[Zone](#Zone "Zone")\&gt; | <div class="ref-property-description"><p>The Zones collection</p><p>See <a href="#Zone">Zone</a> for more information.</div> |
 
 <h4 class="schema-object-example" id="ZonesCollectionRequest-example">Example</h4>
 

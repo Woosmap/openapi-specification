@@ -1,11 +1,11 @@
-import {RequestBody, Request as Request_, Url} from "postman-collection";
+import {RequestBodyDefinition, RequestDefinition, Request as Request_, Url} from "postman-collection";
 
 // TODO current Request.definition is incorrect and requires fields
 interface Options {
     url: Url | string;
     method?: string;
     header?: { key: string; value: string }[];
-    body?: RequestBody.definition;
+    body?: RequestBodyDefinition;
 }
 
 export class Request extends Request_ {
@@ -15,15 +15,15 @@ export class Request extends Request_ {
         }
         if (options.method && ['POST', 'PUT', 'DELETE', 'UPDATE'].indexOf(options.method) > -1) {
             if (options.url.getQueryString().indexOf("private_key=") == -1) {
-                options.url.addQueryParams({key: "private_key", value: "YOUR_PRIVATE_API_KEY"});
+                options.url.addQueryParams([{key: "private_key", value: "YOUR_PRIVATE_API_KEY"}]);
             }
         } else if (options.url.getQueryString().indexOf("key=") == -1) {
-            options.url.addQueryParams({key: "key", value: "YOUR_PUBLIC_API_KEY"});
+            options.url.addQueryParams([{key: "key", value: "YOUR_PUBLIC_API_KEY"}]);
         }
 
         options.url = options.url.toString();
 
-        super(options as Request_.definition);
+        super(options as RequestDefinition);
     }
 }
 
@@ -46,7 +46,7 @@ export class PutJsonRequest extends Request {
         options.body = {
             mode: "raw",
             raw: JSON.stringify(options.json, null, 2),
-        } as RequestBody.definition;
+        } as RequestBodyDefinition;
 
         super(options);
     }
@@ -61,7 +61,7 @@ export class PostJsonRequest extends Request {
         options.body = {
             mode: "raw",
             raw: JSON.stringify(options.json, null, 2),
-        } as RequestBody.definition;
+        } as RequestBodyDefinition;
 
         super(options);
     }

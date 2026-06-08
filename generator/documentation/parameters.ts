@@ -2,7 +2,7 @@ import $RefParser from "@apidevtools/json-schema-ref-parser";
 import clsx from "clsx";
 
 import {createWriteStream, readFileSync} from "fs";
-import {options} from "yargs";
+import yargs from "yargs";
 import tar from "tar-stream";
 import {OpenAPIV3} from "openapi-types";
 import slugify from "slugify";
@@ -18,7 +18,7 @@ import {
 import {Node, Parent} from "unist";
 import {feedbackLinks, deprecatedAsideNode} from "./helpers";
 
-const argv = options({
+const argv = yargs(process.argv.slice(2)).options({
     output: {
         type: "string",
         demandOption: true,
@@ -119,7 +119,9 @@ const main = async (argv: any) => {
     const pack = tar.pack();
 
     async function write(nodes: Node[], regionTag: string) {
-        const markdown = mdProcessor.stringify(root(nodes));
+        // mdast-builder's root() is typed as a loose unist Parent; the remark
+        // stringifier wants an mdast Root (structurally identical here).
+        const markdown = mdProcessor.stringify(root(nodes) as any);
         // write markdown file
         pack.entry(
             {
@@ -134,7 +136,7 @@ const main = async (argv: any) => {
             {
                 name: `documentation/parameters/${regionTag}.html`,
             },
-            prettier.format(
+            await prettier.format(
                 `<!--- This is a generated file, do not edit! -->\n<!--- [START ${regionTag}] -->\n${html}\n<!--- [END ${regionTag}] -->`,
                 {parser: "html"}
             )

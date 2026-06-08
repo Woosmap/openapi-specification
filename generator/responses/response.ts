@@ -1,4 +1,4 @@
-import {options} from "yargs";
+import yargs from "yargs";
 import tar from "tar-stream";
 import {
     createReadStream,
@@ -10,7 +10,7 @@ import prettier from "prettier";
 
 const header = ``;
 
-const argv = options({
+const argv = yargs(process.argv.slice(2)).options({
     archive: {
         type: "string",
         demandOption: true,
@@ -104,7 +104,7 @@ const response = async (output, regionTag, request) => {
 
     writeFileSync(
         destination,
-        prettier.format(
+        await prettier.format(
             `${header}
         # [START ${regionTag}]
         ${JSON.stringify(response, null, 2)}

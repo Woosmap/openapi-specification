@@ -2,7 +2,7 @@ import {REQUESTS} from "./requests";
 import {SnippetRequest} from "./types";
 import {writeFileSync, existsSync, mkdirSync} from "fs";
 import {convert as generateSnippetCB} from "postman-code-generators";
-import {options} from "yargs";
+import yargs from "yargs";
 import {promisify} from "util";
 import {Request} from "postman-collection";
 import queryString from "query-string";
@@ -80,7 +80,7 @@ const generateSnippet = async (
     return promisify(generateSnippetCB)(lang, variant, request, options);
 };
 
-const argv = options({
+const argv = yargs(process.argv.slice(2)).options({
     output: {
         type: "string",
         demandOption: true,
@@ -103,7 +103,7 @@ const xCodeSamples = async (output, regionTag, lang, sample) => {
     const destination = path.join(directory, `${regionTag}.${lang}.yml`);
     writeFileSync(
         destination,
-        prettier.format(
+        await prettier.format(
             `${JSON.stringify(sample, null, 2)}`,
             {parser: "yaml"}
         )

@@ -4,9 +4,9 @@
 
 <h2 id="optional-parameters">Optional parameters</h2>
 
--   <h3 class="parameter-name" id="query">query</h3>
+- <h3 class="parameter-name" id="query">query</h3>
 
-    The query to target assets ID to delete
+  The query to target assets ID to delete
 
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.

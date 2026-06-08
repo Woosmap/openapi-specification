@@ -2,11 +2,9 @@
 <!--- [START woosmap_http_parameters_zoneszone_id] -->
 <h2 id="required-parameters">Required parameters</h2>
 
--   <h3 class="parameter-name" id="zone_id">zone_id</h3>
+- <h3 class="parameter-name" id="zone_id">zone_id</h3>
 
-    ID of the zone to get
-
-<!---->
+  ID of the zone to get
 
 
 

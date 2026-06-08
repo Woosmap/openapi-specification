@@ -1,10 +1,10 @@
-import { options } from "yargs";
+import yargs from "yargs";
 import { readFileSync } from "fs";
 
 import axios from "axios";
 import path from "path";
 
-const argv = options({
+const argv = yargs(process.argv.slice(2)).options({
   collection: {
     type: "string",
     demandOption: true,

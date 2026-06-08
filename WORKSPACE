@@ -9,19 +9,23 @@ workspace(
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 
 # Fetch Aspect's rules_js so we can install our npm dependencies
+# v2.9.2 (still rules_js 2.x) ships a Node toolchain list that includes
+# Node 22.x, required to register a Node >=22.12 toolchain below.
 http_archive(
     name = "aspect_rules_js",
-    sha256 = "7ee67690ed4d6b5c8cbf6d47bb68b639192a29397a9fe3d513981fecc25a5653",
-    strip_prefix = "rules_js-2.3.2",
-    url = "https://github.com/aspect-build/rules_js/releases/download/v2.3.2/rules_js-v2.3.2.tar.gz",
+    sha256 = "1774702556e1d0b83b7f5eb58ec95676afe6481c62596b53f5b96575bacccf73",
+    strip_prefix = "rules_js-2.9.2",
+    url = "https://github.com/aspect-build/rules_js/releases/download/v2.9.2/rules_js-v2.9.2.tar.gz",
 )
 
 # Fetch Aspect's rules_ts for TypeScript support
+# v3.8.10 is the first release whose mirrored version list includes
+# typescript 6.0.3 (see ts/private/versions.bzl), keeping the hermetic fetch.
 http_archive(
     name = "aspect_rules_ts",
-    sha256 = "d584e4bc80674d046938563678117d17df962fe105395f6b1efe2e8a248b8100",
-    strip_prefix = "rules_ts-3.5.1",
-    url = "https://github.com/aspect-build/rules_ts/releases/download/v3.5.1/rules_ts-v3.5.1.tar.gz",
+    sha256 = "06a432998e3f0b4c1057926b3946b51057413c6ffcb19bbc5e2674191a061063",
+    strip_prefix = "rules_ts-3.8.10",
+    url = "https://github.com/aspect-build/rules_ts/releases/download/v3.8.10/rules_ts-v3.8.10.tar.gz",
 )
 
 # Register js dependencies
@@ -38,9 +42,11 @@ rules_ts_dependencies(
 )
 
 # Set up toolchains
-load("@aspect_rules_js//js:toolchains.bzl", "DEFAULT_NODE_VERSION", "rules_js_register_toolchains")
+load("@aspect_rules_js//js:toolchains.bzl", "rules_js_register_toolchains")
 
-rules_js_register_toolchains(node_version = DEFAULT_NODE_VERSION)
+# Node 22.x (>=22.12) supersedes the EOL Node 18 default and enables require()
+# of the now ESM-only remark/unified toolchain used by the doc generator.
+rules_js_register_toolchains(node_version = "22.14.0")
 
 # Set up npm
 load("@aspect_rules_js//npm:repositories.bzl", "npm_translate_lock")

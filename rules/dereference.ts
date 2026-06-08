@@ -1,11 +1,12 @@
 
 import $RefParser from '@apidevtools/json-schema-ref-parser';
 
-import { options } from 'yargs';
+import yargs from "yargs";
 import { readFileSync, writeFileSync } from 'fs';
+import path from 'path';
 import { OpenAPIV3 } from 'openapi-types';
 
-const argv = options({
+const argv = yargs(process.argv.slice(2)).options({
 	output: {
 		type: 'string',
 		demandOption: true,
@@ -29,7 +30,20 @@ export const isRef = (
 const main = async (argv: any) => {
 	let schema = JSON.parse(readFileSync(argv.spec).toString()) as OpenAPIV3.Document;
 
-	const dereferencedSchema = (await $RefParser.dereference(argv.spec)) as OpenAPIV3.Document;
+	// redocly v2 no longer inlines $refs inside example values, so the bundle
+	// still contains "../../responses|requests/*.yml" refs. Resolve them here
+	// against the spec sources (supplied as inputs next to the bundle): the
+	// refs are relative to the original specification/paths/* files, so derive
+	// a matching base two directories below specification/.
+	const binDir = path.dirname(path.resolve(argv.spec));
+	// Mirror the original source depth (specification/paths/<group>/<file>.yml)
+	// so the "../../responses|requests/*.yml" refs resolve under specification/.
+	const refBase = path.join(binDir, 'specification', 'paths', '_group', '_deref_base.yml');
+	const dereferencedSchema = (await $RefParser.dereference(
+		refBase,
+		JSON.parse(readFileSync(argv.spec).toString()),
+		{},
+	)) as OpenAPIV3.Document;
 
 	Object.entries(schema.components!.schemas!).forEach(([key, o]) => {
 		const deref = dereferencedSchema['components']!['schemas']![key];
