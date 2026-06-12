@@ -15,7 +15,7 @@
   "tags": [
     {
       "name": "Search",
-      "description": "Store Search lets you query the Assets which are returned as a [GeoJson](https://geojson.org/). Request is done over HTTPS using GET. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/). If your request returns a high number of assets, the result will be paginated. If so, you can request assets by page using `page` and `stores_by_page` parameters (Default is **100**, max is **300**).\n",
+      "description": "Store Search lets you query the Assets which are returned as a [GeoJson](https://geojson.org/). Request is done over HTTPS using GET. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/api-reference/authentication). If your request returns a high number of assets, the result will be paginated. If so, you can request assets by page using `page` and `stores_by_page` parameters (Default is **100**, max is **300**).\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/stores-api/overview/"
       }
@@ -36,7 +36,7 @@
     },
     {
       "name": "Geolocation API",
-      "description": "Geolocation API returns a location (or nearby stores) and accuracy radius based on an IP address. Request is done over HTTPS using GET. Response is formatted as JSON. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/support/api-keys/).\n",
+      "description": "Geolocation API returns a location (or nearby stores) and accuracy radius based on an IP address. Request is done over HTTPS using GET. Response is formatted as JSON. You must specify a key in your request, included as the value of a `key` parameter for your public key or `private_key` for your private key. This key identifies your application for purposes of quota management. Learn how to [get a key](https://developers.woosmap.com/api-reference/authentication).\n",
       "externalDocs": {
         "url": "https://developers.woosmap.com/products/geolocation-api/location/"
       }
@@ -22298,14 +22298,14 @@
     },
     "securitySchemes": {
       "Woosmap_Platform_API_Reference_PrivateApiKeyAuth": {
-        "description": "A Private key generated specifically to authenticate API requests on server side. Required for Data management API. See how to [register a Private API Key](https://developers.woosmap.com/support/api-keys/#registering-a-woosmap-private-api-key).",
+        "description": "A Private key generated specifically to authenticate API requests on server side. Required for Data management API. See how to [register a Private API Key](https://developers.woosmap.com/api-reference/authentication#registering-a-woosmap-private-api-key).",
         "type": "apiKey",
         "in": "query",
         "name": "private_key",
         "x-displayName": "PrivateApiKeyAuth"
       },
       "Woosmap_Platform_API_Reference_PublicApiKeyAuth": {
-        "description": "A Public key generated specifically to authenticate API requests on the front side. See how to [register a Public API Key](https://developers.woosmap.com/support/api-keys/#registering-a-woosmap-public-api-key).",
+        "description": "A Public key generated specifically to authenticate API requests on the front side. See how to [register a Public API Key](https://developers.woosmap.com/api-reference/authentication#registering-a-woosmap-public-api-key).",
         "type": "apiKey",
         "in": "query",
         "name": "key",
@@ -22319,7 +22319,7 @@
         "x-displayName": "RefererHeader"
       },
       "Woosmap_Platform_API_Reference_PrivateApiKeyHeaderAuth": {
-        "description": "A Private key to authenticate API requests through the Header instead of Query parameter. Use either PrivateApiKeyHeaderAuth or PrivateApiKeyAuth. See how to [register a Private API Key](https://developers.woosmap.com/support/api-keys/#registering-a-woosmap-private-api-key).",
+        "description": "A Private key to authenticate API requests through the Header instead of Query parameter. Use either PrivateApiKeyHeaderAuth or PrivateApiKeyAuth. See how to [register a Private API Key](https://developers.woosmap.com/api-reference/authentication#registering-a-woosmap-private-api-key).",
         "type": "apiKey",
         "in": "header",
         "name": "X-Api-Key",
