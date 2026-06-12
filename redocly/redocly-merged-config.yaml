@@ -106,6 +106,10 @@ apis:
         tagsToDelete:
           - "Transit"
           - "Transit & Matrix Async"
+          # Stripped from the upstream Localities spec: internal endpoints
+          # explicitly marked "Not available in production".
+          - "Internal Management"
+          - "Internal Address"
         sortOrder:
           "Distance API":
             - route

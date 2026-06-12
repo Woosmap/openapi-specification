@@ -65,6 +65,24 @@ function InjectCodeSamples(options) {
                             );
                         }
                     }
+
+                    // Inject multiple named response examples
+                    if (Array.isArray(mapping.responseExamples) && operation.responses) {
+                        mapping.responseExamples.forEach((example) => {
+                            if (!example || !example.path) return;
+                            const responseData = loadResponse(example.path);
+                            if (!responseData) return;
+                            injectResponseExample(
+                                operation.responses,
+                                responseData,
+                                example.responseCode || mapping.responseCode || '200',
+                                {
+                                    name: example.name,
+                                    summary: example.summary,
+                                }
+                            );
+                        });
+                    }
                 });
             },
         },
@@ -143,9 +161,14 @@ function injectRequestBodyExample(requestBody, requestData) {
 }
 
 /**
- * Inject response example into the operation
+ * Inject response example into the operation.
+ *
+ * `extra.name` becomes the key under `examples` (defaults to "custom"),
+ * `extra.summary` becomes the example summary. This lets a single operation
+ * carry multiple named examples (e.g. localitiesDetails -> Address +
+ * PostalCode).
  */
-function injectResponseExample(responses, responseData, statusCode = '200') {
+function injectResponseExample(responses, responseData, statusCode = '200', extra = {}) {
     const response = responses[statusCode];
     if (!response || !response.content) return;
 
@@ -158,8 +181,9 @@ function injectResponseExample(responses, responseData, statusCode = '200') {
         jsonContent.examples = {};
     }
 
-    jsonContent.examples['custom'] = {
-        summary: 'Example response',
+    const name = extra.name || 'custom';
+    jsonContent.examples[name] = {
+        summary: extra.summary || 'Example response',
         value: responseData,
     };
 }

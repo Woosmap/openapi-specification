@@ -186,6 +186,7 @@ bundle_external_specs(
         "transit",
         "datasets",
         "distance",
+        "localities",
     ],
 )
 

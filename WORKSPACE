@@ -87,4 +87,5 @@ rules_pkg_dependencies()
     "transit",
     "datasets",
     "distance",
+    "localities",
 ]]
