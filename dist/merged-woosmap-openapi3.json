@@ -7,7 +7,7 @@
     "x-document-meta-data": {
       "copyright": "© 2025 Woosmap"
     },
-    "version": "1.44.1",
+    "version": "1.45.0",
     "contact": {
       "name": "Woosmap API"
     }
@@ -14764,14 +14764,14 @@
       },
       "Maps_HTTPErrorModel": {
         "properties": {
-          "details": {
+          "detail": {
             "type": "string",
-            "title": "Details"
+            "title": "Detail"
           }
         },
         "type": "object",
         "required": [
-          "details"
+          "detail"
         ],
         "title": "HTTPErrorModel"
       },
@@ -15463,22 +15463,32 @@
         "properties": {
           "types": {
             "items": {
-              "type": "string",
-              "enum": [
-                "address",
-                "route",
-                "named_place",
-                "locality",
-                "city",
-                "town",
-                "village",
-                "hamlet",
-                "borough",
-                "suburb",
-                "quarter",
-                "neighbourhood",
-                "postal_code",
-                "admin_level"
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "address",
+                    "route",
+                    "named_place",
+                    "locality",
+                    "city",
+                    "town",
+                    "village",
+                    "hamlet",
+                    "borough",
+                    "suburb",
+                    "quarter",
+                    "neighbourhood",
+                    "postal_code",
+                    "admin_level",
+                    "admin_level_1",
+                    "admin_level_2",
+                    "admin_level_3"
+                  ]
+                },
+                {
+                  "type": "string"
+                }
               ]
             },
             "type": "array",
