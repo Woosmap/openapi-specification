@@ -5,7 +5,12 @@
 #   - regionTag: identifier from requests.ts for code sample generation
 #   - snippetPath: directory containing generated code snippets
 #   - requestPath: path to request body example file (for POST/PUT operations)
-#   - responsePath: path to response example file
+#   - responsePath: path to a single response example file (injected under
+#     the `custom` key)
+#   - responseExamples: list of named response examples; each item has
+#     `name`, `summary`, `path`, and optionally `responseCode`. Use this
+#     when an operation needs multiple distinct examples (e.g. Address +
+#     PostalCode for /localities/details).
 #   - responseCode: HTTP status code for response (default: '200')
 
 mappings:
@@ -143,4 +148,41 @@ mappings:
   get_feature_datasets__dataset_id__features__feature_id__get:
     regionTag: woosmap_http_datasets_get_feature
     snippetPath: specification/snippets
+
+  # LOCALITIES API
+  # Autocomplete
+  autocomplete_localities_autocomplete_get:
+    regionTag: woosmap_http_localities_autocomplete_collection
+    snippetPath: specification/snippets
+    responsePath: specification/responses/woosmap_http_localities_autocomplete_collection_response.yml
+
+  # Details — two named examples (Address + PostalCode).
+  details_localities_details_get:
+    regionTag: woosmap_http_localities_details_address
+    snippetPath: specification/snippets
+    responseExamples:
+      - name: Address
+        summary: Localities Address details from a `public_id` retrieved using Localities autocomplete
+        path: specification/responses/woosmap_http_localities_details_address_response.yml
+      - name: PostalCode
+        summary: Localities Postal Code details from a `public_id` retrieved using Localities autocomplete
+        path: specification/responses/woosmap_http_localities_details_postal_code_response.yml
+
+  # Geocode — two named examples (forward geocode + reverse geocode).
+  geocode_localities_geocode_get:
+    regionTag: woosmap_http_localities_geocode_collection
+    snippetPath: specification/snippets
+    responseExamples:
+      - name: geocode
+        summary: Geocode Results for address `Place Jeanne-d'Arc` with components `country:FR`
+        path: specification/responses/woosmap_http_localities_geocode_collection_response.yml
+      - name: reverse
+        summary: Reverse Geocode Results for latlng `51.52089223979333, -0.195460973340401` with list_sub_buildings `true`
+        path: specification/responses/woosmap_http_localities_reverse_geocode_collection_response.yml
+
+  # Nearby POIs
+  poi_nearby_localities_nearby_get:
+    regionTag: woosmap_http_localities_nearby_collection
+    snippetPath: specification/snippets
+    responsePath: specification/responses/woosmap_http_localities_nearby_collection_response.yml
 

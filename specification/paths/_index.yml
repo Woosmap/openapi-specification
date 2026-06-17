@@ -51,26 +51,6 @@
     summary: Bounds for assets
     operationId: storesBounds
     $ref: "./search/storesBounds.yml"
-/localities/autocomplete:
-  get:
-    summary: Autocomplete for Localities
-    operationId: localitiesAutocomplete
-    $ref: "./localities/localitiesAutocomplete.yml"
-/localities/details:
-  get:
-    summary: Details of a Locality
-    operationId: localitiesDetails
-    $ref: "./localities/localitiesDetails.yml"
-/localities/geocode:
-  get:
-    summary: Geocode a locality or Reverse Geocode a latlng
-    operationId: localitiesGeocode
-    $ref: "./localities/localitiesGeocode.yml"
-/localities/nearby:
-  get:
-    summary: Nearby points of interest
-    operationId: localitiesNearby
-    $ref: "./localities/localitiesNearby.yml"
 /zones:
   get:
     summary: List your Zones

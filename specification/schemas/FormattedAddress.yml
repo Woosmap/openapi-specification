@@ -1,4 +1,0 @@
-title: FormattedAddress
-description: Contains the readable text description of the result.
-type: string
-example: "London, England, United Kingdom"
