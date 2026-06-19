@@ -6,18 +6,8 @@ LatLngArrayString:
   $ref: "./LatLngArrayString.yml"
 GeoJsonPoint:
   $ref: "./GeoJsonPoint.yml"
-GeoJsonGeometry:
-  $ref: "./GeoJsonGeometry.yml"
-Position:
-  $ref: "./Position.yml"
-GeoJsonCoords:
-  $ref: "./GeoJsonCoords.yml"
 Timezone:
   $ref: "./Timezone.yml"
-FormattedAddress:
-  $ref: "./FormattedAddress.yml"
-AdministrativeAreaLabel:
-  $ref: "./AdministrativeAreaLabel.yml"
 AssetResponse:
   $ref: "./AssetResponse.yml"
 AssetFeatureResponse:
@@ -30,8 +20,6 @@ Pagination:
   $ref: "./Pagination.yml"
 MatchedSubstring:
   $ref: "./MatchedSubstring.yml"
-AddressComponents:
-  $ref: "./AddressComponents.yml"
 Success:
   $ref: "./Success.yml"
 Error400:
@@ -86,44 +74,6 @@ AssetWeeklyOpeningResponse:
   $ref: "./AssetWeeklyOpeningResponse.yml"
 AssetWeeklyOpeningHoursPeriod:
   $ref: "./AssetWeeklyOpeningHoursPeriod.yml"
-
-# Localities
-LocalitiesAddressSummary:
-  $ref: "./LocalitiesAddressSummary.yml"
-LocalitiesAddressGeometry:
-  $ref: "./LocalitiesAddressGeometry.yml"
-LocalitiesAutocompleteCollectionResponse:
-  $ref: "./LocalitiesAutocompleteCollectionResponse.yml"
-LocalitiesAutocompleteMatchedFields:
-  $ref: "./LocalitiesAutocompleteMatchedFields.yml"
-LocalitiesAutocompleteRelated:
-  $ref: "./LocalitiesAutocompleteRelated.yml"
-LocalitiesAutocompleteRelatedItem:
-  $ref: "./LocalitiesAutocompleteRelatedItem.yml"
-LocalitiesAutocompleteResponse:
-  $ref: "./LocalitiesAutocompleteResponse.yml"
-LocalitiesDetailsResponse:
-  $ref: "./LocalitiesDetailsResponse.yml"
-LocalitiesStatus:
-  $ref: "./LocalitiesStatus.yml"
-LocalitiesTypes:
-  $ref: "./LocalitiesTypes.yml"
-LocalitiesTypesAll:
-  $ref: "./LocalitiesTypesAll.yml"
-LocalitiesTypesPoi:
-  $ref: "./LocalitiesTypesPoi.yml"
-LocalitiesTypesPoiAlias:
-  $ref: "./LocalitiesTypesPoiAlias.yml"
-LocalitiesGeocodeCollectionResponse:
-  $ref: "./LocalitiesGeocodeCollectionResponse.yml"
-LocalitiesGeocodeResponse:
-  $ref: "./LocalitiesGeocodeResponse.yml"
-LocalitiesScoresPerComponents:
-  $ref: "./LocalitiesScoresPerComponents.yml"
-LocalitiesNearbyCollectionResponse:
-  $ref: "./LocalitiesNearbyCollectionResponse.yml"
-LocalitiesNearbyResponse:
-  $ref: "./LocalitiesNearbyResponse.yml"
 
 ## Zones
 ZonesCollectionRequest:

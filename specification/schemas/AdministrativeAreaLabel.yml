@@ -1,4 +1,0 @@
-title: AdministrativeAreaLabel
-description: Only available for `admin_level` suggestions, this contains the local english name of the administration level ("department" for France or "federal_state" for Germany).
-type: string
-example: district

@@ -1,8 +1,0 @@
-title: Position
-description: an array containing longitude, latitude, in that order.
-type: array
-items:
-  type: number
-minItems: 2
-maxItems: 2
-example: [ 2.06984,48.77919 ]

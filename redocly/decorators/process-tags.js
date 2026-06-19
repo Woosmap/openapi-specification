@@ -105,7 +105,12 @@ function ProcessTags(options = {}) {
                             }
                         });
 
-                        if (Object.keys(pathItem).length === 0) {
+                        // Drop the whole path item once no HTTP operation
+                        // remains — ignore non-operation siblings like
+                        // `servers`, `summary`, `parameters` that the
+                        // upstream may emit at the path-item level.
+                        const hasOperation = METHODS.some((m) => pathItem[m]);
+                        if (!hasOperation) {
                             delete root.paths[path];
                         }
                     });
