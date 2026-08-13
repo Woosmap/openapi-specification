@@ -13,7 +13,7 @@ jobs:
       actions: read
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.4.0
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
         
@@ -44,7 +44,7 @@ jobs:
       
       - name: Comment on PR or linked Issue if schemas changed
         if: steps.schema_changes.outputs.changed_files && steps.findPr.outputs.number != ''
-        uses: actions/github-script@v6.4.1
+        uses: actions/github-script@v9.0.0
         with:
           github-token: ${{ secrets.HELPER_TOKEN }}
           script: |
@@ -89,7 +89,7 @@ jobs:
 
       - name: Create issue in Woosmap/woosmap if schemas changed
         if: steps.schema_changes.outputs.changed_files && steps.findPr.outputs.number != ''
-        uses: actions/github-script@v6.4.1
+        uses: actions/github-script@v9.0.0
         with:
           github-token: ${{ secrets.HELPER_TOKEN }}
           script: |
