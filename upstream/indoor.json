@@ -1,0 +1,3917 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Indoor API",
+    "version": "v8.31.2",
+    "description": "The Indoor Map API enables you to display plans of your private space.\nThe Indoor Search API is a dedicated search engine for your own indoor data, allowing you to search for points of interest (POI) in your venue by their characteristics or through autocompletion.\nWith the Indoor Distance API, you can calculate the shortest route between two indoor locations, complete with a polyline and roadbook instructions for turn-by-turn navigation with POI. Additionally, you can apply routing profiles to your venue network for specific user groups such as premium customers, staff, or security, and utilize them through the Indoor Distance API."
+  },
+  "paths": {
+    "/indoor/venues/{venue_id}": {
+      "get": {
+        "operationId": "api_routers_indoor_get_venue_by_key",
+        "summary": "Get Venue By Key",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "venue_id",
+            "schema": {
+              "description": "ID of the Venue to retrieve.",
+              "title": "Venue Id",
+              "type": "string"
+            },
+            "required": true,
+            "description": "ID of the Venue to retrieve."
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "description": "The validation errors.",
+                      "items": {
+                        "additionalProperties": true,
+                        "type": "object"
+                      },
+                      "title": "Detail",
+                      "type": "array"
+                    },
+                    "context": {
+                      "additionalProperties": true,
+                      "description": "Context",
+                      "title": "Context",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "detail",
+                    "context"
+                  ],
+                  "title": "ValidationErrorSchema",
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VenueSchema"
+                }
+              }
+            }
+          }
+        },
+        "description": "Returns a Venue based on the ID given.\n\n**Rate limit**: `20/1s`",
+        "tags": [
+          "Indoor API"
+        ],
+        "security": [
+          {
+            "PrivateKeyAuth": []
+          },
+          {
+            "PrivateKeyHeaderAuth": []
+          },
+          {
+            "PublicKeyAuth": []
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X GET 'https://api.woosmap.com/indoor/venues/west_pal?key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/indoor/venues/west_pal?key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/indoor/venues/west_pal?key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          }
+        ]
+      }
+    },
+    "/indoor/venues": {
+      "get": {
+        "operationId": "api_routers_indoor_get_venues_by_key",
+        "summary": "Get Venues By Key",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "sort_by",
+            "schema": {
+              "allOf": [
+                {
+                  "enum": [
+                    "created_at",
+                    "updated_at",
+                    "name"
+                  ],
+                  "title": "SortingInputSchema",
+                  "type": "string"
+                }
+              ],
+              "description": "The order in which the venues should be retrieved"
+            },
+            "required": false,
+            "description": "The order in which the venues should be retrieved"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "description": "The validation errors.",
+                      "items": {
+                        "additionalProperties": true,
+                        "type": "object"
+                      },
+                      "title": "Detail",
+                      "type": "array"
+                    },
+                    "context": {
+                      "additionalProperties": true,
+                      "description": "Context",
+                      "title": "Context",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "detail",
+                    "context"
+                  ],
+                  "title": "ValidationErrorSchema",
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/VenueListSchema"
+                  },
+                  "title": "Response",
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "description": "Returns a list of Venues associated with the project of the key used to authenticate the request.\n\n**Rate limit**: `20/1s`",
+        "tags": [
+          "Indoor API"
+        ],
+        "security": [
+          {
+            "PrivateKeyAuth": []
+          },
+          {
+            "PrivateKeyHeaderAuth": []
+          },
+          {
+            "PublicKeyAuth": []
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X GET 'https://api.woosmap.com/indoor/venues?key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/indoor/venues?key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/indoor/venues?key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          }
+        ]
+      }
+    },
+    "/indoor/style": {
+      "get": {
+        "operationId": "api_routers_indoor_get_indoor_style",
+        "summary": "Get Indoor Style",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "theme",
+            "schema": {
+              "description": "The theme to apply to customize the style",
+              "example": "woosmap_default",
+              "title": "Theme",
+              "type": "string"
+            },
+            "required": false,
+            "description": "The theme to apply to customize the style",
+            "example": "woosmap_default"
+          },
+          {
+            "in": "query",
+            "name": "language",
+            "schema": {
+              "default": "en",
+              "description": "A supported language as an ISO 639-1 2 letter code.",
+              "title": "Language",
+              "type": "string"
+            },
+            "required": false,
+            "description": "A supported language as an ISO 639-1 2 letter code."
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "description": "The validation errors.",
+                      "items": {
+                        "additionalProperties": true,
+                        "type": "object"
+                      },
+                      "title": "Detail",
+                      "type": "array"
+                    },
+                    "context": {
+                      "additionalProperties": true,
+                      "description": "Context",
+                      "title": "Context",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "detail",
+                    "context"
+                  ],
+                  "title": "ValidationErrorSchema",
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "description": "Returns the style layers.\n\n**Rate limit**: `20/1s`",
+        "tags": [
+          "Indoor API"
+        ],
+        "security": [
+          {
+            "PrivateKeyAuth": []
+          },
+          {
+            "PrivateKeyHeaderAuth": []
+          },
+          {
+            "PublicKeyAuth": []
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X GET 'https://api.woosmap.com/indoor/style?language=en&theme=woosmap_default&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/indoor/style?language=en&theme=woosmap_default&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/indoor/style?language=en&theme=woosmap_default&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          }
+        ]
+      }
+    },
+    "/indoor/distancematrix/{venue_id}": {
+      "get": {
+        "operationId": "api_routers_indoor_distance_matrix",
+        "summary": "Distance Matrix",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "venue_id",
+            "schema": {
+              "description": "ID of the venue",
+              "title": "Venue Id",
+              "type": "string"
+            },
+            "required": true,
+            "description": "ID of the venue"
+          },
+          {
+            "in": "query",
+            "name": "origins",
+            "schema": {
+              "description": "A string with a list of origins seperated by `|`. Origins can be of the format: `lat,lng,level`, `poi_id`, `ref:poi_ref`",
+              "example": "1.2,2.1,1|exit_1|1.3,3.1,2|ref:main_exit",
+              "title": "Origins",
+              "type": "string"
+            },
+            "required": true,
+            "description": "A string with a list of origins seperated by `|`. Origins can be of the format: `lat,lng,level`, `poi_id`, `ref:poi_ref`",
+            "example": "1.2,2.1,1|exit_1|1.3,3.1,2|ref:main_exit"
+          },
+          {
+            "in": "query",
+            "name": "destinations",
+            "schema": {
+              "description": "A string with a list of destinations seperated by `|`. Destinations can be of the format: `lat,lng,level`, `poi_id`, `ref:poi_ref`",
+              "example": "1.2,2.1,1|exit_1|1.3,3.1,2|ref:main_exit",
+              "title": "Destinations",
+              "type": "string"
+            },
+            "required": true,
+            "description": "A string with a list of destinations seperated by `|`. Destinations can be of the format: `lat,lng,level`, `poi_id`, `ref:poi_ref`",
+            "example": "1.2,2.1,1|exit_1|1.3,3.1,2|ref:main_exit"
+          },
+          {
+            "in": "query",
+            "name": "language",
+            "schema": {
+              "default": "en",
+              "description": "A supported language as an ISO 639-1, 2 letter code.",
+              "title": "Language",
+              "type": "string"
+            },
+            "required": false,
+            "description": "A supported language as an ISO 639-1, 2 letter code."
+          },
+          {
+            "in": "query",
+            "name": "routing_profile",
+            "schema": {
+              "default": "",
+              "description": "The routing profile to use to calculate the path (depends on the modes which were used to digitize the venue)",
+              "title": "Routing Profile",
+              "type": "string"
+            },
+            "required": false,
+            "description": "The routing profile to use to calculate the path (depends on the modes which were used to digitize the venue)"
+          },
+          {
+            "in": "query",
+            "name": "units",
+            "schema": {
+              "allOf": [
+                {
+                  "enum": [
+                    "metric",
+                    "imperial"
+                  ],
+                  "title": "UnitSystem",
+                  "type": "string"
+                }
+              ],
+              "default": "metric",
+              "description": "Unit System to use for response"
+            },
+            "required": false,
+            "description": "Unit System to use for response"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "description": "The validation errors.",
+                      "items": {
+                        "additionalProperties": true,
+                        "type": "object"
+                      },
+                      "title": "Detail",
+                      "type": "array"
+                    },
+                    "context": {
+                      "additionalProperties": true,
+                      "description": "Context",
+                      "title": "Context",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "detail",
+                    "context"
+                  ],
+                  "title": "ValidationErrorSchema",
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DistanceMatrixCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get distances and durations for a matrix of origins and destinations, based on the recommended route between start and end points for a specified travel mode.\nThe API returns information consisting of rows containing distance and duration values for each pair of start and end point.\nThe returned distances are designed to be used to find and sort multiple assets by road distance.\nDuration values are provided as complementary info.\n\n**Rate limit**: `20/1s`",
+        "tags": [
+          "Indoor API"
+        ],
+        "security": [
+          {
+            "PrivateKeyAuth": []
+          },
+          {
+            "PrivateKeyHeaderAuth": []
+          },
+          {
+            "PublicKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/indoor/directions/{venue_id}": {
+      "get": {
+        "operationId": "api_routers_indoor_directions",
+        "summary": "Directions",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "venue_id",
+            "schema": {
+              "description": "ID of the Venue",
+              "title": "Venue Id",
+              "type": "string"
+            },
+            "required": true,
+            "description": "ID of the Venue"
+          },
+          {
+            "in": "query",
+            "name": "origin",
+            "schema": {
+              "description": "A string defining the origin of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI), or `ref:poi_ref` (ref of a POI starting with 'ref:').\n\nExamples:\n- `lat,lng,level`: `48.8818546,2.3572283,0`\n- `poi`: `123456`\n- `ref`: `ref:entrance`",
+              "example": "48.8818546,2.3572283,0",
+              "title": "Origin",
+              "type": "string"
+            },
+            "required": true,
+            "description": "A string defining the origin of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI), or `ref:poi_ref` (ref of a POI starting with 'ref:').\n\nExamples:\n- `lat,lng,level`: `48.8818546,2.3572283,0`\n- `poi`: `123456`\n- `ref`: `ref:entrance`",
+            "example": "48.8818546,2.3572283,0"
+          },
+          {
+            "in": "query",
+            "name": "destination",
+            "schema": {
+              "description": "A string defining the destination of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI), or `ref:poi_ref` (ref of a POI starting with 'ref:').\n\nExamples:\n- `lat,lng,level`: `48.8818546,2.3572283,0`\n- `poi`: `123456`\n- `ref`: `ref:entrance`",
+              "example": "123456",
+              "title": "Destination",
+              "type": "string"
+            },
+            "required": true,
+            "description": "A string defining the destination of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI), or `ref:poi_ref` (ref of a POI starting with 'ref:').\n\nExamples:\n- `lat,lng,level`: `48.8818546,2.3572283,0`\n- `poi`: `123456`\n- `ref`: `ref:entrance`",
+            "example": "123456"
+          },
+          {
+            "in": "query",
+            "name": "language",
+            "schema": {
+              "default": "en",
+              "description": "A supported language as an ISO 639-1 2 letter code.",
+              "title": "Language",
+              "type": "string"
+            },
+            "required": false,
+            "description": "A supported language as an ISO 639-1 2 letter code."
+          },
+          {
+            "in": "query",
+            "name": "units",
+            "schema": {
+              "allOf": [
+                {
+                  "enum": [
+                    "metric",
+                    "imperial"
+                  ],
+                  "title": "UnitSystem",
+                  "type": "string"
+                }
+              ],
+              "default": "metric",
+              "description": "Unit System to use for response"
+            },
+            "required": false,
+            "description": "Unit System to use for response"
+          },
+          {
+            "in": "query",
+            "name": "waypoints",
+            "schema": {
+              "default": "",
+              "description": "A list of points by which the route should pass seperated by `|`. Waypoints can be of the format: `lat,lng,level`, `poi_id`, `ref:poi_ref`",
+              "example": "48.8818546,2.3572283,0|123456|48.8818546,2.3572283,0|ref:main_exit",
+              "title": "Waypoints",
+              "type": "string"
+            },
+            "required": false,
+            "description": "A list of points by which the route should pass seperated by `|`. Waypoints can be of the format: `lat,lng,level`, `poi_id`, `ref:poi_ref`",
+            "example": "48.8818546,2.3572283,0|123456|48.8818546,2.3572283,0|ref:main_exit"
+          },
+          {
+            "in": "query",
+            "name": "optimize",
+            "schema": {
+              "default": false,
+              "description": "If true and set with the waypoints parameter. The provided route is optimized by rearranging the waypoints in a more efficient order",
+              "title": "Optimize",
+              "type": "boolean"
+            },
+            "required": false,
+            "description": "If true and set with the waypoints parameter. The provided route is optimized by rearranging the waypoints in a more efficient order"
+          },
+          {
+            "in": "query",
+            "name": "mode",
+            "schema": {
+              "description": "The mode to use to calculate the path (depends on the modes which were used to digitize the venue)",
+              "title": "Mode",
+              "type": "string"
+            },
+            "required": false,
+            "description": "The mode to use to calculate the path (depends on the modes which were used to digitize the venue)"
+          },
+          {
+            "in": "query",
+            "name": "avoid_in",
+            "schema": {
+              "description": "A list of Bounding Boxes which the routing should avoid seperated by `|`. A Bounding Box has a format of `level;lat,lng;lat,lng;lat,lng;lat,lng;`",
+              "example": "1;48.8818546,2.3572283;48.8818547,2.3572282;48.8818548,2.3572281;48.8818549,2.3572280",
+              "title": "Avoid In",
+              "type": "string"
+            },
+            "required": false,
+            "description": "A list of Bounding Boxes which the routing should avoid seperated by `|`. A Bounding Box has a format of `level;lat,lng;lat,lng;lat,lng;lat,lng;`",
+            "example": "1;48.8818546,2.3572283;48.8818547,2.3572282;48.8818548,2.3572281;48.8818549,2.3572280"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "description": "The validation errors.",
+                      "items": {
+                        "additionalProperties": true,
+                        "type": "object"
+                      },
+                      "title": "Detail",
+                      "type": "array"
+                    },
+                    "context": {
+                      "additionalProperties": true,
+                      "description": "Context",
+                      "title": "Context",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "detail",
+                    "context"
+                  ],
+                  "title": "ValidationErrorSchema",
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RouteCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSchema"
+                }
+              }
+            }
+          }
+        },
+        "description": "Returns the directions to go from an Origin to a Destination.\nRouting Configuration must be done before this endpoint will work.\n\n**Rate limit**: `20/1s`",
+        "tags": [
+          "Indoor API"
+        ],
+        "security": [
+          {
+            "PrivateKeyAuth": []
+          },
+          {
+            "PrivateKeyHeaderAuth": []
+          },
+          {
+            "PublicKeyAuth": []
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X GET 'https://api.woosmap.com/indoor/directions/west_pal?language=en&units=metric&origin=3623024&destination=3625106&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/indoor/directions/west_pal?language=en&units=metric&origin=3623024&destination=3625106&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/indoor/directions/west_pal?language=en&units=metric&origin=3623024&destination=3625106&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          }
+        ]
+      }
+    },
+    "/indoor/venues/{venue_id}/pois/search": {
+      "get": {
+        "operationId": "api_routers_indoor_search_venue_pois_by_key",
+        "summary": "Search Venue Pois By Key",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "venue_id",
+            "schema": {
+              "description": "ID of the Venue",
+              "title": "Venue Id",
+              "type": "string"
+            },
+            "required": true,
+            "description": "ID of the Venue"
+          },
+          {
+            "in": "query",
+            "name": "items_by_page",
+            "schema": {
+              "default": 0,
+              "description": "Number of items per page. A value of 0 means no pagination.",
+              "title": "Items By Page",
+              "type": "integer"
+            },
+            "required": false,
+            "description": "Number of items per page. A value of 0 means no pagination."
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 0,
+              "description": "Page number. 0 being the first page.",
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false,
+            "description": "Page number. 0 being the first page."
+          },
+          {
+            "in": "query",
+            "name": "from_location",
+            "schema": {
+              "description": "A string with the format lat,lng,level",
+              "example": "48.8818546,2.3572283,0",
+              "title": "From Location",
+              "type": "string"
+            },
+            "required": false,
+            "description": "A string with the format lat,lng,level",
+            "example": "48.8818546,2.3572283,0"
+          },
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "description": "Search string. If not passed then all features will be listed alphabetically",
+              "title": "Q",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Search string. If not passed then all features will be listed alphabetically"
+          },
+          {
+            "in": "query",
+            "name": "extended",
+            "schema": {
+              "description": "Option to search even not searchable pois (extended=full)",
+              "example": "full",
+              "title": "Extended",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Option to search even not searchable pois (extended=full)",
+            "example": "full"
+          },
+          {
+            "in": "query",
+            "name": "level",
+            "schema": {
+              "description": "Filter by level.",
+              "title": "Level",
+              "type": "integer"
+            },
+            "required": false,
+            "description": "Filter by level."
+          },
+          {
+            "in": "query",
+            "name": "building",
+            "schema": {
+              "description": "Filter by building (use `undefined` to find POIs not associated with a building.).",
+              "title": "Building",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Filter by building (use `undefined` to find POIs not associated with a building.)."
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "description": "Filter by category.",
+              "title": "Category",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Filter by category."
+          },
+          {
+            "in": "query",
+            "name": "ref",
+            "schema": {
+              "description": "Filter by a comma seperated list of POI Refs.",
+              "example": "ref:main_entrance,ref:side_entrance",
+              "title": "Ref",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Filter by a comma seperated list of POI Refs.",
+            "example": "ref:main_entrance,ref:side_entrance"
+          },
+          {
+            "in": "query",
+            "name": "language",
+            "schema": {
+              "default": "en",
+              "description": "A supported language as an ISO 639-1 2 letter code.",
+              "title": "Language",
+              "type": "string"
+            },
+            "required": false,
+            "description": "A supported language as an ISO 639-1 2 letter code."
+          },
+          {
+            "in": "query",
+            "name": "advanced_filter",
+            "schema": {
+              "description": "Filter by complex queries on properties (ex: indoor:=\"room\" OR door:=\"yes\").",
+              "title": "Advanced Filter",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Filter by complex queries on properties (ex: indoor:=\"room\" OR door:=\"yes\")."
+          },
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "description": "Filter by a comma seperated list of POI IDs.",
+              "example": "1234,4321,9876",
+              "title": "Id",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Filter by a comma seperated list of POI IDs.",
+            "example": "1234,4321,9876"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "description": "The validation errors.",
+                      "items": {
+                        "additionalProperties": true,
+                        "type": "object"
+                      },
+                      "title": "Detail",
+                      "type": "array"
+                    },
+                    "context": {
+                      "additionalProperties": true,
+                      "description": "Context",
+                      "title": "Context",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "detail",
+                    "context"
+                  ],
+                  "title": "ValidationErrorSchema",
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchPagination"
+                }
+              }
+            }
+          }
+        },
+        "description": "Full text search of the features of a venue using name or description\n\n**Rate limit**: `30/1s`",
+        "tags": [
+          "Indoor API"
+        ],
+        "security": [
+          {
+            "PrivateKeyAuth": []
+          },
+          {
+            "PrivateKeyHeaderAuth": []
+          },
+          {
+            "PublicKeyAuth": []
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X GET 'https://api.woosmap.com/indoor/venues/west_pal/pois/search?id=3623459&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/indoor/venues/west_pal/pois/search?id=3623459&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/indoor/venues/west_pal/pois/search?id=3623459&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          }
+        ]
+      }
+    },
+    "/indoor/venues/{venue_id}/pois/autocomplete": {
+      "get": {
+        "operationId": "api_routers_indoor_autocomplete_venue_pois_by_key",
+        "summary": "Autocomplete Venue Pois By Key",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "venue_id",
+            "schema": {
+              "description": "ID of the venue",
+              "title": "Venue Id",
+              "type": "string"
+            },
+            "required": true,
+            "description": "ID of the venue"
+          },
+          {
+            "in": "query",
+            "name": "items_by_page",
+            "schema": {
+              "default": 0,
+              "description": "Number of items per page. A value of 0 means no pagination.",
+              "title": "Items By Page",
+              "type": "integer"
+            },
+            "required": false,
+            "description": "Number of items per page. A value of 0 means no pagination."
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 0,
+              "description": "Page number. 0 being the first page.",
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false,
+            "description": "Page number. 0 being the first page."
+          },
+          {
+            "in": "query",
+            "name": "from_location",
+            "schema": {
+              "description": "A string with the format lat,lng,level",
+              "example": "48.8818546,2.3572283,0",
+              "title": "From Location",
+              "type": "string"
+            },
+            "required": false,
+            "description": "A string with the format lat,lng,level",
+            "example": "48.8818546,2.3572283,0"
+          },
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "description": "Search string. If not passed then all features will be listed alphabetically",
+              "title": "Q",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Search string. If not passed then all features will be listed alphabetically"
+          },
+          {
+            "in": "query",
+            "name": "extended",
+            "schema": {
+              "description": "Option to search even not searchable pois (extended=full)",
+              "example": "full",
+              "title": "Extended",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Option to search even not searchable pois (extended=full)",
+            "example": "full"
+          },
+          {
+            "in": "query",
+            "name": "level",
+            "schema": {
+              "description": "Filter by level.",
+              "title": "Level",
+              "type": "integer"
+            },
+            "required": false,
+            "description": "Filter by level."
+          },
+          {
+            "in": "query",
+            "name": "building",
+            "schema": {
+              "description": "Filter by building (use `undefined` to find POIs not associated with a building.).",
+              "title": "Building",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Filter by building (use `undefined` to find POIs not associated with a building.)."
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "description": "Filter by category.",
+              "title": "Category",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Filter by category."
+          },
+          {
+            "in": "query",
+            "name": "ref",
+            "schema": {
+              "description": "Filter by a comma seperated list of POI Refs.",
+              "example": "ref:main_entrance,ref:side_entrance",
+              "title": "Ref",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Filter by a comma seperated list of POI Refs.",
+            "example": "ref:main_entrance,ref:side_entrance"
+          },
+          {
+            "in": "query",
+            "name": "language",
+            "schema": {
+              "default": "en",
+              "description": "A supported language as an ISO 639-1 2 letter code.",
+              "title": "Language",
+              "type": "string"
+            },
+            "required": false,
+            "description": "A supported language as an ISO 639-1 2 letter code."
+          },
+          {
+            "in": "query",
+            "name": "advanced_filter",
+            "schema": {
+              "description": "Filter by complex queries on properties (ex: indoor:=\"room\" OR door:=\"yes\").",
+              "title": "Advanced Filter",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Filter by complex queries on properties (ex: indoor:=\"room\" OR door:=\"yes\")."
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "description": "The validation errors.",
+                      "items": {
+                        "additionalProperties": true,
+                        "type": "object"
+                      },
+                      "title": "Detail",
+                      "type": "array"
+                    },
+                    "context": {
+                      "additionalProperties": true,
+                      "description": "Context",
+                      "title": "Context",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "detail",
+                    "context"
+                  ],
+                  "title": "ValidationErrorSchema",
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutocompletePagination"
+                }
+              }
+            }
+          }
+        },
+        "description": "Autocomplete text search of the features of a venue using a name or description\n\n**Rate limit**: `20/1s`",
+        "tags": [
+          "Indoor API"
+        ],
+        "security": [
+          {
+            "PrivateKeyAuth": []
+          },
+          {
+            "PrivateKeyHeaderAuth": []
+          },
+          {
+            "PublicKeyAuth": []
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X GET 'https://api.woosmap.com/indoor/venues/west_pal/pois/autocomplete?q=cham&language=en&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/indoor/venues/west_pal/pois/autocomplete?q=cham&language=en&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/indoor/venues/west_pal/pois/autocomplete?q=cham&language=en&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          }
+        ]
+      }
+    },
+    "/indoor/venues/{venue_id}/features/{feature_id}": {
+      "get": {
+        "operationId": "api_routers_indoor_get_feature_by_key",
+        "summary": "Get Feature By Key",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "venue_id",
+            "schema": {
+              "description": "ID of the venue",
+              "title": "Venue Id",
+              "type": "string"
+            },
+            "required": true,
+            "description": "ID of the venue"
+          },
+          {
+            "in": "path",
+            "name": "feature_id",
+            "schema": {
+              "description": "ID of the feature",
+              "title": "Feature Id",
+              "type": "integer"
+            },
+            "required": true,
+            "description": "ID of the feature"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseSchema"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "description": "The validation errors.",
+                      "items": {
+                        "additionalProperties": true,
+                        "type": "object"
+                      },
+                      "title": "Detail",
+                      "type": "array"
+                    },
+                    "context": {
+                      "additionalProperties": true,
+                      "description": "Context",
+                      "title": "Context",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "detail",
+                    "context"
+                  ],
+                  "title": "ValidationErrorSchema",
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleIndoorFeatureSchema"
+                }
+              }
+            }
+          }
+        },
+        "description": "Returns a single feature using its ID.\n\n**Rate limit**: `20/1s`",
+        "tags": [
+          "Indoor API"
+        ],
+        "security": [
+          {
+            "PrivateKeyAuth": []
+          },
+          {
+            "PrivateKeyHeaderAuth": []
+          },
+          {
+            "PublicKeyAuth": []
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X GET 'https://api.woosmap.com/indoor/venues/west_pal/features/3623459?key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/indoor/venues/west_pal/features/3623459?key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/indoor/venues/west_pal/features/3623459?key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          }
+        ]
+      }
+    },
+    "/indoor/venues/{venue_id}/tiles/{z}/{x}/{y}.pbf": {
+      "get": {
+        "operationId": "api_routers_indoor_tiles_by_key",
+        "summary": "Tiles By Key",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "venue_id",
+            "schema": {
+              "description": "ID of the venue",
+              "title": "Venue Id",
+              "type": "string"
+            },
+            "required": true,
+            "description": "ID of the venue"
+          },
+          {
+            "in": "path",
+            "name": "x",
+            "schema": {
+              "description": "X coordinate of the tile",
+              "title": "X",
+              "type": "integer"
+            },
+            "required": true,
+            "description": "X coordinate of the tile"
+          },
+          {
+            "in": "path",
+            "name": "y",
+            "schema": {
+              "description": "Y coordinate of the tile",
+              "title": "Y",
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Y coordinate of the tile"
+          },
+          {
+            "in": "path",
+            "name": "z",
+            "schema": {
+              "description": "Zoom level",
+              "title": "Z",
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Zoom level"
+          },
+          {
+            "in": "query",
+            "name": "advanced_filter",
+            "schema": {
+              "description": "Filter POI labels by advanced filter.",
+              "title": "Advanced Filter",
+              "type": "string"
+            },
+            "required": false,
+            "description": "Filter POI labels by advanced filter."
+          },
+          {
+            "in": "query",
+            "name": "disable_zoom_min",
+            "schema": {
+              "default": false,
+              "description": "Disable the zoom_min for POIs.",
+              "title": "Disable Zoom Min",
+              "type": "boolean"
+            },
+            "required": false,
+            "description": "Disable the zoom_min for POIs."
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "A more detailed explanation on what went wrong.",
+                  "title": "Detail",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "description": "The validation errors.",
+                      "items": {
+                        "additionalProperties": true,
+                        "type": "object"
+                      },
+                      "title": "Detail",
+                      "type": "array"
+                    },
+                    "context": {
+                      "additionalProperties": true,
+                      "description": "Context",
+                      "title": "Context",
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "detail",
+                    "context"
+                  ],
+                  "title": "ValidationErrorSchema",
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "format": "binary",
+                  "title": "Response",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "description": "Returns a tile for the venue.\n\n**Rate limit**: `50/1s`",
+        "tags": [
+          "Indoor API"
+        ],
+        "security": [
+          {
+            "PrivateKeyAuth": []
+          },
+          {
+            "PrivateKeyHeaderAuth": []
+          },
+          {
+            "PublicKeyAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponseSchema": {
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "string"
+          }
+        },
+        "required": [
+          "detail"
+        ],
+        "title": "ErrorResponseSchema",
+        "type": "object"
+      },
+      "Building": {
+        "properties": {
+          "ref": {
+            "description": "Reference to identify Building",
+            "title": "Ref",
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Name of the Building",
+            "title": "Name"
+          },
+          "localized_name": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "default": {},
+            "description": "Translated names of the Building",
+            "title": "Localized Name",
+            "type": "object"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Building Description",
+            "title": "Description"
+          },
+          "opening_hours": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Building Opening Hours",
+            "title": "Opening Hours"
+          },
+          "logo": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "",
+            "title": "Logo"
+          },
+          "cover": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "",
+            "title": "Cover"
+          },
+          "levels": {
+            "description": "Levels associated with the Building",
+            "items": {
+              "$ref": "#/components/schemas/Level"
+            },
+            "title": "Levels",
+            "type": "array"
+          }
+        },
+        "required": [
+          "ref",
+          "levels"
+        ],
+        "title": "Building",
+        "type": "object"
+      },
+      "Level": {
+        "properties": {
+          "level": {
+            "description": "Floor level as a number",
+            "title": "Level",
+            "type": "integer"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Name of the floor level",
+            "title": "Name"
+          },
+          "ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Reference to identify floor level",
+            "title": "Ref"
+          },
+          "bbox": {
+            "description": "Bounding Box of floor level",
+            "items": {
+              "type": "number"
+            },
+            "title": "Bbox",
+            "type": "array"
+          }
+        },
+        "required": [
+          "level",
+          "bbox"
+        ],
+        "title": "Level",
+        "type": "object"
+      },
+      "VenueSchema": {
+        "example": {
+          "bbox": [
+            -0.1258015,
+            51.4981306,
+            -0.1236527,
+            51.5008191
+          ],
+          "buildings": [
+            {
+              "cover": null,
+              "description": null,
+              "levels": [
+                {
+                  "bbox": [
+                    -0.1258015,
+                    51.4981306,
+                    -0.1236527,
+                    51.5008191
+                  ],
+                  "level": 1,
+                  "name": "Palace of Westminster",
+                  "ref": "Ground"
+                }
+              ],
+              "localized_name": {},
+              "logo": null,
+              "name": "Palace of Westminster",
+              "opening_hours": null,
+              "ref": "Palace of Westminster"
+            }
+          ],
+          "categories": [],
+          "languages": [],
+          "levels": [
+            {
+              "bbox": [
+                -0.1258015,
+                51.4981306,
+                -0.1236527,
+                51.5008191
+              ],
+              "level": 1,
+              "name": "Palace of Westminster",
+              "ref": "Ground"
+            }
+          ],
+          "name": "Westminster palace",
+          "routing_profiles": [],
+          "updated_at": "2023-07-17T13:11:32.267Z",
+          "venue_id": "west_pal"
+        },
+        "properties": {
+          "venue_id": {
+            "description": "ID of the Venue",
+            "title": "Venue Id",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the Venue",
+            "title": "Name",
+            "type": "string"
+          },
+          "bbox": {
+            "anyOf": [
+              {
+                "maxItems": 4,
+                "minItems": 4,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Bounding Box of Venue",
+            "title": "Bbox"
+          },
+          "levels": {
+            "default": [],
+            "description": "Information on each level of the venue",
+            "items": {
+              "$ref": "#/components/schemas/Level"
+            },
+            "title": "Levels",
+            "type": "array"
+          },
+          "routing_profiles": {
+            "default": [],
+            "description": "Available routing profiles for the venue",
+            "items": {
+              "type": "string"
+            },
+            "title": "Routing Profiles",
+            "type": "array"
+          },
+          "categories": {
+            "default": [],
+            "description": "",
+            "items": {
+              "type": "string"
+            },
+            "title": "Categories",
+            "type": "array"
+          },
+          "buildings": {
+            "default": [],
+            "description": "Buildings present at the venue",
+            "items": {
+              "$ref": "#/components/schemas/Building"
+            },
+            "title": "Buildings",
+            "type": "array"
+          },
+          "languages": {
+            "description": "Language translations available for the venue",
+            "items": {
+              "type": "string"
+            },
+            "title": "Languages",
+            "type": "array"
+          },
+          "updated_at": {
+            "description": "When this venue was last updated",
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "venue_id",
+          "name",
+          "bbox",
+          "languages",
+          "updated_at"
+        ],
+        "title": "VenueSchema",
+        "type": "object"
+      },
+      "SortingInputSchema": {
+        "enum": [
+          "created_at",
+          "updated_at",
+          "name"
+        ],
+        "title": "SortingInputSchema",
+        "type": "string"
+      },
+      "VenueListSchema": {
+        "example": [
+          {
+            "bbox": [
+              -0.1258015,
+              51.4981306,
+              -0.1236527,
+              51.5008191
+            ],
+            "name": "Westminster palace",
+            "venue_id": "west_pal"
+          },
+          {
+            "bbox": [
+              3.9215275,
+              43.6062712,
+              3.922097,
+              43.606972
+            ],
+            "name": "Woosmap HQ",
+            "venue_id": "woosmap_wgs_office"
+          },
+          {
+            "bbox": [
+              2.3537419,
+              48.87969358511,
+              2.3584085,
+              48.8831854
+            ],
+            "name": "Gare Du Nord",
+            "venue_id": "woosmap_gdn"
+          }
+        ],
+        "properties": {
+          "venue_id": {
+            "description": "ID of the Venue",
+            "title": "Venue Id",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the Venue",
+            "title": "Name",
+            "type": "string"
+          },
+          "bbox": {
+            "anyOf": [
+              {
+                "maxItems": 4,
+                "minItems": 4,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Bounding Box of Venue",
+            "title": "Bbox"
+          }
+        },
+        "required": [
+          "venue_id",
+          "name",
+          "bbox"
+        ],
+        "title": "VenueListSchema",
+        "type": "object"
+      },
+      "DistanceMatrixDirectionsIn": {
+        "properties": {
+          "origins": {
+            "description": "A string with a list of origins seperated by `|`. Origins can be of the format: `lat,lng,level`, `poi_id`, `ref:poi_ref`",
+            "example": "1.2,2.1,1|exit_1|1.3,3.1,2|ref:main_exit",
+            "title": "Origins",
+            "type": "string"
+          },
+          "destinations": {
+            "description": "A string with a list of destinations seperated by `|`. Destinations can be of the format: `lat,lng,level`, `poi_id`, `ref:poi_ref`",
+            "example": "1.2,2.1,1|exit_1|1.3,3.1,2|ref:main_exit",
+            "title": "Destinations",
+            "type": "string"
+          }
+        },
+        "required": [
+          "origins",
+          "destinations"
+        ],
+        "title": "DistanceMatrixDirectionsIn",
+        "type": "object"
+      },
+      "UnitSystem": {
+        "enum": [
+          "metric",
+          "imperial"
+        ],
+        "title": "UnitSystem",
+        "type": "string"
+      },
+      "Distance": {
+        "properties": {
+          "value": {
+            "description": "Distance in metres",
+            "title": "Value",
+            "type": "number"
+          },
+          "text": {
+            "description": "Distance as text based response with unit type",
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "text"
+        ],
+        "title": "Distance",
+        "type": "object"
+      },
+      "DistanceMatrixCollection": {
+        "example": {
+          "rows": [],
+          "status": "OK"
+        },
+        "properties": {
+          "status": {
+            "description": "A string to indicate the success of the request",
+            "title": "Status",
+            "type": "string"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/DistanceMatrixRow"
+            },
+            "title": "Rows",
+            "type": "array"
+          }
+        },
+        "required": [
+          "status",
+          "rows"
+        ],
+        "title": "DistanceMatrixCollection",
+        "type": "object"
+      },
+      "DistanceMatrixElement": {
+        "properties": {
+          "status": {
+            "description": "A string to indicate if a path was found or not",
+            "title": "Status",
+            "type": "string"
+          },
+          "duration": {
+            "$ref": "#/components/schemas/Duration"
+          },
+          "distance": {
+            "$ref": "#/components/schemas/Distance"
+          }
+        },
+        "required": [
+          "status",
+          "duration",
+          "distance"
+        ],
+        "title": "DistanceMatrixElement",
+        "type": "object"
+      },
+      "DistanceMatrixRow": {
+        "properties": {
+          "elements": {
+            "items": {
+              "$ref": "#/components/schemas/DistanceMatrixElement"
+            },
+            "title": "Elements",
+            "type": "array"
+          }
+        },
+        "required": [
+          "elements"
+        ],
+        "title": "DistanceMatrixRow",
+        "type": "object"
+      },
+      "Duration": {
+        "properties": {
+          "value": {
+            "description": "Duration in seconds",
+            "title": "Value",
+            "type": "number"
+          },
+          "text": {
+            "description": "Duration as text based response with unit type",
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "text"
+        ],
+        "title": "Duration",
+        "type": "object"
+      },
+      "DirectionsIn": {
+        "properties": {
+          "origin": {
+            "description": "A string defining the origin of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI), or `ref:poi_ref` (ref of a POI starting with 'ref:').\n\nExamples:\n- `lat,lng,level`: `48.8818546,2.3572283,0`\n- `poi`: `123456`\n- `ref`: `ref:entrance`",
+            "example": "48.8818546,2.3572283,0",
+            "title": "Origin",
+            "type": "string"
+          },
+          "destination": {
+            "description": "A string defining the destination of the route, in the format of `lat,lng,level`, `poi_id` (identifier of a POI), or `ref:poi_ref` (ref of a POI starting with 'ref:').\n\nExamples:\n- `lat,lng,level`: `48.8818546,2.3572283,0`\n- `poi`: `123456`\n- `ref`: `ref:entrance`",
+            "example": "123456",
+            "title": "Destination",
+            "type": "string"
+          }
+        },
+        "required": [
+          "origin",
+          "destination"
+        ],
+        "title": "DirectionsIn",
+        "type": "object"
+      },
+      "WaypointsIn": {
+        "properties": {
+          "waypoints": {
+            "default": "",
+            "description": "A list of points by which the route should pass seperated by `|`. Waypoints can be of the format: `lat,lng,level`, `poi_id`, `ref:poi_ref`",
+            "example": "48.8818546,2.3572283,0|123456|48.8818546,2.3572283,0|ref:main_exit",
+            "title": "Waypoints",
+            "type": "string"
+          }
+        },
+        "title": "WaypointsIn",
+        "type": "object"
+      },
+      "Instruction": {
+        "properties": {
+          "summary": {
+            "title": "Summary",
+            "type": "string"
+          },
+          "instruction_type": {
+            "title": "Instruction Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "summary",
+          "instruction_type"
+        ],
+        "title": "Instruction",
+        "type": "object"
+      },
+      "LatLngLevel": {
+        "properties": {
+          "lat": {
+            "title": "Lat",
+            "type": "number"
+          },
+          "lng": {
+            "title": "Lng",
+            "type": "number"
+          },
+          "level": {
+            "title": "Level",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "lat",
+          "lng",
+          "level"
+        ],
+        "title": "LatLngLevel",
+        "type": "object"
+      },
+      "Leg": {
+        "properties": {
+          "distance": {
+            "$ref": "#/components/schemas/Distance",
+            "description": "Distance of this Leg"
+          },
+          "duration": {
+            "$ref": "#/components/schemas/Duration",
+            "description": "Duration of this Leg"
+          },
+          "start_location": {
+            "$ref": "#/components/schemas/LatLngLevel",
+            "description": "Starting Location of this Leg, as a Lat,Lng pair with a floor level number."
+          },
+          "end_location": {
+            "$ref": "#/components/schemas/LatLngLevel",
+            "description": "End Location of this Leg, as a Lat,Lng pair with a floor level number."
+          },
+          "steps": {
+            "description": "List of different steps of this Leg",
+            "items": {
+              "$ref": "#/components/schemas/Step"
+            },
+            "title": "Steps",
+            "type": "array"
+          },
+          "waypoint": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "If waypoints were provided, this gives the input waypoint for this leg.",
+            "title": "Waypoint"
+          }
+        },
+        "required": [
+          "distance",
+          "duration",
+          "start_location",
+          "end_location",
+          "steps"
+        ],
+        "title": "Leg",
+        "type": "object"
+      },
+      "Route": {
+        "properties": {
+          "bounds": {
+            "description": "Bounding box of the route",
+            "maxItems": 4,
+            "minItems": 4,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "title": "Bounds",
+            "type": "array"
+          },
+          "legs": {
+            "description": "List of different legs of the journey",
+            "items": {
+              "$ref": "#/components/schemas/Leg"
+            },
+            "title": "Legs",
+            "type": "array"
+          }
+        },
+        "required": [
+          "bounds",
+          "legs"
+        ],
+        "title": "Route",
+        "type": "object"
+      },
+      "RouteCollection": {
+        "example": {
+          "routes": [
+            {
+              "bounds": [
+                -0.12493997331,
+                51.498230882255,
+                -0.12456220772511746,
+                51.49992534993494
+              ],
+              "legs": [
+                {
+                  "distance": {
+                    "text": "217 meters",
+                    "value": 217.48
+                  },
+                  "duration": {
+                    "text": "218 seconds",
+                    "value": 218
+                  },
+                  "end_location": {
+                    "lat": 51.499924944345,
+                    "level": 1,
+                    "lng": -0.12461392044974706
+                  },
+                  "start_location": {
+                    "lat": 51.498230882255,
+                    "level": 1,
+                    "lng": -0.12456220772511746
+                  },
+                  "steps": [
+                    {
+                      "bearing_end": -84.2851734177303,
+                      "bearing_start": -84.2851734177303,
+                      "distance": {
+                        "text": "2 meters",
+                        "value": 2.07
+                      },
+                      "duration": {
+                        "text": "2 seconds",
+                        "value": 2
+                      },
+                      "end_location": {
+                        "lat": 51.4982349155,
+                        "level": 1,
+                        "lng": -0.12461111274
+                      },
+                      "instruction": {
+                        "instruction_type": "walk_straight_walk_past",
+                        "summary": "Walk straight past Toilets"
+                      },
+                      "poi_id": 3623024,
+                      "polyline": [
+                        [
+                          -0.12458141958,
+                          51.49823306561
+                        ],
+                        [
+                          -0.12461111274,
+                          51.4982349155
+                        ]
+                      ],
+                      "routing_profiles": [],
+                      "start_location": {
+                        "lat": 51.49823306561,
+                        "level": 1,
+                        "lng": -0.12458141958
+                      }
+                    },
+                    {
+                      "bearing_end": -81.48387948754326,
+                      "bearing_start": -84.28520875361633,
+                      "distance": {
+                        "text": "1 meters",
+                        "value": 1.47
+                      },
+                      "duration": {
+                        "text": "2 seconds",
+                        "value": 2
+                      },
+                      "end_location": {
+                        "lat": 51.49823646981,
+                        "level": 1,
+                        "lng": -0.12463215818
+                      },
+                      "instruction": {
+                        "instruction_type": "walk_straight_walk_past",
+                        "summary": "Walk straight past Lord Chamberlain's Private Office"
+                      },
+                      "poi_id": 3624060,
+                      "polyline": [
+                        [
+                          -0.12461111274,
+                          51.4982349155
+                        ],
+                        [
+                          -0.12462429286,
+                          51.49823573662
+                        ],
+                        [
+                          -0.12463215818,
+                          51.49823646981
+                        ]
+                      ],
+                      "routing_profiles": [],
+                      "start_location": {
+                        "lat": 51.4982349155,
+                        "level": 1,
+                        "lng": -0.12461111274
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "status": "ok"
+        },
+        "properties": {
+          "status": {
+            "const": "ok",
+            "default": "ok",
+            "title": "Status",
+            "type": "string"
+          },
+          "routes": {
+            "items": {
+              "$ref": "#/components/schemas/Route"
+            },
+            "title": "Routes",
+            "type": "array"
+          }
+        },
+        "required": [
+          "routes"
+        ],
+        "title": "RouteCollection",
+        "type": "object"
+      },
+      "Step": {
+        "properties": {
+          "distance": {
+            "$ref": "#/components/schemas/Distance",
+            "description": "Distance of this Step"
+          },
+          "duration": {
+            "$ref": "#/components/schemas/Duration",
+            "description": "Duration of this Step"
+          },
+          "poi_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "If a POI exists, its ID is given.",
+            "title": "Poi Id"
+          },
+          "bearing_start": {
+            "description": "TODO",
+            "title": "Bearing Start",
+            "type": "number"
+          },
+          "bearing_end": {
+            "description": "TODO",
+            "title": "Bearing End",
+            "type": "number"
+          },
+          "start_location": {
+            "$ref": "#/components/schemas/LatLngLevel",
+            "description": "Starting Location of this Step, as a Lat,Lng pair with a floor level number."
+          },
+          "end_location": {
+            "$ref": "#/components/schemas/LatLngLevel",
+            "description": "End Location of this Step, as a Lat,Lng pair with a floor level number."
+          },
+          "polyline": {
+            "description": "TODO",
+            "items": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            "title": "Polyline",
+            "type": "array"
+          },
+          "instruction": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Instruction"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "A text based instruction for this step"
+          },
+          "routing_profiles": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Routing Profiles",
+            "type": "array"
+          }
+        },
+        "required": [
+          "distance",
+          "duration",
+          "bearing_start",
+          "bearing_end",
+          "start_location",
+          "end_location",
+          "polyline"
+        ],
+        "title": "Step",
+        "type": "object"
+      },
+      "SearchKeyInputSchema": {
+        "properties": {
+          "items_by_page": {
+            "default": 0,
+            "description": "Number of items per page. A value of 0 means no pagination.",
+            "title": "Items By Page",
+            "type": "integer"
+          },
+          "page": {
+            "default": 0,
+            "description": "Page number. 0 being the first page.",
+            "title": "Page",
+            "type": "integer"
+          },
+          "from_location": {
+            "description": "A string with the format lat,lng,level",
+            "example": "48.8818546,2.3572283,0",
+            "title": "From Location",
+            "type": "string"
+          },
+          "q": {
+            "description": "Search string. If not passed then all features will be listed alphabetically",
+            "title": "Q",
+            "type": "string"
+          },
+          "extended": {
+            "description": "Option to search even not searchable pois (extended=full)",
+            "example": "full",
+            "title": "Extended",
+            "type": "string"
+          },
+          "level": {
+            "description": "Filter by level.",
+            "title": "Level",
+            "type": "integer"
+          },
+          "building": {
+            "description": "Filter by building (use `undefined` to find POIs not associated with a building.).",
+            "title": "Building",
+            "type": "string"
+          },
+          "category": {
+            "description": "Filter by category.",
+            "title": "Category",
+            "type": "string"
+          },
+          "ref": {
+            "description": "Filter by a comma seperated list of POI Refs.",
+            "example": "ref:main_entrance,ref:side_entrance",
+            "title": "Ref",
+            "type": "string"
+          },
+          "language": {
+            "default": "en",
+            "description": "A supported language as an ISO 639-1 2 letter code.",
+            "title": "Language",
+            "type": "string"
+          },
+          "advanced_filter": {
+            "description": "Filter by complex queries on properties (ex: indoor:=\"room\" OR door:=\"yes\").",
+            "title": "Advanced Filter",
+            "type": "string"
+          },
+          "id": {
+            "description": "Filter by a comma seperated list of POI IDs.",
+            "example": "1234,4321,9876",
+            "title": "Id",
+            "type": "string"
+          }
+        },
+        "title": "SearchKeyInputSchema",
+        "type": "object"
+      },
+      "GeometryCollection": {
+        "description": "GeometryCollection Model",
+        "properties": {
+          "bbox": {
+            "anyOf": [
+              {
+                "maxItems": 4,
+                "minItems": 4,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "maxItems": 6,
+                "minItems": 6,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bbox"
+          },
+          "type": {
+            "const": "GeometryCollection",
+            "title": "Type",
+            "type": "string"
+          },
+          "geometries": {
+            "items": {
+              "discriminator": {
+                "mapping": {
+                  "GeometryCollection": "#/components/schemas/GeometryCollection",
+                  "LineString": "#/components/schemas/LineString",
+                  "MultiLineString": "#/components/schemas/MultiLineString",
+                  "MultiPoint": "#/components/schemas/MultiPoint",
+                  "MultiPolygon": "#/components/schemas/MultiPolygon",
+                  "Point": "#/components/schemas/Point",
+                  "Polygon": "#/components/schemas/Polygon"
+                },
+                "propertyName": "type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Point"
+                },
+                {
+                  "$ref": "#/components/schemas/MultiPoint"
+                },
+                {
+                  "$ref": "#/components/schemas/LineString"
+                },
+                {
+                  "$ref": "#/components/schemas/MultiLineString"
+                },
+                {
+                  "$ref": "#/components/schemas/Polygon"
+                },
+                {
+                  "$ref": "#/components/schemas/MultiPolygon"
+                },
+                {
+                  "$ref": "#/components/schemas/GeometryCollection"
+                }
+              ]
+            },
+            "title": "Geometries",
+            "type": "array"
+          }
+        },
+        "required": [
+          "type",
+          "geometries"
+        ],
+        "title": "GeometryCollection",
+        "type": "object"
+      },
+      "IndoorFeatureSchema": {
+        "properties": {
+          "properties": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Additional properties associated with this feature",
+            "title": "Properties"
+          },
+          "type": {
+            "const": "Feature",
+            "default": "Feature",
+            "title": "Type",
+            "type": "string"
+          },
+          "geometry": {
+            "anyOf": [
+              {
+                "discriminator": {
+                  "mapping": {
+                    "GeometryCollection": "#/components/schemas/GeometryCollection",
+                    "LineString": "#/components/schemas/LineString",
+                    "MultiLineString": "#/components/schemas/MultiLineString",
+                    "MultiPoint": "#/components/schemas/MultiPoint",
+                    "MultiPolygon": "#/components/schemas/MultiPolygon",
+                    "Point": "#/components/schemas/Point",
+                    "Polygon": "#/components/schemas/Polygon"
+                  },
+                  "propertyName": "type"
+                },
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Point"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MultiPoint"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LineString"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MultiLineString"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Polygon"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MultiPolygon"
+                  },
+                  {
+                    "$ref": "#/components/schemas/GeometryCollection"
+                  }
+                ]
+              },
+              {
+                "$ref": "#/components/schemas/GeometryCollection"
+              }
+            ],
+            "description": "GeoJSON Geometry or Geometry Collection",
+            "title": "Geometry"
+          },
+          "id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id"
+          },
+          "distance": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distance"
+          },
+          "duration": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duration"
+          }
+        },
+        "required": [
+          "properties",
+          "geometry"
+        ],
+        "title": "IndoorFeatureSchema",
+        "type": "object"
+      },
+      "LineString": {
+        "description": "LineString Model",
+        "properties": {
+          "bbox": {
+            "anyOf": [
+              {
+                "maxItems": 4,
+                "minItems": 4,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "maxItems": 6,
+                "minItems": 6,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bbox"
+          },
+          "type": {
+            "const": "LineString",
+            "title": "Type",
+            "type": "string"
+          },
+          "coordinates": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Position2D"
+                },
+                {
+                  "$ref": "#/components/schemas/Position3D"
+                }
+              ]
+            },
+            "minItems": 2,
+            "title": "Coordinates",
+            "type": "array"
+          }
+        },
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "title": "LineString",
+        "type": "object"
+      },
+      "MultiLineString": {
+        "description": "MultiLineString Model",
+        "properties": {
+          "bbox": {
+            "anyOf": [
+              {
+                "maxItems": 4,
+                "minItems": 4,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "maxItems": 6,
+                "minItems": 6,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bbox"
+          },
+          "type": {
+            "const": "MultiLineString",
+            "title": "Type",
+            "type": "string"
+          },
+          "coordinates": {
+            "items": {
+              "items": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/Position2D"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Position3D"
+                  }
+                ]
+              },
+              "minItems": 2,
+              "type": "array"
+            },
+            "title": "Coordinates",
+            "type": "array"
+          }
+        },
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "title": "MultiLineString",
+        "type": "object"
+      },
+      "MultiPoint": {
+        "description": "MultiPoint Model",
+        "properties": {
+          "bbox": {
+            "anyOf": [
+              {
+                "maxItems": 4,
+                "minItems": 4,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "maxItems": 6,
+                "minItems": 6,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bbox"
+          },
+          "type": {
+            "const": "MultiPoint",
+            "title": "Type",
+            "type": "string"
+          },
+          "coordinates": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Position2D"
+                },
+                {
+                  "$ref": "#/components/schemas/Position3D"
+                }
+              ]
+            },
+            "title": "Coordinates",
+            "type": "array"
+          }
+        },
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "title": "MultiPoint",
+        "type": "object"
+      },
+      "MultiPolygon": {
+        "description": "MultiPolygon Model",
+        "properties": {
+          "bbox": {
+            "anyOf": [
+              {
+                "maxItems": 4,
+                "minItems": 4,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "maxItems": 6,
+                "minItems": 6,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bbox"
+          },
+          "type": {
+            "const": "MultiPolygon",
+            "title": "Type",
+            "type": "string"
+          },
+          "coordinates": {
+            "items": {
+              "items": {
+                "items": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Position2D"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Position3D"
+                    }
+                  ]
+                },
+                "minItems": 4,
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "title": "Coordinates",
+            "type": "array"
+          }
+        },
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "title": "MultiPolygon",
+        "type": "object"
+      },
+      "PaginationSchema": {
+        "properties": {
+          "page": {
+            "description": "Current page number",
+            "title": "Page",
+            "type": "integer"
+          },
+          "page_count": {
+            "description": "Total number of pages",
+            "title": "Page Count",
+            "type": "integer"
+          },
+          "total": {
+            "description": "Total number of items",
+            "title": "Total",
+            "type": "integer"
+          },
+          "per_page": {
+            "description": "Number of items per page",
+            "title": "Per Page",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "page",
+          "page_count",
+          "total",
+          "per_page"
+        ],
+        "title": "PaginationSchema",
+        "type": "object"
+      },
+      "Point": {
+        "description": "Point Model",
+        "properties": {
+          "bbox": {
+            "anyOf": [
+              {
+                "maxItems": 4,
+                "minItems": 4,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "maxItems": 6,
+                "minItems": 6,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bbox"
+          },
+          "type": {
+            "const": "Point",
+            "title": "Type",
+            "type": "string"
+          },
+          "coordinates": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Position2D"
+              },
+              {
+                "$ref": "#/components/schemas/Position3D"
+              }
+            ],
+            "title": "Coordinates"
+          }
+        },
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "title": "Point",
+        "type": "object"
+      },
+      "Polygon": {
+        "description": "Polygon Model",
+        "properties": {
+          "bbox": {
+            "anyOf": [
+              {
+                "maxItems": 4,
+                "minItems": 4,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "maxItems": 6,
+                "minItems": 6,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bbox"
+          },
+          "type": {
+            "const": "Polygon",
+            "title": "Type",
+            "type": "string"
+          },
+          "coordinates": {
+            "items": {
+              "items": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/Position2D"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Position3D"
+                  }
+                ]
+              },
+              "minItems": 4,
+              "type": "array"
+            },
+            "title": "Coordinates",
+            "type": "array"
+          }
+        },
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "title": "Polygon",
+        "type": "object"
+      },
+      "Position2D": {
+        "maxItems": 2,
+        "minItems": 2,
+        "prefixItems": [
+          {
+            "title": "Longitude",
+            "type": "number"
+          },
+          {
+            "title": "Latitude",
+            "type": "number"
+          }
+        ],
+        "type": "array"
+      },
+      "Position3D": {
+        "maxItems": 3,
+        "minItems": 3,
+        "prefixItems": [
+          {
+            "title": "Longitude",
+            "type": "number"
+          },
+          {
+            "title": "Latitude",
+            "type": "number"
+          },
+          {
+            "title": "Altitude",
+            "type": "number"
+          }
+        ],
+        "type": "array"
+      },
+      "SearchPagination": {
+        "example": {
+          "features": [
+            {
+              "distance": null,
+              "duration": null,
+              "geometry": {
+                "bbox": null,
+                "coordinates": [
+                  [
+                    [
+                      -0.12419943632,
+                      51.49927414881
+                    ],
+                    [
+                      -0.12419342215,
+                      51.49930532278
+                    ],
+                    [
+                      -0.12419141597,
+                      51.49931625597
+                    ],
+                    [
+                      -0.12419943632,
+                      51.49927414881
+                    ]
+                  ]
+                ],
+                "type": "Polygon"
+              },
+              "id": 3623459,
+              "properties": {
+                "name": "Painted Chamber",
+                "room": "office",
+                "level": "1",
+                "indoor": "area",
+                "building:ref": "Palace of Westminster",
+                "woosmap:logo": "https://woosmap-indoor-img.s3.amazonaws.com/Westminster/logo.png",
+                "woosmap:cover": "https://woosmap-indoor-img.s3.amazonaws.com/Westminster/paintedchamber.png",
+                "woosmap:label_id": 3623458,
+                "woosmap:zoom_icon_min": "16",
+                "woosmap:zoom_polygon_min": "16"
+              },
+              "type": "Feature"
+            }
+          ],
+          "pagination": {
+            "page": 0,
+            "page_count": 1,
+            "per_page": 0,
+            "total": 1
+          }
+        },
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationSchema",
+            "description": "Pagination Information"
+          },
+          "features": {
+            "default": [],
+            "description": "List of Indoor features",
+            "items": {
+              "$ref": "#/components/schemas/IndoorFeatureSchema"
+            },
+            "title": "Features",
+            "type": "array"
+          }
+        },
+        "required": [
+          "pagination"
+        ],
+        "title": "SearchPagination",
+        "type": "object"
+      },
+      "AutocompleteInput": {
+        "properties": {
+          "items_by_page": {
+            "default": 0,
+            "description": "Number of items per page. A value of 0 means no pagination.",
+            "title": "Items By Page",
+            "type": "integer"
+          },
+          "page": {
+            "default": 0,
+            "description": "Page number. 0 being the first page.",
+            "title": "Page",
+            "type": "integer"
+          },
+          "from_location": {
+            "description": "A string with the format lat,lng,level",
+            "example": "48.8818546,2.3572283,0",
+            "title": "From Location",
+            "type": "string"
+          },
+          "q": {
+            "description": "Search string. If not passed then all features will be listed alphabetically",
+            "title": "Q",
+            "type": "string"
+          },
+          "extended": {
+            "description": "Option to search even not searchable pois (extended=full)",
+            "example": "full",
+            "title": "Extended",
+            "type": "string"
+          },
+          "level": {
+            "description": "Filter by level.",
+            "title": "Level",
+            "type": "integer"
+          },
+          "building": {
+            "description": "Filter by building (use `undefined` to find POIs not associated with a building.).",
+            "title": "Building",
+            "type": "string"
+          },
+          "category": {
+            "description": "Filter by category.",
+            "title": "Category",
+            "type": "string"
+          },
+          "ref": {
+            "description": "Filter by a comma seperated list of POI Refs.",
+            "example": "ref:main_entrance,ref:side_entrance",
+            "title": "Ref",
+            "type": "string"
+          },
+          "language": {
+            "default": "en",
+            "description": "A supported language as an ISO 639-1 2 letter code.",
+            "title": "Language",
+            "type": "string"
+          },
+          "advanced_filter": {
+            "description": "Filter by complex queries on properties (ex: indoor:=\"room\" OR door:=\"yes\").",
+            "title": "Advanced Filter",
+            "type": "string"
+          }
+        },
+        "title": "AutocompleteInput",
+        "type": "object"
+      },
+      "AutocompletePagination": {
+        "example": {
+          "pagination": {
+            "page": 1,
+            "page_count": 1,
+            "per_page": 2,
+            "total": 2
+          },
+          "predictions": [
+            {
+              "building": "Palace of Westminster",
+              "category": null,
+              "distance": null,
+              "duration": null,
+              "id": 3623459,
+              "level": "1",
+              "name": "Painted Chamber",
+              "ref": null
+            },
+            {
+              "building": "Palace of Westminster",
+              "category": null,
+              "distance": null,
+              "duration": null,
+              "id": 3624060,
+              "level": "1",
+              "name": "Lord Chamberlain's Private Office",
+              "ref": null
+            }
+          ]
+        },
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationSchema",
+            "description": "Pagination Information"
+          },
+          "predictions": {
+            "default": [],
+            "description": "List of Indoor features",
+            "items": {
+              "$ref": "#/components/schemas/PredictionSchema"
+            },
+            "title": "Predictions",
+            "type": "array"
+          }
+        },
+        "required": [
+          "pagination"
+        ],
+        "title": "AutocompletePagination",
+        "type": "object"
+      },
+      "PredictionSchema": {
+        "properties": {
+          "id": {
+            "description": "ID of the Feature",
+            "title": "Id",
+            "type": "integer"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Name of the Feature",
+            "title": "Name"
+          },
+          "distance": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "If from location provided, is the distance in metres from that location",
+            "title": "Distance"
+          },
+          "duration": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "If from location provided, is the duration in seconds from that location",
+            "title": "Duration"
+          },
+          "level": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Level of the Feature",
+            "title": "Level"
+          },
+          "ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Reference of the Feature",
+            "title": "Ref"
+          },
+          "building": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Building the Feature is in",
+            "title": "Building"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Catagory of the Feature",
+            "title": "Category"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "title": "PredictionSchema",
+        "type": "object"
+      },
+      "SingleIndoorFeatureSchema": {
+        "example": {
+          "distance": null,
+          "duration": null,
+          "geometry": {
+            "bbox": null,
+            "coordinates": [
+              [
+                [
+                  -0.12419943632,
+                  51.49927414881
+                ],
+                [
+                  -0.12419342215,
+                  51.49930532278
+                ],
+                [
+                  -0.12419141597,
+                  51.49931625597
+                ],
+                [
+                  -0.12419943632,
+                  51.49927414881
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "id": 3623459,
+          "properties": {
+            "name": "Painted Chamber",
+            "room": "office",
+            "level": "1",
+            "indoor": "area",
+            "building:ref": "Palace of Westminster",
+            "woosmap:logo": "https://woosmap-indoor-img.s3.amazonaws.com/Westminster/logo.png",
+            "woosmap:cover": "https://woosmap-indoor-img.s3.amazonaws.com/Westminster/paintedchamber.png",
+            "woosmap:label_id": 3623458,
+            "woosmap:zoom_icon_min": "16",
+            "woosmap:zoom_polygon_min": "16"
+          },
+          "type": "Feature"
+        },
+        "properties": {
+          "properties": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Additional properties associated with this feature",
+            "title": "Properties"
+          },
+          "type": {
+            "const": "Feature",
+            "default": "Feature",
+            "title": "Type",
+            "type": "string"
+          },
+          "geometry": {
+            "anyOf": [
+              {
+                "discriminator": {
+                  "mapping": {
+                    "GeometryCollection": "#/components/schemas/GeometryCollection",
+                    "LineString": "#/components/schemas/LineString",
+                    "MultiLineString": "#/components/schemas/MultiLineString",
+                    "MultiPoint": "#/components/schemas/MultiPoint",
+                    "MultiPolygon": "#/components/schemas/MultiPolygon",
+                    "Point": "#/components/schemas/Point",
+                    "Polygon": "#/components/schemas/Polygon"
+                  },
+                  "propertyName": "type"
+                },
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Point"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MultiPoint"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LineString"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MultiLineString"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Polygon"
+                  },
+                  {
+                    "$ref": "#/components/schemas/MultiPolygon"
+                  },
+                  {
+                    "$ref": "#/components/schemas/GeometryCollection"
+                  }
+                ]
+              },
+              {
+                "$ref": "#/components/schemas/GeometryCollection"
+              }
+            ],
+            "description": "GeoJSON Geometry or Geometry Collection",
+            "title": "Geometry"
+          },
+          "id": {
+            "description": "ID of the feature",
+            "title": "Id",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "properties",
+          "geometry",
+          "id"
+        ],
+        "title": "SingleIndoorFeatureSchema",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "PrivateKeyAuth": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "private_key"
+      },
+      "PrivateKeyHeaderAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Api-Key"
+      },
+      "PublicKeyAuth": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "key"
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Woosmap",
+      "url": "https://api.woosmap.com"
+    }
+  ]
+}

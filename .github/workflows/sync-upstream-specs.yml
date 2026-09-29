@@ -1,0 +1,32 @@
+# Opens or refreshes one PR when a spec served by api.woosmap.com differs from upstream/.
+name: Sync upstream specs
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.4.0
+      - name: Download upstream specs
+        run: tools/sync-upstream-specs.sh
+      # A PAT, so that the branch push runs Build and Test on the PR.
+      - uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          token: ${{ secrets.WOOSMAP_GH_ACCESS_TOKEN }}
+          add-paths: upstream
+          branch: chore/sync-upstream-specs
+          delete-branch: true
+          commit-message: "fix(spec): sync upstream OpenAPI specs"
+          title: "fix(spec): sync upstream OpenAPI specs"
+          body: |
+            ## What?
+            Refreshes `upstream/` from `https://api.woosmap.com/<name>/openapi.json`.
+
+            ## Why?
+            The merged spec only picks up upstream changes through this PR. Check the diff for contract changes that the SDKs need to follow before merging: merging publishes a patch release.

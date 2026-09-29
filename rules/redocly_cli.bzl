@@ -1,14 +1,12 @@
-load("@aspect_bazel_lib//lib:copy_to_directory.bzl", "copy_to_directory")
-load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_run_binary", "js_test")
+load("@aspect_rules_js//js:defs.bzl", "js_run_binary")
 
 def bundle(name, entry, data = None, config = None, decorators = None, visibility = ["//visibility:public"], **kwargs):
-    """Bundle OpenAPI files with redocly CLI."""
+    """Bundles entry with redocly, dereferences it to JSON and derives the YAML."""
     JSON_FILENAME = "{}.json".format(name)
     YAML_FILENAME = "{}.yml".format(name)
     RAW_TARGET = "{}_raw".format(name)
-    RAW_OUTPUT = "raw_{}.json".format(name)  # Give unique name to avoid conflicts
+    RAW_OUTPUT = "raw_{}.json".format(name)
 
-    # Use the entry directly
     all_srcs = []
     if data:
         all_srcs.extend(data)
@@ -19,22 +17,19 @@ def bundle(name, entry, data = None, config = None, decorators = None, visibilit
 
     all_srcs.append(entry)
 
-    # Bundle raw output - use the redocly_cli binary from the root package
     js_run_binary(
         name = RAW_TARGET,
-        outs = [RAW_OUTPUT],  # Use unique name
-        tool = "//:redocly_cli",  # Use the binary from the npm package
+        outs = [RAW_OUTPUT],
+        tool = "//:redocly_cli",
         args = [
             "bundle",
             "toBundle",
         ] + (["--config", "$(rootpath {})".format(config)] if config else []),
         srcs = all_srcs,
         env = {"DEBUG": "true"},
-        # Add a progress message that will be displayed during build
         progress_message = "Bundling OpenAPI spec %{input} into %{output}",
     )
 
-    # The JSON generation step needs to reference the output from RAW_TARGET properly
     js_run_binary(
         name = name + "_json",
         outs = [JSON_FILENAME],
@@ -45,15 +40,12 @@ def bundle(name, entry, data = None, config = None, decorators = None, visibilit
             "--output",
             "$(rootpath {})".format(JSON_FILENAME),
         ],
-        # The spec sources are needed so dereference can resolve the
-        # example-value $refs (responses/requests) that redocly v2 leaves
-        # external in the bundle.
+        # dereference resolves the example $refs that redocly v2 leaves external, so it needs the sources.
         srcs = [":" + RAW_TARGET] + all_srcs,
         visibility = visibility,
         env = {"BAZEL_BINDIR": "$(BINDIR)"},
     )
 
-    # Generate YAML output from the JSON file
     js_run_binary(
         name = name + "_yaml",
         outs = [YAML_FILENAME],
@@ -92,37 +84,20 @@ def validate(name, openapi_file = None, config = None, rules = None):
     )
 
 def bundle_external_specs(name, specs, main_spec = "//:woosmap-openapi3.json", config = None, plugins = None):
-    """Downloads, bundles and joins multiple OpenAPI specs.
-
-    Args:
-        name: Target name for the final joined spec
-        specs: List of spec names to bundle
-        main_spec: Path to the main OpenAPI spec
-        config: Path to redocly config file
-    """
-
-    # Copy external specs to a directory
-    copy_to_directory(
-        name = "downloaded_openapi_specs",
-        srcs = ["@{}_openapi//file".format(s) for s in specs],
-        out = "external_specs",
-        include_external_repositories = ["{}_openapi".format(s) for s in specs],
-        visibility = ["//visibility:public"],
-    )
-
-    # Bundle each spec
+    """Joins main_spec with the specs vendored in //upstream, then applies the merge decorators."""
     bundled_specs = []
     for spec in specs:
         bundle_name = "bundle_{}".format(spec)
+        spec_file = "//upstream:{}".format(spec)
         bundled_specs.append(bundle_name)
 
         js_run_binary(
             name = bundle_name,
-            srcs = [":downloaded_openapi_specs"],
+            srcs = [spec_file],
             outs = ["{}-bundled.json".format(spec)],
             args = [
                 "bundle",
-                "$(rootpath :downloaded_openapi_specs)/file/{}.json".format(spec),
+                "$(rootpath {})".format(spec_file),
                 "--output",
                 "{}-bundled.json".format(spec),
                 "--remove-unused-components",
@@ -130,7 +105,6 @@ def bundle_external_specs(name, specs, main_spec = "//:woosmap-openapi3.json", c
             tool = "//:redocly_cli",
         )
 
-    # Join specs
     joined_target = name + "_joined"
     joined_output = "joined-woosmap-openapi3.json"
 
@@ -151,14 +125,13 @@ def bundle_external_specs(name, specs, main_spec = "//:woosmap-openapi3.json", c
         visibility = ["//visibility:public"],
     )
 
-    # Apply decorators to the joined spec
     final_srcs = [":" + joined_target]
     if config:
         final_srcs.append(config)
     if plugins:
         final_srcs.extend(plugins)
-    
-    # Add specification files (includes snippets and responses) for inject-code-samples decorator
+
+    # The inject-code-samples decorator reads the snippets from the spec sources.
     final_srcs.append("//specification:openapi3")
 
     js_run_binary(
