@@ -4,21 +4,25 @@
 
 <h2 id="optional-parameters">Optional parameters</h2>
 
-- <h3 class="parameter-name" id="encoded_polyline">encoded_polyline</h3>
+- <h3 class="parameter-name" id="bounds">bounds</h3>
 
-  Find assets nearby an [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) and inside a defined radius.
+  Restricts the results to the Assets inside a bounding box, as `west,south,east,north` in decimal degrees. Takes precedence over `lat`/`lng` and `polyline`.
 
 - <h3 class="parameter-name" id="lat">lat</h3>
 
-  Latitude bias for the results. Should be pass with `lng`.
+  Latitude bias for the results. Must be passed with `lng`.
 
 - <h3 class="parameter-name" id="lng">lng</h3>
 
-  Longitude bias for the results. Should be pass with `lat`.
+  Longitude bias for the results. Must be passed with `lat`.
 
 - <h3 class="parameter-name" id="page">page</h3>
 
   Page number when accessing paginated assets feature collection
+
+- <h3 class="parameter-name" id="polyline">polyline</h3>
+
+  Find assets nearby an [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) and inside a defined radius. Requires `radius`.
 
 - <h3 class="parameter-name" id="query">query</h3>
 
@@ -80,7 +84,7 @@
 
 - <h3 class="parameter-name" id="radius">radius</h3>
 
-  Unit in meters. Used to combine with lat/lng or encoded polyline. To bias the results within a given circular area. 3000 means to search for Assets that are at the most far from 3kms to search area (latlng or polyline).
+  Unit in meters. Used to combine with lat/lng or polyline. To bias the results within a given circular area. 3000 means to search for Assets that are at the most far from 3kms to search area (latlng or polyline). Without `radius`, `lat`/`lng` only sort the Assets by distance.
 
 - <h3 class="parameter-name" id="stores_by_page">stores_by_page</h3>
 

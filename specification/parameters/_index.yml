@@ -22,8 +22,10 @@ search_lat:
   $ref: "./search/lat.yml"
 search_language:
   $ref: "./search/language.yml"
-search_encoded_polyline:
-  $ref: "./search/encoded_polyline.yml"
+search_polyline:
+  $ref: "./search/polyline.yml"
+search_bounds:
+  $ref: "./search/bounds.yml"
 geolocation_limit:
   $ref: "./geolocation/limit.yml"
 geolocation_ip_address:

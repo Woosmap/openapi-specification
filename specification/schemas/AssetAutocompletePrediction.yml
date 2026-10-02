@@ -1,0 +1,28 @@
+title: AssetAutocompletePrediction
+type: object
+description: An Asset matching the autocomplete query.
+required:
+  - store_id
+  - name
+  - types
+  - matched_substrings
+  - highlighted
+properties:
+  name:
+    description: >
+      The `name` property of each prediction will be filled with the localized name of your asset in the `language` you provided in your query if it exists,
+      or else the default name property.
+    type: string
+    example: "Centro Commerciale Deria"
+  highlighted:
+    type: string
+    description: an HTML formatted string with, if it exists, the matched substring(s) in bold font.
+    example: "Centro <b>Commercial</b>e Deria"
+  store_id:
+    $ref: "./AssetId.yml"
+  types:
+    $ref: "./AssetTypes.yml"
+  matched_substrings:
+    type: array
+    items:
+      $ref: "./MatchedSubstring.yml"
