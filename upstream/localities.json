@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Localities",
-    "version": "v25.8.0"
+    "version": "v25.8.3"
   },
   "servers": [
     {
@@ -139,12 +139,12 @@
             "schema": {
               "$ref": "#/components/schemas/LocalitiesInput",
               "maxLength": 150,
-              "description": "Text to search for. Predictions are matched on this string and ordered by relevance.\n\nOnly the first 20 tokens (within 150 characters) are processed.",
+              "description": "Text to search for. Predictions are matched on this string and ordered by relevance.\n\nOnly the first 20 tokens (within 150 characters) are processed. \n\nWill return a 400 error when containing more than 3 special characters (! # $ % & * : ; < = > ? @ [ ] ° ™ { }) . \n\nWill be ignored (empty result) when composed of 70% of punctuation symbols (which Unicode general category starts with P (punctuation) or S (symbol).",
               "examples": [
                 "London"
               ]
             },
-            "description": "Text to search for. Predictions are matched on this string and ordered by relevance.\n\nOnly the first 20 tokens (within 150 characters) are processed."
+            "description": "Text to search for. Predictions are matched on this string and ordered by relevance.\n\nOnly the first 20 tokens (within 150 characters) are processed. \n\nWill return a 400 error when containing more than 3 special characters (! # $ % & * : ; < = > ? @ [ ] ° ™ { }) . \n\nWill be ignored (empty result) when composed of 70% of punctuation symbols (which Unicode general category starts with P (punctuation) or S (symbol)."
           },
           {
             "name": "custom_description",
@@ -668,13 +668,13 @@
                   "type": "null"
                 }
               ],
-              "description": "Address, street, locality, or postal code to geocode.\n\nOnly the first 20 tokens (within 150 characters) are processed.",
+              "description": "Address, street, locality, or postal code to geocode.\n\nOnly the first 20 tokens (within 150 characters) are processed.\n\nWill return a 400 Error when containing more than 3 special characters (! # $ % & * : ; < = > ? @ [ ] ° ™ { }) . \n\nWill be ignored (empty result) when composed of 70% of punctuation symbols (which Unicode general category starts with P (punctuation) or S (symbol).",
               "examples": [
                 "224%20Rue%20de%20Rivoli%2C%20Paris"
               ],
               "title": "Address"
             },
-            "description": "Address, street, locality, or postal code to geocode.\n\nOnly the first 20 tokens (within 150 characters) are processed."
+            "description": "Address, street, locality, or postal code to geocode.\n\nOnly the first 20 tokens (within 150 characters) are processed.\n\nWill return a 400 Error when containing more than 3 special characters (! # $ % & * : ; < = > ? @ [ ] ° ™ { }) . \n\nWill be ignored (empty result) when composed of 70% of punctuation symbols (which Unicode general category starts with P (punctuation) or S (symbol)."
           },
           {
             "name": "latlng",
