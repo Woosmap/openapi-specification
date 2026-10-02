@@ -1,0 +1,661 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Maps",
+    "description": "Maps API can provide style.json and map tiles.\n\n> Note: this API requires the `MAP` product to be activated on the project.",
+    "version": "v6.1.32"
+  },
+  "paths": {
+    "/maps/static": {
+      "get": {
+        "tags": [
+          "static"
+        ],
+        "summary": "Get Static Map",
+        "description": "Retrieve a static map\n\n**Ratelimit:** 20/1s",
+        "operationId": "get_static_map_maps_static_get",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Language"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "maximum": 90.0,
+              "minimum": -90.0,
+              "title": "Lat"
+            },
+            "examples": {
+              "default": {
+                "value": 43.6
+              }
+            }
+          },
+          {
+            "name": "lng",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "maximum": 180.0,
+              "minimum": -180.0,
+              "title": "Lng"
+            },
+            "examples": {
+              "default": {
+                "value": 3.883
+              }
+            }
+          },
+          {
+            "name": "zoom",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "maximum": 24,
+              "minimum": 0,
+              "description": "The zoom",
+              "title": "Zoom"
+            },
+            "description": "The zoom",
+            "examples": {
+              "default": {
+                "value": 11
+              }
+            }
+          },
+          {
+            "name": "width",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "maximum": 1280,
+              "minimum": 40,
+              "description": "Width in pixels. width * height must not exceed 409,600.",
+              "title": "Width"
+            },
+            "description": "Width in pixels. width * height must not exceed 409,600.",
+            "examples": {
+              "default": {
+                "value": 400
+              }
+            }
+          },
+          {
+            "name": "height",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "maximum": 1280,
+              "minimum": 40,
+              "description": "Height in pixels. width * height must not exceed 409,600.",
+              "title": "Height"
+            },
+            "description": "Height in pixels. width * height must not exceed 409,600.",
+            "examples": {
+              "default": {
+                "value": 400
+              }
+            }
+          },
+          {
+            "name": "markers",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "contentMediaType": "application/json",
+                "contentSchema": {
+                  "$ref": "#/components/schemas/MarkerWithUrlOptions"
+                },
+                "type": "string"
+              },
+              "description": "Adds a marker.\n\nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n\n        ",
+              "title": "Markers"
+            },
+            "description": "Adds a marker.\n\nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n\n        ",
+            "examples": {
+              "default": {
+                "value": [
+                  "{\"lat\": 43.6, \"lng\": 3.883, \"url\": \"https://webapp.woosmap.com/img/geolocated_marker.png?retina=yes\"}"
+                ]
+              }
+            }
+          },
+          {
+            "name": "polylines",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "contentMediaType": "application/json",
+                "contentSchema": {
+                  "$ref": "#/components/schemas/PolylineOptions"
+                },
+                "type": "string"
+              },
+              "description": "Add a polyline.\n\n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            ",
+              "title": "Polylines"
+            },
+            "description": "Add a polyline.\n\n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            ",
+            "examples": {
+              "default": {
+                "value": [
+                  "{\"enc\": \"ydjiG_}jVjn@cjAf`AycBnc@mqCp\\\\ewBrQmlBzrAeuCreBw_C\", \"color\": \"magenta\", \"weight\": 4}"
+                ]
+              }
+            }
+          },
+          {
+            "name": "polygons",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "contentMediaType": "application/json",
+                "contentSchema": {
+                  "$ref": "#/components/schemas/PolygonOptions"
+                },
+                "type": "string"
+              },
+              "description": "Adds a polygon.\n\n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            ",
+              "title": "Polygons"
+            },
+            "description": "Adds a polygon.\n\n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            ",
+            "examples": {
+              "default": {
+                "value": [
+                  "{\"shape\": \"ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??\", \"fill_color\": \"rgba(255, 20, 147, 0.5)\", \"color\": \"rgba(199, 21, 133, 0.7)\"}"
+                ]
+              }
+            }
+          },
+          {
+            "name": "retina",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Retina"
+            }
+          },
+          {
+            "name": "stylers",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "contentMediaType": "application/json",
+              "contentSchema": {
+                "items": {
+                  "$ref": "#/components/schemas/MapStyle"
+                },
+                "type": "array"
+              },
+              "type": "string",
+              "title": "Stylers"
+            },
+            "examples": {
+              "default": {
+                "value": "[{\"featureType\": \"points_of_interest.business\", \"stylers\":[{\"visibility\": \"off\"}]}]"
+              }
+            }
+          },
+          {
+            "name": "visual_refresh",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Opt in or out of the refreshed street style. Omitted, the server default and the grandfathered organizations decide.",
+              "title": "Visual Refresh"
+            },
+            "description": "Opt in or out of the refreshed street style. Omitted, the server default and the grandfathered organizations decide."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "image/webp": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthenticationErrorResponse": {
+        "properties": {
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "AuthenticationErrorResponse",
+        "description": "AuthenticationErrorResponse is the base authentication error model."
+      },
+      "HTTPErrorModel": {
+        "properties": {
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "HTTPErrorModel"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "MarkerWithUrlOptions": {
+        "example": {
+          "lat": 43.6,
+          "lng": 3.883,
+          "url": "https://webapp.woosmap.com/img/geolocated_marker.png?retina=yes"
+        },
+        "properties": {
+          "lat": {
+            "title": "Lat",
+            "type": "number"
+          },
+          "lng": {
+            "title": "Lng",
+            "type": "number"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "format": "uri",
+                "maxLength": 2083,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Url"
+          }
+        },
+        "required": [
+          "lat",
+          "lng"
+        ],
+        "title": "MarkerWithUrlOptions",
+        "type": "object"
+      },
+      "PolylineOptions": {
+        "example": {
+          "color": "magenta",
+          "enc": "ydjiG_}jVjn@cjAf`AycBnc@mqCp\\ewBrQmlBzrAeuCreBw_C",
+          "weight": 4
+        },
+        "properties": {
+          "enc": {
+            "title": "Enc",
+            "type": "string"
+          },
+          "color": {
+            "default": "rgb(65, 176, 246)",
+            "title": "Color",
+            "type": "string"
+          },
+          "weight": {
+            "default": 1.0,
+            "title": "Weight",
+            "type": "number"
+          }
+        },
+        "required": [
+          "enc"
+        ],
+        "title": "PolylineOptions",
+        "type": "object"
+      },
+      "PolygonOptions": {
+        "example": {
+          "color": "rgba(199, 21, 133, 0.7)",
+          "fill_color": "rgba(255, 20, 147, 0.5)",
+          "shape": "ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??"
+        },
+        "properties": {
+          "shape": {
+            "title": "Shape",
+            "type": "string"
+          },
+          "color": {
+            "default": "rgb(65, 176, 246)",
+            "title": "Color",
+            "type": "string"
+          },
+          "fill_color": {
+            "default": "rgba(65, 176, 246, 0.5)",
+            "title": "Fill Color",
+            "type": "string"
+          },
+          "weight": {
+            "default": 1.0,
+            "title": "Weight",
+            "type": "number"
+          }
+        },
+        "required": [
+          "shape"
+        ],
+        "title": "PolygonOptions",
+        "type": "object"
+      },
+      "MapStyle": {
+        "properties": {
+          "featureType": {
+            "title": "Featuretype",
+            "type": "string"
+          },
+          "elementType": {
+            "default": "all",
+            "title": "Elementtype",
+            "type": "string"
+          },
+          "stylers": {
+            "items": {
+              "$ref": "#/components/schemas/MapStyler"
+            },
+            "title": "Stylers",
+            "type": "array"
+          }
+        },
+        "required": [
+          "featureType",
+          "stylers"
+        ],
+        "title": "MapStyle",
+        "type": "object"
+      },
+      "MapStyler": {
+        "properties": {
+          "visibility": {
+            "anyOf": [
+              {
+                "enum": [
+                  "on",
+                  "off"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Visibility"
+          },
+          "color": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Color"
+          },
+          "hue": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Hue"
+          },
+          "saturation": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Saturation"
+          },
+          "gamma": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Gamma"
+          },
+          "lightness": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Lightness"
+          }
+        },
+        "title": "MapStyler",
+        "type": "object"
+      },
+      "MarkerOptions": {
+        "properties": {
+          "lat": {
+            "title": "Lat",
+            "type": "number"
+          },
+          "lng": {
+            "title": "Lng",
+            "type": "number"
+          }
+        },
+        "required": [
+          "lat",
+          "lng"
+        ],
+        "title": "MarkerOptions",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "PublicAPIKey": {
+        "type": "apiKey",
+        "description": "Public key of the project (starts with `woos-`) or an API key (a UUID).",
+        "in": "query",
+        "name": "key"
+      },
+      "PrivateApiKey": {
+        "type": "apiKey",
+        "description": "Private key with or without write permission.",
+        "in": "query",
+        "name": "private_key"
+      },
+      "PrivateApiKeyHeader": {
+        "type": "apiKey",
+        "description": "Private key with or without write permission.",
+        "in": "header",
+        "name": "X-Api-Key"
+      }
+    }
+  }
+}

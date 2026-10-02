@@ -1,0 +1,2831 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Localities",
+    "version": "v25.8.3"
+  },
+  "servers": [
+    {
+      "url": "https://api.woosmap.com",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/localities/autocomplete": {
+      "get": {
+        "tags": [
+          "Localities API"
+        ],
+        "summary": "Autocomplete",
+        "description": "Returns worldwide place suggestions for a text query, matching on whole words or substrings. Designed for as-you-type input: addresses, cities, postal codes, suburbs, and more.\n\n**Ratelimit:** 50/1s",
+        "operationId": "autocomplete_localities_autocomplete_get",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Language code (ISO 639-1, two letters) for the response.\n\nResolution order:\n1. `language` (this parameter)\n2. The request's `Accept-Language` header\n3. locale default\n4. English (when neither is recognised)\n\nOnly part of the address components are translated; not required for postal-code requests.",
+              "examples": [
+                "en"
+              ],
+              "default": "",
+              "title": "Language"
+            },
+            "description": "Language code (ISO 639-1, two letters) for the response.\n\nResolution order:\n1. `language` (this parameter)\n2. The request's `Accept-Language` header\n3. locale default\n4. English (when neither is recognised)\n\nOnly part of the address components are translated; not required for postal-code requests."
+          },
+          {
+            "name": "data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/DatasetMode",
+              "description": "Selects the postal-code dataset. `advanced` extends the default Western-Europe coverage to worldwide postal codes.\n\n***Requires a dedicated license option subject to specific billing — please contact us.***",
+              "examples": [
+                "advanced"
+              ],
+              "default": "standard"
+            },
+            "description": "Selects the postal-code dataset. `advanced` extends the default Western-Europe coverage to worldwide postal codes.\n\n***Requires a dedicated license option subject to specific billing — please contact us.***"
+          },
+          {
+            "name": "components",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Restricts results to one or more countries. Pass each country as a `country:<ISO-3166-1 Alpha-2 or Alpha-3>` filter. Use `|` to provide multiple values.",
+              "examples": [
+                "country:gb",
+                "country:fr|country:es"
+              ],
+              "title": "Components"
+            },
+            "description": "Restricts results to one or more countries. Pass each country as a `country:<ISO-3166-1 Alpha-2 or Alpha-3>` filter. Use `|` to provide multiple values."
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypesPoi"
+                },
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypesPoiAlias"
+                }
+              ],
+              "description": "Restricts results to one or more types. Use `|` to provide multiple values.",
+              "examples": [
+                "address",
+                "locality|airport|admin_level"
+              ],
+              "default": "locality|postal_code",
+              "title": "Types"
+            },
+            "description": "Restricts results to one or more types. Use `|` to provide multiple values."
+          },
+          {
+            "name": "excluded_types",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypesPoi"
+                },
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypesPoiAlias"
+                }
+              ],
+              "description": "Restricts results by excluding one or more types. Use `|` to provide multiple values.",
+              "examples": [
+                "suburb|quarter|neighbourhood"
+              ],
+              "title": "Excluded Types"
+            },
+            "description": "Restricts results by excluding one or more types. Use `|` to provide multiple values."
+          },
+          {
+            "name": "input",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/LocalitiesInput",
+              "maxLength": 150,
+              "description": "Text to search for. Predictions are matched on this string and ordered by relevance.\n\nOnly the first 20 tokens (within 150 characters) are processed. \n\nWill return a 400 error when containing more than 3 special characters (! # $ % & * : ; < = > ? @ [ ] ° ™ { }) . \n\nWill be ignored (empty result) when composed of 70% of punctuation symbols (which Unicode general category starts with P (punctuation) or S (symbol).",
+              "examples": [
+                "London"
+              ]
+            },
+            "description": "Text to search for. Predictions are matched on this string and ordered by relevance.\n\nOnly the first 20 tokens (within 150 characters) are processed. \n\nWill return a 400 error when containing more than 3 special characters (! # $ % & * : ; < = > ? @ [ ] ° ™ { }) . \n\nWill be ignored (empty result) when composed of 70% of punctuation symbols (which Unicode general category starts with P (punctuation) or S (symbol)."
+          },
+          {
+            "name": "custom_description",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Overrides the suggestion description format per type. Available fields depend on the type. Use `|` to provide multiple values.",
+              "examples": [
+                "locality:\"{name} - {administrative_area_level_0}\"|postal_code:\"{name} ({administrative_area_level_1})\""
+              ],
+              "title": "Custom Description"
+            },
+            "description": "Overrides the suggestion description format per type. Available fields depend on the type. Use `|` to provide multiple values."
+          },
+          {
+            "name": "extended",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Allows a refined search over locality names sharing the same leading postal_code. Suggestion descriptions switch to `name (postal code), admin_1, admin_0`. Avoid combining with the `postal_code` type to prevent duplicate locations.\n\nSupported countries: France, Monaco, Italy, Spain, Belgium, Switzerland, Luxembourg.",
+              "examples": [
+                "postal_code"
+              ],
+              "enum": [
+                "postal_code"
+              ],
+              "title": "Extended"
+            },
+            "description": "Allows a refined search over locality names sharing the same leading postal_code. Suggestion descriptions switch to `name (postal code), admin_1, admin_0`. Avoid combining with the `postal_code` type to prevent duplicate locations.\n\nSupported countries: France, Monaco, Italy, Spain, Belgium, Switzerland, Luxembourg."
+          },
+          {
+            "name": "location",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Biases results toward a point, specified as `latitude,longitude`. Pair with `radius`.",
+              "examples": [
+                "52.479699,-1.902691"
+              ],
+              "title": "Location"
+            },
+            "description": "Biases results toward a point, specified as `latitude,longitude`. Pair with `radius`."
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 10,
+              "description": "Radius in meters around `location` to prioritise results. Results outside this radius may still appear.",
+              "examples": [
+                200000
+              ],
+              "default": 100000,
+              "title": "Radius"
+            },
+            "description": "Radius in meters around `location` to prioritise results. Results outside this radius may still appear."
+          },
+          {
+            "name": "accept-language",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Accept-Language"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutocompleteResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 50,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/localities/details": {
+      "get": {
+        "tags": [
+          "Localities API"
+        ],
+        "summary": "Details",
+        "description": "Returns the full details of a suggestion, looked up by its `public_id`.\n\n**Ratelimit:** 50/1s",
+        "operationId": "details_localities_details_get",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "address_components",
+                    "shape"
+                  ]
+                }
+              ],
+              "description": "Restricts the response to a subset of fields. Use `|` to provide multiple values.",
+              "examples": [
+                "shape"
+              ],
+              "default": "geometry|address_components",
+              "title": "Fields"
+            },
+            "description": "Restricts the response to a subset of fields. Use `|` to provide multiple values."
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Language code (ISO 639-1, two letters) for the response.\n\nResolution order:\n1. `language` (this parameter)\n2. The request's `Accept-Language` header\n3. locale default\n4. English (when neither is recognised)\n\nOnly part of the address components are translated; not required for postal-code requests.",
+              "examples": [
+                "en"
+              ],
+              "default": "",
+              "title": "Language"
+            },
+            "description": "Language code (ISO 639-1, two letters) for the response.\n\nResolution order:\n1. `language` (this parameter)\n2. The request's `Accept-Language` header\n3. locale default\n4. English (when neither is recognised)\n\nOnly part of the address components are translated; not required for postal-code requests."
+          },
+          {
+            "name": "cc_format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/CountryCodeFormat"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Format of the country code returned in `address_components`. When unset, mirrors the format used in `components`, or `alpha2` if `components` is not provided.",
+              "examples": [
+                "alpha3"
+              ],
+              "title": "Cc Format"
+            },
+            "description": "Format of the country code returned in `address_components`. When unset, mirrors the format used in `components`, or `alpha2` if `components` is not provided."
+          },
+          {
+            "name": "public_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Identifier of the place to retrieve details for. Use the `public_id` returned by the [Autocomplete](https://developers.woosmap.com/products/localities/autocomplete/) endpoint.",
+              "examples": [
+                "cG9zdGFsX2NvZGU6Z2I6OmNDN0N0ZUF2MW9YRi9KLzlnS2cremJndktFaz0="
+              ],
+              "title": "Public Id"
+            },
+            "description": "Identifier of the place to retrieve details for. Use the `public_id` returned by the [Autocomplete](https://developers.woosmap.com/products/localities/autocomplete/) endpoint."
+          },
+          {
+            "name": "accept-language",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Accept-Language"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailsResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 50,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/localities/geocode": {
+      "get": {
+        "tags": [
+          "Localities API"
+        ],
+        "summary": "Geocode",
+        "description": "Geocodes an `address` into coordinates, or reverse geocodes a `latlng` position into an address. Provide exactly one of `address` or `latlng`.\n\n**Ratelimit:** 50/1s",
+        "operationId": "geocode_localities_geocode_get",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "address_components",
+                    "shape"
+                  ]
+                }
+              ],
+              "description": "Restricts the response to a subset of fields. Use `|` to provide multiple values.",
+              "examples": [
+                "shape"
+              ],
+              "default": "geometry|address_components",
+              "title": "Fields"
+            },
+            "description": "Restricts the response to a subset of fields. Use `|` to provide multiple values."
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Language code (ISO 639-1, two letters) for the response.\n\nResolution order:\n1. `language` (this parameter)\n2. The request's `Accept-Language` header\n3. locale default\n4. English (when neither is recognised)\n\nOnly part of the address components are translated; not required for postal-code requests.",
+              "examples": [
+                "en"
+              ],
+              "default": "",
+              "title": "Language"
+            },
+            "description": "Language code (ISO 639-1, two letters) for the response.\n\nResolution order:\n1. `language` (this parameter)\n2. The request's `Accept-Language` header\n3. locale default\n4. English (when neither is recognised)\n\nOnly part of the address components are translated; not required for postal-code requests."
+          },
+          {
+            "name": "cc_format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/CountryCodeFormat"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Format of the country code returned in `address_components`. When unset, mirrors the format used in `components`, or `alpha2` if `components` is not provided.",
+              "examples": [
+                "alpha3"
+              ],
+              "title": "Cc Format"
+            },
+            "description": "Format of the country code returned in `address_components`. When unset, mirrors the format used in `components`, or `alpha2` if `components` is not provided."
+          },
+          {
+            "name": "data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/DatasetMode",
+              "description": "Selects the postal-code dataset. `advanced` extends the default Western-Europe coverage to worldwide postal codes.\n\n***Requires a dedicated license option subject to specific billing — please contact us.***",
+              "examples": [
+                "advanced"
+              ],
+              "default": "standard"
+            },
+            "description": "Selects the postal-code dataset. `advanced` extends the default Western-Europe coverage to worldwide postal codes.\n\n***Requires a dedicated license option subject to specific billing — please contact us.***"
+          },
+          {
+            "name": "components",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Restricts results to one or more countries. Pass each country as a `country:<ISO-3166-1 Alpha-2 or Alpha-3>` filter. Use `|` to provide multiple values.",
+              "examples": [
+                "country:gb",
+                "country:fr|country:es"
+              ],
+              "title": "Components"
+            },
+            "description": "Restricts results to one or more countries. Pass each country as a `country:<ISO-3166-1 Alpha-2 or Alpha-3>` filter. Use `|` to provide multiple values."
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypesPoi"
+                },
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypesPoiAlias"
+                }
+              ],
+              "description": "Restricts results to one or more types. Use `|` to provide multiple values. Ignored when `latlng` is set.",
+              "examples": [
+                "address",
+                "locality|admin_level"
+              ],
+              "default": "locality|postal_code|address",
+              "title": "Types"
+            },
+            "description": "Restricts results to one or more types. Use `|` to provide multiple values. Ignored when `latlng` is set."
+          },
+          {
+            "name": "excluded_types",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypes"
+                },
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypesPoi"
+                },
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypesPoiAlias"
+                }
+              ],
+              "description": "Restricts results by excluding one or more types. Use `|` to provide multiple values.",
+              "examples": [
+                "suburb|quarter|neighbourhood"
+              ],
+              "title": "Excluded Types"
+            },
+            "description": "Restricts results by excluding one or more types. Use `|` to provide multiple values."
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/LocalitiesInput",
+                  "maxLength": 150
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Address, street, locality, or postal code to geocode.\n\nOnly the first 20 tokens (within 150 characters) are processed.\n\nWill return a 400 Error when containing more than 3 special characters (! # $ % & * : ; < = > ? @ [ ] ° ™ { }) . \n\nWill be ignored (empty result) when composed of 70% of punctuation symbols (which Unicode general category starts with P (punctuation) or S (symbol).",
+              "examples": [
+                "224%20Rue%20de%20Rivoli%2C%20Paris"
+              ],
+              "title": "Address"
+            },
+            "description": "Address, street, locality, or postal code to geocode.\n\nOnly the first 20 tokens (within 150 characters) are processed.\n\nWill return a 400 Error when containing more than 3 special characters (! # $ % & * : ; < = > ? @ [ ] ° ™ { }) . \n\nWill be ignored (empty result) when composed of 70% of punctuation symbols (which Unicode general category starts with P (punctuation) or S (symbol)."
+          },
+          {
+            "name": "latlng",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Point to reverse geocode, required if the `address` parameter is missing.",
+              "examples": [
+                "52.479699,-1.902691"
+              ],
+              "title": "Latlng"
+            },
+            "description": "Point to reverse geocode, required if the `address` parameter is missing."
+          },
+          {
+            "name": "list_sub_buildings",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Returns all addresses sharing the same street number or building in a `sub_buildings` field. Reverse geocoding only.",
+              "examples": [
+                true
+              ],
+              "default": false,
+              "title": "List Sub Buildings"
+            },
+            "description": "Returns all addresses sharing the same street number or building in a `sub_buildings` field. Reverse geocoding only."
+          },
+          {
+            "name": "accept-language",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Accept-Language"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/GeocodeResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ReverseGeocodeResponse"
+                    }
+                  ],
+                  "title": "Response Geocode Localities Geocode Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 50,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/localities/nearby": {
+      "get": {
+        "tags": [
+          "Localities API"
+        ],
+        "summary": "Nearby",
+        "description": "Returns worldwide points of interest around a `location`, sorted by distance. Filter with `types` and `excluded_types`.\n\n**Ratelimit:** 50/1s",
+        "operationId": "poi_nearby_localities_nearby_get",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cc_format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/CountryCodeFormat"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Format of the country code returned in `address_components`. When unset, mirrors the format used in `components`, or `alpha2` if `components` is not provided.",
+              "examples": [
+                "alpha3"
+              ],
+              "title": "Cc Format"
+            },
+            "description": "Format of the country code returned in `address_components`. When unset, mirrors the format used in `components`, or `alpha2` if `components` is not provided."
+          },
+          {
+            "name": "location",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Center of the search circle.",
+              "examples": [
+                "40.71399,-74.00499"
+              ],
+              "title": "Location"
+            },
+            "description": "Center of the search circle."
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50000,
+              "minimum": 10,
+              "description": "Radius of the search circle, in meters.",
+              "examples": [
+                3000
+              ],
+              "default": 1000,
+              "title": "Radius"
+            },
+            "description": "Radius of the search circle, in meters."
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Restricts results to one or more types of points of interest. Use `|` to provide multiple values.",
+              "examples": [
+                "point_of_interest",
+                "business.shop"
+              ],
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypesPoi"
+                }
+              ],
+              "title": "Types"
+            },
+            "description": "Restricts results to one or more types of points of interest. Use `|` to provide multiple values."
+          },
+          {
+            "name": "excluded_types",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/LocalitiesTypesPoi"
+                }
+              ],
+              "description": "Restricts results by excluding one or more types of points of interest. Use `|` to provide multiple values.",
+              "examples": [
+                "business.food_and_drinks.fast_food|business.food_and_drinks.pub"
+              ],
+              "title": "Excluded Types"
+            },
+            "description": "Restricts results by excluding one or more types of points of interest. Use `|` to provide multiple values."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Selects which page of paginated results to return.",
+              "examples": [
+                7
+              ],
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "Selects which page of paginated results to return."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 30,
+              "minimum": 1,
+              "description": "Defines how many results should be included in a page.",
+              "examples": [
+                15
+              ],
+              "default": 10,
+              "title": "Limit"
+            },
+            "description": "Defines how many results should be included in a page."
+          },
+          {
+            "name": "accept-language",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Accept-Language"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NearbyResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 50,
+        "x-ratelimit-window-seconds": 1
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddressComponent": {
+        "properties": {
+          "types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Types"
+          },
+          "long_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            ],
+            "title": "Long Name"
+          },
+          "short_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            ],
+            "title": "Short Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "types",
+          "long_name",
+          "short_name"
+        ],
+        "title": "AddressComponent"
+      },
+      "AddressSummary": {
+        "properties": {
+          "public_id": {
+            "type": "string",
+            "title": "Public Id",
+            "description": "The public_id of the address can be used to gather details on that specific address"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "A human readable description of the address"
+          }
+        },
+        "type": "object",
+        "required": [
+          "public_id",
+          "description"
+        ],
+        "title": "AddressSummary",
+        "description": "A short description of an address"
+      },
+      "AuthenticationErrorResponse": {
+        "properties": {
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "AuthenticationErrorResponse",
+        "description": "AuthenticationErrorResponse is the base authentication error model."
+      },
+      "AutocompleteResponse": {
+        "properties": {
+          "localities": {
+            "items": {
+              "$ref": "#/components/schemas/AutocompleteResult"
+            },
+            "type": "array",
+            "title": "Localities"
+          }
+        },
+        "type": "object",
+        "required": [
+          "localities"
+        ],
+        "title": "AutocompleteResponse",
+        "description": "Localities Collection Response containing Localities",
+        "examples": [
+          {
+            "localities": [
+              {
+                "description": "London, City of London, United Kingdom",
+                "matched_substrings": {
+                  "description": [
+                    {
+                      "length": 4,
+                      "offset": 0
+                    }
+                  ]
+                },
+                "public_id": "Ch6qA8cLmvyvEEoFy6nYeFcEdNU=",
+                "type": "locality",
+                "types": [
+                  "locality",
+                  "city"
+                ]
+              },
+              {
+                "description": "Derry/Londonderry, Derry City and Strabane, United Kingdom",
+                "matched_substrings": {
+                  "description": [
+                    {
+                      "length": 4,
+                      "offset": 6
+                    }
+                  ]
+                },
+                "public_id": "m/T2C4YI2LgszkKXrELBC+9dfC8=",
+                "type": "locality",
+                "types": [
+                  "locality",
+                  "city"
+                ]
+              },
+              {
+                "description": "London Colney, Hertfordshire, United Kingdom",
+                "matched_substrings": {
+                  "description": [
+                    {
+                      "length": 4,
+                      "offset": 0
+                    }
+                  ]
+                },
+                "public_id": "J6eISGMjjvQwPkao8rsByB3aVwM=",
+                "type": "locality",
+                "types": [
+                  "locality",
+                  "village"
+                ]
+              },
+              {
+                "description": "London Apprentice, Cornwall, United Kingdom",
+                "matched_substrings": {
+                  "description": [
+                    {
+                      "length": 4,
+                      "offset": 0
+                    }
+                  ]
+                },
+                "public_id": "52MnrbHVWH21CLWH8VY/YWKhqeM=",
+                "type": "locality",
+                "types": [
+                  "locality",
+                  "village"
+                ]
+              },
+              {
+                "description": "City of London, United Kingdom",
+                "matched_substrings": {
+                  "description": [
+                    {
+                      "length": 4,
+                      "offset": 8
+                    }
+                  ]
+                },
+                "public_id": "S/5AkUmMBhX35qVI2jR38+dALwk=",
+                "type": "locality",
+                "types": [
+                  "locality",
+                  "city"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "AutocompleteResult": {
+        "properties": {
+          "public_id": {
+            "type": "string",
+            "title": "Public Id",
+            "description": "Unique identifier for this place. Pass it to the `/details` endpoint to retrieve the full record."
+          },
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "description": "This field might be removed in the future, please use the `types` field which is more exhaustive.",
+            "deprecated": true
+          },
+          "types": {
+            "items": {
+              "$ref": "#/components/schemas/LocalityTypeAll"
+            },
+            "type": "array",
+            "title": "Types",
+            "description": "An array containing the types of the result"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "Concatenation of `name`, `admin_1`, `admin_0` to be used as suggestion in drop-down list if needed. The description can vary depending on the type requested."
+          },
+          "matched_substrings": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MatchedSubstrings"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Contains a set of substrings in the `description` field that match elements in the `input`. It can be used to highlight those substrings. Each substring is identified by an `offset` and a `length`."
+          },
+          "has_addresses": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Has Addresses",
+            "description": "Indicates whether a postal code has addresses you can drill into. Returned for postal codes in some territories (e.g. United Kingdom, Ireland). When `true`, call `/details` with this suggestion's `public_id` will list the addresses; each address carries its own `public_id` for a further `/details` lookup."
+          },
+          "related": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Related"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Contains a set of related elements to the locality suggestion."
+          }
+        },
+        "type": "object",
+        "required": [
+          "public_id",
+          "type",
+          "types",
+          "description"
+        ],
+        "title": "AutocompleteResult"
+      },
+      "CountryCodeFormat": {
+        "type": "string",
+        "enum": [
+          "alpha2",
+          "alpha3"
+        ],
+        "title": "CountryCodeFormat"
+      },
+      "DatasetMode": {
+        "type": "string",
+        "enum": [
+          "advanced",
+          "standard"
+        ],
+        "title": "DatasetMode"
+      },
+      "DetailsGeometry": {
+        "properties": {
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "viewport": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Viewport"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "shape": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Shape"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "accuracy": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LocationTypeStr"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "This accuracy represents the type of address returned - `DISTRICT` and `POSTAL_CODE` are for UK only."
+          }
+        },
+        "type": "object",
+        "title": "DetailsGeometry"
+      },
+      "DetailsResponse": {
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/DetailsResult"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ],
+        "title": "DetailsResponse",
+        "description": "Attributes describing a locality. Not all attributes are available for all locality types.",
+        "examples": [
+          {
+            "result": {
+              "address_components": [
+                {
+                  "long_name": "United Kingdom",
+                  "short_name": "GB",
+                  "types": [
+                    "country",
+                    "administrative_area_level_0",
+                    "division_level_0"
+                  ]
+                },
+                {
+                  "long_name": "England",
+                  "short_name": "England",
+                  "types": [
+                    "state",
+                    "division_level_1"
+                  ]
+                },
+                {
+                  "long_name": "City of London",
+                  "short_name": "City of London",
+                  "types": [
+                    "administrative_area_level_1",
+                    "county",
+                    "division_level_2"
+                  ]
+                },
+                {
+                  "long_name": "Westminster",
+                  "short_name": "Westminster",
+                  "types": [
+                    "district",
+                    "division_level_3"
+                  ]
+                },
+                {
+                  "long_name": "London",
+                  "short_name": "London",
+                  "types": [
+                    "locality"
+                  ]
+                },
+                {
+                  "long_name": "SW1A 0AA",
+                  "short_name": "SW1A 0AA",
+                  "types": [
+                    "postal_codes"
+                  ]
+                },
+                {
+                  "long_name": "Houses Of Parliament",
+                  "short_name": "Houses Of Parliament",
+                  "types": [
+                    "premise"
+                  ]
+                },
+                {
+                  "long_name": "House Of Commons",
+                  "short_name": "House Of Commons",
+                  "types": [
+                    "organisation"
+                  ]
+                }
+              ],
+              "formatted_address": "House Of Commons, Houses Of Parliament, London, SW1A 0AA",
+              "geometry": {
+                "accuracy": "ROOFTOP",
+                "location": {
+                  "lat": 51.4998415,
+                  "lng": -0.1246375
+                }
+              },
+              "public_id": "TVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPV9fTVZaV0JmR1pRbkFRbjlKdEU5Q0paamdlQjRRPQ==",
+              "types": [
+                "address"
+              ]
+            }
+          },
+          {
+            "result": {
+              "address_components": [
+                {
+                  "long_name": "United Kingdom",
+                  "short_name": "GB",
+                  "types": [
+                    "country",
+                    "administrative_area_level_0",
+                    "division_level_0"
+                  ]
+                },
+                {
+                  "long_name": "England",
+                  "short_name": "England",
+                  "types": [
+                    "state",
+                    "division_level_1"
+                  ]
+                },
+                {
+                  "long_name": "City of London",
+                  "short_name": "City of London",
+                  "types": [
+                    "locality"
+                  ]
+                },
+                {
+                  "long_name": "SW1A 0AA",
+                  "short_name": "SW1A 0AA",
+                  "types": [
+                    "postal_codes"
+                  ]
+                }
+              ],
+              "formatted_address": "SW1A 0AA, City of London",
+              "geometry": {
+                "accuracy": "POSTAL_CODE",
+                "location": {
+                  "lat": 51.49984,
+                  "lng": -0.124663
+                }
+              },
+              "name": "SW1A 0AA",
+              "public_id": "cG9zdGFsX2NvZGU6Z2I6OmNDN0N0ZUF2MW9YRi9KLzlnS2cremJndktFaz0=",
+              "types": [
+                "postal_code"
+              ]
+            }
+          }
+        ]
+      },
+      "DetailsResult": {
+        "properties": {
+          "public_id": {
+            "type": "string",
+            "title": "Public Id",
+            "description": "Unique identifier for this place."
+          },
+          "types": {
+            "items": {
+              "$ref": "#/components/schemas/LocalityTypeAll"
+            },
+            "type": "array",
+            "title": "Types",
+            "description": "Available localities types."
+          },
+          "formatted_address": {
+            "type": "string",
+            "title": "Formatted Address",
+            "description": "Contains the readable text description of the result."
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name",
+            "description": "The postal code name if result is a postal code."
+          },
+          "administrative_area_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Administrative Area Label",
+            "description": "Only available for `admin_level` suggestions, this contains the local english name of the administration level (\"department\" for France or \"federal_state\" for Germany)."
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string",
+                "const": "not_yet_built"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status",
+            "description": "This optional field is only available for UK addresses referenced as not yet built by Royal Mail. Only one value yet."
+          },
+          "geometry": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DetailsGeometry"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The location of the PostalCode, in latitude and longitude, eventually associated with a Viewport and a shape."
+          },
+          "address_components": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/AddressComponent"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Address Components"
+          },
+          "categories": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/LocalitiesTypesPoi"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Categories"
+          },
+          "addresses": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PostalCodeAddresses"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "For the UK only. When a postal code is returned, this field contains a list of addresses associated with this postal code."
+          }
+        },
+        "type": "object",
+        "required": [
+          "public_id",
+          "types",
+          "formatted_address"
+        ],
+        "title": "DetailsResult",
+        "description": "The Root Node for Localities Details"
+      },
+      "GeocodeGeometry": {
+        "properties": {
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "viewport": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Viewport"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "shape": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Shape"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "location_type": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LocationTypeStr"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Specifies additional data about the geocoded location. The following values are currently supported: \n  - `ROOFTOP` result is a precise geocode for which we have location information accurate down to street address precision.\n  - `RANGE_INTERPOLATED` result reflects an approximation (usually on a road) interpolated between two precise points (such as intersections). Interpolated results are generally returned when rooftop geocodes are unavailable for a street address.\n  - `GEOMETRIC_CENTER` result is the geometric center of a result such as a polyline (for example, a street) or polygon (city, region, …).\n  - `APPROXIMATE` result is approximate (usually when no other above value applies)\n  - `POSTAL_CODE` Address has inherited from the location of the postal code it is part of (for NYB addresses)\n  - `DISTRICT` Address has inherited from the location of the district it is part of (for NYB addresses)",
+            "default": "GEOMETRIC_CENTER"
+          }
+        },
+        "type": "object",
+        "title": "GeocodeGeometry",
+        "description": "The location of the result, in latitude and longitude. Accuracy is also provided."
+      },
+      "GeocodeResponse": {
+        "properties": {
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/GeocodeResult"
+            },
+            "type": "array",
+            "title": "Results"
+          }
+        },
+        "type": "object",
+        "required": [
+          "results"
+        ],
+        "title": "GeocodeResponse",
+        "description": "Localities Geocode Collection Response. Contains one or more detailed Localities or\nAddresses in FR or in the UK, with coordinates (default to one result for reverse geocoding)",
+        "examples": [
+          {
+            "results": [
+              {
+                "address_components": [
+                  {
+                    "long_name": "France",
+                    "short_name": "FR",
+                    "types": [
+                      "country",
+                      "administrative_area_level_0",
+                      "division_level_0"
+                    ]
+                  },
+                  {
+                    "long_name": "Île-de-France",
+                    "short_name": "Île-de-France",
+                    "types": [
+                      "state",
+                      "division_level_1"
+                    ]
+                  },
+                  {
+                    "long_name": "Paris",
+                    "short_name": "Paris",
+                    "types": [
+                      "administrative_area_level_1",
+                      "county",
+                      "division_level_2"
+                    ]
+                  },
+                  {
+                    "long_name": "Paris",
+                    "short_name": "Paris",
+                    "types": [
+                      "locality"
+                    ]
+                  },
+                  {
+                    "long_name": "75013",
+                    "short_name": "75013",
+                    "types": [
+                      "postal_codes"
+                    ]
+                  },
+                  {
+                    "long_name": "Place Jeanne D'Arc",
+                    "short_name": "Place Jeanne D'Arc",
+                    "types": [
+                      "route"
+                    ]
+                  }
+                ],
+                "formatted_address": "Place Jeanne D'Arc, 75013, Paris",
+                "geometry": {
+                  "location": {
+                    "lat": 48.829405,
+                    "lng": 2.367944
+                  },
+                  "location_type": "GEOMETRIC_CENTER"
+                },
+                "public_id": "0+FTYd/1MsiBSxLAKq+/Fiyy+uM=",
+                "scores_per_components": {
+                  "street_name": 1
+                },
+                "types": [
+                  "address",
+                  "route"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "GeocodeResult": {
+        "properties": {
+          "public_id": {
+            "type": "string",
+            "title": "Public Id",
+            "description": "Unique identifier for this place."
+          },
+          "types": {
+            "items": {
+              "$ref": "#/components/schemas/LocalityTypeAll"
+            },
+            "type": "array",
+            "title": "Types",
+            "description": "An array containing the types of the result"
+          },
+          "formatted_address": {
+            "type": "string",
+            "title": "Formatted Address",
+            "description": "Contains the readable text description of the result."
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name",
+            "description": "Name of the result when available"
+          },
+          "address_components": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/AddressComponent"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Address Components"
+          },
+          "administrative_area_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Administrative Area Label",
+            "description": "Only available for `admin_level` suggestions, this contains the local english name of the administration level (\"department\" for France or \"federal_state\" for Germany)."
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string",
+                "const": "not_yet_built"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status",
+            "description": "This optional field is only available for UK addresses referenced as not yet built by Royal Mail."
+          },
+          "geometry": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GeocodeGeometry"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scores_per_components": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scores Per Components",
+            "description": "For each component (street_name, postal_code, and locality), it indicates the degree of correspondence with the original query. This value ranges from 0 to 1, with 0 indicating no match with the original query, and enables you to assess the quality of the Geocode's result."
+          }
+        },
+        "type": "object",
+        "required": [
+          "public_id",
+          "types",
+          "formatted_address"
+        ],
+        "title": "GeocodeResult",
+        "description": "Attributes describing a locality. Not all attributes will be available for all locality types."
+      },
+      "Geometry": {
+        "properties": {
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Location"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "viewport": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Viewport"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "shape": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Shape"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "title": "Geometry"
+      },
+      "HTTPErrorModel": {
+        "properties": {
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "HTTPErrorModel"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "LocalitiesInput": {
+        "type": "string",
+        "maxLength": 150
+      },
+      "LocalitiesTypes": {
+        "type": "string",
+        "enum": [
+          "country",
+          "admin_level",
+          "admin_level_1",
+          "admin_level_2",
+          "admin_level_3",
+          "postal_code",
+          "address",
+          "route",
+          "locality",
+          "city",
+          "town",
+          "village",
+          "hamlet",
+          "borough",
+          "suburb",
+          "quarter",
+          "neighbourhood"
+        ],
+        "title": "LocalitiesTypes"
+      },
+      "LocalitiesTypesPoi": {
+        "type": "string",
+        "enum": [
+          "point_of_interest",
+          "beach",
+          "government",
+          "park",
+          "park.national",
+          "place_of_worship",
+          "police",
+          "post_office",
+          "sports",
+          "sports.golf",
+          "sports.winter",
+          "transit",
+          "transit.station",
+          "transit.station.airport",
+          "transit.station.rail",
+          "transit.station.rail.subway",
+          "transit.station.rail.train",
+          "transit.station.rail.light_rail",
+          "transit.station.rail.monorail",
+          "transit.station.rail.funicular",
+          "transit.station.rail.tram",
+          "business",
+          "business.car_repair",
+          "business.car_rental",
+          "business.cinema",
+          "business.conference_centre",
+          "business.exhibition_centre",
+          "business.theatre",
+          "business.nightclub",
+          "business.finance",
+          "business.finance.bank",
+          "business.fuel",
+          "business.parking",
+          "business.mall",
+          "business.food_and_drinks",
+          "business.food_and_drinks.bar",
+          "business.food_and_drinks.biergarten",
+          "business.food_and_drinks.cafe",
+          "business.food_and_drinks.fast_food",
+          "business.food_and_drinks.pub",
+          "business.food_and_drinks.restaurant",
+          "business.food_and_drinks.food_court",
+          "business.shop",
+          "business.shop.mall",
+          "business.shop.bakery",
+          "business.shop.butcher",
+          "business.shop.library",
+          "business.shop.grocery",
+          "business.shop.sports",
+          "business.shop.toys",
+          "business.shop.clothes",
+          "business.shop.furniture",
+          "business.shop.electronics",
+          "business.shop.doityourself",
+          "business.shop.craft",
+          "education",
+          "education.school",
+          "education.kindergarten",
+          "education.university",
+          "education.college",
+          "education.library",
+          "hospitality",
+          "hospitality.hotel",
+          "hospitality.hostel",
+          "hospitality.guest_house",
+          "hospitality.bed_and_breakfast",
+          "hospitality.motel",
+          "medical",
+          "medical.hospital",
+          "medical.pharmacy",
+          "medical.clinic",
+          "tourism",
+          "tourism.art_gallery",
+          "tourism.attraction",
+          "tourism.attraction.amusement_park",
+          "tourism.attraction.zoo",
+          "tourism.attraction.aquarium",
+          "tourism.monument",
+          "tourism.monument.castle",
+          "tourism.museum"
+        ],
+        "title": "LocalitiesTypesPoi"
+      },
+      "LocalitiesTypesPoiAlias": {
+        "type": "string",
+        "enum": [
+          "airport",
+          "train_station",
+          "metro_station",
+          "shopping",
+          "museum",
+          "zoo",
+          "amusement_park",
+          "art_gallery",
+          "tourist_attraction"
+        ],
+        "title": "LocalitiesTypesPoiAlias"
+      },
+      "LocalityTypeAll": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/LocalitiesTypes"
+          },
+          {
+            "$ref": "#/components/schemas/LocalitiesTypesPoi"
+          },
+          {
+            "$ref": "#/components/schemas/LocalitiesTypesPoiAlias"
+          }
+        ]
+      },
+      "Location": {
+        "properties": {
+          "lat": {
+            "type": "number",
+            "title": "Lat"
+          },
+          "lng": {
+            "type": "number",
+            "title": "Lng"
+          }
+        },
+        "type": "object",
+        "required": [
+          "lat",
+          "lng"
+        ],
+        "title": "Location"
+      },
+      "LocationTypeStr": {
+        "type": "string",
+        "enum": [
+          "ROOFTOP",
+          "APPROXIMATE",
+          "RANGE_INTERPOLATED",
+          "GEOMETRIC_CENTER",
+          "POSTAL_CODE",
+          "DISTRICT"
+        ]
+      },
+      "MatchedPosition": {
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "title": "Offset"
+          },
+          "length": {
+            "type": "integer",
+            "title": "Length"
+          }
+        },
+        "type": "object",
+        "required": [
+          "offset",
+          "length"
+        ],
+        "title": "MatchedPosition"
+      },
+      "MatchedSubstrings": {
+        "properties": {
+          "description": {
+            "items": {
+              "$ref": "#/components/schemas/MatchedPosition"
+            },
+            "type": "array",
+            "title": "Description",
+            "description": "Substrings of `description` that match the `input`, each given as an `offset` and `length`."
+          }
+        },
+        "type": "object",
+        "required": [
+          "description"
+        ],
+        "title": "MatchedSubstrings"
+      },
+      "NearbyResponse": {
+        "properties": {
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/NearbyResult"
+            },
+            "type": "array",
+            "title": "Results",
+            "description": "The array of nearby points of interest."
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination",
+            "description": "Helps to navigate through paginated results."
+          }
+        },
+        "type": "object",
+        "required": [
+          "results",
+          "pagination"
+        ],
+        "title": "NearbyResponse",
+        "description": "Collection of nearby points of interest.",
+        "examples": [
+          {
+            "pagination": {
+              "next_page": 4,
+              "previous_page": 2
+            },
+            "results": [
+              {
+                "address_components": [
+                  {
+                    "long_name": "United States",
+                    "short_name": "US",
+                    "types": [
+                      "country",
+                      "administrative_area_level_0",
+                      "division_level_0"
+                    ]
+                  },
+                  {
+                    "long_name": "New York",
+                    "short_name": "New York",
+                    "types": [
+                      "locality"
+                    ]
+                  },
+                  {
+                    "long_name": "Broadway",
+                    "short_name": "Broadway",
+                    "types": [
+                      "route"
+                    ]
+                  }
+                ],
+                "categories": [
+                  "business.food_and_drinks.fast_food"
+                ],
+                "formatted_address": "Broadway, New York",
+                "geometry": {
+                  "location": {
+                    "lat": 40.715905992166256,
+                    "lng": -74.00508673226767
+                  }
+                },
+                "name": "Pret A Manger",
+                "public_id": "cG9pOnVzOmJ1c2luZXNzLmZvb2RfYW5kX2RyaW5rcy5mYXN0X2Zvb2Q6ZTc2ZDA1YzBiM2M0M2NmNmVkNTJjNGQyZDFiZDE3Nzc0OTZkNjlmOA==",
+                "types": [
+                  "point_of_interest",
+                  "business.food_and_drinks.fast_food"
+                ]
+              },
+              {
+                "address_components": [
+                  {
+                    "long_name": "United States",
+                    "short_name": "US",
+                    "types": [
+                      "country",
+                      "administrative_area_level_0",
+                      "division_level_0"
+                    ]
+                  },
+                  {
+                    "long_name": "New York",
+                    "short_name": "New York",
+                    "types": [
+                      "locality"
+                    ]
+                  },
+                  {
+                    "long_name": "Thomas Street",
+                    "short_name": "Thomas Street",
+                    "types": [
+                      "route"
+                    ]
+                  }
+                ],
+                "categories": [
+                  "business.theatre"
+                ],
+                "formatted_address": "Thomas Street, New York",
+                "geometry": {
+                  "location": {
+                    "lat": 40.71609349534023,
+                    "lng": -74.00589281989586
+                  }
+                },
+                "name": "The Flea",
+                "public_id": "cG9pOnVzOmJ1c2luZXNzLnRoZWF0cmU6MTU1Yjk5YmEwY2FiYzIzZjYxYWYyYTViYzI0ZDViYTVlNmVmZTAwNA==",
+                "types": [
+                  "point_of_interest",
+                  "business.theatre"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "NearbyResult": {
+        "properties": {
+          "public_id": {
+            "type": "string",
+            "title": "Public Id",
+            "description": "Unique identifier for this place."
+          },
+          "types": {
+            "items": {
+              "$ref": "#/components/schemas/LocalitiesTypesPoi"
+            },
+            "type": "array",
+            "title": "Types",
+            "description": "An array containing the types of the result."
+          },
+          "categories": {
+            "items": {
+              "$ref": "#/components/schemas/LocalitiesTypesPoi"
+            },
+            "type": "array",
+            "title": "Categories",
+            "description": "An array containing the categories of the result. This information is now available in the `types` field and will be removed.",
+            "deprecated": true
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The name of the result."
+          },
+          "formatted_address": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Formatted Address",
+            "description": "Contains the readable text description of the result."
+          },
+          "geometry": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Geometry"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The location of the result, in latitude and longitude, eventually associated with a Viewport."
+          },
+          "address_components": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/AddressComponent"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Address Components"
+          }
+        },
+        "type": "object",
+        "required": [
+          "public_id",
+          "types",
+          "categories",
+          "name"
+        ],
+        "title": "NearbyResult",
+        "description": "Attributes describing a point of interest."
+      },
+      "Pagination": {
+        "properties": {
+          "previous_page": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Previous Page",
+            "description": "If previous results are available, this will contain the value to pass to the `page` parameter to get the previous page"
+          },
+          "next_page": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Page",
+            "description": "If more results are available, this will contain the value to pass to the `page` parameter to get the next page"
+          }
+        },
+        "type": "object",
+        "required": [
+          "previous_page",
+          "next_page"
+        ],
+        "title": "Pagination"
+      },
+      "PostalCodeAddressPagination": {
+        "properties": {
+          "page": {
+            "type": "integer",
+            "title": "Page",
+            "description": "the request page",
+            "deprecated": true
+          },
+          "page_count": {
+            "type": "integer",
+            "title": "Page Count",
+            "description": "the number of available pages",
+            "deprecated": true
+          },
+          "addresses_per_page": {
+            "type": "integer",
+            "title": "Addresses Per Page",
+            "description": "the number of available addresses per page",
+            "deprecated": true
+          },
+          "address_count": {
+            "type": "integer",
+            "title": "Address Count",
+            "description": "the number of available addresses",
+            "deprecated": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "page",
+          "page_count",
+          "addresses_per_page",
+          "address_count"
+        ],
+        "title": "PostalCodeAddressPagination"
+      },
+      "PostalCodeAddresses": {
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/PostalCodeAddressPagination",
+            "description": "The pagination part of the response is deprecated as all the addresses are now automatically returned in the response. It will be turned off at some point. From now on, the pagination will systematically return `page=1`, `page_count=1`, `addresses_per_page=total addresses count` and `address_count=total addresses count`.",
+            "deprecated": true
+          },
+          "list": {
+            "items": {
+              "$ref": "#/components/schemas/AddressSummary"
+            },
+            "type": "array",
+            "title": "List",
+            "description": "List of addresses"
+          }
+        },
+        "type": "object",
+        "required": [
+          "pagination",
+          "list"
+        ],
+        "title": "PostalCodeAddresses"
+      },
+      "Related": {
+        "properties": {
+          "postal_codes": {
+            "items": {
+              "$ref": "#/components/schemas/RelatedPostalCode"
+            },
+            "type": "array",
+            "title": "Postal Codes",
+            "description": "Postal codes related to the locality suggestion."
+          }
+        },
+        "type": "object",
+        "required": [
+          "postal_codes"
+        ],
+        "title": "Related"
+      },
+      "RelatedPostalCode": {
+        "properties": {
+          "public_id": {
+            "type": "string",
+            "title": "Public Id"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          }
+        },
+        "type": "object",
+        "required": [
+          "public_id",
+          "description"
+        ],
+        "title": "RelatedPostalCode"
+      },
+      "ReverseGeocodeResponse": {
+        "properties": {
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/ReverseGeocodeResult"
+            },
+            "type": "array",
+            "title": "Results"
+          }
+        },
+        "type": "object",
+        "required": [
+          "results"
+        ],
+        "title": "ReverseGeocodeResponse",
+        "description": "Localities Geocode Collection Response. Contains one or more detailed Localities or\nAddresses in FR or in the UK, with coordinates (default to one result for reverse geocoding)",
+        "examples": [
+          {
+            "results": [
+              {
+                "address_components": [
+                  {
+                    "long_name": "United Kingdom",
+                    "short_name": "GB",
+                    "types": [
+                      "country",
+                      "administrative_area_level_0",
+                      "division_level_0"
+                    ]
+                  },
+                  {
+                    "long_name": "England",
+                    "short_name": "England",
+                    "types": [
+                      "state",
+                      "division_level_1"
+                    ]
+                  },
+                  {
+                    "long_name": "City of London",
+                    "short_name": "City of London",
+                    "types": [
+                      "administrative_area_level_1",
+                      "county",
+                      "division_level_2"
+                    ]
+                  },
+                  {
+                    "long_name": "Westminster",
+                    "short_name": "Westminster",
+                    "types": [
+                      "district",
+                      "division_level_3"
+                    ]
+                  },
+                  {
+                    "long_name": "London",
+                    "short_name": "London",
+                    "types": [
+                      "locality"
+                    ]
+                  },
+                  {
+                    "long_name": "W2 5ER",
+                    "short_name": "W2 5ER",
+                    "types": [
+                      "postal_codes"
+                    ]
+                  },
+                  {
+                    "long_name": "Alfred Road",
+                    "short_name": "Alfred Road",
+                    "types": [
+                      "route"
+                    ]
+                  },
+                  {
+                    "long_name": "Radway House",
+                    "short_name": "Radway House",
+                    "types": [
+                      "premise"
+                    ]
+                  }
+                ],
+                "distance": 28.62347934634507,
+                "formatted_address": "Radway House, Alfred Road, London, W2 5ER",
+                "geometry": {
+                  "location": {
+                    "lat": 51.5211258,
+                    "lng": -0.1956346
+                  },
+                  "location_type": "ROOFTOP"
+                },
+                "public_id": "",
+                "sub_buildings": [
+                  {
+                    "description": "Flat 1, Radway House, Alfred Road, London, W2 5ER",
+                    "public_id": "Nmp0K1VVUFQ4eFI3S1BuaDZEZVVJVWhYY3A4PV9faitia1pNNURnOWYvQmRjMUdweXl5SjdLZUZnPQ=="
+                  },
+                  {
+                    "description": "Flat 2, Radway House, Alfred Road, London, W2 5ER",
+                    "public_id": "Nmp0K1VVUFQ4eFI3S1BuaDZEZVVJVWhYY3A4PV9fbTRoZVpxYkhBYVVXSytqek04UGtGQ1VLTVI0PQ=="
+                  },
+                  {
+                    "description": "Flat 3, Radway House, Alfred Road, London, W2 5ER",
+                    "public_id": "Nmp0K1VVUFQ4eFI3S1BuaDZEZVVJVWhYY3A4PV9fcmY1MHV6aE5kVytLWWZLV3JabzFzR2lnbThzPQ=="
+                  }
+                ],
+                "types": [
+                  "address"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "ReverseGeocodeResult": {
+        "properties": {
+          "public_id": {
+            "type": "string",
+            "title": "Public Id",
+            "description": "Unique identifier for this place."
+          },
+          "types": {
+            "items": {
+              "$ref": "#/components/schemas/LocalityTypeAll"
+            },
+            "type": "array",
+            "title": "Types",
+            "description": "An array containing the types of the result"
+          },
+          "formatted_address": {
+            "type": "string",
+            "title": "Formatted Address",
+            "description": "Contains the readable text description of the result."
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name",
+            "description": "Name of the result when available"
+          },
+          "address_components": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/AddressComponent"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Address Components"
+          },
+          "administrative_area_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Administrative Area Label",
+            "description": "Only available for `admin_level` suggestions, this contains the local english name of the administration level (\"department\" for France or \"federal_state\" for Germany)."
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string",
+                "const": "not_yet_built"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status",
+            "description": "This optional field is only available for UK addresses referenced as not yet built by Royal Mail."
+          },
+          "geometry": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GeocodeGeometry"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "distance": {
+            "type": "number",
+            "title": "Distance",
+            "description": "When reverse geocoding, this field represents the distance (in meter) to the requested latlng"
+          },
+          "sub_buildings": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/AddressSummary"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sub Buildings",
+            "description": "When reverse geocoding with `list_sub_buildings=true`, this field will contain a list of precise addresses that can be found at that location, i.e. all flats within a building."
+          }
+        },
+        "type": "object",
+        "required": [
+          "public_id",
+          "types",
+          "formatted_address",
+          "distance"
+        ],
+        "title": "ReverseGeocodeResult",
+        "description": "Attributes describing a locality. Not all attributes will be available for all locality types."
+      },
+      "Shape": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Polygon",
+              "MultiPolygon"
+            ],
+            "title": "Type"
+          },
+          "coordinates": {
+            "anyOf": [
+              {
+                "items": {
+                  "items": {
+                    "prefixItems": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ],
+                    "type": "array",
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  "type": "array"
+                },
+                "type": "array"
+              },
+              {
+                "items": {
+                  "items": {
+                    "items": {
+                      "prefixItems": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ],
+                      "type": "array",
+                      "maxItems": 2,
+                      "minItems": 2
+                    },
+                    "type": "array"
+                  },
+                  "type": "array"
+                },
+                "type": "array"
+              }
+            ],
+            "title": "Coordinates"
+          }
+        },
+        "type": "object",
+        "required": [
+          "type",
+          "coordinates"
+        ],
+        "title": "Shape"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "Viewport": {
+        "properties": {
+          "northeast": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "southwest": {
+            "$ref": "#/components/schemas/Location"
+          }
+        },
+        "type": "object",
+        "required": [
+          "northeast",
+          "southwest"
+        ],
+        "title": "Viewport"
+      }
+    },
+    "securitySchemes": {
+      "PublicAPIKey": {
+        "type": "apiKey",
+        "description": "Public key of the project (starts with `woos-`) or an API key (a UUID).",
+        "in": "query",
+        "name": "key"
+      },
+      "PrivateApiKey": {
+        "type": "apiKey",
+        "description": "Private key with or without write permission.",
+        "in": "query",
+        "name": "private_key"
+      },
+      "PrivateApiKeyHeader": {
+        "type": "apiKey",
+        "description": "Private key with or without write permission.",
+        "in": "header",
+        "name": "X-Api-Key"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Localities API",
+      "description": "Worldwide address, locality, postal code and POI search: autocomplete, geocode, details and nearby."
+    }
+  ]
+}
