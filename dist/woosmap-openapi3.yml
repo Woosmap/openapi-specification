@@ -2051,7 +2051,8 @@ paths:
         - $ref: '#/components/parameters/lat'
         - $ref: '#/components/parameters/lng'
         - $ref: '#/components/parameters/radius'
-        - $ref: '#/components/parameters/encoded_polyline'
+        - $ref: '#/components/parameters/polyline'
+        - $ref: '#/components/parameters/bounds'
         - $ref: '#/components/parameters/stores_by_page'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/zone'
@@ -2248,7 +2249,7 @@ paths:
       tags:
         - Store Search
       description: |
-        Autocomplete on `localizedNames` with highlighted results on asset name. Use the field `localized` in your query parameter to search for localized names.
+        Autocomplete on `localizedNames` with highlighted results on asset name. Use the field `localized` in your query parameter to search for localized names. Without `query`, the response has no predictions.
       security:
         - PublicApiKeyAuth: []
           RefererHeader: []
@@ -3297,7 +3298,7 @@ components:
     lat:
       name: lat
       description: |
-        Latitude bias for the results. Should be pass with `lng`.
+        Latitude bias for the results. Must be passed with `lng`.
       schema:
         type: number
         example: 5.2
@@ -3305,7 +3306,7 @@ components:
     lng:
       name: lng
       description: |
-        Longitude bias for the results. Should be pass with `lat`.
+        Longitude bias for the results. Must be passed with `lat`.
       schema:
         type: number
         example: 3.5
@@ -3313,18 +3314,26 @@ components:
     radius:
       name: radius
       description: |
-        Unit in meters. Used to combine with lat/lng or encoded polyline. To bias the results within a given circular area. 3000 means to search for Assets that are at the most far from 3kms to search area (latlng or polyline).
+        Unit in meters. Used to combine with lat/lng or polyline. To bias the results within a given circular area. 3000 means to search for Assets that are at the most far from 3kms to search area (latlng or polyline). Without `radius`, `lat`/`lng` only sort the Assets by distance.
       schema:
         type: number
         example: 3000
       in: query
-    encoded_polyline:
-      name: encoded_polyline
+    polyline:
+      name: polyline
       description: |
-        Find assets nearby an [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) and inside a defined radius.
+        Find assets nearby an [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) and inside a defined radius. Requires `radius`.
       schema:
         type: string
         example: _p~iF~ps|U_ulLnnqC_mqNvxq`@
+      in: query
+    bounds:
+      name: bounds
+      description: |
+        Restricts the results to the Assets inside a bounding box, as `west,south,east,north` in decimal degrees. Takes precedence over `lat`/`lng` and `polyline`.
+      schema:
+        type: string
+        example: 2.29,48.85,2.35,48.87
       in: query
     stores_by_page:
       name: stores_by_page
@@ -3334,6 +3343,7 @@ components:
         type: integer
         minimum: 1
         maximum: 300
+        default: 100
         example: 150
       in: query
     page:
@@ -3342,6 +3352,8 @@ components:
         Page number when accessing paginated assets feature collection
       schema:
         type: integer
+        minimum: 1
+        default: 1
         example: 2
       in: query
     zone:
@@ -3368,16 +3380,18 @@ components:
         type: integer
         minimum: 1
         maximum: 50
+        default: 5
         example: 15
       in: query
     limit-3:
       name: limit
       description: |
-        To limit number of zones retrieved (max 50).
+        To limit number of zones retrieved (Default is 10, max is 50).
       schema:
         type: integer
         minimum: 1
         maximum: 50
+        default: 10
         example: 10
       in: query
     offset:
@@ -3386,7 +3400,8 @@ components:
         To retrieve zones starting from an offset value.
       schema:
         type: integer
-        minimum: 1
+        minimum: 0
+        default: 0
         example: 20
       in: query
   schemas:
@@ -3543,23 +3558,26 @@ components:
         A textual identifier that uniquely identifies an Asset. It must matches the following regexp `[A-Za-z0-9]+`
       type: string
       example: STORE_ID_12345
-    AssetAddressLines:
-      title: AssetAddressLines
-      description: An Array for lines of an Asset Address
-      type: array
-      example:
-        - Building Centre
-        - 26 Store Street
-      items:
-        type: string
-        example: 26 Store Street
     AssetAddressResponse:
       title: AssetAddressResponse
       type: object
       description: An object containing the separate components applicable to this address.
+      required:
+        - lines
+        - country_code
+        - city
+        - zipcode
       properties:
         lines:
-          $ref: '#/components/schemas/AssetAddressLines'
+          description: An Array for lines of an Asset Address
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          example:
+            - Building Centre
+            - 26 Store Street
         country_code:
           description: An ISO_3166-1 Country Code where the Asset is located (see <https://en.wikipedia.org/wiki/ISO_3166-1> for full list)
           type:
@@ -3568,11 +3586,15 @@ components:
           example: UK
         city:
           description: A City where belongs an Asset
-          type: string
+          type:
+            - string
+            - 'null'
           example: London
         zipcode:
           description: An Zipcode / Postal code of an Asset Address
-          type: string
+          type:
+            - string
+            - 'null'
           example: WC1E 7BT
       example:
         lines:
@@ -3624,6 +3646,10 @@ components:
       title: AssetOpenResponse
       type: object
       description: The Current opening status for an Asset
+      required:
+        - open_now
+        - open_hours
+        - week_day
       properties:
         current_slice:
           $ref: '#/components/schemas/AssetOpeningHoursPeriod'
@@ -3636,17 +3662,24 @@ components:
           description: Boolean value indicating the status of the opening hours
           type: boolean
         next_opening:
-          description: the next opening hours period
-          type: object
+          description: the next opening hours period, returned when the asset is closed. `null` when the asset does not open in the next days.
+          type:
+            - object
+            - 'null'
+          required:
+            - day
           properties:
             end:
-              description: the hours of next opening
+              description: the hours of next closing
               type: string
               example: '17:30'
             start:
-              description: the hours of next closing
+              description: the hours of next opening
               type: string
               example: '06:00'
+            all-day:
+              description: true when the asset is open all day, in place of `start` and `end`
+              type: boolean
             day:
               type: string
               description: the day of next opening
@@ -3847,6 +3880,15 @@ components:
       title: AssetResponse
       type: object
       description: Attributes describing an Asset.
+      required:
+        - store_id
+        - name
+        - address
+        - contact
+        - types
+        - tags
+        - last_updated
+        - user_properties
       properties:
         name:
           $ref: '#/components/schemas/AssetName'
@@ -3871,15 +3913,21 @@ components:
           description: the previous date timestamp when the asset has been updated
           example: '2022-11-08T15:48:08.556803+00:00'
         user_properties:
-          description: Contains all additional information relative to an Asset. If not set it returns null value.
-          type:
-            - object
-            - 'null'
+          description: Contains all additional information relative to an Asset. Empty object when not set.
+          type: object
           additionalProperties: true
           example:
             some_user_properties: some_value
         opening_hours:
           $ref: '#/components/schemas/AssetOpeningHours'
+        localized_names:
+          description: Alternate names of the Asset, keyed by language. Only returned when set.
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            fr: Centre Commercial Velizy
+            it: Centro Commerciale Velizy
         distance:
           description: The distance in meters from the geolocated position or searched position if exist
           type: number
@@ -3899,6 +3947,9 @@ components:
       title: GeoJsonPoint
       type: object
       description: GeoJSon Point Geometry
+      required:
+        - type
+        - coordinates
       properties:
         type:
           type: string
@@ -3916,6 +3967,10 @@ components:
       title: AssetFeatureResponse
       type: object
       description: Asset Response as a GeoJSon Feature with Asset properties
+      required:
+        - type
+        - properties
+        - geometry
       properties:
         type:
           description: the Geojson Type (only 'Feature')
@@ -4039,6 +4094,9 @@ components:
       title: Pagination
       type: object
       description: Pagination to reach all returned assets. max 300 assets par page.
+      required:
+        - page
+        - pageCount
       properties:
         page:
           type: integer
@@ -4052,6 +4110,10 @@ components:
       title: AssetFeatureCollectionResponse
       type: object
       description: Assets Collection Response as a GeoJSon FeatureCollection with Asset properties
+      required:
+        - type
+        - features
+        - pagination
       properties:
         type:
           description: the Geojson Type (only 'FeatureCollection')
@@ -4372,6 +4434,16 @@ components:
         timezone_name: CEST
         raw_offset: 3600
         dst_offset: 3600
+    AssetAddressLines:
+      title: AssetAddressLines
+      description: An Array for lines of an Asset Address
+      type: array
+      example:
+        - Building Centre
+        - 26 Store Street
+      items:
+        type: string
+        example: 26 Store Street
     AssetAddressRequest:
       title: AssetAddressRequest
       type: object
@@ -4549,13 +4621,16 @@ components:
     MatchedSubstring:
       title: MatchedSubstring
       type: object
+      required:
+        - offset
+        - length
       properties:
         length:
           description: Length of the matched substring in the prediction result text.
-          type: number
+          type: integer
         offset:
           description: Start location of the matched substring in the prediction result text.
-          type: number
+          type: integer
       example:
         offset: 0
         length: 4
@@ -4563,11 +4638,19 @@ components:
       title: AssetAutocompleteResponse
       type: object
       description: Asset Autocomplete Response with highlighted results on asset name.
+      required:
+        - predictions
       properties:
         predictions:
           description: A list of predictions based on similarity in all the `localizedNames` passed in query (or similarity to `store_name` if no `localizedNames` exist)
           items:
             type: object
+            required:
+              - store_id
+              - name
+              - types
+              - matched_substrings
+              - highlighted
             properties:
               name:
                 description: |
@@ -4616,9 +4699,11 @@ components:
       title: BoundsResponse
       type: object
       description: Message returned to a success Search Bounds request
+      required:
+        - bounds
       properties:
         bounds:
-          description: The bounds object
+          description: The bounds object, empty when no asset matches.
           type: object
           properties:
             west:

@@ -1712,7 +1712,10 @@
             "$ref": "#/components/parameters/radius"
           },
           {
-            "$ref": "#/components/parameters/encoded_polyline"
+            "$ref": "#/components/parameters/polyline"
+          },
+          {
+            "$ref": "#/components/parameters/bounds"
           },
           {
             "$ref": "#/components/parameters/stores_by_page"
@@ -2005,7 +2008,7 @@
         "tags": [
           "Store Search"
         ],
-        "description": "Autocomplete on `localizedNames` with highlighted results on asset name. Use the field `localized` in your query parameter to search for localized names.\n",
+        "description": "Autocomplete on `localizedNames` with highlighted results on asset name. Use the field `localized` in your query parameter to search for localized names. Without `query`, the response has no predictions.\n",
         "security": [
           {
             "PublicApiKeyAuth": [],
@@ -3098,7 +3101,7 @@
       },
       "lat": {
         "name": "lat",
-        "description": "Latitude bias for the results. Should be pass with `lng`.\n",
+        "description": "Latitude bias for the results. Must be passed with `lng`.\n",
         "schema": {
           "type": "number",
           "example": 5.2
@@ -3107,7 +3110,7 @@
       },
       "lng": {
         "name": "lng",
-        "description": "Longitude bias for the results. Should be pass with `lat`.\n",
+        "description": "Longitude bias for the results. Must be passed with `lat`.\n",
         "schema": {
           "type": "number",
           "example": 3.5
@@ -3116,19 +3119,28 @@
       },
       "radius": {
         "name": "radius",
-        "description": "Unit in meters. Used to combine with lat/lng or encoded polyline. To bias the results within a given circular area. 3000 means to search for Assets that are at the most far from 3kms to search area (latlng or polyline).\n",
+        "description": "Unit in meters. Used to combine with lat/lng or polyline. To bias the results within a given circular area. 3000 means to search for Assets that are at the most far from 3kms to search area (latlng or polyline). Without `radius`, `lat`/`lng` only sort the Assets by distance.\n",
         "schema": {
           "type": "number",
           "example": 3000
         },
         "in": "query"
       },
-      "encoded_polyline": {
-        "name": "encoded_polyline",
-        "description": "Find assets nearby an [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) and inside a defined radius.\n",
+      "polyline": {
+        "name": "polyline",
+        "description": "Find assets nearby an [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) and inside a defined radius. Requires `radius`.\n",
         "schema": {
           "type": "string",
           "example": "_p~iF~ps|U_ulLnnqC_mqNvxq`@"
+        },
+        "in": "query"
+      },
+      "bounds": {
+        "name": "bounds",
+        "description": "Restricts the results to the Assets inside a bounding box, as `west,south,east,north` in decimal degrees. Takes precedence over `lat`/`lng` and `polyline`.\n",
+        "schema": {
+          "type": "string",
+          "example": "2.29,48.85,2.35,48.87"
         },
         "in": "query"
       },
@@ -3139,6 +3151,7 @@
           "type": "integer",
           "minimum": 1,
           "maximum": 300,
+          "default": 100,
           "example": 150
         },
         "in": "query"
@@ -3148,6 +3161,8 @@
         "description": "Page number when accessing paginated assets feature collection\n",
         "schema": {
           "type": "integer",
+          "minimum": 1,
+          "default": 1,
           "example": 2
         },
         "in": "query"
@@ -3177,17 +3192,19 @@
           "type": "integer",
           "minimum": 1,
           "maximum": 50,
+          "default": 5,
           "example": 15
         },
         "in": "query"
       },
       "limit-3": {
         "name": "limit",
-        "description": "To limit number of zones retrieved (max 50).\n",
+        "description": "To limit number of zones retrieved (Default is 10, max is 50).\n",
         "schema": {
           "type": "integer",
           "minimum": 1,
           "maximum": 50,
+          "default": 10,
           "example": 10
         },
         "in": "query"
@@ -3197,7 +3214,8 @@
         "description": "To retrieve zones starting from an offset value.\n",
         "schema": {
           "type": "integer",
-          "minimum": 1,
+          "minimum": 0,
+          "default": 0,
           "example": 20
         },
         "in": "query"
@@ -3401,26 +3419,30 @@
         "type": "string",
         "example": "STORE_ID_12345"
       },
-      "AssetAddressLines": {
-        "title": "AssetAddressLines",
-        "description": "An Array for lines of an Asset Address",
-        "type": "array",
-        "example": [
-          "Building Centre",
-          "26 Store Street"
-        ],
-        "items": {
-          "type": "string",
-          "example": "26 Store Street"
-        }
-      },
       "AssetAddressResponse": {
         "title": "AssetAddressResponse",
         "type": "object",
         "description": "An object containing the separate components applicable to this address.",
+        "required": [
+          "lines",
+          "country_code",
+          "city",
+          "zipcode"
+        ],
         "properties": {
           "lines": {
-            "$ref": "#/components/schemas/AssetAddressLines"
+            "description": "An Array for lines of an Asset Address",
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Building Centre",
+              "26 Store Street"
+            ]
           },
           "country_code": {
             "description": "An ISO_3166-1 Country Code where the Asset is located (see <https://en.wikipedia.org/wiki/ISO_3166-1> for full list)",
@@ -3432,12 +3454,18 @@
           },
           "city": {
             "description": "A City where belongs an Asset",
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "London"
           },
           "zipcode": {
             "description": "An Zipcode / Postal code of an Asset Address",
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "WC1E 7BT"
           }
         },
@@ -3506,6 +3534,11 @@
         "title": "AssetOpenResponse",
         "type": "object",
         "description": "The Current opening status for an Asset",
+        "required": [
+          "open_now",
+          "open_hours",
+          "week_day"
+        ],
         "properties": {
           "current_slice": {
             "$ref": "#/components/schemas/AssetOpeningHoursPeriod"
@@ -3522,18 +3555,28 @@
             "type": "boolean"
           },
           "next_opening": {
-            "description": "the next opening hours period",
-            "type": "object",
+            "description": "the next opening hours period, returned when the asset is closed. `null` when the asset does not open in the next days.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "day"
+            ],
             "properties": {
               "end": {
-                "description": "the hours of next opening",
+                "description": "the hours of next closing",
                 "type": "string",
                 "example": "17:30"
               },
               "start": {
-                "description": "the hours of next closing",
+                "description": "the hours of next opening",
                 "type": "string",
                 "example": "06:00"
+              },
+              "all-day": {
+                "description": "true when the asset is open all day, in place of `start` and `end`",
+                "type": "boolean"
               },
               "day": {
                 "type": "string",
@@ -3835,6 +3878,16 @@
         "title": "AssetResponse",
         "type": "object",
         "description": "Attributes describing an Asset.",
+        "required": [
+          "store_id",
+          "name",
+          "address",
+          "contact",
+          "types",
+          "tags",
+          "last_updated",
+          "user_properties"
+        ],
         "properties": {
           "name": {
             "$ref": "#/components/schemas/AssetName"
@@ -3869,11 +3922,8 @@
             "example": "2022-11-08T15:48:08.556803+00:00"
           },
           "user_properties": {
-            "description": "Contains all additional information relative to an Asset. If not set it returns null value.",
-            "type": [
-              "object",
-              "null"
-            ],
+            "description": "Contains all additional information relative to an Asset. Empty object when not set.",
+            "type": "object",
             "additionalProperties": true,
             "example": {
               "some_user_properties": "some_value"
@@ -3881,6 +3931,17 @@
           },
           "opening_hours": {
             "$ref": "#/components/schemas/AssetOpeningHours"
+          },
+          "localized_names": {
+            "description": "Alternate names of the Asset, keyed by language. Only returned when set.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "fr": "Centre Commercial Velizy",
+              "it": "Centro Commerciale Velizy"
+            }
           },
           "distance": {
             "description": "The distance in meters from the geolocated position or searched position if exist",
@@ -3907,6 +3968,10 @@
         "title": "GeoJsonPoint",
         "type": "object",
         "description": "GeoJSon Point Geometry",
+        "required": [
+          "type",
+          "coordinates"
+        ],
         "properties": {
           "type": {
             "type": "string",
@@ -3931,6 +3996,11 @@
         "title": "AssetFeatureResponse",
         "type": "object",
         "description": "Asset Response as a GeoJSon Feature with Asset properties",
+        "required": [
+          "type",
+          "properties",
+          "geometry"
+        ],
         "properties": {
           "type": {
             "description": "the Geojson Type (only 'Feature')",
@@ -4127,6 +4197,10 @@
         "title": "Pagination",
         "type": "object",
         "description": "Pagination to reach all returned assets. max 300 assets par page.",
+        "required": [
+          "page",
+          "pageCount"
+        ],
         "properties": {
           "page": {
             "type": "integer",
@@ -4144,6 +4218,11 @@
         "title": "AssetFeatureCollectionResponse",
         "type": "object",
         "description": "Assets Collection Response as a GeoJSon FeatureCollection with Asset properties",
+        "required": [
+          "type",
+          "features",
+          "pagination"
+        ],
         "properties": {
           "type": {
             "description": "the Geojson Type (only 'FeatureCollection')",
@@ -4625,6 +4704,19 @@
           "dst_offset": 3600
         }
       },
+      "AssetAddressLines": {
+        "title": "AssetAddressLines",
+        "description": "An Array for lines of an Asset Address",
+        "type": "array",
+        "example": [
+          "Building Centre",
+          "26 Store Street"
+        ],
+        "items": {
+          "type": "string",
+          "example": "26 Store Street"
+        }
+      },
       "AssetAddressRequest": {
         "title": "AssetAddressRequest",
         "type": "object",
@@ -4879,14 +4971,18 @@
       "MatchedSubstring": {
         "title": "MatchedSubstring",
         "type": "object",
+        "required": [
+          "offset",
+          "length"
+        ],
         "properties": {
           "length": {
             "description": "Length of the matched substring in the prediction result text.",
-            "type": "number"
+            "type": "integer"
           },
           "offset": {
             "description": "Start location of the matched substring in the prediction result text.",
-            "type": "number"
+            "type": "integer"
           }
         },
         "example": {
@@ -4898,11 +4994,21 @@
         "title": "AssetAutocompleteResponse",
         "type": "object",
         "description": "Asset Autocomplete Response with highlighted results on asset name.",
+        "required": [
+          "predictions"
+        ],
         "properties": {
           "predictions": {
             "description": "A list of predictions based on similarity in all the `localizedNames` passed in query (or similarity to `store_name` if no `localizedNames` exist)",
             "items": {
               "type": "object",
+              "required": [
+                "store_id",
+                "name",
+                "types",
+                "matched_substrings",
+                "highlighted"
+              ],
               "properties": {
                 "name": {
                   "description": "The `name` property of each prediction will be filled with the localized name of your asset in the `language` you provided in your query if it exists, or else the default name property.\n",
@@ -4981,9 +5087,12 @@
         "title": "BoundsResponse",
         "type": "object",
         "description": "Message returned to a success Search Bounds request",
+        "required": [
+          "bounds"
+        ],
         "properties": {
           "bounds": {
-            "description": "The bounds object",
+            "description": "The bounds object, empty when no asset matches.",
             "type": "object",
             "properties": {
               "west": {

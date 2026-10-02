@@ -1,6 +1,6 @@
 name: lat
 description: >
-  Latitude bias for the results. Should be pass with `lng`.
+  Latitude bias for the results. Must be passed with `lng`.
 schema:
   type: number
   example: 5.2

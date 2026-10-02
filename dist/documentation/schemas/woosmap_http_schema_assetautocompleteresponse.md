@@ -4,9 +4,9 @@
 
 Asset Autocomplete Response with highlighted results on asset name.
 
-| Field                                                                                                                    | Required | Type | Description                                                                                                                                                                                                                               |
-| :----------------------------------------------------------------------------------------------------------------------- | -------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <h4 id="AssetAutocompleteResponse-predictions" class="add-link schema-object-property-key"><code>predictions</code></h4> | optional |      | <div class="nonref-property-description"><p>A list of predictions based on similarity in all the <code>localizedNames</code> passed in query (or similarity to <code>store_name</code> if no <code>localizedNames</code> exist)</p></div> |
+| Field                                                                                                                    | Required     | Type | Description                                                                                                                                                                                                                               |
+| :----------------------------------------------------------------------------------------------------------------------- | ------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <h4 id="AssetAutocompleteResponse-predictions" class="add-link schema-object-property-key"><code>predictions</code></h4> | **required** |      | <div class="nonref-property-description"><p>A list of predictions based on similarity in all the <code>localizedNames</code> passed in query (or similarity to <code>store_name</code> if no <code>localizedNames</code> exist)</p></div> |
 
 <h4 class="schema-object-example" id="AssetAutocompleteResponse-example">Example</h4>
 

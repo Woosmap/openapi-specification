@@ -1,11 +1,19 @@
 title: AssetAutocompleteResponse
 type: object
 description: Asset Autocomplete Response with highlighted results on asset name.
+required:
+  - predictions
 properties:
   predictions:
     description: A list of predictions based on similarity in all the `localizedNames` passed in query (or similarity to `store_name` if no `localizedNames` exist)
     items:
       type: object
+      required:
+        - store_id
+        - name
+        - types
+        - matched_substrings
+        - highlighted
       properties:
         name:
           description: >

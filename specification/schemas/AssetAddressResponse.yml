@@ -1,20 +1,29 @@
 title: AssetAddressResponse
 type: object
 description: An object containing the separate components applicable to this address.
+required:
+  - lines
+  - country_code
+  - city
+  - zipcode
 properties:
   lines:
-    $ref: "./AssetAddressLines.yml"
+    description: An Array for lines of an Asset Address
+    type: [array, "null"]
+    items:
+      type: string
+    example: ["Building Centre", "26 Store Street"]
   country_code:
     description: An ISO_3166-1 Country Code where the Asset is located (see <https://en.wikipedia.org/wiki/ISO_3166-1> for full list)
     type: [string, "null"]
     example: "UK"
   city:
     description: A City where belongs an Asset
-    type: string
+    type: [string, "null"]
     example: "London"
   zipcode:
     description: An Zipcode / Postal code of an Asset Address
-    type: string
+    type: [string, "null"]
     example: "WC1E 7BT"
 example: {
   "lines": [

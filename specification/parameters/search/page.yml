@@ -3,5 +3,7 @@ description: >
   Page number when accessing paginated assets feature collection
 schema:
   type: integer
+  minimum: 1
+  default: 1
   example: 2
 in: query
