@@ -16,6 +16,8 @@ AssetFeatureCollectionResponse:
   $ref: "./AssetFeatureCollectionResponse.yml"
 AssetAutocompleteResponse:
   $ref: "./AssetAutocompleteResponse.yml"
+AssetAutocompletePrediction:
+  $ref: "./AssetAutocompletePrediction.yml"
 Pagination:
   $ref: "./Pagination.yml"
 MatchedSubstring:
