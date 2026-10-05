@@ -6,11 +6,11 @@
 
 - <h3 class="parameter-name" id="lat">lat</h3>
 
-  Latitude bias for the results. Should be pass with `lng`.
+  Latitude bias for the results. Must be passed with `lng`.
 
 - <h3 class="parameter-name" id="lng">lng</h3>
 
-  Longitude bias for the results. Should be pass with `lat`.
+  Longitude bias for the results. Must be passed with `lat`.
 
 - <h3 class="parameter-name" id="query">query</h3>
 
@@ -72,7 +72,7 @@
 
 - <h3 class="parameter-name" id="radius">radius</h3>
 
-  Unit in meters. Used to combine with lat/lng or encoded polyline. To bias the results within a given circular area. 3000 means to search for Assets that are at the most far from 3kms to search area (latlng or polyline).
+  Unit in meters. Used to combine with lat/lng or polyline. To bias the results within a given circular area. 3000 means to search for Assets that are at the most far from 3kms to search area (latlng or polyline). Without `radius`, `lat`/`lng` only sort the Assets by distance.
 
 
 <p style="text-align: right; font-size: smaller;">Generated from the <a data-label="openapi-github" href="https://github.com/woosmap/openapi-specification" title="Woosmap OpenAPI Specification" class="external">OpenAPI specification</a>.

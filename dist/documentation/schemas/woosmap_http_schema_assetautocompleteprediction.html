@@ -1,0 +1,142 @@
+<!--- This is a generated file, do not edit! -->
+<!--- [START woosmap_http_schema_assetautocompleteprediction] -->
+<h3 class="schema-object" id="AssetAutocompletePrediction">
+  AssetAutocompletePrediction
+</h3>
+<p>An Asset matching the autocomplete query.</p>
+<table>
+  <thead>
+    <tr>
+      <th align="left">Field</th>
+      <th>Required</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="left">
+        <h4
+          id="AssetAutocompletePrediction-highlighted"
+          class="add-link schema-object-property-key"
+        >
+          <code>highlighted</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td>string</td>
+      <td>
+        <div class="nonref-property-description">
+          <p>
+            an HTML formatted string with, if it exists, the matched
+            substring(s) in bold font.
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
+          id="AssetAutocompletePrediction-matched_substrings"
+          class="add-link schema-object-property-key"
+        >
+          <code>matched_substrings</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td>
+        Array&#x26;lt;<a href="#MatchedSubstring" title="MatchedSubstring"
+          >MatchedSubstring</a
+        >&#x26;gt;
+      </td>
+      <td>
+        See
+        <a href="#MatchedSubstring" title="MatchedSubstring"
+          >MatchedSubstring</a
+        >
+        for more information.
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
+          id="AssetAutocompletePrediction-name"
+          class="add-link schema-object-property-key"
+        >
+          <code>name</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td>string</td>
+      <td>
+        <div class="nonref-property-description">
+          <p>
+            The <code>name</code> property of each prediction will be filled
+            with the localized name of your asset in the
+            <code>language</code> you provided in your query if it exists, or
+            else the default name property.
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
+          id="AssetAutocompletePrediction-store_id"
+          class="add-link schema-object-property-key"
+        >
+          <code>store_id</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td><a href="#AssetId" title="AssetId">AssetId</a></td>
+      <td>
+        See <a href="#AssetId" title="AssetId">AssetId</a> for more information.
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
+          id="AssetAutocompletePrediction-types"
+          class="add-link schema-object-property-key"
+        >
+          <code>types</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td><a href="#AssetTypes" title="AssetTypes">AssetTypes</a></td>
+      <td>
+        See <a href="#AssetTypes" title="AssetTypes">AssetTypes</a> for more
+        information.
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p style="text-align: right; font-size: smaller">
+  Generated from the
+  <a
+    data-label="openapi-github"
+    href="https://github.com/woosmap/openapi-specification"
+    title="Woosmap OpenAPI Specification"
+    class="external"
+    >OpenAPI specification</a
+  >.
+  <a
+    data-label="openapi-github-woosmap-http-schema-assetautocompleteprediction"
+    data-action="edit"
+    style="margin-left: 5px"
+    href="https://github.com/woosmap/openapi-specification/blob/main/specification/schemas/AssetAutocompletePrediction.yml"
+    title="Edit on GitHub"
+    >✎ Edit</a
+  >
+  <a
+    data-label="openapi-github-woosmap-http-schema-assetautocompleteprediction"
+    data-action="bug"
+    style="margin-left: 5px"
+    href="https://github.com/woosmap/openapi-specification/issues/new?assignees=&labels=type%3A+bug%2C+triage+me&template=bug_report.md&title=[schemas] Bug - AssetAutocompletePrediction"
+    title="File bug for schemas on GitHub"
+    ><span class="material-icons">bug_report</span> Report bug</a
+  >
+</p>
+
+<!--- [END woosmap_http_schema_assetautocompleteprediction] -->

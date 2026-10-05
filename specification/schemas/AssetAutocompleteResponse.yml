@@ -1,29 +1,13 @@
 title: AssetAutocompleteResponse
 type: object
 description: Asset Autocomplete Response with highlighted results on asset name.
+required:
+  - predictions
 properties:
   predictions:
     description: A list of predictions based on similarity in all the `localizedNames` passed in query (or similarity to `store_name` if no `localizedNames` exist)
+    type: array
     items:
-      type: object
-      properties:
-        name:
-          description: >
-            The `name` property of each prediction will be filled with the localized name of your asset in the `language` you provided in your query if it exists,
-            or else the default name property.
-          type: string
-          example: "Centro Commerciale Deria"
-        highlighted:
-          type: string
-          description: an HTML formatted string with, if it exists, the matched substring(s) in bold font.
-          example: "Centro <b>Commercial</b>e Deria"
-        store_id:
-          $ref: "./AssetId.yml"
-        types:
-          $ref: "./AssetTypes.yml"
-        matched_substrings:
-          type: array
-          items:
-            $ref: "./MatchedSubstring.yml"
+      $ref: "./AssetAutocompletePrediction.yml"
 example:
   $ref: "../responses/woosmap_http_asset_autocomplete_feature_collection_response.yml"
