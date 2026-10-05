@@ -22,6 +22,7 @@
     "responses": "bazel run generator/responses:_responses_bin -- --output `pwd`/specification/responses",
     "samples": "bazel run generator/requests:_samples_bin -- --output `pwd`/specification/snippets",
     "publish:postman": "bazel run generator/postman:_postman_bin",
+    "sync:upstream": "tools/sync-upstream-specs.sh",
     "test": "bazel test ...",
     "watch": "ibazel build ...",
     "watch:test": "ibazel test ..."
