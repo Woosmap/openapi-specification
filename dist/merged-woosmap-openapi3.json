@@ -7,7 +7,7 @@
     "x-document-meta-data": {
       "copyright": "© 2025 Woosmap"
     },
-    "version": "1.45.0",
+    "version": "1.46.0",
     "contact": {
       "name": "Woosmap API"
     }
@@ -4532,7 +4532,7 @@
           "Distance API"
         ],
         "summary": "Calculate Isochrone",
-        "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`\n\n**Ratelimit:** 10/1s",
+        "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`",
         "operationId": "isochrone_distance_isochrone_json__get",
         "security": [
           {
@@ -4784,8 +4784,6 @@
             }
           }
         },
-        "x-ratelimit-limit": 10,
-        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -4810,7 +4808,7 @@
           "Distance API"
         ],
         "summary": "Calculate Isochrone",
-        "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`\n\n**Ratelimit:** 10/1s",
+        "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`",
         "operationId": "isochrone_post_distance_isochrone_json__post",
         "security": [
           {
@@ -4932,8 +4930,6 @@
             }
           }
         },
-        "x-ratelimit-limit": 10,
-        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -4961,7 +4957,7 @@
           "Distance API"
         ],
         "summary": "Find Tolls",
-        "description": "Get distance, duration and tolls for an origin,destination pair, based on the recommended route between those two points for a specified travel mode.\n\n**Rate limit**: `5/1s`\n\n**Ratelimit:** 5/1s",
+        "description": "Get distance, duration and tolls for an origin,destination pair, based on the recommended driving route between those two points.\n\n**Rate limit**: `5/1s`",
         "operationId": "tolls_distance_tolls_json__get",
         "security": [
           {
@@ -5046,12 +5042,7 @@
             "in": "query",
             "required": false,
             "schema": {
-              "enum": [
-                "driving",
-                "walking",
-                "cycling",
-                "truck"
-              ],
+              "const": "driving",
               "type": "string",
               "default": "driving",
               "title": "Mode"
@@ -5392,8 +5383,6 @@
             }
           }
         },
-        "x-ratelimit-limit": 5,
-        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -6473,7 +6462,7 @@
             }
           },
           "422": {
-            "description": "Unprocessable Entity",
+            "description": "Unprocessable Content",
             "content": {
               "application/json": {
                 "schema": {
@@ -6622,7 +6611,7 @@
             }
           },
           "422": {
-            "description": "Unprocessable Entity",
+            "description": "Unprocessable Content",
             "content": {
               "application/json": {
                 "schema": {
@@ -6774,7 +6763,7 @@
             }
           },
           "422": {
-            "description": "Unprocessable Entity",
+            "description": "Unprocessable Content",
             "content": {
               "application/json": {
                 "schema": {
@@ -6990,7 +6979,7 @@
             }
           },
           "422": {
-            "description": "Unprocessable Entity",
+            "description": "Unprocessable Content",
             "content": {
               "application/json": {
                 "schema": {
@@ -7227,7 +7216,7 @@
             }
           },
           "422": {
-            "description": "Unprocessable Entity",
+            "description": "Unprocessable Content",
             "content": {
               "application/json": {
                 "schema": {
@@ -7506,7 +7495,7 @@
             }
           },
           "422": {
-            "description": "Unprocessable Entity",
+            "description": "Unprocessable Content",
             "content": {
               "application/json": {
                 "schema": {
@@ -7772,7 +7761,7 @@
             }
           },
           "422": {
-            "description": "Unprocessable Entity",
+            "description": "Unprocessable Content",
             "content": {
               "application/json": {
                 "schema": {
@@ -7919,7 +7908,7 @@
             }
           },
           "422": {
-            "description": "Unprocessable Entity",
+            "description": "Unprocessable Content",
             "content": {
               "application/json": {
                 "schema": {
@@ -8115,7 +8104,7 @@
             }
           },
           "422": {
-            "description": "Unprocessable Entity",
+            "description": "Unprocessable Content",
             "content": {
               "application/json": {
                 "schema": {
@@ -8299,12 +8288,12 @@
             "schema": {
               "$ref": "#/components/schemas/Localities_LocalitiesInput",
               "maxLength": 150,
-              "description": "Text to search for. Predictions are matched on this string and ordered by relevance.\n\nOnly the first 20 tokens (within 150 characters) are processed.",
+              "description": "Text to search for. Predictions are matched on this string and ordered by relevance.\n\nOnly the first 20 tokens (within 150 characters) are processed. \n\nWill return a 400 error when containing more than 3 special characters (! # $ % & * : ; < = > ? @ [ ] ° ™ { }) . \n\nWill be ignored (empty result) when composed of 70% of punctuation symbols (which Unicode general category starts with P (punctuation) or S (symbol).",
               "examples": [
                 "London"
               ]
             },
-            "description": "Text to search for. Predictions are matched on this string and ordered by relevance.\n\nOnly the first 20 tokens (within 150 characters) are processed."
+            "description": "Text to search for. Predictions are matched on this string and ordered by relevance.\n\nOnly the first 20 tokens (within 150 characters) are processed. \n\nWill return a 400 error when containing more than 3 special characters (! # $ % & * : ; < = > ? @ [ ] ° ™ { }) . \n\nWill be ignored (empty result) when composed of 70% of punctuation symbols (which Unicode general category starts with P (punctuation) or S (symbol)."
           },
           {
             "name": "custom_description",
@@ -9130,13 +9119,13 @@
                   "type": "null"
                 }
               ],
-              "description": "Address, street, locality, or postal code to geocode.\n\nOnly the first 20 tokens (within 150 characters) are processed.",
+              "description": "Address, street, locality, or postal code to geocode.\n\nOnly the first 20 tokens (within 150 characters) are processed.\n\nWill return a 400 Error when containing more than 3 special characters (! # $ % & * : ; < = > ? @ [ ] ° ™ { }) . \n\nWill be ignored (empty result) when composed of 70% of punctuation symbols (which Unicode general category starts with P (punctuation) or S (symbol).",
               "examples": [
                 "224%20Rue%20de%20Rivoli%2C%20Paris"
               ],
               "title": "Address"
             },
-            "description": "Address, street, locality, or postal code to geocode.\n\nOnly the first 20 tokens (within 150 characters) are processed."
+            "description": "Address, street, locality, or postal code to geocode.\n\nOnly the first 20 tokens (within 150 characters) are processed.\n\nWill return a 400 Error when containing more than 3 special characters (! # $ % & * : ; < = > ? @ [ ] ° ™ { }) . \n\nWill be ignored (empty result) when composed of 70% of punctuation symbols (which Unicode general category starts with P (punctuation) or S (symbol)."
           },
           {
             "name": "latlng",
@@ -10212,10 +10201,12 @@
               "type": "number",
               "maximum": 90,
               "minimum": -90,
-              "examples": [
-                "43.6"
-              ],
               "title": "Lat"
+            },
+            "examples": {
+              "default": {
+                "value": 43.6
+              }
             }
           },
           {
@@ -10226,10 +10217,12 @@
               "type": "number",
               "maximum": 180,
               "minimum": -180,
-              "examples": [
-                "3.883"
-              ],
               "title": "Lng"
+            },
+            "examples": {
+              "default": {
+                "value": 3.883
+              }
             }
           },
           {
@@ -10241,12 +10234,14 @@
               "maximum": 24,
               "minimum": 0,
               "description": "The zoom",
-              "examples": [
-                11
-              ],
               "title": "Zoom"
             },
-            "description": "The zoom"
+            "description": "The zoom",
+            "examples": {
+              "default": {
+                "value": 11
+              }
+            }
           },
           {
             "name": "width",
@@ -10257,12 +10252,14 @@
               "maximum": 1280,
               "minimum": 40,
               "description": "Width in pixels. width * height must not exceed 409,600.",
-              "examples": [
-                400
-              ],
               "title": "Width"
             },
-            "description": "Width in pixels. width * height must not exceed 409,600."
+            "description": "Width in pixels. width * height must not exceed 409,600.",
+            "examples": {
+              "default": {
+                "value": 400
+              }
+            }
           },
           {
             "name": "height",
@@ -10273,12 +10270,14 @@
               "maximum": 1280,
               "minimum": 40,
               "description": "Height in pixels. width * height must not exceed 409,600.",
-              "examples": [
-                400
-              ],
               "title": "Height"
             },
-            "description": "Height in pixels. width * height must not exceed 409,600."
+            "description": "Height in pixels. width * height must not exceed 409,600.",
+            "examples": {
+              "default": {
+                "value": 400
+              }
+            }
           },
           {
             "name": "markers",
@@ -10294,12 +10293,16 @@
                 "type": "string"
               },
               "description": "Adds a marker.\n\nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n\n        ",
-              "examples": [
-                "{\"lat\": 43.6, \"lng\": 3.883, \"url\": \"https://webapp.woosmap.com/img/geolocated_marker.png?retina=yes\"}"
-              ],
               "title": "Markers"
             },
-            "description": "Adds a marker.\n\nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n\n        "
+            "description": "Adds a marker.\n\nThe images are by default are considered to be non retina images (pixel resolution=1)\n\nIf the image name contains @2x or the query parameter retina=yes are found in the marker url the image will be considered to be retina (pixel resolution=2).\n\n> Note: the image size in bytes cannot exceed 65535 bytes.\n\n        ",
+            "examples": {
+              "default": {
+                "value": [
+                  "{\"lat\": 43.6, \"lng\": 3.883, \"url\": \"https://webapp.woosmap.com/img/geolocated_marker.png?retina=yes\"}"
+                ]
+              }
+            }
           },
           {
             "name": "polylines",
@@ -10315,12 +10318,16 @@
                 "type": "string"
               },
               "description": "Add a polyline.\n\n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            ",
-              "examples": [
-                "{\"enc\": \"ydjiG_}jVjn@cjAf`AycBnc@mqCp\\\\ewBrQmlBzrAeuCreBw_C\", \"color\": \"magenta\", \"weight\": 4}"
-              ],
               "title": "Polylines"
             },
-            "description": "Add a polyline.\n\n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            "
+            "description": "Add a polyline.\n\n> Note: enc should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n\n            ",
+            "examples": {
+              "default": {
+                "value": [
+                  "{\"enc\": \"ydjiG_}jVjn@cjAf`AycBnc@mqCp\\\\ewBrQmlBzrAeuCreBw_C\", \"color\": \"magenta\", \"weight\": 4}"
+                ]
+              }
+            }
           },
           {
             "name": "polygons",
@@ -10336,12 +10343,16 @@
                 "type": "string"
               },
               "description": "Adds a polygon.\n\n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            ",
-              "examples": [
-                "{\"shape\": \"ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??\", \"fill_color\": \"rgba(255, 20, 147, 0.5)\", \"color\": \"rgba(199, 21, 133, 0.7)\"}"
-              ],
               "title": "Polygons"
             },
-            "description": "Adds a polygon.\n\n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            "
+            "description": "Adds a polygon.\n\n> Note: shape should be a google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n            ",
+            "examples": {
+              "default": {
+                "value": [
+                  "{\"shape\": \"ymgiGm|rV~uAtaB|dAefCqeBwuFu~@njC??\", \"fill_color\": \"rgba(255, 20, 147, 0.5)\", \"color\": \"rgba(199, 21, 133, 0.7)\"}"
+                ]
+              }
+            }
           },
           {
             "name": "retina",
@@ -10366,9 +10377,6 @@
                   "type": "null"
                 }
               ],
-              "examples": [
-                "[{\"featureType\": \"points_of_interest.business\", \"stylers\":[{\"visibility\": \"off\"}]}]"
-              ],
               "contentMediaType": "application/json",
               "contentSchema": {
                 "items": {
@@ -10378,7 +10386,30 @@
               },
               "type": "string",
               "title": "Stylers"
+            },
+            "examples": {
+              "default": {
+                "value": "[{\"featureType\": \"points_of_interest.business\", \"stylers\":[{\"visibility\": \"off\"}]}]"
+              }
             }
+          },
+          {
+            "name": "visual_refresh",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Opt in or out of the refreshed street style. Omitted, the server default and the grandfathered organizations decide.",
+              "title": "Visual Refresh"
+            },
+            "description": "Opt in or out of the refreshed street style. Omitted, the server default and the grandfathered organizations decide."
           }
         ],
         "responses": {
@@ -15281,14 +15312,14 @@
       },
       "External-api-wrapper_what3words_HTTPErrorModel": {
         "properties": {
-          "details": {
+          "detail": {
             "type": "string",
-            "title": "Details"
+            "title": "Detail"
           }
         },
         "type": "object",
         "required": [
-          "details"
+          "detail"
         ],
         "title": "HTTPErrorModel"
       },
@@ -15633,6 +15664,13 @@
           "type": {
             "type": "string",
             "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
           }
         },
         "type": "object",
@@ -17627,14 +17665,14 @@
       },
       "External-api-wrapper_HTTPErrorModel": {
         "properties": {
-          "details": {
+          "detail": {
             "type": "string",
-            "title": "Details"
+            "title": "Detail"
           }
         },
         "type": "object",
         "required": [
-          "details"
+          "detail"
         ],
         "title": "HTTPErrorModel"
       },
@@ -18059,6 +18097,13 @@
           "type": {
             "type": "string",
             "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
           }
         },
         "type": "object",
@@ -19020,6 +19065,13 @@
           "type": {
             "type": "string",
             "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
           }
         },
         "type": "object",
@@ -19188,14 +19240,14 @@
       },
       "Distance_HTTPErrorModel": {
         "properties": {
-          "details": {
+          "detail": {
             "type": "string",
-            "title": "Details"
+            "title": "Detail"
           }
         },
         "type": "object",
         "required": [
-          "details"
+          "detail"
         ],
         "title": "HTTPErrorModel"
       },
@@ -20527,6 +20579,13 @@
           "type": {
             "type": "string",
             "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
           }
         },
         "type": "object",
@@ -22337,7 +22396,7 @@
       },
       "Maps_PublicAPIKey": {
         "type": "apiKey",
-        "description": "Public key of the project usually starts with `woos-`",
+        "description": "Public key of the project (starts with `woos-`) or an API key (a UUID).",
         "in": "query",
         "name": "key",
         "x-displayName": "PublicAPIKey"
@@ -22358,7 +22417,7 @@
       },
       "External-api-wrapper_what3words_PublicAPIKey": {
         "type": "apiKey",
-        "description": "Public key of the project usually starts with `woos-`",
+        "description": "Public key of the project (starts with `woos-`) or an API key (a UUID).",
         "in": "query",
         "name": "key",
         "x-displayName": "PublicAPIKey"
@@ -22397,7 +22456,7 @@
       },
       "External-api-wrapper_PublicAPIKey": {
         "type": "apiKey",
-        "description": "Public key of the project usually starts with `woos-`",
+        "description": "Public key of the project (starts with `woos-`) or an API key (a UUID).",
         "in": "query",
         "name": "key",
         "x-displayName": "PublicAPIKey"
@@ -22432,7 +22491,7 @@
       },
       "Datasets_PublicAPIKey": {
         "type": "apiKey",
-        "description": "Public key of the project usually starts with `woos-`",
+        "description": "Public key of the project (starts with `woos-`) or an API key (a UUID).",
         "in": "query",
         "name": "key",
         "x-displayName": "PublicAPIKey"
@@ -22453,7 +22512,7 @@
       },
       "Distance_PublicAPIKey": {
         "type": "apiKey",
-        "description": "Public key of the project usually starts with `woos-`",
+        "description": "Public key of the project (starts with `woos-`) or an API key (a UUID).",
         "in": "query",
         "name": "key",
         "x-displayName": "PublicAPIKey"
@@ -22474,7 +22533,7 @@
       },
       "Localities_PublicAPIKey": {
         "type": "apiKey",
-        "description": "Public key of the project usually starts with `woos-`",
+        "description": "Public key of the project (starts with `woos-`) or an API key (a UUID).",
         "in": "query",
         "name": "key",
         "x-displayName": "PublicAPIKey"
