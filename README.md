@@ -23,17 +23,19 @@ An OpenAPI specification for Woosmap Platform.
 The repository makes use of [Bazel](https://bazel.build/) to generate outputs from the specification and sample
 requests.
 
+### Upstream specs
+
+The APIs that publish their own spec at `https://api.woosmap.com/<name>/openapi.json` are vendored in `upstream/` and
+merged into `dist/merged-woosmap-openapi3.json`. A weekly workflow refreshes them and opens a PR when they change.
+`npm run sync:upstream` does the same refresh locally.
+
 ### Build and test
 
-To be able to build the spec locally, you'll need a github personal access token (mandatory for merging with auto
-generated spec such as Woosmap x What3Words).
-Generate one with repository access here: <https://github.com/settings/tokens>.
 To be able to generate responses, you'll need a woosmap public key and woosmap private key.
 Once generated, it's convenient to add these environment variables in the file `.bazelrc.user` at the root of the
 repository like this:
 
 ```bash
-build --action_env GH_TOKEN=ghp_xxxxxxxxx
 run --action_env WOOSMAP_PUBLIC_API_KEY=woos-xxxxxxxx
 run --action_env WOOSMAP_PRIVATE_API_KEY=da4e8e73-xxxxx-xxxx
 ```

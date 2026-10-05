@@ -1,0 +1,986 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "External-api-wrapper",
+    "summary": "Public Transportation Routing and Async Matrices",
+    "description": "Calculate routes using public transporatation (trains, busses, etc.). Also calculate large (10k x 10k) matrices of routes if you are travelling by car or HGV.",
+    "version": "v6.0.48"
+  },
+  "paths": {
+    "/distance/matrix/async/": {
+      "post": {
+        "tags": [
+          "Distance Matrix Async"
+        ],
+        "summary": "Start Matrix Calculation",
+        "description": "Start an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
+        "operationId": "start_async_matrix_distance_matrix_async__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatrixRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatrixResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/distance/matrix/async/{matrix_id}/status": {
+      "get": {
+        "tags": [
+          "Distance Matrix Async"
+        ],
+        "summary": "Check Matrix Calculation Status",
+        "description": "Check on the progress of an asynchronous matrix calculation.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
+        "operationId": "async_matrix_status_distance_matrix_async__matrix_id__status_get",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "matrix_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the matrix you want to check the status of.",
+              "title": "Matrix Id"
+            },
+            "description": "The ID of the matrix you want to check the status of."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatrixCheckResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/distance/matrix/async/{matrix_id}": {
+      "get": {
+        "tags": [
+          "Distance Matrix Async"
+        ],
+        "summary": "Get Matrix Calculation Result",
+        "description": "Get the results of an asynchronous matrix calculation.\n\nYou should confirm using the `/matrix/{matrix_id}/status` endpoint that the calculation is `completed` before calling this endpoint.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
+        "operationId": "async_matrix_distance_matrix_async__matrix_id__get",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "matrix_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the matrix you want to get the result of",
+              "title": "Matrix Id"
+            },
+            "description": "The ID of the matrix you want to get the result of"
+          }
+        ],
+        "responses": {
+          "303": {
+            "description": "Redirect to the result of the matrix calculation.",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/transit/route": {
+      "get": {
+        "tags": [
+          "transit"
+        ],
+        "summary": "Transit Route",
+        "description": "**Rate limit**: `10/1s`\n\n**Ratelimit:** 10/1s",
+        "operationId": "transit_route_transit_route_get",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "departure_time",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Departure Time",
+              "description": "DateTime with or without timezone, if not set the default datetime is the current one",
+              "examples": [
+                "2024-01-01T12:00:00%2B01:00"
+              ]
+            },
+            "description": "DateTime with or without timezone, if not set the default datetime is the current one"
+          },
+          {
+            "name": "arrival_time",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Arrival Time",
+              "description": "DateTime with or without timezone, if departure_time is defined this parameter is ignored",
+              "examples": [
+                "2024-01-01T14:00:00%2B01:00"
+              ]
+            },
+            "description": "DateTime with or without timezone, if departure_time is defined this parameter is ignored"
+          },
+          {
+            "name": "origin",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Position",
+              "description": "WGS84 coordinates as format lat,lng",
+              "examples": [
+                "lat,lng"
+              ]
+            },
+            "description": "WGS84 coordinates as format lat,lng"
+          },
+          {
+            "name": "destination",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Position",
+              "description": "WGS84 coordinates as format lat,lng",
+              "examples": [
+                "lat,lng"
+              ]
+            },
+            "description": "WGS84 coordinates as format lat,lng"
+          },
+          {
+            "name": "modes",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Array of Modes (string) or Excluded modes (string) (TransitModesFilter)",
+              "description": "Transit mode filter used to determine which modes of transit to include in the response. \n        By default, all supported transit modes are permitted. Supported modes: `highSpeedTrain` `intercityTrain` `interRegionalTrain` `regionalTrain` `cityTrain` `bus` `ferry` `subway` `lightRail` `privateBus` `inclined` `aerial` `busRapid` `monorail` `flight` `spaceship` This parameter also support an exclusion list: It's sufficient to specify each mode to exclude by prefixing it with `-`.    \n        Mixing of inclusive and exclusive transit modes is not allowed.",
+              "examples": [
+                "subway,bus",
+                "-subway,-bus"
+              ]
+            },
+            "description": "Transit mode filter used to determine which modes of transit to include in the response. \n        By default, all supported transit modes are permitted. Supported modes: `highSpeedTrain` `intercityTrain` `interRegionalTrain` `regionalTrain` `cityTrain` `bus` `ferry` `subway` `lightRail` `privateBus` `inclined` `aerial` `busRapid` `monorail` `flight` `spaceship` This parameter also support an exclusion list: It's sufficient to specify each mode to exclude by prefixing it with `-`.    \n        Mixing of inclusive and exclusive transit modes is not allowed."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transit"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X GET 'https://api.woosmap.com/transit/route?origin=48.73534,2.368308&destination=48.83534,2.368308&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/transit/route?origin=48.73534,2.368308&destination=48.83534,2.368308&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/transit/route?origin=48.73534,2.368308&destination=48.83534,2.368308&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          }
+        ],
+        "x-ratelimit-limit": 10,
+        "x-ratelimit-window-seconds": 1
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthenticationErrorResponse": {
+        "properties": {
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "AuthenticationErrorResponse",
+        "description": "AuthenticationErrorResponse is the base authentication error model."
+      },
+      "HTTPErrorModel": {
+        "properties": {
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "HTTPErrorModel"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "MatrixCheckResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "accepted",
+              "inProgress",
+              "completed",
+              "timeout",
+              "error"
+            ],
+            "title": "Status",
+            "description": "Status of the matrix calculation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "MatrixCheckResponse"
+      },
+      "MatrixRequest": {
+        "properties": {
+          "origins": {
+            "type": "string",
+            "title": "Origins",
+            "description": "The starting points. You can supply one or more locations, in the form of `latitude,longitude` coordinates, separated by the pipe character `|`. Ensure that no space exists between the latitude and longitude values.",
+            "examples": [
+              "48.709,2.403|48.768,2.338"
+            ]
+          },
+          "destinations": {
+            "type": "string",
+            "title": "Destinations",
+            "description": "The ending points. You can supply one or more locations, in the form of `latitude,longitude` coordinates, separated by the pipe character `|`. Ensure that no space exists between the latitude and longitude values.",
+            "examples": [
+              "48.709,2.403|48.768,2.338"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "driving",
+              "truck"
+            ],
+            "title": "Mode",
+            "description": "Specifies the mode of transport to use when calculating distance",
+            "default": "driving",
+            "examples": [
+              "driving"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "origins",
+          "destinations"
+        ],
+        "title": "MatrixRequest"
+      },
+      "MatrixResponse": {
+        "properties": {
+          "matrix_id": {
+            "type": "string",
+            "title": "Matrix Id",
+            "description": "Unique identifier for the matrix requested, this will be used to check the status and retrieve the completed calculation."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "accepted",
+              "inProgress",
+              "completed",
+              "timeout",
+              "error"
+            ],
+            "title": "Status",
+            "description": "Status of the matrix calculation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "matrix_id",
+          "status"
+        ],
+        "title": "MatrixResponse"
+      },
+      "Transit": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "routes": {
+            "items": {
+              "$ref": "#/components/schemas/TransitRoute"
+            },
+            "type": "array",
+            "title": "Routes",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "Transit"
+      },
+      "TransitAttributions": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "href": {
+            "type": "string",
+            "title": "Href"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "href",
+          "text",
+          "type"
+        ],
+        "title": "TransitAttributions"
+      },
+      "TransitLeg": {
+        "properties": {
+          "travel_mode": {
+            "type": "string",
+            "title": "Travel Mode"
+          },
+          "duration": {
+            "type": "integer",
+            "title": "Duration"
+          },
+          "distance": {
+            "type": "number",
+            "title": "Distance"
+          },
+          "polyline": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Polyline"
+          },
+          "start_location": {
+            "$ref": "#/components/schemas/TransitPlace"
+          },
+          "end_location": {
+            "$ref": "#/components/schemas/TransitPlace"
+          },
+          "transport": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TransitTransport"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "attributions": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/TransitAttributions"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attributions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "travel_mode",
+          "duration",
+          "distance",
+          "polyline",
+          "start_location",
+          "end_location"
+        ],
+        "title": "TransitLeg"
+      },
+      "TransitPlace": {
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type"
+          },
+          "location": {
+            "$ref": "#/components/schemas/TransitPosition"
+          }
+        },
+        "type": "object",
+        "required": [
+          "type",
+          "location"
+        ],
+        "title": "TransitPlace"
+      },
+      "TransitPosition": {
+        "properties": {
+          "lat": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 90.0,
+                "minimum": -90.0
+              },
+              {
+                "type": "string",
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
+              }
+            ],
+            "title": "Lat"
+          },
+          "lng": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 180.0,
+                "minimum": -180.0
+              },
+              {
+                "type": "string",
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$"
+              }
+            ],
+            "title": "Lng"
+          }
+        },
+        "type": "object",
+        "required": [
+          "lat",
+          "lng"
+        ],
+        "title": "TransitPosition"
+      },
+      "TransitRoute": {
+        "properties": {
+          "notice": {
+            "type": "string",
+            "title": "Notice",
+            "default": ""
+          },
+          "duration": {
+            "type": "integer",
+            "title": "Duration"
+          },
+          "legs": {
+            "items": {
+              "$ref": "#/components/schemas/TransitLeg"
+            },
+            "type": "array",
+            "title": "Legs",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "duration"
+        ],
+        "title": "TransitRoute"
+      },
+      "TransitTransport": {
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "headsign": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Headsign"
+          },
+          "short_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Short Name"
+          },
+          "long_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Long Name"
+          },
+          "color": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Color"
+          },
+          "text_color": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Text Color"
+          }
+        },
+        "type": "object",
+        "required": [
+          "mode"
+        ],
+        "title": "TransitTransport"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "PublicAPIKey": {
+        "type": "apiKey",
+        "description": "Public key of the project (starts with `woos-`) or an API key (a UUID).",
+        "in": "query",
+        "name": "key"
+      },
+      "PrivateApiKey": {
+        "type": "apiKey",
+        "description": "Private key with or without write permission.",
+        "in": "query",
+        "name": "private_key"
+      },
+      "PrivateApiKeyHeader": {
+        "type": "apiKey",
+        "description": "Private key with or without write permission.",
+        "in": "header",
+        "name": "X-Api-Key"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Transit & Matrix Async",
+      "description": "\n        Get distance, duration and path (as a polyline and transports details) for a pair of origin and destination, based on the recommended route between those two points and by using public transportations.\n        Also calculate large (10k x 10k) matrices of routes if you are travelling by car or HGV.\n        "
+    }
+  ]
+}

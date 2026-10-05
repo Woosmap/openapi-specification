@@ -1,0 +1,3084 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Datasets",
+    "version": "v1.5.23"
+  },
+  "paths": {
+    "/datasets/{dataset_id}": {
+      "get": {
+        "tags": [
+          "dataset"
+        ],
+        "summary": "Get Dataset",
+        "description": "Gets dataset details.\n\n**Rate limit**: `1/1s`\n\n**Ratelimit:** 1/1s",
+        "operationId": "get_dataset_datasets__dataset_id__get",
+        "security": [
+          {
+            "PrivateKeyWithWrite": []
+          },
+          {
+            "PrivateKeyWithWriteHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 1
+      },
+      "delete": {
+        "tags": [
+          "dataset"
+        ],
+        "summary": "Delete Dataset",
+        "description": "Schedule a dataset for deletion, deletion will happen in 7 days.\n\n\n**Rate limit**: `1/1s`\n\n**Ratelimit:** 1/1s",
+        "operationId": "delete_dataset_datasets__dataset_id__delete",
+        "security": [
+          {
+            "PrivateKeyWithWrite": []
+          },
+          {
+            "PrivateKeyWithWriteHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Delete Dataset Datasets  Dataset Id  Delete"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "The Dataset was already scheduled for deletion.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 1
+      },
+      "put": {
+        "tags": [
+          "dataset"
+        ],
+        "summary": "Update Dataset",
+        "description": "Updates a dataset url or name.\n\n**Rate limit**: `1/1s`\n\n**Ratelimit:** 1/1s",
+        "operationId": "update_dataset_datasets__dataset_id__put",
+        "security": [
+          {
+            "PrivateKeyWithWrite": []
+          },
+          {
+            "PrivateKeyWithWriteHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatasetUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/datasets/": {
+      "get": {
+        "tags": [
+          "dataset"
+        ],
+        "summary": "List Datasets",
+        "description": "Lists datasets.\n\n**Rate limit**: `1/1s`\n\n**Ratelimit:** 1/1s",
+        "operationId": "list_datasets_datasets__get",
+        "security": [
+          {
+            "PrivateKeyWithWrite": []
+          },
+          {
+            "PrivateKeyWithWriteHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 20,
+              "minimum": 1,
+              "description": "The maximum number of elements to return in a result page.",
+              "default": 10,
+              "title": "Per Page"
+            },
+            "description": "The maximum number of elements to return in a result page."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The result page to fetch.",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "The result page to fetch."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetListResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 1
+      },
+      "post": {
+        "tags": [
+          "dataset"
+        ],
+        "summary": "Create Dataset",
+        "description": "Creates a dataset.\n\n**Rate limit**: `1/1s`\n\n**Ratelimit:** 1/1s",
+        "operationId": "create_dataset_datasets__post",
+        "security": [
+          {
+            "PrivateKeyWithWrite": []
+          },
+          {
+            "PrivateKeyWithWriteHeader": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatasetCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/datasets/{dataset_id}/status": {
+      "get": {
+        "tags": [
+          "dataset"
+        ],
+        "summary": "Get Dataset Status",
+        "description": "Returns the dataset import status.\n\n**Rate limit**: `1/5s`\n\n**Ratelimit:** 1/5s",
+        "operationId": "get_dataset_status_datasets__dataset_id__status_get",
+        "security": [
+          {
+            "PrivateKeyWithWrite": []
+          },
+          {
+            "PrivateKeyWithWriteHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetStatusResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 5
+      }
+    },
+    "/datasets/{dataset_id}/import": {
+      "post": {
+        "tags": [
+          "dataset"
+        ],
+        "summary": "Trigger Import",
+        "description": "Trigger the dataset import.\n\n**Rate limit**: `1/90s`\n\n**Ratelimit:** 1/90s",
+        "operationId": "trigger_import_datasets__dataset_id__import_post",
+        "security": [
+          {
+            "PrivateKeyWithWrite": []
+          },
+          {
+            "PrivateKeyWithWriteHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 90
+      }
+    },
+    "/datasets/hooks/reimport/{reimport_key}": {
+      "post": {
+        "tags": [
+          "dataset"
+        ],
+        "summary": "Reimport Dataset Webhook",
+        "description": "Triggers the reimport of the dataset linked to the dataset.\n\n**Rate limit**: `1/90s`\n\n**Ratelimit:** 1/90s",
+        "operationId": "reimport_dataset_webhook_datasets_hooks_reimport__reimport_key__post",
+        "parameters": [
+          {
+            "name": "reimport_key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Reimport Key"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "402": {
+            "description": "Payment Required"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 1,
+        "x-ratelimit-window-seconds": 90
+      }
+    },
+    "/datasets/{dataset_id}/features/search/": {
+      "post": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Search Features",
+        "description": "Search for features.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
+        "operationId": "search_features_datasets__dataset_id__features_search__post",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "geojson",
+                "wkb"
+              ],
+              "type": "string",
+              "default": "geojson",
+              "title": "Format"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 20,
+              "minimum": 1,
+              "description": "The maximum number of elements to return in a result page.",
+              "default": 10,
+              "title": "Per Page"
+            },
+            "description": "The maximum number of elements to return in a result page."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The result page to fetch.",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "The result page to fetch."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResultResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/datasets/{dataset_id}/features/nearby/": {
+      "post": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Nearby Features",
+        "description": "Search for features nearby geometry.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
+        "operationId": "nearby_features_datasets__dataset_id__features_nearby__post",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "geojson",
+                "wkb"
+              ],
+              "type": "string",
+              "default": "geojson",
+              "title": "Format"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 20,
+              "minimum": 1,
+              "description": "The maximum number of elements to return in a result page.",
+              "default": 10,
+              "title": "Per Page"
+            },
+            "description": "The maximum number of elements to return in a result page."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The result page to fetch.",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "The result page to fetch."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequestWithGeometry"
+              },
+              "examples": {
+                "point_geojson": {
+                  "summary": "Request with point geojson geometry",
+                  "value": {
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        3.883,
+                        43.6
+                      ]
+                    }
+                  }
+                },
+                "linestring_geojson": {
+                  "summary": "Request with linestring geojson geometry",
+                  "value": {
+                    "geometry": {
+                      "type": "LineString",
+                      "coordinates": [
+                        [
+                          3.85882,
+                          43.60912
+                        ],
+                        [
+                          3.86276,
+                          43.60807
+                        ],
+                        [
+                          3.8649,
+                          43.60572
+                        ],
+                        [
+                          3.86513,
+                          43.60412
+                        ],
+                        [
+                          3.86681,
+                          43.60245
+                        ],
+                        [
+                          3.86822,
+                          43.60093
+                        ],
+                        [
+                          3.87003,
+                          43.6
+                        ]
+                      ]
+                    }
+                  }
+                },
+                "polygon_geojson": {
+                  "summary": "Request with polygon geojson geometry, a 10 meters buffer and a where clause",
+                  "value": {
+                    "geometry": {
+                      "type": "Polygon",
+                      "coordinates": [
+                        [
+                          [
+                            -10,
+                            -10
+                          ],
+                          [
+                            10,
+                            -10
+                          ],
+                          [
+                            10,
+                            10
+                          ],
+                          [
+                            -10,
+                            10
+                          ],
+                          [
+                            -10,
+                            -10
+                          ]
+                        ]
+                      ]
+                    },
+                    "buffer": 10,
+                    "where": "cost:<500"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResultResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/datasets/{dataset_id}/features/intersects/": {
+      "post": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Intersect Features",
+        "description": "Returns the features that are intersecting with geometry.\n\n**Rate limit**: `20/1s`\n\n![Intersection](https://postgis.net/workshops/postgis-intro/_images/st_intersects.png)\n\n**Ratelimit:** 20/1s",
+        "operationId": "intersect_features_datasets__dataset_id__features_intersects__post",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "geojson",
+                "wkb"
+              ],
+              "type": "string",
+              "default": "geojson",
+              "title": "Format"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 20,
+              "minimum": 1,
+              "description": "The maximum number of elements to return in a result page.",
+              "default": 10,
+              "title": "Per Page"
+            },
+            "description": "The maximum number of elements to return in a result page."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The result page to fetch.",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "The result page to fetch."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequestWithGeometry"
+              },
+              "examples": {
+                "point_geojson": {
+                  "summary": "Request with point geojson geometry",
+                  "value": {
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        3.883,
+                        43.6
+                      ]
+                    }
+                  }
+                },
+                "linestring_geojson": {
+                  "summary": "Request with linestring geojson geometry",
+                  "value": {
+                    "geometry": {
+                      "type": "LineString",
+                      "coordinates": [
+                        [
+                          3.85882,
+                          43.60912
+                        ],
+                        [
+                          3.86276,
+                          43.60807
+                        ],
+                        [
+                          3.8649,
+                          43.60572
+                        ],
+                        [
+                          3.86513,
+                          43.60412
+                        ],
+                        [
+                          3.86681,
+                          43.60245
+                        ],
+                        [
+                          3.86822,
+                          43.60093
+                        ],
+                        [
+                          3.87003,
+                          43.6
+                        ]
+                      ]
+                    }
+                  }
+                },
+                "polygon_geojson": {
+                  "summary": "Request with polygon geojson geometry, a 10 meters buffer and a where clause",
+                  "value": {
+                    "geometry": {
+                      "type": "Polygon",
+                      "coordinates": [
+                        [
+                          [
+                            -10,
+                            -10
+                          ],
+                          [
+                            10,
+                            -10
+                          ],
+                          [
+                            10,
+                            10
+                          ],
+                          [
+                            -10,
+                            10
+                          ],
+                          [
+                            -10,
+                            -10
+                          ]
+                        ]
+                      ]
+                    },
+                    "buffer": 10,
+                    "where": "cost:<500"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResultResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/datasets/{dataset_id}/features/contains/": {
+      "post": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Contains Features",
+        "description": "Search for features containing geometry.\n\n**Rate limit**: `20/1s`\n\n![Within](https://postgis.net/workshops/postgis-intro/_images/st_within.png)\n\n**Ratelimit:** 20/1s",
+        "operationId": "contains_features_datasets__dataset_id__features_contains__post",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "geojson",
+                "wkb"
+              ],
+              "type": "string",
+              "default": "geojson",
+              "title": "Format"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 20,
+              "minimum": 1,
+              "description": "The maximum number of elements to return in a result page.",
+              "default": 10,
+              "title": "Per Page"
+            },
+            "description": "The maximum number of elements to return in a result page."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The result page to fetch.",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "The result page to fetch."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequestWithGeometry"
+              },
+              "examples": {
+                "point_geojson": {
+                  "summary": "Request with point geojson geometry",
+                  "value": {
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        3.883,
+                        43.6
+                      ]
+                    }
+                  }
+                },
+                "linestring_geojson": {
+                  "summary": "Request with linestring geojson geometry",
+                  "value": {
+                    "geometry": {
+                      "type": "LineString",
+                      "coordinates": [
+                        [
+                          3.85882,
+                          43.60912
+                        ],
+                        [
+                          3.86276,
+                          43.60807
+                        ],
+                        [
+                          3.8649,
+                          43.60572
+                        ],
+                        [
+                          3.86513,
+                          43.60412
+                        ],
+                        [
+                          3.86681,
+                          43.60245
+                        ],
+                        [
+                          3.86822,
+                          43.60093
+                        ],
+                        [
+                          3.87003,
+                          43.6
+                        ]
+                      ]
+                    }
+                  }
+                },
+                "polygon_geojson": {
+                  "summary": "Request with polygon geojson geometry, a 10 meters buffer and a where clause",
+                  "value": {
+                    "geometry": {
+                      "type": "Polygon",
+                      "coordinates": [
+                        [
+                          [
+                            -10,
+                            -10
+                          ],
+                          [
+                            10,
+                            -10
+                          ],
+                          [
+                            10,
+                            10
+                          ],
+                          [
+                            -10,
+                            10
+                          ],
+                          [
+                            -10,
+                            -10
+                          ]
+                        ]
+                      ]
+                    },
+                    "buffer": 10,
+                    "where": "cost:<500"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResultResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/datasets/{dataset_id}/features/within/": {
+      "post": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Within Features",
+        "description": "Search for features within geometry.\n\n**Rate limit**: `20/1s`\n\n![Within](https://postgis.net/workshops/postgis-intro/_images/st_within.png)\n\n**Ratelimit:** 20/1s",
+        "operationId": "within_features_datasets__dataset_id__features_within__post",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "geojson",
+                "wkb"
+              ],
+              "type": "string",
+              "default": "geojson",
+              "title": "Format"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 20,
+              "minimum": 1,
+              "description": "The maximum number of elements to return in a result page.",
+              "default": 10,
+              "title": "Per Page"
+            },
+            "description": "The maximum number of elements to return in a result page."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "The result page to fetch.",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "The result page to fetch."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequestWithPolygonGeometry"
+              },
+              "examples": {
+                "polygon_geojson": {
+                  "summary": "An with polygon geojson geometry, a 10 meters buffer and a where clause",
+                  "value": {
+                    "geometry": {
+                      "type": "Polygon",
+                      "coordinates": [
+                        [
+                          [
+                            -10,
+                            -10
+                          ],
+                          [
+                            10,
+                            -10
+                          ],
+                          [
+                            10,
+                            10
+                          ],
+                          [
+                            -10,
+                            10
+                          ],
+                          [
+                            -10,
+                            -10
+                          ]
+                        ]
+                      ]
+                    },
+                    "buffer": 10,
+                    "where": "cost:<500"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResultResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/datasets/{dataset_id}/features/{feature_id}": {
+      "get": {
+        "tags": [
+          "features"
+        ],
+        "summary": "Get Feature",
+        "description": "Gets a feature from its ID.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
+        "operationId": "get_feature_datasets__dataset_id__features__feature_id__get",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dataset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Dataset Id"
+            }
+          },
+          {
+            "name": "feature_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Feature Id"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "geojson",
+                "wkb"
+              ],
+              "type": "string",
+              "default": "geojson",
+              "title": "Format"
+            }
+          },
+          {
+            "name": "X-Field-Mask",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Field-Mask"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeatureRead"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/application_kit__fastapi__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Feature or Dataset were not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/features__internal__responses__HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthenticationErrorResponse": {
+        "properties": {
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "AuthenticationErrorResponse",
+        "description": "AuthenticationErrorResponse is the base authentication error model."
+      },
+      "DatasetCreateRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "The friendly name "
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
+            "title": "Url"
+          },
+          "schema_mapping": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/DatasetSchemaMapping"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Schema Mapping"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "url"
+        ],
+        "title": "DatasetCreateRequest",
+        "description": "DatasetCreateRequest represents the parameters for dataset creation."
+      },
+      "DatasetListResponse": {
+        "properties": {
+          "datasets": {
+            "items": {
+              "$ref": "#/components/schemas/DatasetSummaryResponse"
+            },
+            "type": "array",
+            "title": "Datasets"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        },
+        "type": "object",
+        "required": [
+          "datasets",
+          "pagination"
+        ],
+        "title": "DatasetListResponse"
+      },
+      "DatasetLogEntry": {
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At",
+            "description": "The date of the log entry."
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail",
+            "description": "The detail of the log entry."
+          },
+          "level": {
+            "$ref": "#/components/schemas/LoggerLevel",
+            "description": "The level of the log entry."
+          }
+        },
+        "type": "object",
+        "required": [
+          "created_at",
+          "detail",
+          "level"
+        ],
+        "title": "DatasetLogEntry"
+      },
+      "DatasetResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url",
+            "description": "The url of the data to fetch"
+          },
+          "reimport_key": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reimport Key",
+            "description": "The reimport key to be used with the reimport hook endpoint."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At",
+            "description": "The date when the dataset was created."
+          },
+          "updated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updated At",
+            "description": "The date when the dataset was last updated."
+          },
+          "scheduled_for_deletion_after": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scheduled For Deletion After",
+            "description": "After this date the dataset will be automatically removed"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "DatasetResponse"
+      },
+      "DatasetSchemaMapping": {
+        "properties": {
+          "schema_key": {
+            "$ref": "#/components/schemas/SchemaKeys"
+          },
+          "data_key": {
+            "type": "string",
+            "title": "Data Key"
+          }
+        },
+        "type": "object",
+        "required": [
+          "schema_key",
+          "data_key"
+        ],
+        "title": "DatasetSchemaMapping",
+        "description": "DatasetSchemaMapping defines a mapping between `schema_key` and user provided `data_key`."
+      },
+      "DatasetStatusResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "description": "The id of the run, can be used in communication with the support to better identify the run."
+          },
+          "steps": {
+            "items": {
+              "$ref": "#/components/schemas/DatasetStatusStep"
+            },
+            "type": "array",
+            "title": "Steps",
+            "description": "The steps of the run, ordered by start date."
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status",
+            "description": "The status of the import run for the dataset."
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "steps",
+          "status"
+        ],
+        "title": "DatasetStatusResponse",
+        "examples": [
+          {
+            "id": "832eb97f-266c-4387-991d-52e77366dc99",
+            "status": "success",
+            "steps": [
+              {
+                "end": "2024-06-07T09:30:48.356003",
+                "entries": [
+                  {
+                    "created_at": "2024-06-07T09:30:36.741569",
+                    "detail": "Fetching https://hostname.com/archive.zip...",
+                    "level": "info"
+                  },
+                  {
+                    "created_at": "2024-06-07T09:30:48.103825",
+                    "detail": "Loading dataset...",
+                    "level": "info"
+                  },
+                  {
+                    "created_at": "2024-06-07T09:30:48.351829",
+                    "detail": "Dataset loaded",
+                    "level": "info"
+                  }
+                ],
+                "name": "fetch",
+                "start": "2024-06-07T09:30:36.715881",
+                "status": "success"
+              },
+              {
+                "end": "2024-06-07T09:31:18.900746",
+                "entries": [
+                  {
+                    "created_at": "2024-06-07T09:30:48.366471",
+                    "detail": "Will import 34867 features.",
+                    "level": "info"
+                  },
+                  {
+                    "created_at": "2024-06-07T09:31:18.785477",
+                    "detail": "Successfully imported 34867 features.",
+                    "level": "info"
+                  }
+                ],
+                "name": "import",
+                "start": "2024-06-07T09:30:48.358285",
+                "status": "success"
+              }
+            ]
+          }
+        ]
+      },
+      "DatasetStatusStep": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "fetch",
+              "import"
+            ],
+            "title": "Name",
+            "description": "The name of the step. Currently can only be `fetch` of `import`"
+          },
+          "start": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Start",
+            "description": "The date at which the step started."
+          },
+          "end": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End",
+            "description": "The date at which the step ended or null if in progress."
+          },
+          "entries": {
+            "items": {
+              "$ref": "#/components/schemas/DatasetLogEntry"
+            },
+            "type": "array",
+            "title": "Entries",
+            "description": "The log entries for the step."
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status",
+            "description": "The status of the step."
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "start",
+          "end",
+          "entries",
+          "status"
+        ],
+        "title": "DatasetStatusStep"
+      },
+      "DatasetSummaryResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At",
+            "description": "The date when the dataset was created."
+          },
+          "updated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updated At",
+            "description": "The date when the dataset was last updated."
+          },
+          "scheduled_for_deletion_after": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scheduled For Deletion After",
+            "description": "After this date the dataset will be automatically removed"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "created_at"
+        ],
+        "title": "DatasetSummaryResponse"
+      },
+      "DatasetUpdate": {
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name",
+            "description": "The friendly name "
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2083,
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          }
+        },
+        "type": "object",
+        "title": "DatasetUpdate"
+      },
+      "FeatureRead": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "geometry": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/PointGeometry"
+              },
+              {
+                "$ref": "#/components/schemas/LineStringGeometry"
+              },
+              {
+                "$ref": "#/components/schemas/PolygonGeometry"
+              },
+              {
+                "$ref": "#/components/schemas/MultiPointGeometry"
+              },
+              {
+                "$ref": "#/components/schemas/MultiLineStringGeometry"
+              },
+              {
+                "$ref": "#/components/schemas/MultiPolygonGeometry"
+              }
+            ],
+            "title": "Geometry"
+          },
+          "attributes": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Attributes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "geometry",
+          "attributes"
+        ],
+        "title": "FeatureRead"
+      },
+      "FeatureSummaryResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id",
+            "description": "The feature ID."
+          },
+          "geometry": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/PolygonGeometry"
+              },
+              {
+                "$ref": "#/components/schemas/PointGeometry"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Geometry",
+            "description": "The geometry WKB base64-encoded"
+          },
+          "attributes": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attributes",
+            "description": "The feature attributes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "title": "FeatureSummaryResponse",
+        "description": "FeatureSummaryResponse represents the minimal amount of information to be able to fetch a feature details."
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ImportResponse": {
+        "properties": {
+          "dataset_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Dataset Id",
+            "description": "The dataset id that was scheduled for import."
+          }
+        },
+        "type": "object",
+        "required": [
+          "dataset_id"
+        ],
+        "title": "ImportResponse"
+      },
+      "LineStringGeometry": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "LineString",
+            "title": "Type",
+            "default": "LineString"
+          },
+          "coordinates": {
+            "items": {
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array",
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "type": "array",
+            "title": "Coordinates"
+          }
+        },
+        "type": "object",
+        "required": [
+          "coordinates"
+        ],
+        "title": "LineStringGeometry"
+      },
+      "LoggerLevel": {
+        "type": "string",
+        "enum": [
+          "info",
+          "warning",
+          "error"
+        ],
+        "title": "LoggerLevel"
+      },
+      "MultiLineStringGeometry": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "MultiLineString",
+            "title": "Type",
+            "default": "MultiLineString"
+          },
+          "coordinates": {
+            "items": {
+              "items": {
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array",
+                "maxItems": 2,
+                "minItems": 2
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Coordinates"
+          }
+        },
+        "type": "object",
+        "required": [
+          "coordinates"
+        ],
+        "title": "MultiLineStringGeometry"
+      },
+      "MultiPointGeometry": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "MultiPoint",
+            "title": "Type",
+            "default": "MultiPoint"
+          },
+          "coordinates": {
+            "items": {
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array",
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "type": "array",
+            "title": "Coordinates"
+          }
+        },
+        "type": "object",
+        "required": [
+          "coordinates"
+        ],
+        "title": "MultiPointGeometry"
+      },
+      "MultiPolygonGeometry": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "MultiPolygon",
+            "title": "Type",
+            "default": "MultiPolygon"
+          },
+          "coordinates": {
+            "items": {
+              "items": {
+                "items": {
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "type": "array",
+                  "maxItems": 2,
+                  "minItems": 2
+                },
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Coordinates"
+          }
+        },
+        "type": "object",
+        "required": [
+          "coordinates"
+        ],
+        "title": "MultiPolygonGeometry"
+      },
+      "Pagination": {
+        "properties": {
+          "prev": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prev",
+            "description": "The previous page number if any."
+          },
+          "next": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next",
+            "description": "The next page number if any."
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page",
+            "description": "The current page number."
+          }
+        },
+        "type": "object",
+        "required": [
+          "page"
+        ],
+        "title": "Pagination",
+        "description": "Pagination represents page information."
+      },
+      "PointGeometry": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "Point",
+            "title": "Type",
+            "default": "Point"
+          },
+          "coordinates": {
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array",
+            "maxItems": 2,
+            "minItems": 2,
+            "title": "Coordinates"
+          }
+        },
+        "type": "object",
+        "required": [
+          "coordinates"
+        ],
+        "title": "PointGeometry"
+      },
+      "PolygonGeometry": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "Polygon",
+            "title": "Type",
+            "default": "Polygon"
+          },
+          "coordinates": {
+            "items": {
+              "items": {
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array",
+                "maxItems": 2,
+                "minItems": 2
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Coordinates"
+          }
+        },
+        "type": "object",
+        "required": [
+          "coordinates"
+        ],
+        "title": "PolygonGeometry"
+      },
+      "SchemaKeys": {
+        "type": "string",
+        "enum": [
+          "title"
+        ],
+        "title": "SchemaKeys",
+        "description": "SchemaKeys are the allowed fields to be mapped."
+      },
+      "SearchRequest": {
+        "properties": {
+          "where": {
+            "type": "string",
+            "title": "Where",
+            "description": "Applies a Woosmap filter on feature attributes.",
+            "examples": [
+              "cost_col:>32.3"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "where"
+        ],
+        "title": "SearchRequest"
+      },
+      "SearchRequestWithGeometry": {
+        "properties": {
+          "geometry": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/PointGeometry"
+              },
+              {
+                "$ref": "#/components/schemas/LineStringGeometry"
+              },
+              {
+                "$ref": "#/components/schemas/PolygonGeometry"
+              }
+            ],
+            "title": "Geometry",
+            "description": "\nA geometry can be passed as:\n- A GeoJSON geometry object, limited to Point, LineString and Polygon see [GeoJSON rfc7946](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1) for more information.\n- A WKT geometry see [Well-known text representation](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) for more information\n- A google encoded polyline see [Google-encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) for more information\n- A bare point defined as lat,lng\n        "
+          },
+          "buffer": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Buffer",
+            "description": "When set applies a buffer operation to input geometry see [Buffer Analysis](https://en.wikipedia.org/wiki/Buffer_analysis)."
+          },
+          "where": {
+            "type": "string",
+            "title": "Where",
+            "description": "Applies a Woosmap filter on feature attributes.",
+            "examples": [
+              "cost_col:>32.3"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "geometry"
+        ],
+        "title": "SearchRequestWithGeometry",
+        "description": "Subclass with the Point, LineString & Polygon geometry type"
+      },
+      "SearchRequestWithPolygonGeometry": {
+        "properties": {
+          "geometry": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/PolygonGeometry"
+              }
+            ],
+            "title": "Geometry",
+            "description": "\nA geometry can be passed as:\n- A GeoJSON geometry object, limited to Polygon see [GeoJSON rfc7946](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1) for more information.\n- A WKT geometry see [Well-known text representation](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) for more information\n        "
+          },
+          "buffer": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Buffer",
+            "description": "When set applies a buffer operation to input geometry see [Buffer Analysis](https://en.wikipedia.org/wiki/Buffer_analysis)."
+          },
+          "where": {
+            "type": "string",
+            "title": "Where",
+            "description": "Applies a Woosmap filter on feature attributes.",
+            "examples": [
+              "cost_col:>32.3"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "geometry"
+        ],
+        "title": "SearchRequestWithPolygonGeometry",
+        "description": "Subclass with the Polygon geometry type"
+      },
+      "SearchResultResponse": {
+        "properties": {
+          "features": {
+            "items": {
+              "$ref": "#/components/schemas/FeatureSummaryResponse"
+            },
+            "type": "array",
+            "title": "Features",
+            "description": "The list of FeatureSummaryResponse that matched the search"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination",
+            "description": "The pagination information"
+          }
+        },
+        "type": "object",
+        "required": [
+          "features",
+          "pagination"
+        ],
+        "title": "SearchResultResponse"
+      },
+      "Status": {
+        "type": "string",
+        "enum": [
+          "success",
+          "in_progress",
+          "failed"
+        ],
+        "title": "Status"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "application_kit__fastapi__responses__HTTPErrorModel": {
+        "properties": {
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "HTTPErrorModel"
+      },
+      "features__internal__responses__HTTPErrorModel": {
+        "properties": {
+          "details": {
+            "type": "string",
+            "title": "Details"
+          }
+        },
+        "type": "object",
+        "required": [
+          "details"
+        ],
+        "title": "HTTPErrorModel"
+      }
+    },
+    "securitySchemes": {
+      "PrivateKeyWithWrite": {
+        "type": "apiKey",
+        "description": "Private key with write permission. Must stay private.",
+        "in": "query",
+        "name": "private_key"
+      },
+      "PrivateKeyWithWriteHeader": {
+        "type": "apiKey",
+        "description": "Private key with write permission. Must stay private.",
+        "in": "header",
+        "name": "X-Api-Key"
+      },
+      "PublicAPIKey": {
+        "type": "apiKey",
+        "description": "Public key of the project (starts with `woos-`) or an API key (a UUID).",
+        "in": "query",
+        "name": "key"
+      },
+      "PrivateApiKey": {
+        "type": "apiKey",
+        "description": "Private key with or without write permission.",
+        "in": "query",
+        "name": "private_key"
+      },
+      "PrivateApiKeyHeader": {
+        "type": "apiKey",
+        "description": "Private key with or without write permission.",
+        "in": "header",
+        "name": "X-Api-Key"
+      }
+    }
+  }
+}

@@ -1,0 +1,1214 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "External-api-wrapper_what3words",
+    "summary": "Add What3Words capabilities to your address search",
+    "description": "Add What3Words capabilities to your address search",
+    "version": "v6.0.48"
+  },
+  "paths": {
+    "/what3words/convert-to-3wa": {
+      "get": {
+        "tags": [
+          "what3words"
+        ],
+        "summary": "Convert To What 3 Words",
+        "description": "This function will convert a latitude and longitude to a 3 word address, in the language of your choice.\nIt also returns country, the bounds of the grid square,\na nearby place (such as a local town) and a link to the what3words map site.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
+        "operationId": "convert_to_what_3_words_what3words_convert_to_3wa_get",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "coordinates",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Coordinates as a comma separated string of latitude and longitude",
+              "examples": [
+                "48.858304,2.294514"
+              ],
+              "title": "Coordinates"
+            },
+            "description": "Coordinates as a comma separated string of latitude and longitude"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "json",
+                "geojson"
+              ],
+              "type": "string",
+              "description": "Return data format type; can be either json or geojson",
+              "default": "json",
+              "title": "Format"
+            },
+            "description": "Return data format type; can be either json or geojson"
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "A supported address language as an ISO 639-1 2 letter code.",
+              "default": "en",
+              "title": "Language"
+            },
+            "description": "A supported address language as an ISO 639-1 2 letter code."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/JsonCoordinatesResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/GeoJsonCoordinatesResponse"
+                    }
+                  ],
+                  "title": "Response Convert To What 3 Words What3Words Convert To 3Wa Get"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X GET 'https://api.woosmap.com/what3words/convert-to-3wa?coordinates=48.858304,2.294514&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/what3words/convert-to-3wa?coordinates=48.858304,2.294514&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/what3words/convert-to-3wa?coordinates=48.858304,2.294514&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          }
+        ],
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/what3words/convert-to-address": {
+      "get": {
+        "tags": [
+          "what3words"
+        ],
+        "summary": "Convert To Address",
+        "description": "This function converts a 3 word address to a list of address.\nIt will return at most the 5 closest addresses to the what3words provided.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
+        "operationId": "convert_to_address_what3words_convert_to_address_get",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "words",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "A 3 word address as a string. It must be three words separated with dots or a japanese middle dot character (・). Words separated by spaces will be rejected. Optionally, the 3 word address can be prefixed with /// (which would be encoded as %2F%2F%2F)",
+              "examples": [
+                "couch.spotted.amended"
+              ],
+              "title": "Words"
+            },
+            "description": "A 3 word address as a string. It must be three words separated with dots or a japanese middle dot character (・). Words separated by spaces will be rejected. Optionally, the 3 word address can be prefixed with /// (which would be encoded as %2F%2F%2F)"
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "A supported address language as an ISO 639-1 2 letter code.",
+              "default": "en",
+              "title": "Language"
+            },
+            "description": "A supported address language as an ISO 639-1 2 letter code."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LiteAddressResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X GET 'https://api.woosmap.com/what3words/convert-to-address?words=couch.spotted.amended&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/what3words/convert-to-address?words=couch.spotted.amended&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/what3words/convert-to-address?words=couch.spotted.amended&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          }
+        ],
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    },
+    "/what3words/autosuggest": {
+      "get": {
+        "tags": [
+          "what3words"
+        ],
+        "summary": "Autosuggest",
+        "description": "AutoSuggest can take a slightly incorrect 3 word address and suggest a list of valid 3 word addresses.\nIt has powerful features that can, for example, optionally limit results to a country or area,\nand prioritise results that are near the user.\n\n**Rate limit**: `20/1s`\n\n**Ratelimit:** 20/1s",
+        "operationId": "autosuggest_what3words_autosuggest_get",
+        "security": [
+          {
+            "PublicAPIKey": []
+          },
+          {
+            "PrivateApiKey": []
+          },
+          {
+            "PrivateApiKeyHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The full or partial 3 word address to obtain suggestions for. At minimum this must be the first two complete words plus at least one character from the third word.",
+              "examples": [
+                "couch.spotted.a"
+              ],
+              "title": "Input"
+            },
+            "description": "The full or partial 3 word address to obtain suggestions for. At minimum this must be the first two complete words plus at least one character from the third word."
+          },
+          {
+            "name": "focus",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "This is a location, specified as latitude,longitude (often where the user making the query is). If specified, the results will be weighted to give preference to those near the focus.",
+              "examples": [
+                "48.861026,2.335853"
+              ],
+              "title": "Focus"
+            },
+            "description": "This is a location, specified as latitude,longitude (often where the user making the query is). If specified, the results will be weighted to give preference to those near the focus."
+          },
+          {
+            "name": "clip-to-country",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Restricts AutoSuggest to only return results inside the countries specified by comma-separated list of ISO 3166-1 alpha-2 country codes.",
+              "examples": [
+                "FR"
+              ],
+              "title": "Clip-To-Country"
+            },
+            "description": "Restricts AutoSuggest to only return results inside the countries specified by comma-separated list of ISO 3166-1 alpha-2 country codes."
+          },
+          {
+            "name": "clip-to-bounding-box",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Restrict AutoSuggest results to a bounding box, specified by coordinates.south_lat,west_lng,north_lat,east_lng, where: south_lat less than or equal to north_lat, west_lng less than or equal to east_lng.",
+              "examples": [
+                "48.624314,1.804429,49.058148,2.908555"
+              ],
+              "title": "Clip-To-Bounding-Box"
+            },
+            "description": "Restrict AutoSuggest results to a bounding box, specified by coordinates.south_lat,west_lng,north_lat,east_lng, where: south_lat less than or equal to north_lat, west_lng less than or equal to east_lng."
+          },
+          {
+            "name": "clip-to-circle",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Restrict AutoSuggest results to a circle, specified by lat, lng, kilometres, where kilometres is the radius of the circle.",
+              "examples": [
+                "48.839701,2.291878,20"
+              ],
+              "title": "Clip-To-Circle"
+            },
+            "description": "Restrict AutoSuggest results to a circle, specified by lat, lng, kilometres, where kilometres is the radius of the circle."
+          },
+          {
+            "name": "clip-to-polygon",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Restrict AutoSuggest results to a polygon, specified by a comma-separated list of lat, lng pairs. The polygon should be closed, i.e. the first element should be repeated as the last element; also the list should contain at least 4 pairs. The API is currently limited to accepting up to 25 pairs.",
+              "examples": [
+                "48.823547,2.199174,48.823547,2.199174,48.922216,2.328709,48.888626,2.473673,48.819279,2.445513,48.784865,2.330668,48.823547,2.199174"
+              ],
+              "title": "Clip-To-Polygon"
+            },
+            "description": "Restrict AutoSuggest results to a polygon, specified by a comma-separated list of lat, lng pairs. The polygon should be closed, i.e. the first element should be repeated as the last element; also the list should contain at least 4 pairs. The API is currently limited to accepting up to 25 pairs."
+          },
+          {
+            "name": "input-type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "text",
+                "vocon-hybrid",
+                "nmdp-asr",
+                "generic-voice"
+              ],
+              "type": "string",
+              "description": "For power users, used to specify voice input mode.",
+              "default": "text",
+              "title": "Input-Type"
+            },
+            "description": "For power users, used to specify voice input mode."
+          },
+          {
+            "name": "prefer-land",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Makes AutoSuggest prefer results on land to those in the sea.",
+              "default": true,
+              "title": "Prefer-Land"
+            },
+            "description": "Makes AutoSuggest prefer results on land to those in the sea."
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "For normal text input, specifies a fallback language, which will help guide AutoSuggest if the input is particularly messy. A supported address language as an ISO 639-1 2 letter code.",
+              "examples": [
+                "fr"
+              ],
+              "title": "Language"
+            },
+            "description": "For normal text input, specifies a fallback language, which will help guide AutoSuggest if the input is particularly messy. A supported address language as an ISO 639-1 2 letter code."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutoSuggestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unable to locate credentials.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Out of free quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Credentials found, but not matching.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "label": "cURL",
+            "source": "curl -L -X GET 'https://api.woosmap.com/what3words/autosuggest?input=couch.spotted.am&clip-to-country=fr&key=YOUR_PUBLIC_API_KEY' \\\n-H 'Referer: http://localhost'"
+          },
+          {
+            "lang": "python",
+            "label": "Python",
+            "source": "import requests\n\nurl = \"https://api.woosmap.com/what3words/autosuggest?input=couch.spotted.am&clip-to-country=fr&key=YOUR_PUBLIC_API_KEY\"\n\npayload={}\nheaders = {\n    'Referer': 'http://localhost'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+          },
+          {
+            "lang": "javascript",
+            "label": "JavaScript",
+            "source": "var requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\n\nfetch(\"https://api.woosmap.com/what3words/autosuggest?input=couch.spotted.am&clip-to-country=fr&key=YOUR_PUBLIC_API_KEY\", requestOptions)\n  .then(response => response.text())\n  .then(result => console.log(result))\n  .catch(error => console.log('error', error));"
+          }
+        ],
+        "x-ratelimit-limit": 20,
+        "x-ratelimit-window-seconds": 1
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AddressSummary": {
+        "properties": {
+          "public_id": {
+            "type": "string",
+            "title": "Public Id",
+            "description": "Public ID of address listed as sub_building"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "Human readable address"
+          }
+        },
+        "type": "object",
+        "required": [
+          "public_id",
+          "description"
+        ],
+        "title": "AddressSummary"
+      },
+      "AuthenticationErrorResponse": {
+        "properties": {
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "AuthenticationErrorResponse",
+        "description": "AuthenticationErrorResponse is the base authentication error model."
+      },
+      "AutoSuggestResponse": {
+        "properties": {
+          "suggestions": {
+            "items": {
+              "$ref": "#/components/schemas/AutoSuggestions"
+            },
+            "type": "array",
+            "title": "Suggestions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "suggestions"
+        ],
+        "title": "AutoSuggestResponse",
+        "example": {
+          "suggestions": [
+            {
+              "country": "FR",
+              "distanceToFocusKm": 4,
+              "language": "en",
+              "nearestPlace": "Paris",
+              "rank": 1,
+              "words": "couches.spotted.alas"
+            },
+            {
+              "country": "FR",
+              "distanceToFocusKm": 8,
+              "language": "en",
+              "nearestPlace": "Paris",
+              "rank": 2,
+              "words": "couches.spotted.atom"
+            },
+            {
+              "country": "FR",
+              "distanceToFocusKm": 30,
+              "language": "en",
+              "nearestPlace": "Pontcarré, Seine-et-Marne",
+              "rank": 3,
+              "words": "couch.spotted.boat"
+            },
+            {
+              "country": "FR",
+              "distanceToFocusKm": 27,
+              "language": "en",
+              "nearestPlace": "Triel-sur-Seine, Yvelines",
+              "rank": 4,
+              "words": "vouch.spotted.dare"
+            }
+          ]
+        }
+      },
+      "AutoSuggestions": {
+        "properties": {
+          "country": {
+            "type": "string",
+            "title": "Country",
+            "description": "Country Code"
+          },
+          "nearestPlace": {
+            "type": "string",
+            "title": "Nearestplace",
+            "description": "Nearest Place"
+          },
+          "words": {
+            "type": "string",
+            "title": "Words",
+            "description": "The what3words address"
+          },
+          "distanceToFocusKm": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distancetofocuskm",
+            "description": "Distance to the Lat Lng focus (if provided)"
+          },
+          "rank": {
+            "type": "integer",
+            "title": "Rank",
+            "description": "Suggestion Rank"
+          },
+          "language": {
+            "type": "string",
+            "title": "Language",
+            "description": "Language Code"
+          }
+        },
+        "type": "object",
+        "required": [
+          "country",
+          "nearestPlace",
+          "words",
+          "rank",
+          "language"
+        ],
+        "title": "AutoSuggestions"
+      },
+      "Coordinates": {
+        "properties": {
+          "lng": {
+            "type": "number",
+            "title": "Lng",
+            "description": "Longitude"
+          },
+          "lat": {
+            "type": "number",
+            "title": "Lat",
+            "description": "Latitude"
+          }
+        },
+        "type": "object",
+        "required": [
+          "lng",
+          "lat"
+        ],
+        "title": "Coordinates"
+      },
+      "GeoJsonCoordinatesResponse": {
+        "properties": {
+          "features": {
+            "items": {
+              "$ref": "#/components/schemas/GeoJsonFeature"
+            },
+            "type": "array",
+            "title": "Features",
+            "description": "GeoJSON Features"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "description": "GeoJSON Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "features",
+          "type"
+        ],
+        "title": "GeoJsonCoordinatesResponse",
+        "example": {
+          "features": [
+            {
+              "bbox": [
+                2.294494,
+                48.85829,
+                2.294535,
+                48.858317
+              ],
+              "geometry": {
+                "coordinates": [
+                  2.294514,
+                  48.858304
+                ],
+                "type": "Point"
+              },
+              "properties": {
+                "country": "FR",
+                "nearestPlace": "Paris",
+                "words": "couch.spotted.amended",
+                "language": "en",
+                "map": "https://w3w.co/couch.spotted.amended"
+              },
+              "type": "Feature"
+            }
+          ],
+          "type": "FeatureCollection"
+        }
+      },
+      "GeoJsonFeature": {
+        "properties": {
+          "bbox": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "maxItems": 4,
+            "minItems": 4,
+            "title": "Bbox",
+            "description": "Bounding Box"
+          },
+          "geometry": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Geometry",
+            "description": "Geometry"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "description": "GeoJSON type"
+          },
+          "properties": {
+            "$ref": "#/components/schemas/Properties",
+            "description": "Feature Properties"
+          }
+        },
+        "type": "object",
+        "required": [
+          "bbox",
+          "geometry",
+          "type",
+          "properties"
+        ],
+        "title": "GeoJsonFeature"
+      },
+      "HTTPErrorModel": {
+        "properties": {
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "HTTPErrorModel"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "JsonCoordinatesResponse": {
+        "properties": {
+          "country": {
+            "type": "string",
+            "title": "Country",
+            "description": "Country Code"
+          },
+          "nearestPlace": {
+            "type": "string",
+            "title": "Nearestplace",
+            "description": "Nearest Place"
+          },
+          "words": {
+            "type": "string",
+            "title": "Words",
+            "description": "The what3words address"
+          },
+          "language": {
+            "type": "string",
+            "title": "Language",
+            "description": "Language Code"
+          },
+          "locale": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Locale",
+            "description": "Language Locale"
+          },
+          "map": {
+            "type": "string",
+            "title": "Map",
+            "description": "Link to what3words address on a map"
+          },
+          "square": {
+            "$ref": "#/components/schemas/Square",
+            "description": "Lat Lng coordinate Square"
+          },
+          "coordinates": {
+            "$ref": "#/components/schemas/Coordinates",
+            "description": "Lat Lng coordinate"
+          }
+        },
+        "type": "object",
+        "required": [
+          "country",
+          "nearestPlace",
+          "words",
+          "language",
+          "map",
+          "square",
+          "coordinates"
+        ],
+        "title": "JsonCoordinatesResponse",
+        "example": {
+          "coordinates": {
+            "lat": 48.858304,
+            "lng": 2.294514
+          },
+          "country": "FR",
+          "language": "en",
+          "map": "https://w3w.co/couch.spotted.amended",
+          "nearestPlace": "Paris",
+          "square": {
+            "northeast": {
+              "lat": 48.858317,
+              "lng": 2.294535
+            },
+            "southwest": {
+              "lat": 48.85829,
+              "lng": 2.294494
+            }
+          },
+          "words": "couch.spotted.amended"
+        }
+      },
+      "LiteAddressResponse": {
+        "properties": {
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/LiteAddressResult"
+            },
+            "type": "array",
+            "title": "Results",
+            "description": "Results"
+          }
+        },
+        "type": "object",
+        "required": [
+          "results"
+        ],
+        "title": "LiteAddressResponse",
+        "example": {
+          "results": [
+            {
+              "description": "Radway House, Alfred Road, London, W2 5ER",
+              "public_id": "",
+              "sub_buildings": [
+                {
+                  "description": "Flat 1, Radway House, Alfred Road, London, W2 5ER",
+                  "public_id": "Nmp0K1VVUFQ4eFI3S1BuaDZEZVVJVWhYY3A4PV9faitia1pNNURnOWYvQmRjMUdweXl5SjdLZUZnPQ=="
+                },
+                {
+                  "description": "Flat 2, Radway House, Alfred Road, London, W2 5ER",
+                  "public_id": "Nmp0K1VVUFQ4eFI3S1BuaDZEZVVJVWhYY3A4PV9fbTRoZVpxYkhBYVVXSytqek04UGtGQ1VLTVI0PQ=="
+                }
+              ],
+              "types": [
+                "address"
+              ]
+            },
+            {
+              "description": "Astley House, Alfred Road, London, W2 5EX",
+              "public_id": "",
+              "status": "not_yet_built",
+              "sub_buildings": [
+                {
+                  "description": "Flat 1, Astley House, Alfred Road, London, W2 5EX",
+                  "public_id": "N3VCclhUODduWjJxd2NCSUdFclJ6SnRseGxrPV9fSTBKM1YxOFBBWEJjRVNKb1J0T3hNTFNiLzhFPQ=="
+                },
+                {
+                  "description": "Flat 2, Astley House, Alfred Road, London, W2 5EX",
+                  "public_id": "N3VCclhUODduWjJxd2NCSUdFclJ6SnRseGxrPV9fN3VCclhUODduWjJxd2NCSUdFclJ6SnRseGxrPQ=="
+                }
+              ],
+              "types": [
+                "address"
+              ]
+            },
+            {
+              "description": "65 Alfred Road, London, W2 5EU",
+              "public_id": "",
+              "sub_buildings": [
+                {
+                  "description": "Blaiz Ltd, 65 Alfred Road, London, W2 5EU",
+                  "public_id": "MUVBZWttTlo4OUYxL2dQWmJteDdFV2VidmVvPV9fMUVBZWttTlo4OUYxL2dQWmJteDdFV2VidmVvPQ=="
+                },
+                {
+                  "description": "Carnot Ltd, 65 Alfred Road, London, W2 5EU",
+                  "public_id": "MUVBZWttTlo4OUYxL2dQWmJteDdFV2VidmVvPV9fRDRPb0VLd0UvNEZYMlpLR21EMC9xRGQvMUZJPQ=="
+                }
+              ],
+              "types": [
+                "address"
+              ]
+            }
+          ]
+        }
+      },
+      "LiteAddressResult": {
+        "properties": {
+          "types": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "address",
+                    "route",
+                    "named_place",
+                    "locality",
+                    "city",
+                    "town",
+                    "village",
+                    "hamlet",
+                    "borough",
+                    "suburb",
+                    "quarter",
+                    "neighbourhood",
+                    "postal_code",
+                    "admin_level",
+                    "admin_level_1",
+                    "admin_level_2",
+                    "admin_level_3"
+                  ]
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Types",
+            "description": "Address Types"
+          },
+          "formatted_address": {
+            "type": "string",
+            "title": "Formatted Address",
+            "description": "Human readable address"
+          },
+          "public_id": {
+            "type": "string",
+            "title": "Public Id",
+            "description": "Public ID of the POI"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string",
+                "const": "not_yet_built"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status",
+            "description": "Address Status"
+          },
+          "sub_buildings": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/AddressSummary"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sub Buildings",
+            "description": "list of specific addresses at that location"
+          }
+        },
+        "type": "object",
+        "required": [
+          "types",
+          "formatted_address",
+          "public_id"
+        ],
+        "title": "LiteAddressResult"
+      },
+      "Properties": {
+        "properties": {
+          "country": {
+            "type": "string",
+            "title": "Country",
+            "description": "Country Code"
+          },
+          "nearestPlace": {
+            "type": "string",
+            "title": "Nearestplace",
+            "description": "Nearest Place"
+          },
+          "words": {
+            "type": "string",
+            "title": "Words",
+            "description": "The what3words address"
+          },
+          "language": {
+            "type": "string",
+            "title": "Language",
+            "description": "Language Code"
+          },
+          "locale": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Locale",
+            "description": "Language Locale"
+          },
+          "map": {
+            "type": "string",
+            "title": "Map",
+            "description": "Link to what3words address on a map"
+          }
+        },
+        "type": "object",
+        "required": [
+          "country",
+          "nearestPlace",
+          "words",
+          "language",
+          "map"
+        ],
+        "title": "Properties"
+      },
+      "Square": {
+        "properties": {
+          "southwest": {
+            "$ref": "#/components/schemas/Coordinates",
+            "description": "Lat Lng coordinate"
+          },
+          "northeast": {
+            "$ref": "#/components/schemas/Coordinates",
+            "description": "Lat Lng coordinate"
+          }
+        },
+        "type": "object",
+        "required": [
+          "southwest",
+          "northeast"
+        ],
+        "title": "Square"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "PublicAPIKey": {
+        "type": "apiKey",
+        "description": "Public key of the project (starts with `woos-`) or an API key (a UUID).",
+        "in": "query",
+        "name": "key"
+      },
+      "PrivateApiKey": {
+        "type": "apiKey",
+        "description": "Private key with or without write permission.",
+        "in": "query",
+        "name": "private_key"
+      },
+      "PrivateApiKeyHeader": {
+        "type": "apiKey",
+        "description": "Private key with or without write permission.",
+        "in": "header",
+        "name": "X-Api-Key"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Woosmap for what3words API",
+      "description": "Add What3Words capabilities to your address search."
+    }
+  ]
+}
