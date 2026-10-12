@@ -12,7 +12,7 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.4.0
+      - uses: actions/checkout@v7.0.1
       - name: Download upstream specs
         run: tools/sync-upstream-specs.sh
       # A PAT, so that the branch push runs Build and Test on the PR.
