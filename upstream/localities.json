@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Localities",
-    "version": "v25.8.3"
+    "version": "v25.10.1"
   },
   "servers": [
     {
@@ -1433,7 +1433,7 @@
                   ]
                 }
               ],
-              "formatted_address": "House Of Commons, Houses Of Parliament, London, SW1A 0AA",
+              "formatted_address": "House Of Commons, Houses Of Parliament, London, SW1A 0AA, United Kingdom",
               "geometry": {
                 "accuracy": "ROOFTOP",
                 "location": {
@@ -1482,7 +1482,7 @@
                   ]
                 }
               ],
-              "formatted_address": "SW1A 0AA, City of London",
+              "formatted_address": "SW1A 0AA, City of London, United Kingdom",
               "geometry": {
                 "accuracy": "POSTAL_CODE",
                 "location": {
@@ -1734,7 +1734,7 @@
                     ]
                   }
                 ],
-                "formatted_address": "Place Jeanne D'Arc, 75013, Paris",
+                "formatted_address": "Place Jeanne D'Arc, 75013, Paris, France",
                 "geometry": {
                   "location": {
                     "lat": 48.829405,
@@ -2186,7 +2186,7 @@
                 "categories": [
                   "business.food_and_drinks.fast_food"
                 ],
-                "formatted_address": "Broadway, New York",
+                "formatted_address": "Broadway, New York, United States",
                 "geometry": {
                   "location": {
                     "lat": 40.715905992166256,
@@ -2229,7 +2229,7 @@
                 "categories": [
                   "business.theatre"
                 ],
-                "formatted_address": "Thomas Street, New York",
+                "formatted_address": "Thomas Street, New York, United States",
                 "geometry": {
                   "location": {
                     "lat": 40.71609349534023,
@@ -2537,7 +2537,7 @@
                   }
                 ],
                 "distance": 28.62347934634507,
-                "formatted_address": "Radway House, Alfred Road, London, W2 5ER",
+                "formatted_address": "Radway House, Alfred Road, London, W2 5ER, United Kingdom",
                 "geometry": {
                   "location": {
                     "lat": 51.5211258,
