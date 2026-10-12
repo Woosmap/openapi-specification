@@ -7,7 +7,7 @@
     "x-document-meta-data": {
       "copyright": "© 2025 Woosmap"
     },
-    "version": "1.46.0",
+    "version": "1.46.1",
     "contact": {
       "name": "Woosmap API"
     }
@@ -19387,7 +19387,7 @@
               "ZERO_RESULTS"
             ],
             "title": "Status",
-            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of requested routes is too long and the matrix/route cannot be processed (The limit is 500km).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
+            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
             "default": "OK"
           },
           "isoline": {
@@ -19697,7 +19697,7 @@
               "ZERO_RESULTS"
             ],
             "title": "Status",
-            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of requested routes is too long and the matrix/route cannot be processed (The limit is 500km).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
+            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
             "default": "OK"
           },
           "rows": {
@@ -20071,7 +20071,7 @@
               "ZERO_RESULTS"
             ],
             "title": "Status",
-            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of requested routes is too long and the matrix/route cannot be processed (The limit is 500km).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
+            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
             "default": "OK"
           },
           "routes": {
@@ -20997,7 +20997,7 @@
                   ]
                 }
               ],
-              "formatted_address": "House Of Commons, Houses Of Parliament, London, SW1A 0AA",
+              "formatted_address": "House Of Commons, Houses Of Parliament, London, SW1A 0AA, United Kingdom",
               "geometry": {
                 "accuracy": "ROOFTOP",
                 "location": {
@@ -21046,7 +21046,7 @@
                   ]
                 }
               ],
-              "formatted_address": "SW1A 0AA, City of London",
+              "formatted_address": "SW1A 0AA, City of London, United Kingdom",
               "geometry": {
                 "accuracy": "POSTAL_CODE",
                 "location": {
@@ -21298,7 +21298,7 @@
                     ]
                   }
                 ],
-                "formatted_address": "Place Jeanne D'Arc, 75013, Paris",
+                "formatted_address": "Place Jeanne D'Arc, 75013, Paris, France",
                 "geometry": {
                   "location": {
                     "lat": 48.829405,
@@ -21750,7 +21750,7 @@
                 "categories": [
                   "business.food_and_drinks.fast_food"
                 ],
-                "formatted_address": "Broadway, New York",
+                "formatted_address": "Broadway, New York, United States",
                 "geometry": {
                   "location": {
                     "lat": 40.715905992166256,
@@ -21793,7 +21793,7 @@
                 "categories": [
                   "business.theatre"
                 ],
-                "formatted_address": "Thomas Street, New York",
+                "formatted_address": "Thomas Street, New York, United States",
                 "geometry": {
                   "location": {
                     "lat": 40.71609349534023,
@@ -22101,7 +22101,7 @@
                   }
                 ],
                 "distance": 28.62347934634507,
-                "formatted_address": "Radway House, Alfred Road, London, W2 5ER",
+                "formatted_address": "Radway House, Alfred Road, London, W2 5ER, United Kingdom",
                 "geometry": {
                   "location": {
                     "lat": 51.5211258,
