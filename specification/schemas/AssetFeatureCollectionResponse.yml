@@ -1,6 +1,10 @@
 title: AssetFeatureCollectionResponse
 type: object
 description: Assets Collection Response as a GeoJSon FeatureCollection with Asset properties
+required:
+  - type
+  - features
+  - pagination
 properties:
   type:
     description: the Geojson Type (only 'FeatureCollection')

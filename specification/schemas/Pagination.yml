@@ -1,6 +1,9 @@
 title: Pagination
 type: object
 description: Pagination to reach all returned assets. max 300 assets par page.
+required:
+  - page
+  - pageCount
 properties:
   page:
     type: integer

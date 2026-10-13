@@ -2,10 +2,10 @@
 <!--- [START woosmap_http_schema_matchedsubstring] -->
 <h3 class="schema-object" id="MatchedSubstring">MatchedSubstring</h3>
 
-| Field                                                                                                 | Required | Type   | Description                                                                                                                  |
-| :---------------------------------------------------------------------------------------------------- | -------- | ------ | ---------------------------------------------------------------------------------------------------------------------------- |
-| <h4 id="MatchedSubstring-length" class="add-link schema-object-property-key"><code>length</code></h4> | optional | number | <div class="nonref-property-description"><p>Length of the matched substring in the prediction result text.</p></div>         |
-| <h4 id="MatchedSubstring-offset" class="add-link schema-object-property-key"><code>offset</code></h4> | optional | number | <div class="nonref-property-description"><p>Start location of the matched substring in the prediction result text.</p></div> |
+| Field                                                                                                 | Required     | Type    | Description                                                                                                                  |
+| :---------------------------------------------------------------------------------------------------- | ------------ | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| <h4 id="MatchedSubstring-length" class="add-link schema-object-property-key"><code>length</code></h4> | **required** | integer | <div class="nonref-property-description"><p>Length of the matched substring in the prediction result text.</p></div>         |
+| <h4 id="MatchedSubstring-offset" class="add-link schema-object-property-key"><code>offset</code></h4> | **required** | integer | <div class="nonref-property-description"><p>Start location of the matched substring in the prediction result text.</p></div> |
 
 <h4 class="schema-object-example" id="MatchedSubstring-example">Example</h4>
 

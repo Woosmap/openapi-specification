@@ -6,7 +6,7 @@
 
 - <h3 class="parameter-name" id="limit">limit</h3>
 
-  To limit number of zones retrieved (max 50).
+  To limit number of zones retrieved (Default is 10, max is 50).
 
 - <h3 class="parameter-name" id="offset">offset</h3>
 

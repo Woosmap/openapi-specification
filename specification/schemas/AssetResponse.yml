@@ -1,6 +1,15 @@
 title: AssetResponse
 type: object
 description: Attributes describing an Asset.
+required:
+  - store_id
+  - name
+  - address
+  - contact
+  - types
+  - tags
+  - last_updated
+  - user_properties
 properties:
   name:
     $ref: "./AssetName.yml"
@@ -23,12 +32,18 @@ properties:
     description: the previous date timestamp when the asset has been updated
     example: "2022-11-08T15:48:08.556803+00:00"
   user_properties:
-    description: Contains all additional information relative to an Asset. If not set it returns null value.
-    type: [object, "null"]
+    description: Contains all additional information relative to an Asset. Empty object when not set.
+    type: object
     additionalProperties: true
     example: { "some_user_properties": "some_value" }
   opening_hours:
     $ref: "./AssetOpeningHours.yml"
+  localized_names:
+    description: Alternate names of the Asset, keyed by language. Only returned when set.
+    type: object
+    additionalProperties:
+      type: string
+    example: { "fr": "Centre Commercial Velizy", "it": "Centro Commerciale Velizy" }
   distance:
     description: The distance in meters from the geolocated position or searched position if exist
     type: number

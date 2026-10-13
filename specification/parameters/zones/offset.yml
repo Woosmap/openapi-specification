@@ -3,6 +3,7 @@ description: >
   To retrieve zones starting from an offset value.
 schema:
   type: integer
-  minimum: 1
+  minimum: 0
+  default: 0
   example: 20
 in: query

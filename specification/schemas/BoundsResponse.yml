@@ -1,9 +1,11 @@
 title: BoundsResponse
 type: object
 description: Message returned to a success Search Bounds request
+required:
+  - bounds
 properties:
   bounds:
-    description: The bounds object
+    description: The bounds object, empty when no asset matches.
     type: object
     properties:
       west:

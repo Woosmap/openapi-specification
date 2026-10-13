@@ -5,6 +5,7 @@ tags:
 description: >
   Autocomplete on `localizedNames` with highlighted results on asset name.
   Use the field `localized` in your query parameter to search for localized names.
+  Without `query`, the response has no predictions.
 security:
   - PublicApiKeyAuth: []
     RefererHeader: []

@@ -21,7 +21,7 @@
           <code>address</code>
         </h4>
       </td>
-      <td>optional</td>
+      <td><strong>required</strong></td>
       <td>
         <a href="#AssetAddressResponse" title="AssetAddressResponse"
           >AssetAddressResponse</a
@@ -44,11 +44,105 @@
           <code>contact</code>
         </h4>
       </td>
-      <td>optional</td>
+      <td><strong>required</strong></td>
       <td><a href="#AssetContact" title="AssetContact">AssetContact</a></td>
       <td>
         See <a href="#AssetContact" title="AssetContact">AssetContact</a> for
         more information.
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
+          id="AssetResponse-last_updated"
+          class="add-link schema-object-property-key"
+        >
+          <code>last_updated</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td>string,null</td>
+      <td>
+        <div class="nonref-property-description">
+          <p>the previous date timestamp when the asset has been updated</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4 id="AssetResponse-name" class="add-link schema-object-property-key">
+          <code>name</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td><a href="#AssetName" title="AssetName">AssetName</a></td>
+      <td>
+        See <a href="#AssetName" title="AssetName">AssetName</a> for more
+        information.
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
+          id="AssetResponse-store_id"
+          class="add-link schema-object-property-key"
+        >
+          <code>store_id</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td><a href="#AssetId" title="AssetId">AssetId</a></td>
+      <td>
+        See <a href="#AssetId" title="AssetId">AssetId</a> for more information.
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4 id="AssetResponse-tags" class="add-link schema-object-property-key">
+          <code>tags</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td><a href="#AssetTags" title="AssetTags">AssetTags</a></td>
+      <td>
+        See <a href="#AssetTags" title="AssetTags">AssetTags</a> for more
+        information.
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
+          id="AssetResponse-types"
+          class="add-link schema-object-property-key"
+        >
+          <code>types</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td><a href="#AssetTypes" title="AssetTypes">AssetTypes</a></td>
+      <td>
+        See <a href="#AssetTypes" title="AssetTypes">AssetTypes</a> for more
+        information.
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
+          id="AssetResponse-user_properties"
+          class="add-link schema-object-property-key"
+        >
+          <code>user_properties</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td>object</td>
+      <td>
+        <div class="nonref-property-description">
+          <p>
+            Contains all additional information relative to an Asset. Empty
+            object when not set.
+          </p>
+        </div>
       </td>
     </tr>
     <tr>
@@ -74,31 +168,21 @@
     <tr>
       <td align="left">
         <h4
-          id="AssetResponse-last_updated"
+          id="AssetResponse-localized_names"
           class="add-link schema-object-property-key"
         >
-          <code>last_updated</code>
+          <code>localized_names</code>
         </h4>
       </td>
       <td>optional</td>
-      <td>string,null</td>
+      <td>object</td>
       <td>
         <div class="nonref-property-description">
-          <p>the previous date timestamp when the asset has been updated</p>
+          <p>
+            Alternate names of the Asset, keyed by language. Only returned when
+            set.
+          </p>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td align="left">
-        <h4 id="AssetResponse-name" class="add-link schema-object-property-key">
-          <code>name</code>
-        </h4>
-      </td>
-      <td>optional</td>
-      <td><a href="#AssetName" title="AssetName">AssetName</a></td>
-      <td>
-        See <a href="#AssetName" title="AssetName">AssetName</a> for more
-        information.
       </td>
     </tr>
     <tr>
@@ -142,70 +226,6 @@
           >AssetOpeningHours</a
         >
         for more information.
-      </td>
-    </tr>
-    <tr>
-      <td align="left">
-        <h4
-          id="AssetResponse-store_id"
-          class="add-link schema-object-property-key"
-        >
-          <code>store_id</code>
-        </h4>
-      </td>
-      <td>optional</td>
-      <td><a href="#AssetId" title="AssetId">AssetId</a></td>
-      <td>
-        See <a href="#AssetId" title="AssetId">AssetId</a> for more information.
-      </td>
-    </tr>
-    <tr>
-      <td align="left">
-        <h4 id="AssetResponse-tags" class="add-link schema-object-property-key">
-          <code>tags</code>
-        </h4>
-      </td>
-      <td>optional</td>
-      <td><a href="#AssetTags" title="AssetTags">AssetTags</a></td>
-      <td>
-        See <a href="#AssetTags" title="AssetTags">AssetTags</a> for more
-        information.
-      </td>
-    </tr>
-    <tr>
-      <td align="left">
-        <h4
-          id="AssetResponse-types"
-          class="add-link schema-object-property-key"
-        >
-          <code>types</code>
-        </h4>
-      </td>
-      <td>optional</td>
-      <td><a href="#AssetTypes" title="AssetTypes">AssetTypes</a></td>
-      <td>
-        See <a href="#AssetTypes" title="AssetTypes">AssetTypes</a> for more
-        information.
-      </td>
-    </tr>
-    <tr>
-      <td align="left">
-        <h4
-          id="AssetResponse-user_properties"
-          class="add-link schema-object-property-key"
-        >
-          <code>user_properties</code>
-        </h4>
-      </td>
-      <td>optional</td>
-      <td>object,null</td>
-      <td>
-        <div class="nonref-property-description">
-          <p>
-            Contains all additional information relative to an Asset. If not set
-            it returns null value.
-          </p>
-        </div>
       </td>
     </tr>
     <tr>

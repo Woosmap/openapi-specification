@@ -1,8 +1,0 @@
-name: encoded_polyline
-description: >
-  Find assets nearby an [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) and inside a defined radius.
-schema:
-  type: string
-  example: '_p~iF~ps|U_ulLnnqC_mqNvxq`@'
-in: query
-

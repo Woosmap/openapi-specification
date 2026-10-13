@@ -1,10 +1,13 @@
 title: MatchedSubstring
 type: object
+required:
+  - offset
+  - length
 properties:
   length:
     description: Length of the matched substring in the prediction result text.
-    type: number
+    type: integer
   offset:
     description: Start location of the matched substring in the prediction result text.
-    type: number
+    type: integer
 example: { "offset": 0, length: 4 }

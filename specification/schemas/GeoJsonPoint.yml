@@ -1,6 +1,9 @@
 title: GeoJsonPoint
 type: object
 description: GeoJSon Point Geometry
+required:
+  - type
+  - coordinates
 properties:
   type:
     type: string

@@ -4,10 +4,10 @@
 
 GeoJSon Point Geometry
 
-| Field                                                                                                       | Required | Type                                                        | Description                                                                                                                                   |
-| :---------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| <h4 id="GeoJsonPoint-coordinates" class="add-link schema-object-property-key"><code>coordinates</code></h4> | optional | [LatLngArrayString](#LatLngArrayString "LatLngArrayString") | See [LatLngArrayString](#LatLngArrayString "LatLngArrayString") for more information.                                                         |
-| <h4 id="GeoJsonPoint-type" class="add-link schema-object-property-key"><code>type</code></h4>               | optional | string                                                      | <div class="nonref-property-description"><p>the geometry type</p><div class="notranslate">The allowed values include: and `Point`</div></div> |
+| Field                                                                                                       | Required     | Type                                                        | Description                                                                                                                                   |
+| :---------------------------------------------------------------------------------------------------------- | ------------ | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| <h4 id="GeoJsonPoint-coordinates" class="add-link schema-object-property-key"><code>coordinates</code></h4> | **required** | [LatLngArrayString](#LatLngArrayString "LatLngArrayString") | See [LatLngArrayString](#LatLngArrayString "LatLngArrayString") for more information.                                                         |
+| <h4 id="GeoJsonPoint-type" class="add-link schema-object-property-key"><code>type</code></h4>               | **required** | string                                                      | <div class="nonref-property-description"><p>the geometry type</p><div class="notranslate">The allowed values include: and `Point`</div></div> |
 
 <h4 class="schema-object-example" id="GeoJsonPoint-example">Example</h4>
 

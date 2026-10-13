@@ -15,6 +15,68 @@
     <tr>
       <td align="left">
         <h4
+          id="AssetOpenResponse-open_hours"
+          class="add-link schema-object-property-key"
+        >
+          <code>open_hours</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td>
+        Array&#x26;lt;<a
+          href="#AssetOpeningHoursPeriod"
+          title="AssetOpeningHoursPeriod"
+          >AssetOpeningHoursPeriod</a
+        >&#x26;gt;
+      </td>
+      <td>
+        <div class="ref-property-description">
+          <p>the opening hours for the day</p>
+          <p>
+            See
+            <a href="#AssetOpeningHoursPeriod">AssetOpeningHoursPeriod</a> for
+            more information.
+          </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
+          id="AssetOpenResponse-open_now"
+          class="add-link schema-object-property-key"
+        >
+          <code>open_now</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td>boolean</td>
+      <td>
+        <div class="nonref-property-description">
+          <p>Boolean value indicating the status of the opening hours</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
+          id="AssetOpenResponse-week_day"
+          class="add-link schema-object-property-key"
+        >
+          <code>week_day</code>
+        </h4>
+      </td>
+      <td><strong>required</strong></td>
+      <td>integer</td>
+      <td>
+        <div class="nonref-property-description">
+          <p>the day of the week starting from 1 to 7</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td align="left">
+        <h4
           id="AssetOpenResponse-current_slice"
           class="add-link schema-object-property-key"
         >
@@ -45,72 +107,13 @@
         </h4>
       </td>
       <td>optional</td>
-      <td>object</td>
+      <td>object,null</td>
       <td>
         <div class="nonref-property-description">
-          <p>the next opening hours period</p>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td align="left">
-        <h4
-          id="AssetOpenResponse-open_hours"
-          class="add-link schema-object-property-key"
-        >
-          <code>open_hours</code>
-        </h4>
-      </td>
-      <td>optional</td>
-      <td>
-        Array&#x26;lt;<a
-          href="#AssetOpeningHoursPeriod"
-          title="AssetOpeningHoursPeriod"
-          >AssetOpeningHoursPeriod</a
-        >&#x26;gt;
-      </td>
-      <td>
-        <div class="ref-property-description">
-          <p>the opening hours for the day</p>
           <p>
-            See
-            <a href="#AssetOpeningHoursPeriod">AssetOpeningHoursPeriod</a> for
-            more information.
+            the next opening hours period, returned when the asset is closed.
+            <code>null</code> when the asset does not open in the next days.
           </p>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td align="left">
-        <h4
-          id="AssetOpenResponse-open_now"
-          class="add-link schema-object-property-key"
-        >
-          <code>open_now</code>
-        </h4>
-      </td>
-      <td>optional</td>
-      <td>boolean</td>
-      <td>
-        <div class="nonref-property-description">
-          <p>Boolean value indicating the status of the opening hours</p>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td align="left">
-        <h4
-          id="AssetOpenResponse-week_day"
-          class="add-link schema-object-property-key"
-        >
-          <code>week_day</code>
-        </h4>
-      </td>
-      <td>optional</td>
-      <td>integer</td>
-      <td>
-        <div class="nonref-property-description">
-          <p>the day of the week starting from 1 to 7</p>
         </div>
       </td>
     </tr>

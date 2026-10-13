@@ -1,6 +1,10 @@
 title: AssetFeatureResponse
 type: object
 description: Asset Response as a GeoJSon Feature with Asset properties
+required:
+  - type
+  - properties
+  - geometry
 properties:
   type:
     description: the Geojson Type (only 'Feature')

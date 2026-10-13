@@ -1,0 +1,7 @@
+name: bounds
+description: >
+  Restricts the results to the Assets inside a bounding box, as `west,south,east,north` in decimal degrees. Takes precedence over `lat`/`lng` and `polyline`.
+schema:
+  type: string
+  example: "2.29,48.85,2.35,48.87"
+in: query
