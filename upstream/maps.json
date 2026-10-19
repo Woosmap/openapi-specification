@@ -3,7 +3,7 @@
   "info": {
     "title": "Maps",
     "description": "Maps API can provide style.json and map tiles.\n\n> Note: this API requires the `MAP` product to be activated on the project.",
-    "version": "v6.1.32"
+    "version": "v6.2.4"
   },
   "paths": {
     "/maps/static": {

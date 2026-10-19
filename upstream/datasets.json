@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Datasets",
-    "version": "v1.5.23"
+    "version": "v1.5.30"
   },
   "paths": {
     "/datasets/{dataset_id}": {
