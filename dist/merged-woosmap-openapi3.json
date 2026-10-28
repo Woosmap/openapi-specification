@@ -7,7 +7,7 @@
     "x-document-meta-data": {
       "copyright": "© 2025 Woosmap"
     },
-    "version": "1.46.2",
+    "version": "1.46.3",
     "contact": {
       "name": "Woosmap API"
     }
@@ -3613,28 +3613,6 @@
             "description": "A list of features that you want to avoid. Valid values are `tolls`, `highways`, `ferries` or polygons coordinates whose vertex latlng are separated by a semicolon `;`. \n    \nTo add multiple features, separate them with the pipe `|` character."
           },
           {
-            "name": "arrival_time",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "description": "Specify your desired arrival time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both.",
-              "examples": [
-                "1600799173",
-                "now"
-              ],
-              "title": "Arrival Time"
-            },
-            "description": "Specify your desired arrival time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both."
-          },
-          {
             "name": "departure_time",
             "in": "query",
             "required": false,
@@ -3647,14 +3625,35 @@
                   "type": "null"
                 }
               ],
-              "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both.",
+              "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`.",
               "examples": [
                 "1600799173",
                 "now"
               ],
               "title": "Departure Time"
             },
-            "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both."
+            "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`."
+          },
+          {
+            "name": "arrival_time",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Specify your desired arrival time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`).\n\nUse either `arrival_time` or `departure_time`, not both.",
+              "examples": [
+                "1600799173"
+              ],
+              "title": "Arrival Time"
+            },
+            "description": "Specify your desired arrival time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`).\n\nUse either `arrival_time` or `departure_time`, not both."
           },
           {
             "name": "origin",
@@ -3997,7 +3996,7 @@
           "Distance API"
         ],
         "summary": "Calculate Matrix",
-        "description": "Get distances and durations for a matrix of origins and destinations, based on the recommended route between start and end points for a specified travel mode.\n\n**Rate limit**: `10 requests/1s` GET and POST\n\n**Elements limit**: `1000 elements/1s` GET and POST\n\n**Rate limit with TRAFFIC**: `10 requests/1s` GET and POST\n\n**Elements limit with TRAFFIC**: `1000 elements/1s`GET and POST",
+        "description": "Get distances and durations for a matrix of origins and destinations, based on the recommended route between start and end points for a specified travel mode.\n\nTraffic calculations use the optional `departure_time` parameter. Matrix requests reject any non-null `arrival_time` value with HTTP 200 and `INVALID_REQUEST`. Omitting `arrival_time`, or setting it to JSON `null` in a POST body, is accepted.\n\n**Rate limit**: `20 requests/2s` GET and POST\n\n**Elements limit**: `1000 elements/1s` GET and POST\n\n**Rate limit with TRAFFIC**: `20 requests/2s` GET and POST\n\n**Elements limit with TRAFFIC**: `1000 elements/1s`GET and POST",
         "operationId": "matrix_distance_distancematrix_json__get",
         "security": [
           {
@@ -4155,28 +4154,6 @@
             "description": "The ending points. You can supply one or more locations, in the form of `latitude,longitude` coordinates, separated by the pipe character `|`. Ensure that no space exists between the latitude and longitude values. \n    \nIn order to reduce URL size, [encoded polylines](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) are also supported using `enc:<encoded-polyline>:`"
           },
           {
-            "name": "arrival_time",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "description": "Specify your desired arrival time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both.",
-              "examples": [
-                "1600799173",
-                "now"
-              ],
-              "title": "Arrival Time"
-            },
-            "description": "Specify your desired arrival time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both."
-          },
-          {
             "name": "departure_time",
             "in": "query",
             "required": false,
@@ -4189,14 +4166,14 @@
                   "type": "null"
                 }
               ],
-              "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both.",
+              "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`.",
               "examples": [
                 "1600799173",
                 "now"
               ],
               "title": "Departure Time"
             },
-            "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both."
+            "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`."
           },
           {
             "name": "elements",
@@ -4354,7 +4331,7 @@
           "Distance API"
         ],
         "summary": "Calculate Matrix",
-        "description": "Get distances and durations for a matrix of origins and destinations, based on the recommended route between start and end points for a specified travel mode.\n\n**Rate limit**: `10 requests/1s` GET and POST\n\n**Elements limit**: `1000 elements/1s` GET and POST\n\n**Rate limit with TRAFFIC**: `10 requests/1s` GET and POST\n\n**Elements limit with TRAFFIC**: `1000 elements/1s` GET and POST",
+        "description": "Get distances and durations for a matrix of origins and destinations, based on the recommended route between start and end points for a specified travel mode.\n\nTraffic calculations use the optional `departure_time` parameter. Matrix requests reject any non-null `arrival_time` value with HTTP 200 and `INVALID_REQUEST`. Omitting `arrival_time`, or setting it to JSON `null` in a POST body, is accepted.\n\n**Rate limit**: `20 requests/2s` GET and POST\n\n**Elements limit**: `1000 elements/1s` GET and POST\n\n**Rate limit with TRAFFIC**: `20 requests/2s` GET and POST\n\n**Elements limit with TRAFFIC**: `1000 elements/1s` GET and POST",
         "operationId": "matrix_post_distance_distancematrix_json__post",
         "security": [
           {
@@ -4532,7 +4509,7 @@
           "Distance API"
         ],
         "summary": "Calculate Isochrone",
-        "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`",
+        "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`\n\n**Ratelimit:** 10/1s",
         "operationId": "isochrone_distance_isochrone_json__get",
         "security": [
           {
@@ -4679,12 +4656,11 @@
             "required": true,
             "schema": {
               "type": "number",
-              "maximum": 120,
               "minimum": 0,
-              "description": "The value to use for the isochrone contour. \n\nIf you specified `time` for `method` this value should be number of minutes\n\nIf you specified `distance` for `method` this value should be distance in kilometers.",
+              "description": "The value to use for the isochrone contour.\n\nIf you specified `time` for `method` this value should be number of minutes, up to 120\n\nIf you specified `distance` for `method` this value should be distance in kilometers, up to 120",
               "title": "Value"
             },
-            "description": "The value to use for the isochrone contour. \n\nIf you specified `time` for `method` this value should be number of minutes\n\nIf you specified `distance` for `method` this value should be distance in kilometers."
+            "description": "The value to use for the isochrone contour.\n\nIf you specified `time` for `method` this value should be number of minutes, up to 120\n\nIf you specified `distance` for `method` this value should be distance in kilometers, up to 120"
           },
           {
             "name": "accept-language",
@@ -4784,6 +4760,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 10,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -4808,7 +4786,7 @@
           "Distance API"
         ],
         "summary": "Calculate Isochrone",
-        "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`",
+        "description": "Find all destinations that can be reached in a specific amount of time or a maximum travel distance.\n\n**Rate limit**: `10/1s`\n\n**Ratelimit:** 10/1s",
         "operationId": "isochrone_post_distance_isochrone_json__post",
         "security": [
           {
@@ -4930,6 +4908,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 10,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -4957,7 +4937,7 @@
           "Distance API"
         ],
         "summary": "Find Tolls",
-        "description": "Get distance, duration and tolls for an origin,destination pair, based on the recommended driving route between those two points.\n\n**Rate limit**: `5/1s`",
+        "description": "Get distance, duration and tolls for an origin,destination pair, based on the recommended driving route between those two points.\n\n**Rate limit**: `5/1s`\n\n**Ratelimit:** 5/1s",
         "operationId": "tolls_distance_tolls_json__get",
         "security": [
           {
@@ -4972,28 +4952,6 @@
         ],
         "parameters": [
           {
-            "name": "arrival_time",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "description": "Specify your desired arrival time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both.",
-              "examples": [
-                "1600799173",
-                "now"
-              ],
-              "title": "Arrival Time"
-            },
-            "description": "Specify your desired arrival time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both."
-          },
-          {
             "name": "departure_time",
             "in": "query",
             "required": false,
@@ -5006,14 +4964,35 @@
                   "type": "null"
                 }
               ],
-              "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both.",
+              "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`.",
               "examples": [
                 "1600799173",
                 "now"
               ],
               "title": "Departure Time"
             },
-            "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both."
+            "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`."
+          },
+          {
+            "name": "arrival_time",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Specify your desired arrival time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`).\n\nUse either `arrival_time` or `departure_time`, not both.",
+              "examples": [
+                "1600799173"
+              ],
+              "title": "Arrival Time"
+            },
+            "description": "Specify your desired arrival time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`).\n\nUse either `arrival_time` or `departure_time`, not both."
           },
           {
             "name": "waypoints",
@@ -5058,9 +5037,11 @@
                 "distance"
               ],
               "type": "string",
+              "description": "Specifies how to compute the route between the start point and the end point:\n* `time`: fastest route \n* `distance`: shortest route",
               "default": "time",
               "title": "Method"
-            }
+            },
+            "description": "Specifies how to compute the route between the start point and the end point:\n* `time`: fastest route \n* `distance`: shortest route"
           },
           {
             "name": "units",
@@ -5072,9 +5053,11 @@
                 "imperial"
               ],
               "type": "string",
+              "description": "Specifies the unit system to use when displaying results.",
               "default": "metric",
               "title": "Units"
-            }
+            },
+            "description": "Specifies the unit system to use when displaying results."
           },
           {
             "name": "language",
@@ -5383,6 +5366,8 @@
             }
           }
         },
+        "x-ratelimit-limit": 5,
+        "x-ratelimit-window-seconds": 1,
         "x-codeSamples": [
           {
             "lang": "curl",
@@ -19474,10 +19459,9 @@
           },
           "value": {
             "type": "number",
-            "maximum": 120,
             "minimum": 0,
             "title": "Value",
-            "description": "The value to use for the isochrone contour. \n\nIf you specified `time` for `method` this value should be number of minutes\n\nIf you specified `distance` for `method` this value should be distance in kilometers."
+            "description": "The value to use for the isochrone contour.\n\nIf you specified `time` for `method` this value should be number of minutes, up to 120\n\nIf you specified `distance` for `method` this value should be distance in kilometers, up to 120"
           }
         },
         "type": "object",
@@ -19498,11 +19482,12 @@
               "MAX_ROUTE_LENGTH_EXCEEDED",
               "REQUEST_DENIED",
               "BACKEND_ERROR",
+              "BACKEND_UNAVAILABLE",
               "OVER_QUERY_LIMIT",
               "ZERO_RESULTS"
             ],
             "title": "Status",
-            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
+            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices when driving, 250km and 200km when walking, 500km and 500km when cycling).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `BACKEND_UNAVAILABLE`: The service is temporarily unavailable or the request timed out.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
             "default": "OK"
           },
           "isoline": {
@@ -19746,22 +19731,6 @@
               "enc:_p~iF~ps|U_ulLnnqC_mqNvxq`@:"
             ]
           },
-          "arrival_time": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Arrival Time",
-            "description": "Specify your desired arrival time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both.",
-            "examples": [
-              "1600799173",
-              "now"
-            ]
-          },
           "departure_time": {
             "anyOf": [
               {
@@ -19772,7 +19741,7 @@
               }
             ],
             "title": "Departure Time",
-            "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`. \n\nUse either `arrival_time` or `departure_time`, not both.",
+            "description": "Specify your desired departure time.\n\nBy using this parameter, Distance will calculate the duration with **traffic**. Valid values are a UNIX timestamp (e.g. `1600799173` for the date: `22/09/2020 20:26:13`) or `now`.",
             "examples": [
               "1600799173",
               "now"
@@ -19808,11 +19777,12 @@
               "MAX_ROUTE_LENGTH_EXCEEDED",
               "REQUEST_DENIED",
               "BACKEND_ERROR",
+              "BACKEND_UNAVAILABLE",
               "OVER_QUERY_LIMIT",
               "ZERO_RESULTS"
             ],
             "title": "Status",
-            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
+            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices when driving, 250km and 200km when walking, 500km and 500km when cycling).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `BACKEND_UNAVAILABLE`: The service is temporarily unavailable or the request timed out.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
             "default": "OK"
           },
           "rows": {
@@ -20182,11 +20152,12 @@
               "MAX_ROUTE_LENGTH_EXCEEDED",
               "REQUEST_DENIED",
               "BACKEND_ERROR",
+              "BACKEND_UNAVAILABLE",
               "OVER_QUERY_LIMIT",
               "ZERO_RESULTS"
             ],
             "title": "Status",
-            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
+            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices when driving, 250km and 200km when walking, 500km and 500km when cycling).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `BACKEND_UNAVAILABLE`: The service is temporarily unavailable or the request timed out.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
             "default": "OK"
           },
           "routes": {
