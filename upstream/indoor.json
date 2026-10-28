@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Indoor API",
-    "version": "v8.31.2",
+    "version": "v8.31.8",
     "description": "The Indoor Map API enables you to display plans of your private space.\nThe Indoor Search API is a dedicated search engine for your own indoor data, allowing you to search for points of interest (POI) in your venue by their characteristics or through autocompletion.\nWith the Indoor Distance API, you can calculate the shortest route between two indoor locations, complete with a polyline and roadbook instructions for turn-by-turn navigation with POI. Additionally, you can apply routing profiles to your venue network for specific user groups such as premium customers, staff, or security, and utilize them through the Indoor Distance API."
   },
   "paths": {

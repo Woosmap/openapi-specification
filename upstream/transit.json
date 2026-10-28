@@ -4,7 +4,7 @@
     "title": "External-api-wrapper",
     "summary": "Public Transportation Routing and Async Matrices",
     "description": "Calculate routes using public transporatation (trains, busses, etc.). Also calculate large (10k x 10k) matrices of routes if you are travelling by car or HGV.",
-    "version": "v6.0.48"
+    "version": "v6.0.52"
   },
   "paths": {
     "/distance/matrix/async/": {
