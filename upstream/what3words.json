@@ -4,7 +4,7 @@
     "title": "External-api-wrapper_what3words",
     "summary": "Add What3Words capabilities to your address search",
     "description": "Add What3Words capabilities to your address search",
-    "version": "v6.0.52"
+    "version": "v6.0.53"
   },
   "paths": {
     "/what3words/convert-to-3wa": {

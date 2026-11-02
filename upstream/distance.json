@@ -3,7 +3,7 @@
   "info": {
     "title": "Distance",
     "description": "\nWoosmap Distance API is a service providing road travel distance and duration calculations, on a Worldwide scale.\n\nBoth `departure_time` and `arrival_time` use traffic data. Matrix supports only `departure_time`, while Route and Tolls support either parameter.\n\nMatrices can be calculated for a large number of origins and destinations. (max 200 elements (origins x destinations) per request)\n\n[Get Started Here](https://developers.woosmap.com/products/distance-api/get-started/)",
-    "version": "v9.3.20"
+    "version": "v9.3.24"
   },
   "paths": {
     "/distance/isochrone/json/": {
