@@ -6,6 +6,8 @@ zones_limit:
   $ref: "./zones/limit.yml"
 search_zone:
   $ref: "./search/zone.yml"
+search_enhanced:
+  $ref: "./search/enhanced.yml"
 search_stores_by_page:
   $ref: "./search/stores_by_page.yml"
 search_radius:

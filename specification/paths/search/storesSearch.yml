@@ -19,6 +19,7 @@ parameters:
   - $ref: "../../parameters/search/stores_by_page.yml"
   - $ref: "../../parameters/search/page.yml"
   - $ref: "../../parameters/search/zone.yml"
+  - $ref: "../../parameters/search/enhanced.yml"
 responses:
   "200":
     description: Assets successfully retrieved

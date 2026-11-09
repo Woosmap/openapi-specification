@@ -2,6 +2,6 @@
 {
   "type": "FeatureCollection",
   "features": [],
-  "pagination": { "page": 1, "pageCount": 1 },
+  "pagination": { "page": 1, "pageCount": 1, "hasNext": false },
 }
 # [END woosmap_http_asset_search_by_zone_feature_collection_response]
