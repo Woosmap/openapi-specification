@@ -13,7 +13,7 @@ info:
   termsOfService: https://www.woosmap.com/en/policies/terms/
   x-document-meta-data:
     copyright: © 2025 Woosmap
-  version: 1.46.3
+  version: 1.46.4
   contact:
     name: Woosmap API
 servers:
@@ -302,6 +302,7 @@ paths:
                       pagination:
                         page: 1
                         pageCount: 2
+                        hasNext: true
         '401':
           description: Unauthorized. Incorrect authentication credentials.
           content:
@@ -2056,6 +2057,7 @@ paths:
         - $ref: '#/components/parameters/stores_by_page'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/zone'
+        - $ref: '#/components/parameters/enhanced'
       responses:
         '200':
           description: Assets successfully retrieved
@@ -2174,6 +2176,7 @@ paths:
                     pagination:
                       page: 1
                       pageCount: 1
+                      hasNext: false
         '401':
           description: Unauthorized. Incorrect authentication credentials.
           content:
@@ -3364,6 +3367,14 @@ components:
         example: true
       description: |
         returns the stores that are linked to a zone intersecting the provided `lat`,`lng` query parameters.
+    enhanced:
+      name: enhanced
+      in: query
+      schema:
+        type: boolean
+        example: true
+      description: |
+        Skips counting all matching assets, which makes paginated searches faster. When `true`, `pagination.pageCount` is no longer a total (see `hasNext`), and requesting a page past the last one returns an empty feature collection instead of an error.
     language:
       name: language
       description: |
@@ -4097,6 +4108,7 @@ components:
       required:
         - page
         - pageCount
+        - hasNext
       properties:
         page:
           type: integer
@@ -4104,8 +4116,14 @@ components:
           example: 1
         pageCount:
           type: integer
-          description: the number of available pages
+          deprecated: true
+          description: |
+            Deprecated, use `hasNext` instead. The number of available pages. When the request is `enhanced`, this is not a total: it is `page + 1` if more assets are available, otherwise `page`.
           example: 10
+        hasNext:
+          type: boolean
+          description: whether a next page of assets is available
+          example: true
     AssetFeatureCollectionResponse:
       title: AssetFeatureCollectionResponse
       type: object
@@ -4235,6 +4253,7 @@ components:
         pagination:
           page: 1
           pageCount: 1
+          hasNext: false
     GeolocationStoresResponse:
       title: GeolocationStoresResponse
       description: JSON-formatted response defining a location, radius, and stores if accuracy of geocoded IP is 20km or less.
@@ -4403,6 +4422,7 @@ components:
           pagination:
             page: 1
             pageCount: 2
+            hasNext: true
     TimezoneResponse:
       title: TimezoneResponse
       type: object

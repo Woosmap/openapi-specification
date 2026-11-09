@@ -7,7 +7,7 @@
     "x-document-meta-data": {
       "copyright": "© 2025 Woosmap"
     },
-    "version": "1.46.3",
+    "version": "1.46.4",
     "contact": {
       "name": "Woosmap API"
     }
@@ -416,7 +416,8 @@
                         ],
                         "pagination": {
                           "page": 1,
-                          "pageCount": 2
+                          "pageCount": 2,
+                          "hasNext": true
                         }
                       }
                     }
@@ -1725,6 +1726,9 @@
           },
           {
             "$ref": "#/components/parameters/zone"
+          },
+          {
+            "$ref": "#/components/parameters/enhanced"
           }
         ],
         "responses": {
@@ -1914,7 +1918,8 @@
                       ],
                       "pagination": {
                         "page": 1,
-                        "pageCount": 1
+                        "pageCount": 1,
+                        "hasNext": false
                       }
                     }
                   }
@@ -3176,6 +3181,15 @@
         },
         "description": "returns the stores that are linked to a zone intersecting the provided `lat`,`lng` query parameters.\n"
       },
+      "enhanced": {
+        "name": "enhanced",
+        "in": "query",
+        "schema": {
+          "type": "boolean",
+          "example": true
+        },
+        "description": "Skips counting all matching assets, which makes paginated searches faster. When `true`, `pagination.pageCount` is no longer a total (see `hasNext`), and requesting a page past the last one returns an empty feature collection instead of an error.\n"
+      },
       "language": {
         "name": "language",
         "description": "The language code, using ISO 639-2 Alpha-2 country codes, indicating in which language the `localized` name  property should be searched , if present, or else the default `name` property.\n",
@@ -4199,7 +4213,8 @@
         "description": "Pagination to reach all returned assets. max 300 assets par page.",
         "required": [
           "page",
-          "pageCount"
+          "pageCount",
+          "hasNext"
         ],
         "properties": {
           "page": {
@@ -4209,8 +4224,14 @@
           },
           "pageCount": {
             "type": "integer",
-            "description": "the number of available pages",
+            "deprecated": true,
+            "description": "Deprecated, use `hasNext` instead. The number of available pages. When the request is `enhanced`, this is not a total: it is `page + 1` if more assets are available, otherwise `page`.\n",
             "example": 10
+          },
+          "hasNext": {
+            "type": "boolean",
+            "description": "whether a next page of assets is available",
+            "example": true
           }
         }
       },
@@ -4418,7 +4439,8 @@
           ],
           "pagination": {
             "page": 1,
-            "pageCount": 1
+            "pageCount": 1,
+            "hasNext": false
           }
         }
       },
@@ -4660,7 +4682,8 @@
             ],
             "pagination": {
               "page": 1,
-              "pageCount": 2
+              "pageCount": 2,
+              "hasNext": true
             }
           }
         }
