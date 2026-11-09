@@ -1,0 +1,9 @@
+name: enhanced
+in: query
+schema:
+  type: boolean
+  example: true
+
+description: >
+  Skips counting all matching assets, which makes paginated searches faster.
+  When `true`, `pagination.pageCount` is no longer a total (see `hasNext`), and requesting a page past the last one returns an empty feature collection instead of an error.

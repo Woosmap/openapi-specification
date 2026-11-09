@@ -4,6 +4,7 @@ description: Pagination to reach all returned assets. max 300 assets par page.
 required:
   - page
   - pageCount
+  - hasNext
 properties:
   page:
     type: integer
@@ -11,5 +12,12 @@ properties:
     example: 1
   pageCount:
     type: integer
-    description: the number of available pages
+    deprecated: true
+    description: >
+      Deprecated, use `hasNext` instead. The number of available pages.
+      When the request is `enhanced`, this is not a total: it is `page + 1` if more assets are available, otherwise `page`.
     example: 10
+  hasNext:
+    type: boolean
+    description: whether a next page of assets is available
+    example: true
