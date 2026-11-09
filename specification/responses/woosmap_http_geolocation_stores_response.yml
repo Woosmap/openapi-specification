@@ -104,7 +104,7 @@
             "geometry": { "type": "Point", "coordinates": [-77.1067, 38.719] },
           },
         ],
-      "pagination": { "page": 1, "pageCount": 2 },
+      "pagination": { "page": 1, "pageCount": 2, "hasNext": true },
     },
 }
 # [END woosmap_http_geolocation_stores_response]
