@@ -3,7 +3,7 @@
   "info": {
     "title": "Distance",
     "description": "\nWoosmap Distance API is a service providing road travel distance and duration calculations, on a Worldwide scale.\n\nBoth `departure_time` and `arrival_time` use traffic data. Matrix supports only `departure_time`, while Route and Tolls support either parameter.\n\nMatrices can be calculated for a large number of origins and destinations. (max 200 elements (origins x destinations) per request)\n\n[Get Started Here](https://developers.woosmap.com/products/distance-api/get-started/)",
-    "version": "v9.3.20"
+    "version": "v9.3.31"
   },
   "paths": {
     "/distance/isochrone/json/": {
@@ -159,7 +159,7 @@
             "required": true,
             "schema": {
               "type": "number",
-              "minimum": 0,
+              "exclusiveMinimum": 0,
               "description": "The value to use for the isochrone contour.\n\nIf you specified `time` for `method` this value should be number of minutes, up to 120\n\nIf you specified `distance` for `method` this value should be distance in kilometers, up to 120",
               "title": "Value"
             },
@@ -435,14 +435,14 @@
                   "type": "null"
                 }
               ],
-              "description": "A list of points by which the route should pass (the route response is divided into legs, one leg corresponding to a route between two waypoints). Waypoints should be separated by | character. \n    \nOptionally, you may pass 'optimize:true' as the first argument within the waypoints parameter. This way the provided route is optimized by rearranging the waypoints in a more efficient order based on distance or time according to the method parameter. The route start point and end point order is not changed, their position is considered fixed. \n    \n`alternatives` and `waypoints` can not be used at the same time.",
+              "description": "A list of points by which the route should pass (the route response is divided into legs, one leg corresponding to a route between two waypoints). Waypoints should be separated by | character. \n    \nOptionally, you may pass 'optimize:true' as the first argument within the waypoints parameter. This way the provided route is optimized by rearranging the waypoints in a more efficient order based on distance or time according to the method parameter. The route start point and end point order is not changed, their position is considered fixed. \n    \n`alternatives` and `waypoints` can not be used at the same time.\n    \nUp to 25 locations, including the origin and destination. Driving routes without traffic are limited to 20 locations, or 25 with `optimize:true`.",
               "examples": [
                 "optimize:true|48.850077,3.311124|48.850077,3.411124",
                 "48.850077,3.311124|48.850077,3.411124"
               ],
               "title": "Waypoints"
             },
-            "description": "A list of points by which the route should pass (the route response is divided into legs, one leg corresponding to a route between two waypoints). Waypoints should be separated by | character. \n    \nOptionally, you may pass 'optimize:true' as the first argument within the waypoints parameter. This way the provided route is optimized by rearranging the waypoints in a more efficient order based on distance or time according to the method parameter. The route start point and end point order is not changed, their position is considered fixed. \n    \n`alternatives` and `waypoints` can not be used at the same time."
+            "description": "A list of points by which the route should pass (the route response is divided into legs, one leg corresponding to a route between two waypoints). Waypoints should be separated by | character. \n    \nOptionally, you may pass 'optimize:true' as the first argument within the waypoints parameter. This way the provided route is optimized by rearranging the waypoints in a more efficient order based on distance or time according to the method parameter. The route start point and end point order is not changed, their position is considered fixed. \n    \n`alternatives` and `waypoints` can not be used at the same time.\n    \nUp to 25 locations, including the origin and destination. Driving routes without traffic are limited to 20 locations, or 25 with `optimize:true`."
           },
           {
             "name": "mode",
@@ -685,14 +685,14 @@
                   "type": "null"
                 }
               ],
-              "description": "A list of points by which the route should pass (the route response is divided into legs, one leg corresponding to a route between two waypoints). Waypoints should be separated by | character. \n    \nOptionally, you may pass 'optimize:true' as the first argument within the waypoints parameter. This way the provided route is optimized by rearranging the waypoints in a more efficient order based on distance or time according to the method parameter. The route start point and end point order is not changed, their position is considered fixed. \n    \n`alternatives` and `waypoints` can not be used at the same time.",
+              "description": "A list of points by which the route should pass (the route response is divided into legs, one leg corresponding to a route between two waypoints). Waypoints should be separated by | character. \n    \nOptionally, you may pass 'optimize:true' as the first argument within the waypoints parameter. This way the provided route is optimized by rearranging the waypoints in a more efficient order based on distance or time according to the method parameter. The route start point and end point order is not changed, their position is considered fixed. \n    \n`alternatives` and `waypoints` can not be used at the same time.\n    \nUp to 25 locations, including the origin and destination. Driving routes without traffic are limited to 20 locations, or 25 with `optimize:true`.",
               "examples": [
                 "optimize:true|48.850077,3.311124|48.850077,3.411124",
                 "48.850077,3.311124|48.850077,3.411124"
               ],
               "title": "Waypoints"
             },
-            "description": "A list of points by which the route should pass (the route response is divided into legs, one leg corresponding to a route between two waypoints). Waypoints should be separated by | character. \n    \nOptionally, you may pass 'optimize:true' as the first argument within the waypoints parameter. This way the provided route is optimized by rearranging the waypoints in a more efficient order based on distance or time according to the method parameter. The route start point and end point order is not changed, their position is considered fixed. \n    \n`alternatives` and `waypoints` can not be used at the same time."
+            "description": "A list of points by which the route should pass (the route response is divided into legs, one leg corresponding to a route between two waypoints). Waypoints should be separated by | character. \n    \nOptionally, you may pass 'optimize:true' as the first argument within the waypoints parameter. This way the provided route is optimized by rearranging the waypoints in a more efficient order based on distance or time according to the method parameter. The route start point and end point order is not changed, their position is considered fixed. \n    \n`alternatives` and `waypoints` can not be used at the same time.\n    \nUp to 25 locations, including the origin and destination. Driving routes without traffic are limited to 20 locations, or 25 with `optimize:true`."
           },
           {
             "name": "mode",
@@ -1633,7 +1633,7 @@
           },
           "value": {
             "type": "number",
-            "minimum": 0.0,
+            "exclusiveMinimum": 0.0,
             "title": "Value",
             "description": "The value to use for the isochrone contour.\n\nIf you specified `time` for `method` this value should be number of minutes, up to 120\n\nIf you specified `distance` for `method` this value should be distance in kilometers, up to 120"
           }
@@ -1661,7 +1661,7 @@
               "ZERO_RESULTS"
             ],
             "title": "Status",
-            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices when driving, 250km and 200km when walking, 500km and 500km when cycling).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `BACKEND_UNAVAILABLE`: The service is temporarily unavailable or the request timed out.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
+            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query). Driving matrices with `departure_time` are also limited to 15 origins and 100 destinations. This origin limit increases to 100 when there is only one destination.\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices when driving, 250km and 200km when walking, 500km and 500km when cycling). Routes add up the straight-line distances between consecutive locations, including waypoints. With `optimize:true` and two or more waypoints on a Route without traffic, each pair of locations uses the matrix limit instead.\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `BACKEND_UNAVAILABLE`: The service is temporarily unavailable or the request timed out.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
             "default": "OK"
           },
           "isoline": {
@@ -1701,7 +1701,14 @@
       "IsochroneTimeDistance": {
         "properties": {
           "value": {
-            "type": "integer",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ],
             "title": "Value"
           },
           "text": {
@@ -1956,7 +1963,7 @@
               "ZERO_RESULTS"
             ],
             "title": "Status",
-            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices when driving, 250km and 200km when walking, 500km and 500km when cycling).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `BACKEND_UNAVAILABLE`: The service is temporarily unavailable or the request timed out.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
+            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query). Driving matrices with `departure_time` are also limited to 15 origins and 100 destinations. This origin limit increases to 100 when there is only one destination.\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices when driving, 250km and 200km when walking, 500km and 500km when cycling). Routes add up the straight-line distances between consecutive locations, including waypoints. With `optimize:true` and two or more waypoints on a Route without traffic, each pair of locations uses the matrix limit instead.\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `BACKEND_UNAVAILABLE`: The service is temporarily unavailable or the request timed out.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
             "default": "OK"
           },
           "rows": {
@@ -2331,7 +2338,7 @@
               "ZERO_RESULTS"
             ],
             "title": "Status",
-            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query).\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices when driving, 250km and 200km when walking, 500km and 500km when cycling).\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `BACKEND_UNAVAILABLE`: The service is temporarily unavailable or the request timed out.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
+            "description": "The status of the response\n* `OK`: The response contains a valid result.\n* `INVALID_REQUEST`: The request could not be processed.\n* `MAX_ELEMENTS_EXCEEDED`: The product of origins and destinations exceeds the per-query limit (fixed at 200 elts/query). Driving matrices with `departure_time` are also limited to 15 origins and 100 destinations. This origin limit increases to 100 when there is only one destination.\n* `MAX_ROUTE_LENGTH_EXCEEDED`: One of the requested routes is too long and the matrix/route cannot be processed (The limit is 1000km for routes and 1000km for matrices when driving, 250km and 200km when walking, 500km and 500km when cycling). Routes add up the straight-line distances between consecutive locations, including waypoints. With `optimize:true` and two or more waypoints on a Route without traffic, each pair of locations uses the matrix limit instead.\n* `REQUEST_DENIED`: The API key provided is invalid or does not allow access to this service etc..\n* `BACKEND_ERROR`: The server encountered an unexpected error.\n* `BACKEND_UNAVAILABLE`: The service is temporarily unavailable or the request timed out.\n* `OVER_QUERY_LIMIT`: The request was denied due to the rate limit (see [Usage Limits](https://developers.woosmap.com/products/distance-api/distance-matrix-endpoint/#usage-limits)).\n* `ZERO_RESULTS`: No route could be found between the origin and destination.\n    ",
             "default": "OK"
           },
           "routes": {
@@ -2562,7 +2569,7 @@
                 "type": "null"
               }
             ],
-            "description": "The maneuver instructions for this step."
+            "description": "The maneuver instructions for this step. Traffic-aware routes include an action code and a written summary, but no separate instructions for spoken guidance."
           }
         },
         "type": "object",
