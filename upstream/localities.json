@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Localities",
-    "version": "v25.12.7"
+    "version": "v25.13.1"
   },
   "servers": [
     {
