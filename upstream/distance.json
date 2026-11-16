@@ -3,7 +3,7 @@
   "info": {
     "title": "Distance",
     "description": "\nWoosmap Distance API is a service providing road travel distance and duration calculations, on a Worldwide scale.\n\nBoth `departure_time` and `arrival_time` use traffic data. Matrix supports only `departure_time`, while Route and Tolls support either parameter.\n\nMatrices can be calculated for a large number of origins and destinations. (max 200 elements (origins x destinations) per request)\n\n[Get Started Here](https://developers.woosmap.com/products/distance-api/get-started/)",
-    "version": "v9.3.31"
+    "version": "v9.3.38"
   },
   "paths": {
     "/distance/isochrone/json/": {
@@ -1402,12 +1402,11 @@
             "type": "string",
             "enum": [
               "OK",
-              "NOT_FOUND",
               "ZERO_RESULTS",
               "ERROR"
             ],
             "title": "Status",
-            "description": "The status of each element.\n* `OK` The response contains a valid result.\n* `NOT_FOUND` The origin and/or destination of this pairing could not be matched to the network.\n* `ZERO_RESULTS` No route could be found between the origin and destination."
+            "description": "The status of each element.\n* `OK` The response contains a valid result.\n* `ZERO_RESULTS` No route could be found between the origin and destination."
           }
         },
         "type": "object",
@@ -1438,12 +1437,11 @@
             "type": "string",
             "enum": [
               "OK",
-              "NOT_FOUND",
               "ZERO_RESULTS",
               "ERROR"
             ],
             "title": "Status",
-            "description": "The status of each element.\n* `OK` The response contains a valid result.\n* `NOT_FOUND` The origin and/or destination of this pairing could not be matched to the network.\n* `ZERO_RESULTS` No route could be found between the origin and destination."
+            "description": "The status of each element.\n* `OK` The response contains a valid result.\n* `ZERO_RESULTS` No route could be found between the origin and destination."
           },
           "distance": {
             "$ref": "#/components/schemas/MatrixDistanceDuration",
@@ -1463,12 +1461,11 @@
             "type": "string",
             "enum": [
               "OK",
-              "NOT_FOUND",
               "ZERO_RESULTS",
               "ERROR"
             ],
             "title": "Status",
-            "description": "The status of each element.\n* `OK` The response contains a valid result.\n* `NOT_FOUND` The origin and/or destination of this pairing could not be matched to the network.\n* `ZERO_RESULTS` No route could be found between the origin and destination."
+            "description": "The status of each element.\n* `OK` The response contains a valid result.\n* `ZERO_RESULTS` No route could be found between the origin and destination."
           },
           "distance": {
             "$ref": "#/components/schemas/MatrixDistanceDuration",
@@ -1493,12 +1490,11 @@
             "type": "string",
             "enum": [
               "OK",
-              "NOT_FOUND",
               "ZERO_RESULTS",
               "ERROR"
             ],
             "title": "Status",
-            "description": "The status of each element.\n* `OK` The response contains a valid result.\n* `NOT_FOUND` The origin and/or destination of this pairing could not be matched to the network.\n* `ZERO_RESULTS` No route could be found between the origin and destination."
+            "description": "The status of each element.\n* `OK` The response contains a valid result.\n* `ZERO_RESULTS` No route could be found between the origin and destination."
           },
           "duration": {
             "$ref": "#/components/schemas/MatrixDistanceDuration",
@@ -1671,15 +1667,15 @@
               },
               {
                 "$ref": "#/components/schemas/IsolineResponseDistance"
+              },
+              {
+                "type": "null"
               }
             ],
             "title": "Isoline"
           }
         },
         "type": "object",
-        "required": [
-          "isoline"
-        ],
         "title": "IsochroneResponse",
         "examples": [
           {
